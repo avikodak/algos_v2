@@ -59,6 +59,7 @@
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
 
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
 /****************************************************************************************************************************************************/
@@ -67,7 +68,9 @@
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	utils->getRandomTree(10,1,50);
+	itNode *root = utils->getRandomTree(10,1,50);
+	//printf("%d\n",getSizeOfTreeInOrder(root));
+	printf("%d\n",getSizeOfTreePreOrder(root));
 }
 
 void sillTester(){
@@ -82,7 +85,7 @@ void sillTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	sillTester();
+	treeTester();
 	return 0;
 }
 
