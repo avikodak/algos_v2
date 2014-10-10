@@ -54,7 +54,47 @@ using namespace __gnu_cxx;
 #ifndef LINKEDLISTDS_H_
 #define LINKEDLISTDS_H_
 
+struct sillNode{
+	int value;
+	sillNode *next;
 
+	sillNode(){
+		this->next = null;
+	}
+
+	sillNode(int value){
+		this->value = value;
+		this->next = null;
+	}
+
+};
+
+struct dillNode{
+	int value;
+	dillNode *next;
+	dillNode *prev;
+
+	dillNode(){
+		this->next = null;
+		this->prev = null;
+	}
+
+	dillNode(int value){
+		this->value = value;
+		this->next = null;
+		this->prev = null;
+	}
+};
+
+struct iSillHashmap{
+	hash_map<unsigned int,sillNode *> indexNodeMap;
+	hash_map<uint32_t,unsigned int> nodeIndexMap;
+};
+
+struct iDillHashmap{
+	hash_map<unsigned int,dillNode *> indexNodeMap;
+	hash_map<uint32_t,unsigned int> nodeIndexMap;
+};
 #endif /* LINKEDLISTDS_H_ */
 
 /****************************************************************************************************************************************************/

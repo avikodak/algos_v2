@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -63,8 +63,10 @@ using namespace __gnu_cxx;
 
 class treeutils{
 private:
+
+public:
 	//Tested
-	itNode *getITreeFromVectorMain(vector<int> userInput,unsigned int currentIndex){
+	itNode *getITreeFromVector(vector<int> userInput,unsigned int currentIndex = 0) {
 		if(currentIndex >= userInput.size()){
 			return null;
 		}
@@ -72,12 +74,6 @@ private:
 		node->left = getITreeFromVectorMain(userInput,2*currentIndex+1);
 		node->right = getITreeFromVectorMain(userInput,2*currentIndex+2);
 		return node;
-	}
-
-public:
-	//Tested
-	itNode *getITreeFromVector(vector<int> userInput) {
-		return getITreeFromVectorMain(userInput,0);
 	}
 
 	//Tested

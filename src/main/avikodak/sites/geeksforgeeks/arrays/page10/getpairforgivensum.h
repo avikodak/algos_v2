@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: commonds.h 
- *	File Location		: D:\algos\algos_v2\src\lib\ds\commonds.h
- *  Created on			: Oct 9, 2014 :: 12:38:37 PM
+ *  File Name   		: getpairforgivensum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
+ *  Created on			: Oct 10, 2014 :: 4:13:13 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -40,35 +40,48 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <algorithm/constants/constants.h>
+#include <algorithm/ds/commonds.h>
+#include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/mathds.h>
+#include <algorithm/ds/treeds.h>
+#include <algorithm/utils/arrayutil.h>
+#include <algorithm/utils/avltreeutil.h>
+#include <algorithm/utils/bplustreeutil.h>
+#include <algorithm/utils/btreeutil.h>
+#include <algorithm/utils/commonutil.h>
+#include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/mathutil.h>
+#include <algorithm/utils/redblacktreeutil.h>
+#include <algorithm/utils/sillutil.h>
+#include <algorithm/utils/treeutil.h>
+#include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
 
-#define null NULL
-
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COMMONDS_H_
-#define COMMONDS_H_
+#ifndef GETPAIRFORGIVENSUM_H_
+#define GETPAIRFORGIVENSUM_H_
 
-struct iPair{
-	int firstValue;
-	int secondValue;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-	iPair(){
 
-	}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-	iPair(int firstValue,int secondValue){
-		this->firstValue = firstValue;
-		this->secondValue = secondValue;
-	}
-};
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* COMMONDS_H_ */
+#endif /* GETPAIRFORGIVENSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

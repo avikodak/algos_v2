@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: getnthnodesill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodesill.h
+ *  Created on			: Oct 10, 2014 :: 3:41:31 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -56,37 +58,85 @@
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
 
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	utils->getRandomTree(10,1,50);
+#ifndef GETNTHNODESILL_H_
+#define GETNTHNODESILL_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+sillNode *getNthNodeSill(sillNode *ptr,unsigned int nValue){
+	if(nValue == 0 || ptr == null){
+		return null;
+	}
+	if(nValue == 1){
+		return ptr;
+	}
+	return getNthNodeSill(ptr->next,nValue-1);
 }
 
-void sillTester(){
+//Tested
+sillNode *getNthNodeSillIterative(sillNode *ptr,unsigned int nValue){
+	if(ptr == null || nValue == 0){
+		return null;
+	}
+	nValue -= 1;
+	while(nValue-- && ptr != null){
+		ptr = ptr->next;
+	}
+	return ptr;
+}
+
+//Tested
+sillNode *getNthNodeSillHashmap(sillNode *ptr,unsigned int nValue){
+	if(ptr == null || nValue == 0){
+		return null;
+	}
 	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	utils->printSill(head);
-	printf("\n%d",getNthNodeSill(head,10)->value);
-	printf("\n%d",getNthNodeSillIterative(head,10)->value);
-	printf("\n%d",getNthNodeSillHashmap(head,5)->value);
-	printf("\n%d",getNthNodeSillON2(head,10)->value);
+	iSillHashmap *hashmapOfSill = utils->getSillAsHashmap(ptr,1);
+	hash_map<unsigned int,sillNode *> indexNodeMap = hashmapOfSill->indexNodeMap;
+	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+	if((itToIndexNodeMap = indexNodeMap.find(nValue)) != indexNodeMap.end()){
+		return itToIndexNodeMap->second;
+	}
+	return null;
 }
 
-int main() {
-	PRINT_NEW_LINE;
-	sillTester();
-	return 0;
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+sillNode *getNthNodeSillON2(sillNode *ptr,unsigned int nValue){
+	if(ptr == null || nValue == 0){
+		return null;
+	}
+	sillNode *outerCrawler = ptr,*innerCrawler,*crawler;
+	unsigned int counter;
+	while(outerCrawler != null){
+		innerCrawler = outerCrawler;
+		crawler = ptr;
+		counter = 1;
+		while(crawler != innerCrawler){
+			crawler = crawler->next;
+			counter += 1;
+		}
+		if(counter == nValue){
+			return innerCrawler;
+		}
+		outerCrawler = outerCrawler->next;
+	}
+	return null;
 }
+
+#endif /* GETNTHNODESILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

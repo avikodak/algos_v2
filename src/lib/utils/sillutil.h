@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -45,6 +45,9 @@ using namespace __gnu_cxx;
 #include <algorithm/ds/linkedlistds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
+#include <algorithm/utils/arrayutil.h>
+#include <algorithm/utils/commonutil.h>
+
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
@@ -59,6 +62,59 @@ using namespace __gnu_cxx;
 #ifndef SILLUTIL_H_
 #define SILLUTIL_H_
 
+class sillutils {
+private:
+
+public:
+	//Tested
+	sillNode *getSillFromVector(vector<int> userInput,unsigned int currentIndex = 0){
+		if(currentIndex >= userInput.size()){
+			return null;
+		}
+		sillNode *node = new sillNode(userInput[currentIndex]);
+		node->next = getSillFromVector(userInput,currentIndex+1);
+		return node;
+	}
+
+	//Tested
+	sillNode *getRandomSill(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX){
+		vector<int> randomVector = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		printIVector(randomVector);
+		return getSillFromVector(randomVector);
+	}
+
+	//Tested
+	unsigned int lengthOfSill(sillNode *ptr){
+		return ptr == null?0:1+lengthOfSill(ptr->next);
+	}
+
+	//Tested
+	iSillHashmap *getSillAsHashmap(sillNode *ptr,unsigned int startIndex = 0){
+		if(ptr == null){
+			return null;
+		}
+		hash_map<unsigned int,sillNode *> indexNodeMap;
+		hash_map<uint32_t,unsigned int> nodeIndexMap;
+		while(ptr != null){
+			indexNodeMap.insert(pair<unsigned int,sillNode *>(startIndex,ptr));
+			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,startIndex));
+			startIndex += 1;
+			ptr = ptr->next;
+		}
+		iSillHashmap *hashMapOfSill = new iSillHashmap();
+		hashMapOfSill->indexNodeMap = indexNodeMap;
+		hashMapOfSill->nodeIndexMap = nodeIndexMap;
+		return hashMapOfSill;
+	}
+
+	//Tested
+	void printSill(sillNode *ptr){
+		while(ptr != null){
+			printf("%d\t",ptr->value);
+			ptr = ptr->next;
+		}
+	}
+};
 
 #endif /* SILLUTIL_H_ */
 

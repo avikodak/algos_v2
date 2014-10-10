@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															PRE ORDER TRAVERSALS																    */
 /****************************************************************************************************************************************************/
+//Tested
 void preOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -80,6 +81,7 @@ void preOrderTraversal(itNode *ptr){
 	preOrderTraversal(ptr->right);
 }
 
+//Tested
 void preOrderTraversalIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -90,6 +92,7 @@ void preOrderTraversalIterative(itNode *ptr){
 	while(currentNode != null && !auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
+		printf("%d\t",currentNode->value);
 		if(currentNode->right != null){
 			auxSpace.push(currentNode->right);
 		}
@@ -99,6 +102,7 @@ void preOrderTraversalIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void morrisPreOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -112,7 +116,7 @@ void morrisPreOrderTraversal(itNode *ptr){
 			}
 			if(temp->right == null){
 				temp->right = currentNode;
-				printf("%d",currentNode->value);
+				printf("%d\t",currentNode->value);
 				currentNode = currentNode->left;
 			}else{
 				temp->right = null;
@@ -128,6 +132,7 @@ void morrisPreOrderTraversal(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 															POST ORDER TRAVERSAL 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void postOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -137,6 +142,7 @@ void postOrderTraversal(itNode *ptr){
 	printf("%d\t",ptr->value);
 }
 
+//Tested
 void postOrderIterativeTwoStacks(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -162,6 +168,7 @@ void postOrderIterativeTwoStacks(itNode *ptr){
 	}
 }
 
+//Tested
 void postOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -190,6 +197,7 @@ void postOrderIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void postOrderIterativeV2(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -218,6 +226,7 @@ void postOrderIterativeV2(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 															IN ORDER TRAVERSAL																    	*/
 /****************************************************************************************************************************************************/
+//Tested
 void inOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -227,13 +236,14 @@ void inOrderTraversal(itNode *ptr){
 	inOrderTraversal(ptr->right);
 }
 
+//Tested
 void inOrderTraversalIterative(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
-	while(currentNode != null && !auxSpace.empty()){
+	while(currentNode != null || !auxSpace.empty()){
 		if(currentNode != null){
 			auxSpace.push(currentNode);
 			currentNode = currentNode->left;
@@ -246,6 +256,7 @@ void inOrderTraversalIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void morrisInOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -272,17 +283,7 @@ void morrisInOrderTraversal(itNode *ptr){
 	}
 }
 
-void fixLeftPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevPtr = null;
-	fixLeftPtr(ptr->left);
-	ptr->left = prevPtr;
-	prevPtr = ptr;
-	fixLeftPtr(ptr->right);
-}
-
+//Tested
 void inOrderTraversalDllConversionMain(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -297,6 +298,7 @@ void inOrderTraversalDllConversionMain(itNode *ptr){
 	inOrderTraversalDllConversionMain(ptr->right);
 }
 
+//Tested
 void inOrderTraversalDllConversion(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -311,6 +313,20 @@ void inOrderTraversalDllConversion(itNode *ptr){
 	}
 }
 
+
+//Tested
+void fixLeftPtr(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	static itNode *prevPtr = null;
+	fixLeftPtr(ptr->left);
+	ptr->left = prevPtr;
+	prevPtr = ptr;
+	fixLeftPtr(ptr->right);
+}
+
+//Tested
 void fixRightPtr(itNode **ptr){
 	if((*ptr) == null){
 		return;
@@ -328,6 +344,7 @@ void fixRightPtr(itNode **ptr){
 	(*ptr) = prevPtr;
 }
 
+//Tested
 void inOrderTraversalON(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -340,6 +357,7 @@ void inOrderTraversalON(itNode *ptr){
 	}
 }
 
+//Tested
 itNode *inOrderTraversalON2Main(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -351,6 +369,7 @@ itNode *inOrderTraversalON2Main(itNode *ptr){
 			temp = temp->right;
 		}
 		temp->right = ptr;
+		ptr->left = temp;
 	}
 	if(ptr->right != null){
 		temp = inOrderTraversalON2Main(ptr->right);
@@ -358,10 +377,12 @@ itNode *inOrderTraversalON2Main(itNode *ptr){
 			temp = temp->left;
 		}
 		temp->left = ptr;
+		ptr->right = temp;
 	}
 	return ptr;
 }
 
+//Tested
 void inOrderTraversalON2(itNode *ptr){
 	if(ptr == null){
 		return;

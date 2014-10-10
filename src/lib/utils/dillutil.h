@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -59,6 +59,45 @@ using namespace __gnu_cxx;
 #ifndef DILLUTIL_H_
 #define DILLUTIL_H_
 
+class dillutils {
+private:
+public:
+	dillNode *getDillFromVector(vector<int> userInput,unsigned int currentIndex = 0){
+		if(currentIndex >= userInput.size()){
+			return null;
+		}
+		dillNode *node = new dillNode(userInput[currentIndex]);
+		node->next = getDillFromVector(userInput,currentIndex+1);
+		if(node->next != null){
+			node->next->prev = node;
+		}
+		return node;
+	}
+
+	unsigned int getLengthOfDill(dillNode *ptr){
+		return ptr == null?0:1+getLengthOfDill(ptr->next);
+	}
+
+	iDillHashmap *getDillAsHashmap(dillNode *ptr,unsigned int startIndex = 0){
+		if(ptr == null){
+			return null;
+		}
+		hash_map<unsigned int,dillNode *> indexNodeMap;
+		hash_map<uint32_t,unsigned int> nodeIndexMap;
+		hash_map<unsigned int,dillNode *>::iterator itToIndexNodeMap;
+		hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+		while(ptr != null){
+			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,startIndex));
+			indexNodeMap.insert(pair<unsigned int,dillNode *>(startIndex,ptr));
+			startIndex += 1;
+			ptr = ptr->next;
+		}
+		iDillHashmap *hashmapOfDill = new iDillHashmap();
+		hashmapOfDill->indexNodeMap = indexNodeMap;
+		hashmapOfDill->nodeIndexMap = nodeIndexMap;
+		return hashmapOfDill;
+	}
+};
 
 #endif /* DILLUTIL_H_ */
 
