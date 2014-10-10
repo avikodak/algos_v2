@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: arrayutil.h 
+ *	File Location		: D:\algos\algos_v2\src\lib\utils\arrayutil.h
+ *  Created on			: Oct 9, 2014 :: 12:38:45 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -43,40 +45,32 @@
 #include <algorithm/ds/linkedlistds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
-#include <algorithm/utils/arrayutil.h>
-#include <algorithm/utils/avltreeutil.h>
-#include <algorithm/utils/bplustreeutil.h>
-#include <algorithm/utils/btreeutil.h>
-#include <algorithm/utils/commonutil.h>
-#include <algorithm/utils/dillutil.h>
-#include <algorithm/utils/mathutil.h>
-#include <algorithm/utils/redblacktreeutil.h>
-#include <algorithm/utils/sillutil.h>
-#include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
+
+#define null NULL
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	printTIndexNodeMap(utils->getTreeAsHashMap(root,1)->indexNodeMap);
-	printTNodeIndexMap(utils->getTreeAsHashMap(root,1)->nodeIndexMap);
+#ifndef ARRAYUTIL_H_
+#define ARRAYUTIL_H_
+
+//Tested
+vector<int> generateIRandomVector(unsigned int size,int lowerLimit = INT_MIN,int upperLimit = INT_MAX){
+	vector<int> randomnumbers;
+	srand(time(NULL));
+	for(unsigned int counter = 0;counter < size;counter++){
+		randomnumbers.push_back(rand() % upperLimit + lowerLimit);
+	}
+	return randomnumbers;
 }
 
-int main() {
-	PRINT_NEW_LINE;
-	treeTester();
-	return 0;
-}
+#endif /* ARRAYUTIL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

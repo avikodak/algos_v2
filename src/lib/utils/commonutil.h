@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: commonutil.h 
+ *	File Location		: D:\algos\algos_v2\src\lib\utils\commonutil.h
+ *  Created on			: Oct 9, 2014 :: 12:38:51 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -11,6 +11,8 @@
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -43,40 +45,55 @@
 #include <algorithm/ds/linkedlistds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
-#include <algorithm/utils/arrayutil.h>
-#include <algorithm/utils/avltreeutil.h>
-#include <algorithm/utils/bplustreeutil.h>
-#include <algorithm/utils/btreeutil.h>
-#include <algorithm/utils/commonutil.h>
-#include <algorithm/utils/dillutil.h>
-#include <algorithm/utils/mathutil.h>
-#include <algorithm/utils/redblacktreeutil.h>
-#include <algorithm/utils/sillutil.h>
-#include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
+
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	printTIndexNodeMap(utils->getTreeAsHashMap(root,1)->indexNodeMap);
-	printTNodeIndexMap(utils->getTreeAsHashMap(root,1)->nodeIndexMap);
+#ifndef COMMONUTIL_H_
+#define COMMONUTIL_H_
+
+//Tested
+void printIVector(vector<int> userInput,bool withHeadersAndFooters = true){
+	if(withHeadersAndFooters){
+		printf("\n====================================================================================================================================\n");
+		printf("PRINTING VECTOR START\n");
+		printf("====================================================================================================================================\n");
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d\t",userInput[counter]);
+	}
+	if(withHeadersAndFooters){
+		printf("\n====================================================================================================================================\n");
+		printf("PRINTING VECTOR END\n");
+		printf("====================================================================================================================================\n");
+	}
 }
 
-int main() {
-	PRINT_NEW_LINE;
-	treeTester();
-	return 0;
+//Tested
+void printTIndexNodeMap(hash_map<unsigned int,itNode *> nodeIndexMap){
+	hash_map<unsigned int,itNode *>::iterator itToNodeIndexMap;
+	for(itToNodeIndexMap = nodeIndexMap.begin();itToNodeIndexMap != nodeIndexMap.end();itToNodeIndexMap++){
+		printf("%d %d\n",itToNodeIndexMap->first,itToNodeIndexMap->second->value);
+	}
 }
+
+//Tested
+void printTNodeIndexMap(hash_map<uint32_t,unsigned int> indexNodeMap){
+	hash_map<uint32_t,unsigned int>::iterator itToIndexNodeMap;
+	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
+		printf("%d %d\n",((itNode *)itToIndexNodeMap->first)->value,itToIndexNodeMap->second);
+	}
+}
+
+
+#endif /* COMMONUTIL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
