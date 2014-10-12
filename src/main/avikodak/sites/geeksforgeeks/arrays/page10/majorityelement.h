@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: majorityelement.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\majorityelement.h
+ *  Created on			: Oct 11, 2014 :: 11:20:57 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -11,6 +11,8 @@
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -56,43 +58,31 @@
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
 
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deleteanodegivenptr.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,100,150);
-	//printf("%d\n",getSizeOfTreeInOrder(root));
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-	printf("%d\n",areTreesIdenticalPostInOrderValues(root,root2));
-}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(9,1,50);
-	utils->printSill(head);
-	PRINT_NEW_LINE;
-	printMiddleSillON2(head);
-}
-
-int main() {
-	PRINT_NEW_LINE;
-	treeTester();
-	return 0;
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
 
+#ifndef MAJORITYELEMENT_H_
+#define MAJORITYELEMENT_H_
+
+
+#endif /* MAJORITYELEMENT_H_ */

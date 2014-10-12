@@ -63,7 +63,59 @@ using namespace __gnu_cxx;
 
 class treeutils{
 private:
+	void setNodesInPreorderMain(itNode *ptr,vector<itNode *> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		auxSpace.push_back(ptr);
+		setNodesInPreorderMain(ptr->left,auxSpace);
+		setNodesInPreorderMain(ptr->right,auxSpace);
+	}
 
+	void setValuesInPreorderMain(itNode *ptr,vector<int> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		auxSpace.push_back(ptr->value);
+		setValuesInPreorderMain(ptr->left,auxSpace);
+		setValuesInPreorderMain(ptr->right,auxSpace);
+	}
+
+	void setNodesInInorderMain(itNode *ptr,vector<itNode *> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		setNodesInInorderMain(ptr->left,auxSpace);
+		auxSpace.push_back(ptr);
+		setNodesInInorderMain(ptr->right,auxSpace);
+	}
+
+	void setValuesInInorderMain(itNode *ptr,vector<int> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		setValuesInInorderMain(ptr->left,auxSpace);
+		auxSpace.push_back(ptr->value);
+		setValuesInInorderMain(ptr->right,auxSpace);
+	}
+
+	void setNodesInPostorderMain(itNode *ptr,vector<itNode *> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		setNodesInPostorderMain(ptr->left,auxSpace);
+		setNodesInPostorderMain(ptr->right,auxSpace);
+		auxSpace.push_back(ptr);
+	}
+
+	void setValuesInPostorderMain(itNode *ptr,vector<int> auxSpace){
+		if(ptr == null){
+			return;
+		}
+		setValuesInPostorderMain(ptr->left,auxSpace);
+		setValuesInPostorderMain(ptr->right,auxSpace);
+		auxSpace.push_back(ptr->value);
+	}
 public:
 	//Tested
 	itNode *getITreeFromVector(vector<int> userInput,unsigned int currentIndex = 0) {
@@ -71,8 +123,8 @@ public:
 			return null;
 		}
 		itNode *node = new itNode(userInput[currentIndex]);
-		node->left = getITreeFromVectorMain(userInput,2*currentIndex+1);
-		node->right = getITreeFromVectorMain(userInput,2*currentIndex+2);
+		node->left = getITreeFromVector(userInput,2*currentIndex+1);
+		node->right = getITreeFromVector(userInput,2*currentIndex+2);
 		return node;
 	}
 
@@ -119,6 +171,60 @@ public:
 		postOrderTraversal(ptr->left);
 		postOrderTraversal(ptr->right);
 		printf("%d\t",ptr->value);
+	}
+
+	vector<itNode *> getNodesInPreorder(itNode *ptr){
+		vector<itNode *> preOrderNodes;
+		if(ptr == null){
+			return preOrderNodes;
+		}
+		setNodesInPreorderMain(ptr,preOrderNodes);
+		return preOrderNodes;
+	}
+
+	vector<int> getValuesInPreorder(itNode *ptr){
+		vector<int> preOrderValues;
+		if(ptr == null){
+			return preOrderValues;
+		}
+		setValuesInPreorderMain(ptr,preOrderValues);
+		return preOrderValues;
+	}
+
+	vector<itNode *> getNodesInInorder(itNode *ptr){
+		vector<itNode *> inOrderNodes;
+		if(ptr == null){
+			return inOrderNodes;
+		}
+		setNodesInInorderMain(ptr,inOrderNodes);
+		return inOrderNodes;
+	}
+
+	vector<int> getValuesInInorder(itNode *ptr){
+		vector<int> inOrderValues;
+		if(ptr == null){
+			return inOrderValues;
+		}
+		setValuesInInorderMain(ptr,inOrderValues);
+		return inOrderValues;
+	}
+
+	vector<itNode *> getNodesInPostorder(itNode *ptr){
+		vector<itNode *> postOrderNodes;
+		if(ptr == null){
+			return postOrderNodes;
+		}
+		setNodesInPostorderMain(ptr,postOrderNodes);
+		return postOrderNodes;
+	}
+
+	vector<int> getValuesInPostorder(itNode *ptr){
+		vector<int> postOrderValues;
+		if(ptr == null){
+			return postOrderValues;
+		}
+		setValuesInPostorderMain(ptr,postOrderValues);
+		return postOrderValues;
 	}
 
 	//Tested

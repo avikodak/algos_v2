@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodesill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodesill.h
- *  Created on			: Oct 10, 2014 :: 3:41:31 PM
+ *  File Name   		: printmiddlesill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\printmiddlesill.h
+ *  Created on			: Oct 11, 2014 :: 10:56:38 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
- ****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,77 +65,114 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETNTHNODESILL_H_
-#define GETNTHNODESILL_H_
+#ifndef PRINTMIDDLESILL_H_
+#define PRINTMIDDLESILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeSill(sillNode *ptr,unsigned int nValue){
-	if(nValue == 0 || ptr == null){
-		return null;
+void printMiddleSill(sillNode *head){
+	if(head == null){
+		return;
 	}
-	if(nValue == 1){
-		return ptr;
+	sillNode *slowPtr = head,*fastPtr = head;
+	while(slowPtr != null && fastPtr != null && fastPtr->next != null){
+		slowPtr = slowPtr->next;
+		fastPtr = fastPtr->next->next;
 	}
-	return getNthNodeSill(ptr->next,nValue-1);
+	printf("%d\t",slowPtr->value);
 }
 
 //Tested
-sillNode *getNthNodeSillIterative(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void printMiddleSillByFindingLength(sillNode *ptr,unsigned int index = 0){
+	static unsigned int lengthOfSill= 0,middleIndex;
+	if(ptr == null){
+		middleIndex = lengthOfSill/2;
+		return;
 	}
-	nValue -= 1;
-	while(nValue-- && ptr != null){
-		ptr = ptr->next;
+	lengthOfSill++;
+	printMiddleSillByFindingLength(ptr->next,index+1);
+	if(index == middleIndex){
+		printf("%d",ptr->value);
 	}
-	return ptr;
 }
 
 //Tested
-sillNode *getNthNodeSillHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void printMiddleSillByFindingLengthIterative(sillNode *head){
+	if(head == null){
+		return;
 	}
 	sillutils *utils = new sillutils();
-	iSillHashmap *hashmapOfSill = utils->getSillAsHashmap(ptr,1);
-	hash_map<unsigned int,sillNode *> indexNodeMap = hashmapOfSill->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if((itToIndexNodeMap = indexNodeMap.find(nValue)) != indexNodeMap.end()){
-		return itToIndexNodeMap->second;
+	unsigned int length = utils->lengthOfSill(head);
+	length /= 2;
+	while(length--){
+		head = head->next;
 	}
-	return null;
+	printf("%d",head->value);
+}
+
+//Tested
+void printMiddleSillHashmap(sillNode *head){
+	if(head == null){
+		return;
+	}
+	sillutils *utils = new sillutils();
+	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(head)->indexNodeMap;
+	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+	itToIndexNodeMap  = indexNodeMap.find(indexNodeMap.size()/2);
+	printf("%d",itToIndexNodeMap->second->value);
+}
+
+//Tested
+void printMiddleSillCounter(sillNode *head){
+	if(head == null){
+		return;
+	}
+	unsigned int counter = 0;
+	sillNode *mid = head;
+	while(head != null){
+		if(counter&1){
+			mid = mid->next;
+		}
+		head = head->next;
+		counter+= 1;
+	}
+	printf("%d",mid->value);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeSillON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void printMiddleSillON2(sillNode *head){
+	if(head == null){
+		return;
 	}
-	sillNode *outerCrawler = ptr,*innerCrawler,*crawler;
-	unsigned int counter;
+	sillNode *outerCrawler = head,*currentNode,*crawler;
+	unsigned int leftCounter,rightCounter;
 	while(outerCrawler != null){
-		innerCrawler = outerCrawler;
-		crawler = ptr;
-		counter = 1;
-		while(crawler != innerCrawler){
+		currentNode = outerCrawler;
+		crawler = head;
+		leftCounter = 0;
+		while(crawler != currentNode){
 			crawler = crawler->next;
-			counter += 1;
+			leftCounter += 1;
 		}
-		if(counter == nValue){
-			return innerCrawler;
+		rightCounter = 0;
+		crawler = currentNode->next;
+		while(crawler != null){
+			crawler = crawler->next;
+			rightCounter += 1;
+		}
+		if(leftCounter == rightCounter || abs(leftCounter - rightCounter) == 1){
+			printf("%d",outerCrawler->value);
 		}
 		outerCrawler = outerCrawler->next;
 	}
-	return null;
 }
 
-#endif /* GETNTHNODESILL_H_ */
+#endif /* PRINTMIDDLESILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

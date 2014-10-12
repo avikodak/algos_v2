@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: deleteanodegivenptr.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deleteanodegivenptr.h
+ *  Created on			: Oct 11, 2014 :: 10:54:09 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -56,43 +58,36 @@
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
 
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deleteanodegivenptr.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,100,150);
-	//printf("%d\n",getSizeOfTreeInOrder(root));
+#ifndef DELETEANODEGIVENPTR_H_
+#define DELETEANODEGIVENPTR_H_
 
-	printf("%d\n",areTreesIdenticalPostInOrderValues(root,root2));
+
+/****************************************************************************************************************************************************/
+/* 																	O(1) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void deleteNodeGivenPtr(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->next == null){
+		throw "Can't delete";
+	}
+	ptr->value = ptr->next->value;
+	sillNode *nodeToBeDeleted = ptr->next;
+	ptr->next = ptr->next->next;
+	free(nodeToBeDeleted);
 }
 
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(9,1,50);
-	utils->printSill(head);
-	PRINT_NEW_LINE;
-	printMiddleSillON2(head);
-}
-
-int main() {
-	PRINT_NEW_LINE;
-	treeTester();
-	return 0;
-}
+#endif /* DELETEANODEGIVENPTR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

@@ -69,6 +69,18 @@ vector<int> generateIRandomVector(unsigned int size,int lowerLimit = INT_MIN,int
 	return randomnumbers;
 }
 
+bool areIVectorsEquivalent(vector<int> firstVector,vector<int> secondVector){
+	if(firstVector.size() != secondVector.size()){
+		return false;
+	}
+	for(unsigned int counter = 0;counter < firstVector.size();counter++){
+		if(firstVector[counter] != secondVector[counter]){
+			return false;
+		}
+	}
+	return true;
+}
+
 #endif /* ARRAYUTIL_H_ */
 
 /****************************************************************************************************************************************************/
