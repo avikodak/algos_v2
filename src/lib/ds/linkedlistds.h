@@ -69,6 +69,22 @@ struct sillNode{
 
 };
 
+struct svillNode{
+	int value;
+	bool isVisited;
+	svillNode *next;
+
+	svillNode(){
+		this->next = null;
+	}
+
+	svillNode(int value,unsigned int frequency){
+		this->value = value;
+		this->isVisited = false;
+		this->next = null;
+	}
+};
+
 struct dillNode{
 	int value;
 	dillNode *next;

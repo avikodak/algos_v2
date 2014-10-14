@@ -61,34 +61,42 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/deletetree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/mirrortree.h"
 
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deleteanodegivenptr.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deletesill.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/frequencysill.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodefromendsill.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,100,150);
-	//printf("%d\n",getSizeOfTreeInOrder(root));
-
-	printf("%d\n",areTreesIdenticalPostInOrderValues(root,root2));
+	vector<int> sequence = generateISequenceVector(10);
+	itNode *root = utils->getITreeFromVector(sequence);
+	deleteLevelON2(&root);
+	utils->preOrderTraversal(root);
 }
 
 void sillTester(){
 	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(9,1,50);
+	vector<int> userInput = getVectorForUserInput();
+	sillNode *head = utils->getSillFromVector(userInput);
 	utils->printSill(head);
 	PRINT_NEW_LINE;
-	printMiddleSillON2(head);
+	int temp;
+	scanf("%d",&temp);
+	printf("%d",frequencyOfIntBST(head,temp));
 }
 
 int main() {
 	PRINT_NEW_LINE;
-	treeTester();
+	sillTester();
 	return 0;
 }
 

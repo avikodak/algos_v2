@@ -15,3 +15,30 @@ pow(0,0) - undefined
 
 Dimensional Analysis 
 	Units follow algebraic rules
+	
+Slope intercept form y = mx + c
+Point slope form y-b = m(x-a) slope=m and pass throught point (a,b)
+Standard form ax+by = c // All variables on one side and constants on other sides
+
+Fitting the line - linear regression
+
+Any linear equation can be written in y = mx+c
+
+Break even point means profit = loss
+
+Slope of perpendicular line is -1/m
+
+Slope of parallel line is m (Parallel lines slopes are equal)
+
+Distance between point and line
+	
+Average rate of change = slope of line in the end points in interval
+
+System of equations and inequalities
+====================================
+Solve equation by substitution,Graphing,Ellimination
+Consistent systems - atleast one solution
+Inconsistent system - No solution 	
+	Same slope different y-intercept
+Dependent system -
+	same slope and same intercept

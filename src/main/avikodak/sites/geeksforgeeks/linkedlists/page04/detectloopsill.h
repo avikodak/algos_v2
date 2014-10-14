@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodefromendsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
- *  Created on			: Oct 12, 2014 :: 11:34:01 AM
+ *  File Name   		: detectloopsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\detectloopsill.h
+ *  Created on			: Oct 14, 2014 :: 12:13:04 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,101 +65,82 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETNTHNODEFROMENDSILL_H_
-#define GETNTHNODEFROMENDSILL_H_
+#ifndef DETECTLOOPSILL_H_
+#define DETECTLOOPSILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+bool detectLoopHashMap(sillNode *ptr){
+	if(ptr == null){
+		return false;
 	}
-	sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
-	nValue--;
-	if(nValue == 0){
-		return ptr;
+	hash_map<uint32_t,bool> visitedNodes;
+	hash_map<uint32_t,bool>::iterator itToVisitedNodes;
+	sillNode *crawler = ptr;
+	while(crawler != null && crawler->next != null){
+		if((itToVisitedNodes = visitedNodes.find((uint32_t)crawler)) != visitedNodes.end()){
+			return true;
+		}
+		crawler = crawler->next;
 	}
-	return nthNode;
+	return false;
 }
 
-//Tested
-sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+bool detectLoopFlags(svillNode *ptr){
+	if(ptr == null){
+		return false;
 	}
-	sillNode *frontCrawler = ptr,*rearCrawler= ptr;
-	while(nValue-- && frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-	}
-	if(frontCrawler == null){
-		return null;
-	}
-	while(frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-		rearCrawler = rearCrawler->next;
-	}
-	return rearCrawler;
-}
-
-//Tested
-sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	if(nValue > lengthOfSill){
-		return null;
-	}
-	lengthOfSill -= nValue;
-	while(lengthOfSill--){
+	while(ptr != null && ptr->next != null){
+		if(!ptr->next->isVisited){
+			return true;
+		}
+		ptr->isVisited = true;
 		ptr = ptr->next;
 	}
-	return ptr;
+	return false;
 }
 
-//Tested
-sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+bool detectLoopTwoPtrs(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return false;
 	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if(nValue > indexNodeMap.size()){
-		return null;
+	sillNode *fastCrawler = ptr,*slowCrawler = ptr->next->next;
+	while(slowCrawler != null && fastCrawler != null && fastCrawler->next != null){
+		if(slowCrawler == fastCrawler){
+			return true;
+		}
+		slowCrawler = slowCrawler->next;
+		fastCrawler = fastCrawler->next->next;
 	}
-	return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
+	return false;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+bool detectLoopON2(sillNode *ptr){
+	if(ptr == null){
+		return false;
 	}
 	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int counter;
 	while(outerCrawler != null){
-		counter = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler != null){
-			counter += 1;
+		innerCrawler = ptr;
+		while(innerCrawler != null && innerCrawler != outerCrawler){
+			if(outerCrawler->next == innerCrawler){
+				return true;
+			}
 			innerCrawler = innerCrawler->next;
 		}
-		if(counter == nValue){
-			return outerCrawler;
+		if(innerCrawler == null){
+			return false;
 		}
 		outerCrawler = outerCrawler->next;
 	}
-	return null;
+	return false;
 }
 
-#endif /* GETNTHNODEFROMENDSILL_H_ */
+#endif /* DETECTLOOPSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

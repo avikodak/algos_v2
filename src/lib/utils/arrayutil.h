@@ -69,6 +69,16 @@ vector<int> generateIRandomVector(unsigned int size,int lowerLimit = INT_MIN,int
 	return randomnumbers;
 }
 
+//Tested
+vector<int> generateISequenceVector(unsigned int size){
+	vector<int> sequence;
+	for(unsigned int counter = 1;counter <= size;counter++){
+		sequence.push_back(counter);
+	}
+	return sequence;
+}
+
+//Tested
 bool areIVectorsEquivalent(vector<int> firstVector,vector<int> secondVector){
 	if(firstVector.size() != secondVector.size()){
 		return false;

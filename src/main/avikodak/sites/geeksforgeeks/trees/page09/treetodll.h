@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodefromendsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
- *  Created on			: Oct 12, 2014 :: 11:34:01 AM
+ *  File Name   		: treetodll.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\treetodll.h
+ *  Created on			: Oct 14, 2014 :: 12:45:34 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,101 +65,81 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETNTHNODEFROMENDSILL_H_
-#define GETNTHNODEFROMENDSILL_H_
+#ifndef TREETODLL_H_
+#define TREETODLL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void treeToDllFixLeftPtr(itNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
-	nValue--;
-	if(nValue == 0){
-		return ptr;
-	}
-	return nthNode;
+	static itNode *prevNode = null;
+	treeToDllFixLeftPtr(ptr->left);
+	ptr->left = prevNode;
+	prevNode = ptr;
+	treeToDllFixLeftPtr(ptr->right);
 }
 
-//Tested
-sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void treeToDllFixRightPtr(itNode **ptr){
+	if(*ptr == null){
+		return;
 	}
-	sillNode *frontCrawler = ptr,*rearCrawler= ptr;
-	while(nValue-- && frontCrawler != null){
-		frontCrawler = frontCrawler->next;
+	itNode *currentNode = *ptr,*prevNode = null;
+	while(currentNode->right != null){
+		currentNode = currentNode->right;
 	}
-	if(frontCrawler == null){
-		return null;
+	while(currentNode != null){
+		currentNode->right = prevNode;
+		prevNode = currentNode;
+		currentNode = currentNode->left;
 	}
-	while(frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-		rearCrawler = rearCrawler->next;
-	}
-	return rearCrawler;
+	(*ptr) = prevNode;
 }
 
-//Tested
-sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
+void treeToDllInorderON(itNode *ptr){
+	if(ptr == null){
 		return null;
 	}
-	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	if(nValue > lengthOfSill){
-		return null;
+	static itNode *prevNode = null;
+	treeToDllInorderON(ptr->left);
+	ptr->left = prevNode;
+	if(prevNode != null){
+		prevNode->right = ptr;
 	}
-	lengthOfSill -= nValue;
-	while(lengthOfSill--){
-		ptr = ptr->next;
-	}
-	return ptr;
-}
-
-//Tested
-sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if(nValue > indexNodeMap.size()){
-		return null;
-	}
-	return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
+	prevNode = ptr;
+	treeToDllInorderON(ptr->right);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+itNode *treeToDllON2(itNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int counter;
-	while(outerCrawler != null){
-		counter = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler != null){
-			counter += 1;
-			innerCrawler = innerCrawler->next;
+	itNode *temp;
+	if(ptr->left != null){
+		temp = treeToDllON2(ptr->left);
+		while(temp->right != null){
+			temp = temp->right;
 		}
-		if(counter == nValue){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
+		ptr->left = temp;
+		temp->right = ptr;
 	}
-	return null;
+	if(ptr->right != null){
+		temp = treeToDllON2(ptr->right);
+		while(temp->left != null){
+			temp = temp->left;
+		}
+		ptr->right = temp;
+		temp->left = ptr;
+	}
+	return ptr;
 }
 
-#endif /* GETNTHNODEFROMENDSILL_H_ */
+#endif /* TREETODLL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

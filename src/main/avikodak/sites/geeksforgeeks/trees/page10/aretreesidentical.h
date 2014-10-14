@@ -177,7 +177,29 @@ bool areTreesIdenticalPostOrder(itNode *firstTreePtr,itNode *secondTreePtr){
 	return areTreesIdenticalPostOrder(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalPostOrder(firstTreePtr->right,secondTreePtr->right) && firstTreePtr->value == secondTreePtr->value;
 }
 
+bool areTreesIdenticalPostOrderIterativeTwoStacks(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
+	}
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
+	}
+	stack<itNode *> firstTreePrimaryAuxspace,firstTreeSecondaryAuxspace,secondTreePrimaryAuxspace,secondTreeSecondaryAuxspace;
+	//itNode *firstTreeCurrentNode,*secondTreeCurrentNode;
+	return false;
+}
+
 bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
+	}
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
+	}
+	return false;
+}
+
+bool areTreesIdenticalPostOrderIterativeV2(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;
 	}

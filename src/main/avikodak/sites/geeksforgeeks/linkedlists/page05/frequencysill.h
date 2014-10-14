@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodefromendsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
- *  Created on			: Oct 12, 2014 :: 11:34:01 AM
+ *  File Name   		: frequencysill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\frequencysill.h
+ *  Created on			: Oct 12, 2014 :: 6:36:50 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-a-function-that-counts-the-number-of-times-a-given-int-occurs-in-a-linked-list/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,101 +65,59 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETNTHNODEFROMENDSILL_H_
-#define GETNTHNODEFROMENDSILL_H_
+#ifndef FREQUENCYSILL_H_
+#define FREQUENCYSILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+unsigned int frequencyOfInt(sillNode *ptr,int userInput){
+	if(ptr == null){
+		return 0;
 	}
-	sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
-	nValue--;
-	if(nValue == 0){
-		return ptr;
+	if(ptr->value == userInput){
+		return 1+frequencyOfInt(ptr->next,userInput);
+	}else{
+		return frequencyOfInt(ptr->next,userInput);
 	}
-	return nthNode;
 }
 
 //Tested
-sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+unsigned int frequencyOfIntHashmap(sillNode *ptr,int userInput){
+	if(ptr == null){
+		return 0;
 	}
-	sillNode *frontCrawler = ptr,*rearCrawler= ptr;
-	while(nValue-- && frontCrawler != null){
-		frontCrawler = frontCrawler->next;
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	sillNode *crawler = ptr;
+	while(crawler != null){
+		if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()){
+			frequencyMap[itToFrequencyMap->first]++;
+		}else{
+			frequencyMap[crawler->value] = 1;
+		}
+		crawler = crawler->next;
 	}
-	if(frontCrawler == null){
-		return null;
-	}
-	while(frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-		rearCrawler = rearCrawler->next;
-	}
-	return rearCrawler;
+	return (itToFrequencyMap = frequencyMap.find(userInput)) == frequencyMap.end()?0:itToFrequencyMap->second;
 }
 
 //Tested
-sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+unsigned int frequencyOfIntBST(sillNode *ptr,int userInput){
+	if(ptr == null){
+		return 0;
 	}
-	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	if(nValue > lengthOfSill){
-		return null;
-	}
-	lengthOfSill -= nValue;
-	while(lengthOfSill--){
-		ptr = ptr->next;
-	}
-	return ptr;
-}
-
-//Tested
-sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if(nValue > indexNodeMap.size()){
-		return null;
-	}
-	return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
+	treeutils *utils = new treeutils();
+	iftNode *rootBST = utils->getFBSTFromSill(ptr);
+	iftNode *keyNode = utils->searchForValueBST(rootBST,userInput);
+	return keyNode == null?0:keyNode->frequency;
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int counter;
-	while(outerCrawler != null){
-		counter = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler != null){
-			counter += 1;
-			innerCrawler = innerCrawler->next;
-		}
-		if(counter == nValue){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
-}
-
-#endif /* GETNTHNODEFROMENDSILL_H_ */
+//Merge sort
+#endif /* FREQUENCYSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

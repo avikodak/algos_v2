@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodefromendsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
- *  Created on			: Oct 12, 2014 :: 11:34:01 AM
+ *  File Name   		: deletesill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deletesill.h
+ *  Created on			: Oct 12, 2014 :: 5:58:52 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,101 +65,102 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETNTHNODEFROMENDSILL_H_
-#define GETNTHNODEFROMENDSILL_H_
+#ifndef DELETESILL_H_
+#define DELETESILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void deleteSillMainTailRecursion(sillNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
-	nValue--;
-	if(nValue == 0){
-		return ptr;
-	}
-	return nthNode;
+	deleteSillMainTailRecursion(ptr->next);
+	free(ptr);
 }
 
 //Tested
-sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void deleteSillTailRecusion(sillNode **ptr){
+	if(*ptr == null){
+		return;
 	}
-	sillNode *frontCrawler = ptr,*rearCrawler= ptr;
-	while(nValue-- && frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-	}
-	if(frontCrawler == null){
-		return null;
-	}
-	while(frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-		rearCrawler = rearCrawler->next;
-	}
-	return rearCrawler;
+	deleteSillMainTailRecursion(*ptr);
+	(*ptr) = null;
 }
 
 //Tested
-sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
+void deleteSillMain(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	sillNode *temp = ptr->next;
+	free(ptr);
+	deleteSillMain(temp);
+}
+
+//Tested
+void deleteSill(sillNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	deleteSillMain(*ptr);
+	(*ptr) = null;
+}
+
+//Tested
+void deleteSillIterative(sillNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	stack<sillNode *> auxSpace;
+	sillNode *crawler = *ptr;
+	while(crawler != null){
+		auxSpace.push(crawler);
+		crawler = crawler->next;
+	}
+	while(!auxSpace.empty()){
+		crawler = auxSpace.top();
+		auxSpace.pop();
+		free(crawler);
+	}
+	(*ptr) = null;
+}
+
+//Tested
+void deleteSillIterativeV2(sillNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	sillNode *temp,*nodeToBeDeleted = *ptr;
+	do{
+		temp = nodeToBeDeleted->next;
+		free(nodeToBeDeleted);
+		nodeToBeDeleted = temp;
+	}while(temp != null);
+	(*ptr) = null;
+}
+
+//Tested
+void deleteSillHashmap(sillNode **ptr){
+	if(*ptr == null){
+		return;
 	}
 	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	if(nValue > lengthOfSill){
-		return null;
+	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(*ptr)->indexNodeMap;
+	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;;
+	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
+		free(itToIndexNodeMap->second);
 	}
-	lengthOfSill -= nValue;
-	while(lengthOfSill--){
-		ptr = ptr->next;
-	}
-	return ptr;
-}
-
-//Tested
-sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if(nValue > indexNodeMap.size()){
-		return null;
-	}
-	return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
+	(*ptr) = null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int counter;
-	while(outerCrawler != null){
-		counter = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler != null){
-			counter += 1;
-			innerCrawler = innerCrawler->next;
-		}
-		if(counter == nValue){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
-}
 
-#endif /* GETNTHNODEFROMENDSILL_H_ */
+
+#endif /* DELETESILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
