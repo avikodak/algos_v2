@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversesill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversesill.h
- *  Created on			: Oct 14, 2014 :: 12:12:52 PM
+ *  File Name   		: intersectionofsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\intersectionofsill.h
+ *  Created on			: Oct 15, 2014 :: 12:24:27 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,124 +65,22 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REVERSESILL_H_
-#define REVERSESILL_H_
+#ifndef INTERSECTIONOFSILL_H_
+#define INTERSECTIONOFSILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *reverseSillMain(sillNode *ptr,sillNode **head){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->next == null){
-		(*head) = ptr;
-		return ptr;
-	}
-	reverseSillMain(ptr->next,head);
-	ptr->next->next = ptr;
-	return ptr;
-}
 
-void reverseSill(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *lastNode = reverseSillMain(*ptr,ptr);
-	lastNode->next = null;
-}
-
-void reverseSill(sillNode *ptr,sillNode **reversedHead){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->next == null){
-		(*reversedHead) = ptr;
-	}
-	static sillNode *prevNode = null;
-	sillNode *temp = ptr->next;
-	ptr->next = prevNode;
-	prevNode = ptr;
-	reverseSill(temp,reversedHead);
-}
-
-sillNode *reverseSillIterative(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *crawler = ptr;
-	sillNode *prevNode = null,*temp;
-	while(crawler->next != null){
-		temp = crawler->next;
-		crawler->next = prevNode;
-		prevNode = crawler;
-		crawler = temp;
-	}
-	crawler->next = prevNode;
-	return crawler;
-}
-
-sillNode *reverseSillNewSill(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *reverseHead = null,*reversePtr = null;
-	while(ptr == null){
-		if(reverseHead == null){
-			reverseHead = new sillNode(ptr->value);
-			reversePtr = reverseHead;
-		}else{
-			reversePtr->next = new sillNode(ptr->value);
-			reversePtr = reversePtr->next;
-		}
-		ptr = ptr->next;
-	}
-	return reverseHead;
-}
-
-void reverseSillAuxspace(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<int> auxSpace;
-	sillNode *crawler = ptr;
-	while(crawler != null){
-		auxSpace.push(crawler->value);
-		crawler = crawler->next;
-	}
-	crawler = ptr;
-	while(!auxSpace.empty()){
-		crawler->value = auxSpace.top();
-		auxSpace.pop();
-	}
-}
-
-void reverseSillStack(sillNode **ptr){
-	if(*ptr ==  null){
-		return;
-	}
-	sillNode *crawler = *ptr;
-	stack<sillNode *> auxSpace;
-	while(crawler != null){
-		auxSpace.push(crawler);
-	}
-	(*ptr) = auxSpace.top();
-	sillNode *prevNode = null;
-	while(!auxSpace.empty()){
-		if(prevNode != null){
-			prevNode->next = auxSpace.top();
-		}
-		prevNode = auxSpace.top();
-		auxSpace.pop();
-	}
-	prevNode->next = null;
-}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-#endif /* REVERSESILL_H_ */
+#endif /* INTERSECTIONOFSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

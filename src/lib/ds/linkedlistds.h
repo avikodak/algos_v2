@@ -66,7 +66,23 @@ struct sillNode{
 		this->value = value;
 		this->next = null;
 	}
+};
 
+struct sillArbitNode{
+	int value;
+	sillArbitNode *arbitraryPtr;
+	sillArbitNode *next;
+
+	sillArbitNode(){
+		this->arbitraryPtr = null;
+		this->next = null;
+	}
+
+	sillArbitNode(int value){
+		this->value = value;
+		this->next = null;
+		this->arbitraryPtr = null;
+	}
 };
 
 struct svillNode{

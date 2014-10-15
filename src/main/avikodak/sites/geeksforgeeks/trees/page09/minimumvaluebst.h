@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversesill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversesill.h
- *  Created on			: Oct 14, 2014 :: 12:12:52 PM
+ *  File Name   		: minimumvaluebst.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\minimumvaluebst.h
+ *  Created on			: Oct 14, 2014 :: 1:10:30 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-the-minimum-element-in-a-binary-search-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,124 +65,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REVERSESILL_H_
-#define REVERSESILL_H_
+#ifndef MINIMUMVALUEBST_H_
+#define MINIMUMVALUEBST_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *reverseSillMain(sillNode *ptr,sillNode **head){
+//Tested
+int getMinimumValueFromBST(itNode *ptr){
 	if(ptr == null){
-		return null;
+		return INT_MIN;
 	}
-	if(ptr->next == null){
-		(*head) = ptr;
-		return ptr;
+	if(ptr->left == null){
+		return ptr->value;
+	}else{
+		return getMinimumValueFromBST(ptr->left);
 	}
-	reverseSillMain(ptr->next,head);
-	ptr->next->next = ptr;
-	return ptr;
 }
 
-void reverseSill(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *lastNode = reverseSillMain(*ptr,ptr);
-	lastNode->next = null;
-}
-
-void reverseSill(sillNode *ptr,sillNode **reversedHead){
+//Tested
+int getMinimumValueFromBSTIterative(itNode *ptr){
 	if(ptr == null){
-		return;
+		return INT_MIN;
 	}
-	if(ptr->next == null){
-		(*reversedHead) = ptr;
+	while(ptr->left != null){
+		ptr = ptr->left;
 	}
-	static sillNode *prevNode = null;
-	sillNode *temp = ptr->next;
-	ptr->next = prevNode;
-	prevNode = ptr;
-	reverseSill(temp,reversedHead);
+	return ptr->value;
 }
 
-sillNode *reverseSillIterative(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *crawler = ptr;
-	sillNode *prevNode = null,*temp;
-	while(crawler->next != null){
-		temp = crawler->next;
-		crawler->next = prevNode;
-		prevNode = crawler;
-		crawler = temp;
-	}
-	crawler->next = prevNode;
-	return crawler;
-}
-
-sillNode *reverseSillNewSill(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *reverseHead = null,*reversePtr = null;
-	while(ptr == null){
-		if(reverseHead == null){
-			reverseHead = new sillNode(ptr->value);
-			reversePtr = reverseHead;
-		}else{
-			reversePtr->next = new sillNode(ptr->value);
-			reversePtr = reversePtr->next;
-		}
-		ptr = ptr->next;
-	}
-	return reverseHead;
-}
-
-void reverseSillAuxspace(sillNode *ptr){
+//Tested
+void setMinimumValue(itNode *ptr,int &minValue){
 	if(ptr == null){
 		return;
 	}
-	stack<int> auxSpace;
-	sillNode *crawler = ptr;
-	while(crawler != null){
-		auxSpace.push(crawler->value);
-		crawler = crawler->next;
-	}
-	crawler = ptr;
-	while(!auxSpace.empty()){
-		crawler->value = auxSpace.top();
-		auxSpace.pop();
-	}
+	minValue = min(minValue,ptr->value);
+	setMinimumValue(ptr->left,minValue);
+	setMinimumValue(ptr->right,minValue);
 }
 
-void reverseSillStack(sillNode **ptr){
-	if(*ptr ==  null){
-		return;
+//Tested
+int getMinimumValueFromBSTON(itNode *ptr){
+	if(ptr == null){
+		return INT_MIN;
 	}
-	sillNode *crawler = *ptr;
-	stack<sillNode *> auxSpace;
-	while(crawler != null){
-		auxSpace.push(crawler);
-	}
-	(*ptr) = auxSpace.top();
-	sillNode *prevNode = null;
-	while(!auxSpace.empty()){
-		if(prevNode != null){
-			prevNode->next = auxSpace.top();
-		}
-		prevNode = auxSpace.top();
-		auxSpace.pop();
-	}
-	prevNode->next = null;
+	int minValue = INT_MAX;
+	setMinimumValue(ptr,minValue);
+	return minValue;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-#endif /* REVERSESILL_H_ */
+#endif /* MINIMUMVALUEBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

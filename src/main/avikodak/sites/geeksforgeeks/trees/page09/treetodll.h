@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\treetodll.h
  *  Created on			: Oct 14, 2014 :: 12:45:34 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/the-great-tree-list-recursion-problem/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void treeToDllFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -82,6 +83,7 @@ void treeToDllFixLeftPtr(itNode *ptr){
 	treeToDllFixLeftPtr(ptr->right);
 }
 
+//Tested
 void treeToDllFixRightPtr(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -98,30 +100,54 @@ void treeToDllFixRightPtr(itNode **ptr){
 	(*ptr) = prevNode;
 }
 
-void treeToDllInorderON(itNode *ptr){
+//Tested
+void treeToDll(itNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	treeToDllFixLeftPtr(*ptr);
+	treeToDllFixRightPtr(ptr);
+}
+
+//Tested
+void treeToDllInorderONMain(itNode *ptr){
 	if(ptr == null){
-		return null;
+		return;
 	}
 	static itNode *prevNode = null;
-	treeToDllInorderON(ptr->left);
+	treeToDllInorderONMain(ptr->left);
 	ptr->left = prevNode;
 	if(prevNode != null){
 		prevNode->right = ptr;
 	}
 	prevNode = ptr;
-	treeToDllInorderON(ptr->right);
+	treeToDllInorderONMain(ptr->right);
+}
+
+//Tested
+void treeToDllInOrderON(itNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	treeToDllInorderONMain(*ptr);
+	itNode *crawler = *ptr;
+	while(crawler->left != null){
+		crawler = crawler->left;
+	}
+	(*ptr) = crawler;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *treeToDllON2(itNode *ptr){
+//Tested
+itNode *treeToDllON2Main(itNode *ptr){
 	if(ptr == null){
-		return;
+		return null;
 	}
 	itNode *temp;
 	if(ptr->left != null){
-		temp = treeToDllON2(ptr->left);
+		temp = treeToDllON2Main(ptr->left);
 		while(temp->right != null){
 			temp = temp->right;
 		}
@@ -129,7 +155,7 @@ itNode *treeToDllON2(itNode *ptr){
 		temp->right = ptr;
 	}
 	if(ptr->right != null){
-		temp = treeToDllON2(ptr->right);
+		temp = treeToDllON2Main(ptr->right);
 		while(temp->left != null){
 			temp = temp->left;
 		}
@@ -137,6 +163,19 @@ itNode *treeToDllON2(itNode *ptr){
 		temp->left = ptr;
 	}
 	return ptr;
+}
+
+//Tested
+void treeToDllON2(itNode **ptr){
+	if(ptr == null){
+		return;
+	}
+	treeToDllON2Main(*ptr);
+	itNode *crawler = *ptr;
+	while(crawler->left != null){
+		crawler = crawler->left;
+	}
+	(*ptr) = crawler;
 }
 
 #endif /* TREETODLL_H_ */

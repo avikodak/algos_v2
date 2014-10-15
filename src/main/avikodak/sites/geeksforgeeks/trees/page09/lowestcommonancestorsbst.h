@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\lowestcommonancestorsbst.h
  *  Created on			: Oct 14, 2014 :: 11:36:49 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *lowestCommonAncestors(itNode *ptr,int low,int high){
 	if(ptr == null){
 		return null;
@@ -85,6 +86,7 @@ itNode *lowestCommonAncestors(itNode *ptr,int low,int high){
 	}
 }
 
+//Tested
 itNode *lowestCommonAncestorsIterative(itNode *ptr,int low,int high){
 	if(ptr == null){
 		return false;

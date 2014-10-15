@@ -125,6 +125,7 @@ private:
 		}
 	}
 
+	//Tested
 	void getBSTFromVectorMain(itNode **root,itNode *currentNode,vector<int> userInput,unsigned int counter){
 		if(counter >= userInput.size()){
 			return;
@@ -263,7 +264,17 @@ public:
 		printIVector(randomValues);
 		return getITreeFromVector(randomValues);
 	}
+	//Tested
+	itNode *getRandomBST(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX) {
+		if(numberOfNodes == 0){
+			return null;
+		}
+		vector<int> randomValues = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		printIVector(randomValues);
+		return getBSTFromVector(randomValues);
+	}
 
+	//Tested
 	itNode *getBSTFromVector(vector<int> userInput){
 		if(userInput.size() == 0){
 			return null;

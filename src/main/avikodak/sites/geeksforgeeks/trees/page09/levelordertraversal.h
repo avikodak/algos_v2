@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printroottoleafpaths.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\printroottoleafpaths.h
- *  Created on			: Oct 14, 2014 :: 11:36:28 AM
+ *  File Name   		: levelordertraversal.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\levelordertraversal.h
+ *  Created on			: Oct 14, 2014 :: 1:25:26 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
- ****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/level-order-tree-traversal/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -61,169 +61,72 @@ using namespace __gnu_cxx;
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTROOTTOLEAFPATHS_H_
-#define PRINTROOTTOLEAFPATHS_H_
-
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
+
+#ifndef LEVELORDERTRAVERSAL_H_
+#define LEVELORDERTRAVERSAL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printRootToLeafPath(itNode *ptr,queue<itNode *> ancestors){
+void tLevelOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	if(ptr->left == null && ptr->right == null){
-		while(!ancestors.empty()){
-			printf("%d\t",ancestors.front()->value);
-			ancestors.pop();
-		}
-		printf("%d\t",ptr->value);
-		PRINT_NEW_LINE;
-		return;
-	}
-	ancestors.push(ptr);
-	printRootToLeafPath(ptr->left,ancestors);
-	printRootToLeafPath(ptr->right,ancestors);
-}
-
-//Tested
-void reverseStackPrint(stack<itNode *> auxSpace){
-	if(auxSpace.size() == 0){
-		PRINT_NEW_LINE;
-		return;
-	}
-	itNode *node = auxSpace.top();
-	auxSpace.pop();
-	reverseStackPrint(auxSpace);
-	printf("%d\t",node->value);
-}
-
-//Tested
-void printRootToLeafPathPostorder(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty()  || currentNode != null){
-		while(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->right == null){
-			currentNode = auxSpace.top();
-			if(currentNode->left == null && currentNode->right == null){
-				reverseStackPrint(auxSpace);
-			}
-			auxSpace.pop();
-			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
-				currentNode = auxSpace.top();
-				if(currentNode->left == null && currentNode->right == null){
-					reverseStackPrint(auxSpace);
-				}
-				auxSpace.pop();
-			}
-		}
-		currentNode = auxSpace.empty()?NULL:auxSpace.top()->right;
-	}
-}
-
-void printRootToLeaf(iptNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<iptNode *> auxSpace;
-	iptNode *currentNode = ptr;
-	while(currentNode != null){
-		auxSpace.push(currentNode);
-		currentNode = currentNode->parent;
-	}
-	while(!auxSpace.empty()){
-		printf("%d\t",auxSpace.top()->value);
-		auxSpace.pop();
-	}
-}
-
-void printRootToLeafPathsPreOrderIterative(iptNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<iptNode *> auxSpace;
+	queue<itNode *> auxSpace;
+	itNode *currentNode;
 	auxSpace.push(ptr);
-	iptNode *currentNode;
+	unsigned int levelCounter;
 	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		if(currentNode->left == null && currentNode->right == null){
-			printRootToLeaf(currentNode);
-		}else{
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
+		levelCounter = auxSpace.size();
+		while(levelCounter--){
+			currentNode = auxSpace.front();
+			printf("%d\t",currentNode->value);
+			auxSpace.pop();
 			if(currentNode->left != null){
 				auxSpace.push(currentNode->left);
 			}
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
 		}
+		PRINT_NEW_LINE;
 	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printRootToLeafPathON2(iptNode *ptr){
+//Tested
+void tPrintLevel(itNode *ptr,unsigned int level){
 	if(ptr == null){
 		return;
 	}
-	if(ptr->left == null && ptr->right == null){
-		iptNode *currentNode = ptr;
-		stack<iptNode *> auxSpace;
-		while(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->parent;
-		}
-		while(!auxSpace.empty()){
-			printf("%d\t",auxSpace.top()->value);
-			auxSpace.pop();
-		}
-		PRINT_NEW_LINE;
+	if(level == 0){
+		printf("%d\t",ptr->value);
 		return;
 	}
-	printRootToLeafPathON2(ptr->left);
-	printRootToLeafPathON2(ptr->right);
+	tPrintLevel(ptr->left,level-1);
+	tPrintLevel(ptr->right,level-1);
 }
 
 //Tested
-void printRootToLeafHashmap(itNode *ptr){
+void printLevelOrderON2(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	treeutils *utils = new treeutils();
-	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap,itToTempIndexNodeMap;
-	unsigned int currentNodeIndex;
-	stack<itNode *> auxSpace;
-	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		if(indexNodeMap.find(2*itToIndexNodeMap->first) == indexNodeMap.end() && indexNodeMap.find(2*itToIndexNodeMap->first + 1) == indexNodeMap.end()){
-			currentNodeIndex = itToIndexNodeMap->first;
-			while(currentNodeIndex > 0){
-				itToTempIndexNodeMap = indexNodeMap.find(currentNodeIndex);
-				auxSpace.push(itToTempIndexNodeMap->second);
-				currentNodeIndex /= 2;
-			}
-			while(!auxSpace.empty()){
-				printf("%d\t",auxSpace.top()->value);
-				auxSpace.pop();
-			}
-			PRINT_NEW_LINE;
-		}
+	unsigned int heightOfTree = utils->getHeightOfTree(ptr);
+	for(unsigned int counter = 0;counter < heightOfTree;counter++){
+		tPrintLevel(ptr,counter);
+		PRINT_NEW_LINE;
 	}
 }
 
-#endif /* PRINTROOTTOLEAFPATHS_H_ */
+#endif /* LEVELORDERTRAVERSAL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

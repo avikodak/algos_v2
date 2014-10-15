@@ -61,9 +61,17 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/deletetree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/levelordertraversal.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/lowestcommonancestorsbst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/minimumvaluebst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/mirrortree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/printroottoleafpaths.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/countleafnodes.h"
+
+#include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
 
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
@@ -71,6 +79,8 @@
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deletesill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/frequencysill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodefromendsill.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/issillpalindrome.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/reversesill.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
@@ -78,9 +88,14 @@
 void treeTester(){
 	treeutils *utils = new treeutils();
 	vector<int> sequence = generateISequenceVector(10);
-	itNode *root = utils->getITreeFromVector(sequence);
-	deleteLevelON2(&root);
-	utils->preOrderTraversal(root);
+	srand(time(NULL));
+	unsigned int randomNumber = rand()%100 + 10;
+	for(unsigned int counter = 0;counter < randomNumber;counter++){
+		random_shuffle(sequence.begin(),sequence.end());
+	}
+	printIVector(sequence);
+	itNode *root = utils->getBSTFromVector(sequence);
+	printf("%d\t",lowestCommonAncestorsIterative(root,1,8)->value);
 }
 
 void sillTester(){
@@ -96,7 +111,7 @@ void sillTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	sillTester();
+	treeTester();
 	return 0;
 }
 
