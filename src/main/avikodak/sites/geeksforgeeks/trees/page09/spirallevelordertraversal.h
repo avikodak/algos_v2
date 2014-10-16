@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: spirallevelordertraversal.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\spirallevelordertraversal.h
+ *  Created on			: Oct 16, 2014 :: 11:05:54 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -11,6 +11,8 @@
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -56,78 +58,98 @@
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/countleafnodes.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/deletetree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/istreebst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/levelordertraversal.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/lowestcommonancestorsbst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/minimumvaluebst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/mirrortree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/printroottoleafpaths.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
 
-
-
-#include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
-
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deleteanodegivenptr.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deletesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/frequencysill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodefromendsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/issillpalindrome.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/reversesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/reversesillprint.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/insertintosortedsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/detectloopsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/intersectionofsill.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomBST(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,1,50);
-	int minValue = INT_MIN,maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root,minValue,maxValue));
-	minValue = INT_MIN;maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root2,minValue,maxValue));
-}
+#ifndef SPIRALLEVELORDERTRAVERSAL_H_
+#define SPIRALLEVELORDERTRAVERSAL_H_
 
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	sillNode *head2 = utils->getRandomSill(4,100,200);
-	sillNode *temp = head2,*temp1 = head;
-	temp1 = temp1->next->next->next;
-	while(temp->next != null){
-		temp = temp->next;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void spiralLevelOrderTraversal(itNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	temp->next = temp1;
-	utils->printSill(head);
-	PRINT_NEW_LINE;
-	utils->printSill(head2);
-	printf("\n%d\t",getIntersectionOfSillLength(head,head2)->value);
-	//getIntersectionOfSillLength(head,head2);
-
+	queue<itNode *> levelAuxspace;
+	stack<itNode *> reversedLevelAuxspace;
+	levelAuxspace.push(ptr);
+	itNode *currentNode;
+	while(!levelAuxspace.empty() || !reversedLevelAuxspace.empty()){
+		while(!levelAuxspace.empty()){
+			currentNode = levelAuxspace.front();
+			levelAuxspace.pop();
+			printf("%d\t",currentNode->value);
+			if(currentNode->left != null){
+				reversedLevelAuxspace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				reversedLevelAuxspace.push(currentNode->right);
+			}
+		}
+		PRINT_NEW_LINE;
+		while(!reversedLevelAuxspace.empty()){
+			currentNode = reversedLevelAuxspace.top();
+			reversedLevelAuxspace.pop();
+			printf("%d\t",currentNode->value);
+			if(currentNode->left != null){
+				levelAuxspace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				levelAuxspace.push(currentNode->right);
+			}
+		}
+	}
 }
 
-
-int main() {
-	PRINT_NEW_LINE;
-	sillTester();
-	return 0;
+void spiralLevelOrderTraversalHashmap(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
 }
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void printLevel(itNode *ptr,unsigned int level,bool inReverse = false){
+	if(ptr == null){
+		return;
+	}
+	if(level == 0){
+		printf("%d\t",ptr->value);
+		return;
+	}
+	if(inReverse){
+		printLevel(ptr->right,level-1,inReverse);
+		printLevel(ptr->left,level-1,inReverse);
+	}else{
+		printLevel(ptr->left,level-1);
+		printLevel(ptr->right,level-1);
+	}
+}
+
+void spiralOrderTraversalON2(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	treeutils *utils = new treeutils();
+	unsigned int height = utils->getHeightOfTree(ptr);
+	bool printReverse = false;
+	for(unsigned int counter = 0;counter < height;counter++){
+		if(printReverse){
+			printLevel(ptr,counter,true);
+		}else{
+			printLevel(ptr,counter);
+		}
+	}
+}
+
+#endif /* SPIRALLEVELORDERTRAVERSAL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

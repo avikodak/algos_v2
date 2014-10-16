@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: detectloopsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\detectloopsill.h
- *  Created on			: Oct 14, 2014 :: 12:13:04 PM
+ *  File Name   		: detectifsillsintersect.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\detectifsillsintersect.h
+ *  Created on			: Oct 16, 2014 :: 10:29:59 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,87 +65,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DETECTLOOPSILL_H_
-#define DETECTLOOPSILL_H_
-
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-bool detectLoopHashMap(sillNode *ptr){
-	if(ptr == null){
-		return false;
-	}
-	hash_map<uint32_t,bool> visitedNodes;
-	hash_map<uint32_t,bool>::iterator itToVisitedNodes;
-	sillNode *crawler = ptr;
-	while(crawler != null && crawler->next != null){
-		if((itToVisitedNodes = visitedNodes.find((uint32_t)crawler->next)) != visitedNodes.end()){
-			return true;
-		}
-		visitedNodes.insert(pair<uint32_t,bool>((uint32_t)crawler,true));
-		crawler = crawler->next;
-	}
-	return false;
-}
 
-bool detectLoopFlags(svillNode *ptr){
-	if(ptr == null){
-		return false;
-	}
-	while(ptr != null && ptr->next != null){
-		if(!ptr->next->isVisited){
-			return true;
-		}
-		ptr->isVisited = true;
-		ptr = ptr->next;
-	}
-	return false;
-}
-
-//Tested
-bool detectLoopTwoPtrs(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return false;
-	}
-	sillNode *slowCrawler = ptr,*fastCrawler = ptr->next->next;
-	while(slowCrawler != null && fastCrawler != null && fastCrawler->next != null){
-		if(slowCrawler == fastCrawler){
-			return true;
-		}
-		slowCrawler = slowCrawler->next;
-		fastCrawler = fastCrawler->next->next;
-	}
-	return false;
-}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-bool detectLoopON2(sillNode *ptr){
-	if(ptr == null){
-		return false;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	while(outerCrawler != null){
-		innerCrawler = ptr;
-		while(innerCrawler != null && innerCrawler != outerCrawler){
-			if(outerCrawler->next == innerCrawler){
-				return true;
-			}
-			innerCrawler = innerCrawler->next;
-		}
-		if(innerCrawler == null){
-			return false;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return false;
-}
-
-#endif /* DETECTLOOPSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+
+#ifndef DETECTIFSILLSINTERSECT_H_
+#define DETECTIFSILLSINTERSECT_H_
+
+
+#endif /* DETECTIFSILLSINTERSECT_H_ */

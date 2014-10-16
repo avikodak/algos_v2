@@ -68,6 +68,20 @@ struct sillNode{
 	}
 };
 
+struct xorSillNode{
+	int value;
+	uint32_t addressesXor;
+
+	xorSillNode(){
+		this->addressesXor = 0;
+	}
+
+	xorSillNode(int value){
+		this->value = value;
+		this->addressesXor = 0;
+	}
+};
+
 struct sillArbitNode{
 	int value;
 	sillArbitNode *arbitraryPtr;

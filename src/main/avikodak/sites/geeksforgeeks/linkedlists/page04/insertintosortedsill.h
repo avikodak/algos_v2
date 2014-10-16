@@ -71,7 +71,21 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+//Tested
+void insertIntoSortedSill(sillNode **ptr,int value){
+	sillNode *newNode,*crawler = *ptr;
+	newNode = new sillNode(value);
+	if(*ptr == null || (*ptr)->value > value){
+		newNode->next = (*ptr);
+		(*ptr) = newNode;
+		return;
+	}
+	while(crawler->next != null && crawler->next->value < value){
+		crawler = crawler->next;
+	}
+	newNode->next = crawler->next;
+	crawler->next = newNode;
+}
 
 #endif /* INSERTINTOSORTEDSILL_H_ */
 

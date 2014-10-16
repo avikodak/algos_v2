@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -57,6 +57,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
+#include "reversesill.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -71,14 +72,115 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+sillNode *getIntersectionOfSillHashmapON(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	hash_map<uint32_t,bool> visitFlags;
+	hash_map<uint32_t,bool>::iterator itToVisitFlags;
+	sillNode *crawler = firstPtr;
+	while(crawler != null){
+		visitFlags.insert(pair<uint32_t,bool>((uint32_t)crawler,true));
+		crawler = crawler->next;
+	}
+	crawler = secondPtr;
+	while(crawler != null){
+		if((itToVisitFlags = visitFlags.find((uint32_t)crawler)) != visitFlags.end()){
+			return crawler;
+		}
+		crawler = crawler->next;
+	}
+	return null;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+sillNode *getIntersectionOfSillLength(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	sillutils *utils = new sillutils();
+	unsigned int firstSillLength,secondSillLength;
+	int difference;
+	sillNode *firstSillCrawler = firstPtr,*secondSillCrawler = secondPtr;
+	firstSillLength = utils->lengthOfSill(firstPtr);
+	secondSillLength = utils->lengthOfSill(secondPtr);
+	difference = firstSillLength - secondSillLength;
+	difference = difference < 0?difference*-1:difference;
+	while(difference--){
+		if(firstSillLength > secondSillLength){
+			firstSillCrawler = firstSillCrawler->next;
+		}else{
+			secondSillCrawler = secondSillCrawler->next;
+		}
+	}
+	while(firstSillCrawler != null && secondSillCrawler != null){
+		if(firstSillCrawler == secondSillCrawler){
+			return firstSillCrawler;
+		}
+		firstSillCrawler = firstSillCrawler->next;
+		secondSillCrawler = secondSillCrawler->next;
+	}
+	return null;
+}
+
+//Tested
+sillNode *getIntersectionOfSillReversing(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	sillutils *utils = new sillutils();
+	unsigned int firstSillLength,secondSillLength,uncommonSillLength,commonSillLength,requiredSillLength;
+	firstSillLength = utils->lengthOfSill(firstPtr);
+	secondSillLength = utils->lengthOfSill(secondPtr);
+	reverseSill(&firstPtr);
+	reverseSill(&secondPtr);
+	uncommonSillLength = utils->lengthOfSill(firstPtr);
+	commonSillLength = (firstSillLength + secondSillLength - uncommonSillLength)/2;
+	requiredSillLength = secondSillLength - commonSillLength;
+	reverseSill(&firstPtr);
+	reverseSill(&secondPtr);
+	while(requiredSillLength--){
+		secondPtr = secondPtr->next;
+	}
+	return secondPtr;
+}
+
+sillNode *getIntersectionOfSillByMakingLoop(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	sillNode *firstCrawler = firstPtr;
+	while(firstCrawler->next != null){
+		firstCrawler = firstCrawler->next;
+	}
+	firstCrawler->next = firstPtr;
+	//Loop formed
+	//Find the loop starting point
+	return null;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+sillNode *getIntersectionOfSillON2(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	sillNode *outerCrawler = firstPtr,*innerCrawler = secondPtr;
+	while(outerCrawler != null){
+		innerCrawler = secondPtr;
+		while(innerCrawler != null){
+			if(innerCrawler == outerCrawler){
+				return innerCrawler;
+			}
+			innerCrawler = innerCrawler->next;
+		}
+		outerCrawler = outerCrawler->next;
+	}
+	return null;
+}
 
 #endif /* INTERSECTIONOFSILL_H_ */
 

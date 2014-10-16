@@ -72,6 +72,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isSillPalindrome(sillNode *ptr,sillNode **frontCrawler){
 	if(ptr == null){
 		return true;
@@ -82,6 +83,7 @@ bool isSillPalindrome(sillNode *ptr,sillNode **frontCrawler){
 	return truthValue;
 }
 
+//Tested
 bool isSillPalindromeAuxspace(sillNode *ptr){
 	if(ptr == null){
 		return true;
@@ -89,6 +91,7 @@ bool isSillPalindromeAuxspace(sillNode *ptr){
 	stack<sillNode *> auxSpace;
 	sillNode *crawler = ptr;
 	while(crawler != null){
+		auxSpace.push(crawler);
 		crawler = crawler->next;
 	}
 	crawler = ptr;
@@ -102,6 +105,7 @@ bool isSillPalindromeAuxspace(sillNode *ptr){
 	return true;
 }
 
+//Tested
 bool isSillPalindromeByReverse(sillNode *ptr){
 	if(ptr == null){
 		return true;
@@ -117,6 +121,7 @@ bool isSillPalindromeByReverse(sillNode *ptr){
 	return true;
 }
 
+//Tested
 bool isSillPalindromeHashmap(sillNode *ptr){
 	if(ptr == null){
 		return true;
@@ -138,6 +143,7 @@ bool isSillPalindromeHashmap(sillNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 sillNode *getNodeForIndexSill(sillNode *ptr,unsigned int index){
 	if(ptr == null){
 		return null;
@@ -148,6 +154,7 @@ sillNode *getNodeForIndexSill(sillNode *ptr,unsigned int index){
 	return getNodeForIndexSill(ptr->next,index-1);
 }
 
+//Tested
 bool isSillPalindromeON2(sillNode *ptr){
 	if(ptr == null){
 		return true;
@@ -156,7 +163,7 @@ bool isSillPalindromeON2(sillNode *ptr){
 	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
 	sillNode *crawler = ptr,*temp;
 	for(unsigned int counter = 0;counter <= lengthOfSill/2;counter++){
-		temp = getNodeForIndexSill(ptr,lengthOfSill-counter);
+		temp = getNodeForIndexSill(ptr,lengthOfSill-counter-1);
 		if(temp->value != crawler->value){
 			return false;
 		}

@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 sillNode *reverseSillMain(sillNode *ptr,sillNode **head){
 	if(ptr == null){
 		return null;
@@ -84,6 +85,7 @@ sillNode *reverseSillMain(sillNode *ptr,sillNode **head){
 	return ptr;
 }
 
+//Tsted
 void reverseSill(sillNode **ptr){
 	if(*ptr == null || (*ptr)->next == null){
 		return;
@@ -92,6 +94,7 @@ void reverseSill(sillNode **ptr){
 	lastNode->next = null;
 }
 
+//Tested
 void reverseSill(sillNode *ptr,sillNode **reversedHead){
 	if(ptr == null){
 		return;
@@ -106,6 +109,7 @@ void reverseSill(sillNode *ptr,sillNode **reversedHead){
 	reverseSill(temp,reversedHead);
 }
 
+//Tested
 sillNode *reverseSillIterative(sillNode *ptr){
 	if(ptr == null){
 		return null;
@@ -122,24 +126,26 @@ sillNode *reverseSillIterative(sillNode *ptr){
 	return crawler;
 }
 
+//Tested
 sillNode *reverseSillNewSill(sillNode *ptr){
 	if(ptr == null){
 		return null;
 	}
-	sillNode *reverseHead = null,*reversePtr = null;
-	while(ptr == null){
+	sillNode *reverseHead = null,*temp;
+	while(ptr != null){
 		if(reverseHead == null){
 			reverseHead = new sillNode(ptr->value);
-			reversePtr = reverseHead;
 		}else{
-			reversePtr->next = new sillNode(ptr->value);
-			reversePtr = reversePtr->next;
+			temp = new sillNode(ptr->value);
+			temp->next = reverseHead;
+			reverseHead = temp;
 		}
 		ptr = ptr->next;
 	}
 	return reverseHead;
 }
 
+//Tested
 void reverseSillAuxspace(sillNode *ptr){
 	if(ptr == null){
 		return;
@@ -154,9 +160,11 @@ void reverseSillAuxspace(sillNode *ptr){
 	while(!auxSpace.empty()){
 		crawler->value = auxSpace.top();
 		auxSpace.pop();
+		crawler = crawler->next;
 	}
 }
 
+//Tested
 void reverseSillStack(sillNode **ptr){
 	if(*ptr ==  null){
 		return;
@@ -165,6 +173,7 @@ void reverseSillStack(sillNode **ptr){
 	stack<sillNode *> auxSpace;
 	while(crawler != null){
 		auxSpace.push(crawler);
+		crawler = crawler->next;
 	}
 	(*ptr) = auxSpace.top();
 	sillNode *prevNode = null;

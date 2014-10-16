@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: reversesillprint.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversesillprint.h
+ *  Created on			: Oct 16, 2014 :: 10:31:12 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -11,6 +11,8 @@
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -55,79 +57,97 @@
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
+#include "reversesill.h"
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/countleafnodes.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/deletetree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/istreebst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/levelordertraversal.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/lowestcommonancestorsbst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/minimumvaluebst.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/mirrortree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/printroottoleafpaths.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
 
-
-
-#include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
-
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/printmiddlesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deleteanodegivenptr.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/deletesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/frequencysill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page05/getnthnodefromendsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/issillpalindrome.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/reversesill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/reversesillprint.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/insertintosortedsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/detectloopsill.h"
-#include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/intersectionofsill.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomBST(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,1,50);
-	int minValue = INT_MIN,maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root,minValue,maxValue));
-	minValue = INT_MIN;maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root2,minValue,maxValue));
-}
+#ifndef REVERSESILLPRINT_H_
+#define REVERSESILLPRINT_H_
 
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	sillNode *head2 = utils->getRandomSill(4,100,200);
-	sillNode *temp = head2,*temp1 = head;
-	temp1 = temp1->next->next->next;
-	while(temp->next != null){
-		temp = temp->next;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void reverseSillPrint(sillNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	temp->next = temp1;
-	utils->printSill(head);
-	PRINT_NEW_LINE;
-	utils->printSill(head2);
-	printf("\n%d\t",getIntersectionOfSillLength(head,head2)->value);
-	//getIntersectionOfSillLength(head,head2);
-
+	reverseSillPrint(ptr->next);
+	printf("%d\t",ptr->value);
 }
 
-
-int main() {
-	PRINT_NEW_LINE;
-	sillTester();
-	return 0;
+//Tested
+void reverseSillPrintAuxspace(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	stack<sillNode *> auxSpace;
+	while(ptr != null){
+		auxSpace.push(ptr);
+		ptr = ptr->next;
+	}
+	while(!auxSpace.empty()){
+		printf("%d\t",auxSpace.top()->value);
+		auxSpace.pop();
+	}
 }
+
+//Tested
+void reverseSillPrintByReversing(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	reverseSill(&ptr);
+	while(ptr != null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->next;
+	}
+}
+
+//Tested
+void reverseSillHashmap(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	sillutils *utils = new sillutils();
+	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
+	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
+	while(lengthOfSill > 0){
+		itToIndexNodeMap = indexNodeMap.find(lengthOfSill);
+		printf("%d\t",itToIndexNodeMap->second->value);
+		lengthOfSill -= 1;
+	}
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void reverseSillON2(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	sillutils *utils = new sillutils();
+	unsigned int length = utils->lengthOfSill(ptr),difference;
+	sillNode *crawler;
+	for(unsigned int counter = 0;counter < length;counter++){
+		difference = length - counter - 1;
+		crawler = ptr;
+		while(difference--){
+			crawler = crawler->next;
+		}
+		printf("%d\t",crawler->value);
+	}
+}
+
+#endif /* REVERSESILLPRINT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

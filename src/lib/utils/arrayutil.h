@@ -79,6 +79,31 @@ vector<int> generateISequenceVector(unsigned int size){
 }
 
 //Tested
+vector<int> getVectorForUserInput(){
+	vector<int> userInput;
+	unsigned int sizeOfInput;
+	int temp;
+	scanf("%d",&sizeOfInput);
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%d",&temp);
+		userInput.push_back(temp);
+	}
+	return userInput;
+}
+
+bool isVectorSorted(vector<int> userInput){
+	if(userInput.size() == 0 || userInput.size() == 1){
+		return true;
+	}
+	for(unsigned int counter = 1;counter < userInput.size();counter){
+		if(userInput[counter] < userInput[counter-1]){
+			return false;
+		}
+	}
+	return true;
+}
+
+//Tested
 bool areIVectorsEquivalent(vector<int> firstVector,vector<int> secondVector){
 	if(firstVector.size() != secondVector.size()){
 		return false;

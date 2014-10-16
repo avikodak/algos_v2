@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,109 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef ISTREEBST_H_
+#define ISTREEBST_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+bool isTreeBSTTopToBottom(itNode *ptr,int minValue = INT_MIN,int maxValue = INT_MAX){
+	if(ptr == null){
+		return true;
+	}
+	if(ptr->value < minValue || ptr->value > maxValue){
+		return false;
+	}
+	return isTreeBSTTopToBottom(ptr->left,minValue,ptr->value) && isTreeBSTTopToBottom(ptr->right,ptr->value,maxValue);
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool isTreeBSTBottomToTop(itNode *ptr,int &minValue,int &maxValue){
+	if(ptr == null){
+		return true;
+	}
+	bool leftTruthValue = isTreeBSTBottomToTop(ptr->left,minValue,maxValue);
+	if(!leftTruthValue){
+		return false;
+	}
+	if(minValue != INT_MIN){
+		minValue = min(minValue,ptr->value);
+	}else{
+		minValue = ptr->value;
+	}
+	bool rightTruthValue = isTreeBSTBottomToTop(ptr->right,minValue,maxValue);
+	if(!rightTruthValue){
+		return false;
+	}
+	if(ptr->value < minValue || ptr->value > maxValue){
+		return false;
+	}
+
+	if(maxValue != INT_MAX){
+		maxValue = max(maxValue,ptr->value); // Should be changed
+	}else{
+		maxValue = ptr->value;
+	}
+	return true;
+}
+
+//Tested
+bool isTreeBSTInorderTraversal(itNode *ptr){
+	if(ptr == null){
+		return true;
+	}
+	static int prevValue = INT_MIN;
+	bool leftSubtreeTruthValue = isTreeBSTInorderTraversal(ptr->left);
+	if(!leftSubtreeTruthValue || ptr->value < prevValue){
+		return false;
+	}
+	prevValue = ptr->value;
+	return isTreeBSTInorderTraversal(ptr->right);
+}
+
+//Tested
+bool isTreeBSTInorderTraversalV2(itNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	treeutils *utils = new treeutils();
+	vector<int> inOrderValues = utils->getValuesInInorder(ptr);
+	return isVectorSorted(inOrderValues);
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+int getMinValueTree(itNode *ptr){
+	if(ptr == null){
+		return INT_MAX;
+	}
+	return min(min(ptr->value,getMinValueTree(ptr->left)),getMinValueTree(ptr->right));
+}
+
+//Tested
+int getMaxValueTree(itNode *ptr){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	return max(max(ptr->value,getMaxValueTree(ptr->left)),getMaxValueTree(ptr->right));
+}
+
+//Tested
+bool isTreeBSTON2(itNode *ptr){
+	if(ptr == null){
+		return true;
+	}
+	int minValue = ptr->left == null?INT_MIN:getMinValueTree(ptr->left),maxValue = ptr->right == null?INT_MAX:getMaxValueTree(ptr->right);
+	if(ptr->value < minValue || ptr->value > maxValue || !isTreeBSTON2(ptr->left) || !isTreeBSTON2(ptr->right)){
+		return false;
+	}
+	return true;
+}
+
+#endif /* ISTREEBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef ISTREEBST_H_
-#define ISTREEBST_H_
-
-
-#endif /* ISTREEBST_H_ */
