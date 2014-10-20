@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: xorsillutils.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
- *  Created on			: Oct 16, 2014 :: 10:59:59 AM
+ *  File Name   		: dynamicset.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicset.h
+ *  Created on			: Oct 18, 2014 :: 1:16:25 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,37 +65,88 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef XORSILLUTILS_H_
-#define XORSILLUTILS_H_
+#ifndef DYNAMICSET_H_
+#define DYNAMICSET_H_
 
-void insertIntoXORSill(xorSillNode **head,int value){
-	if(*head == null){
-		(*head) = new xorSillNode(value);
-		return;
+//Tested
+class dynamicset{
+private:
+	sillNode *head;
+public:
+	dynamicset(){
+		head = null;
 	}
-	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (uint32_t)prevNode){
-		temp = crawler;
-		crawler = crawler->addressesXor ^ (uint32_t)prevNode;
-		prevNode = temp;
-	}
-	temp = new xorSillNode(value);
-	crawler->addressesXor = (uint32_t)prevNode ^ (uint32_t)temp;
-}
 
-void printXorList(xorSillNode *head){
-	if(head == null){
-		return;
+	//Tested
+	bool isIn(int value){
+		sillNode *crawler = head;
+		while(crawler != null){
+			if(crawler->value == value){
+				return true;
+			}
+		}
+		return false;
 	}
-	xorSillNode *prevNode = null,*crawler = head;
-	while(crawler != null){
-		printf("%d",crawler->value);
-		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (uint32_t)prevNode);
-	}
-}
 
-#endif /* XORSILLUTILS_H_ */
+	//Tested
+	unsigned int size(){
+		sillNode *crawler = head;
+		unsigned int counter = 0;
+		while(crawler != null){
+			counter++;
+			crawler = crawler->next;
+		}
+		return counter;
+	}
+
+	//Tested
+	void insert(int value){
+		if(head == null){
+			head = new sillNode(value);
+		}else{
+			sillNode *crawler = head;
+			while(crawler->next != null){
+				if(crawler->value == value){
+					return;
+				}
+				crawler = crawler->next;
+			}
+			if(crawler->value == value){
+				return;
+			}
+			crawler->next = new sillNode(value);
+		}
+	}
+
+	//Tested
+	void deleteVal(int value){
+		sillNode *crawler = head,*temp;
+		if(crawler->value == value){
+			head = crawler->next;
+			free(crawler);
+			return;
+		}
+		while(crawler->next != null && crawler->next->value != value){
+			crawler = crawler->next;
+		}
+		if(crawler->next != null){
+			temp = crawler->next;
+			crawler->next = crawler->next->next;
+			free(temp);
+		}
+	}
+
+	//Tested
+	void printSet(){
+		sillNode *crawler = head;
+		while(crawler != null){
+			printf("%d\t",crawler->value);
+			crawler = crawler->next;
+		}
+	}
+};
+
+#endif /* DYNAMICSET_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

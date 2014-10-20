@@ -52,5 +52,68 @@ Foil - First ,Outside,Inside,Last
 (a+b)(a-b) = a^2 + b^2
 
 Factoring is nothing but the reverse of distributive property
+Polynomial
+===========
+Nonnegative exponents and integer
+Degree :
+	The highest exponent
+Standard form : decreasing powers
+
+Discriment
+==========
+	b2-4ac > 0 real roots
+	b2-4ac = 0 equal roots /only one root
+	b2-4ac < 0 complex roots 
+
 Quadratic polynomial
 ====================
+	ax^2+bx+c
+	
+Vertex form
+	y = A(X-B)^2 + C // Complete the full square
+	Vertex it (B,C) because the minimum value of the square is when the (X-B)^2 = 0
+	If the coefficient of the x square is negative then parabola is opening down else opening up
+	Vertex is the mid point of the zeros of the equation
+	Y = X^2 (Passes through origin and opens up)
+	Y = (X-H)^2 (Shifted the vertex in horizontal direction)
+	Y-K = X^2 (shifiting the vertex in vertical direction)
+	Y = -X^2 (Has origin as vertex and opens downwards)
+	
+Exponents expression and equations
+==================================
+a^-b = 1/(a^b)
+(ab)^n = a^n * b^n
+(a/b)^n = a^n / b^n
+(a^m)^n = a^mn
+
+Direct Variation
+================
+	y = kx
+		y varies directly with x then also
+		x varies directly with x
+	y = kx + c is neither a direct nor inverse variation
+Inverse variation
+=================
+	y = k/x
+		y varies inversely with x then
+		x varies inversely with y
+Joint variation
+===============
+	Deals with more than two variables
+		A = l * b 
+Exponential function
+===================
+	y = c^x
+Functions
+	It is nothing but a black box which gives some output based on input
+	maps elements in domain to elements in range
+	(f/g)(x) = f(x)/g(x)
+	(f+g)(x) = f(x) + g(x)
+	(f*g)(x) = f(x) * g(x)
+	(f-g)(x) = f(x) - g(x)
+Inverse of a function
+=====================
+	Inverse function takes back from value in range to domain
+	maps element from the range to domain
+	function is not invertible
+	It is a reflection on y = x	

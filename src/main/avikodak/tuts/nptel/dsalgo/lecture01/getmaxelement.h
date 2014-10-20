@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: getmaxelement.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture01\getmaxelement.h
+ *  Created on			: Oct 17, 2014 :: 2:59:35 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,94 +65,72 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef GETMAXELEMENT_H_
+#define GETMAXELEMENT_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+//Tested
+int getMaxElement(vector<int> userInput,unsigned int currentIndex = 0){
+	if(currentIndex == userInput.size()-1){
+		return userInput[currentIndex];
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+	int temp;
+	return userInput[currentIndex] > (temp = getMaxElement(userInput,currentIndex+1))?userInput[currentIndex]:temp;
+}
+
+//Tested
+int getMaxElementIterative(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MAX;
+	}
+	int max = userInput[0];
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(max < userInput[counter]){
+			max = userInput[counter];
 		}
 	}
-	return null;
+	return max;
 }
+
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
+//Tested
+int getMaxElementONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
-		return null;
+		return INT_MAX;
 	}
 	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
+	return userInput[userInput.size()-1];
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
+//Tested
+int getMaxElementON2(vector<int> userInput){
 	if(userInput.size() == 0){
-		return null;
+		return INT_MAX;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
+	unsigned int outerCrawler = 0,innerCrawler;
+	bool isMaxElement;
+	for(outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		isMaxElement = true;
+		for(innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[innerCrawler] > userInput[outerCrawler]){
+				isMaxElement = false;
 			}
 		}
-	}
-}
-
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(isMaxElement){
+			return userInput[outerCrawler];
 		}
 	}
-	return null;
+	return INT_MAX;
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* GETMAXELEMENT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

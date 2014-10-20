@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: deletenodedll.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletenodedll.h
+ *  Created on			: Oct 19, 2014 :: 1:02:09 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,31 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef DELETENODEDLL_H_
+#define DELETENODEDLL_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																	O(1) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void deleteNodeDll(dillNode **ptr,dillNode *nodeToBeDeleted){
+	if(*ptr == null){
+		return;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
+	if(nodeToBeDeleted == *ptr){
+		return;
 	}
-	return null;
-}
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+	dillNode *crawler = (*ptr),*temp;
+	while(crawler != null && crawler != nodeToBeDeleted){
+		crawler = crawler->next;
 	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
-		}
+	if(crawler == nodeToBeDeleted){
+		crawler->prev->next = crawler->next;
+		crawler->next->prev = crawler->prev;
+		free(crawler);
 	}
 }
 
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
-}
-
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* DELETENODEDLL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

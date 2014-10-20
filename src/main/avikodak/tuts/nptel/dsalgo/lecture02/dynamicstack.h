@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: xorsillutils.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
- *  Created on			: Oct 16, 2014 :: 10:59:59 AM
+ *  File Name   		: dynamicarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicarray.h
+ *  Created on			: Oct 18, 2014 :: 1:16:17 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -64,39 +64,65 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
+#ifndef DYNAMICSTACK_H_
+#define DYNAMICSTACK_H_
 
-#ifndef XORSILLUTILS_H_
-#define XORSILLUTILS_H_
+//Tested
+class dynamicstack{
+private:
+	sillNode *topNode;
+	unsigned int counter;
+public:
+	dynamicstack(){
+		topNode = null;
+		counter = 0;
+	}
 
-void insertIntoXORSill(xorSillNode **head,int value){
-	if(*head == null){
-		(*head) = new xorSillNode(value);
-		return;
+	//Tested
+	bool isEmpty(){
+		return topNode == null;
 	}
-	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (uint32_t)prevNode){
-		temp = crawler;
-		crawler = crawler->addressesXor ^ (uint32_t)prevNode;
-		prevNode = temp;
-	}
-	temp = new xorSillNode(value);
-	crawler->addressesXor = (uint32_t)prevNode ^ (uint32_t)temp;
-}
 
-void printXorList(xorSillNode *head){
-	if(head == null){
-		return;
+	//Tested
+	unsigned int size(){
+		return counter;
 	}
-	xorSillNode *prevNode = null,*crawler = head;
-	while(crawler != null){
-		printf("%d",crawler->value);
-		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (uint32_t)prevNode);
-	}
-}
 
-#endif /* XORSILLUTILS_H_ */
+	//Tested
+	void push(int value){
+		if(topNode == null){
+			topNode = new sillNode(value);
+		}else{
+			sillNode *temp = new sillNode(value);
+			temp->next = topNode;
+			topNode = temp;
+		}
+		counter++;
+	}
+
+	//Tested
+	void pop(){
+		if(topNode == null){
+			throw "Stack is empty";
+		}
+		sillNode *temp = topNode;
+		topNode = topNode->next;
+		free(temp);
+		counter--;
+	}
+
+	//Tested
+	int top(){
+		if(isEmpty()){
+			throw "Stack is empty";
+		}
+		return topNode->value;
+	}
+};
+
+#endif /* DYNAMICSTACK_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+

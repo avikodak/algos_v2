@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: spirallevelordertraversal.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\spirallevelordertraversal.h
- *  Created on			: Oct 16, 2014 :: 11:05:54 AM
+ *  File Name   		: maximumwidth.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\maximumwidth.h
+ *  Created on			: Oct 18, 2014 :: 2:21:52 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,92 +65,146 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SPIRALLEVELORDERTRAVERSAL_H_
-#define SPIRALLEVELORDERTRAVERSAL_H_
+#ifndef MAXIMUMWIDTH_H_
+#define MAXIMUMWIDTH_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void spiralLevelOrderTraversal(itNode *ptr){
+void setLevelCountPreOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
 	if(ptr == null){
 		return;
 	}
-	stack<itNode *> levelAuxspace;
-	stack<itNode *> reversedLevelAuxspace;
-	levelAuxspace.push(ptr);
+	if(levelFrequency.find(level) != levelFrequency.end()){
+		levelFrequency[level] += 1;
+	}else{
+		levelFrequency[level] = 1;
+	}
+	setLevelCountPreOrder(ptr->left,level+1,levelFrequency);
+	setLevelCountPreOrder(ptr->right,level+1,levelFrequency);
+}
+
+unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	hash_map<uint32_t,unsigned int> nodeLevelMap;
+	hash_map<uint32_t,unsigned int>::iterator itToNodeLevelMap;
+	hash_map<unsigned int,unsigned int> levelFrequency;
+	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
+	stack<itNode *> auxSpace;
 	itNode *currentNode;
-	while(!levelAuxspace.empty() || !reversedLevelAuxspace.empty()){
-		while(!levelAuxspace.empty()){
-			currentNode = levelAuxspace.top();
-			levelAuxspace.pop();
-			printf("%d\t",currentNode->value);
-			if(currentNode->left != null){
-				reversedLevelAuxspace.push(currentNode->left);
-			}
-			if(currentNode->right != null){
-				reversedLevelAuxspace.push(currentNode->right);
-			}
-		}
-		PRINT_NEW_LINE;
-		while(!reversedLevelAuxspace.empty()){
-			currentNode = reversedLevelAuxspace.top();
-			reversedLevelAuxspace.pop();
-			printf("%d\t",currentNode->value);
-			if(currentNode->right != null){
-				levelAuxspace.push(currentNode->right);
-			}
-			if(currentNode->left != null){
-				levelAuxspace.push(currentNode->left);
+	auxSpace.push(ptr);
+	nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	levelFrequency.insert(pair<unsigned int,unsigned int>(1,1));
+	unsigned int maxWidth = 0;
+	while(!auxSpace.empty()){
+		currentNode = auxSpace.top();
+		auxSpace.pop();
+		itToNodeLevelMap = nodeLevelMap.find((uint32_t)currentNode);
+		itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
+		if(currentNode->left != null){
+			auxSpace.push(currentNode->left);
+			if(itToLevelFrequency == levelFrequency.end()){
+				levelFrequency[itToLevelFrequency->second + 1] = 1;
+				maxWidth = max(maxWidth,1);
+			}else{
+				levelFrequency[itToLevelFrequency->second + 1] += 1;
+				maxWidth = max(maxWidth,levelFrequency[itToLevelFrequency->second + 1]);
 			}
 		}
-		PRINT_NEW_LINE;
+		if(currentNode->right != null){
+			auxSpace.push(currentNode->right);
+			if(itToLevelFrequency == levelFrequency.end()){
+				levelFrequency[itToLevelFrequency->second + 1] = 1;
+				maxWidth = max(maxWidth,1);
+			}else{
+				levelFrequency[itToLevelFrequency->second + 1] += 1;
+				maxWidth = max(maxWidth,levelFrequency[itToLevelFrequency->second + 1]);
+			}
+		}
+	}
+	return maxWidth;
+}
+
+void setLevelCountInOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+	if(ptr == null){
+		return;
+	}
+	setLevelCountInOrder(ptr->left,level+1,levelFrequency);
+	if(levelFrequency.find(level) != levelFrequency.end()){
+		levelFrequency[level] += 1;
+	}else{
+		levelFrequency[level] = 1;
+	}
+	setLevelCountInOrder(ptr->right,level+1,levelFrequency);
+}
+
+void setLevelCountPostOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+	if(ptr == null){
+		return;
+	}
+	setLevelCountPostOrder(ptr->left,level-1,levelFrequency);
+	setLevelCountPostOrder(ptr->right,level-1,levelFrequency);
+	if(levelFrequency.find(level) != levelFrequency.end()){
+		levelFrequency[level] += 1;
+	}else{
+		levelFrequency[level] = 1;
 	}
 }
 
-void spiralLevelOrderTraversalHashmap(itNode *ptr){
+void getMaxWidthLevelOrder(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
+	queue<itNode *> auxSpace;
+	itNode *currentNode;
+	auxSpace.push(ptr);
+	unsigned int counter,maxWidth = 0;
+	while(!auxSpace.empty()){
+		counter = auxSpace.size();
+		maxWidth = max(maxWidth,counter);
+		while(counter--){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			if(currentNode->left != null){
+				auxSpace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
+		}
+	}
+	return maxWidth;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void printLevel(itNode *ptr,unsigned int level,bool inReverse = false){
+unsigned int widthOfLevel(itNode *ptr,unsigned int level){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	if(level == 0){
-		printf("%d\t",ptr->value);
-		return;
+		return 1;
 	}
-	if(inReverse){
-		printLevel(ptr->right,level-1,inReverse);
-		printLevel(ptr->left,level-1,inReverse);
-	}else{
-		printLevel(ptr->left,level-1,inReverse);
-		printLevel(ptr->right,level-1,inReverse);
-	}
+	return widthOfLevel(ptr->left,level-1) + widthOfLevel(ptr->right,level-1);
 }
 
-//Tested
-void spiralOrderTraversalON2(itNode *ptr){
+unsigned int getMaxWidthLevelOrderON2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	treeutils *utils = new treeutils();
 	unsigned int height = utils->getHeightOfTree(ptr);
-	bool printReverse = false;
+	unsigned int width = 0;
 	for(unsigned int counter = 0;counter < height;counter++){
-		printLevel(ptr,counter,printReverse);
-		printReverse = !printReverse;
-		PRINT_NEW_LINE;
+		width = max(width,widthOfLevel(ptr,counter));
 	}
+	return width;
 }
 
-#endif /* SPIRALLEVELORDERTRAVERSAL_H_ */
+#endif /* MAXIMUMWIDTH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: reversedll.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversedll.h
+ *  Created on			: Oct 17, 2014 :: 1:44:35 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,82 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef REVERSEDLL_H_
+#define REVERSEDLL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void reverseDll(dillNode *ptr,dillNode **head){
+	if(ptr == null){
+		return;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
+	if(ptr->next == null){
+		(*head) = ptr;
 	}
-	return null;
+	dillNode *temp = ptr->next;
+	ptr->next = ptr->prev;
+	ptr->prev = temp;
+	reverseDll(temp,head);
 }
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+
+void reverseDllByReverse(dillNode *crawler,dillNode **frontCrawler){
+	if(crawler != null){
+		return;
 	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
+	static bool reverse = true;
+	reverseDllByReverse(crawler->next,frontCrawler);
+	if(reverse){
+		crawler->value = (*frontCrawler)->value;
+		(*frontCrawler) = (*frontCrawler)->next;
+	}
+	if(crawler == (*frontCrawler) || (*frontCrawler)->next == crawler){
+		reverse = false;
+	}
+}
+
+void reverseDllByStack(dillNode *head){
+	if(crawler != null){
+		return;
+	}
+	stack<dillNode *> auxSpace;
+	dillNode *crawler = head;
+	while(crawler != null){
+		auxSpace.push(crawler->value);
+		crawler = crawler->next;
+	}
+	crawler = head;
+	while(!auxSpace.empty()){
+		crawler->value = auxSpace.top()->value;
+		auxSpace.pop();
+	}
+}
+
+void reverseDllByFindingTail(dillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	dillNode *tailCrawler = ptr,*crawler = ptr;
+	while(tailCrawler->next != null){
+		tailCrawler = tailCrawler->next;
+	}
+	while(crawler != tailCrawler){
+		crawler->value = tailCrawler->value;
+		crawler = crawler->next;
+		tailCrawler = tailCrawler->prev;
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void reverseDllON2(dillNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
-		}
-	}
-}
 
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
 }
-
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* REVERSEDLL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

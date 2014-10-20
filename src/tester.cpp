@@ -61,6 +61,8 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/checkforchildrensum.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/converttreetochildrensumproperty.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/countleafnodes.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/deletetree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/heightoftree.h"
@@ -70,9 +72,10 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/minimumvaluebst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/mirrortree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/printroottoleafpaths.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page09/spirallevelordertraversal.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
-
-
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursion.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursionandstack.h"
 
 #include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
 
@@ -88,18 +91,37 @@
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/insertintosortedsill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/detectloopsill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/intersectionofsill.h"
+
+#include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture01/prefixaverages.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/arraystack.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicarraystack.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/doublingstrategy.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/tightstrategy.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicstack.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicset.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
+void arrayTester() {
+	vector<int> randomVector = generateIRandomVector(10,1,10);
+	printIVector(randomVector);
+	dynamicset *temp = new dynamicset();
+	for(unsigned int counter = 0;counter < randomVector.size();counter++){
+		temp->insert(randomVector[counter]);
+	}
+	temp->printSet();
+	temp->deleteVal(7);
+	PRINT_NEW_LINE;
+	temp->printSet();
+}
+
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomBST(10,1,50);
-	itNode *root2 = utils->getRandomTree(10,1,50);
-	int minValue = INT_MIN,maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root,minValue,maxValue));
-	minValue = INT_MIN;maxValue = INT_MAX;
-	printf("%d\t",isTreeBSTBottomToTop(root2,minValue,maxValue));
+	itNode *root = utils->getRandomTree(10,1,50);
+	imorrisInorderTraversal(root);
 }
 
 void sillTester(){
@@ -123,7 +145,7 @@ void sillTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	sillTester();
+	treeTester();
 	return 0;
 }
 

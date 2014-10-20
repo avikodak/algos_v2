@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: xorsillutils.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
- *  Created on			: Oct 16, 2014 :: 10:59:59 AM
+ *  File Name   		: dynamicarraystack.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicarraystack.h
+ *  Created on			: Oct 19, 2014 :: 8:17:55 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -57,6 +57,8 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
+#include "tightstrategy.h"
+#include "doublingstrategy.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -65,37 +67,65 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef XORSILLUTILS_H_
-#define XORSILLUTILS_H_
+#ifndef DYNAMICARRAYSTACK_H_
+#define DYNAMICARRAYSTACK_H_
 
-void insertIntoXORSill(xorSillNode **head,int value){
-	if(*head == null){
-		(*head) = new xorSillNode(value);
-		return;
+//Tested
+class dynamicarraystack{
+private:
+	int maxSize;
+	int *dynStack;
+	int topIndex;
+public:
+	dynamicarraystack(){
+		dynStack = (int *)malloc(sizeof(int));
+		maxSize = 1;
+		topIndex  = -1;
 	}
-	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (uint32_t)prevNode){
-		temp = crawler;
-		crawler = crawler->addressesXor ^ (uint32_t)prevNode;
-		prevNode = temp;
-	}
-	temp = new xorSillNode(value);
-	crawler->addressesXor = (uint32_t)prevNode ^ (uint32_t)temp;
-}
 
-void printXorList(xorSillNode *head){
-	if(head == null){
-		return;
-	}
-	xorSillNode *prevNode = null,*crawler = head;
-	while(crawler != null){
-		printf("%d",crawler->value);
-		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (uint32_t)prevNode);
-	}
-}
+	//Tested
+	void push(int value){
+		if(topIndex+1 == maxSize){
+			maxSize = incrementByDoublingStrategy(&dynStack,maxSize);
+		}
+		dynStack[++topIndex] = value;
 
-#endif /* XORSILLUTILS_H_ */
+	}
+
+	//Tested
+	void pop(){
+		if(topIndex == -1){
+			throw "Stack is empty";
+		}
+		dynStack[topIndex] = 0;
+		topIndex--;
+	}
+
+	//Tested
+	unsigned int size(){
+		return topIndex+1;
+	}
+
+	//Tested
+	int top(){
+		if(topIndex == -1){
+			throw "Stack is empty";
+		}
+		return dynStack[topIndex];
+	}
+
+	//Tested
+	int getMaxsize(){
+		return maxSize;
+	}
+
+	//Tested
+	bool isEmpty(){
+		return topIndex == -1;
+	}
+};
+
+#endif /* DYNAMICARRAYSTACK_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

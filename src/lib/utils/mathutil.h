@@ -59,6 +59,11 @@ using namespace __gnu_cxx;
 #ifndef MATHUTIL_H_
 #define MATHUTIL_H_
 
+class mathutils {
+private:
+public:
+};
+
 
 #endif /* MATHUTIL_H_ */
 

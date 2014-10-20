@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: removeduplicatesunsortedsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\removeduplicatesunsortedsill.h
+ *  Created on			: Oct 17, 2014 :: 1:09:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,94 +65,101 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef REMOVEDUPLICATESUNSORTEDSILL_H_
+#define REMOVEDUPLICATESUNSORTEDSILL_H_
+
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void removeDuplicatesON(sillNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	sillNode *crawler = ptr,*temp;
+	while(crawler != null){
+		if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()){
+			frequencyMap[crawler->value] += 1;
+		}else{
+			frequencyMap[crawler->value] = 1;
+		}
+		crawler = crawler->next;
+	}
+	crawler = ptr;
+	while(crawler != null){
+		itToFrequencyMap = frequencyMap.find(crawler->value);
+		if(itToFrequencyMap->second > 1){
+			crawler->value = crawler->next->value;
+			temp = crawler->next;
+			crawler->next = crawler->next->next;
+			free(temp);
+			frequencyMap[crawler->value] -= 1;
+		}else{
+			crawler = crawler->next;
 		}
 	}
-	return null;
 }
+
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
-}
+//Merge sort
+//Avl Tree
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void removeDuplicatesON2(sillNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
+	sillNode *outerCrawler = ptr,*innerCrawler;
+	bool isDuplicate;
+	while(outerCrawler != null){
+		innerCrawler = outerCrawler->next;
+		isDuplicate = false;
+		while(innerCrawler != null){
+			if(innerCrawler->value == outerCrawler->value){
+				isDuplicate = true;
+				break;
 			}
 		}
-	}
-}
-
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(isDuplicate){
+			outerCrawler->value = outerCrawler->next->value;
+			innerCrawler = outerCrawler->next;
+			outerCrawler->next = outerCrawler->next->next;
+			free(innerCrawler);
+		}else{
+			outerCrawler = outerCrawler->next;
 		}
 	}
-	return null;
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+void removeDuplicatesBSTON2(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	treeutils *utils = new treeutils();
+	iftNode *frequencyBST = utils->getFBSTFromSill(ptr);
+	iftNode *temp;
+	sillNode *crawler = ptr,*nodeToBeDeleted;
+	while(crawler != null){
+		temp = utils->searchForValueBST(frequencyBST,crawler->value);
+		if(crawler->value > 1){
+			temp->value -= 1;
+			nodeToBeDeleted = crawler->next;
+			crawler->value = crawler->next->value;
+			crawler->next = crawler->next->next;
+			free(nodeToBeDeleted);
+		}else{
+			crawler = crawler->next;
+		}
+	}
+}
+
+#endif /* REMOVEDUPLICATESUNSORTEDSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

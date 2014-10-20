@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: movelastelementtofirst.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\movelastelementtofirst.h
+ *  Created on			: Oct 19, 2014 :: 1:01:44 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,79 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef MOVELASTELEMENTTOFIRST_H_
+#define MOVELASTELEMENTTOFIRST_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void moveLastElementToFirst(sillNode *ptr,sillNode **head){
+	if(ptr == null || ptr->next == null){
+		return;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
+	if(ptr->next->next == null){
+		ptr->next->next = (*head);
+		(*head) = ptr->next;
+		ptr->next = null;
+		return;
 	}
-	return null;
-}
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
+	moveLastElementToFirst(ptr->next,head);
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void moveLastElementToFirstIterative(sillNode **head){
+	if(*head == null || (*head)->next == null){
+		return;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
-		}
+	sillNode *crawler = (*head);
+	while(crawler->next->next != null){
+		crawler = crawler->next;
+	}
+	crawler->next->next = (*head);
+	(*head) = crawler->next;
+	crawler->next = null;
+}
+
+void moveLastElementToFirstAuxspace(sillNode *head){
+	if(head == null || head->next == null){
+		return;
+	}
+	queue<int> auxSpace;
+	sillNode *crawler = head;
+	while(crawler->next != null){
+		auxSpace.push(crawler->value);
+	}
+	head->value = crawler->value;
+	crawler = head->next;
+	while(!auxSpace.empty()){
+		crawler->value = auxSpace.front();
+		auxSpace.pop();
+		crawler = crawler->next;
 	}
 }
 
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void moveLastElementToFirstHashmap(sillNode *head){
+	if(head == null || head->next == null){
+		return;
 	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
+	hash_map<unsigned int,int> rankValueMap;
+	hash_map<unsigned int,int>::iterator itToRankValueMap;
+	unsigned int counter = 0;
+	sillNode *crawler = head;
+	while(crawler != null){
+		rankValueMap.insert(pair<unsigned int,int>(counter,crawler->value));
+		counter++;
+		crawler = crawler->next;
 	}
-	return null;
+	crawler = head;
+	crawler->value = rankValueMap.find(rankValueMap.size()-1)->second;
+	crawler = crawler->next;
+	for(itToRankValueMap = rankValueMap.begin();itToRankValueMap != rankValueMap.end()-1;itToRankValueMap++){
+		crawler->value = itToRankValueMap->second;
+		crawler = crawler->next;
+	}
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* MOVELASTELEMENTTOFIRST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

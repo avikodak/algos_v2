@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: xorsillutils.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
- *  Created on			: Oct 16, 2014 :: 10:59:59 AM
+ *  File Name   		: treefrompreinorder.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\treefrompreinorder.h
+ *  Created on			: Oct 18, 2014 :: 2:10:25 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,37 +65,28 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef XORSILLUTILS_H_
-#define XORSILLUTILS_H_
+#ifndef TREEFROMPREINORDER_H_
+#define TREEFROMPREINORDER_H_
 
-void insertIntoXORSill(xorSillNode **head,int value){
-	if(*head == null){
-		(*head) = new xorSillNode(value);
-		return;
+itNode *getTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder,unsigned int startPreOrderIndex,unsigned int endPreOrderIndex,unsigned int startInOrderIndex,unsigned int endInOrderIndex){
+	if(startPreOrderIndex > endPreOrderIndex || startInOrderIndex > endInOrderIndex){
+		return null;
 	}
-	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (uint32_t)prevNode){
-		temp = crawler;
-		crawler = crawler->addressesXor ^ (uint32_t)prevNode;
-		prevNode = temp;
+	itNode *node = new itNode(preOrder[startPreOrderIndex]);
+	unsigned int counter = startInOrderIndex;
+	while(counter <= endInOrderIndex && inOrder[counter] != preOrder[startPreOrderIndex]){
+		counter++;
 	}
-	temp = new xorSillNode(value);
-	crawler->addressesXor = (uint32_t)prevNode ^ (uint32_t)temp;
+	if(counter > endInOrderIndex){
+		throw "Invalid sequence";
+	}
+	unsigned int difference = counter - startInOrderIndex;
+	node->left =  getTreeFromPreInorder(preOrder,inOrder,startPreOrderIndex+1,startPreOrderIndex+counter,startInOrderIndex,startInOrderIndex+counter-1);
+	node->right =  getTreeFromPreInorder(preOrder,inOrder,startPreOrderIndex+1+counter,endPreOrderIndex,startInOrderIndex+counter+1,endInOrderIndex);
+	return node;
 }
 
-void printXorList(xorSillNode *head){
-	if(head == null){
-		return;
-	}
-	xorSillNode *prevNode = null,*crawler = head;
-	while(crawler != null){
-		printf("%d",crawler->value);
-		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (uint32_t)prevNode);
-	}
-}
-
-#endif /* XORSILLUTILS_H_ */
+#endif /* TREEFROMPREINORDER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

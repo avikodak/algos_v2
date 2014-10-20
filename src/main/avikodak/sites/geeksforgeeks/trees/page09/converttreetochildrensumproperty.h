@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: converttreetochildrensumproperty.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\converttreetochildrensumproperty.h
+ *  Created on			: Oct 16, 2014 :: 1:48:16 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,49 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
-}
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
-}
+#ifndef CONVERTTREETOCHILDRENSUMPROPERTY_H_
+#define CONVERTTREETOCHILDRENSUMPROPERTY_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+//Tested
+void incrementValueInSubTree(itNode *ptr,int value){
+	if(ptr == null){
+		return;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
-		}
+	ptr->value += value;
+	if(ptr->left != null){
+		incrementValueInSubTree(ptr->left,value);
+	}else{
+		incrementValueInSubTree(ptr->right,value);
 	}
 }
 
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+//Tested
+int convertTreeToChildrenSumProperty(itNode *ptr){
+	if(ptr == null){
+		return 0;
 	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+	if(ptr->left == null && ptr->right == null){
+		return ptr->value;
+	}
+	int leftSum = convertTreeToChildrenSumProperty(ptr->left);
+	int rightSum = convertTreeToChildrenSumProperty(ptr->right);
+	int sumOfChildren = leftSum + rightSum;
+	if(ptr->value < sumOfChildren){
+		ptr->value += (sumOfChildren - ptr->value);
+	}else if(ptr->value > sumOfChildren){
+		if(ptr->left != null){
+			incrementValueInSubTree(ptr->left,ptr->value - sumOfChildren);
+		}else{
+			incrementValueInSubTree(ptr->right,ptr->value - sumOfChildren);
 		}
 	}
-	return null;
+	return ptr->value;
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* CONVERTTREETOCHILDRENSUMPROPERTY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

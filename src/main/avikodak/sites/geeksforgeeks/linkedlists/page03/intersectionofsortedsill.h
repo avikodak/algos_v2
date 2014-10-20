@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: intersectionofsortedsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\intersectionofsortedsill.h
+ *  Created on			: Oct 19, 2014 :: 4:37:34 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,95 +65,94 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef INTERSECTIONOFSORTEDSILL_H_
+#define INTERSECTIONOFSORTEDSILL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
+sillNode *intersectionOfSortedSill(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
 		return null;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
-}
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
+	sillNode *intersectionOfSill = null,*intersectionCrawler = null;
+	while(firstPtr != null && secondPtr != null){
+		if(firstPtr->value == secondPtr->value){
+			if(intersectionOfSill == null){
+				intersectionOfSill = new sillNode(firstPtr->value);
+				intersectionCrawler = intersectionOfSill;
+			}else{
+				intersectionCrawler->next = new sillNode(firstPtr->value);
+			}
+			firstPtr = firstPtr->next;
+			secondPtr = secondPtr->next;
 		}else{
-			frontCrawler++;
+			if(firstPtr->value > secondPtr->value){
+				secondPtr = secondPtr->next;
+			}else{
+				firstPtr = firstPtr->next;
+			}
 		}
- 	}
-	return null;
+	}
+	return intersectionOfSill;
+}
+
+sillNode *getIntersectionOfSortedSillHashmap(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return null;
+	}
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	sillNode *crawler = firstPtr,*intersectionHead = null,*intersectionCrawler;
+	while(crawler != null){
+		if(frequencyMap.find(crawler->value) == frequencyMap.end()){
+			frequencyMap[crawler->value] = 1;
+		}else{
+			frequencyMap[crawler->value] += 1;
+		}
+		crawler = crawler->next;
+	}
+	crawler = secondPtr;
+	while(crawler != null){
+		itToFrequencyMap = frequencyMap.find(crawler->value);
+		if(itToFrequencyMap != frequencyMap.end()){
+			if(itToFrequencyMap->second == 1){
+				frequencyMap.erase(crawler->value);
+			}else{
+				itToFrequencyMap->second -= 1;
+			}
+			if(intersectionHead == null){
+				intersectionHead = new sillNode(crawler->value);
+				intersectionCrawler = intersectionHead;
+			}else{
+				intersectionCrawler->next = new sillNode(crawler->value);
+			}
+		}
+	}
+	return intersectionHead;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
+sillNode *intersectionOfSortedSillON2(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
 		return null;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
+	unsigned int prevElementFrequency = 0;
+	sillNode *firstSillCrawler = firstPtr,*secondSillCrawler = secondPtr;
+	sillNode *intersectionSill = null;
+	while(firstSillCrawler != null){
+		secondSillCrawler = secondPtr;
+		while(secondSillCrawler != null){
+
 		}
+		firstSillCrawler = firstSillCrawler->next;
 	}
 }
-
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
-}
-
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* INTERSECTIONOFSORTEDSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+

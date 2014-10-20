@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: pairwiseswapelements.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\pairwiseswapelements.h
+ *  Created on			: Oct 19, 2014 :: 1:01:58 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,64 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef PAIRWISESWAPELEMENTS_H_
+#define PAIRWISESWAPELEMENTS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void pairwiseSwapElements(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
-	}
-	return null;
-}
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
+	int temp = ptr->value;
+	ptr->value = ptr->next->value;
+	ptr->next->value = temp;
+	pairwiseSwapElements(ptr->next->next);
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void pairwiseSwapElementsIterative(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
-			}
-		}
+	sillNode *crawler = ptr;
+	while(crawler != null && crawler->next != null){
+		int temp = crawler->value;
+		crawler->value = crawler->next->value;
+		crawler->next->value = temp;
+		crawler = crawler->next->next;
 	}
 }
 
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
+void pairwiseSwapElementsHashmap(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
 	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
-		}
+	hash_map<unsigned int,int> rankValueMap;
+	hash_map<unsigned int,int>::iterator itToRankValueMap;
+	sillNode *crawler = ptr;
+	unsigned int counter = 1;
+	while(crawler != null){
+		rankValueMap.insert(pair<unsigned int,int>(counter,crawler->value));
+		crawler = crawler->next;
+		counter++;
 	}
-	return null;
+	crawler = ptr;
+	for(unsigned int counter = 1;counter+1 < rankValueMap.size();counter+=2){
+		crawler->value = rankValueMap.find(counter+1)->second;
+		crawler->next->value = rankValueMap.find(counter)->second;
+		crawler = crawler->next->next;
+	}
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+void pairwiseElementsSwapPtrExchange(sillNode **ptr){
+
+}
+
+void pairwiseElementsSwapPtrExchangeIterative(sillNode *ptr){
+
+}
+#endif /* PAIRWISESWAPELEMENTS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

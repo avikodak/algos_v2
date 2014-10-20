@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: numberoddtimes.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\numberoddtimes.h
+ *  Created on			: Oct 17, 2014 :: 4:29:56 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,94 +65,113 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef NUMBERODDTIMES_H_
+#define NUMBERODDTIMES_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
+int numberOccuringOddTimesXOR(vector<int> userInput){
 	if(userInput.size() == 0){
-		return null;
+		return INT_MIN;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
+	int xorValue = 0;
+	for(unsigned int counter =0;counter < userInput.size();counter++){
+		xorValue ^= userInput[counter];
+	}
+	return xorValue;
+}
+
+int numberOccuringOddTimesON(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
+			frequencyMap[userInput[counter]] += 1;
+		}else{
+			frequencyMap[userInput[counter]] = 1;
 		}
 	}
-	return null;
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		if(itToFrequencyMap->second%2 == 1){
+			return itToFrequencyMap->first;
+		}
+	}
+	return INT_MIN;
 }
+
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
+int numberOccuringOddTimesONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
-		return null;
+		return INT_MIN;
 	}
 	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
+	unsigned int outerCrawler = 0,innerCrawler,frequency;
+	while(outerCrawler < userInput.size()){
+		innerCrawler = outerCrawler;
+		frequency = 0;
+		while(innerCrawler < userInput.size() && userInput[innerCrawler] == userInput[outerCrawler]){
+			frequency += 1;
+			innerCrawler++;
 		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
+		if(frequency%2 == 1){
+			return userInput[outerCrawler];
 		}
- 	}
-	return null;
+		outerCrawler += innerCrawler;
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
+int numberOccuringOddTimesON2(vector<int> userInput){
 	if(userInput.size() == 0){
-		return null;
+		return INT_MIN;
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
+	unsigned int outerCrawler,innerCrawler,frequency;
+	for(outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		frequency = 0;
+		for(innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[innerCrawler] == userInput[outerCrawler]){
+				frequency++;
 			}
 		}
-	}
-}
-
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(frequency%2 == 1){
+			return userInput[outerCrawler];
 		}
 	}
-	return null;
+	return INT_MIN;
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+int getNumberOccuringOddNumber(iftNode *ptr){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	if(ptr->frequency % 2 == 1){
+		return ptr;
+	}
+	int leftValue = getNumberOccuringOddNumber(ptr->left);
+	if(leftValue != INT_MIN){
+		return leftValue;
+	}
+	return getNumberOccuringOddNumber(ptr->right);
+}
+
+int numberOccuringOddTimesBST(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	treeutils *utils = new treeutils();
+	iftNode *rootBST = utils->getBSTFromVector(userInput);
+	return getNumberOccuringOddNumber(rootBST);
+}
+
+#endif /* NUMBERODDTIMES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
