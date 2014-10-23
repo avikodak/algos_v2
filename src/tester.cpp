@@ -133,10 +133,9 @@ void treeTester(){
 	root->right = new inrNode(2);
 	root->right->left = new inrNode(3);
 	root->right->right = new inrNode(5);
-	root->right->left->right = new inrNode(4);
-	inrNode *root = utils->getINRTreeFromVector(sequence);*/
-	itNode *root = utils->getITreeFromVector(sequence);
-	printNodesAtKDistanceLevelOrder(root,3);
+	root->right->left->right = new inrNode(4);*/
+	inrNode *root = utils->getINRTreeFromVector(sequence);
+	printf("%d\t",getMaxWidthConnectingLevel(root));
 	//p(root);
 }
 
