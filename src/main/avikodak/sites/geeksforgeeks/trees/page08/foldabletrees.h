@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: foldabletrees.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\foldabletrees.h
+ *  Created on			: Oct 20, 2014 :: 3:14:39 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -57,6 +57,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
+#include "../page09/mirrortree.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -65,24 +66,52 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef FOLDABLETREES_H_
+#define FOLDABLETREES_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
+	}
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
+	}
+	return isTreeFoldableMain(firstTreePtr->left,secondTreePtr->right) &&  isTreeFoldableMain(firstTreePtr->right,secondTreePtr->left);
+}
+
+bool isTreeFoldable(itNode *ptr){
+	if(ptr == null){
+		return true;
+	}
+	return isTreeFoldableMain(ptr->left,ptr->right);
+}
+
+bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
+	}
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
+	}
+	return areTreesIdenticalStructure(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalStructure(firstTreePtr->right,secondTreePtr->right);
+}
+
+bool isTreeFoldable(itNode *ptr){
+	if(ptr == null){
+		return true;
+	}
+	getMirrorTreePreorder(ptr->right);
+	return areTreesIdenticalStructure(ptr->left,ptr->right);
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
-}
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* FOLDABLETREES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

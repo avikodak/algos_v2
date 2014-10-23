@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: arrayqueue.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\arrayqueue.h
+ *  Created on			: Oct 20, 2014 :: 2:07:02 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,66 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef ARRAYQUEUE_H_
+#define ARRAYQUEUE_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+class arrayqueue {
+private:
+	int *queue;
+	int frontIndex=-1,rearIndex=0;
+	unsigned int maxSize;
+public:
+	arrayqueue(){
+		this->maxSize = 1024;
+		this->queue = (int *)malloc(sizeof(int)*maxSize);
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
-}
 
-#endif /* DIAMETEROFTREE_H_ */
+	arrayqueue(unsigned int size){
+		this->maxSize = size;
+		this->queue = (int *)malloc(sizeof(int)*maxSize);
+	}
+
+	bool isFull(){
+		return rearIndex+1 == frontIndex;
+	}
+
+	bool isEmpty(){
+		return frontIndex == -1;
+	}
+
+	void push(int value){
+		if(isFull()){
+			throw "Queue is full";
+		}
+		if(frontIndex == -1){
+			queue[rearIndex++] = value;
+			frontIndex = 0;
+		}else{
+			queue[++frontIndex] = value;
+		}
+	}
+
+	void pop(){
+		if(isEmpty()){
+			throw "Queue is empty";
+		}
+		queue[frontIndex] = 0;
+		frontIndex = (frontIndex+1)%maxSize;
+	}
+
+	int front(){
+		if(isEmpty()){
+			throw "Queue is empty";
+		}
+		return queue[frontIndex];
+	}
+
+	unsigned int size(){
+		return maxSize - rearIndex + frontIndex;
+	}
+};
+
+#endif /* ARRAYQUEUE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

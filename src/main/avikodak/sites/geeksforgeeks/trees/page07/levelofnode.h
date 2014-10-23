@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: levelofnode.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\levelofnode.h
+ *  Created on			: Oct 20, 2014 :: 7:07:21 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,96 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef LEVELOFNODE_H_
+#define LEVELOFNODE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
+unsigned int getLevelOfNode(itNode *ptr,int value){
+	if(ptr == null){
+		return 0;
+	}
+	int leftValue = getLevelOfNode(ptr->left,value);
+	if(leftValue == 0){
+		return leftValue;
+	}
+	return getLevelOfNode(ptr->right,value);
+}
+
+unsigned int getLevelOfNodeHashmap(itNode *ptr,int value){
 	if(ptr == null){
 		return 0;
 	}
 	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
+	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
+		if(itToIndexNodeMap->second->value == value){
+			return log2(itToIndexNodeMap->first)+1;
+		}
+	}
+	return 0;
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+unsigned int getLevelOfNodePostOrderIterative(itNode *ptr,int value){
+	if(ptr == null){
+		return 0;
+	}
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
+			currentNode = auxSpace.top();
+			if(currentNode->value == value){
+				return auxSpace.size();
+			}
+			auxSpace.pop();
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				currentNode = auxSpace.top();
+				if(currentNode->value == value){
+					return auxSpace.size();
+				}
+				auxSpace.pop();
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+	}
+	return 0;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool presentInLevel(itNode *ptr,int value,int level){
+	if(ptr == null){
+		return false;
+	}
+	if(level == 0){
+		return ptr->value == value;
+	}
+	return presentInLevel(ptr->left,value,level-1) || presentInLevel(ptr->right,value,level-1);
+}
+
+unsigned int getLevelOfNode(itNode *ptr,int value){
+	if(ptr == null){
+		return 0;
+	}
+	treeutils *utils = new treeutils();
+	unsigned int height = utils->getHeightOfTree(ptr);
+	for(unsigned int counter = 0;counter < height;counter++){
+		if(presentInLevel(ptr,value,counter)){
+			return counter+1;
+		}
+	}
+	return 0;
+}
+
+#endif /* LEVELOFNODE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

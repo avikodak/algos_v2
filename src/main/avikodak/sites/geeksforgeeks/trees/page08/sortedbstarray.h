@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: sortedbstarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\sortedbstarray.h
+ *  Created on			: Oct 20, 2014 :: 3:14:48 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef SORTEDBSTARRAY_H_
+#define SORTEDBSTARRAY_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+void sortedBSTArray(vector<int> userInput,unsigned int index){
+	if(index >= userInput.size()){
+		return;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	sortedBSTArray(userInput,2*index+1);
+	printf("%d\t",userInput[index]);
+	sortedBSTArray(userInput,2*index+2);
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* SORTEDBSTARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

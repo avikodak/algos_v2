@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: doubletree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\doubletree.h
- *  Created on			: Oct 18, 2014 :: 2:10:38 PM
+ *  File Name   		: checkiftreeissumtree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreeissumtree.h
+ *  Created on			: Oct 21, 2014 :: 10:33:41 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,101 +65,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DOUBLETREE_H_
-#define DOUBLETREE_H_
+#ifndef CHECKIFTREEISSUMTREE_H_
+#define CHECKIFTREEISSUMTREE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void doubleTreePreOrder(itNode *ptr){
-	if(ptr == null){
-		return;
+bool isTreeSumTreePreOrder(itNode *ptr){
+	if(ptr == null || (ptr->left == null && ptr->right == null)){
+		return true;
 	}
-	itNode *clonedNode = new itNode(ptr->value);
-	clonedNode->left = ptr->left;
-	ptr->left = clonedNode;
-	doubleTreePreOrder(ptr->left->left);
-	doubleTreePreOrder(ptr->right);
+	int sum = ptr->left == null?0:2*ptr->left->value;
+	sum += ptr->right == null?0:2*ptr->right->value;
+	if(ptr->value != sum){
+		return false;
+	}
+	return isTreeSumTreePreOrder(ptr->left) && isTreeSumTreePreOrder(ptr->right);
 }
 
-//Tested
-void doubleTreePreOrderIterative(itNode *ptr){
+int isTreeSumTreePostOrder(itNode *ptr,bool &isSumTree){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	itNode *currentNode,*clonedNode;
-	stack<itNode *> auxSpace;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		clonedNode = new itNode(currentNode->value);
-		clonedNode->left = currentNode->left;
-		currentNode->left = clonedNode;
-		if(currentNode->left->left != null){
-			auxSpace.push(currentNode->left->left);
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
+	if(ptr->left == null && ptr->right == null){
+		return ptr->value;
 	}
+	int leftSum = isTreeSumTreePostOrder(ptr->left,isSumTree);
+	int rightSum = isTreeSumTreePostOrder(ptr->right,isSumTree);
+	isSumTree = isSumTree && ptr->value == leftSum + rightSum;
+	return ptr->value + leftSum + rightSum;
 }
 
-//Tested
-void doubleTreeInorder(itNode *ptr){
-	if(ptr == null){
-		return;
+bool isTreeSumTreePostOrderV2(itNode *ptr){
+	if(ptr == null || (ptr->left == null && ptr->right == null)){
+		return true;
 	}
-	doubleTreeInorder(ptr->left);
-	itNode *clonedNode = new itNode(ptr->value);
-	clonedNode->left = ptr->left;
-	ptr->left = clonedNode;
-	doubleTreeInorder(ptr->right);
+	if(!isTreeSumTreePostOrderV2(ptr->left) || !isTreeSumTreePostOrderV2(ptr->right)){
+		return false;
+	}
+	int leftSum = ptr->left == null?0:2*ptr->left->value;
+	int rightSum = ptr->right  == null?0:2*ptr->right->value;
+	return ptr->value == leftSum + rightSum;
 }
 
-//Tested
-void doubleTreeInorderIterative(itNode *ptr){
+bool isTreeSumTreePostOrderIterativeTwoStacks(itNode *ptr){
 	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			itNode *clonedNode = new itNode(currentNode->value);
-			clonedNode->left = currentNode->left;
-			currentNode->left = clonedNode;
-			currentNode = currentNode->right;
-		}
-	}
-}
-
-//Tested
-void doubleTreePostOrder(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	doubleTreePostOrder(ptr->left);
-	doubleTreePostOrder(ptr->right);
-	itNode *clonedNode = new itNode(ptr->value);
-	clonedNode->left = ptr->left;
-	ptr->left = clonedNode;
-}
-
-//Tested
-void doubleTreePostOrderIterativeTwoStacks(itNode *ptr){
-	if(ptr == null){
-		return;
+		return true;
 	}
 	stack<itNode *> primaryAuxspace,secondaryAuxspace;
 	primaryAuxspace.push(ptr);
-	itNode *currentNode;
+	itNode *currentNode = ptr;
 	while(!primaryAuxspace.empty()){
 		currentNode = primaryAuxspace.top();
 		primaryAuxspace.pop();
@@ -171,20 +126,24 @@ void doubleTreePostOrderIterativeTwoStacks(itNode *ptr){
 			primaryAuxspace.push(currentNode->right);
 		}
 	}
+	int leftSum = 0,rightSum = 0;
 	while(!secondaryAuxspace.empty()){
 		currentNode = secondaryAuxspace.top();
 		secondaryAuxspace.pop();
-		itNode *clonedNode = new itNode(currentNode->value);
-		clonedNode->left = currentNode->left;
-		currentNode->left = clonedNode;
+		if(currentNode->left != null || currentNode->right != null){
+			leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
+			rightSum = currentNode->right == null?0:2*currentNode->right->value;
+			if(currentNode->value != leftSum + rightSum){
+				return false;
+			}
+		}
 	}
-
+	return true;
 }
 
-//Tested
-void doubleTreePostOrderIterative(itNode *ptr){
+bool isTreeSumTreePostOrderIterative(itNode *ptr){
 	if(ptr == null){
-		return;
+		return true;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
@@ -194,7 +153,6 @@ void doubleTreePostOrderIterative(itNode *ptr){
 				auxSpace.push(currentNode->right);
 			}
 			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
 		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
@@ -203,19 +161,23 @@ void doubleTreePostOrderIterative(itNode *ptr){
 				auxSpace.push(currentNode);
 				currentNode = currentNode->right;
 			}else{
-				itNode *clonedNode = new itNode(currentNode->value);
-				clonedNode->left = currentNode->left;
-				currentNode->left = clonedNode;
+				if(currentNode->left != null || currentNode->right != null){
+					leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
+					rightSum = currentNode->right == null?0:2*currentNode->right->value;
+					if(currentNode->value != leftSum + rightSum){
+						return false;
+					}
+				}
 				currentNode = null;
 			}
 		}
 	}
+	return true;
 }
 
-//Tested
-void doubleTreePostOrderIterativeV2(itNode *ptr){
+bool isTreeSumTreePostOrderIterativeV2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return true;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
@@ -226,93 +188,52 @@ void doubleTreePostOrderIterativeV2(itNode *ptr){
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
-			itNode *clonedNode = new itNode(currentNode->value);
-			clonedNode->left = currentNode->left;
-			currentNode->left = clonedNode;
 			auxSpace.pop();
+			if(currentNode->left != null || currentNode->right != null){
+				leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
+				rightSum = currentNode->right == null?0:2*currentNode->right->value;
+				if(currentNode->value != leftSum + rightSum){
+					return false;
+				}
+			}
 			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
 				currentNode = auxSpace.top();
-				itNode *clonedNode = new itNode(currentNode->value);
-				clonedNode->left = currentNode->left;
-				currentNode->left = clonedNode;
 				auxSpace.pop();
+				if(currentNode->left != null || currentNode->right != null){
+					leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
+					rightSum = currentNode->right == null?0:2*currentNode->right->value;
+					if(currentNode->value != leftSum + rightSum){
+						return false;
+					}
+				}
 			}
 		}
 		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 	}
-}
-
-//Tested
-void doubleTreeLevelOrderIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	queue<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		itNode *clonedNode = new itNode(currentNode->value);
-		clonedNode->left = currentNode->left;
-		currentNode->left = clonedNode;
-		if(currentNode->left->left != null){
-			auxSpace.push(currentNode->left->left);
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
-	}
-}
-
-//Tested
-void doubleTreeHashmap(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
-	itNode *currentNode;
-	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		currentNode = itToIndexNodeMap->second;
-		itNode *clonedNode = new itNode(currentNode->value);
-		clonedNode->left = currentNode->left;
-		currentNode->left = clonedNode;
-	}
+	return true;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void doubleTreeLevelByLevel(itNode *ptr,unsigned int level){
+int sumOfNodesTree(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	if(level == 0){
-		itNode *clonedNode = new itNode(ptr->value);
-		clonedNode->left = ptr->left;
-		ptr->left = clonedNode;
-		return;
-	}
-	doubleTreeLevelByLevel(ptr->left,level-1);
-	doubleTreeLevelByLevel(ptr->right,level-1);
+	return ptr->value + sumOfNodesTree(ptr->left) + sumOfNodesTree(ptr->right);
 }
 
-//Tested
-void doubleTreeLevelOrderON2(itNode *ptr){
+bool isTreeSumTreeON2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return true;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(int counter = height - 1;counter >= 0;counter--){
-		doubleTreeLevelByLevel(ptr,counter);
+	if(ptr->left == null && ptr->right == null){
+		return true;
 	}
+	return ptr->value == sumOfNodesTree(ptr->left) + sumOfNodesTree(ptr->right) && isTreeSumTreeON2(ptr->left) && isTreeSumTreeON2(ptr->right);
 }
 
-#endif /* DOUBLETREE_H_ */
+#endif /* CHECKIFTREEISSUMTREE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: checkiftreesubtree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreesubtree.h
+ *  Created on			: Oct 23, 2014 :: 10:15:35 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,80 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef CHECKIFTREESUBTREE_H_
+#define CHECKIFTREESUBTREE_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool isContinousSubset(vector<int> firstUserinput,vector<int> secondUserinput){
+	if(firstUserinput.size() == 0 || secondUserinput.size() == 0){
+		return true;
+	}
+	unsigned int outerCrawler,firstCrawler,secondCrawler;
+	if(firstUserinput.size() >= secondUserinput.size()){
+		for(;outerCrawler < firstUserinput.size() - secondUserinput.size() + 1;outerCrawler++){
+			firstCrawler = outerCrawler;
+			secondCrawler = 0;
+			while(secondCrawler < secondUserinput.size()){
+				if(firstUserinput[firstCrawler] != secondUserinput[secondCrawler]){
+					return false;
+				}
+			}
+			if(secondCrawler == secondUserinput.size()){
+				return true;
+			}
+		}
+	}else{
+		for(;outerCrawler < secondUserinput.size() - firstUserinput.size() + 1;outerCrawler++){
+			firstCrawler = outerCrawler;
+			secondCrawler = 0;
+			while(secondCrawler < firstUserinput.size()){
+				if(secondUserinput[firstCrawler] != firstUserinput[secondCrawler]){
+					return false;
+				}
+			}
+			if(firstCrawler == firstUserinput.size()){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool isTreeSubTree(itNode *firstPtr,itNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return true;
+	}
+	treeutils *utils = new treeutils();
+	vector<int> preOrderValuesFirstTree = utils->getValuesInPreorder(firstPtr);
+	vector<int> preOrderValuesSecondTree = utils->getValuesInPreorder(secondPtr);
+	vector<int> inOrderValuesFirstTree = utils->getValuesInInorder(firstPtr);
+	vector<int> inOrderValuesSecondTree = utils->getValuesInInorder(secondPtr);
+	return isContinousSubset(preOrderValuesFirstTree,preOrderValuesSecondTree) && isContinousSubset(inOrderValuesFirstTree,inOrderValuesSecondTree);
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+bool areTreesIdentical(itNode *firstPtr,itNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return true;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	if(firstPtr == null || secondPtr == null){
+		return false;
+	}
+	return firstPtr->value == secondPtr->value && areTreesIdentical(firstPtr->left,secondPtr->left) && areTreesIdentical(firstPtr->right,secondPtr->right);
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+bool isTreeSubTree(itNode *firstPtr,itNode *secondPtr){
+	if(firstPtr == null || secondPtr == null){
+		return true;
+	}
+	return areTreesIdentical(firstPtr,secondPtr) || isTreeSubTree(firstPtr->left,secondPtr) || isTreeSubTree(firstPtr->right,secondPtr);
+}
+
+#endif /* CHECKIFTREESUBTREE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

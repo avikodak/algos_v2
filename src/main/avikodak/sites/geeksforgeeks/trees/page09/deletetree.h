@@ -294,6 +294,75 @@ void deleteTreeLevelOrderIterative(itNode **ptr){
 	(*ptr) = null;
 }
 
+//Tested
+inrNode *dGetNextRightNode(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void dConnectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	dConnectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = dGetNextRightNode(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = dGetNextRightNode(ptr->nextRight);
+		}
+		dConnectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = dGetNextRightNode(ptr->nextRight);
+		dConnectNodesAtSameLevel(ptr->right);
+	}else{
+		dConnectNodesAtSameLevel(ptr->nextRight);
+	}
+}
+
+//Tested
+void deleteLevelAfterConnecting(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	deleteLevelAfterConnecting(ptr->nextRight);
+	free(ptr);
+}
+
+//Tested
+void deleteTreeLevelOrder(inrNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	dConnectNodesAtSameLevel(*ptr);
+	inrNode *crawler = *ptr;
+	inrNode *temp;
+	while(crawler != null){
+		temp = crawler;
+		if(crawler->left != null){
+			crawler = crawler->left;
+		}else if(crawler->right != null){
+			crawler = crawler->right;
+		}else{
+			crawler = dGetNextRightNode(crawler->nextRight);
+		}
+		deleteLevelAfterConnecting(temp);
+	}
+	(*ptr) = null;
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

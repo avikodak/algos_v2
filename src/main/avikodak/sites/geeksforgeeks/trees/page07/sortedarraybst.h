@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: sortedarraybst.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\sortedarraybst.h
+ *  Created on			: Oct 23, 2014 :: 10:10:26 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef SORTEDARRAYBST_H_
+#define SORTEDARRAYBST_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+itNode *constructBSTFromSortedArray(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return null;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	int middleIndex = (startIndex + endIndex)/2;
+	itNode *node = new itNode(userInput[middleIndex]);
+	node->left = constructBSTFromSortedArray(userInput,startIndex,middleIndex-1);
+	node->right = constructBSTFromSortedArray(userInput,middleIndex+1,endIndex);
+	return node;
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* SORTEDARRAYBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

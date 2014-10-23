@@ -68,22 +68,33 @@ using namespace __gnu_cxx;
 #ifndef TREEFROMPREINORDER_H_
 #define TREEFROMPREINORDER_H_
 
-itNode *getTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder,unsigned int startPreOrderIndex,unsigned int endPreOrderIndex,unsigned int startInOrderIndex,unsigned int endInOrderIndex){
-	if(startPreOrderIndex > endPreOrderIndex || startInOrderIndex > endInOrderIndex){
+//Tested
+itNode *getTreeFromPreInorderMain(vector<int> preOrder,vector<int> inOrder,int startInOrderIndex,int endInOrderIndex){
+	static unsigned int preOrderIndex = 0;
+	if(preOrderIndex >= preOrder.size() || startInOrderIndex > endInOrderIndex){
 		return null;
 	}
-	itNode *node = new itNode(preOrder[startPreOrderIndex]);
-	unsigned int counter = startInOrderIndex;
-	while(counter <= endInOrderIndex && inOrder[counter] != preOrder[startPreOrderIndex]){
+	itNode *node = new itNode(preOrder[preOrderIndex]);
+	int counter = startInOrderIndex;
+	while(counter <= endInOrderIndex && inOrder[counter] != preOrder[preOrderIndex]){
 		counter++;
 	}
 	if(counter > endInOrderIndex){
 		throw "Invalid sequence";
 	}
-	unsigned int difference = counter - startInOrderIndex;
-	node->left =  getTreeFromPreInorder(preOrder,inOrder,startPreOrderIndex+1,startPreOrderIndex+counter,startInOrderIndex,startInOrderIndex+counter-1);
-	node->right =  getTreeFromPreInorder(preOrder,inOrder,startPreOrderIndex+1+counter,endPreOrderIndex,startInOrderIndex+counter+1,endInOrderIndex);
+	preOrderIndex++;
+	int difference = counter - startInOrderIndex;
+	node->left =  getTreeFromPreInorderMain(preOrder,inOrder,startInOrderIndex,startInOrderIndex+difference-1);
+	node->right =  getTreeFromPreInorderMain(preOrder,inOrder,startInOrderIndex+difference+1,endInOrderIndex);
 	return node;
+}
+
+//Tested
+itNode *getTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder){
+	if(preOrder.size() != inOrder.size()){
+		throw "Invalid inputs";
+	}
+	return getTreeFromPreInorderMain(preOrder,inOrder,0,inOrder.size()-1);
 }
 
 #endif /* TREEFROMPREINORDER_H_ */

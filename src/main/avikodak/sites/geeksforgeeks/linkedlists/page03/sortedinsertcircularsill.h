@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: sortedinsertcircularsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\sortedinsertcircularsill.h
+ *  Created on			: Oct 23, 2014 :: 5:20:22 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,35 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef SORTEDINSERTCIRCULARSILL_H_
+#define SORTEDINSERTCIRCULARSILL_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+void insertIntoCircularSill(sillNode **ptr,int value){
+	sillNode *newNode = new sillNode(value);
+	if(*ptr == null){
+		(*ptr) = newNode;
+		(*ptr)->next = newNode;
+		return;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	if((*ptr)->value > value){
+		newNode->value = (*ptr)->value;
+		(*ptr)->value = value;
+		newNode->next = (*ptr)->next;
+		(*ptr)->next = newNode;
+		return;
+	}
+	sillNode *crawler = *ptr;
+	while(crawler->next != *ptr && crawler->next->value < value){
+		crawler = crawler->next;
+	}
+	newNode->next = crawler->next;
+	crawler->next = newNode;
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* SORTEDINSERTCIRCULARSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

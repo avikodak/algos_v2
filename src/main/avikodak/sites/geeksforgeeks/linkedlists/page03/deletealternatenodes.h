@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: deletealternatenodes.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletealternatenodes.h
+ *  Created on			: Oct 21, 2014 :: 12:44:27 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,64 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef DELETEALTERNATENODES_H_
+#define DELETEALTERNATENODES_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+void deleteAlternateNodes(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	sillNode *nodeToBeDeleted = ptr->next;
+	ptr->next = ptr->next->next;
+	free(nodeToBeDeleted);
+	deleteAlternateNodes(ptr->next);
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+void deleteAlternateNodesIterative(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
+	}
+	sillNode *crawler = ptr,*nodeToBeDeleted;
+	while(crawler != null && crawler->next != null){
+		nodeToBeDeleted = crawler->next;
+		crawler->next = crawler->next->next;
+		free(nodeToBeDeleted);
+	}
+}
+
+void deleteAlternateNodesHashmap(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
+	}
+	map<unsigned int,sillNode *> indexNodeMap;
+	map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+	sillNode *crawler = ptr;
+	unsigned int counter = 0;
+	while(crawler != null){
+		indexNodeMap.insert(pair<unsigned int,sillNode *>(++counter,crawler));
+		crawler = crawler->next;
+	}
+	bool evenNode = false;
+	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
+		if(evenNode){
+			free(itToIndexNodeMap->second);
+			indexNodeMap.erase(itToIndexNodeMap->first);
+		}
+		evenNode = !evenNode;
+	}
+	sillNode *prevNode = indexNodeMap.begin()->second;
+	for(itToIndexNodeMap = indexNodeMap.begin()+1;itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
+		prevNode->next = itToIndexNodeMap->second;
+		if(itToIndexNodeMap+1 == indexNodeMap.end()){
+			itToIndexNodeMap->second = null;
+		}
+	}
+}
+
+#endif /* DELETEALTERNATENODES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

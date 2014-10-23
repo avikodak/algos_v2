@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: binarysearch.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\binarysearch.h
+ *  Created on			: Oct 22, 2014 :: 12:40:53 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,28 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef BINARYSEARCH_H_
+#define BINARYSEARCH_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+unsigned int binarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return -1;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	unsigned int middleIndex = (startIndex  + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		return middleIndex;
+	}
+	if(userInput[middleIndex] > key){
+		return binarySearch(userInput,key,startIndex,middleIndex-1);
+	}else{
+		return binarySearch(userInput,key,middleIndex+1,endIndex);
+	}
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* BINARYSEARCH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

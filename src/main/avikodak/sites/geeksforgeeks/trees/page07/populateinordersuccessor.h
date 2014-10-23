@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fibonnaciseries.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\fibonnaciseries.h
- *  Created on			: Oct 18, 2014 :: 12:33:46 PM
+ *  File Name   		: populateinordersuccessor.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\populateinordersuccessor.h
+ *  Created on			: Oct 23, 2014 :: 11:25:24 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,63 +65,122 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FIBONNACISERIES_H_
-#define FIBONNACISERIES_H_
+#ifndef POPULATEINORDERSUCCESSOR_H_
+#define POPULATEINORDERSUCCESSOR_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int getNthTermInFibonacci(unsigned int nValue){
-	if(n == 0){
-		return 0;
+void populateInorderSuccessorMain(isuccesssorNode *ptr,isuccesssorNode **prevNode){
+	if(ptr == null){
+		return;
 	}
-	if(n == 1 || n == 2){
-		return 1;
+	populateInorderSuccessorMain(ptr->left,prevNode);
+	if(*prevNode != null){
+		(*prevNode)->successor = ptr;
 	}
-	unsigned int lastValue = 1,lastSecondValue = 1,currentValue,temp;
-	for(unsigned int counter = 3;counter <= nValue;counter++){
-		temp = currentValue;
-		currentValue = lastSecondValue + lastValue;
-		lastSecondValue = lastValue;
-		lastValue = temp;
-	}
-	return currentValue;
+	(*prevNode) = ptr;
+	populateInorderSuccessorMain(ptr->right,prevNode);
 }
 
-unsigned int getNthTermInFibonnaciDP(unsigned int nValue){
-	if(nValue == 0){
-		return 0;
+void populateInorderSuccessor(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	static int fbValues[1024] = {0};
-	fbValues[1] = 1;
-	fbValues[2] = 1;
-	if(fbValues[nValue] != 0){
-		return fbValues;
+	isuccesssorNode *prevNode = null;
+	populateInorderSuccessorMain(ptr,&prevNode);
+	prevNode->successor = null;
+}
+
+void populateSuccessorReverseInorder(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	if(fbValues[nValue-1] == 0){
-		fbValues[nValue-1] = getNthTermInFibonnaciDP(nValue-1);
+	static isuccesssorNode *prevNode = null;
+	populateSuccessorReverseInorder(ptr->right);
+	ptr->successor = prevNode;
+	prevNode = ptr;
+	populateSuccessorReverseInorder(ptr->left);
+}
+
+void populateSuccessorReverseInorderIterative(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	if(fbValues[nValue-2] == 0){
-		fbValues[nValue-2] = getNthTermInFibonnaciDP(nValue-2);
+	stack<isuccesssorNode *> auxSpace;
+	isuccesssorNode *currentNode = ptr;
+	isuccesssorNode *prevNode = null;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->right;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->left == null){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			currentNode->successor = prevNode;
+			prevNode = currentNode;
+			while(!auxSpace.empty() && auxSpace.top()->left == currentNode){
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				currentNode->successor = prevNode;
+				prevNode = currentNode;
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->left;
 	}
-	fbValues[nValue] = fbValues[nValue-1] + fbValues[nValue-2];
-	return fbValues[nValue];
+}
+
+void populateSuccessorInorderIterative(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	stack<isuccesssorNode *> auxSpace;
+	isuccesssorNode *currentNode = ptr,*prevNode;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			if(prevNode != null){
+				prevNode->successor = currentNode;
+			}
+			prevNode = currentNode;
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				if(prevNode != null){
+					prevNode->successor = currentNode;
+				}
+				prevNode = currentNode;
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+	}
+	prevNode->successor = null;
+}
+
+void populateSuccessorInorderRetrieve(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	treeutils *utils = new treeutils();
+	vector<isuccesssorNode *> inorderNodes = utils->getNodesInInorder(ptr);
+	isuccesssorNode *prevNode = null;
+	for(int counter = inorderNodes.size()-1;counter >= 0;counter--){
+		inorderNodes[counter]->successor = prevNode;
+		prevNode = inorderNodes[counter];
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int getNthTermInFibonacciRecursion(unsigned int nValue){
-	if(n == 0){
-		return 0;
-	}
-	if(n == 1 || n == 2){
-		return 1;
-	}
-	return getNthTermInFibonacciRecursion(nValue-1) + getNthTermInFibonacciRecursion(nValue-2);
-}
 
-#endif /* FIBONNACISERIES_H_ */
+#endif /* POPULATEINORDERSUCCESSOR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

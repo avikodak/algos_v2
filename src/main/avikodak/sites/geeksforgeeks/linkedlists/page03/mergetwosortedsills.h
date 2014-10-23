@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: mergetwosortedsills.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\mergetwosortedsills.h
+ *  Created on			: Oct 23, 2014 :: 10:16:30 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,74 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef MERGETWOSORTEDSILLS_H_
+#define MERGETWOSORTEDSILLS_H_
 
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+sillNode *mergeTwoSortedSillON(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return null;
+	}
+	if(firstPtr == null || secondPtr == null){
+		return firstPtr == null?secondPtr:firstPtr;
+	}
+	sillNode *node = new sillNode();
+	if(firstPtr->value == secondPtr->value){
+		node->value = firstPtr->value;
+		node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr->next);
+	}else if(firstPtr->value < secondPtr->value){
+		node->value = firstPtr->value;
+		node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr);
+	}else{
+		node->value = secondPtr->value;
+		node->next = mergeTwoSortedSillON(firstPtr,secondPtr->next);
+	}
+	return node;
+}
+
+sillNode *mergeTwoSortedSillsONIterative(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return null;
+	}
+	if(firstPtr == null || secondPtr == null){
+		return firstPtr == null?secondPtr:firstPtr;
+	}
+	sillNode *mergedSill = null,*mergedSillCrawler;
+	int temp;
+	while(firstPtr != null && secondPtr != null){
+		if(firstPtr->value == secondPtr->value){
+			temp = firstPtr->value;
+			firstPtr = firstPtr->next;
+			secondPtr = secondPtr->next;
+		}else if(firstPtr->value > secondPtr->value){
+			temp = secondPtr->value;
+			secondPtr = secondPtr->next;
+		}else{
+			temp =  firstPtr->value;
+			firstPtr = firstPtr->next;
+		}
+		if(mergedSill == null){
+			mergedSill = new sillNode(temp);
+			mergedSillCrawler = mergedSill;
+		}else{
+			mergedSillCrawler->next = new sillNode(temp);
+			mergedSillCrawler = mergedSillCrawler->next;
+		}
+	}
+	return mergedSill;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Merge sort
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
-}
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* MERGETWOSORTEDSILLS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fibonnaciseries.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\fibonnaciseries.h
- *  Created on			: Oct 18, 2014 :: 12:33:46 PM
+ *  File Name   		: inordersuccessorbst.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inordersuccessorbst.h
+ *  Created on			: Oct 20, 2014 :: 3:24:20 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,63 +65,147 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FIBONNACISERIES_H_
-#define FIBONNACISERIES_H_
+#ifndef INORDERSUCCESSORBST_H_
+#define INORDERSUCCESSORBST_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int getNthTermInFibonacci(unsigned int nValue){
-	if(n == 0){
-		return 0;
+itNode *inOrderSuccessor(itNode *ptr,int value,bool &valueFound){
+	if(ptr == null){
+		return null;
 	}
-	if(n == 1 || n == 2){
-		return 1;
+	itNode *auxNode;
+	if(ptr->value == value){
+		valueFound = true;
+		if(ptr->right != null){
+			auxNode = ptr->right;
+			while(auxNode->left != null){
+				auxNode = auxNode->left;
+			}
+			return auxNode;
+		}
+		return null;
 	}
-	unsigned int lastValue = 1,lastSecondValue = 1,currentValue,temp;
-	for(unsigned int counter = 3;counter <= nValue;counter++){
-		temp = currentValue;
-		currentValue = lastSecondValue + lastValue;
-		lastSecondValue = lastValue;
-		lastValue = temp;
+	if(ptr->value > value){
+		auxNode = inOrderSuccessor(ptr->left,value,valueFound);
+		if(auxNode != null){
+			auxNode = ptr;
+		}
+	}else{
+		auxNode = inOrderSuccessor(ptr->right,value,valueFound);
 	}
-	return currentValue;
+	return auxNode;
 }
 
-unsigned int getNthTermInFibonnaciDP(unsigned int nValue){
-	if(nValue == 0){
-		return 0;
+itNode *inOrderSuccessorIterative(itNode *ptr,int value){
+	if(ptr == null){
+		return null;
 	}
-	static int fbValues[1024] = {0};
-	fbValues[1] = 1;
-	fbValues[2] = 1;
-	if(fbValues[nValue] != 0){
-		return fbValues;
+	itNode *currentNode = ptr,*probableSuccessor = null;
+	bool valFound = false;
+	while(true){
+		if(currentNode->value == value){
+			valFound = true;
+			if(currentNode->right == null){
+				break;
+			}
+			currentNode = currentNode->right;
+			while(currentNode->left != null){
+				currentNode = currentNode->left;
+			}
+			return currentNode;
+		}else{
+			if(currentNode->value > value){
+				probableSuccessor = currentNode;
+				currentNode = currentNode->left;
+			}else{
+				currentNode = currentNode->right;
+			}
+		}
 	}
-	if(fbValues[nValue-1] == 0){
-		fbValues[nValue-1] = getNthTermInFibonnaciDP(nValue-1);
-	}
-	if(fbValues[nValue-2] == 0){
-		fbValues[nValue-2] = getNthTermInFibonnaciDP(nValue-2);
-	}
-	fbValues[nValue] = fbValues[nValue-1] + fbValues[nValue-2];
-	return fbValues[nValue];
+	return valFound?probableSuccessor:null;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-unsigned int getNthTermInFibonacciRecursion(unsigned int nValue){
-	if(n == 0){
-		return 0;
+iptNode *inOrderSuccessorParentPtr(iptNode *ptr,int value){
+	if(ptr == null){
+		return null;
 	}
-	if(n == 1 || n == 2){
-		return 1;
+	iptNode *currentNode = ptr;
+	while(currentNode != null){
+		if(currentNode->value == value){
+			if(currentNode->right == null){
+				while(currentNode != null && currentNode->value < value){
+					currentNode = currentNode->parent;
+				}
+				return currentNode;
+			}else{
+				currentNode = currentNode->right;
+				while(currentNode->left != null){
+					currentNode = currentNode->left;
+				}
+				return currentNode;
+			}
+		}else{
+			if(currentNode->value > value){
+				currentNode = currentNode->left;
+			}else{
+				currentNode = currentNode->right;
+			}
+		}
 	}
-	return getNthTermInFibonacciRecursion(nValue-1) + getNthTermInFibonacciRecursion(nValue-2);
+	return null;
 }
 
-#endif /* FIBONNACISERIES_H_ */
+itNode *getInorderSuccessorPostOrderStack(stack<itNode *> auxSpace){
+	itNode *keyNode = auxSpace.top();
+	auxSpace.pop();
+	if(keyNode->right == null){
+		keyNode = keyNode->right;
+		while(keyNode->left != null){
+			keyNode = keyNode->left;
+		}
+		return keyNode;
+	}
+	while(!auxSpace.empty()){
+		if(auxSpace.top()->value > keyNode->value){
+			return auxSpace;
+		}
+	}
+	return null;
+}
+
+itNode *getInorderSuccessorBSTPreorderIterativeV2(itNode *ptr,int value){
+	if(ptr == null){
+		return null;
+	}
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
+			currentNode = auxSpace.top();
+			if(currentNode->value == value){
+				return getInorderSuccessorPostOrderStack(auxSpace);
+			}
+			auxSpace.pop();
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				currentNode = auxSpace.top();
+				if(currentNode->value == value){
+					return getInorderSuccessorPostOrderStack(auxSpace);
+				}
+				auxSpace.pop();
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+	}
+	return null;
+}
+
+#endif /* INORDERSUCCESSORBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

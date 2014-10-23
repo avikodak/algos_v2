@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: printnodesatkdistance.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\printnodesatkdistance.h
+ *  Created on			: Oct 20, 2014 :: 1:56:29 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,130 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef PRINTNODESATKDISTANCE_H_
+#define PRINTNODESATKDISTANCE_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void printNodesAtKDistance(itNode *ptr,unsigned int kValue){
+	if(ptr == null || kValue == 0){
+		return;
+	}
+	if(kValue == 1){
+		printf("%d\t",ptr->value);
+		return;
+	}
+	printNodesAtKDistance(ptr->left,kValue-1);
+	printNodesAtKDistance(ptr->right,kValue-1);
+}
+
+//Tested
+void printNodesAtKDistanceLevelOrder(itNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return;
+	}
+	queue<itNode *> auxSpace;
+	unsigned int levelCounter = 0;
+	itNode *currentNode;
+	auxSpace.push(ptr);
+	unsigned int level = 1;
+	while(!auxSpace.empty()){
+		levelCounter = auxSpace.size();
+		while(levelCounter--){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			if(level == kValue){
+				printf("%d\t",currentNode->value);
+			}
+			if(currentNode->left != null){
+				auxSpace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
+		}
+		if(level > kValue){
+			break;
+		}
+		level++;
+	}
+}
+
+//Tested
+inrNode *pGetNextRightPtr(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void pConnectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	pConnectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = pGetNextRightPtr(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = pGetNextRightPtr(ptr->nextRight);
+		}
+		pConnectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = pGetNextRightPtr(ptr->nextRight);
+		pConnectNodesAtSameLevel(ptr->right);
+	}else{
+		pConnectNodesAtSameLevel(pGetNextRightPtr(ptr));
+	}
+}
+
+//Tested
+void printLevelAfterConnecting(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	printf("%d\t",ptr->value);
+	printLevelAfterConnecting(ptr->nextRight);
+}
+
+//Tested
+void printNodesAtKDistanceAfterLevelConnection(inrNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return;
+	}
+	ptr->nextRight = null;
+	pConnectNodesAtSameLevel(ptr);
+	while(ptr != null && kValue--){
+		if(kValue == 0){
+			printLevelAfterConnecting(ptr);
+		}
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = pGetNextRightPtr(ptr->nextRight);
+		}
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
-}
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* PRINTNODESATKDISTANCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

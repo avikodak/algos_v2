@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maximumwidth.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\maximumwidth.h
- *  Created on			: Oct 18, 2014 :: 2:21:52 PM
+ *  File Name   		: connectnodesatsamelevel.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\connectnodesatsamelevel.h
+ *  Created on			: Oct 23, 2014 :: 12:06:51 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,113 +65,31 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXIMUMWIDTH_H_
-#define MAXIMUMWIDTH_H_
+#ifndef CONNECTNODESATSAMELEVEL_H_
+#define CONNECTNODESATSAMELEVEL_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setLevelCountPreOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+void connectNodesAtSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
-	}
-	setLevelCountPreOrder(ptr->left,level+1,levelFrequency);
-	setLevelCountPreOrder(ptr->right,level+1,levelFrequency);
-}
-
-//Tested
-unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	hash_map<uint32_t,unsigned int> nodeLevelMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeLevelMap;
-	hash_map<unsigned int,unsigned int> levelFrequency;
-	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
-	stack<itNode *> auxSpace;
-	itNode *currentNode;
+	queue<inrNode *> auxSpace;
+	inrNode *currentNode;
 	auxSpace.push(ptr);
-	nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
-	levelFrequency.insert(pair<unsigned int,unsigned int>(1,1));
-	unsigned int maxWidth = 0;
+	unsigned int levelCounter;
+	inrNode *prevNode;
 	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		itToNodeLevelMap = nodeLevelMap.find((uint32_t)currentNode);
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,itToNodeLevelMap->second+1));
-			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
-			if(itToLevelFrequency == levelFrequency.end()){
-				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));
-				maxWidth = maxWidth > 1?maxWidth:1;
-			}else{
-				levelFrequency[itToNodeLevelMap->second + 1] += 1;
-				maxWidth = max(maxWidth,levelFrequency[itToNodeLevelMap->second + 1]);
-			}
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,itToNodeLevelMap->second+1));
-			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
-			if(itToLevelFrequency == levelFrequency.end()){
-				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));
-				maxWidth = maxWidth > 1?maxWidth:1;
-			}else{
-				levelFrequency[itToNodeLevelMap->second + 1] += 1;
-				maxWidth = max(maxWidth,levelFrequency[itToNodeLevelMap->second + 1]);
-			}
-		}
-	}
-	return maxWidth;
-}
-
-void setLevelCountInOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
-	if(ptr == null){
-		return;
-	}
-	setLevelCountInOrder(ptr->left,level+1,levelFrequency);
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
-	}
-	setLevelCountInOrder(ptr->right,level+1,levelFrequency);
-}
-
-void setLevelCountPostOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
-	if(ptr == null){
-		return;
-	}
-	setLevelCountPostOrder(ptr->left,level-1,levelFrequency);
-	setLevelCountPostOrder(ptr->right,level-1,levelFrequency);
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
-	}
-}
-
-//Tested
-unsigned int getMaxWidthLevelOrder(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	queue<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	unsigned int counter,maxWidth = 0;
-	while(!auxSpace.empty()){
-		counter = auxSpace.size();
-		maxWidth = max(maxWidth,counter);
-		while(counter--){
+		levelCounter = auxSpace.size();
+		prevNode = null;
+		while(levelCounter--){
 			currentNode = auxSpace.front();
 			auxSpace.pop();
+			if(prevNode != null){
+				prevNode->nextRight = currentNode;
+			}
+			prevNode = currentNode;
 			if(currentNode->left != null){
 				auxSpace.push(currentNode->left);
 			}
@@ -179,39 +97,120 @@ unsigned int getMaxWidthLevelOrder(itNode *ptr){
 				auxSpace.push(currentNode->right);
 			}
 		}
+		prevNode->nextRight = null;
 	}
-	return maxWidth;
+}
+
+void connectNodesAtSameLevelPreOrder(inrNode *ptr,unsigned int level = 0){
+	if(ptr == null){
+		return;
+	}
+	static hash_map<unsigned int,inrNode *> prevNodesLevelMap;
+	hash_map<unsigned int,inrNode *>::iterator itToPrevNodesLevelMap;
+	if((itToPrevNodesLevelMap = prevNodesLevelMap.find(level)) == prevNodesLevelMap){
+		ptr->nextRight = null;
+		prevNodesLevelMap.insert(pair<unsigned int,inrNode *>(level,ptr));
+	}else{
+		ptr->nextRight = itToPrevNodesLevelMap->second;
+		prevNodesLevelMap[level] = ptr;
+	}
+	connectNodesAtSameLevelPreOrder(ptr->right,level+1);
+	connectNodesAtSameLevelPreOrder(ptr->left,level+1);
+}
+
+inrNode *getNextRight(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+void connectNodesAtSameLevelNextRightPreorderMain(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNodesAtSameLevelNextRightPreorderMain(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right = getNextRight(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = getNextRight(ptr->nextRight);
+		}
+		connectNodesAtSameLevelNextRightPreorderMain(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right = getNextRight(ptr->nextRight);
+		connectNodesAtSameLevelNextRightPreorderMain(ptr->right);
+	}else{
+		connectNodesAtSameLevelNextRightPreorderMain(getNextRight(ptr->nextRight));
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int widthOfLevel(itNode *ptr,unsigned int level){
+void connectNodesAtLevel(inrNode *ptr,unsigned int level){
 	if(ptr == null){
-		return 0;
+		return;
 	}
+	static inrNode *prevNode = null;
 	if(level == 0){
-		return 1;
+		ptr->nextRight = prevNode;
+		prevNode = ptr;
+		return;
 	}
-	return widthOfLevel(ptr->left,level-1) + widthOfLevel(ptr->right,level-1);
+	connectNodesAtLevel(ptr->right,level-1);
+	connectNodesAtLevel(ptr->left,level-1);
 }
 
-//Tested
-unsigned int getMaxWidthLevelOrderON2(itNode *ptr){
+void connectNodesAtSameLevel(inrNode *ptr){
 	if(ptr == null){
-		return 0;
+		return;
 	}
 	treeutils *utils = new treeutils();
 	unsigned int height = utils->getHeightOfTree(ptr);
-	unsigned int width = 0;
 	for(unsigned int counter = 0;counter < height;counter++){
-		width = max(width,widthOfLevel(ptr,counter));
+		connectNodesAtLevel(ptr,counter);
 	}
-	return width;
 }
 
-#endif /* MAXIMUMWIDTH_H_ */
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//These solutions only work when nodes are at same level
+void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->left != null){
+		ptr->left->nextRight = ptr->right;
+	}
+	if(ptr->right != null){
+		ptr->right->nextRight = ptr->nextRight == null?null:ptr->nextRight->left;
+	}
+	connectNodesAtSameLevelPreOrderFullTree(ptr->left);
+	connectNodesAtSameLevelPreOrderFullTree(ptr->right);
+}
+
+void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inrNode *crawler = ptr;
+	while(crawler != null){
+		crawler = crawler->nextRight;
+	}
+}
+
+#endif /* CONNECTNODESATSAMELEVEL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

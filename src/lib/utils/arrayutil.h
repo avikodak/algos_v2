@@ -91,6 +91,22 @@ vector<int> getVectorForUserInput(){
 	return userInput;
 }
 
+hash_map<int,unsigned int> getFrequencyMapFromVector(vector<int> userInput){
+	hash_map<int,unsigned int> frequencyMap;
+	if(userInput.size() == 0){
+		return frequencyMap;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
+			frequencyMap[userInput[counter]] += 1;
+		}else{
+			frequencyMap[userInput[counter]] = 1;
+		}
+	}
+	return frequencyMap;
+}
+
+//Tested
 bool isVectorSorted(vector<int> userInput){
 	if(userInput.size() == 0 || userInput.size() == 1){
 		return true;

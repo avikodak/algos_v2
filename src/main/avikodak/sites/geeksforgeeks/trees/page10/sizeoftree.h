@@ -378,6 +378,73 @@ unsigned int getSizeOfTreeLevelOrder(itNode *ptr){
 	return counter;
 }
 
+//Tested
+inrNode *getNextRightNode(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void sConnectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = getNextRightNode(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = getNextRightNode(ptr->nextRight);
+		}
+		sConnectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = getNextRightNode(ptr->nextRight);
+		sConnectNodesAtSameLevel(ptr->right);
+	}else{
+		sConnectNodesAtSameLevel(ptr->nextRight);
+	}
+}
+
+//Tested
+unsigned int getSizeOfTreeByConnectingNodesAtSameLevelMain(inrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	return 1 + getSizeOfTreeByConnectingNodesAtSameLevelMain(ptr->nextRight);
+}
+
+//Tested
+unsigned int getSizeOfTreeByConnectingNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	ptr->nextRight = null;
+	sConnectNodesAtSameLevel(ptr);
+	unsigned int sizeOfTree = 0;
+	while(ptr != null){
+		sizeOfTree += getSizeOfTreeByConnectingNodesAtSameLevelMain(ptr);
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = getNextRightNode(ptr->nextRight);
+		}
+	}
+	return sizeOfTree;
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -74,8 +74,15 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/printroottoleafpaths.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/spirallevelordertraversal.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/diameteroftree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/doubletree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursion.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursionandstack.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/istreeheightbalanced.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/maximumwidth.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/printnodesatkdistance.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/sortedbstarray.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/treefrompreinorder.h"
 
 #include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
 
@@ -105,23 +112,32 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> randomVector = generateIRandomVector(10,1,10);
-	printIVector(randomVector);
-	dynamicset *temp = new dynamicset();
-	for(unsigned int counter = 0;counter < randomVector.size();counter++){
-		temp->insert(randomVector[counter]);
-	}
-	temp->printSet();
-	temp->deleteVal(7);
-	PRINT_NEW_LINE;
-	temp->printSet();
+	vector<int> randomVector = getVectorForUserInput();
+	sortedBSTArray(randomVector,0);
 }
 
+void p(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	printf("%d -> %d\n",ptr->value,ptr->nextRight != null?ptr->nextRight->value:0);
+	p(ptr->left);
+	p(ptr->right);
+}
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	itNode *root = utils->getRandomTree(10,1,50);
-	imorrisInorderTraversal(root);
+	vector<int> sequence = generateISequenceVector(10);
+	/*random_shuffle(sequence.begin(),sequence.end());
+	inrNode *root = new inrNode(1);
+	root->right = new inrNode(2);
+	root->right->left = new inrNode(3);
+	root->right->right = new inrNode(5);
+	root->right->left->right = new inrNode(4);
+	inrNode *root = utils->getINRTreeFromVector(sequence);*/
+	itNode *root = utils->getITreeFromVector(sequence);
+	printNodesAtKDistanceLevelOrder(root,3);
+	//p(root);
 }
 
 void sillTester(){

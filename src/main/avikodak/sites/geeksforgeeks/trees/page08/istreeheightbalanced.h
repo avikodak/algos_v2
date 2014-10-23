@@ -71,15 +71,16 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int isTreeHeighBalanced(itNode *ptr,bool &isHeightBalanced){
+//Tested
+int isTreeHeightBalancedV2(itNode *ptr,bool &isHeightBalanced){
 	if(ptr == null){
 		return 0;
 	}
-	int leftSubTreeHeight = isTreeHeighBalanced(ptr->left,isHeightBalanced);
+	int leftSubTreeHeight = isTreeHeightBalancedV2(ptr->left,isHeightBalanced);
 	if(leftSubTreeHeight == INT_MIN){
 		return INT_MIN;
 	}
-	int rightSubTreeHeight = isTreeHeighBalanced(ptr->right,isHeightBalanced);
+	int rightSubTreeHeight = isTreeHeightBalancedV2(ptr->right,isHeightBalanced);
 	if(rightSubTreeHeight == INT_MIN){
 		return INT_MIN;
 	}
@@ -94,6 +95,7 @@ int isTreeHeighBalanced(itNode *ptr,bool &isHeightBalanced){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isTreeHeightBalanced(itNode *ptr){
 	if(ptr == null){
 		return true;
@@ -101,7 +103,7 @@ bool isTreeHeightBalanced(itNode *ptr){
 	treeutils *utils = new treeutils();
 	int leftSubtreeHeight = utils->getHeightOfTree(ptr->left);
 	int rightSubtreeHeight = utils->getHeightOfTree(ptr->right);
-	if(abs(leftSubtreeHeight - rightSubtreeHeight) <= 1){
+	if(abs(leftSubtreeHeight - rightSubtreeHeight) > 1){
 		return false;
 	}
 	return isTreeHeightBalanced(ptr->left) && isTreeHeightBalanced(ptr->right);

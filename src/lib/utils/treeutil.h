@@ -256,6 +256,38 @@ public:
 	}
 
 	//Tested
+	inrNode *getINRTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0){
+		if(currentIndex >= userInput.size()){
+			return null;
+		}
+		inrNode *node = new inrNode(userInput[currentIndex]);
+		node->left = getINRTreeFromVector(userInput,2*currentIndex+1);
+		node->right = getINRTreeFromVector(userInput,2*currentIndex+2);
+		return node;
+	}
+
+	//Tested
+	inrNode *getINRandomTree(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX) {
+		if(numberOfNodes == 0){
+			return null;
+		}
+		vector<int> randomValues = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		printIVector(randomValues);
+		return getINRTreeFromVector(randomValues);
+	}
+
+	itNode *getITreeFromHashmap(hash_map<unsigned int,int> userInput,unsigned int currentIndex = 0){
+		hash_map<unsigned int,int>::iterator itToUserInput = userInput.find(currentIndex);
+		if(itToUserInput == userInput.end()){
+			return null;
+		}
+		itNode *node = new itNode(itToUserInput->second);
+		node->left = getITreeFromHashmap(userInput,2*currentIndex+1);
+		node->right = getITreeFromHashmap(userInput,2*currentIndex+2);
+		return node;
+	}
+
+	//Tested
 	itNode *getRandomTree(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX) {
 		if(numberOfNodes == 0){
 			return null;
@@ -557,6 +589,32 @@ public:
 		postOrderTraversal(ptr->left);
 		postOrderTraversal(ptr->right);
 		printf("%d\t",ptr->value);
+	}
+
+	//Tested
+	void levelOrderTraversal(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		queue<itNode *> auxSpace;
+		itNode *currentNode;
+		unsigned int levelCounter = 0;
+		auxSpace.push(ptr);
+		while(!auxSpace.empty()){
+			levelCounter = auxSpace.size();
+			while(levelCounter--){
+				currentNode = auxSpace.front();
+				printf("%d\t",currentNode->value);
+				auxSpace.pop();
+				if(currentNode->left != null){
+					auxSpace.push(currentNode->left);
+				}
+				if(currentNode->right != null){
+					auxSpace.push(currentNode->right);
+				}
+			}
+			PRINT_NEW_LINE;
+		}
 	}
 
 	vector<itNode *> getNodesInPreorder(itNode *ptr){

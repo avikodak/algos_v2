@@ -117,3 +117,16 @@ Inverse of a function
 	maps element from the range to domain
 	function is not invertible
 	It is a reflection on y = x	
+Golden ratio
+============
+x = 1 + 1/x - can be recursive called a/b = (a+b)/a
+x^2 = x + 1
+x^2 - x - 1 = 0
+	(1+sqrt(5))/2
+Product of rational number is a rational numbers
+Sum of rational number is a rational number
+Product of rational and irrational number is a irrational number
+Sum of rational number and irrational number is a irrational number
+Square root of any prime number is irrational number
+Product / sum of two irrational number can be either a rational number or irrational number
+Between any two rational number you can atleast find one irrational number

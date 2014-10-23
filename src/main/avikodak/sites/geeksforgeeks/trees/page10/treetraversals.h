@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/618/
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -448,6 +448,74 @@ void levelOrderTraversalON2(itNode *ptr){
 	unsigned int height = utils->getHeightOfTree(ptr);
 	for(unsigned int levelCounter = 0;levelCounter < height;levelCounter++){
 		printLevel(ptr,levelCounter);
+		PRINT_NEW_LINE;
+	}
+}
+
+//Tested
+inrNode *getNextRight(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void connectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = getNextRight(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = getNextRight(ptr->nextRight);
+		}
+		connectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = getNextRight(ptr->nextRight);
+		connectNodesAtSameLevel(ptr->right);
+	}else{
+		connectNodesAtSameLevel(ptr->nextRight);
+	}
+}
+
+//Tested
+void printNodesAfterConnectingNodes(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	printf("%d\t",ptr->value);
+	printNodesAfterConnectingNodes(ptr->nextRight);
+}
+
+//Tested
+void levelOrderTraversal(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	ptr->nextRight = null;
+	connectNodesAtSameLevel(ptr);
+	inrNode *crawler = ptr;
+	while(crawler != null){
+		printNodesAfterConnectingNodes(crawler);
+		if(crawler->left != null){
+			crawler = crawler->left;
+		}else if(crawler->right != null){
+			crawler = crawler->right;
+		}else{
+			crawler = getNextRight(crawler->nextRight);
+		}
 		PRINT_NEW_LINE;
 	}
 }

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: printancestors.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printancestors.h
+ *  Created on			: Oct 20, 2014 :: 8:38:49 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,107 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef PRINTANCESTORS_H_
+#define PRINTANCESTORS_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void printAncestorsForValue(itNode *ptr,int value,stack<itNode *> auxSpace){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->value == value){
+		itNode *currentNode;
+		while(!auxSpace.empty()){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			printf("%d\t",currentNode->value);
+		}
+		return;
+	}
+	auxSpace.push(ptr);
+	printAncestorsForValue(ptr->left,value,auxSpace);
+	printAncestorsForValue(ptr->right,value,auxSpace);
+}
+
+bool printAncestors(itNode *ptr,int value){
+	if(ptr == null){
+		return false;
+	}
+	if(ptr->value == value){
+		return true;
+	}
+	if(printAncestors(ptr->left,value) || printAncestors(ptr->right,value)){
+		printf("%d",ptr->value);
+		return true;
+	}
+	return false;
+}
+
+void printStack(stack<itNode *> auxSpace){
+	itNode *currentNode;
+	while(!auxSpace.empty()){
+		currentNode = auxSpace.top();
+		auxSpace.pop();
+		printf("%d\t",currentNode->value);
+	}
+}
+
+void printAncestorsPostOrderTraversalV2(itNode *ptr,int value){
+	if(ptr == null){
+		return;
+	}
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			if(currentNode->value == value){
+				printStack(auxSpace);
+			}
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				if(currentNode->value == value){
+					printStack(auxSpace);
+				}
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
+bool isValuePresentInTree(itNode *ptr,int value){
 	if(ptr == null){
-		return 0;
+		return false;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	if(ptr->value == value){
+		return true;
+	}
+	return isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value);
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+void printAncestorsInTree(itNode *ptr,int value){
+	if(ptr == null){
+		return;
+	}
+	if(isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value)){
+		printf("%d\t",ptr->value);
+	}
+	printAncestorsInTree(ptr->left,value);
+	printAncestorsInTree(ptr->right,value);
+}
+
+#endif /* PRINTANCESTORS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maximumwidth.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\maximumwidth.h
- *  Created on			: Oct 18, 2014 :: 2:21:52 PM
+ *  File Name   		: printbstkeysinrange.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printbstkeysinrange.h
+ *  Created on			: Oct 20, 2014 :: 8:38:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,153 +65,158 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXIMUMWIDTH_H_
-#define MAXIMUMWIDTH_H_
+#ifndef PRINTBSTKEYSINRANGE_H_
+#define PRINTBSTKEYSINRANGE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setLevelCountPreOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+void printBSTKeysInRange(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
 	}
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
+	if(ptr->value >= minValue){
+		printBSTKeysInRange(ptr->left,minValue,maxValue);
 	}
-	setLevelCountPreOrder(ptr->left,level+1,levelFrequency);
-	setLevelCountPreOrder(ptr->right,level+1,levelFrequency);
+	if(ptr->value >= minValue && ptr->value <= maxValue){
+		printf("%d\t",ptr->value);
+	}
+	if(ptr->value <= maxValue){
+		printBSTKeysInRange(ptr->right,minValue,maxValue);
+	}
 }
 
-//Tested
-unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	hash_map<uint32_t,unsigned int> nodeLevelMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeLevelMap;
-	hash_map<unsigned int,unsigned int> levelFrequency;
-	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
-	stack<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
-	levelFrequency.insert(pair<unsigned int,unsigned int>(1,1));
-	unsigned int maxWidth = 0;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		itToNodeLevelMap = nodeLevelMap.find((uint32_t)currentNode);
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,itToNodeLevelMap->second+1));
-			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
-			if(itToLevelFrequency == levelFrequency.end()){
-				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));
-				maxWidth = maxWidth > 1?maxWidth:1;
-			}else{
-				levelFrequency[itToNodeLevelMap->second + 1] += 1;
-				maxWidth = max(maxWidth,levelFrequency[itToNodeLevelMap->second + 1]);
-			}
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,itToNodeLevelMap->second+1));
-			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
-			if(itToLevelFrequency == levelFrequency.end()){
-				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));
-				maxWidth = maxWidth > 1?maxWidth:1;
-			}else{
-				levelFrequency[itToNodeLevelMap->second + 1] += 1;
-				maxWidth = max(maxWidth,levelFrequency[itToNodeLevelMap->second + 1]);
-			}
-		}
-	}
-	return maxWidth;
-}
-
-void setLevelCountInOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+void pFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	setLevelCountInOrder(ptr->left,level+1,levelFrequency);
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
-	}
-	setLevelCountInOrder(ptr->right,level+1,levelFrequency);
+	static itNode *prevNode = ptr;
+	pFixLeftPtr(ptr->left);
+	ptr->left = prevNode;
+	prevNode = ptr;
+	pFixLeftPtr(ptr->right);
 }
 
-void setLevelCountPostOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+void pFixRightPtr(itNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	itNode *currentNode = *ptr,*prevNode = null;
+	while(currentNode->right != null){
+		currentNode = currentNode->right;
+	}
+	while(currentNode != null){
+		currentNode = currentNode->left;
+		currentNode->right = prevNode;
+		prevNode = currentNode;
+	}
+	(*ptr) = prevNode;
+}
+
+void printBSTKeysInRangeDllConversionON(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
 	}
-	setLevelCountPostOrder(ptr->left,level-1,levelFrequency);
-	setLevelCountPostOrder(ptr->right,level-1,levelFrequency);
-	if(levelFrequency.find(level) != levelFrequency.end()){
-		levelFrequency[level] += 1;
-	}else{
-		levelFrequency[level] = 1;
+	pFixLeftPtr(ptr);
+	pFixRightPtr(&ptr);
+	while(ptr != null){
+		if(ptr->value >= minValue && ptr->value <= maxValue){
+			printf("%d\t",ptr->value);
+		}
+		ptr = ptr->right;
 	}
 }
 
-//Tested
-unsigned int getMaxWidthLevelOrder(itNode *ptr){
+void convertTreeToDLLON(itNode *ptr,itNode **root){
 	if(ptr == null){
-		return 0;
+		return;
 	}
-	queue<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	unsigned int counter,maxWidth = 0;
-	while(!auxSpace.empty()){
-		counter = auxSpace.size();
-		maxWidth = max(maxWidth,counter);
-		while(counter--){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
+	static itNode *prevNode = null;
+	convertTreeToDLLON(ptr->left,root);
+	ptr->left = prevNode;
+	if(prevNode == null){
+		(*root) = ptr;
+	}else{
+		prevNode->right = ptr;
+	}
+	prevNode = ptr;
+	convertTreeToDLLON(ptr->right,root);
+}
+
+void printKeysBSTInOrderDLLConversion(itNode *ptr,int minValue,int maxValue){
+	if(ptr == null){
+		return;
+	}
+	convertTreeToDLLON(ptr,&ptr);
+	while(ptr != null){
+		if(ptr->value >= minValue && ptr->value <= maxValue){
+			printf("%d\t",ptr->value);
+		}
+		ptr = ptr->right;
+	}
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void printKeysBSTBySorting(itNode *ptr,int minValue,int maxValue){
+	if(ptr == null){
+		return;
+	}
+	treeutils *utils = new treeutils();
+	vector<int> userInput = utils->getValuesInPreorder(ptr);
+	sort(userInput.begin(),userInput.end());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] >= minValue && userInput[counter] <= maxValue){
+			printf("%d\t",userInput[counter]);
 		}
 	}
-	return maxWidth;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int widthOfLevel(itNode *ptr,unsigned int level){
+itNode *convertTreeToDllON2(itNode *ptr){
 	if(ptr == null){
-		return 0;
+		return null;
 	}
-	if(level == 0){
-		return 1;
+	itNode *temp;
+	if(ptr->left != null){
+		temp = convertTreeToDllON2(ptr->left);
+		while(temp->right != null){
+			temp = temp->right;
+		}
+		temp->right = ptr;
+		ptr->left = temp;
 	}
-	return widthOfLevel(ptr->left,level-1) + widthOfLevel(ptr->right,level-1);
+	if(ptr->right != null){
+		temp = convertTreeToDllON2(ptr->right);
+		while(temp->left != null){
+			temp = temp->left;
+		}
+		temp->left = ptr;
+		ptr->right = temp;
+	}
+	return ptr;
 }
 
-//Tested
-unsigned int getMaxWidthLevelOrderON2(itNode *ptr){
+void printKeysBSTDllConversionON2(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
-		return 0;
+		return;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	unsigned int width = 0;
-	for(unsigned int counter = 0;counter < height;counter++){
-		width = max(width,widthOfLevel(ptr,counter));
+	convertTreeToDllON2(ptr);
+	while(ptr->left != null){
+		ptr = ptr->left;
 	}
-	return width;
+	while(ptr != null){
+		if(ptr->value >= minValue && ptr->value <= maxValue){
+			printf("%d\t",ptr->value);
+		}
+		ptr = ptr->right;
+	}
 }
 
-#endif /* MAXIMUMWIDTH_H_ */
+#endif /* PRINTBSTKEYSINRANGE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

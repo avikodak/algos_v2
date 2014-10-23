@@ -141,6 +141,7 @@ struct iDillHashmap{
 	hash_map<unsigned int,dillNode *> indexNodeMap;
 	hash_map<uint32_t,unsigned int> nodeIndexMap;
 };
+
 #endif /* LINKEDLISTDS_H_ */
 
 /****************************************************************************************************************************************************/

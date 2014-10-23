@@ -97,6 +97,72 @@ void tLevelOrderTraversal(itNode *ptr){
 	}
 }
 
+//Tested
+inrNode *tGetNextRightPtr(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void tConnectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	tConnectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = tGetNextRightPtr(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = tGetNextRightPtr(ptr->nextRight);
+		}
+		tConnectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = tGetNextRightPtr(ptr->nextRight);
+		tConnectNodesAtSameLevel(ptr->right);
+	}else{
+		tConnectNodesAtSameLevel(tGetNextRightPtr(ptr->nextRight));
+	}
+}
+
+//Tested
+void printNodesAfterConnecting(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	printf("%d\t",ptr->value);
+	printNodesAfterConnecting(ptr->nextRight);
+}
+
+//Tested
+void tLevelOrderNodesByConnecting(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	ptr->nextRight = null;
+	tConnectNodesAtSameLevel(ptr);
+	while(ptr != null){
+		printNodesAfterConnecting(ptr);
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = tGetNextRightPtr(ptr);
+		}
+	}
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: identicalsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\identicalsill.h
+ *  Created on			: Oct 23, 2014 :: 9:27:38 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,63 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef IDENTICALSILL_H_
+#define IDENTICALSILL_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return true;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	if(firstPtr == null || secondPtr == null){
+		return false;
+	}
+	return firstPtr->value == secondPtr->value && areSillsIdentical(firstPtr->next,secondPtr->next);
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return true;
+	}
+	if(firstPtr == null || secondPtr == null){
+		return false;
+	}
+	while(firstPtr != null && secondPtr != null){
+		if(firstPtr->value != secondPtr->value){
+			return false;
+		}
+		firstPtr = firstPtr->next;
+		secondPtr = secondPtr->next;
+	}
+	return firstPtr == null && secondPtr == null;
+}
+
+bool areSillsIdenticalHashmap(sillNode *firstPtr,sillNode *secondPtr){
+	if(firstPtr == null && secondPtr == null){
+		return true;
+	}
+	if(firstPtr == null || secondPtr == null){
+		return false;
+	}
+	sillutils *utils = new sillutils();
+	hash_map<unsigned int,sillNode *> indexNodeMapFirstSill = utils->getSillAsHashmap(firstPtr,1);
+	hash_map<unsigned int,sillNode *> indexNodeMapSecondSill = utils->getSillAsHashmap(secondPtr,1);
+	if(indexNodeMapFirstSill.size() != indexNodeMapSecondSill.size()){
+		return false;
+	}
+	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMapFirstSill,itToIndexNodeMapSecondSill;
+	for(itToIndexNodeMapFirstSill = indexNodeMapFirstSill.begin();itToIndexNodeMapFirstSill != indexNodeMapFirstSill.end();itToIndexNodeMapFirstSill++){
+		itToIndexNodeMapSecondSill = indexNodeMapSecondSill.find(itToIndexNodeMapFirstSill->first);
+		if(itToIndexNodeMapFirstSill == indexNodeMapSecondSill.end() || itToIndexNodeMapSecondSill->second->value != itToIndexNodeMapFirstSill->second->value){
+			return false;
+		}
+	}
+	return true;
+}
+
+#endif /* IDENTICALSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

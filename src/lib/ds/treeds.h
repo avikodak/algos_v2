@@ -71,6 +71,26 @@ struct itNode{
 	}
 };
 
+struct iptNode{
+	int value;
+	iptNode *left;
+	iptNode *right;
+	iptNode *parent;
+
+	iptNode(){
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	iptNode(int value){
+		this->value = value;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
 struct iftNode{
 	int value;
 	unsigned int frequency;
@@ -110,6 +130,46 @@ struct irtNode{
 	}
 };
 
+struct isuccesssorNode{
+	int value;
+	isuccesssorNode *left;
+	isuccesssorNode *right;
+	isuccesssorNode *successor;
+
+	isuccesssorNode(){
+		this->left = null;
+		this->right = null;
+		this->successor = null;
+	}
+
+	isuccesssorNode(int value){
+		this->value = value;
+		this->left = null;
+		this->right = null;
+		this->successor = null;
+	}
+};
+
+struct inrNode{
+	int value;
+	inrNode *left;
+	inrNode *right;
+	inrNode *nextRight;
+
+	inrNode(){
+		this->left = null;
+		this->right = null;
+		this->nextRight = null;
+	}
+
+	inrNode(int value){
+		this->value = value;
+		this->left = null;
+		this->right = null;
+		this->nextRight = null;
+	}
+
+};
 
 struct itHashmap{
 	hash_map<unsigned int,itNode *> indexNodeMap;

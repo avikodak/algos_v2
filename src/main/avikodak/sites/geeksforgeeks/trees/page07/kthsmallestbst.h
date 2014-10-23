@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: kthSmallestBST.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\kthSmallestBST.h
+ *  Created on			: Oct 20, 2014 :: 7:17:27 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,154 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef KTHSMALLESTBST_H_
+#define KTHSMALLESTBST_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+itNode *getKthSmallestBST(itNode *ptr,unsigned int &kValue){
+	if(ptr == null){
+		return null;
+	}
+	itNode *leftResult = getKthSmallestBST(ptr->left,kValue);
+	if(leftResult != null){
+		return leftResult;
+	}
+	kValue--;
+	if(kValue == 0){
+		return ptr;
+	}
+	return getKthSmallestBST(ptr->right,kValue);
+}
+
+void kFixLeftPtr(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	static itNode *prevNode = null;
+	kFixLeftPtr(ptr->left);
+	ptr->left = prevNode;
+	prevNode = ptr;
+	kFixLeftPtr(ptr->right);
+}
+
+void kFixRightPtr(itNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	itNode *currentNode = *ptr;
+	itNode *prevNode = null;
+	while(currentNode->right != null){
+		currentNode = currentNode->right;
+	}
+	while(currentNode != null){
+		currentNode->right = prevNode;
+		prevNode = currentNode;
+		currentNode = currentNode->left;
+	}
+	*ptr = prevNode;
+}
+
+itNode *getKthSmallestBSTDllConversion(itNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return null;
+	}
+	kFixLeftPtr(ptr);
+	kFixRightPtr(&ptr);
+	itNode *currentNode = ptr;
+	while(ptr != null && --kValue){
+		ptr = ptr->right;
+	}
+	return ptr;
+}
+
+void convertTreeToDLLON(itNode *ptr,itNode **head){
+	if(ptr == null){
+		(*head) = null;
+		return;
+	}
+	static itNode *prevNode = null;
+	convertTreeToDLLON(ptr->left,head);
+	ptr->left = prevNode;
+	if(prevNode == null){
+		(*head) = prevNode;
+	}else{
+		prevNode->right = ptr;
+	}
+	prevNode = ptr;
+	convertTreeToDLLON(ptr->right,head);
+}
+
+itNode *getKthSmallestBSTDllConversionON(itNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return null;
+	}
+	convertTreeToDLLON(ptr,&ptr);
+	while(ptr != null && --kValue){
+		ptr = ptr->right;
+	}
+	return ptr;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int getKthSmallestBST(itNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	treeutils *utils = new treeutils();
+	vector<int> values = utils->getValuesInPreorder(ptr);
+	sort(values.begin(),values.end());
+	if(kValue > values.size()){
+		return INT_MIN;
+	}
+	return values[kValue-1];
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
+itNode *convertTreeToDLLON2(itNode *ptr){
 	if(ptr == null){
-		return 0;
+		return null;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	itNode *temp;
+	if(ptr->left != null){
+		temp = convertTreeToDLLON2(ptr->left);
+		while(temp->right != null){
+			temp = temp->right;
+		}
+		temp->right = ptr;
+		ptr->left = temp;
+	}
+	if(ptr->right != null){
+		temp = convertTreeToDLLON2(ptr->right);
+		while(temp->left != null){
+			temp = temp->left;
+		}
+		temp->left = ptr;
+		ptr->right = temp;
+	}
+	return ptr;
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+itNode *getKthSmallestBSTDllConversionON2(itNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return null;
+	}
+	convertTreeToDLLON2(ptr);
+	while(ptr->left != null){
+		ptr = ptr->left;
+	}
+	while(ptr != null && --kValue){
+		ptr = ptr->right;
+	}
+	return ptr;
+}
+
+#endif /* KTHSMALLESTBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

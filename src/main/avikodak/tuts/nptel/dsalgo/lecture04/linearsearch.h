@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameteroftree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
- *  Created on			: Oct 17, 2014 :: 10:29:02 AM
+ *  File Name   		: linearsearch.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\linearsearch.h
+ *  Created on			: Oct 22, 2014 :: 12:41:12 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,24 +65,22 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DIAMETEROFTREE_H_
-#define DIAMETEROFTREE_H_
+#ifndef LINEARSEARCH_H_
+#define LINEARSEARCH_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-unsigned int getDiameterOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
+unsigned int linearSearch(vector<int> userInput,int value){
+	if(userInput.size() == 0){
+		return -1;
 	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return max(max(leftHeight+rightHeight+1,getDiameterOfTree(ptr->left)),getDiameterOfTree(ptr->right));
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == value){
+			return counter;
+		}
+	}
+	return -1;
 }
 
-#endif /* DIAMETEROFTREE_H_ */
+#endif /* LINEARSEARCH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
