@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
  *  File Name   		: insertintoavltree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture12\insertintoavltree.h
- *  Created on			: Nov 18, 2014 :: 10:41:00 PM
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\insertintoavltree.h
+ *  Created on			: Nov 19, 2014 :: 1:52:21 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -69,11 +69,12 @@ using namespace __gnu_cxx;
 #define INSERTINTOAVLTREE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	ipAvlNode *grandParent = parent->parent;
-	child->parent = grandParent;
+	child->parent  = grandParent;
+	parent->parent = child;
 	if(grandParent != null){
 		if(grandParent->left == parent){
 			grandParent->left = child;
@@ -81,7 +82,6 @@ void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 			grandParent->right = child;
 		}
 	}
-	parent->parent = child;
 	if(parent->left == child){
 		parent->left = child->right;
 		child->right = parent;
@@ -91,67 +91,61 @@ void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	}
 }
 
-iptNode *insertAtRightPlace(ipAvlNode *ptr,int value){
-	if(ptr->value == value){
+ipAvlNode *insertNodeAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new ipAvlNode(value);
 		return null;
-	}else if(ptr->value > value){
-		if(ptr->left == null){
-			ptr->left = new ipAvlNode(value);
-			ptr->left->parent = ptr;
-			return ptr;
-		}else{
-			return insertAtRightPlace(ptr->left,value);
-		}
 	}else{
-		if(ptr->right == null){
-			ptr->right = new ipAvlNode(value);
-			ptr->right->parent = ptr;
-			return ptr;
+		if(currentNode->value == value){
+			return null;
+		}else if(currentNode->value > value){
+			if(currentNode->left == null){
+				currentNode->left = new ipAvlNode(value);
+				currentNode->left->parent = currentNode;
+				return currentNode;
+			}else{
+				return insertNodeAtRightPlace(root,currentNode->left,value);
+			}
 		}else{
-			return insertAtRightPlace(ptr->right,value);
+			if(currentNode->right == null){
+				currentNode->right = new ipAvlNode(value);
+				currentNode->right->parent = currentNode;
+				return currentNode;
+			}else{
+				return insertNodeAtRightPlace(root,currentNode->right,value);
+			}
 		}
 	}
 }
 
 void insertIntoAvlTree(ipAvlNode **root,int value){
-	if(*root == null){
-		(*root) = new ipvlNode(value);
+	ipAvlNode *currentNode = insertNodeAtRightPlace(root,*root,value);
+	if(currentNode == null){
 		return;
-	}else{
-		iptNode *currentNode = insertAtRightPlace(*root,value);
-		if(currentNode == null){
+	}
+	ipAvlNode *z = currentNode,*y,*x;
+	int leftHeight,rightHeight;
+	while(z != null){
+		leftHeight = z->left == null?0:z->left->height;
+		rightHeight = z->right == null?0:z->right->height;
+		if(abs(leftHeight - rightHeight) > 1){
+			y = z->value > value?z->left:z->right;
+			x = y->value > value?y->left:y->right;
+			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
+				rotateNodes(z,y);
+				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+			}else{
+				rotateNodes(y,x);
+				rotateNodes(z,x);
+				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
+			}
 			return;
 		}
-		ipAvlNode *z = currentNode,*y,*x;
-		int leftHeight,rightHeight;
-		while(z != null){
-			leftHeight = z->left == null?0:z->left->height;
-			rightHeight = z->right == null?0:z->right->height;
-			if(abs(leftHeight - rightHeight) > 1){
-				y = z->value > value?z->left:z->right;
-				x = y->value > value?y->left:y->right;
-				if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
-					if(z->parent == null){
-						(*root) = y;
-					}
-					rotateNodes(z,y);
-					z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-					y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
-				}else{
-					if(z->parent == null){
-						(*root) = x;
-					}
-					rotateNodes(y,x);
-					rotateNodes(x,z);
-					z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-					y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
-					x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
-				}
-				return;
-			}
-			z->height = max(leftHeight,rightHeight) + 1;
-			z = z->parent;
-		}
+		z->height = 1 + max(leftHeight,rightHeight);
+		z = z->parent;
 	}
 }
 

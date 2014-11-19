@@ -198,6 +198,13 @@ void avlTreeTester(){
 	}
 }
 
+void twoFourTreeTester(){
+	vector<int> sequence = generateISequenceVector(6);
+	twofourtreeutils *utils = new twofourtreeutils();
+	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
+	utils->inorderTraversal(root);
+}
+
 void sillTester(){
 	sillutils *utils = new sillutils();
 	sillNode *head = utils->getRandomSill(10,1,50);
@@ -214,7 +221,7 @@ void customTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	avlTreeTester();
+	twoFourTreeTester();
 	return 0;
 }
 

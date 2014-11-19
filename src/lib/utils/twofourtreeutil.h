@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -58,6 +58,167 @@ using namespace __gnu_cxx;
 #ifndef TWOFOURTREEUTIL_H_
 #define TWOFOURTREEUTIL_H_
 
+class twofourtreeutils {
+private:
+	void insertAtRightPlace(i24Node **root,i24Node *currentNode,int value){
+		static i24Node *prevNode,*prevFirstSplitNode,*prevSecondSplitNode;
+		static bool flag;
+		if(*root == null){
+			(*root) = new i24Node(value);
+			return;
+		}
+		if(currentNode->noOfChildren == 0 || flag){
+			if(currentNode->noOfKeys < 3){
+				currentNode->noOfKeys += 1;
+				int counter = currentNode->noOfKeys-2;
+				while(counter >= 0 && currentNode->value[counter] > value){
+					currentNode->value[counter+1] = currentNode->value[counter];
+					counter++;
+				}
+				currentNode->value[counter+1] = value;
+				if(prevNode != null){
+					int fillCounter = -1;
+					vector<i24Node *> childrenPtrs;
+					bool prevPtrConnected = false;
+					if(currentNode->noOfChildren > 0){
+						for(unsigned int counter = 0;counter < currentNode->noOfChildren;){
+							if(currentNode->children[counter] == prevNode){
+								counter++;
+								continue;
+							}else if(currentNode->children[counter]->value[0] > prevFirstSplitNode->value[0] && !prevPtrConnected){
+								childrenPtrs.push_back(prevFirstSplitNode);
+								childrenPtrs.push_back(prevSecondSplitNode);
+								prevPtrConnected = true;
+							}else{
+								childrenPtrs.push_back(currentNode->children[counter]);
+								counter++;
+							}
+						}
+						if(!prevPtrConnected){
+							childrenPtrs.push_back(prevFirstSplitNode);
+							childrenPtrs.push_back(prevSecondSplitNode);
+						}
+					}else{
+						childrenPtrs.push_back(prevFirstSplitNode);
+						childrenPtrs.push_back(prevSecondSplitNode);
+					}
+					for(unsigned int counter = 0;counter <= currentNode->noOfKeys;counter++){
+						currentNode->children[counter] = childrenPtrs[counter];
+					}
+					free(prevNode);
+				}
+				return;
+			}
+			i24Node *firstSplitNode = new i24Node();
+			i24Node *secondSplitNode = new i24Node();
+			firstSplitNode->parent = currentNode->parent;
+			secondSplitNode->parent = currentNode->parent;
+			bool valueInserted = false,firstSplitNodeFilled = false,prevPtrConnected = false;
+			int fillCounter = -1,existingNodeCounter = 0;
+			vector<i24Node *> childrenPtrs;
+			for(unsigned int counter = 0;counter < currentNode->noOfKeys;){
+				if(!firstSplitNodeFilled){
+					if(currentNode->value[counter] < value){
+						firstSplitNode->value[++fillCounter] = currentNode->value[counter];
+						counter++;
+					}else{
+						firstSplitNode->value[++fillCounter] = value;
+						valueInserted = true;
+					}
+					if(fillCounter == 1){
+						fillCounter = -1;
+						firstSplitNodeFilled = true;
+					}
+				}else{
+					if(currentNode->value[counter] < value){
+						secondSplitNode->value[++fillCounter] = currentNode->value[counter];
+						counter++;
+					}else{
+						secondSplitNode->value[++fillCounter] = value;
+						valueInserted = true;
+					}
+				}
+			}
+			if(!valueInserted){
+				secondSplitNode->value[++fillCounter] = value;
+			}
+			for(unsigned int counter = 0;counter < currentNode->noOfKeys;){
+				if(currentNode->children[counter] == prevNode){
+					counter++;
+				}else if(currentNode->children[counter]->value[0] > prevFirstSplitNode->value[0] && !prevPtrConnected){
+					childrenPtrs.push_back(prevFirstSplitNode);
+					childrenPtrs.push_back(prevSecondSplitNode);
+					prevPtrConnected = true;
+				}else{
+					childrenPtrs.push_back(currentNode->children[counter]);
+					counter++;
+				}
+			}
+			firstSplitNode->noOfKeys = 1;
+			secondSplitNode->noOfKeys = 2;
+			if(childrenPtrs.size() > 0){
+				unsigned int childrenCounter = 0;
+				for(unsigned int counter = 0;counter <= firstSplitNode->noOfKeys;counter++){
+					firstSplitNode->children[counter] = childrenPtrs[childrenCounter++];
+				}
+				for(unsigned int counter = 0;counter <= secondSplitNode->noOfKeys;counter++){
+					secondSplitNode->children[counter] = childrenPtrs[childrenCounter++];
+				}
+			}
+			if(prevNode != null){
+				free(prevNode);
+			}
+			if(currentNode->parent == null){
+				(*root) = new i24Node(firstSplitNode->value[1]);
+				(*root)->children[0] = firstSplitNode;
+				(*root)->children[1] = secondSplitNode;
+				(*root)->noOfChildren = 2;
+				firstSplitNode->parent = (*root);
+				secondSplitNode->parent = (*root);
+				free(currentNode);
+				return;
+			}
+			prevNode = currentNode;
+			prevFirstSplitNode = firstSplitNode;
+			prevSecondSplitNode = secondSplitNode;
+			flag = true;
+			insertAtRightPlace(root,currentNode->parent,firstSplitNode->value[1]);
+		}else if(currentNode->value[0] > value){
+			insertAtRightPlace(root,currentNode->children[0],value);
+		}else if(currentNode->value[currentNode->noOfKeys - 1] < value){
+			insertAtRightPlace(root,currentNode->children[currentNode->noOfChildren-1],value);
+		}else{
+			unsigned int counter = 1;
+			while(currentNode->value[counter] > value){
+				counter++;
+			}
+			insertAtRightPlace(root,currentNode->children[counter],value);
+		}
+	}
+public:
+	void insertIntoTwoFourTree(i24Node **root,int value){
+		insertAtRightPlace(root,*root,value);
+	}
+
+	i24Node *getTwoFourTreeFromVector(vector<int> userInput){
+		i24Node *root = null;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			insertIntoTwoFourTree(&root,userInput[counter]);
+		}
+		return root;
+	}
+
+	void inorderTraversal(i24Node *ptr){
+		if(ptr == null){
+			return;
+		}
+		for(unsigned int counter = 0;counter < ptr->noOfKeys;counter++){
+			inorderTraversal(ptr->children[counter]);
+			printf("%d\t",ptr->value[counter]);
+		}
+		inorderTraversal(ptr->children[ptr->noOfKeys]);
+	}
+};
 
 #endif /* TWOFOURTREEUTIL_H_ */
 
