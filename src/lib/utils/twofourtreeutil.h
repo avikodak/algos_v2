@@ -105,8 +105,13 @@ private:
 					for(unsigned int counter = 0;counter <= currentNode->noOfKeys;counter++){
 						currentNode->children[counter] = childrenPtrs[counter];
 					}
+					currentNode->noOfChildren += 1;
 					free(prevNode);
 				}
+				flag = false;
+				prevNode = null;
+				prevFirstSplitNode = null;
+				prevSecondSplitNode = null;
 				return;
 			}
 			i24Node *firstSplitNode = new i24Node();
@@ -142,30 +147,36 @@ private:
 			if(!valueInserted){
 				secondSplitNode->value[++fillCounter] = value;
 			}
-			for(unsigned int counter = 0;counter < currentNode->noOfKeys;){
-				if(currentNode->children[counter] == prevNode){
-					counter++;
-				}else if(currentNode->children[counter]->value[0] > prevFirstSplitNode->value[0] && !prevPtrConnected){
-					childrenPtrs.push_back(prevFirstSplitNode);
-					childrenPtrs.push_back(prevSecondSplitNode);
-					prevPtrConnected = true;
-				}else{
-					childrenPtrs.push_back(currentNode->children[counter]);
-					counter++;
-				}
-			}
 			firstSplitNode->noOfKeys = 1;
 			secondSplitNode->noOfKeys = 2;
-			if(childrenPtrs.size() > 0){
-				unsigned int childrenCounter = 0;
-				for(unsigned int counter = 0;counter <= firstSplitNode->noOfKeys;counter++){
-					firstSplitNode->children[counter] = childrenPtrs[childrenCounter++];
-				}
-				for(unsigned int counter = 0;counter <= secondSplitNode->noOfKeys;counter++){
-					secondSplitNode->children[counter] = childrenPtrs[childrenCounter++];
-				}
-			}
 			if(prevNode != null){
+				for(unsigned int counter = 0;counter < currentNode->noOfChildren;){
+					if(currentNode->children[counter] == prevNode){
+						counter++;
+					}else if(currentNode->children[counter]->value[0] > prevFirstSplitNode->value[0] && !prevPtrConnected){
+						childrenPtrs.push_back(prevFirstSplitNode);
+						childrenPtrs.push_back(prevSecondSplitNode);
+						prevPtrConnected = true;
+					}else{
+						childrenPtrs.push_back(currentNode->children[counter]);
+						counter++;
+					}
+				}
+				if(!prevPtrConnected){
+					childrenPtrs.push_back(prevFirstSplitNode);
+					childrenPtrs.push_back(prevSecondSplitNode);
+				}
+				if(childrenPtrs.size() > 0){
+					unsigned int childrenCounter = 0;
+					for(unsigned int counter = 0;counter <= firstSplitNode->noOfKeys;counter++){
+						firstSplitNode->children[counter] = childrenPtrs[childrenCounter++];
+					}
+					for(unsigned int counter = 0;counter <= secondSplitNode->noOfKeys;counter++){
+						secondSplitNode->children[counter] = childrenPtrs[childrenCounter++];
+					}
+				}
+				firstSplitNode->noOfChildren = 2;
+				secondSplitNode->noOfChildren = 3;
 				free(prevNode);
 			}
 			if(currentNode->parent == null){
@@ -176,6 +187,10 @@ private:
 				firstSplitNode->parent = (*root);
 				secondSplitNode->parent = (*root);
 				free(currentNode);
+				flag = false;
+				prevNode = null;
+				prevFirstSplitNode = null;
+				prevSecondSplitNode = null;
 				return;
 			}
 			prevNode = currentNode;
@@ -186,7 +201,7 @@ private:
 		}else if(currentNode->value[0] > value){
 			insertAtRightPlace(root,currentNode->children[0],value);
 		}else if(currentNode->value[currentNode->noOfKeys - 1] < value){
-			insertAtRightPlace(root,currentNode->children[currentNode->noOfChildren-1],value);
+			insertAtRightPlace(root,currentNode->children[currentNode->noOfKeys],value);
 		}else{
 			unsigned int counter = 1;
 			while(currentNode->value[counter] > value){
@@ -219,6 +234,7 @@ public:
 		inorderTraversal(ptr->children[ptr->noOfKeys]);
 	}
 };
+
 
 #endif /* TWOFOURTREEUTIL_H_ */
 

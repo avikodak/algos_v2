@@ -199,9 +199,10 @@ void avlTreeTester(){
 }
 
 void twoFourTreeTester(){
-	vector<int> sequence = generateISequenceVector(6);
+	vector<int> sequence = generateISequenceVector(9);
 	twofourtreeutils *utils = new twofourtreeutils();
 	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
+	utils->insertIntoTwoFourTree(&root,10);
 	utils->inorderTraversal(root);
 }
 
