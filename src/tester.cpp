@@ -178,6 +178,26 @@ void treeTester(){
 	//5 20 8 22 4 12 10 22
 }
 
+void avlTreeTester(){
+	avlutils *utils = new avlutils();
+	vector<int> sequence = generateISequenceVector(10);
+	for(unsigned int counter = 1;counter <= 10;counter++){
+		sequence.push_back(counter);
+	}
+	ifpAvlNode *root = utils->getFAvlTreeFromVector(sequence);
+	//utils->insertIntoAvlTree(&root,1);
+	utils->inorderTraversal(root);
+	PRINT_NEW_LINE;
+	printf("%d\n",utils->getHeightOfTree(root));
+	printf("%d\n",utils->minAvlTree(root)->value);
+	printf("%d\n",utils->maxAvlTree(root)->value);
+	ifpAvlNode *temp1,*temp2;
+	for(unsigned int counter = 1;counter <= 10;counter++){
+		printf("%d \t %d\t",(temp1 = utils->predecessor(root,counter)) == null?INT_MIN:temp1->value,(temp2 = utils->successor(root,counter))==null?INT_MAX:temp2->value);
+		PRINT_NEW_LINE;
+	}
+}
+
 void sillTester(){
 	sillutils *utils = new sillutils();
 	sillNode *head = utils->getRandomSill(10,1,50);
@@ -194,7 +214,7 @@ void customTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	treeTester();
+	avlTreeTester();
 	return 0;
 }
 

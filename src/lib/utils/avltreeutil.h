@@ -61,6 +61,7 @@ using namespace __gnu_cxx;
 
 class avlutils {
 private:
+	//Tested
 	void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 		ipAvlNode *grandParent = parent->parent;
 		child->parent = grandParent;
@@ -81,6 +82,7 @@ private:
 		}
 	}
 
+	//Tested
 	void rotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 		ifpAvlNode *grandParent = parent->parent;
 		child->parent = grandParent;
@@ -101,6 +103,7 @@ private:
 		}
 	}
 
+	//Tested
 	ipAvlNode *insertAtRightPlaceInAvlTree(ipAvlNode **root,ipAvlNode *currentNode,int value){
 		if(*root == null){
 			(*root) = new ipAvlNode(value);
@@ -110,22 +113,23 @@ private:
 		}else if(currentNode->value > value){
 			if(currentNode->left == null){
 				currentNode->left = new ipAvlNode(value);
-				currentNode->left->parent = currentNode->left;
-				return currentNode->left;
+				currentNode->left->parent = currentNode;
+				return currentNode;
 			}else{
 				return insertAtRightPlaceInAvlTree(root,currentNode->left,value);
 			}
 		}else{
 			if(currentNode->right == null){
 				currentNode->right = new ipAvlNode(value);
-				currentNode->right->parent = currentNode->right;
-				return currentNode->right;
+				currentNode->right->parent = currentNode;
+				return currentNode;
 			}else{
 				return insertAtRightPlaceInAvlTree(root,currentNode->right,value);
 			}
 		}
 	}
 
+	//Tested
 	ifpAvlNode *insertAtRightPlaceInAvlTree(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 		if(*root == null){
 			(*root) = new ifpAvlNode(value);
@@ -138,7 +142,7 @@ private:
 			if(currentNode->left == null){
 				currentNode->left = new ifpAvlNode(value);
 				currentNode->left->parent = currentNode;
-				return currentNode->left;
+				return currentNode;
 			}else{
 				return insertAtRightPlaceInAvlTree(root,currentNode->left,value);
 			}
@@ -146,7 +150,7 @@ private:
 			if(currentNode->right == null){
 				currentNode->right = new ifpAvlNode(value);
 				currentNode->right->parent = currentNode;
-				return currentNode->right;
+				return currentNode;
 			}else{
 				return insertAtRightPlaceInAvlTree(root,currentNode->right,value);
 			}
@@ -157,13 +161,14 @@ private:
 
 	}
 public:
+	//Tested
 	void insertIntoAvlTree(ipAvlNode **root,int value){
 		ipAvlNode *parentToInsertedNode = insertAtRightPlaceInAvlTree(root,*root,value);
 		if(parentToInsertedNode == null){
 			return;
 		}
 		ipAvlNode *x,*y,*z = parentToInsertedNode;
-		unsigned int leftHeight,rightHeight;
+		int leftHeight,rightHeight;
 		while(z != null){
 			leftHeight = z->left == null?0:z->left->height;
 			rightHeight = z->right == null?0:z->right->height;
@@ -200,7 +205,7 @@ public:
 			return;
 		}
 		ipAvlNode *z = parentOfDeletedNode,*y,*x;
-		unsigned int leftHeight,rightHeight;
+		int leftHeight,rightHeight;
 		while(z != null){
 			leftHeight = z->left == null?0:z->left->height;
 			rightHeight = z->right == null?0:z->right->height;
@@ -226,13 +231,14 @@ public:
 		}
 	}
 
+	//Tested
 	void insertIntoAvlTree(ifpAvlNode **root,int userInput){
 		ifpAvlNode *currentNode = insertAtRightPlaceInAvlTree(root,*root,userInput);
 		if(currentNode == null){
 			return;
 		}
 		ifpAvlNode *z = currentNode,*y,*x;
-		unsigned int leftHeight,rightHeight;
+		int leftHeight,rightHeight;
 		while(z != null){
 			leftHeight = z->left == null?0:z->left->height;
 			rightHeight = z->right == null?0:z->right->height;
@@ -263,6 +269,7 @@ public:
 		}
 	}
 
+	//Tested
 	ipAvlNode *getAvlTreeFromVector(vector<int> userInput){
 		if(userInput.size() == 0){
 			return null;
@@ -270,10 +277,12 @@ public:
 		ipAvlNode *root = null;
 		for(unsigned int counter = 0;counter < userInput.size();counter++){
 			insertIntoAvlTree(&root,userInput[counter]);
+			PRINT_NEW_LINE;
 		}
 		return root;
 	}
 
+	//Tested
 	ifpAvlNode *getFAvlTreeFromVector(vector<int> userInput){
 		if(userInput.size() == 0){
 			return null;
@@ -285,6 +294,7 @@ public:
 		return root;
 	}
 
+	//Tested
 	ipAvlNode *minAvlTree(ipAvlNode *ptr){
 		if(ptr == null){
 			return null;
@@ -295,6 +305,7 @@ public:
 		return minAvlTree(ptr->left);
 	}
 
+	//Tested
 	ifpAvlNode *minAvlTree(ifpAvlNode *ptr){
 		if(ptr == null){
 			return null;
@@ -305,6 +316,7 @@ public:
 		return minAvlTree(ptr->left);
 	}
 
+	//Tested
 	ipAvlNode *maxAvlTree(ipAvlNode *ptr){
 		if(ptr == null){
 			return null;
@@ -315,6 +327,7 @@ public:
 		return maxAvlTree(ptr->right);
 	}
 
+	//Tested
 	ifpAvlNode *maxAvlTree(ifpAvlNode *ptr){
 		if(ptr == null){
 			return null;
@@ -352,6 +365,7 @@ public:
 		}
 	}
 
+	//Tested
 	ipAvlNode *successor(ipAvlNode *ptr,int value){
 		static bool keyFound = false;
 		if(ptr == null){
@@ -378,13 +392,14 @@ public:
 		}
 	}
 
+	//Tested
 	ifpAvlNode *successor(ifpAvlNode *ptr,int value){
 		static bool keyFound = false;
 		if(ptr == null){
 			return null;
 		}
 		if(ptr->value == value){
-			if(ptr->right == null){
+			if(ptr->right != null){
 				ptr = ptr->right;
 				while(ptr->left != null){
 					ptr = ptr->left;
@@ -392,7 +407,7 @@ public:
 				return ptr;
 			}
 			keyFound = true;
-			return ptr;
+			return null;
 		}else if(ptr->value > value){
 			ifpAvlNode *result = successor(ptr->left,value);
 			if(result == null & keyFound){
@@ -404,6 +419,7 @@ public:
 		}
 	}
 
+	//Tested
 	ipAvlNode *predecessor(ipAvlNode *ptr,int value){
 		static bool keyFound = false;
 		if(ptr == null){
@@ -430,16 +446,17 @@ public:
 		}
 	}
 
+	//Tested
 	ifpAvlNode *predecessor(ifpAvlNode *ptr,int value){
 		static bool keyFound = false;
 		if(ptr == null){
 			return null;
 		}
 		if(ptr->value == value){
-			if(ptr->right != null){
-				ptr = ptr->right;
-				while(ptr->left != null){
-					ptr = ptr->left;
+			if(ptr->left != null){
+				ptr = ptr->left;
+				while(ptr->right != null){
+					ptr = ptr->right;
 				}
 				return ptr;
 			}
@@ -454,6 +471,42 @@ public:
 			}
 			return result;
 		}
+	}
+
+	//Tested
+	void inorderTraversal(ipAvlNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		inorderTraversal(ptr->left);
+		printf("%d(%d)\t",ptr->value,ptr->height);
+		inorderTraversal(ptr->right);
+	}
+
+	//Tested
+	void inorderTraversal(ifpAvlNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		inorderTraversal(ptr->left);
+		printf("%d(F=%d\tH=%d)\t",ptr->value,ptr->frequency,ptr->height);
+		inorderTraversal(ptr->right);
+	}
+
+	//Tested
+	unsigned int getHeightOfTree(ipAvlNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
+	}
+
+	//Tested
+	unsigned int getHeightOfTree(ifpAvlNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
 	}
 };
 
