@@ -60,6 +60,7 @@ using namespace __gnu_cxx;
 
 class twofourtreeutils {
 private:
+	//Tested
 	void insertAtRightPlace(i24Node **root,i24Node *currentNode,int value){
 		static i24Node *prevNode,*prevFirstSplitNode,*prevSecondSplitNode;
 		static bool flag;
@@ -211,10 +212,12 @@ private:
 		}
 	}
 public:
+	//Tested
 	void insertIntoTwoFourTree(i24Node **root,int value){
 		insertAtRightPlace(root,*root,value);
 	}
 
+	//Tested
 	i24Node *getTwoFourTreeFromVector(vector<int> userInput){
 		i24Node *root = null;
 		for(unsigned int counter = 0;counter < userInput.size();counter++){
@@ -223,6 +226,7 @@ public:
 		return root;
 	}
 
+	//Tested
 	void inorderTraversal(i24Node *ptr){
 		if(ptr == null){
 			return;
