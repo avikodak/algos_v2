@@ -1,0 +1,127 @@
+/****************************************************************************************************************************************************
+ *  File Name   		: treefrompreinorder.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\treefrompreinorder.h
+ *  Created on			: Nov 18, 2014 :: 12:13:47 AM
+ *  Author				: AVINASH
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/****************************************************************************************************************************************************/
+
+using namespace std;
+using namespace __gnu_cxx;
+
+/****************************************************************************************************************************************************/
+/* 																INCLUDES		 																    */
+/****************************************************************************************************************************************************/
+
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <cstdio>
+#include <cmath>
+#include <algorithm>
+#include <ctime>
+#include <list>
+#include <map>
+#include <set>
+#include <bitset>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string.h>
+#include <hash_map>
+#include <stack>
+#include <queue>
+#include <limits.h>
+#include <algorithm/constants/constants.h>
+#include <algorithm/ds/commonds.h>
+#include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/mathds.h>
+#include <algorithm/ds/treeds.h>
+#include <algorithm/utils/arrayutil.h>
+#include <algorithm/utils/avltreeutil.h>
+#include <algorithm/utils/bplustreeutil.h>
+#include <algorithm/utils/btreeutil.h>
+#include <algorithm/utils/commonutil.h>
+#include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/mathutil.h>
+#include <algorithm/utils/redblacktreeutil.h>
+#include <algorithm/utils/sillutil.h>
+#include <algorithm/utils/treeutil.h>
+#include <algorithm/utils/twofourtreeutil.h>
+
+/****************************************************************************************************************************************************/
+/* 															USER DEFINED CONSTANTS 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																MAIN CODE START 																    */
+/****************************************************************************************************************************************************/
+
+#ifndef TREEFROMPREINORDER_H_
+#define TREEFROMPREINORDER_H_
+
+int getInorderIndexForValue(vector<int> inOrder,int startIndex,int endIndex,int value){
+	if(inOrder.size() == 0 || startIndex > endIndex){
+		return UINT_MAX;
+	}
+	for(unsigned int counter = startIndex;counter <= inOrder.size();counter++){
+		if(inOrder[counter] == value){
+			return counter;
+		}
+	}
+	return UINT_MAX;
+}
+
+itNode *constructTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return null;
+	}
+	static int preorderIndex = -1;
+	int value = preOrder[++preorderIndex];
+	itNode *node = new itNode(value);
+	int index = getInorderIndexForValue(inOrder,startIndex,endIndex,value);
+	node->left = constructTreeFromPreInorder(preOrder,inOrder,startIndex,index-1);
+	node->right = constructTreeFromPreInorder(preOrder,inOrder,index+1,endIndex);
+	return node;
+}
+
+void setIndexForValues(vector<int> inorder,hash_map<int,unsigned int> &valueIndexMap){
+	if(inorder.size() == 0){
+		return;
+	}
+	for(unsigned int counter = 0;counter < valueIndexMap.size();counter++){
+		valueIndexMap.insert(pair<int,unsigned int>(inorder[counter],counter));
+	}
+}
+
+itNode *constructTreeFromPreInorderV2(vector<int> preOrder,vector<int> inOrder,int startIndex,int endIndex){
+	if(startIndex > endIndex || preOrder.size() == 0 || inOrder.size() == 0){
+		return null;
+	}
+	static hash_map<int,unsigned int> valueIndexMap;
+	if(valueIndexMap.size() == 0){
+		setIndexForValues(inOrder,valueIndexMap);
+	}
+	static int preOrderIndex = -1;
+	int value = preOrder[preOrderIndex];
+	itNode *node = new itNode(value);
+	int index = (int)valueIndexMap.find(value)->second;
+	node->left = constructTreeFromPreInorderV2(preOrder,inOrder,startIndex,index-1);
+	node->right = constructTreeFromPreInorder(preOrder,inOrder,index+1,endIndex);
+	return value;
+}
+
+#endif /* TREEFROMPREINORDER_H_ */
+
+/****************************************************************************************************************************************************/
+/* 																MAIN CODE END 																	    */
+/****************************************************************************************************************************************************/
+

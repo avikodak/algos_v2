@@ -52,6 +52,7 @@
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
+#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
@@ -83,6 +84,33 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/printnodesatkdistance.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/sortedbstarray.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/treefrompreinorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/checkiftreeissumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/checkiftreesubtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/connectnodesatsamelevel.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/converttreetosumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/kthsmallestbst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/levelofnode.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/printancestors.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/sortedarraybst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/printbstkeysinrange.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/populateinordersuccessor.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/binarytreetobst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/boundaryoftree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/checkinternalnodehasexactlyonechild.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/constructtreefromprepostspecial.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/gettreefromspecialinorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/istreecomplete.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/largestbstsubtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/maxleaftorootsum.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/mergetwobsts.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/printmergedbsts.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/treefromspecialpreorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/verticalsumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/iterativepostordertwostacks.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/iterativepreordertraversal.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/morrispreorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/postoredertraversaliterative.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/reverseinordertraversal.h"
 
 #include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
 
@@ -98,6 +126,7 @@
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/insertintosortedsill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/detectloopsill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/intersectionofsill.h"
+#include "main/avikodak/sites/geeksforgeeks/linkedlists/page03/mergesort.h"
 
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
@@ -108,12 +137,18 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/tightstrategy.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicstack.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicset.h"
+
+#include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
+#include "main/avikodak/tuts/saurabhacademy/coinchange.h"
+#include "main/avikodak/tuts/saurabhacademy/generatesets.h"
+#include "main/avikodak/tuts/saurabhacademy/permutation.h"
+#include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> randomVector = getVectorForUserInput();
-	sortedBSTArray(randomVector,0);
+	vector<int> sequence = getVectorForUserInput();
+	printf("%d\n",longestIncreasingSubSequenceMemoization(sequence,8));
 }
 
 void p(inrNode *ptr){
@@ -125,36 +160,35 @@ void p(inrNode *ptr){
 	p(ptr->right);
 }
 
+void s(isuccesssorNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	printf("%d -> %d\n",ptr->value,ptr->successor == null ?0:ptr->successor->value);
+	s(ptr->left);
+	s(ptr->right);
+}
+
 void treeTester(){
 	treeutils *utils = new treeutils();
 	vector<int> sequence = generateISequenceVector(10);
-	/*random_shuffle(sequence.begin(),sequence.end());
-	inrNode *root = new inrNode(1);
-	root->right = new inrNode(2);
-	root->right->left = new inrNode(3);
-	root->right->right = new inrNode(5);
-	root->right->left->right = new inrNode(4);*/
-	inrNode *root = utils->getINRTreeFromVector(sequence);
-	printf("%d\t",getMaxWidthConnectingLevel(root));
-	//p(root);
+	isuccesssorNode *root = utils->getISTreeFromVector(sequence);
+	populateSuccessorInorderRetrieve(root);
+	s(root);
+	//5 20 8 22 4 12 10 22
 }
 
 void sillTester(){
 	sillutils *utils = new sillutils();
 	sillNode *head = utils->getRandomSill(10,1,50);
-	sillNode *head2 = utils->getRandomSill(4,100,200);
-	sillNode *temp = head2,*temp1 = head;
-	temp1 = temp1->next->next->next;
-	while(temp->next != null){
-		temp = temp->next;
-	}
-	temp->next = temp1;
+	mergeSort(&head);
 	utils->printSill(head);
-	PRINT_NEW_LINE;
-	utils->printSill(head2);
-	printf("\n%d\t",getIntersectionOfSillLength(head,head2)->value);
-	//getIntersectionOfSillLength(head,head2);
+}
 
+void customTester(){
+	char inputSequence[4];
+	scanf("%s",inputSequence);
+	printPermutation(inputSequence,0,3);
 }
 
 

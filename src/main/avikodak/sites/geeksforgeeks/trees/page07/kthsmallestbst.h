@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *getKthSmallestBST(itNode *ptr,unsigned int &kValue){
 	if(ptr == null){
 		return null;
@@ -86,6 +87,7 @@ itNode *getKthSmallestBST(itNode *ptr,unsigned int &kValue){
 	return getKthSmallestBST(ptr->right,kValue);
 }
 
+//Tested
 void kFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -97,6 +99,7 @@ void kFixLeftPtr(itNode *ptr){
 	kFixLeftPtr(ptr->right);
 }
 
+//Tested
 void kFixRightPtr(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -114,29 +117,29 @@ void kFixRightPtr(itNode **ptr){
 	*ptr = prevNode;
 }
 
+//Tested
 itNode *getKthSmallestBSTDllConversion(itNode *ptr,unsigned int kValue){
 	if(ptr == null){
 		return null;
 	}
 	kFixLeftPtr(ptr);
 	kFixRightPtr(&ptr);
-	itNode *currentNode = ptr;
 	while(ptr != null && --kValue){
 		ptr = ptr->right;
 	}
 	return ptr;
 }
 
+//Tested
 void convertTreeToDLLON(itNode *ptr,itNode **head){
 	if(ptr == null){
-		(*head) = null;
 		return;
 	}
 	static itNode *prevNode = null;
 	convertTreeToDLLON(ptr->left,head);
 	ptr->left = prevNode;
 	if(prevNode == null){
-		(*head) = prevNode;
+		(*head) = ptr;
 	}else{
 		prevNode->right = ptr;
 	}
@@ -144,6 +147,7 @@ void convertTreeToDLLON(itNode *ptr,itNode **head){
 	convertTreeToDLLON(ptr->right,head);
 }
 
+//Tested
 itNode *getKthSmallestBSTDllConversionON(itNode *ptr,unsigned int kValue){
 	if(ptr == null){
 		return null;
@@ -158,7 +162,8 @@ itNode *getKthSmallestBSTDllConversionON(itNode *ptr,unsigned int kValue){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getKthSmallestBST(itNode *ptr,unsigned int kValue){
+//Tested
+int getKthSmallestBSTAuxSpace(itNode *ptr,unsigned int kValue){
 	if(ptr == null){
 		return INT_MIN;
 	}
@@ -174,6 +179,7 @@ int getKthSmallestBST(itNode *ptr,unsigned int kValue){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *convertTreeToDLLON2(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -198,6 +204,7 @@ itNode *convertTreeToDLLON2(itNode *ptr){
 	return ptr;
 }
 
+//Tested
 itNode *getKthSmallestBSTDllConversionON2(itNode *ptr,unsigned int kValue){
 	if(ptr == null){
 		return null;

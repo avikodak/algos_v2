@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void populateInorderSuccessorMain(isuccesssorNode *ptr,isuccesssorNode **prevNode){
 	if(ptr == null){
 		return;
@@ -83,6 +84,7 @@ void populateInorderSuccessorMain(isuccesssorNode *ptr,isuccesssorNode **prevNod
 	populateInorderSuccessorMain(ptr->right,prevNode);
 }
 
+//Tested
 void populateInorderSuccessor(isuccesssorNode *ptr){
 	if(ptr == null){
 		return;
@@ -92,6 +94,7 @@ void populateInorderSuccessor(isuccesssorNode *ptr){
 	prevNode->successor = null;
 }
 
+//Tested
 void populateSuccessorReverseInorder(isuccesssorNode *ptr){
 	if(ptr == null){
 		return;
@@ -103,6 +106,7 @@ void populateSuccessorReverseInorder(isuccesssorNode *ptr){
 	populateSuccessorReverseInorder(ptr->left);
 }
 
+//Tested
 void populateSuccessorReverseInorderIterative(isuccesssorNode *ptr){
 	if(ptr == null){
 		return;
@@ -111,64 +115,50 @@ void populateSuccessorReverseInorderIterative(isuccesssorNode *ptr){
 	isuccesssorNode *currentNode = ptr;
 	isuccesssorNode *prevNode = null;
 	while(!auxSpace.empty() || currentNode != null){
-		while(currentNode != null){
+		if(currentNode != null){
 			auxSpace.push(currentNode);
 			currentNode = currentNode->right;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->left == null){
+		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
 			currentNode->successor = prevNode;
 			prevNode = currentNode;
-			while(!auxSpace.empty() && auxSpace.top()->left == currentNode){
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				currentNode->successor = prevNode;
-				prevNode = currentNode;
-			}
+			currentNode = currentNode->left;
 		}
-		currentNode = auxSpace.empty()?null:auxSpace.top()->left;
 	}
 }
 
+//Tested
 void populateSuccessorInorderIterative(isuccesssorNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	stack<isuccesssorNode *> auxSpace;
-	isuccesssorNode *currentNode = ptr,*prevNode;
+	isuccesssorNode *currentNode = ptr,*prevNode = null;
 	while(!auxSpace.empty() || currentNode != null){
-		while(currentNode != null){
+		if(currentNode != null){
 			auxSpace.push(currentNode);
 			currentNode = currentNode->left;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->right == null){
+		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
 			if(prevNode != null){
 				prevNode->successor = currentNode;
 			}
 			prevNode = currentNode;
-			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				if(prevNode != null){
-					prevNode->successor = currentNode;
-				}
-				prevNode = currentNode;
-			}
+			currentNode = currentNode->right;
 		}
-		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 	}
 	prevNode->successor = null;
 }
 
+//Tested
 void populateSuccessorInorderRetrieve(isuccesssorNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	treeutils *utils = new treeutils();
-	vector<isuccesssorNode *> inorderNodes = utils->getNodesInInorder(ptr);
+	vector<isuccesssorNode *> inorderNodes = utils->getSNodesInInOrder(ptr);
 	isuccesssorNode *prevNode = null;
 	for(int counter = inorderNodes.size()-1;counter >= 0;counter--){
 		inorderNodes[counter]->successor = prevNode;

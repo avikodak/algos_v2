@@ -1,0 +1,6 @@
+Ternary Search Trees
+	Can be used in applications like
+		Given a word find the next word in dictionary (near neighbour lookup)
+		Find all telephone numbers starting with 9342
+		Typing few starting characters in a web browser displays all websites name with this prefix 
+		Used in spell checks

@@ -171,6 +171,178 @@ struct inrNode{
 
 };
 
+struct iAvlNode{
+	int value;
+	unsigned int height;
+	iAvlNode *left;
+	iAvlNode *right;
+
+	iAvlNode(){
+		this->left = null;
+		this->right = null;
+	}
+
+	iAvlNode(int value){
+		this->value = value;
+		this->height = 1;
+		this->left = null;
+		this->right = null;
+	}
+};
+
+struct ifAvlNode{
+	int value;
+	unsigned int frequency;
+	unsigned int height;
+	ifAvlNode *left;
+	ifAvlNode *right;
+
+	ifAvlNode(){
+		this->frequency = 0;
+		this->left = null;
+		this->right = null;
+	}
+
+	ifAvlNode(int value){
+		this->value = value;
+		this->height = 1;
+		this->frequency = 1;
+		this->left = null;
+		this->right = null;
+	}
+};
+
+struct ipAvlNode{
+	int value;
+	unsigned int height;
+	ipAvlNode *left;
+	ipAvlNode *right;
+	ipAvlNode *parent;
+
+	ipAvlNode(){
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	ipAvlNode(int value){
+		this->value = value;
+		this->height = 1;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct ifpAvlNode{
+	int value;
+	unsigned int height;
+	unsigned int frequency;
+	ifpAvlNode *left;
+	ifpAvlNode *right;
+	ifpAvlNode *parent;
+
+	ifpAvlNode(){
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	ifpAvlNode(int value){
+		this->value = value;
+		this->height = 1;
+		this->frequency = 1;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct cTernaryNode{
+	char ch;
+	cTernaryNode *left;
+	cTernaryNode *equal;
+	cTernaryNode *right;
+	bool isEnd;
+
+	cTernaryNode(){
+		this->ch = '\0';
+		this->left = null;
+		this->equal = null;
+		this->right = null;
+		this->isEnd = false;
+	}
+
+	cTernaryNode(char ch){
+		this->ch = ch;
+		this->left = null;
+		this->equal = null;
+		this->right = null;
+		this->isEnd = false;
+	}
+};
+
+struct cpTernaryNode{
+	char ch;
+	cpTernaryNode *left;
+	cpTernaryNode *right;
+	cpTernaryNode *equal;
+	cpTernaryNode *parent;
+	bool isEnd;
+
+	cpTernaryNode(){
+		this->ch = '\0';
+		this->left = null;
+		this->equal = null;
+		this->right = null;
+		this->parent = null;
+		this->isEnd = false;
+	}
+
+	cpTernaryNode(char ch){
+		this->ch = ch;
+		this->left = null;
+		this->equal = null;
+		this->right = null;
+		this->parent = null;
+		this->isEnd = false;
+	}
+};
+
+struct cTrieNode{
+	cTrieNode *children[TRIE_ALPHABET_SIZE];
+	bool isLeafNode;
+
+	cTrieNode(){
+		for(unsigned int counter = 0;counter < TRIE_ALPHABET_SIZE;counter++){
+			this->children[counter] = null;
+			this->isLeafNode = false;
+		}
+	}
+};
+
+struct cpTrieNode{
+	cpTrieNode *children[TRIE_ALPHABET_SIZE];
+	cpTrieNode *parent;
+	bool isLeafNode;
+
+	cpTrieNode(){
+		for(unsigned int counter = 0;counter < TRIE_ALPHABET_SIZE;counter++){
+			this->children[counter] = null;
+			this->isLeafNode = false;
+		}
+		this->parent = null;
+	}
+
+	cpTrieNode(cpTrieNode *parent){
+		for(unsigned int counter = 0;counter < TRIE_ALPHABET_SIZE;counter++){
+			this->children[counter] = null;
+			this->isLeafNode = false;
+		}
+		this->parent = parent;
+	}
+};
+
 struct itHashmap{
 	hash_map<unsigned int,itNode *> indexNodeMap;
 	hash_map<uint32_t,unsigned int> nodeIndexMap;

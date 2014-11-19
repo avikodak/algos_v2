@@ -55,6 +55,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
+#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -68,16 +69,23 @@ using namespace __gnu_cxx;
 #ifndef LINEARSEARCH_H_
 #define LINEARSEARCH_H_
 
+unsigned int linearSearch(vector<int> userInput,int value,unsigned int index = 0){
+	if(index >= userInput.size()){
+		return UINT_MAX;
+	}
+	return userInput[index] == value?index:linearSearch(userInput,value,index+1);
+}
+
 unsigned int linearSearch(vector<int> userInput,int value){
 	if(userInput.size() == 0){
-		return -1;
+		return UINT_MAX;
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if(userInput[counter] == value){
 			return counter;
 		}
 	}
-	return -1;
+	return UINT_MAX;
 }
 
 #endif /* LINEARSEARCH_H_ */

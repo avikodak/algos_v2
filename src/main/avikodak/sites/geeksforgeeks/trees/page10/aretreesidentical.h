@@ -4,7 +4,7 @@
  *  Created on			: Oct 11, 2014 :: 12:20:22 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/write-c-code-to-determine-if-two-trees-are-identical/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -55,6 +55,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
+#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -185,8 +186,47 @@ bool areTreesIdenticalPostOrderIterativeTwoStacks(itNode *firstTreePtr,itNode *s
 		return false;
 	}
 	stack<itNode *> firstTreePrimaryAuxspace,firstTreeSecondaryAuxspace,secondTreePrimaryAuxspace,secondTreeSecondaryAuxspace;
-	//itNode *firstTreeCurrentNode,*secondTreeCurrentNode;
-	return false;
+	itNode *firstTreeCurrentNode,*secondTreeCurrentNode;
+	firstTreePrimaryAuxspace.push(firstTreePtr);
+	secondTreeSecondaryAuxspace.push(secondTreePtr);
+	while(!firstTreePrimaryAuxspace.empty() && !secondTreeSecondaryAuxspace.empty()){
+		firstTreeCurrentNode = firstTreePrimaryAuxspace.top();
+		secondTreeCurrentNode = secondTreeSecondaryAuxspace.top();
+		firstTreePrimaryAuxspace.pop();
+		secondTreePrimaryAuxspace.pop();
+		firstTreeSecondaryAuxspace.push(firstTreeCurrentNode);
+		secondTreeSecondaryAuxspace.push(secondTreeCurrentNode);
+		if(firstTreeCurrentNode->left != null){
+			if(secondTreeCurrentNode->left == null){
+				return false;
+			}
+			firstTreePrimaryAuxspace.push(firstTreeCurrentNode->left);
+			secondTreePrimaryAuxspace.push(secondTreeCurrentNode->left);
+		}
+		if(firstTreeCurrentNode->right != null){
+			if(secondTreeCurrentNode->right == null){
+				return false;
+			}
+			firstTreePrimaryAuxspace.push(firstTreeCurrentNode->right);
+			secondTreePrimaryAuxspace.push(secondTreeCurrentNode->right);
+		}
+	}
+	if(!firstTreePrimaryAuxspace.empty() || !secondTreePrimaryAuxspace.empty()){
+		return false;
+	}
+	if(firstTreeSecondaryAuxspace.size() != secondTreeSecondaryAuxspace.size()){
+		return false;
+	}
+	while(!firstTreeSecondaryAuxspace.empty() && !secondTreeSecondaryAuxspace.empty()){
+		firstTreeCurrentNode = firstTreeSecondaryAuxspace.top();
+		firstTreeSecondaryAuxspace.pop();
+		secondTreeCurrentNode = secondTreeSecondaryAuxspace.top();
+		secondTreeSecondaryAuxspace.pop();
+		if(firstTreeCurrentNode->value != secondTreeCurrentNode->value){
+			return false;
+		}
+	}
+	return true;
 }
 
 bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTreePtr){
@@ -196,7 +236,48 @@ bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTree
 	if(firstTreePtr == null || secondTreePtr == null){
 		return false;
 	}
-	return false;
+	stack<itNode *> firstTreeAuxspace,secondTreeAuxspace;
+	itNode *currentNodeFirstTree = firstTreePtr,*currentNodeSecondTree = secondTreePtr;
+	while((currentNodeFirstTree != null || !firstTreeAuxspace.empty()) && (currentNodeSecondTree != null || !secondTreeAuxspace.empty())){
+		if(currentNodeFirstTree != null){
+			if(currentNodeSecondTree == null){
+				return false;
+			}
+			if(currentNodeFirstTree->right != null){
+				if(currentNodeSecondTree->right == null){
+					return false;
+				}
+				firstTreeAuxspace.push(currentNodeFirstTree->right);
+				secondTreeAuxspace.push(currentNodeSecondTree->right);
+			}
+			firstTreeAuxspace.push(currentNodeFirstTree);
+			secondTreeAuxspace.push(currentNodeSecondTree);
+		}else{
+			if(currentNodeSecondTree != null){
+				return false;
+			}
+			currentNodeFirstTree = firstTreeAuxspace.top();
+			currentNodeSecondTree = secondTreeAuxspace.top();
+			firstTreeAuxspace.pop();
+			secondTreeAuxspace.pop();
+			if(!firstTreeAuxspace.empty() && firstTreeAuxspace.top() == currentNodeFirstTree->right){
+				if(secondTreeAuxspace.empty() || secondTreeAuxspace.top() != currentNodeSecondTree->right){
+					return false;
+				}
+				firstTreeAuxspace.push(currentNodeFirstTree);
+				secondTreeAuxspace.push(currentNodeSecondTree);
+				currentNodeFirstTree = currentNodeFirstTree->right;
+				currentNodeSecondTree = currentNodeSecondTree->right;
+			}else{
+				if(currentNodeFirstTree->value != currentNodeSecondTree->value){
+					return false;
+				}
+				currentNodeFirstTree = null;
+				currentNodeSecondTree = null;
+			}
+		}
+	}
+	return currentNodeFirstTree == null && currentNodeSecondTree == null && firstTreeAuxspace.empty() && secondTreeAuxspace.empty();
 }
 
 bool areTreesIdenticalPostOrderIterativeV2(itNode *firstTreePtr,itNode *secondTreePtr){
@@ -206,7 +287,49 @@ bool areTreesIdenticalPostOrderIterativeV2(itNode *firstTreePtr,itNode *secondTr
 	if(firstTreePtr == null || secondTreePtr == null){
 		return false;
 	}
-	return false;
+	stack<itNode *> firstTreeAuxspace,secondTreeAuxspace;
+	itNode *currentNodeFirstTree = firstTreePtr,*currentNodeSecondTree = secondTreePtr;
+	while((currentNodeFirstTree != null || !firstTreeAuxspace.empty()) && (currentNodeSecondTree != null || !secondTreeAuxspace.empty())){
+		while(currentNodeFirstTree != null){
+			if(currentNodeSecondTree == null){
+				return false;
+			}
+			firstTreeAuxspace.push(currentNodeFirstTree);
+			secondTreeAuxspace.push(currentNodeSecondTree);
+			currentNodeSecondTree = currentNodeSecondTree->left;
+			currentNodeFirstTree = currentNodeFirstTree->left;
+		}
+		if(!firstTreeAuxspace.empty() && firstTreeAuxspace.top()->right == null){
+			if(secondTreeAuxspace.empty() || secondTreeAuxspace.top()->right != null){
+				return false;
+			}
+			currentNodeFirstTree  = firstTreeAuxspace.top();
+			currentNodeSecondTree = secondTreeAuxspace.top();
+			firstTreeAuxspace.pop();
+			secondTreeAuxspace.pop();
+			if(currentNodeFirstTree->value != currentNodeSecondTree->value){
+				return false;
+			}
+			while(!firstTreeAuxspace.empty() && firstTreeAuxspace.top()->right == currentNodeFirstTree){
+				if(secondTreeAuxspace.empty() || secondTreeAuxspace.top()->right != currentNodeSecondTree){
+					return false;
+				}
+				currentNodeFirstTree  = firstTreeAuxspace.top();
+				currentNodeSecondTree = secondTreeAuxspace.top();
+				firstTreeAuxspace.pop();
+				secondTreeAuxspace.pop();
+				if(currentNodeFirstTree->value != currentNodeSecondTree->value){
+					return false;
+				}
+			}
+		}
+		if(firstTreeAuxspace.empty() != secondTreeAuxspace.empty()){
+			return false;
+		}
+		currentNodeFirstTree = firstTreeAuxspace.empty()?null:firstTreeAuxspace.top()->right;
+		currentNodeSecondTree = secondTreeAuxspace.empty()?null:secondTreeAuxspace.top()->right;
+	}
+	return currentNodeFirstTree == null && currentNodeSecondTree == null && firstTreeAuxspace.empty() && secondTreeAuxspace.empty();
 }
 
 //Tested

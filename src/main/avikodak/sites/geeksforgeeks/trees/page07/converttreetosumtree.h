@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,186 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef CONVERTTREETOSUMTREE_H_
+#define CONVERTTREETOSUMTREE_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+int convertTreeToSumTreePostOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	int temp = ptr->value;
+	if(ptr->left == null && ptr->right == null){
+		ptr->value = 0;
+		return temp;
+	}
+	ptr->value = convertTreeToSumTreePostOrder(ptr->left) + convertTreeToSumTreePostOrder(ptr->right);
+	return temp + ptr->value;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+int getSumOfNodes(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	return ptr->value + getSumOfNodes(ptr->left) + getSumOfNodes(ptr->right);
+}
+
+//Tested
+void convertTreeToSumTreePreOrder(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->left == null && ptr->right == null){
+		ptr->value = 0;
+		return;
+	}
+	ptr->value = getSumOfNodes(ptr->left) + getSumOfNodes(ptr->right);
+	convertTreeToSumTreePreOrder(ptr->left);
+	convertTreeToSumTreePreOrder(ptr->right);
+}
+
+void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+	if(ptr == null){
+		return;
+	}
+	convertTreeToSumTreeInOrderMain(ptr->left,nodeValueMap);
+	if(ptr->left == null && ptr->right == null){
+		ptr->value = 0;
+	}else{
+		int sum = 0;
+		if(ptr->left != null){
+			sum += ptr->value + nodeValueMap.find((uint32_t)ptr->left)->second;
+		}
+		sum += getSumOfNodes(ptr->right);
+		ptr->value = sum;
+	}
+	convertTreeToSumTreeInOrderMain(ptr->right,nodeValueMap);
+}
+
+//Tested
+void setNodeValueMap(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+	if(ptr == null){
+		return;
+	}
+	nodeValueMap.insert(pair<uint32_t,int>((uint32_t)ptr,ptr->value));
+	setNodeValueMap(ptr->left,nodeValueMap);
+	setNodeValueMap(ptr->right,nodeValueMap);
+}
+
+//Tested
+void setValueInNode(itNode *currentNode, hash_map<uint32_t,int> nodeValueMap){
+	if(currentNode->left == null && currentNode->right == null){
+		currentNode->value = 0;
+	}else{
+		int sum = 0;
+		if(currentNode->left != null){
+			sum = currentNode->left->value + nodeValueMap.find((uint32_t)currentNode->left)->second;
+		}
+		if(currentNode->right != null){
+			sum += currentNode->right->value + nodeValueMap.find((uint32_t)currentNode->right)->second;
+		}
+		currentNode->value = sum;
+	}
+}
+
+//Tested
+void convertTreeToSumTreePostOrderTwoStacks(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	hash_map<uint32_t,int> nodeValueMap;
+	setNodeValueMap(ptr,nodeValueMap);
+	stack<itNode *> primaryAuxspace,secondaryAuxspace;
+	primaryAuxspace.push(ptr);
+	itNode *currentNode;
+	while(!primaryAuxspace.empty()){
+		currentNode = primaryAuxspace.top();
+		primaryAuxspace.pop();
+		secondaryAuxspace.push(currentNode);
+		if(currentNode->left != null){
+			primaryAuxspace.push(currentNode->left);
+		}
+		if(currentNode->right != null){
+			primaryAuxspace.push(currentNode->right);
+		}
+	}
+	while(!secondaryAuxspace.empty()){
+		currentNode = secondaryAuxspace.top();
+		secondaryAuxspace.pop();
+		setValueInNode(currentNode, nodeValueMap);
+	}
+
+}
+
+//Tested
+void convertTreeToSumTreePostOrderIterative(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	hash_map<uint32_t,int> nodeValueMap;
+	setNodeValueMap(ptr,nodeValueMap);
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		if(currentNode != null){
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}else{
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			if(!auxSpace.empty() && auxSpace.top() == currentNode->right){
+				auxSpace.pop();
+				auxSpace.push(currentNode);
+				currentNode = currentNode->right;
+			}else{
+				setValueInNode(currentNode,nodeValueMap);
+				currentNode = null;
+			}
+		}
+	}
+}
+
+//Tested
+void convertTreeToSumTreePostOrderIterativeV2(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	hash_map<uint32_t,int> nodeValueMap;
+	setNodeValueMap(ptr,nodeValueMap);
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		while(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			setValueInNode(currentNode,nodeValueMap);
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				setValueInNode(currentNode,nodeValueMap);
+			}
+		}
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
+#endif /* CONVERTTREETOSUMTREE_H_ */
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef CONVERTTREETOSUMTREE_H_
-#define CONVERTTREETOSUMTREE_H_
-
-
-#endif /* CONVERTTREETOSUMTREE_H_ */

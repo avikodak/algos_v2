@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printAncestorsForValue(itNode *ptr,int value,stack<itNode *> auxSpace){
 	if(ptr == null){
 		return;
@@ -89,6 +90,7 @@ void printAncestorsForValue(itNode *ptr,int value,stack<itNode *> auxSpace){
 	printAncestorsForValue(ptr->right,value,auxSpace);
 }
 
+//Tested
 bool printAncestors(itNode *ptr,int value){
 	if(ptr == null){
 		return false;
@@ -97,12 +99,13 @@ bool printAncestors(itNode *ptr,int value){
 		return true;
 	}
 	if(printAncestors(ptr->left,value) || printAncestors(ptr->right,value)){
-		printf("%d",ptr->value);
+		printf("%d\t",ptr->value);
 		return true;
 	}
 	return false;
 }
 
+//Tested
 void printStack(stack<itNode *> auxSpace){
 	itNode *currentNode;
 	while(!auxSpace.empty()){
@@ -112,6 +115,7 @@ void printStack(stack<itNode *> auxSpace){
 	}
 }
 
+//Tested
 void printAncestorsPostOrderTraversalV2(itNode *ptr,int value){
 	if(ptr == null){
 		return;
@@ -144,6 +148,7 @@ void printAncestorsPostOrderTraversalV2(itNode *ptr,int value){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isValuePresentInTree(itNode *ptr,int value){
 	if(ptr == null){
 		return false;
@@ -154,6 +159,7 @@ bool isValuePresentInTree(itNode *ptr,int value){
 	return isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value);
 }
 
+//Tested
 void printAncestorsInTree(itNode *ptr,int value){
 	if(ptr == null){
 		return;

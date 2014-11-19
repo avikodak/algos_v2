@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printBSTKeysInRange(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
@@ -86,17 +87,19 @@ void printBSTKeysInRange(itNode *ptr,int minValue,int maxValue){
 	}
 }
 
+//Tested
 void pFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	static itNode *prevNode = ptr;
+	static itNode *prevNode = null;
 	pFixLeftPtr(ptr->left);
 	ptr->left = prevNode;
 	prevNode = ptr;
 	pFixLeftPtr(ptr->right);
 }
 
+//Tested
 void pFixRightPtr(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -106,13 +109,14 @@ void pFixRightPtr(itNode **ptr){
 		currentNode = currentNode->right;
 	}
 	while(currentNode != null){
-		currentNode = currentNode->left;
 		currentNode->right = prevNode;
 		prevNode = currentNode;
+		currentNode = currentNode->left;
 	}
 	(*ptr) = prevNode;
 }
 
+//Tested
 void printBSTKeysInRangeDllConversionON(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
@@ -127,12 +131,13 @@ void printBSTKeysInRangeDllConversionON(itNode *ptr,int minValue,int maxValue){
 	}
 }
 
-void convertTreeToDLLON(itNode *ptr,itNode **root){
+//Tested
+void pConvertTreeToDLLON(itNode *ptr,itNode **root){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	convertTreeToDLLON(ptr->left,root);
+	pConvertTreeToDLLON(ptr->left,root);
 	ptr->left = prevNode;
 	if(prevNode == null){
 		(*root) = ptr;
@@ -140,14 +145,15 @@ void convertTreeToDLLON(itNode *ptr,itNode **root){
 		prevNode->right = ptr;
 	}
 	prevNode = ptr;
-	convertTreeToDLLON(ptr->right,root);
+	pConvertTreeToDLLON(ptr->right,root);
 }
 
+//Tested
 void printKeysBSTInOrderDLLConversion(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
 	}
-	convertTreeToDLLON(ptr,&ptr);
+	pConvertTreeToDLLON(ptr,&ptr);
 	while(ptr != null){
 		if(ptr->value >= minValue && ptr->value <= maxValue){
 			printf("%d\t",ptr->value);
@@ -159,6 +165,7 @@ void printKeysBSTInOrderDLLConversion(itNode *ptr,int minValue,int maxValue){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printKeysBSTBySorting(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
@@ -176,13 +183,14 @@ void printKeysBSTBySorting(itNode *ptr,int minValue,int maxValue){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *convertTreeToDllON2(itNode *ptr){
+//Tested
+itNode *pConvertTreeToDllON2(itNode *ptr){
 	if(ptr == null){
 		return null;
 	}
 	itNode *temp;
 	if(ptr->left != null){
-		temp = convertTreeToDllON2(ptr->left);
+		temp = pConvertTreeToDllON2(ptr->left);
 		while(temp->right != null){
 			temp = temp->right;
 		}
@@ -190,7 +198,7 @@ itNode *convertTreeToDllON2(itNode *ptr){
 		ptr->left = temp;
 	}
 	if(ptr->right != null){
-		temp = convertTreeToDllON2(ptr->right);
+		temp = pConvertTreeToDllON2(ptr->right);
 		while(temp->left != null){
 			temp = temp->left;
 		}
@@ -200,11 +208,12 @@ itNode *convertTreeToDllON2(itNode *ptr){
 	return ptr;
 }
 
+//Tested
 void printKeysBSTDllConversionON2(itNode *ptr,int minValue,int maxValue){
 	if(ptr == null){
 		return;
 	}
-	convertTreeToDllON2(ptr);
+	pConvertTreeToDllON2(ptr);
 	while(ptr->left != null){
 		ptr = ptr->left;
 	}

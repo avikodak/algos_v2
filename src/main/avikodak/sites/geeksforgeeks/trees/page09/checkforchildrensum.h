@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\checkforchildrensum.h
  *  Created on			: Oct 16, 2014 :: 1:47:59 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-for-children-sum-property-in-a-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

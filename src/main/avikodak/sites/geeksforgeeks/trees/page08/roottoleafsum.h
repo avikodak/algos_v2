@@ -81,6 +81,25 @@ bool rootToLeafSumPreOrder(itNode *ptr,int sum){
 	return rootToLeafSumPreOrder(ptr->left,sum - ptr->value) || rootToLeafSumPreOrder(ptr->right,sum - ptr->value);
 }
 
+bool checkForSumStack(stack<int> userInput,int sum){
+	int currentSum = 0;
+	while(!userInput.empty()){
+		currentSum += userInput.top();
+	}
+	return currentSum == sum;
+}
+
+bool rootToLeafSumAncestorsAuxspace(itNode *ptr,int sum,stack<int> ancestors){
+	if(ptr == null){
+		return sum == 0;
+	}
+	if(ptr->left == null && ptr->right == null){
+		return checkForSumStack(ancestors,sum);
+	}
+	ancestors.push(ptr->value);
+	return rootToLeafSumAncestorsAuxspace(ptr->left,sum,ancestors) || rootToLeafSumAncestorsAuxspace(ptr->right,sum,ancestors);
+}
+
 bool checkForSumRootToLeaf(hash_map<unsigned int,itNode *> indexNodeMap,unsigned int leafIndex,unsigned int sum){
 	if(leafIndex == 0){
 		return sum == 0;
@@ -142,6 +161,15 @@ bool rootToLeafSumInOrder(itNode *ptr,int sum){
 	}
 }
 
+bool checkForSumHashmap(hash_map<unsigned int,itNode *> indexNodeMap,int sum,unsigned int index){
+	int currentSum = 0;
+	while(index > 0){
+		currentSum += indexNodeMap.find(index)->second->value;
+		index /= 2;
+	}
+	return currentSum == sum;
+}
+
 bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	if(ptr == null){
 		return sum != 0;
@@ -153,20 +181,30 @@ bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	hash_map<uint32_t,unsigned int> nodeIndexMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
 	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
+	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
+		itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
 		if(currentNode->left == null && currentNode->right == null){
-
+			if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
+				return true;
+			}
 		}else{
 			if(currentNode->right != null){
+				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*itToNodeIndexMap->second+1));
+				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,currentNode->right));
 				auxSpace.push(currentNode->right);
 			}
 			if(currentNode->left != null){
+				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
 				auxSpace.push(currentNode->left);
 			}
 		}
 	}
+	return false;
 }
 
 bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
@@ -175,21 +213,45 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
+	hash_map<unsigned int,itNode *> indexNodeMap;
+	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
+	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);
+			itToNodeIndexMap = indexNodeMap.find((uint32_t)currentNode);
+			if(currentNode->left != null){
+				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
+			}
 			currentNode = currentNode->left;
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
 			auxSpace.pop();
+			itToNodeIndexMap = indexNodeMap.find((uint32_t)currentNode);
+			if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
+				return true;
+			}
 			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
 				currentNode = auxSpace.top();
 				auxSpace.pop();
+				if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
+					return true;
+				}
 			}
+		}
+		if(!auxSpace.empty() && auxSpace.top()->right != null){
+			itToNodeIndexMap = indexNodeMap.find((uint32_t)auxSpace.top());
+			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)auxSpace.top()->right,2*itToNodeIndexMap->second+1));
+			indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,auxSpace.top()->right));
 		}
 		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 	}
+	return false;
 }
 
 bool rootToLeafSumHashmap(itNode *ptr,int sum){

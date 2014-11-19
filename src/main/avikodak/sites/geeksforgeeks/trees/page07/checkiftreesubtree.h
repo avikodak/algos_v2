@@ -121,6 +121,7 @@ bool isTreeSubTree(itNode *firstPtr,itNode *secondPtr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool areTreesIdentical(itNode *firstPtr,itNode *secondPtr){
 	if(firstPtr == null && secondPtr == null){
 		return true;
@@ -131,11 +132,12 @@ bool areTreesIdentical(itNode *firstPtr,itNode *secondPtr){
 	return firstPtr->value == secondPtr->value && areTreesIdentical(firstPtr->left,secondPtr->left) && areTreesIdentical(firstPtr->right,secondPtr->right);
 }
 
-bool isTreeSubTree(itNode *firstPtr,itNode *secondPtr){
+//Tested
+bool isTreeSubTreeON2(itNode *firstPtr,itNode *secondPtr){
 	if(firstPtr == null || secondPtr == null){
 		return true;
 	}
-	return areTreesIdentical(firstPtr,secondPtr) || isTreeSubTree(firstPtr->left,secondPtr) || isTreeSubTree(firstPtr->right,secondPtr);
+	return areTreesIdentical(firstPtr,secondPtr) || isTreeSubTreeON2(firstPtr->left,secondPtr) || isTreeSubTreeON2(firstPtr->right,secondPtr);
 }
 
 #endif /* CHECKIFTREESUBTREE_H_ */

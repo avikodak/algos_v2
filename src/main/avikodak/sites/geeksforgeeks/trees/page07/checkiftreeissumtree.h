@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreeissumtree.h
  *  Created on			: Oct 21, 2014 :: 10:33:41 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-sumtree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,31 +71,44 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isTreeSumTreePreOrder(itNode *ptr){
 	if(ptr == null || (ptr->left == null && ptr->right == null)){
 		return true;
 	}
-	int sum = ptr->left == null?0:2*ptr->left->value;
-	sum += ptr->right == null?0:2*ptr->right->value;
+	int sum = ptr->left == null?0:ptr->left->left == null && ptr->left->right == null?ptr->left->value:2*ptr->left->value;
+	sum += ptr->right == null?0:ptr->right->left == null && ptr->right->right == null?ptr->right->value:2*ptr->right->value;
 	if(ptr->value != sum){
 		return false;
 	}
 	return isTreeSumTreePreOrder(ptr->left) && isTreeSumTreePreOrder(ptr->right);
 }
 
-int isTreeSumTreePostOrder(itNode *ptr,bool &isSumTree){
+//Tested
+int isTreeSumTreePostOrderMain(itNode *ptr,bool &isSumTree){
 	if(ptr == null){
 		return 0;
 	}
 	if(ptr->left == null && ptr->right == null){
 		return ptr->value;
 	}
-	int leftSum = isTreeSumTreePostOrder(ptr->left,isSumTree);
-	int rightSum = isTreeSumTreePostOrder(ptr->right,isSumTree);
+	int leftSum = isTreeSumTreePostOrderMain(ptr->left,isSumTree);
+	int rightSum = isTreeSumTreePostOrderMain(ptr->right,isSumTree);
 	isSumTree = isSumTree && ptr->value == leftSum + rightSum;
 	return ptr->value + leftSum + rightSum;
 }
 
+//Tested
+bool isTreeSumTreePostOrder(itNode *ptr){
+	if(ptr == null){
+		return true;
+	}
+	bool flag = true;
+	isTreeSumTreePostOrderMain(ptr,flag);
+	return flag;
+}
+
+//Tested
 bool isTreeSumTreePostOrderV2(itNode *ptr){
 	if(ptr == null || (ptr->left == null && ptr->right == null)){
 		return true;
@@ -103,11 +116,12 @@ bool isTreeSumTreePostOrderV2(itNode *ptr){
 	if(!isTreeSumTreePostOrderV2(ptr->left) || !isTreeSumTreePostOrderV2(ptr->right)){
 		return false;
 	}
-	int leftSum = ptr->left == null?0:2*ptr->left->value;
-	int rightSum = ptr->right  == null?0:2*ptr->right->value;
+	int leftSum = ptr->left == null?0:ptr->left->left == null && ptr->left->right == null?ptr->left->value:2*ptr->left->value;
+	int rightSum = ptr->right  == null?0:ptr->right->left == null && ptr->right->right == null?ptr->right->value:2*ptr->right->value;
 	return ptr->value == leftSum + rightSum;
 }
 
+//Tested
 bool isTreeSumTreePostOrderIterativeTwoStacks(itNode *ptr){
 	if(ptr == null){
 		return true;
@@ -131,8 +145,8 @@ bool isTreeSumTreePostOrderIterativeTwoStacks(itNode *ptr){
 		currentNode = secondaryAuxspace.top();
 		secondaryAuxspace.pop();
 		if(currentNode->left != null || currentNode->right != null){
-			leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
-			rightSum = currentNode->right == null?0:2*currentNode->right->value;
+			leftSum = currentNode->left == null ?0:currentNode->left->left == null && currentNode->left->right == null?currentNode->left->value:2*currentNode->left->value;
+			rightSum = currentNode->right == null?0:currentNode->right->left == null && currentNode->right->right == null?currentNode->right->value:2*currentNode->right->value;
 			if(currentNode->value != leftSum + rightSum){
 				return false;
 			}
@@ -141,18 +155,21 @@ bool isTreeSumTreePostOrderIterativeTwoStacks(itNode *ptr){
 	return true;
 }
 
+//Tested
 bool isTreeSumTreePostOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return true;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
+	int leftSum,rightSum;
 	while(!auxSpace.empty() || currentNode != null){
 		if(currentNode != null){
 			if(currentNode->right != null){
 				auxSpace.push(currentNode->right);
 			}
 			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
 		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
@@ -162,8 +179,8 @@ bool isTreeSumTreePostOrderIterative(itNode *ptr){
 				currentNode = currentNode->right;
 			}else{
 				if(currentNode->left != null || currentNode->right != null){
-					leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
-					rightSum = currentNode->right == null?0:2*currentNode->right->value;
+					leftSum = currentNode->left == null ? 0:currentNode->left->left == null && currentNode->left->right == null?currentNode->left->value:2*currentNode->left->value;
+					rightSum = currentNode->right == null?0:currentNode->right->left == null && currentNode->right->right == null?currentNode->right->value:2*currentNode->right->value;
 					if(currentNode->value != leftSum + rightSum){
 						return false;
 					}
@@ -175,12 +192,14 @@ bool isTreeSumTreePostOrderIterative(itNode *ptr){
 	return true;
 }
 
+//Tested
 bool isTreeSumTreePostOrderIterativeV2(itNode *ptr){
 	if(ptr == null){
 		return true;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
+	int leftSum,rightSum;
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);
@@ -190,8 +209,8 @@ bool isTreeSumTreePostOrderIterativeV2(itNode *ptr){
 			currentNode = auxSpace.top();
 			auxSpace.pop();
 			if(currentNode->left != null || currentNode->right != null){
-				leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
-				rightSum = currentNode->right == null?0:2*currentNode->right->value;
+				leftSum = currentNode->left == null ? 0:currentNode->left->left == null && currentNode->left->right == null?currentNode->left->value:2*currentNode->left->value;
+				rightSum = currentNode->right == null?0:currentNode->right->left == null && currentNode->right->right == null?currentNode->right->value:2*currentNode->right->value;
 				if(currentNode->value != leftSum + rightSum){
 					return false;
 				}
@@ -200,8 +219,8 @@ bool isTreeSumTreePostOrderIterativeV2(itNode *ptr){
 				currentNode = auxSpace.top();
 				auxSpace.pop();
 				if(currentNode->left != null || currentNode->right != null){
-					leftSum = currentNode->left == null ? 0:2*currentNode->left->value;
-					rightSum = currentNode->right == null?0:2*currentNode->right->value;
+					leftSum = currentNode->left == null ? 0:currentNode->left->left == null && currentNode->left->right == null?currentNode->left->value:2*currentNode->left->value;
+					rightSum = currentNode->right == null?0:currentNode->right->left == null && currentNode->right->right == null?currentNode->right->value:2*currentNode->right->value;
 					if(currentNode->value != leftSum + rightSum){
 						return false;
 					}
@@ -216,6 +235,7 @@ bool isTreeSumTreePostOrderIterativeV2(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int sumOfNodesTree(itNode *ptr){
 	if(ptr == null){
 		return 0;
@@ -223,6 +243,7 @@ int sumOfNodesTree(itNode *ptr){
 	return ptr->value + sumOfNodesTree(ptr->left) + sumOfNodesTree(ptr->right);
 }
 
+//Tested
 bool isTreeSumTreeON2(itNode *ptr){
 	if(ptr == null){
 		return true;

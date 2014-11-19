@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void connectNodesAtSameLevel(inrNode *ptr){
+//Tested
+void cConnectNodesAtSameLevelOrder(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
@@ -101,13 +102,14 @@ void connectNodesAtSameLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 void connectNodesAtSameLevelPreOrder(inrNode *ptr,unsigned int level = 0){
 	if(ptr == null){
 		return;
 	}
 	static hash_map<unsigned int,inrNode *> prevNodesLevelMap;
 	hash_map<unsigned int,inrNode *>::iterator itToPrevNodesLevelMap;
-	if((itToPrevNodesLevelMap = prevNodesLevelMap.find(level)) == prevNodesLevelMap){
+	if((itToPrevNodesLevelMap = prevNodesLevelMap.find(level)) == prevNodesLevelMap.end()){
 		ptr->nextRight = null;
 		prevNodesLevelMap.insert(pair<unsigned int,inrNode *>(level,ptr));
 	}else{
@@ -118,7 +120,8 @@ void connectNodesAtSameLevelPreOrder(inrNode *ptr,unsigned int level = 0){
 	connectNodesAtSameLevelPreOrder(ptr->left,level+1);
 }
 
-inrNode *getNextRight(inrNode *ptr){
+//Tested
+inrNode *cGetNextRight(inrNode *ptr){
 	if(ptr == null){
 		return null;
 	}
@@ -133,6 +136,7 @@ inrNode *getNextRight(inrNode *ptr){
 	return null;
 }
 
+//Tested
 void connectNodesAtSameLevelNextRightPreorderMain(inrNode *ptr){
 	if(ptr == null){
 		return;
@@ -141,13 +145,13 @@ void connectNodesAtSameLevelNextRightPreorderMain(inrNode *ptr){
 	if(ptr->left != null){
 		if(ptr->right != null){
 			ptr->left->nextRight = ptr->right;
-			ptr->right = getNextRight(ptr->nextRight);
+			ptr->right->nextRight = cGetNextRight(ptr->nextRight);
 		}else{
-			ptr->left->nextRight = getNextRight(ptr->nextRight);
+			ptr->left->nextRight = cGetNextRight(ptr->nextRight);
 		}
 		connectNodesAtSameLevelNextRightPreorderMain(ptr->left);
 	}else if(ptr->right != null){
-		ptr->right = getNextRight(ptr->nextRight);
+		ptr->right->nextRight = cGetNextRight(ptr->nextRight);
 		connectNodesAtSameLevelNextRightPreorderMain(ptr->right);
 	}else{
 		connectNodesAtSameLevelNextRightPreorderMain(getNextRight(ptr->nextRight));
@@ -157,28 +161,33 @@ void connectNodesAtSameLevelNextRightPreorderMain(inrNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void connectNodesAtLevel(inrNode *ptr,unsigned int level){
+//Tested
+void connectNodesAtLevel(inrNode *ptr,unsigned int level,inrNode **prevNode){
 	if(ptr == null){
 		return;
 	}
-	static inrNode *prevNode = null;
 	if(level == 0){
-		ptr->nextRight = prevNode;
-		prevNode = ptr;
+		if(*prevNode != null){
+			(*prevNode)->nextRight = ptr;
+		}
+		*prevNode = ptr;
 		return;
 	}
-	connectNodesAtLevel(ptr->right,level-1);
-	connectNodesAtLevel(ptr->left,level-1);
+	connectNodesAtLevel(ptr->left,level-1,prevNode);
+	connectNodesAtLevel(ptr->right,level-1,prevNode);
 }
 
-void connectNodesAtSameLevel(inrNode *ptr){
+//Tested
+void rConnectNodesAtSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	treeutils *utils = new treeutils();
 	unsigned int height = utils->getHeightOfTree(ptr);
+	inrNode *prevNode = null;
 	for(unsigned int counter = 0;counter < height;counter++){
-		connectNodesAtLevel(ptr,counter);
+		connectNodesAtLevel(ptr,counter,&prevNode);
+		prevNode = null;
 	}
 }
 
@@ -186,7 +195,7 @@ void connectNodesAtSameLevel(inrNode *ptr){
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //These solutions only work when nodes are at same level
-void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
+void rConnectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
@@ -196,8 +205,8 @@ void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
 	if(ptr->right != null){
 		ptr->right->nextRight = ptr->nextRight == null?null:ptr->nextRight->left;
 	}
-	connectNodesAtSameLevelPreOrderFullTree(ptr->left);
-	connectNodesAtSameLevelPreOrderFullTree(ptr->right);
+	rConnectNodesAtSameLevelPreOrderFullTree(ptr->left);
+	rConnectNodesAtSameLevelPreOrderFullTree(ptr->right);
 }
 
 void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){

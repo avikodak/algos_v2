@@ -71,17 +71,26 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int getLevelOfNode(itNode *ptr,int value){
+//Tested
+unsigned int lGetLevelOfNode(itNode *ptr,int value){
 	if(ptr == null){
 		return 0;
 	}
-	int leftValue = getLevelOfNode(ptr->left,value);
-	if(leftValue == 0){
-		return leftValue;
+	if(ptr->value == value){
+		return 1;
 	}
-	return getLevelOfNode(ptr->right,value);
+	int temp = lGetLevelOfNode(ptr->left,value);
+	if(temp != 0){
+		return 1 + temp;
+	}
+	temp = lGetLevelOfNode(ptr->right,value);
+	if(temp != 0){
+		return 1 + temp;
+	}
+	return 0;
 }
 
+//Tested
 unsigned int getLevelOfNodeHashmap(itNode *ptr,int value){
 	if(ptr == null){
 		return 0;
@@ -97,6 +106,7 @@ unsigned int getLevelOfNodeHashmap(itNode *ptr,int value){
 	return 0;
 }
 
+//Tested
 unsigned int getLevelOfNodePostOrderIterative(itNode *ptr,int value){
 	if(ptr == null){
 		return 0;
@@ -130,6 +140,7 @@ unsigned int getLevelOfNodePostOrderIterative(itNode *ptr,int value){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool presentInLevel(itNode *ptr,int value,int level){
 	if(ptr == null){
 		return false;
@@ -140,7 +151,8 @@ bool presentInLevel(itNode *ptr,int value,int level){
 	return presentInLevel(ptr->left,value,level-1) || presentInLevel(ptr->right,value,level-1);
 }
 
-unsigned int getLevelOfNode(itNode *ptr,int value){
+//Tested
+unsigned int getLevelOfNodeON2(itNode *ptr,int value){
 	if(ptr == null){
 		return 0;
 	}

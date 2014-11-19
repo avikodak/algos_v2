@@ -4,7 +4,7 @@
  *  Created on			: Oct 16, 2014 :: 11:05:54 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/level-order-traversal-in-spiral-form/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -111,6 +111,28 @@ void spiralLevelOrderTraversal(itNode *ptr){
 void spiralLevelOrderTraversalHashmap(itNode *ptr){
 	if(ptr == null){
 		return;
+	}
+	treeutils *utils = new treeutils();
+	hash_map<unsigned int,itNode *>	indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
+	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+	unsigned int heightOfTree = utils->getHeightOfTree(ptr);
+	for(unsigned int counter = 0;counter < heightOfTree;counter++){
+		if(counter&1){
+			for(unsigned int nodeIndexCounter = pow(2,heightOfTree+1)-1;nodeIndexCounter >= pow(2,heightOfTree);nodeIndexCounter--){
+				itToIndexNodeMap = indexNodeMap.find(nodeIndexCounter);
+				if(itToIndexNodeMap != indexNodeMap.end()){
+					printf("%d\t",itToIndexNodeMap->second->value);
+				}
+			}
+		}else{
+			for(unsigned int nodeIndexCounter = pow(2,heightOfTree);nodeIndexCounter < pow(2,heightOfTree+1);nodeIndexCounter++){
+				itToIndexNodeMap = indexNodeMap.find(nodeIndexCounter);
+				if(itToIndexNodeMap != indexNodeMap.end()){
+					printf("%d\t",itToIndexNodeMap->second->value);
+				}
+			}
+		}
+		PRINT_NEW_LINE;
 	}
 }
 

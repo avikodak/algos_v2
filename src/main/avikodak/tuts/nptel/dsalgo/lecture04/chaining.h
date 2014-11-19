@@ -55,34 +55,81 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
+#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-
+#define SIZE_OF_HASHMAP 10
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
 
 #ifndef CHAINING_H_
 #define CHAINING_H_
 
+class iHashmap{
+private:
+	sillNode *headPtr[SIZE_OF_HASHMAP];
+
+	int getHashValue(int userInput){
+		return userInput % SIZE_OF_HASHMAP;
+	}
+public:
+	void insert(int userInput){
+		int hashVal = getHashValue(userInput);
+		sillNode *crawler = headPtr[hashVal];
+		if(crawler == null){
+			headPtr = new sillNode(userInput);
+			return;
+		}else{
+			while(crawler->next != null){
+				if(crawler->value == userInput){
+					return;
+				}
+				crawler = crawler->next;
+			}
+			crawler->next = new sillNode(userInput);
+		}
+	}
+
+	bool search(int userInput){
+		int hashVal = getHashValue(userInput);
+		sillNode *crawler = headPtr[hashVal];
+		while(crawler != null){
+			if(crawler->value == userInput){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void remove(int userInput){
+		int hashVal = getHashValue(userInput);
+		sillNode *crawler = headPtr[hashVal],*nodeToBeDeleted = null;
+		if(crawler == null){
+			throw "Value not found";
+		}
+		if(crawler->value == userInput){
+			nodeToBeDeleted = crawler;
+			crawler->next = crawler->next->next;
+			free(nodeToBeDeleted);
+		}else{
+			while(crawler->next != null){
+				if(crawler->next->value == userInput){
+					nodeToBeDeleted = crawler->next;
+					crawler->next = crawler->next->next;
+					break;
+				}
+				crawler = crawler->next;
+			}
+		}
+	}
+};
 
 #endif /* CHAINING_H_ */
+
+/****************************************************************************************************************************************************/
+/* 																MAIN CODE END 																	    */
+/****************************************************************************************************************************************************/
