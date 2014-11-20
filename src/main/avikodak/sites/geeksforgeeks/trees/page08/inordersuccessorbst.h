@@ -169,7 +169,7 @@ itNode *getInorderSuccessorPostOrderStack(stack<itNode *> auxSpace){
 	}
 	while(!auxSpace.empty()){
 		if(auxSpace.top()->value > keyNode->value){
-			return auxSpace;
+			return auxSpace.top();
 		}
 	}
 	return null;

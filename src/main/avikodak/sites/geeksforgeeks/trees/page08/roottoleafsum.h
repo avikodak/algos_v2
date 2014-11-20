@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\roottoleafsum.h
  *  Created on			: Oct 17, 2014 :: 1:45:45 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool rootToLeafSumPreOrder(itNode *ptr,int sum){
 	if(ptr == null){
 		return false;
@@ -81,26 +82,30 @@ bool rootToLeafSumPreOrder(itNode *ptr,int sum){
 	return rootToLeafSumPreOrder(ptr->left,sum - ptr->value) || rootToLeafSumPreOrder(ptr->right,sum - ptr->value);
 }
 
+//Tested
 bool checkForSumStack(stack<int> userInput,int sum){
 	int currentSum = 0;
 	while(!userInput.empty()){
 		currentSum += userInput.top();
+		userInput.pop();
 	}
 	return currentSum == sum;
 }
 
+//Tested
 bool rootToLeafSumAncestorsAuxspace(itNode *ptr,int sum,stack<int> ancestors){
 	if(ptr == null){
 		return sum == 0;
 	}
+	ancestors.push(ptr->value);
 	if(ptr->left == null && ptr->right == null){
 		return checkForSumStack(ancestors,sum);
 	}
-	ancestors.push(ptr->value);
 	return rootToLeafSumAncestorsAuxspace(ptr->left,sum,ancestors) || rootToLeafSumAncestorsAuxspace(ptr->right,sum,ancestors);
 }
 
-bool checkForSumRootToLeaf(hash_map<unsigned int,itNode *> indexNodeMap,unsigned int leafIndex,unsigned int sum){
+//Tested
+bool checkForSumRootToLeaf(hash_map<unsigned int,itNode *> indexNodeMap,unsigned int leafIndex,int sum){
 	if(leafIndex == 0){
 		return sum == 0;
 	}
@@ -112,7 +117,8 @@ bool checkForSumRootToLeaf(hash_map<unsigned int,itNode *> indexNodeMap,unsigned
 	return currentSum == sum;
 }
 
-bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
+//Tested
+bool eRootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	if(ptr == null){
 		return sum == 0;
 	}
@@ -149,18 +155,23 @@ bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	return false;
 }
 
-bool rootToLeafSumInOrder(itNode *ptr,int sum){
+//Tested
+bool rootToLeafSumInOrder(itNode *ptr,int sum,int runningSum = 0){
 	if(ptr == null){
-
+		return false;
 	}
-	bool leftTruthValue = rootToLeafSumInOrder(ptr->left,sum);
+	bool leftTruthValue = rootToLeafSumInOrder(ptr->left,sum,runningSum + ptr->value);
+	if(leftTruthValue){
+		return true;
+	}
 	if(ptr->left == null && ptr->right == null){
-		return ptr->value == sum;
+		return runningSum + ptr->value == sum;
 	}else{
-		return rootToLeafSumInOrder(ptr->right,sum);
+		return rootToLeafSumInOrder(ptr->right,sum,runningSum + ptr->value);
 	}
 }
 
+//Tested
 bool checkForSumHashmap(hash_map<unsigned int,itNode *> indexNodeMap,int sum,unsigned int index){
 	int currentSum = 0;
 	while(index > 0){
@@ -170,6 +181,7 @@ bool checkForSumHashmap(hash_map<unsigned int,itNode *> indexNodeMap,int sum,uns
 	return currentSum == sum;
 }
 
+//Tested
 bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	if(ptr == null){
 		return sum != 0;
@@ -207,6 +219,7 @@ bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	return false;
 }
 
+//Tested
 bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 	if(ptr == null){
 		return sum == 0;
@@ -222,7 +235,7 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);
-			itToNodeIndexMap = indexNodeMap.find((uint32_t)currentNode);
+			itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
 			if(currentNode->left != null){
 				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
@@ -232,7 +245,7 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
 			auxSpace.pop();
-			itToNodeIndexMap = indexNodeMap.find((uint32_t)currentNode);
+			itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
 			if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
 				return true;
 			}
@@ -245,7 +258,7 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 			}
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right != null){
-			itToNodeIndexMap = indexNodeMap.find((uint32_t)auxSpace.top());
+			itToNodeIndexMap = nodeIndexMap.find((uint32_t)auxSpace.top());
 			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)auxSpace.top()->right,2*itToNodeIndexMap->second+1));
 			indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,auxSpace.top()->right));
 		}
@@ -254,15 +267,16 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 	return false;
 }
 
+//Tested
 bool rootToLeafSumHashmap(itNode *ptr,int sum){
 	if(ptr == null){
 		return sum == 0;
 	}
 	treeutils *utils = new treeutils();
-	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1);
+	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
 	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		if(indexNodeMap.find(2*itToIndexNodeMap->first) == indexNodeMap.end() && indexNodeMap.find(2*itToIndexNodeMap->first+1)){
+		if(indexNodeMap.find(2*itToIndexNodeMap->first) == indexNodeMap.end() && indexNodeMap.find(2*itToIndexNodeMap->first+1) == indexNodeMap.end()){
 			if(checkForSumRootToLeaf(indexNodeMap,itToIndexNodeMap->first,sum)){
 				return true;
 			}

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\foldabletrees.h
  *  Created on			: Oct 20, 2014 :: 3:14:39 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/foldable-binary-trees/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,6 +72,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;
@@ -82,6 +83,7 @@ bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr){
 	return isTreeFoldableMain(firstTreePtr->left,secondTreePtr->right) &&  isTreeFoldableMain(firstTreePtr->right,secondTreePtr->left);
 }
 
+//Tested
 bool isTreeFoldable(itNode *ptr){
 	if(ptr == null){
 		return true;
@@ -89,6 +91,7 @@ bool isTreeFoldable(itNode *ptr){
 	return isTreeFoldableMain(ptr->left,ptr->right);
 }
 
+//Tested
 bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;
@@ -99,7 +102,8 @@ bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr){
 	return areTreesIdenticalStructure(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalStructure(firstTreePtr->right,secondTreePtr->right);
 }
 
-bool isTreeFoldable(itNode *ptr){
+//Tested
+bool isTreeFoldableV2(itNode *ptr){
 	if(ptr == null){
 		return true;
 	}

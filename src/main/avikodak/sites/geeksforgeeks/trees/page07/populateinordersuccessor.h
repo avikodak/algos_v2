@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\populateinordersuccessor.h
  *  Created on			: Oct 23, 2014 :: 11:25:24 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/populate-inorder-successor-for-all-nodes/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

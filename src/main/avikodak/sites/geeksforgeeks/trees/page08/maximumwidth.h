@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\maximumwidth.h
  *  Created on			: Oct 18, 2014 :: 2:21:52 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setLevelCountPreOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+//Tested
+void setLevelCountPreOrderMain(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
 	if(ptr == null){
 		return;
 	}
@@ -80,8 +81,23 @@ void setLevelCountPreOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,
 	}else{
 		levelFrequency[level] = 1;
 	}
-	setLevelCountPreOrder(ptr->left,level+1,levelFrequency);
-	setLevelCountPreOrder(ptr->right,level+1,levelFrequency);
+	setLevelCountPreOrderMain(ptr->left,level+1,levelFrequency);
+	setLevelCountPreOrderMain(ptr->right,level+1,levelFrequency);
+}
+
+//Tested
+unsigned int maximumWidthPreOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	hash_map<unsigned int,unsigned int> levelFrequency;
+	setLevelCountPreOrderMain(ptr,0,levelFrequency);
+	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
+	unsigned int maxWidth = 0;
+	for(itToLevelFrequency = levelFrequency.begin();itToLevelFrequency != levelFrequency.end();itToLevelFrequency++){
+		maxWidth = max(maxWidth,itToLevelFrequency->second);
+	}
+	return maxWidth;
 }
 
 //Tested
@@ -131,30 +147,62 @@ unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
 	return maxWidth;
 }
 
-void setLevelCountInOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+//Tested
+void setLevelCountInOrderMain(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
 	if(ptr == null){
 		return;
 	}
-	setLevelCountInOrder(ptr->left,level+1,levelFrequency);
+	setLevelCountInOrderMain(ptr->left,level+1,levelFrequency);
 	if(levelFrequency.find(level) != levelFrequency.end()){
 		levelFrequency[level] += 1;
 	}else{
 		levelFrequency[level] = 1;
 	}
-	setLevelCountInOrder(ptr->right,level+1,levelFrequency);
+	setLevelCountInOrderMain(ptr->right,level+1,levelFrequency);
 }
 
-void setLevelCountPostOrder(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
+//Tested
+unsigned int maximumWidthInOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	hash_map<unsigned int,unsigned int> levelFrequency;
+	setLevelCountInOrderMain(ptr,0,levelFrequency);
+	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
+	unsigned int maxWidth = 0;
+	for(itToLevelFrequency = levelFrequency.begin();itToLevelFrequency != levelFrequency.end();itToLevelFrequency++){
+		maxWidth = max(maxWidth,itToLevelFrequency->second);
+	}
+	return maxWidth;
+}
+
+//Tested
+void setLevelCountPostOrderMain(itNode *ptr,unsigned int level,hash_map<unsigned int,unsigned int> &levelFrequency){
 	if(ptr == null){
 		return;
 	}
-	setLevelCountPostOrder(ptr->left,level-1,levelFrequency);
-	setLevelCountPostOrder(ptr->right,level-1,levelFrequency);
+	setLevelCountPostOrderMain(ptr->left,level-1,levelFrequency);
+	setLevelCountPostOrderMain(ptr->right,level-1,levelFrequency);
 	if(levelFrequency.find(level) != levelFrequency.end()){
 		levelFrequency[level] += 1;
 	}else{
 		levelFrequency[level] = 1;
 	}
+}
+
+//Tested
+unsigned int maximumWidthPostOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	hash_map<unsigned int,unsigned int> levelFrequency;
+	setLevelCountPostOrderMain(ptr,0,levelFrequency);
+	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
+	unsigned int maxWidth = 0;
+	for(itToLevelFrequency = levelFrequency.begin();itToLevelFrequency != levelFrequency.end();itToLevelFrequency++){
+		maxWidth = max(maxWidth,itToLevelFrequency->second);
+	}
+	return maxWidth;
 }
 
 //Tested

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inorderwithoutrecursionandstack.h
  *  Created on			: Oct 17, 2014 :: 10:30:22 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -97,6 +97,118 @@ void imorrisInorderTraversal(itNode *ptr){
 		}
 	}
 }
+
+//RECURSIVE PROCEDURES
+//Tested
+void iFixLeftPtr(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	static itNode *prevNode = null;
+	iFixLeftPtr(ptr->left);
+	ptr->left = prevNode;
+	prevNode = ptr;
+	iFixLeftPtr(ptr->right);
+}
+
+//Tested
+void iFixRightPtr(itNode **ptr){
+	if(ptr == null){
+		return;
+	}
+	itNode *currentNode = *ptr,*prevNode = null;
+	while(currentNode->right != null){
+		currentNode = currentNode->right;
+	}
+	while(currentNode != null){
+		currentNode->right = prevNode;
+		prevNode = currentNode;
+		currentNode = currentNode->left;
+	}
+	(*ptr) = prevNode;
+}
+
+void inorderTraversalFixingPtr(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	iFixLeftPtr(ptr);
+	iFixRightPtr(&ptr);
+	while(ptr != null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->right;
+	}
+}
+
+//Tested
+void inorderTraversalDllConversionONMain(itNode *ptr,itNode **root){
+	if(ptr == null){
+		return;
+	}
+	static itNode *prevNode = null;
+	inorderTraversalDllConversionONMain(ptr->left,root);
+	ptr->left = prevNode;
+	if(prevNode == null){
+		(*root) = ptr;
+	}else{
+		prevNode->right = ptr;
+	}
+	prevNode = ptr;
+	inorderTraversalDllConversionONMain(ptr->right,root);
+}
+
+//Tested
+void inorderTraversalDllConversionON(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inorderTraversalDllConversionONMain(ptr,&ptr);
+	while(ptr != null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->right;
+	}
+}
+
+//Tested
+itNode *inorderTraversalDllConversionON2Main(itNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	itNode *temp;
+	if(ptr->left != null){
+		temp = inorderTraversalDllConversionON2Main(ptr->left);
+		while(temp->right != null){
+			temp = temp->right;
+		}
+		temp->right = ptr;
+		ptr->left = temp;
+	}
+	if(ptr->right != null){
+		temp = inorderTraversalDllConversionON2Main(ptr->right);
+		while(temp->left != null){
+			temp = temp->left;
+		}
+		temp->left = ptr;
+		ptr->right = temp;
+	}
+	return ptr;
+}
+
+//Tested
+void inorderTraversalDllConversionON2(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inorderTraversalDllConversionON2Main(ptr);
+	while(ptr->left != null){
+		ptr = ptr->left;
+	}
+	while(ptr != null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->right;
+	}
+}
+
 
 #endif /* INORDERWITHOUTRECURSIONANDSTACK_H_ */
 

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\doubletree.h
  *  Created on			: Oct 18, 2014 :: 2:10:38 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/double-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

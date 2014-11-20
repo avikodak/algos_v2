@@ -77,11 +77,14 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page09/treetodll.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/diameteroftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/doubletree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/foldabletrees.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursion.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/inorderwithoutrecursionandstack.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/inordersuccessorbst.h" // NOT TESTED
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/istreeheightbalanced.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/maximumwidth.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/printnodesatkdistance.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page08/roottoleafsum.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/sortedbstarray.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page08/treefrompreinorder.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/checkiftreeissumtree.h"
@@ -171,9 +174,11 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	vector<int> sequence = generateIRandomVector(10,0,50);
-	inrNode *root = utils->getINRandomTree(10,0,50);
-	printf("%d\t",countLeafNodes(root));
+	//vector<int> sequence = getVectorForUserInput();
+	//itNode *root = utils->getITreeFromVector(sequence);
+	hash_map<unsigned int,int> indexNodeMap = getUserInputForIndexValueMap();
+	itNode *root = utils->getITreeFromHashmap(indexNodeMap);
+	printf("%d\t",isTreeFoldable(root));
 }
 
 void avlTreeTester(){

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\levelofnode.h
  *  Created on			: Oct 20, 2014 :: 7:07:21 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/get-level-of-a-node-in-a-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
