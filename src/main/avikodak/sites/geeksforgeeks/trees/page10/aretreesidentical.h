@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page10\aretreesidentical.h
  *  Created on			: Oct 11, 2014 :: 12:20:22 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/write-c-code-to-determine-if-two-trees-are-identical/
  ****************************************************************************************************************************************************/
 
@@ -178,6 +178,7 @@ bool areTreesIdenticalPostOrder(itNode *firstTreePtr,itNode *secondTreePtr){
 	return areTreesIdenticalPostOrder(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalPostOrder(firstTreePtr->right,secondTreePtr->right) && firstTreePtr->value == secondTreePtr->value;
 }
 
+//Tested
 bool areTreesIdenticalPostOrderIterativeTwoStacks(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;
@@ -188,10 +189,10 @@ bool areTreesIdenticalPostOrderIterativeTwoStacks(itNode *firstTreePtr,itNode *s
 	stack<itNode *> firstTreePrimaryAuxspace,firstTreeSecondaryAuxspace,secondTreePrimaryAuxspace,secondTreeSecondaryAuxspace;
 	itNode *firstTreeCurrentNode,*secondTreeCurrentNode;
 	firstTreePrimaryAuxspace.push(firstTreePtr);
-	secondTreeSecondaryAuxspace.push(secondTreePtr);
-	while(!firstTreePrimaryAuxspace.empty() && !secondTreeSecondaryAuxspace.empty()){
+	secondTreePrimaryAuxspace.push(secondTreePtr);
+	while(!firstTreePrimaryAuxspace.empty() && !secondTreePrimaryAuxspace.empty()){
 		firstTreeCurrentNode = firstTreePrimaryAuxspace.top();
-		secondTreeCurrentNode = secondTreeSecondaryAuxspace.top();
+		secondTreeCurrentNode = secondTreePrimaryAuxspace.top();
 		firstTreePrimaryAuxspace.pop();
 		secondTreePrimaryAuxspace.pop();
 		firstTreeSecondaryAuxspace.push(firstTreeCurrentNode);
@@ -229,6 +230,7 @@ bool areTreesIdenticalPostOrderIterativeTwoStacks(itNode *firstTreePtr,itNode *s
 	return true;
 }
 
+//Tested
 bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;
@@ -252,6 +254,8 @@ bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTree
 			}
 			firstTreeAuxspace.push(currentNodeFirstTree);
 			secondTreeAuxspace.push(currentNodeSecondTree);
+			currentNodeFirstTree = currentNodeFirstTree->left;
+			currentNodeSecondTree = currentNodeSecondTree->left;
 		}else{
 			if(currentNodeSecondTree != null){
 				return false;
@@ -264,6 +268,8 @@ bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTree
 				if(secondTreeAuxspace.empty() || secondTreeAuxspace.top() != currentNodeSecondTree->right){
 					return false;
 				}
+				firstTreeAuxspace.pop();
+				secondTreeAuxspace.pop();
 				firstTreeAuxspace.push(currentNodeFirstTree);
 				secondTreeAuxspace.push(currentNodeSecondTree);
 				currentNodeFirstTree = currentNodeFirstTree->right;
@@ -280,6 +286,7 @@ bool areTreesIdenticalPostOrderIterative(itNode *firstTreePtr,itNode *secondTree
 	return currentNodeFirstTree == null && currentNodeSecondTree == null && firstTreeAuxspace.empty() && secondTreeAuxspace.empty();
 }
 
+//Tested
 bool areTreesIdenticalPostOrderIterativeV2(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;

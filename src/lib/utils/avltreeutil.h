@@ -157,8 +157,75 @@ private:
 		}
 	}
 
-	ipAvlNode *deleteValueAndGetParent(ipAvlNode **root,int value){
+	ipAvlNode *getPredecessorIfChildrenPresent(ipAvlNode *ptr){
+		if(ptr == null || ptr->left == null){
+			return null;
+		}
+	}
 
+	ipAvlNode *deleteNodeIfItIsLeaf(ipAvlNode *ptr){
+		if(ptr->left == null && ptr->right == null){
+			return null;
+		}
+		ipAvlNode *parent = ptr->parent;
+		if(parent->left == ptr){
+			parent->left = null;
+		}else{
+			parent->right = null;
+		}
+		free(ptr);
+		return parent;
+	}
+
+	ipAvlNode *deleteNodeIfItHasOnlyOneChild(ipAvlNode *ptr){
+		if(ptr->left == null && ptr->right == null){
+			return null;
+		}
+		if(ptr->left != null && ptr->right != null){
+			return null;
+		}
+		ipAvlNode *parent = ptr->parent;
+		if(parent->left == ptr){
+			if(ptr->left != null){
+				parent->left = ptr->left;
+			}else{
+				parent->left = ptr->right;
+			}
+		}else{
+			if(ptr->left != null){
+				parent->right = ptr->left;
+			}else{
+				parent->right = ptr->right;
+			}
+		}
+		free(ptr);
+		return parent;
+	}
+
+	ipAvlNode *deleteValueAndGetParent(ipAvlNode **root,int value){
+		if((*root)->value == value){
+
+		}else{
+			ipAvlNode *result = search(*root,value);
+			if(result == null){
+				return null;
+			}
+			if(result->left == null && result->right == null){
+				return deleteNodeIfItIsLeaf(result);
+			}else if(result->left == null || result->right == null){
+				return deleteNodeIfItHasOnlyOneChild(result);
+			}else{
+				ipAvlNode *predecessor = getPredecessorIfChildrenPresent(result);
+				result->value = predecessor->value;
+				if(predecessor->left == null && predecessor->right == null){
+					return deleteNodeIfItIsLeaf(predecessor);
+				}else if(predecessor->left != null || predecessor->right != null){
+					return deleteNodeIfItHasOnlyOneChild(predecessor);
+				}else{
+					throw "Invalid predecessor";
+				}
+			}
+		}
 	}
 public:
 	//Tested

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\printroottoleafpaths.h
  *  Created on			: Oct 14, 2014 :: 11:36:28 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-a-binary-tree-print-out-all-of-its-root-to-leaf-paths-one-per-line/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -132,6 +132,7 @@ void printRootToLeafPathPostorder(itNode *ptr){
 	}
 }
 
+//Tested
 void printRootToLeaf(iptNode *ptr){
 	if(ptr == null){
 		return;
@@ -146,8 +147,10 @@ void printRootToLeaf(iptNode *ptr){
 		printf("%d\t",auxSpace.top()->value);
 		auxSpace.pop();
 	}
+	PRINT_NEW_LINE;
 }
 
+//Tested
 void printRootToLeafPathsPreOrderIterative(iptNode *ptr){
 	if(ptr == null){
 		return;
@@ -174,6 +177,7 @@ void printRootToLeafPathsPreOrderIterative(iptNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printRootToLeafPathON2(iptNode *ptr){
 	if(ptr == null){
 		return;

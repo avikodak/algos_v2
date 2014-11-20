@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lowestcommonancestorsbst.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\lowestcommonancestorsbst.h
- *  Created on			: Oct 14, 2014 :: 11:36:49 AM
+ *  File Name   		: insertintoredblacktree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture15\insertintoredblacktree.h
+ *  Created on			: Nov 20, 2014 :: 5:09:37 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
-****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,74 +65,114 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LOWESTCOMMONANCESTORSBST_H_
-#define LOWESTCOMMONANCESTORSBST_H_
+
+#ifndef INSERTINTOREDBLACKTREE_H_
+#define INSERTINTOREDBLACKTREE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-itNode *lowestCommonAncestors(itNode *ptr,int low,int high){
-	if(ptr == null){
+iRbTreeNode *insertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new iRbTreeNode(value);
+		(*root)->isRedNode = false;
 		return null;
 	}
-	if(ptr->value >= low && ptr->value <= high){
-		return ptr;
-	}
-	if(ptr->value > low){
-		return lowestCommonAncestors(ptr->left,low,high);
-	}else{
-		return lowestCommonAncestors(ptr->right,low,high);
-	}
-}
-
-//Tested
-itNode *lowestCommonAncestorsIterative(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return false;
-	}
-	itNode *crawler = ptr;
-	while(crawler != null){
-		if(crawler->value >= low && ptr->value <= high){
-			return crawler;
-		}
-		if(crawler->value > low){
-			crawler = crawler->left;
+	if(currentNode->value == value){
+		return null;
+	}else if(currentNode->value >value){
+		if(currentNode->left == null){
+			currentNode->left = new iRbTreeNode(value);
+			currentNode->left->parent = currentNode;
+			return currentNode->left;
 		}else{
-			crawler = crawler->right;
+			return insertAtRightPlace(root,currentNode->left,value);
+		}
+	}else{
+		if(currentNode->right == null){
+			currentNode->right = new iRbTreeNode(value);
+			currentNode->right->parent = currentNode;
+			return currentNode->right;
+		}else{
+			return insertAtRightPlace(root,currentNode->right,value);
 		}
 	}
-	return null;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-bool isNodePresentInSubTree(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
+void rotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
+	iRbTreeNode *grandParent = parent->parent;
+	child->parent = grandParent;
+	parent->parent = child;
+	if(grandParent != null){
+		if(grandParent->left == parent){
+			grandParent->left = child;
+		}else{
+			grandParent->right = child;
+		}
 	}
-	if(ptr->value == value){
-		return true;
+	if(parent->left == child){
+		parent->left = child->right;
+		child->right = parent;
+	}else{
+		parent->right = child->left;
+		child->left = parent;
 	}
-	return isNodePresentInSubTree(ptr->left,value) || isNodePresentInSubTree(ptr->right,value);
 }
 
-itNode *lowestCommonAncestorsON2(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return null;
+void reorganizingRbTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentnode){
+	iRbTreeNode *parent = currentnode->parent;
+	iRbTreeNode *grandParent = parent->parent;
+	if(grandParent->left == parent){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			rotateNodes(grandParent,parent);
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+		}else{
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+			grandParent->right->isRedNode = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			reorganizingRbTreePostInsertion(root,grandParent);
+		}
+	}else{
+		if(grandParent->left == null || !grandParent->left->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			rotateNodes(grandParent,parent);
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+		}else{
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+			grandParent->left->isRedNode = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			reorganizingRbTreePostInsertion(root,grandParent);
+		}
 	}
-	if(isNodePresentInSubTree(ptr->left,low) && isNodePresentInSubTree(ptr->right,high)){
-		return ptr;
-	}
-	itNode *result = lowestCommonAncestorsON2(ptr->left,low,high);
-	if(result != null){
-		return result;
-	}
-	return lowestCommonAncestorsON2(ptr->right,low,high);
 }
 
-#endif /* LOWESTCOMMONANCESTORSBST_H_ */
+void insertIntoRedBlackTree(iRbTreeNode **root,int userInput){
+	iRbTreeNode *ptrToInsertedNode = insertAtRightPlace(root,*root,userInput);
+	if(ptrToInsertedNode == null){
+		return;
+	}
+	if(!ptrToInsertedNode->parent->isRedNode){
+		return;
+	}
+	reorganizingRbTreePostInsertion(root,ptrToInsertedNode);
+}
+
+#endif /* INSERTINTOREDBLACKTREE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

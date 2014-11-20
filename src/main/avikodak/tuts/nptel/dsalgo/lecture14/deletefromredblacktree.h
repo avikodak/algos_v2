@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lowestcommonancestorsbst.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\lowestcommonancestorsbst.h
- *  Created on			: Oct 14, 2014 :: 11:36:49 AM
+ *  File Name   		: deletefromredblacktree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture14\deletefromredblacktree.h
+ *  Created on			: Nov 20, 2014 :: 1:18:34 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,74 +65,75 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LOWESTCOMMONANCESTORSBST_H_
-#define LOWESTCOMMONANCESTORSBST_H_
+#ifndef DELETEFROMREDBLACKTREE_H_
+#define DELETEFROMREDBLACKTREE_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-itNode *lowestCommonAncestors(itNode *ptr,int low,int high){
+
+iRbTreeNode *search(iRbTreeNode *ptr,int value){
 	if(ptr == null){
 		return null;
-	}
-	if(ptr->value >= low && ptr->value <= high){
-		return ptr;
-	}
-	if(ptr->value > low){
-		return lowestCommonAncestors(ptr->left,low,high);
-	}else{
-		return lowestCommonAncestors(ptr->right,low,high);
-	}
-}
-
-//Tested
-itNode *lowestCommonAncestorsIterative(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return false;
-	}
-	itNode *crawler = ptr;
-	while(crawler != null){
-		if(crawler->value >= low && ptr->value <= high){
-			return crawler;
-		}
-		if(crawler->value > low){
-			crawler = crawler->left;
-		}else{
-			crawler = crawler->right;
-		}
-	}
-	return null;
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-bool isNodePresentInSubTree(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
 	}
 	if(ptr->value == value){
-		return true;
+		return ptr;
 	}
-	return isNodePresentInSubTree(ptr->left,value) || isNodePresentInSubTree(ptr->right,value);
+	if(ptr->value > value){
+		return search(ptr->left,value);
+	}else{
+		return search(ptr->right,value);
+	}
 }
 
-itNode *lowestCommonAncestorsON2(itNode *ptr,int low,int high){
+iRbTreeNode *successorIfTwoNodesPresent(iRbTreeNode *ptr){
 	if(ptr == null){
 		return null;
 	}
-	if(isNodePresentInSubTree(ptr->left,low) && isNodePresentInSubTree(ptr->right,high)){
-		return ptr;
+	if(ptr->right == null){
+		throw "Invalid node";
 	}
-	itNode *result = lowestCommonAncestorsON2(ptr->left,low,high);
-	if(result != null){
-		return result;
+	ptr = ptr->right;
+	while(ptr->left != null){
+		ptr = ptr->left;
 	}
-	return lowestCommonAncestorsON2(ptr->right,low,high);
+	return ptr;
 }
 
-#endif /* LOWESTCOMMONANCESTORSBST_H_ */
+void reorganiseTree(iRbTreeNode *nodeToBeDeleted){
+	if(nodeToBeDeleted == null){
+		return;
+	}
+	if(nodeToBeDeleted->isRedNode){
+		return;
+	}
+	iRbTreeNode *parentToKeyNode = nodeToBeDeleted->parent;
+	if(parentToKeyNode->left != null || parentToKeyNode->right != null){
+		return;
+	}
+
+}
+
+void deleteFromRedBlackTree(iRbTreeNode **root,int value){
+	if(*root == null){
+		return;
+	}
+	if((*root)->value == value){
+		return;
+	}
+	iRbTreeNode *ptrToKey = search(*root,value);
+	if(ptrToKey == null){
+		return;
+	}
+	if(ptrToKey->left != null && ptrToKey->right != null){
+		iRbTreeNode *successor = successorIfTwoNodesPresent(ptr);
+		ptrToKey->value = successor->value;
+		successor->value = value;
+		ptrToKey = successor;
+	}
+}
+
+#endif /* DELETEFROMREDBLACKTREE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

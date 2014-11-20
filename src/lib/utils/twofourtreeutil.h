@@ -211,6 +211,140 @@ private:
 			insertAtRightPlace(root,currentNode->children[counter],value);
 		}
 	}
+
+	void insertAtRightPlace(i24fNode **root,i24fNode *currentNode,int value,int frequency = 1){
+		static i24fNode *prevNode,*prevFirstSplitNode,*prevSecondSplitNode;
+		static bool flag;
+		if(*root == null){
+			(*root) = new i24fNode(value);
+			return;
+		}
+		if(currentNode->children == 0 || flag){
+			if(currentNode->noOfChildren < 3){
+				return;
+			}
+			i24fNode *firstSplitNode = new i24fNode();
+			i24fNode *secondSplitNode = new i24fNode();
+			firstSplitNode->parent = currentNode->parent;
+			secondSplitNode->parent = currentNode->parent;
+			bool valueInserted = false,firstSplitNodeFilled = false;
+			int fillCounter = -1;
+			for(unsigned int counter = 0;counter < currentNode->noOfKeys;){
+				if(!firstSplitNodeFilled){
+					if(currentNode->value[counter] < value){
+						firstSplitNode->value[++fillCounter] = currentNode->value[counter];
+						firstSplitNode->frequency[fillCounter] = currentNode->frequency[counter];
+						counter++;
+					}else{
+						firstSplitNode->value[++fillCounter] = value;
+						firstSplitNode->value[fillCounter] = frequency;
+						valueInserted = false;
+					}
+					if(fillCounter == 1){
+						fillCounter = -1;
+						firstSplitNodeFilled = true;
+					}
+				}else{
+					if(currentNode->value[counter] < value){
+						secondSplitNode->value[++fillCounter] = currentNode->value[counter];
+						secondSplitNode->frequency[fillCounter] = currentNode->frequency[counter];
+						counter++;
+					}else{
+						secondSplitNode->value[++fillCounter] = value;
+						secondSplitNode->frequency[fillCounter] = frequency;
+						valueInserted = false;
+					}
+				}
+			}
+			if(!valueInserted){
+				secondSplitNode->value[1] = value;
+				secondSplitNode->frequency[1]  = frequency;
+			}
+			firstSplitNode->noOfKeys = 1;
+			secondSplitNode->noOfKeys = 2;
+			if(prevNode != null){
+
+			}
+			if(currentNode->parent == null){
+				return;
+			}
+			prevNode = currentNode;
+			prevFirstSplitNode = firstSplitNode;
+			prevSecondSplitNode = secondSplitNode;
+			flag = true;
+			insertAtRightPlace(root,currentNode->parent,firstSplitNode->value[0],firstSplitNode->frequency[0]);
+		}else if(currentNode->value[0] <= value){
+			if(currentNode->value[0] == value){
+				currentNode->frequency[0]++;
+				return;
+			}
+			insertAtRightPlace(root,currentNode->children[0],value);
+		}else if(currentNode->value[currentNode->noOfKeys-1] >= value){
+			if(currentNode->value[currentNode->noOfKeys-1] == value){
+				currentNode->frequency[currentNode->noOfKeys-1]++;
+				return;
+			}
+			insertAtRightPlace(root,currentNode->children[currentNode->noOfKeys],value);
+		}else{
+			unsigned int counter = 1;
+			while(currentNode->value[counter] <= value){
+				if(currentNode->value[counter] == value){
+					currentNode->frequency[counter]++;
+					return;
+				}
+				counter++;
+			}
+			insertAtRightPlace(root,currentNode->children[counter],value);
+		}
+	}
+
+	void deleteFromTwoFourTreeMain(i24Node **root,i24Node *currentNode,int value,int index){
+		static i24Node *prevNode,*prevMergedNode;
+		if(*root == null || currentNode == null){
+			return;
+		}
+		if(currentNode->noOfKeys > 1){
+			unsigned int fillCounter = -1;
+			for(unsigned int counter = 0;counter < currentNode->noOfKeys;counter++){
+				if(currentNode->value[counter] != value){
+					currentNode->value[++fillCounter] = currentNode->value[counter];
+				}
+			}
+			if(prevNode != null){
+				vector<i24Node *> childrenPtr;
+				bool prevPtrConnected = false;
+				for(unsigned int counter = 0;counter < currentNode->noOfChildren;){
+					if(currentNode->children[counter] == prevNode){
+						counter++;
+					}else if(currentNode->children[counter]->value[0] < prevMergedNode->value[0]){
+						childrenPtr.push_back(currentNode->children[counter]);
+					}else{
+						childrenPtr.push_back(prevMergedNode);
+						prevPtrConnected = true;
+					}
+				}
+				if(!prevPtrConnected){
+					childrenPtr.push_back(prevMergedNode);
+				}
+				currentNode->children[currentNode->noOfChildren-1] = null;
+				currentNode->noOfChildren -= 1;
+				for(unsigned int counter = 0;counter < currentNode->noOfChildren;counter++){
+					currentNode->children[counter] = childrenPtr[counter];
+				}
+			}
+			currentNode->noOfKeys -= 1;
+			return;
+		}
+		i24Node *leftSibling,*rightSibling;
+		leftSibling = index == 0?null:currentNode->children[index-1];
+		rightSibling = currentNode->children[index+1];
+		if(leftSibling != null && leftSibling->noOfKeys > 1){
+
+		}
+		if(rightSibling != null && rightSibling->noOfKeys > 1){
+
+		}
+	}
 public:
 	//Tested
 	void insertIntoTwoFourTree(i24Node **root,int value){
@@ -236,6 +370,65 @@ public:
 			printf("%d\t",ptr->value[counter]);
 		}
 		inorderTraversal(ptr->children[ptr->noOfKeys]);
+	}
+
+	i24TreeSearchResult *search(i24Node *ptr,int value){
+		if(ptr == null){
+			return null;
+		}
+		if(ptr->value[0] > value){
+			return search(ptr->children[0],value);
+		}else if(ptr->value[0] == value){
+			return new i24TreeSearchResult(0,ptr);
+		}else if(ptr->value[ptr->noOfKeys-1] < value){
+			return search(ptr->children[ptr->noOfKeys],value);
+		}else if(ptr->value[ptr->noOfKeys-1] == value){
+			return new i24TreeSearchResult(ptr->noOfKeys-1,ptr);
+		}else{
+			unsigned int counter = 1;
+			while(counter < ptr->noOfKeys){
+				if(ptr->value[counter] == value){
+					return new i24TreeSearchResult(counter,ptr);
+				}else if(ptr->value[counter] > value){
+					return search(ptr->children[counter],value);
+				}
+				counter++;
+			}
+		}
+		return null;
+	}
+
+	i24Node *predecessorIfChildrenPresent(i24Node *ptr,int index){
+		if(ptr == null){
+			return null;
+		}
+		if(ptr->children[index] == null){
+			return null;
+		}
+		i24Node *predecessor = ptr->children[index];
+		while(predecessor->noOfChildren > 0){
+			predecessor = predecessor->children[predecessor->noOfChildren-1];
+		}
+		return predecessor;
+	}
+
+
+	void deleteFromTwoFourTree(i24Node **root,int value){
+		if(*root == null){
+			return;
+		}
+		i24TreeSearchResult *result = search(*root,value);
+		if(result == null){
+			return;
+		}
+		i24Node *node = result->node;
+		if(result->node->noOfChildren != 0){
+			i24Node *predecessor = predecessorIfChildrenPresent(result->node,result->index);
+			result->node->value[result->index] = predecessor->value[predecessor->noOfKeys-1];
+			node = predecessor;
+			sort(predecessor->value,predecessor->value + predecessor->noOfKeys);
+		}
+		deleteFromTwoFourTreeMain(root,node,value);
 	}
 };
 

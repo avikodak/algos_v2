@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lowestcommonancestorsbst.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\lowestcommonancestorsbst.h
- *  Created on			: Oct 14, 2014 :: 11:36:49 AM
+ *  File Name   		: converttwofourtreeintoredblacktree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture14\converttwofourtreeintoredblacktree.h
+ *  Created on			: Nov 20, 2014 :: 12:43:48 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,75 +65,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LOWESTCOMMONANCESTORSBST_H_
-#define LOWESTCOMMONANCESTORSBST_H_
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-itNode *lowestCommonAncestors(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->value >= low && ptr->value <= high){
-		return ptr;
-	}
-	if(ptr->value > low){
-		return lowestCommonAncestors(ptr->left,low,high);
-	}else{
-		return lowestCommonAncestors(ptr->right,low,high);
-	}
-}
-
-//Tested
-itNode *lowestCommonAncestorsIterative(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return false;
-	}
-	itNode *crawler = ptr;
-	while(crawler != null){
-		if(crawler->value >= low && ptr->value <= high){
-			return crawler;
-		}
-		if(crawler->value > low){
-			crawler = crawler->left;
-		}else{
-			crawler = crawler->right;
-		}
-	}
-	return null;
-}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isNodePresentInSubTree(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->value == value){
-		return true;
-	}
-	return isNodePresentInSubTree(ptr->left,value) || isNodePresentInSubTree(ptr->right,value);
-}
-
-itNode *lowestCommonAncestorsON2(itNode *ptr,int low,int high){
-	if(ptr == null){
-		return null;
-	}
-	if(isNodePresentInSubTree(ptr->left,low) && isNodePresentInSubTree(ptr->right,high)){
-		return ptr;
-	}
-	itNode *result = lowestCommonAncestorsON2(ptr->left,low,high);
-	if(result != null){
-		return result;
-	}
-	return lowestCommonAncestorsON2(ptr->right,low,high);
-}
-
-#endif /* LOWESTCOMMONANCESTORSBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+
+#ifndef CONVERTTWOFOURTREEINTOREDBLACKTREE_H_
+#define CONVERTTWOFOURTREEINTOREDBLACKTREE_H_
+
+
+#endif /* CONVERTTWOFOURTREEINTOREDBLACKTREE_H_ */

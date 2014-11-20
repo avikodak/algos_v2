@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -59,6 +59,116 @@ using namespace __gnu_cxx;
 #ifndef REDBLACKTREEUTIL_H_
 #define REDBLACKTREEUTIL_H_
 
+class rbutils {
+private:
+	void rotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
+		iRbTreeNode *grandParent = parent->parent;
+		child->parent = grandParent;
+		parent->parent = child;
+		if(grandParent != null){
+			if(grandParent->left == parent){
+				grandParent->left = child;
+			}else{
+				grandParent->right = child;
+			}
+		}
+		if(parent->left == child){
+			parent->left = child->right;
+			child->right = parent;
+		}else{
+			parent->right = child->left;
+			child->left = parent;
+		}
+	}
+
+	iRbTreeNode *insertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
+		if(*root == null){
+			(*root) = new iRbTreeNode(value);
+			(*root)->isRedNode = false;
+			return null;
+		}
+		if(currentNode->value == value){
+			return null;
+		}else if(currentNode->value > value){
+			if(currentNode->left == null){
+				currentNode->left = new iRbTreeNode(value);
+				currentNode->left->parent = currentNode;
+				return currentNode->left;
+			}else{
+				return insertAtRightPlace(root,currentNode->left,value);
+			}
+		}else{
+			if(currentNode->right == null){
+				currentNode->right = new iRbTreeNode(value);
+				currentNode->right->parent = currentNode;
+				return currentNode->right;
+			}else{
+				return insertAtRightPlace(root,currentNode->right,value);
+			}
+		}
+	}
+
+	void reorganiseRbTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode){
+		if(currentNode->parent == null){
+			if(currentNode->isRedNode){
+				currentNode->isRedNode = false;
+			}
+			return;
+		}
+		iRbTreeNode *parent = currentNode->parent;
+		iRbTreeNode *grandParent = parent->parent;
+		if(grandParent->left == parent){
+			if(grandParent->right == null || !grandParent->right->isRedNode){
+				if(grandParent->parent == null){
+					(*root) = parent;
+				}
+				rotateNodes(grandParent,parent);
+				grandParent->isRedNode = true;
+				parent->isRedNode = false;
+				return;
+			}else{
+				grandParent->isRedNode = true;
+				grandParent->left->isRedNode = false;
+				grandParent->right->isRedNode = false;
+				if(grandParent->parent == null){
+					grandParent->isRedNode = false;
+					return;
+				}
+				reorganiseRbTreePostInsertion(root,grandParent);
+			}
+		}else{
+			if(grandParent->left == null || !grandParent->left->isRedNode){
+				if(grandParent->parent == null){
+					(*root) = parent;
+				}
+				rotateNodes(grandParent,parent);
+				grandParent->isRedNode = true;
+				parent->isRedNode = false;
+				return;
+			}else{
+				grandParent->isRedNode = true;
+				grandParent->left->isRedNode = false;
+				grandParent->right->isRedNode = false;
+				if(grandParent->parent == null){
+					grandParent->isRedNode = false;
+					return;
+				}
+				reorganiseRbTreePostInsertion(root,grandParent);
+			}
+		}
+	}
+public:
+	void insert(iRbTreeNode **root,int value){
+		iRbTreeNode *ptrToInsertedNode = insertAtRightPlace(root,*root,value);
+		if(ptrToInsertedNode == null){
+			return;
+		}
+		if(!ptrToInsertedNode->parent->isRedNode){
+			return;
+		}
+		reorganiseRbTreePostInsertion(root,ptrToInsertedNode);
+	}
+};
 
 #endif /* REDBLACKTREEUTIL_H_ */
 

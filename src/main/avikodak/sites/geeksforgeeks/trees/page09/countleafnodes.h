@@ -299,6 +299,79 @@ unsigned int countLeavesHashMap(itNode *ptr){
 	return leafCounter;
 }
 
+//Tested
+inrNode *clnGetNextRight(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void clnConnectNodesAtSameLevel(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	clnConnectNodesAtSameLevel(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = clnGetNextRight(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = clnGetNextRight(ptr->nextRight);
+		}
+		clnConnectNodesAtSameLevel(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = clnGetNextRight(ptr->nextRight);
+		clnConnectNodesAtSameLevel(ptr->right);
+	}else{
+		clnConnectNodesAtSameLevel(ptr->nextRight);
+	}
+}
+
+//Tested
+unsigned int clnCountLeafNodesPostConnecting(inrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	unsigned int leafCounter = 0;
+	while(ptr != null){
+		if(ptr->left == null && ptr->right == null){
+			leafCounter += 1;
+		}
+		ptr = ptr->nextRight;
+	}
+	return leafCounter;
+}
+
+//Tested
+unsigned int countLeafNodes(inrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	clnConnectNodesAtSameLevel(ptr);
+	unsigned int leafCounter = 0;
+	while(ptr != null){
+		leafCounter += clnCountLeafNodesPostConnecting(ptr);
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = clnGetNextRight(ptr);
+		}
+	}
+	return leafCounter;
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

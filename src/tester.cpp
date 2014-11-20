@@ -171,11 +171,9 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	vector<int> sequence = generateISequenceVector(10);
-	isuccesssorNode *root = utils->getISTreeFromVector(sequence);
-	populateSuccessorInorderRetrieve(root);
-	s(root);
-	//5 20 8 22 4 12 10 22
+	vector<int> sequence = generateIRandomVector(10,0,50);
+	inrNode *root = utils->getINRandomTree(10,0,50);
+	printf("%d\t",countLeafNodes(root));
 }
 
 void avlTreeTester(){
@@ -199,10 +197,10 @@ void avlTreeTester(){
 }
 
 void twoFourTreeTester(){
-	vector<int> sequence = generateISequenceVector(9);
+	vector<int> sequence = generateISequenceVector(30);
 	twofourtreeutils *utils = new twofourtreeutils();
 	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
-	utils->insertIntoTwoFourTree(&root,10);
+	//utils->insertIntoTwoFourTree(&root,12);
 	utils->inorderTraversal(root);
 }
 
@@ -219,10 +217,24 @@ void customTester(){
 	printPermutation(inputSequence,0,3);
 }
 
+void redblackTreeTester(){
+	rbutils *utils = new rbutils();
+	vector<int> sequence = generateISequenceVector(10);
+	iRbTreeNode *root = utils->getRbTreeFromVector(sequence);
+	utils->inorderTraversal(root);
+	PRINT_NEW_LINE;
+	for(unsigned int counter = 1;counter <= 10;counter++){
+		sequence.push_back(counter);
+	}
+	ifRbTreeNode *root2 = utils->getFRbTreeFromVector(sequence);
+	utils->inorderTraversal(root2);
+	PRINT_NEW_LINE;
+	printf("%d %d",utils->height(root),utils->height(root2));
+}
 
 int main() {
 	PRINT_NEW_LINE;
-	twoFourTreeTester();
+	treeTester();
 	return 0;
 }
 
