@@ -88,6 +88,21 @@ itNode *getKthSmallestBST(itNode *ptr,unsigned int &kValue){
 }
 
 //Tested
+itAuxNode *getKthSmallestBst(itAuxNode *ptr,unsigned int kValue){
+	if(ptr == null){
+		return null;
+	}
+	if(ptr->auxValue + 1 == kValue){
+		return ptr;
+	}
+	if(ptr->auxValue + 1 > kValue){
+		return getKthSmallestBst(ptr->left,kValue);
+	}else{
+		return getKthSmallestBst(ptr->right,kValue - ptr->auxValue - 1);
+	}
+}
+
+//Tested
 void kFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;

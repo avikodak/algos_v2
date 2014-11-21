@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\converttreetosumtree.h
  *  Created on			: Oct 23, 2014 :: 5:11:35 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/convert-a-given-tree-to-sum-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -107,6 +107,7 @@ void convertTreeToSumTreePreOrder(itNode *ptr){
 	convertTreeToSumTreePreOrder(ptr->right);
 }
 
+//Tested
 void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
 	if(ptr == null){
 		return;
@@ -117,12 +118,32 @@ void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeVal
 	}else{
 		int sum = 0;
 		if(ptr->left != null){
-			sum += ptr->value + nodeValueMap.find((uint32_t)ptr->left)->second;
+			sum += ptr->left->value + nodeValueMap.find((uint32_t)ptr->left)->second;
 		}
 		sum += getSumOfNodes(ptr->right);
 		ptr->value = sum;
 	}
 	convertTreeToSumTreeInOrderMain(ptr->right,nodeValueMap);
+}
+
+//Tested
+void setNodeValueIntoMap(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+	if(ptr == null){
+		return;
+	}
+	nodeValueMap.insert(pair<uint32_t,int>((uint32_t)ptr,ptr->value));
+	setNodeValueIntoMap(ptr->left,nodeValueMap);
+	setNodeValueIntoMap(ptr->right,nodeValueMap);
+}
+
+//Tested
+void convertTreeToSumTreeInorder(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	hash_map<uint32_t,int> nodeValueMap;
+	setNodeValueIntoMap(ptr,nodeValueMap);
+	convertTreeToSumTreeInOrderMain(ptr,nodeValueMap);
 }
 
 //Tested

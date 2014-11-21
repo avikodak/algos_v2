@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\insertintoavltree.h
  *  Created on			: Nov 19, 2014 :: 1:52:21 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/avl-tree-set-1-insertion/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	ipAvlNode *grandParent = parent->parent;
 	child->parent  = grandParent;
@@ -91,6 +92,7 @@ void rotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	}
 }
 
+//Tested
 ipAvlNode *insertNodeAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ipAvlNode(value);
@@ -118,6 +120,7 @@ ipAvlNode *insertNodeAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int va
 	}
 }
 
+//Tested
 void insertIntoAvlTree(ipAvlNode **root,int value){
 	ipAvlNode *currentNode = insertNodeAtRightPlace(root,*root,value);
 	if(currentNode == null){
@@ -132,10 +135,16 @@ void insertIntoAvlTree(ipAvlNode **root,int value){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
 			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
+				if(z->parent == null){
+					(*root) = y;
+				}
 				rotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 			}else{
+				if(z->parent == null){
+					(*root) = x;
+				}
 				rotateNodes(y,x);
 				rotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);

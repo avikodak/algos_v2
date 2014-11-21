@@ -91,6 +91,7 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/checkiftreesubtree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/connectnodesatsamelevel.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/converttreetosumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page07/insertintoavltree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/kthsmallestbst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/levelofnode.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/printancestors.h"
@@ -174,31 +175,21 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	//vector<int> sequence = getVectorForUserInput();
-	//itNode *root = utils->getITreeFromVector(sequence);
-	hash_map<unsigned int,int> indexNodeMap = getUserInputForIndexValueMap();
-	itNode *root = utils->getITreeFromHashmap(indexNodeMap);
-	printf("%d\t",isTreeFoldable(root));
+	inrNode *root = utils->getINRTreeFromVector(generateISequenceVector(10));
+	connectNodesAtSameLevelPreOrderFullTree(root);
+	utils->printNodesPostConnecting(root);
 }
 
 void avlTreeTester(){
 	avlutils *utils = new avlutils();
 	vector<int> sequence = generateISequenceVector(10);
+	ipAvlNode *root = null;
 	for(unsigned int counter = 1;counter <= 10;counter++){
-		sequence.push_back(counter);
+		insertIntoAvlTree(&root,counter);
 	}
-	ifpAvlNode *root = utils->getFAvlTreeFromVector(sequence);
-	//utils->insertIntoAvlTree(&root,1);
 	utils->inorderTraversal(root);
 	PRINT_NEW_LINE;
-	printf("%d\n",utils->getHeightOfTree(root));
-	printf("%d\n",utils->minAvlTree(root)->value);
-	printf("%d\n",utils->maxAvlTree(root)->value);
-	ifpAvlNode *temp1,*temp2;
-	for(unsigned int counter = 1;counter <= 10;counter++){
-		printf("%d \t %d\t",(temp1 = utils->predecessor(root,counter)) == null?INT_MIN:temp1->value,(temp2 = utils->successor(root,counter))==null?INT_MAX:temp2->value);
-		PRINT_NEW_LINE;
-	}
+
 }
 
 void twoFourTreeTester(){
@@ -235,6 +226,10 @@ void redblackTreeTester(){
 	utils->inorderTraversal(root2);
 	PRINT_NEW_LINE;
 	printf("%d %d",utils->height(root),utils->height(root2));
+}
+
+void trieTester(){
+
 }
 
 int main() {

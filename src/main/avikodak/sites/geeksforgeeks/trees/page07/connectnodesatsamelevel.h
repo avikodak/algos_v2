@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\connectnodesatsamelevel.h
  *  Created on			: Oct 23, 2014 :: 12:06:51 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/connect-nodes-at-same-level/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -209,13 +209,49 @@ void rConnectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
 	rConnectNodesAtSameLevelPreOrderFullTree(ptr->right);
 }
 
+inrNode *rGetNextRightNode(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
 void connectNodesAtSameLevelPreOrderFullTree(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	inrNode *crawler = ptr;
-	while(crawler != null){
-		crawler = crawler->nextRight;
+	while(ptr != null){
+		crawler = ptr;
+		while(crawler != null){
+			if(crawler->left != null){
+				if(crawler->right != null){
+					crawler->left->nextRight = crawler->right;
+				}else{
+					crawler->left->nextRight = rGetNextRightNode(crawler->nextRight);
+				}
+			}
+			if(crawler->right != null){
+				crawler->right->nextRight = rGetNextRightNode(crawler->nextRight);
+			}
+			crawler = crawler->nextRight;
+		}
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = rGetNextRightNode(ptr);
+		}
 	}
 }
 

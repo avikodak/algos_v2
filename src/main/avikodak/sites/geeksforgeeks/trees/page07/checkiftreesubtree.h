@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreesubtree.h
  *  Created on			: Oct 23, 2014 :: 10:15:35 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-if-a-binary-tree-is-subtree-of-another-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,41 +71,37 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isContinousSubset(vector<int> firstUserinput,vector<int> secondUserinput){
 	if(firstUserinput.size() == 0 || secondUserinput.size() == 0){
 		return true;
 	}
 	unsigned int outerCrawler,firstCrawler,secondCrawler;
-	if(firstUserinput.size() >= secondUserinput.size()){
-		for(;outerCrawler < firstUserinput.size() - secondUserinput.size() + 1;outerCrawler++){
-			firstCrawler = outerCrawler;
-			secondCrawler = 0;
-			while(secondCrawler < secondUserinput.size()){
-				if(firstUserinput[firstCrawler] != secondUserinput[secondCrawler]){
-					return false;
-				}
+	if(secondUserinput.size() > firstUserinput.size()){
+		firstUserinput.swap(secondUserinput);
+	}
+	printIVector(firstUserinput);
+	PRINT_NEW_LINE;
+	printIVector(secondUserinput);
+	PRINT_NEW_LINE;
+	for(outerCrawler = 0;outerCrawler < firstUserinput.size();outerCrawler++){
+		firstCrawler = outerCrawler;
+		secondCrawler = 0;
+		while(secondCrawler < secondUserinput.size() && firstCrawler < firstUserinput.size()){
+			if(firstUserinput[firstCrawler] != secondUserinput[secondCrawler]){
+				break;
 			}
-			if(secondCrawler == secondUserinput.size()){
-				return true;
-			}
+			secondCrawler++;
+			firstCrawler++;
 		}
-	}else{
-		for(;outerCrawler < secondUserinput.size() - firstUserinput.size() + 1;outerCrawler++){
-			firstCrawler = outerCrawler;
-			secondCrawler = 0;
-			while(secondCrawler < firstUserinput.size()){
-				if(secondUserinput[firstCrawler] != firstUserinput[secondCrawler]){
-					return false;
-				}
-			}
-			if(firstCrawler == firstUserinput.size()){
-				return true;
-			}
+		if(secondCrawler == secondUserinput.size()){
+			return true;
 		}
 	}
 	return false;
 }
 
+//Tested
 bool isTreeSubTree(itNode *firstPtr,itNode *secondPtr){
 	if(firstPtr == null || secondPtr == null){
 		return true;
