@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\floorceilbst.h
  *  Created on			: Nov 13, 2014 :: 12:20:17 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/floor-and-ceil-from-a-bst/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int ceilBST(itNode *ptr,int value){
 	if(ptr == null){
 		return INT_MIN;
@@ -82,7 +83,7 @@ int ceilBST(itNode *ptr,int value){
 		return ceilBST(ptr->right,value);
 	}else{
 		int result = ceilBST(ptr->left,value);
-		return result > value?result:ptr->value;
+		return result >= value?result:ptr->value;
 	}
 }
 

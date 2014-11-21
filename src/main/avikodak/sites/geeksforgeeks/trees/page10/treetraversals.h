@@ -521,6 +521,38 @@ void levelOrderTraversal(inrNode *ptr){
 	}
 }
 
+//Tested
+void connectNodesAtSameLevelIterative(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inrNode *currentNode = ptr,*crawler;
+	while(currentNode != null){
+		crawler = currentNode;
+		while(crawler != null){
+			if(crawler->left != null){
+				if(crawler->right != null){
+					crawler->left->nextRight = crawler->right;
+					crawler->right->nextRight = getNextRight(crawler->nextRight);
+				}else{
+					crawler->left->nextRight = getNextRight(crawler->nextRight);
+				}
+			}
+			if(crawler->right != null){
+				crawler->right->nextRight = getNextRight(crawler->nextRight);
+			}
+			crawler = crawler->nextRight;
+		}
+		if(currentNode->left != null){
+			currentNode = currentNode->left;
+		}else if(currentNode->right != null){
+			currentNode = currentNode->right;
+		}else{
+			currentNode = getNextRight(currentNode);
+		}
+	}
+}
+
 #endif /* TREETRAVERSALS_H_ */
 
 /****************************************************************************************************************************************************/

@@ -516,6 +516,84 @@ unsigned int getSizeOfTreeLevelOrderON2(itNode *ptr){
 	return size;
 }
 
+//Tested
+inrNode *siGetNextRight(inrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+//Tested
+void siConnectNodesAtSameLevelIterative(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inrNode *outerCrawer = ptr,*innerCrawler;
+	while(outerCrawer != null){
+		innerCrawler = outerCrawer;
+		while(innerCrawler != null){
+			if(innerCrawler->left != null){
+				if(innerCrawler->right != null){
+					innerCrawler->left->nextRight = innerCrawler->right;
+					innerCrawler->right->nextRight = siGetNextRight(innerCrawler->nextRight);
+				}else{
+					innerCrawler->left->nextRight = siGetNextRight(innerCrawler->nextRight);
+				}
+			}
+			if(innerCrawler->right != null){
+				innerCrawler->right->nextRight = siGetNextRight(innerCrawler->nextRight);
+			}
+			innerCrawler = innerCrawler->nextRight;
+		}
+		if(outerCrawer->left != null){
+			outerCrawer = outerCrawer->left;
+		}else if(outerCrawer->right != null){
+			outerCrawer = outerCrawer->right;
+		}else{
+			outerCrawer = siGetNextRight(outerCrawer->nextRight);
+		}
+	}
+}
+
+//Tested
+unsigned int sizeOfLevelAfterConnection(inrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	unsigned int nodeCounter = 0;
+	while(ptr != null){
+		nodeCounter += 1;
+		ptr = ptr->nextRight;
+	}
+	return nodeCounter;
+}
+
+//Tested
+unsigned int siSizeOfTreePostConnectingNodes(inrNode *ptr){
+	unsigned int sizeOfTree = 0;
+	siConnectNodesAtSameLevelIterative(ptr);
+	while(ptr != null){
+		sizeOfTree += sizeOfLevelAfterConnection(ptr);
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right  != null){
+			ptr = ptr->right;
+		}else{
+			ptr = siGetNextRight(ptr->nextRight);
+		}
+	}
+	return sizeOfTree;
+}
+
 #endif /* SIZEOFTREE_H_ */
 
 /****************************************************************************************************************************************************/

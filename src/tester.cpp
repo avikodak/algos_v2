@@ -100,8 +100,10 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page07/populateinordersuccessor.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/binarytreetobst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/boundaryoftree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/constructbstfrompreorder.h" // REVISE
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/checkinternalnodehasexactlyonechild.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/constructtreefromprepostspecial.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/floorceilbst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/gettreefromspecialinorder.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/istreecomplete.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/largestbstsubtree.h"
@@ -175,9 +177,11 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	inrNode *root = utils->getINRTreeFromVector(generateISequenceVector(10));
-	connectNodesAtSameLevelPreOrderFullTree(root);
+	vector<int> userInput = generateISequenceVector(10);
+	inrNode *root = utils->getINRTreeFromVector(userInput);
+	tConnectNodesAtSameLevelIterative(root);
 	utils->printNodesPostConnecting(root);
+	//6 10 5 1 7 40 50
 }
 
 void avlTreeTester(){

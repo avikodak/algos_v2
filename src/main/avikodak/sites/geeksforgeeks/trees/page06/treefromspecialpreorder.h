@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\treefromspecialpreorder.h
  *  Created on			: Oct 31, 2014 :: 6:42:41 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/construct-a-special-tree-from-given-preorder-traversal/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

@@ -163,6 +163,37 @@ void tLevelOrderNodesByConnecting(inrNode *ptr){
 	}
 }
 
+//Tested
+void tConnectNodesAtSameLevelIterative(inrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inrNode *outerCrawler = ptr,*innerCrawler;
+	while(outerCrawler != null){
+		innerCrawler = outerCrawler;
+		while(innerCrawler != null){
+			if(innerCrawler->left != null){
+				if(innerCrawler->right != null){
+					innerCrawler->left->nextRight = innerCrawler->right;
+				}else{
+					innerCrawler->left->nextRight = tGetNextRightPtr(innerCrawler->nextRight);
+				}
+			}
+			if(innerCrawler->right != null){
+				innerCrawler->right->nextRight = tGetNextRightPtr(innerCrawler->nextRight);
+			}
+			innerCrawler  = innerCrawler->nextRight;
+		}
+		if(outerCrawler->left != null){
+			outerCrawler = outerCrawler->left;
+		}else if(outerCrawler->right != null){
+			outerCrawler = outerCrawler->right;
+		}else{
+			outerCrawler = tGetNextRightPtr(outerCrawler->right);
+		}
+	}
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

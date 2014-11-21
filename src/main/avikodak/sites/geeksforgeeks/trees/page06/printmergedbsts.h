@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\printmergedbsts.h
  *  Created on			: Nov 1, 2014 :: 11:09:17 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/merge-two-bsts-with-limited-extra-space/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

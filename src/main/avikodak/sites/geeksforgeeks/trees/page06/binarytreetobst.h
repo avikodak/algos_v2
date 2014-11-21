@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\binarytreetobst.h
  *  Created on			: Oct 23, 2014 :: 6:34:49 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/binary-tree-to-binary-search-tree-conversion/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

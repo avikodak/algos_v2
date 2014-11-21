@@ -3,9 +3,10 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructbstfrompreorder.h
  *  Created on			: Nov 13, 2014 :: 10:47:11 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
+ *  					  http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversal-set-2/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,18 +72,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *constructBSTFromPreOrderON(vector<int> userInput,int minValue,int maxValue){
-	static int counter = 0;
-	if(userInput[counter] < minValue || userInput[counter] > maxValue){
+//Tested
+itNode *constructBSTFromPreOrderON(vector<int> userInput,int minValue = INT_MIN,int maxValue = INT_MAX){
+	static unsigned int counter = 0;
+	if(counter >= userInput.size()){
 		return null;
 	}
-	itNode *node = new itNode(userInput[counter]);
+	int value = userInput[counter];
+	if(value < minValue || value > maxValue){
+		return null;
+	}
+	itNode *node = new itNode(value);
 	counter++;
-	node->left = constructBSTFromPreOrderON(userInput,minValue,userInput[counter]);
-	node->right = constructBSTFromPreOrderON(userInput,userInput[counter],maxValue);
+	node->left = constructBSTFromPreOrderON(userInput,minValue,value);
+	node->right = constructBSTFromPreOrderON(userInput,value,maxValue);
 	return node;
 }
 
+//Tested
 itNode *constructBSTFromPreorderIterative(vector<int> userInput){
 	if(userInput.size() ==0){
 		return null;
@@ -97,7 +104,7 @@ itNode *constructBSTFromPreorderIterative(vector<int> userInput){
 			temp = auxSpace.top();
 			auxSpace.pop();
 		}
-		if(temp == null){
+		if(temp != null){
 			temp->right = new itNode(userInput[counter]);
 			auxSpace.push(temp->right);
 		}else{
@@ -111,13 +118,14 @@ itNode *constructBSTFromPreorderIterative(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *constructBSTFromPreOrderON2(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return null;
 	}
 	itNode *node = new itNode(userInput[startIndex]);
-	int counter = startIndex;
-	while(userInput[startIndex] > userInput[counter] && counter < endIndex){
+	int counter = startIndex+1;
+	while(userInput[startIndex] > userInput[counter] && counter <= endIndex){
 		counter++;
 	}
 	node->left = constructBSTFromPreOrderON2(userInput,startIndex+1,counter-1);
