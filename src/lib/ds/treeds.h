@@ -72,6 +72,32 @@ struct itNode{
 	}
 };
 
+struct itAuxNode{
+	int value;
+	unsigned int auxValue;
+	itAuxNode *left;
+	itAuxNode *right;
+
+	itAuxNode(){
+		this->left = null;
+		this->right = null;
+	}
+
+	itAuxNode(int value){
+		this->value = value;
+		this->auxValue = 0;
+		this->left = null;
+		this->right = null;
+	}
+
+	itAuxNode(int value,unsigned int auxValue){
+		this->value = value;
+		this->auxValue = auxValue;
+		this->left = null;
+		this->right = null;
+	}
+};
+
 struct iptNode{
 	int value;
 	iptNode *left;
@@ -341,6 +367,123 @@ struct cpTrieNode{
 			this->isLeafNode = false;
 		}
 		this->parent = parent;
+	}
+};
+
+struct i24Node{
+	int value[3];
+	unsigned int noOfKeys;
+	unsigned int noOfChildren;
+	i24Node *parent;
+	i24Node *children[TWO_FOUR_TREE_CHILDREN];
+
+	i24Node(){
+		for(unsigned int counter = 0;counter < TWO_FOUR_TREE_CHILDREN;counter++){
+			this->children[counter] = null;
+		}
+		this->parent = null;
+		this->noOfKeys = 0;
+		this->noOfChildren = 0;
+	}
+
+	i24Node(int value){
+		this->value[0] = value;
+		this->noOfKeys = 1;
+		this->noOfChildren = 0;
+		this->parent = null;
+		for(unsigned int counter = 0;counter < TWO_FOUR_TREE_CHILDREN;counter++){
+			this->children[counter] = null;
+		}
+	}
+};
+
+struct i24fNode{
+	int value[3];
+	i24Node *parent;
+	unsigned int noOfKeys;
+	unsigned int noOfChildren;
+	unsigned int frequency[3];
+	i24Node *children[TWO_FOUR_TREE_CHILDREN];
+
+	i24fNode(){
+		for(unsigned int counter = 0;counter < TWO_FOUR_TREE_CHILDREN;counter++){
+			this->children[counter] = null;
+		}
+		this->parent = null;
+		this->noOfKeys = 0;
+		this->noOfChildren = 0;
+	}
+
+	i24fNode(int value){
+		this->value[0] = value;
+		this->frequency[0] = 1;
+		this->noOfKeys = 1;
+		this->parent = null;
+		for(unsigned int counter = 0;counter < TWO_FOUR_TREE_CHILDREN;counter++){
+			this->children[counter] = null;
+		}
+	}
+};
+
+struct i24TreeSearchResult{
+	int index;
+	i24Node *node;
+
+	i24TreeSearchResult(){
+		this->node = null;
+	}
+
+	i24TreeSearchResult(int index,i24Node *node){
+		this->index = index;
+		this->node = node;
+	}
+};
+
+struct iRbTreeNode{
+	int value;
+	bool isRedNode;
+	iRbTreeNode *left;
+	iRbTreeNode *right;
+	iRbTreeNode *parent;
+
+	iRbTreeNode(){
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	iRbTreeNode(int value){
+		this->value = value;
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct ifRbTreeNode{
+	int value;
+	bool isRedNode;
+	unsigned int frequency;
+	ifRbTreeNode *left;
+	ifRbTreeNode *right;
+	ifRbTreeNode *parent;
+
+	ifRbTreeNode(){
+		this->frequency = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	ifRbTreeNode(int value){
+		this->frequency = 1;
+		this->value = value;
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
 	}
 };
 

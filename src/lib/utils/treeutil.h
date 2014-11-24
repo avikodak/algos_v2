@@ -156,6 +156,37 @@ private:
 		}
 	}
 
+	//Tested
+	void getAuxBstFromVectorMain(itAuxNode **root,itAuxNode *currentNode,vector<int> userInput,unsigned int counter){
+		if(userInput.size() <= counter){
+			return;
+		}
+		if(*root == null){
+			(*root) = new itAuxNode(userInput[counter]);
+			getAuxBstFromVectorMain(root,*root,userInput,counter+1);
+		}else{
+			if(currentNode->value == userInput[counter]){
+				getAuxBstFromVectorMain(root,*root,userInput,counter+1);
+			}else if(currentNode->value > userInput[counter]){
+				if(currentNode->left == null){
+					currentNode->left =	new itAuxNode(userInput[counter]);
+					currentNode->auxValue += 1;
+					getAuxBstFromVectorMain(root,*root,userInput,counter+1);
+				}else{
+					currentNode->auxValue += 1;
+					getAuxBstFromVectorMain(root,currentNode->left,userInput,counter);
+				}
+			}else{
+				if(currentNode->right == null){
+					currentNode->right = new itAuxNode(userInput[counter]);
+					getAuxBstFromVectorMain(root,*root,userInput,counter+1);
+				}else{
+					getAuxBstFromVectorMain(root,currentNode->right,userInput,counter);
+				}
+			}
+		}
+	}
+
 	void getFBSTFromVectorMain(iftNode **root,iftNode *currentNode,vector<int> userInput,unsigned int counter){
 		if(counter >= userInput.size()){
 			return;
@@ -215,6 +246,15 @@ private:
 		setNodesInInorderMain(ptr->right,auxSpace);
 	}
 
+	void setNodesInInorderMain(isuccesssorNode *ptr,vector<isuccesssorNode *> &auxSpace){
+		if(ptr == null){
+			return;
+		}
+		setNodesInInorderMain(ptr->left,auxSpace);
+		auxSpace.push_back(ptr);
+		setNodesInInorderMain(ptr->right,auxSpace);
+	}
+
 	//Tested
 	void setValuesInInorderMain(itNode *ptr,vector<int> &auxSpace){
 		if(ptr == null){
@@ -243,6 +283,41 @@ private:
 		setValuesInPostorderMain(ptr->right,auxSpace);
 		auxSpace.push_back(ptr->value);
 	}
+
+	itNode *getBSTSortedVectorMain(vector<int> userInput,int startIndex,int endIndex){
+		if(startIndex > endIndex){
+			return null;
+		}
+		int midIndex = (startIndex + endIndex)/2;
+		itNode *node = new itNode(userInput[midIndex]);
+		node->left = getBSTSortedVectorMain(userInput,startIndex,midIndex-1);
+		node->right = getBSTSortedVectorMain(userInput,midIndex+1,endIndex);
+		return node;
+	}
+
+	//Tested
+	void printLevelPostConnection(inrNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		printf("%d\t",ptr->value);
+		printLevelPostConnection(ptr->nextRight);
+	}
+
+	//Tested
+	inrNode *getNextRightPostConnection(inrNode *ptr){
+		if(ptr == null){
+			return null;
+		}
+		while(ptr != null){
+			if(ptr->left != null){
+				ptr = ptr->left;
+			}else if(ptr->right != null){
+				ptr = ptr->right;
+			}
+			ptr = ptr->nextRight;
+		}
+	}
 public:
 	//Tested
 	itNode *getITreeFromVector(vector<int> userInput,unsigned int currentIndex = 0) {
@@ -252,6 +327,33 @@ public:
 		itNode *node = new itNode(userInput[currentIndex]);
 		node->left = getITreeFromVector(userInput,2*currentIndex+1);
 		node->right = getITreeFromVector(userInput,2*currentIndex+2);
+		return node;
+	}
+
+	//Tested
+	iptNode *getIPTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0){
+		if(currentIndex >= userInput.size()){
+			return null;
+		}
+		iptNode *node = new iptNode(userInput[currentIndex]);
+		node->left = getIPTreeFromVector(userInput,2*currentIndex+1);
+		if(node->left != null){
+			node->left->parent = node;
+		}
+		node->right = getIPTreeFromVector(userInput,2*currentIndex+2);
+		if(node->right != null){
+			node->right->parent = node;
+		}
+		return node;
+	}
+
+	isuccesssorNode *getISTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0){
+		if(currentIndex >= userInput.size()){
+			return null;
+		}
+		isuccesssorNode *node = new isuccesssorNode(userInput[currentIndex]);
+		node->left = getISTreeFromVector(userInput,2*currentIndex+1);
+		node->right = getISTreeFromVector(userInput,2*currentIndex+2);
 		return node;
 	}
 
@@ -276,15 +378,59 @@ public:
 		return getINRTreeFromVector(randomValues);
 	}
 
-	itNode *getITreeFromHashmap(hash_map<unsigned int,int> userInput,unsigned int currentIndex = 0){
+	//Tested
+	itNode *getITreeFromHashmap(hash_map<unsigned int,int> userInput,unsigned int currentIndex = 1){
 		hash_map<unsigned int,int>::iterator itToUserInput = userInput.find(currentIndex);
 		if(itToUserInput == userInput.end()){
 			return null;
 		}
 		itNode *node = new itNode(itToUserInput->second);
-		node->left = getITreeFromHashmap(userInput,2*currentIndex+1);
-		node->right = getITreeFromHashmap(userInput,2*currentIndex+2);
+		node->left = getITreeFromHashmap(userInput,2*currentIndex);
+		node->right = getITreeFromHashmap(userInput,2*currentIndex+1);
 		return node;
+	}
+
+	//Tested
+	inrNode *getINRTreeFromHashmap(hash_map<unsigned int,int> userInput,unsigned int currentIndex = 1){
+		hash_map<unsigned int,int>::iterator itToUserInput = userInput.find(currentIndex);
+		if(itToUserInput == userInput.end()){
+			return null;
+		}
+		inrNode *node = new inrNode(itToUserInput->second);
+		node->left = getINRTreeFromHashmap(userInput,2*currentIndex);
+		node->right = getINRTreeFromHashmap(userInput,2*currentIndex+1);
+		return node;
+	}
+
+	iptNode *getIPTreeFromHashmap(hash_map<unsigned int,int> userInput,unsigned int currentIndex = 1){
+		hash_map<unsigned int,int>::iterator itToUserInput = userInput.find(currentIndex);
+		if(itToUserInput == userInput.end()){
+			return null;
+		}
+		iptNode *node = new iptNode(itToUserInput->second);
+		node->left = getIPTreeFromHashmap(userInput,2*currentIndex);
+		if(node->left != null){
+			node->left->parent = node;
+		}
+		node->right = getIPTreeFromHashmap(userInput,2*currentIndex+1);
+		if(node->right != null){
+			node->right->parent = node;
+		}
+		return node;
+	}
+
+	//Tested
+	itNode *getITreeForIndexValueUserInput(){
+		hash_map<unsigned int,int> indexValueMap;
+		unsigned int sizeOfInput;
+		int temp;unsigned int index;
+		scanf("%d",&sizeOfInput);
+		for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+			scanf("%d",&index);
+			scanf("%d",&temp);
+			indexValueMap.insert(pair<unsigned int,int>(index,temp));
+		}
+		return getITreeFromHashmap(indexValueMap);
 	}
 
 	//Tested
@@ -296,12 +442,38 @@ public:
 		printIVector(randomValues);
 		return getITreeFromVector(randomValues);
 	}
+
+	inrNode *getINRRandomTree(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX){
+		if(numberOfNodes == 0){
+			return null;
+		}
+		vector<int> randomVector = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		return getINRTreeFromVector(randomVector);
+	}
+
+	//Tested
+	iptNode *getRandomPTree(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX){
+		if(numberOfNodes == 0){
+			return null;
+		}
+		vector<int> userInput = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		return getIPTreeFromVector(userInput);
+	}
+
+	unsigned int getSizeOfTree(itNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1+getSizeOfTree(ptr->left)+getSizeOfTree(ptr->right);
+	}
+
 	//Tested
 	itNode *getRandomBST(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX) {
 		if(numberOfNodes == 0){
 			return null;
 		}
 		vector<int> randomValues = generateIRandomVector(numberOfNodes,minValue,maxValue);
+		sort(randomValues.begin(),randomValues.end());
 		printIVector(randomValues);
 		return getBSTFromVector(randomValues);
 	}
@@ -325,6 +497,16 @@ public:
 		return root;
 	}
 
+	//Tested
+	itAuxNode *getAuxBSTFromVector(vector<int> userInput){
+		if(userInput.size() == 0){
+			return null;
+		}
+		itAuxNode *root = null;
+		getAuxBstFromVectorMain(&root,root,userInput,0);
+		return root;
+	}
+
 	itNode *getBSTFromSill(sillNode *ptr){
 		if(ptr == null){
 			return null;
@@ -342,6 +524,38 @@ public:
 		iftNode *fbstRoot = null;
 		getFBSTFromSillMain(&fbstRoot,fbstRoot,ptr);
 		return fbstRoot;
+	}
+
+	itNode *getBSTSortedVector(vector<int> userInput){
+		if(userInput.size() == 0){
+			return null;
+		}
+		return getBSTSortedVectorMain(userInput,0,userInput.size()-1);
+	}
+
+	void insertIntoBST(itNode **ptr,int value){
+		if(*ptr == null){
+			(*ptr) = new itNode(value);
+			return;
+		}
+		itNode *currentNode = *ptr;
+		while(currentNode != null){
+			if(currentNode->value > value){
+				if(currentNode->left == null){
+					currentNode->left = new itNode(value);
+					return;
+				}else{
+					currentNode = currentNode->left;
+				}
+			}else{
+				if(currentNode->right == null){
+					currentNode->right = new itNode(value);
+					return;
+				}else{
+					currentNode = currentNode->right;
+				}
+			}
+		}
 	}
 
 	itNode *getBSTFromSillIterative(sillNode *ptr){
@@ -554,6 +768,13 @@ public:
 		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
 	}
 
+	unsigned int getHeightOfTree(inrNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
+	}
+
 	//Tested
 	void preOrderTraversal(iftNode *ptr){
 		if(ptr == null){
@@ -564,6 +785,7 @@ public:
 		preOrderTraversal(ptr->right);
 	}
 
+	//Tested
 	void preOrderTraversal(itNode *ptr){
 		if(ptr == null){
 			return;
@@ -573,6 +795,7 @@ public:
 		preOrderTraversal(ptr->right);
 	}
 
+	//Tested
 	void inOrderTraversal(itNode *ptr){
 		if(ptr == null){
 			return;
@@ -582,6 +805,17 @@ public:
 		inOrderTraversal(ptr->right);
 	}
 
+	//Tested
+	void inorderTraversal(itAuxNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		inorderTraversal(ptr->left);
+		printf("%d(%d)\t",ptr->value,ptr->auxValue);
+		inorderTraversal(ptr->right);
+	}
+
+	//Tested
 	void postOrderTraversal(itNode *ptr){
 		if(ptr == null){
 			return;
@@ -636,6 +870,15 @@ public:
 		return preOrderValues;
 	}
 
+	vector<isuccesssorNode *> getSNodesInInOrder(isuccesssorNode *ptr){
+		vector<isuccesssorNode *> inOrderNodes;
+		if(ptr == null){
+			return inOrderNodes;
+		}
+		setNodesInInorderMain(ptr,inOrderNodes);
+		return inOrderNodes;
+	}
+
 	vector<itNode *> getNodesInInorder(itNode *ptr){
 		vector<itNode *> inOrderNodes;
 		if(ptr == null){
@@ -672,6 +915,24 @@ public:
 		}
 		setValuesInPostorderMain(ptr,postOrderValues);
 		return postOrderValues;
+	}
+
+	//Tested
+	void printNodesPostConnecting(inrNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		while(ptr != null){
+			printLevelPostConnection(ptr);
+			PRINT_NEW_LINE;
+			if(ptr->left != null){
+				ptr = ptr->left;
+			}else if(ptr->right != null){
+				ptr = ptr->right;
+			}else{
+				ptr = getNextRightPostConnection(ptr);
+			}
+		}
 	}
 
 	//Tested
