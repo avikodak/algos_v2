@@ -84,10 +84,51 @@ unsigned int printNodesAtKDistanceFromLeaf(itNode *ptr,unsigned int kDistance){
 	return 1 + max(leftHeight,rightHeight);
 }
 
+//Tested
+void printNodesAtKDistanceFromLeafAuxspace(itNode *ptr,stack<itNode *> auxSpace,unsigned int kDistance){
+	if(ptr == null){
+		return;
+	}
+	static hash_map<int,bool> flags;
+	auxSpace.push(ptr);
+	if(ptr->left == null && ptr->right == null){
+		while(!auxSpace.empty() && kDistance--){
+			auxSpace.pop();
+		}
+		if(!auxSpace.empty()){
+			if(flags.find(auxSpace.top()->value) == flags.end()){
+				printf("%d\t",auxSpace.top()->value);
+				flags[auxSpace.top()->value] = true;
+			}
+		}
+		return;
+	}
+	printNodesAtKDistanceFromLeafAuxspace(ptr->left,auxSpace,kDistance);
+	printNodesAtKDistanceFromLeafAuxspace(ptr->right,auxSpace,kDistance);
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+unsigned int heightOfTree(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	return 1 + max(heightOfTree(ptr->left),heightOfTree(ptr->right));
+}
 
+//Tested
+void printNodesAtKDistanceON2(itNode *ptr,unsigned int kDistance){
+	if(ptr == null){
+		return;
+	}
+	if(heightOfTree(ptr->left) == kDistance || heightOfTree(ptr->right) == kDistance){
+		printf("%d\t",ptr->value);
+	}
+	printNodesAtKDistanceON2(ptr->left,kDistance);
+	printNodesAtKDistanceON2(ptr->right,kDistance);
+}
 
 #endif /* PRINTNODESATKDISTANCEFROMLEAF_H_ */
 

@@ -214,7 +214,8 @@ void treeTester(){
 	//vector<int> userInput = getVectorForUserInput();
 	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
 	itNode *root = utils->getITreeFromHashmap(getUserInputForIndexValueMap());
-	printNodesAtKDistanceFromLeaf(root,2);
+	stack<itNode *> auxSpace;
+	printNodesAtKDistanceON2(root,1);//8 1 1 2 2 3 3 4 4 5 5 6 6 7 7 13 8
 }
 
 void avlTreeTester(){
