@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\converttreetodllON2.h
  *  Created on			: Nov 13, 2014 :: 9:05:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/convert-a-given-binary-tree-to-doubly-linked-list-set-2/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *oConvertTreeToDllON2Main(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -95,6 +96,7 @@ itNode *oConvertTreeToDllON2Main(itNode *ptr){
 	return ptr;
 }
 
+//Tested
 void oConvertTreeToDllON2(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -105,6 +107,10 @@ void oConvertTreeToDllON2(itNode **ptr){
 		currentNode = currentNode->left;
 	}
 	(*ptr) = currentNode;
+	while(currentNode != null){
+		printf("%d\t",currentNode->value);
+		currentNode = currentNode->right;
+	}
 }
 
 #endif /* CONVERTTREETODLLON2_H_ */

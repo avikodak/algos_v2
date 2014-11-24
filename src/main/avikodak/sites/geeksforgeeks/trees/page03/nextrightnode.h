@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 inrNode *nrGetNextRight(inrNode *ptr){
 	if(ptr ==null){
 		return null;
@@ -86,6 +87,7 @@ inrNode *nrGetNextRight(inrNode *ptr){
 	return null;
 }
 
+//Tested
 void nrConnectNodesInSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
@@ -107,6 +109,7 @@ void nrConnectNodesInSameLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 int getNextRightValueIfPresent(inrNode *ptr,int value){
 	while(ptr != null){
 		if(ptr->value == value){
@@ -117,16 +120,17 @@ int getNextRightValueIfPresent(inrNode *ptr,int value){
 	return INT_MIN;
 }
 
+//Tested
 int getNextRightNode(inrNode *ptr,int value){
 	if(ptr == null){
 		return 0;
 	}
 	nrConnectNodesInSameLevel(ptr);
-	int value;
+	int temp;
 	while(ptr != null){
-		value = getNextRightValueIfPresent(ptr,value);
-		if(value != INT_MIN){
-			return value;
+		temp = getNextRightValueIfPresent(ptr,value);
+		if(temp != INT_MIN){
+			return temp;
 		}
 		if(ptr->left != null){
 			ptr = ptr->left;
@@ -144,15 +148,17 @@ itNode *getNextRightLevelOrder(itNode *ptr,int level){
 		return  null;
 	}
 	queue<itNode *> auxSpace;
-	itNode *currentNode;
+	itNode *currentNode = null;
 	auxSpace.push(ptr);
 	unsigned int nodeCounter = 0;
 	while(!auxSpace.empty()){
 		nodeCounter = auxSpace.size();
+		currentNode = auxSpace.front();
 		while(nodeCounter--){
 
 		}
 	}
+	return currentNode;
 }
 
 

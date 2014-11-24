@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\reversealternatelevels.h
  *  Created on			: Nov 16, 2014 :: 11:27:58 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/reverse-alternate-levels-binary-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 //Works only for full tree
 void setVectorWithInorderNodesInAlternateLevels(itNode *ptr,vector<int> &alternateInorderNodes){
 	if(ptr == null){
@@ -81,9 +82,10 @@ void setVectorWithInorderNodesInAlternateLevels(itNode *ptr,vector<int> &alterna
 	setVectorWithInorderNodesInAlternateLevels(ptr->right,alternateInorderNodes);
 }
 
+//Tested
 void setTreeWithVectorInAlternateLevels(itNode *ptr,vector<int> inorderNodes){
-	static int indexCounter = 0;
-	if(indexCounter >= inorderNodes.size()){
+	static unsigned int indexCounter = 0;
+	if(ptr == null || indexCounter >= inorderNodes.size()){
 		return;
 	}
 	setTreeWithVectorInAlternateLevels(ptr->left,inorderNodes);
@@ -91,6 +93,7 @@ void setTreeWithVectorInAlternateLevels(itNode *ptr,vector<int> inorderNodes){
 	setTreeWithVectorInAlternateLevels(ptr->right,inorderNodes);
 }
 
+//Tested
 void reverseNodesInAlternateLevel(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -101,6 +104,7 @@ void reverseNodesInAlternateLevel(itNode *ptr){
 	setTreeWithVectorInAlternateLevels(ptr,inorderNodesOfAlternateLevels);
 }
 
+//Tested
 void reverseAlternateLevels(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -136,6 +140,7 @@ void reverseAlternateLevels(itNode *ptr){
 		flag = !flag;
 	}
 	flag = false;
+	auxSpace.push(ptr);
 	while(!auxSpace.empty()){
 		nodeCounter = auxSpace.size();
 		while(nodeCounter--){
@@ -163,6 +168,7 @@ void reverseAlternateLevels(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void setValuesInVectorFromLevel(itNode *ptr,unsigned int level,vector<int> &valuesInLevel){
 	if(ptr == null){
 		return;
@@ -171,12 +177,12 @@ void setValuesInVectorFromLevel(itNode *ptr,unsigned int level,vector<int> &valu
 		valuesInLevel.push_back(ptr->value);
 		return;
 	}
-	setValuesInVectorFromLevel(ptr->left,level+1,valuesInLevel);
-	setValuesInVectorFromLevel(ptr->right,level+1,valuesInLevel);
+	setValuesInVectorFromLevel(ptr->left,level-1,valuesInLevel);
+	setValuesInVectorFromLevel(ptr->right,level-1,valuesInLevel);
 }
 
-void setValuesInTreeIntoLevel(itNode *ptr,unsigned int level,vector<int> &valuesInLevel){
-	static int index = 0;
+//Tested
+void setValuesInTreeIntoLevel(itNode *ptr,unsigned int level,vector<int> &valuesInLevel,unsigned int &index){
 	if(index >= valuesInLevel.size() || ptr == null){
 		return;
 	}
@@ -184,10 +190,11 @@ void setValuesInTreeIntoLevel(itNode *ptr,unsigned int level,vector<int> &values
 		ptr->value = valuesInLevel[index++];
 		return;
 	}
-	setValuesInTreeIntoLevel(ptr->left,level+1,valuesInLevel);
-	setValuesInTreeIntoLevel(ptr->right,level+1,valuesInLevel);
+	setValuesInTreeIntoLevel(ptr->left,level-1,valuesInLevel,index);
+	setValuesInTreeIntoLevel(ptr->right,level-1,valuesInLevel,index);
 }
 
+//Tested
 void reverseAlternateLevel(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -195,11 +202,13 @@ void reverseAlternateLevel(itNode *ptr){
 	treeutils *utils = new treeutils();
 	unsigned int height = utils->getHeightOfTree(ptr);
 	vector<int> levelNodeValues;
+	unsigned int index;
 	for(unsigned int counter = 1;counter < height;counter += 2){
 		levelNodeValues.clear();
 		setValuesInVectorFromLevel(ptr,counter,levelNodeValues);
 		reverse(levelNodeValues.begin(),levelNodeValues.end());
-		setValuesInTreeIntoLevel(ptr,counter,levelNodeValues);
+		index = 0;
+		setValuesInTreeIntoLevel(ptr,counter,levelNodeValues,index);
 	}
 }
 

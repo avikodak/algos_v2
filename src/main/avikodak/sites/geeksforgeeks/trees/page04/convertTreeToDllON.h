@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\convertTreeToDllON.h
  *  Created on			: Nov 13, 2014 :: 9:19:24 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/in-place-convert-a-given-binary-tree-to-doubly-linked-list/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void oFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -82,6 +83,7 @@ void oFixLeftPtr(itNode *ptr){
 	oFixLeftPtr(ptr->right);
 }
 
+//Tested
 void oFixRightPtr(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -98,20 +100,26 @@ void oFixRightPtr(itNode **ptr){
 	(*ptr) = prevNode;
 }
 
+//Tested
 void oConvertTreeToDLLONFixing(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	oFixLeftPtr(ptr);
 	oFixRightPtr(&ptr);
+	while(ptr !=null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->right;
+	}
 }
 
-void oConvertTreeToDLLON(itNode *ptr,itNode **head){
+//Tested
+void oConvertTreeToDLLONMain(itNode *ptr,itNode **head){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	oConvertTreeToDLLON(ptr->left);
+	oConvertTreeToDLLONMain(ptr->left,head);
 	ptr->left = prevNode;
 	if(prevNode == null){
 		(*head) = ptr;
@@ -119,7 +127,20 @@ void oConvertTreeToDLLON(itNode *ptr,itNode **head){
 		prevNode->right = ptr;
 	}
 	prevNode = ptr;
-	oConvertTreeToDLLON(ptr->right);
+	oConvertTreeToDLLONMain(ptr->right,head);
+}
+
+//Tested
+void oConvertTreeToDll(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	itNode *head =  null;
+	oConvertTreeToDLLONMain(ptr,&head);
+	while(head != null){
+		printf("%d\t",head->value);
+		head = head->right;
+	}
 }
 
 #endif /* CONVERTTREETODLLON_H_ */

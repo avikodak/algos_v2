@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\lowestancestorstree.h
  *  Created on			: Nov 15, 2014 :: 7:08:02 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool lowestAncestor(itNode *ptr,itNode **lowAncestor,int firstUserinput,int secondUserinput){
 	if(ptr == null){
 		return false;
@@ -89,20 +90,44 @@ bool lowestAncestor(itNode *ptr,itNode **lowAncestor,int firstUserinput,int seco
 	return leftTruthValue || rightTruthValue;
 }
 
+//Tested
+void copyStacks(stack<itNode *> source,stack<itNode *> &destination){
+	if(source.size() == 0){
+		return;
+	}
+	stack<itNode *> temp;
+	while(!source.empty()){
+		temp.push(source.top());
+		source.pop();
+	}
+	while(!temp.empty()){
+		destination.push(temp.top());
+		temp.pop();
+	}
+}
+
+//Tested
 void lowestAncestorMain(itNode *ptr,stack<itNode *> auxSpace,stack<itNode *> &firstValAncestors,stack<itNode *> &secondValAncestors,int firstVal,int secondVal){
 	if(ptr == null){
 		return;
 	}
+	auxSpace.push(ptr);
 	if(ptr->value == firstVal || ptr->value == secondVal){
+		if(ptr->value == firstVal){
+			copyStacks(auxSpace,firstValAncestors);
+		}else{
+			copyStacks(auxSpace,secondValAncestors);
+		}
 		return;
 	}
 	lowestAncestorMain(ptr->left,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);
 	lowestAncestorMain(ptr->right,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);
 }
 
+//Tested
 itNode *lowestAncestorsAuxspace(itNode *ptr,int firstVal,int secondVal){
 	if(ptr == null){
-		return;
+		return null;
 	}
 	stack<itNode *> auxSpace,firstValAncestors,secondValAncestors;
 	lowestAncestorMain(ptr,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);

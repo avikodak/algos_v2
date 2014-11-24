@@ -71,15 +71,16 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *extractLeavesAsDLL(itNode *ptr,itNode **head){
 	if(ptr == null){
 		return null;
 	}
-	if(ptr->left == null && ptr->right){
+	if(ptr->left == null && ptr->right == null){
+		ptr->right = (*head);
 		if(*head != null){
 			(*head)->left = ptr;
 		}
-		ptr->right = (*head);
 		(*head) = ptr;
 		return null;
 	}
@@ -95,7 +96,7 @@ void connectAllLeaves(itNode *ptr,itNode **head){
 	if(ptr == null){
 		return;
 	}
-	static itNode *prevNode = null;
+	static itNode *prevNode;
 	if(ptr->left == null && ptr->right == null){
 		if(*head == null){
 			(*head) = ptr;

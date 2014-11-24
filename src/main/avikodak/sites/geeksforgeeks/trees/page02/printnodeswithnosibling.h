@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printnodeswithnosibling.h
  *  Created on			: Nov 15, 2014 :: 5:45:45 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-nodes-dont-sibling-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printNodesWithNoSiblingsPreOrder(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -89,6 +90,7 @@ void printNodesWithNoSiblingsPreOrder(itNode *ptr){
 	printNodesWithNoSiblingsPreOrder(ptr->right);
 }
 
+//Tested
 void printNodesWithNoSiblingsPreOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -99,21 +101,26 @@ void printNodesWithNoSiblingsPreOrderIterative(itNode *ptr){
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
-		if(currentNode->left != null || currentNode->right != null){
-			if(currentNode->left == null || currentNode->right == null){
-				printf("%d\t",currentNode->value);
+		if(currentNode->left == null && currentNode->right == null){
+			continue;
+		}
+		if(currentNode->left == null || currentNode->right == null){
+			if(currentNode->left == null){
+				printf("%d\t",currentNode->right->value);
 			}else{
-				if(currentNode->right != null){
-					auxSpace.push(currentNode->right);
-				}
-				if(currentNode->left != null){
-					auxSpace.push(currentNode->left);
-				}
+				printf("%d\t",currentNode->left->value);
 			}
+		}
+		if(currentNode->right != null){
+			auxSpace.push(currentNode->right);
+		}
+		if(currentNode->left != null){
+			auxSpace.push(currentNode->left);
 		}
 	}
 }
 
+//Tested
 void printNodesWithNoSiblingsPostOrder(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -132,6 +139,7 @@ void printNodesWithNoSiblingsPostOrder(itNode *ptr){
 	}
 }
 
+//Tested
 void printSiblingNode(itNode *currentNode){
 	if(currentNode->left != null || currentNode->right != null){
 		if(currentNode->left == null || currentNode->right == null){
@@ -144,6 +152,7 @@ void printSiblingNode(itNode *currentNode){
 	}
 }
 
+//Tested
 void printNodesWithNoSiblingsPostOrderTwoStacks(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -169,6 +178,7 @@ void printNodesWithNoSiblingsPostOrderTwoStacks(itNode *ptr){
 	}
 }
 
+//Tested
 void printNodesWithNoSiblingsPostOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -185,7 +195,7 @@ void printNodesWithNoSiblingsPostOrderIterative(itNode *ptr){
 		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
-			if(!auxSpace.empty() || auxSpace.top() == currentNode->right){
+			if(!auxSpace.empty() && auxSpace.top() == currentNode->right){
 				auxSpace.pop();
 				auxSpace.push(currentNode);
 				currentNode = currentNode->right;
@@ -197,6 +207,7 @@ void printNodesWithNoSiblingsPostOrderIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void printNodesWithNoSiblingsPostOrderIterativeV2(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -222,6 +233,7 @@ void printNodesWithNoSiblingsPostOrderIterativeV2(itNode *ptr){
 	}
 }
 
+//Tested
 inrNode *psGetNextRightPtr(inrNode *ptr){
 	inrNode *currentNode = ptr;
 	while(currentNode != null){
@@ -235,6 +247,7 @@ inrNode *psGetNextRightPtr(inrNode *ptr){
 	return null;
 }
 
+//Tested
 void psConnectNodesInSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
@@ -256,6 +269,7 @@ void psConnectNodesInSameLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 void printSiblingsIfPresentInLevel(inrNode *ptr){
 	while(ptr != null){
 		if(ptr->left == null || ptr->right == null){
@@ -269,12 +283,14 @@ void printSiblingsIfPresentInLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 void printNodesWithoutSiblings(inrNode *ptr){
 	if(ptr == null){
 		return;
 	}
+	psConnectNodesInSameLevel(ptr);
 	while(ptr != null){
-		psConnectNodesInSameLevel(ptr);
+		printSiblingsIfPresentInLevel(ptr);
 		if(ptr->left != null){
 			ptr = ptr->left;
 		}else if(ptr->right != null){

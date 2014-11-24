@@ -4,7 +4,7 @@
  *  Created on			: Nov 15, 2014 :: 5:15:52 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/convert-given-binary-tree-doubly-linked-list-set-3/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,12 +71,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void ctlConvertTreeToDllON(itNode *ptr,itNode **head){
+void ctlConvertTreeToDllONMain(itNode *ptr,itNode **head){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	ctlConvertTreeToDllON(ptr->left,head);
+	ctlConvertTreeToDllONMain(ptr->left,head);
 	ptr->left = prevNode;
 	if(prevNode != null){
 		prevNode->right = ptr;
@@ -84,7 +84,19 @@ void ctlConvertTreeToDllON(itNode *ptr,itNode **head){
 		(*head) = ptr;
 	}
 	prevNode = ptr;
-	ctlConvertTreeToDllON(ptr->right,head);
+	ctlConvertTreeToDllONMain(ptr->right,head);
+}
+
+void ctlConvertTreeToDllON(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	itNode *head = null;
+	ctlConvertTreeToDllON(ptr,&head);
+	while(head != null){
+		printf("%d\t",head->value);
+		head = head->right;
+	}
 }
 
 #endif /* CONVERTTREETODLLON_H_ */

@@ -108,7 +108,7 @@ void transformToSumTreeReverseMorrisTraversal(itNode *ptr){
 		return;
 	}
 	itNode *currentNode = ptr,*temp;
-	int prevValue;
+	int prevVal = 0;
 	while(currentNode != null){
 		if(currentNode->right != null){
 			temp = currentNode->right;
@@ -120,13 +120,13 @@ void transformToSumTreeReverseMorrisTraversal(itNode *ptr){
 				currentNode = currentNode->right;
 			}else{
 				temp->left = null;
-				prevVal += currrentNode->value;
-				currrentNode->value = prevVal - currrentNode->value;
+				prevVal += currentNode->value;
+				currentNode->value = prevVal - currentNode->value;
 				currentNode = currentNode->left;
 			}
 		}else{
-			prevVal += currrentNode->value;
-			currrentNode->value = prevVal - currrentNode->value;
+			prevVal += currentNode->value;
+			currentNode->value = prevVal - currentNode->value;
 			currentNode = currentNode->left;
 		}
 	}
@@ -147,7 +147,7 @@ void tsFixRightPtr(itNode **ptr){
 	if(ptr == null){
 		return;
 	}
-	itNode *currentNode = *ptr,prevNode = null;
+	itNode *currentNode = *ptr,*prevNode = null;
 	while(currentNode->right != null){
 		currentNode = currentNode->right;
 	}
@@ -165,6 +165,7 @@ void tsConvertTreeToDLLByFixingPtr(itNode *ptr){
 	}
 	tsFixLeftPtr(ptr);
 	tsFixRightPtr(&ptr); // ptr changes to tail
+	int prevVal = 0;
 	while(ptr != null){
 		prevVal += ptr->value;
 		ptr->value = prevVal - ptr->value;
@@ -176,13 +177,13 @@ void tsConvertTreeToDllONMain(itNode *ptr,itNode **tail){
 	if(ptr == null){
 		return;
 	}
-	tsConvertTreeToDllONMain(ptr->left);
+	tsConvertTreeToDllONMain(ptr->left,tail);
 	ptr->left = (*tail);
 	if((*tail) != null){
 		(*tail)->right = ptr;
 	}
-	(*tail) = prevNode;
-	tsConvertTreeToDllONmain(ptr->right);
+	(*tail) = ptr;
+	tsConvertTreeToDllONMain(ptr->right,tail);
 }
 
 void transformBSTToSumTree(itNode *ptr){
@@ -191,6 +192,7 @@ void transformBSTToSumTree(itNode *ptr){
 	}
 	itNode *tail = null;
 	tsConvertTreeToDllONMain(ptr,&tail);
+	int prevVal = 0;
 	while(tail != null){
 		prevVal += tail->value;
 		tail->value = prevVal - tail->value;
@@ -215,7 +217,7 @@ int getSumToReplace(vector<int> userInput,int key){
 	return sum;
 }
 
-void transformBSTToSumTree(itNode *ptr){
+void tsTransformBSTToSumTree(itNode *ptr){
 	if(ptr == null){
 		return;
 	}

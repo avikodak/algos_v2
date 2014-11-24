@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\converttospecialbst.h
  *  Created on			: Nov 13, 2014 :: 1:43:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/convert-bst-to-a-binary-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void addGreaterValuesToEachNode(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -82,6 +83,7 @@ void addGreaterValuesToEachNode(itNode *ptr){
 	addGreaterValuesToEachNode(ptr->left);
 }
 
+//Tested
 void reverseInorderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -96,13 +98,14 @@ void reverseInorderTraversal(itNode *ptr){
 		}else{
 			currentNode = auxSpace.top();
 			auxSpace.pop();
-			ptr->value += prevValue;
-			prevValue = ptr->value;
+			currentNode->value += prevValue;
+			prevValue = currentNode->value;
 			currentNode = currentNode->left;
 		}
 	}
 }
 
+//Tested
 void morrisReverseOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -121,6 +124,7 @@ void morrisReverseOrderTraversal(itNode *ptr){
 			}else{
 				currentNode->value += prevValue;
 				prevValue = currentNode->value;
+				temp->left = null;
 				currentNode = currentNode->left;
 			}
 		}else{

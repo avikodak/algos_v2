@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -69,8 +69,37 @@ using namespace __gnu_cxx;
 #define TRIPLETFROMBSTFORVALUE_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+
+iTriplet *getTripletForSumPostConversion(itNode *head,itNode *tail,int sum){
+	if(head == null){
+		return null;
+	}
+	itNode *outerCrawler = head,*frontCrawler,*rearCrawler;
+	int currentSum;
+	while(outerCrawler != null){
+		frontCrawler = outerCrawler->right;
+		rearCrawler = tail;
+		currentSum = outerCrawler->value;
+		while(frontCrawler != rearCrawler){
+			currentSum = frontCrawler->value + rearCrawler->value;
+			if(currentSum == sum){
+				return new iTriplet(outerCrawler->value,frontCrawler->value,rearCrawler->value);
+			}
+			if(frontCrawler->right == rearCrawler){
+				break;
+			}
+			if(currentSum > sum){
+				rearCrawler = rearCrawler->left;
+			}else{
+				frontCrawler = frontCrawler->right;
+			}
+		}
+		outerCrawler = outerCrawler->right;
+	}
+	return null;
+}
 
 void tFixLeftPtr(itNode *ptr){
 	if(ptr == null){
@@ -83,11 +112,11 @@ void tFixLeftPtr(itNode *ptr){
 	tFixLeftPtr(ptr->right);
 }
 
-void tFixRightPtr(itNode **ptr){
+itNode *tFixRightPtr(itNode **ptr){
 	if(*ptr == null){
-		return;
+		return null;
 	}
-	itNode *currentNode = *ptr,prevNode = null;
+	itNode *currentNode = *ptr,*prevNode = null;
 	while(currentNode->right != null){
 		currentNode = currentNode->right;
 	}
@@ -100,21 +129,26 @@ void tFixRightPtr(itNode **ptr){
 	return prevNode;
 }
 
-void tConvertTreeToDllONByFixingPtr(itNode *ptr){
+iTriplet *tConvertTreeToDllONByFixingPtr(itNode *ptr,int sum){
 	if(ptr == null){
-		return;
+		return null;
 	}
 	tFixLeftPtr(ptr);
 	itNode *head = tFixRightPtr(&ptr);
-	itNode *tail = ptr;
+	while(head != null){
+		printf("%d\t",head->value);
+		head = head->right;
+	}
+	return 0;
+	//return getTripletForSumPostConversion(head,ptr,sum);
 }
 
-void tConvertTreeToDllON(itNode *ptr,itNode **head,itNode **tail){
+void triConvertTreeToDllON(itNode *ptr,itNode **head,itNode **tail){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	tConvertTreeToDllON(ptr->left,head,tail);
+	triConvertTreeToDllON(ptr->left,head,tail);
 	ptr->left = prevNode;
 	if(prevNode != null){
 		(*head) = ptr;
@@ -123,16 +157,23 @@ void tConvertTreeToDllON(itNode *ptr,itNode **head,itNode **tail){
 		*tail = prevNode;
 	}
 	prevNode = ptr;
-	tConvertTreeToDllON(ptr->right,head,tail);
+	triConvertTreeToDllON(ptr->right,head,tail);
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+iTriplet *tripletByTreeToDllConversion(itNode *ptr,int sum){
+	if(ptr == null){
+		return null;
+	}
+	itNode *head = null,*tail = null;
+	triConvertTreeToDllON(ptr,&head,&tail);
+	while(head != null){
+		printf("%d\t",head->value);
+		head = head->right;
+	}
+	return 0;
+	//return getTripletForSumPostConversion(head,tail,sum);
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
 itNode *tConvertTreeToDLLON2(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -156,6 +197,26 @@ itNode *tConvertTreeToDLLON2(itNode *ptr){
 	}
 	return ptr;
 }
+
+iTriplet *tripletByTreeToDllConversionON2(itNode *ptr,int sum){
+	if(ptr == null){
+		return null;
+	}
+	tConvertTreeToDLLON2(ptr);
+	itNode *head = ptr,*tail = ptr;
+	while(head->left != null){
+		head = head->left;
+	}
+	while(tail->right != null){
+		tail = tail->right;
+	}
+	return getTripletForSumPostConversion(head,tail,sum);
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
 
 #endif /* TRIPLETFROMBSTFORVALUE_H_ */
 

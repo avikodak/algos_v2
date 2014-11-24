@@ -71,23 +71,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int getIndexFromInorder(vector<int> inorder,int value){
-	for(unsigned int counter = 0;counter < inorder.size();counter++){
+//Tested
+int getIndexFromInorder(vector<int> inorder,int value,int startIndex,int endIndex){
+	for(int counter = startIndex;counter <= endIndex;counter++){
 		if(inorder[counter] == value){
 			return counter;
 		}
 	}
-	return UINT_MAX;
+	return -1;
 }
 
+//Tested
 void setLevelOrderNodes(vector<int> inorder,vector<int> levelOrder,int leftStartIndex,int leftEndIndex,vector<int> &leftLevelOrder,vector<int> &rightLevelOrder){
 	if(inorder.size() == 0 || levelOrder.size() == 0){
 		return;
 	}
 	bool flag;
-	for(unsigned int outerCounter = 0;outerCounter < levelOrder.size();outerCounter++){
+	for(unsigned int outerCounter = 1;outerCounter < levelOrder.size();outerCounter++){
 		flag = false;
-		for(unsigned int index = leftStartIndex;index <= leftEndIndex;index++){
+		for(int index = leftStartIndex;index <= leftEndIndex;index++){
 			if(levelOrder[outerCounter] == inorder[index]){
 				leftLevelOrder.push_back(levelOrder[outerCounter]);
 				flag = true;
@@ -100,6 +102,7 @@ void setLevelOrderNodes(vector<int> inorder,vector<int> levelOrder,int leftStart
 	}
 }
 
+//Tested
 itNode *treeFromLevelInOrder(vector<int> inorder,vector<int> levelOrder,int startInorderIndex,int endInorderIndex){
 	if(levelOrder.size() == 0 || inorder.size() == 0 || startInorderIndex > endInorderIndex){
 		return null;
@@ -108,11 +111,12 @@ itNode *treeFromLevelInOrder(vector<int> inorder,vector<int> levelOrder,int star
 	if(levelOrder.size() == 1){
 		return root;
 	}
-	unsigned int index = getIndexFromInorder(inorder,levelOrder[0]);
+	int index = getIndexFromInorder(inorder,levelOrder[0],startInorderIndex,endInorderIndex);
 	vector<int> leftLevelOrder,rightLevelOrder;
 	setLevelOrderNodes(inorder,levelOrder,startInorderIndex,index,leftLevelOrder,rightLevelOrder);
 	root->left = treeFromLevelInOrder(inorder,leftLevelOrder,startInorderIndex,index-1);
 	root->right = treeFromLevelInOrder(inorder,rightLevelOrder,index+1,endInorderIndex);
+	return root;
 }
 
 #endif /* TREEFROMLEVELINORDER_H_ */

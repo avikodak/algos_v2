@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\addgreatervaluesbst.h
  *  Created on			: Nov 14, 2014 :: 8:22:36 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/add-greater-values-every-node-given-bst/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void addGreaterValuesBST(itNode *ptr){
 	static int prevValue = 0;
 	if(ptr == null){
@@ -82,6 +83,7 @@ void addGreaterValuesBST(itNode *ptr){
 	addGreaterValuesBST(ptr->left);
 }
 
+//Tested
 void addGreaterValueBSTIterative(itNode *ptr){
 	if(ptr == null){
 		return;

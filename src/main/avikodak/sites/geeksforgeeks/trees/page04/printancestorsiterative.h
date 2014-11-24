@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\printancestorsiterative.h
  *  Created on			: Nov 13, 2014 :: 11:15:16 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-ancestors-of-a-given-binary-tree-node-without-recursion/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printStack(stack<itNode *> auxSpace){
+//Tested
+void aPrintStack(stack<itNode *> auxSpace){
 	while(!auxSpace.empty()){
 		printf("%d\t",auxSpace.top()->value);
 		auxSpace.pop();
@@ -79,6 +80,7 @@ void printStack(stack<itNode *> auxSpace){
 	PRINT_NEW_LINE;
 }
 
+//Tested
 void printAncestors(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -92,11 +94,11 @@ void printAncestors(itNode *ptr){
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
-			printStack(auxSpace);
+			aPrintStack(auxSpace);
 			auxSpace.pop();
 			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
 				currentNode = auxSpace.top();
-				printStack(auxSpace);
+				aPrintStack(auxSpace);
 				auxSpace.pop();
 			}
 		}
@@ -104,6 +106,7 @@ void printAncestors(itNode *ptr){
 	}
 }
 
+//Tested
 void printAncestorsPreOrderIterative(iptNode *ptr){
 	if(ptr == null){
 		return;
@@ -119,11 +122,12 @@ void printAncestorsPreOrderIterative(iptNode *ptr){
 			printf("%d\t",temp->value);
 			temp = temp->parent;
 		}
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}
+		PRINT_NEW_LINE;
 		if(currentNode->right != null){
 			auxSpace.push(currentNode->right);
+		}
+		if(currentNode->left != null){
+			auxSpace.push(currentNode->left);
 		}
 	}
 }
@@ -131,19 +135,22 @@ void printAncestorsPreOrderIterative(iptNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printAncestorsOfNodeHashmap(hash_map<unsigned int,itNode *> &indexNodeMap,unsigned int index){
 	while(index > 0){
 		printf("%d\t",indexNodeMap.find(index)->second->value);
 		index /= 2;
 	}
+	PRINT_NEW_LINE;
 }
 
+//Tested
 void printAncestorsHashmap(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	treeutils *utils = new treeutils();
-	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1);
+	hash_map<unsigned int,itNode *> indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
 	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
 		printAncestorsOfNodeHashmap(indexNodeMap,itToIndexNodeMap->first);

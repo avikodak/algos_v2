@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\verticalorderhashmap.h
  *  Created on			: Nov 16, 2014 :: 8:40:06 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,13 +71,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void setNodesInVerticalLevel(itNode *ptr,int currentVerticalLevel,map<int,vector<itNode *> > &verticalNodesMap){
 	if(ptr == null){
 		return;
 	}
 	map<int,vector<itNode *> >::iterator itToVerticalNodeMap = verticalNodesMap.find(currentVerticalLevel);
 	if(itToVerticalNodeMap == verticalNodesMap.end()){
-		list<itNode *> nodesList;
+		vector<itNode *> nodesList;
 		nodesList.push_back(ptr);
 		verticalNodesMap[currentVerticalLevel] = nodesList;
 	}else{
@@ -87,6 +88,7 @@ void setNodesInVerticalLevel(itNode *ptr,int currentVerticalLevel,map<int,vector
 	setNodesInVerticalLevel(ptr->right,currentVerticalLevel+1,verticalNodesMap);
 }
 
+//Tested
 void printVerticalLevels(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -96,7 +98,7 @@ void printVerticalLevels(itNode *ptr){
 	setNodesInVerticalLevel(ptr,0,verticalNodesMap);
 	for(itToVerticalNodeMap = verticalNodesMap.begin();itToVerticalNodeMap != verticalNodesMap.end();itToVerticalNodeMap++){
 		for(unsigned int counter = 0;counter < itToVerticalNodeMap->second.size();counter++){
-			printf("%d\t",itToVerticalNodeMap->second[counter]);
+			printf("%d\t",itToVerticalNodeMap->second[counter]->value);
 		}
 		PRINT_NEW_LINE;
 	}

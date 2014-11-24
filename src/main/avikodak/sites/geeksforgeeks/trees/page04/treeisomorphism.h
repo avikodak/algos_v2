@@ -68,6 +68,7 @@ using namespace __gnu_cxx;
 #ifndef TREEISOMORPHISM_H_
 #define TREEISOMORPHISM_H_
 
+//Tested
 bool areTreesIsomorphs(itNode *firstTreePtr,itNode *secondTreePtr){
 	if(firstTreePtr == null && secondTreePtr == null){
 		return true;

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\heightiterative.h
  *  Created on			: Nov 13, 2014 :: 11:38:40 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/iterative-method-to-find-height-of-binary-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int heightOfTreee(itNode *ptr){
+//Tested
+unsigned int heightOfTreeIterative(itNode *ptr){
 	if(ptr == null){
 		return 0;
 	}

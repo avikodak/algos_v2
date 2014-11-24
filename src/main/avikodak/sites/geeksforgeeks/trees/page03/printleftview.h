@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\printleftview.h
  *  Created on			: Nov 14, 2014 :: 7:43:54 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-left-view-binary-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,11 +71,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printLeftView(itNode *ptr,int level,int *maxLevel){
 	if(ptr == null){
 		return;
 	}
-	if(level > maxLevel){
+	if(level > *maxLevel){
 		printf("%d\t",ptr->value);
 		*maxLevel = level;
 	}
@@ -83,6 +84,7 @@ void printLeftView(itNode *ptr,int level,int *maxLevel){
 	printLeftView(ptr->right,level+1,maxLevel);
 }
 
+//Tested
 void printLeftViewLevelOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -107,6 +109,7 @@ void printLeftViewLevelOrderTraversal(itNode *ptr){
 	}
 }
 
+//Tested
 inrNode *plGetNextRight(inrNode *ptr){
 	while(ptr != null){
 		if(ptr->left != null){
@@ -119,6 +122,7 @@ inrNode *plGetNextRight(inrNode *ptr){
 	return null;
 }
 
+//Tested
 void plConnectNodesAtSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
@@ -140,6 +144,7 @@ void plConnectNodesAtSameLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 void printLeftViewByConnectingNodesAtLevel(inrNode *ptr){
 	if(ptr == null){
 		return;

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printverticalorder.h
  *  Created on			: Nov 15, 2014 :: 11:38:42 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,15 +71,16 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setNodesVerticalOrderMain(itNode *ptr,int verticalLevel,map<int,list<itNode *> > &verticalLevelNodesMap){
+//Tested
+void setNodesVerticalOrderMain(itNode *ptr,int verticalLevel,map<int,vector<itNode *> > &verticalLevelNodesMap){
 	if(ptr == null){
 		return;
 	}
-	map<int,list<itNode *> >::iterator itToVerticalLevelNodeMap = verticalLevelNodesMap.find(verticalLevel);
+	map<int,vector<itNode *> >::iterator itToVerticalLevelNodeMap = verticalLevelNodesMap.find(verticalLevel);
 	if(itToVerticalLevelNodeMap == verticalLevelNodesMap.end()){
-		list<itNode *> nodesList;
+		vector<itNode *> nodesList;
 		nodesList.push_back(ptr);
-		itToVerticalLevelNodeMap[verticalLevel] = nodesList;
+		verticalLevelNodesMap[verticalLevel] = nodesList;
 	}else{
 		itToVerticalLevelNodeMap->second.push_back(ptr);
 	}
@@ -87,12 +88,13 @@ void setNodesVerticalOrderMain(itNode *ptr,int verticalLevel,map<int,list<itNode
 	setNodesVerticalOrderMain(ptr->right,verticalLevel+1,verticalLevelNodesMap);
 }
 
+//Tested
 void printVerticalOrder(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	map<int,list<itNode *> > verticalLevelNodesMap;
-	map<int,list<itNode *> >::iterator itToVerticalLevelNodesMap;
+	map<int,vector<itNode *> > verticalLevelNodesMap;
+	map<int,vector<itNode *> >::iterator itToVerticalLevelNodesMap;
 	setNodesVerticalOrderMain(ptr,0,verticalLevelNodesMap);
 	for(itToVerticalLevelNodesMap = verticalLevelNodesMap.begin();itToVerticalLevelNodesMap != verticalLevelNodesMap.end();itToVerticalLevelNodesMap++){
 		for(unsigned int counter = 0;counter < itToVerticalLevelNodesMap->second.size();counter++){
@@ -105,6 +107,7 @@ void printVerticalOrder(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void findMinMaxVerticalLevel(itNode *ptr,int currentVerticalLevel,int *minVerticalLevel,int *maxVerticalLevel){
 	if(ptr == null){
 		return;
@@ -115,6 +118,7 @@ void findMinMaxVerticalLevel(itNode *ptr,int currentVerticalLevel,int *minVertic
 	findMinMaxVerticalLevel(ptr->right,currentVerticalLevel+1,minVerticalLevel,maxVerticalLevel);
 }
 
+//Tested
 void printVerticalLevel(itNode *ptr,int verticalLevel,int currentLevel){
 	if(ptr == null){
 		return;
@@ -126,6 +130,7 @@ void printVerticalLevel(itNode *ptr,int verticalLevel,int currentLevel){
 	printVerticalLevel(ptr->right,verticalLevel,currentLevel+1);
 }
 
+//Tested
 void printAllVerticalLevel(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -134,6 +139,7 @@ void printAllVerticalLevel(itNode *ptr){
 	findMinMaxVerticalLevel(ptr,0,&minVerticalLevel,&maxVerticalLevel);
 	for(int counter = minVerticalLevel;counter <= maxVerticalLevel;counter++){
 		printVerticalLevel(ptr,counter,0);
+		PRINT_NEW_LINE;
 	}
 }
 

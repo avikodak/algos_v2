@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printprefrompostinorder.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\printprefrompostinorder.h
- *  Created on			: Nov 13, 2014 :: 11:55:39 PM
+ *  File Name   		: reverselevelordertraversal.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\reverselevelordertraversal.h
+ *  Created on			: Nov 21, 2014 :: 9:23:44 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/print-postorder-from-given-inorder-and-preorder-traversals/
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,41 +65,67 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTPREFROMPOSTINORDER_H_
-#define PRINTPREFROMPOSTINORDER_H_
+#ifndef REVERSELEVELORDERTRAVERSAL_H_
+#define REVERSELEVELORDERTRAVERSAL_H_
 
-int findIndexInInorder(vector<int> inOrder,int startIndex,int endIndex,int key){
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		if(inOrder[counter] == key){
-			return counter;
-		}
-	}
-	return INT_MIN;
-}
-
-itNode *constructFromPostInorder(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex){
-	static int currentPostOrderIndex = postOrder.size()-1;
-	if(currentPostOrderIndex < 0 || startIndex > endIndex){
-		return null;
-	}
-	itNode *node = new itNode(postOrder[currentPostOrderIndex]);
-	int index = findIndexInInorder(inOrder,startIndex,endIndex,postOrder[currentPostOrderIndex]);
-	currentPostOrderIndex--;
-	node->right = constructFromPostInorder(postOrder,inOrder,startIndex,index-1);
-	node->left = constructFromPostInorder(postOrder,inOrder,index+1,endIndex);
-	return node;
-}
-
-void printPreOrderFromPostAndInorder(vector<int> postOrder,vector<int> inOrder){
-	if(postOrder.size() == 0){
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void rPrintReverseLevelOrderTraversal(itNode *ptr){
+	if(ptr == null){
 		return;
 	}
-	itNode *root = constructFromPostInorder(postOrder,inOrder,0,inOrder.size()-1);
-	treeutils *utils = new treeutils();
-	utils->preOrderTraversal(root);
+	queue<itNode *> auxSpace;
+	auxSpace.push(ptr);
+	itNode *currentNode;
+	stack<itNode *> reverseAuxspace;
+	while(!auxSpace.empty()){
+		currentNode = auxSpace.front();
+		auxSpace.pop();
+		reverseAuxspace.push(currentNode);
+		if(currentNode->left != null){
+			auxSpace.push(currentNode->left);
+		}
+		if(currentNode->right != null){
+			auxSpace.push(currentNode->right);
+		}
+	}
+	while(!reverseAuxspace.empty()){
+		printf("%d\t",reverseAuxspace.top()->value);
+		reverseAuxspace.pop();
+	}
 }
 
-#endif /* PRINTPREFROMPOSTINORDER_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void printReverseLevel(itNode *ptr,unsigned int level){
+	if(ptr == null){
+		return;
+	}
+	if(level == 0){
+		printf("%d\t",ptr->value);
+		return;
+	}
+	printReverseLevel(ptr->right,level-1);
+	printReverseLevel(ptr->left,level-1);
+}
+
+//Tested
+void printReverseLevelOrderTraversal(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	treeutils *utils = new treeutils();
+	int height = utils->getHeightOfTree(ptr);
+	for(int counter = height-1;counter >= 0;counter--){
+		printReverseLevel(ptr,counter);
+	}
+}
+
+#endif /* REVERSELEVELORDERTRAVERSAL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

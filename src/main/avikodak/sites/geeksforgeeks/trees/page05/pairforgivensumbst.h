@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\pairforgivensumbst.h
  *  Created on			: Nov 13, 2014 :: 6:57:00 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-a-pair-with-given-sum-in-bst/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,20 +71,22 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-void pFixLeftPtr(itNode *ptr){
+//Tested
+void psFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	pFixLeftPtr(ptr->left);
+	psFixLeftPtr(ptr->left);
 	ptr->left = prevNode;
-	pFixLeftPtr(ptr->right);
+	prevNode = ptr;
+	psFixLeftPtr(ptr->right);
 }
 
-void pFixRightPtr(itNode **ptr){
+//Tested
+itNode *psFixRightPtr(itNode **ptr){
 	if(ptr == null){
-		return;
+		return null;
 	}
 	itNode *currentNode = *ptr,*prevNode = null;
 	while(currentNode->right != null){
@@ -99,15 +101,38 @@ void pFixRightPtr(itNode **ptr){
 	return prevNode;
 }
 
+//Tested
+iPair *checkForPairPostDllConversion(itNode *head,itNode *tail,int sum){
+	int currentSum;
+	while(head != tail){
+		currentSum = head->value + tail->value;
+		if(currentSum == sum){
+			return new iPair(head->value,tail->value);
+		}
+		if(head->right == tail){
+			break;
+		}
+		if(currentSum > sum){
+			tail = tail->left;
+		}else{
+			head = head->right;
+		}
+	}
+	return null;
+}
+
+//Tested
 iPair *getPairForSumDllConversion(itNode *ptr,int sum){
 	if(ptr == null){
 		return null;
 	}
-	pFixLeftPtr(ptr);
-	itNode *head = pFixRightPtr(&ptr);
+	psFixLeftPtr(ptr);
+	itNode *head = psFixRightPtr(&ptr);
 	itNode *tail = ptr;
+	return checkForPairPostDllConversion(head,tail,sum);
 }
 
+//Tested
 void pConvertTreeToDllONMain(itNode *ptr,itNode **head,itNode **tail){
 	if(ptr == null){
 		return;
@@ -120,19 +145,99 @@ void pConvertTreeToDllONMain(itNode *ptr,itNode **head,itNode **tail){
 	}else{
 		prevNode->right = ptr;
 	}
-	prevNode = tail = ptr;
+	prevNode = *tail = ptr;
 	pConvertTreeToDllONMain(ptr->right,head,tail);
+}
+
+//Tested
+iPair *pFindPairForGivenSum(itNode *ptr,int sum){
+	if(ptr == null){
+		return null;
+	}
+	itNode *head = null,*tail = null;
+	pConvertTreeToDllONMain(ptr,&head,&tail);
+	return checkForPairPostDllConversion(head,tail,sum);
+}
+
+//Tested
+iPair *findPairForGivenSum(itNode *ptr,int sum){
+	if(ptr == null){
+		return null;
+	}
+	stack<itNode *> auxSpace,revAuxSpace;
+	itNode *currentPtr = ptr,*currentRevPtr = ptr;
+	int inorderCurrentValue,revInorderCurrentValue,currentSum;
+	bool getNextValInorder = true,getNextValRevInorder = true;
+	while(true){
+		while(getNextValInorder){
+			if(currentPtr != null){
+				auxSpace.push(currentPtr);
+				currentPtr = currentPtr->left;
+			}else{
+				currentPtr = auxSpace.top();
+				auxSpace.pop();
+				inorderCurrentValue = currentPtr->value;
+				currentPtr = currentPtr->right;
+				getNextValInorder = false;
+			}
+		}
+		while(getNextValRevInorder){
+			if(currentRevPtr != null){
+				revAuxSpace.push(currentRevPtr);
+				currentRevPtr = currentRevPtr->right;
+			}else{
+				currentRevPtr = revAuxSpace.top();
+				revAuxSpace.pop();
+				revInorderCurrentValue = currentRevPtr->value;
+				currentRevPtr = currentRevPtr->left;
+				getNextValRevInorder = false;
+			}
+		}
+		if(inorderCurrentValue > revInorderCurrentValue){
+			return null;
+		}
+		currentSum = inorderCurrentValue + revInorderCurrentValue;
+		if(currentSum == sum){
+			return new iPair(inorderCurrentValue,revInorderCurrentValue);
+		}else if(currentSum > sum){
+			getNextValRevInorder = true;
+		}else{
+			getNextValInorder = true;
+		}
+	}
+	return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-
+//Tested
+iPair *getPairForGivenSumBST(itNode *ptr,int sum){
+	if(ptr == null){
+		return null;
+	}
+	treeutils *utils = new treeutils();
+	vector<int> preOrderValues = utils->getValuesInPreorder(ptr);
+	sort(preOrderValues.begin(),preOrderValues.end());
+	unsigned int frontCrawler = 0,rearCrawler = preOrderValues.size()-1;
+	int currentSum;
+	while(frontCrawler < rearCrawler){
+		currentSum = preOrderValues[frontCrawler] + preOrderValues[rearCrawler];
+		if(currentSum == sum){
+			return new iPair(preOrderValues[frontCrawler],preOrderValues[rearCrawler]);
+		}else if(currentSum > sum){
+			rearCrawler--;
+		}else{
+			frontCrawler++;
+		}
+	}
+	return null;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *pConvertTreeToDllON2Main(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -157,7 +262,8 @@ itNode *pConvertTreeToDllON2Main(itNode *ptr){
 	return ptr;
 }
 
-iPair *getPairForDllConversion(itNode *ptr){
+//Tested
+iPair *getPairForDllConversion(itNode *ptr,int sum){
 	if(ptr == null){
 		return null;
 	}
@@ -169,8 +275,10 @@ iPair *getPairForDllConversion(itNode *ptr){
 	while(head->left != null){
 		head = head->left;
 	}
+	return checkForPairPostDllConversion(head,tail,sum);
 }
 
+//Tested
 itNode *searchForNode(itNode *ptr,itNode *key,int reqiredSum){
 	if(ptr == null){
 		return null;
@@ -187,6 +295,7 @@ itNode *searchForNode(itNode *ptr,itNode *key,int reqiredSum){
 	return searchForNode(ptr->right,key,reqiredSum);
 }
 
+//Tested
 iPair *getPairForGivenSum(itNode *ptr,int sum){
 	if(ptr == null){
 		return null;
@@ -207,6 +316,7 @@ iPair *getPairForGivenSum(itNode *ptr,int sum){
 			auxSpace.push(currentNode->right);
 		}
 	}
+	return null;
 }
 
 #endif /* PAIRFORGIVENSUMBST_H_ */

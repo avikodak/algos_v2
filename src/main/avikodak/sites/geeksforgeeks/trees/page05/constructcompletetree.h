@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *constructCompleteTree(vector<int> userInput){
+//Tested
+itNode *constructCompleteTreeAuxspace(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
@@ -82,7 +83,6 @@ itNode *constructCompleteTree(vector<int> userInput){
 	unsigned int counter = 1;
 	while(counter < userInput.size()){
 		currentNode = auxSpace.front();
-		auxSpace.pop();
 		if(currentNode->left == null){
 			currentNode->left = new itNode(userInput[counter++]);
 			auxSpace.push(currentNode->left);
@@ -95,6 +95,7 @@ itNode *constructCompleteTree(vector<int> userInput){
 	return root;
 }
 
+//Tested
 itNode *constructCompleteTree(vector<int> userInput,unsigned int counter = 0){
 	if(counter >= userInput.size()){
 		return null;
@@ -105,30 +106,34 @@ itNode *constructCompleteTree(vector<int> userInput,unsigned int counter = 0){
 	return node;
 }
 
+//Tested
 void constructCompleteTreeV2Main(itNode **ptr,vector<int> userInput,unsigned int counter = 0){
 	if(counter >= userInput.size()){
 		return;
 	}
 	(*ptr) = new itNode(userInput[counter]);
-	constructCompleteTreeV2Main(&((*ptr)->left),2*counter+1);
-	constructCompleteTreeV2Main((&(*ptr)->right),2*counter+2);
+	constructCompleteTreeV2Main(&((*ptr)->left),userInput,2*counter+1);
+	constructCompleteTreeV2Main((&(*ptr)->right),userInput,2*counter+2);
 }
 
+//Tested
 itNode *constructCompleteTreeV2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
 	itNode *root = null;
-	return constructCompleteTreeV2Main(&root,userInput);
+	constructCompleteTreeV2Main(&root,userInput);
+	return root;
 }
 
+//Tested
 itNode *constructCompleteTreeUsingHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
 	hash_map<unsigned int,int> indexValuemap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		indexValuemap.insert(pair<unsigned int,int>(counter,userInput[counter]));
+		indexValuemap.insert(pair<unsigned int,int>(counter+1,userInput[counter]));
 	}
 	treeutils *utils = new treeutils();
 	return utils->getITreeFromHashmap(indexValuemap);

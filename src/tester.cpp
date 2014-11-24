@@ -111,12 +111,46 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/mergetwobsts.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/printmergedbsts.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/treefromspecialpreorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page06/twonodesfixbst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page06/verticalsumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/constructcompletetree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/constructcompletetreefromsill.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/converttospecialbst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page05/iterativepostordertwostacks.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page05/iterativepreordertraversal.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page05/morrispreorder.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page05/postoredertraversaliterative.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page05/reverseinordertraversal.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/reverselevelordertraversal.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/pairforgivensumbst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page05/tripletfrombstforvalue.h" // NOT TESTED
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/convertTreeToDllON.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/converttreetodllON2.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/depthofoddleafnode.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/heightiterative.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/printancestorsiterative.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/differencebetweenoddevenlevels.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/treeisomorphism.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page04/printprefrompostinorder.h" // Should be changed
+
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/addgreatervaluesbst.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/checkifallleavesareatsamelevel.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/printleftview.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/sumofnumbersroottoleaf.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/converttreetodllON.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/nextrightnode.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page03/extractleavesasdll.h"
+
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/treefromlevelinorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/verticalorderhashmap.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/printverticalorder.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/printallnodesatkdistance.h" // Check for parent pointer
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/lowestancestorstree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/printnodeswithnosibling.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/printrightview.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/reversealternatelevels.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/transformbsttosumtree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page02/printnodesatkdistancefromleaf.h"
 
 #include "main/avikodak/sites/geeksforgeeks/recursion/page01/addition.h"
 
@@ -177,11 +211,10 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	vector<int> userInput = generateISequenceVector(10);
-	inrNode *root = utils->getINRTreeFromVector(userInput);
-	tConnectNodesAtSameLevelIterative(root);
-	utils->printNodesPostConnecting(root);
-	//6 10 5 1 7 40 50
+	//vector<int> userInput = getVectorForUserInput();
+	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
+	itNode *root = utils->getITreeFromHashmap(getUserInputForIndexValueMap());
+	printNodesAtKDistanceFromLeaf(root,2);
 }
 
 void avlTreeTester(){

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\differencebetweenoddevenlevels.h
  *  Created on			: Nov 14, 2014 :: 5:26:34 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/difference-between-sums-of-odd-and-even-levels/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int differenceBetweenEvenOddLevels(itNode *ptr){
 	if(ptr == null){
 		return 0;
@@ -78,7 +79,8 @@ int differenceBetweenEvenOddLevels(itNode *ptr){
 	return ptr->value - differenceBetweenEvenOddLevels(ptr->left) - differenceBetweenEvenOddLevels(ptr->right);
 }
 
-int differenceBetweenEvenOddLevels(itNode *ptr){
+//Tested
+int differenceBetweenEvenOddLevelsIterative(itNode *ptr){
 	if(ptr == null){
 		return 0;
 	}
@@ -103,8 +105,10 @@ int differenceBetweenEvenOddLevels(itNode *ptr){
 		}
 		isOddLevel = !isOddLevel;
 	}
+	return difference;
 }
 
+//Tested
 inrNode *dGetNextRightPtr(inrNode *ptr){
 	if(ptr == null){
 		return null;
@@ -120,6 +124,7 @@ inrNode *dGetNextRightPtr(inrNode *ptr){
 	return null;
 }
 
+//Tested
 void connectNodesInSameLevel(inrNode *ptr){
 	if(ptr == null){
 		return;
@@ -141,6 +146,7 @@ void connectNodesInSameLevel(inrNode *ptr){
 	}
 }
 
+//Tested
 int sumOfNodesInLevel(inrNode *ptr){
 	int sum = 0;
 	while(ptr != null){
@@ -150,12 +156,13 @@ int sumOfNodesInLevel(inrNode *ptr){
 	return sum;
 }
 
+//Tested
 int differenceOfNodes(inrNode *ptr){
 	if(ptr == null){
 		return 0;
 	}
 	connectNodesInSameLevel(ptr);
-	inrNode *currentNode = ptr;
+	//inrNode *currentNode = ptr;
 	int difference  = 0;
 	bool isOddLevel = true;
 	while(ptr != null){
@@ -173,11 +180,13 @@ int differenceOfNodes(inrNode *ptr){
 		}
 		isOddLevel = !isOddLevel;
 	}
+	return difference;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int sumOfNodesInLevel(itNode *ptr,int level){
 	if(ptr == null){
 		return 0;
@@ -188,6 +197,7 @@ int sumOfNodesInLevel(itNode *ptr,int level){
 	return sumOfNodesInLevel(ptr->left,level-1) + sumOfNodesInLevel(ptr->right,level-1);
 }
 
+//Tested
 int differenceValueBetweenLevels(itNode *ptr){
 	if(ptr == null){
 		return 0;
@@ -198,10 +208,11 @@ int differenceValueBetweenLevels(itNode *ptr){
 	int difference = 0;
 	for(unsigned int counter = 0;counter < height;counter++){
 		if(isOddLevel){
-			difference += sumOfNodesInLevel(ptr,level);
+			difference += sumOfNodesInLevel(ptr,counter);
 		}else{
-			difference -= sumOfNodesInLevel(ptr,level);
+			difference -= sumOfNodesInLevel(ptr,counter);
 		}
+		isOddLevel = !isOddLevel;
 	}
 	return difference;
 }

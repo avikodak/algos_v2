@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void fixNodesInInorderMain(itNode *ptr,itNode **firstPtr,itNode **midPtr,itNode **lastPtr){
 	if(ptr == null){
 		return;
@@ -78,17 +79,20 @@ void fixNodesInInorderMain(itNode *ptr,itNode **firstPtr,itNode **midPtr,itNode 
 	static itNode *prevNode = null;
 	fixNodesInInorderMain(ptr->left,firstPtr,midPtr,lastPtr);
 	if(prevNode != null){
-		if(*firstPtr == null){
-			(*firstPtr) = prevNode;
-			(*midPtr) = ptr;
-		}else{
-			(*lastPtr) = ptr;
+		if(ptr->value < prevNode->value){
+			if(*firstPtr == null){
+				(*firstPtr) = prevNode;
+				(*midPtr) = ptr;
+			}else{
+				(*lastPtr) = ptr;
+			}
 		}
 	}
 	prevNode = ptr;
 	fixNodesInInorderMain(ptr->right,firstPtr,midPtr,lastPtr);
 }
 
+//Tested
 void fixNodesInInOrderON(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -111,6 +115,7 @@ void fixNodesInInOrderON(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void insertNodesInInorder(itNode *ptr,vector<int> inorderValues){
 	if(ptr == null){
 		return;
@@ -121,12 +126,13 @@ void insertNodesInInorder(itNode *ptr,vector<int> inorderValues){
 	insertNodesInInorder(ptr->right,inorderValues);
 }
 
+//Tested
 void fixBST(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
 	treeutils *utils = new treeutils();
-	vector<int> inorderValues = utils->getNodesInInorder(ptr);
+	vector<int> inorderValues = utils->getValuesInInorder(ptr);
 	sort(inorderValues.begin(),inorderValues.end());
 	insertNodesInInorder(ptr,inorderValues);
 }

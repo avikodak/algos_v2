@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printnodesatkdistancefromleaf.h
  *  Created on			: Nov 15, 2014 :: 7:44:59 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-nodes-distance-k-leaf-node/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,16 +71,18 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int printNodesAtKDistanceFromLeaf(itNode *ptr,unsigned int kDistance){
 	if(ptr == null){
 		return 0;
 	}
-
+	unsigned int leftHeight = printNodesAtKDistanceFromLeaf(ptr->left,kDistance);
+	unsigned int rightHeight = printNodesAtKDistanceFromLeaf(ptr->right,kDistance);
+	if(leftHeight == kDistance || rightHeight == kDistance){
+		printf("%d\t",ptr->value);
+	}
+	return 1 + max(leftHeight,rightHeight);
 }
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */

@@ -4,7 +4,7 @@
  *  Created on			: Nov 16, 2014 :: 9:10:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/print-nodes-distance-k-given-node-binary-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,39 +71,45 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setNodesForLevelInHashmap(itNode *ptr,unsigned int currentLevel,hash_map<unsigned int,vector<itNode *> > &levelNodeMap,int key,unsigned int &keyLevel){
+//Tested
+void setNodesForLevelInHashmap(itNode *ptr,int currentLevel,hash_map<unsigned int,vector<itNode *> > &levelNodeMap,int key,int &keyLevel,int &height){
 	if(ptr == null){
 		return;
 	}
-	hash_map<unsigned int,list<itNode *> >::iterator itToLevelNodeMap = levelNodeMap.find(currentLevel);
+	height = max(height,currentLevel);
+	hash_map<unsigned int,vector<itNode *> >::iterator itToLevelNodeMap = levelNodeMap.find(currentLevel);
 	if(itToLevelNodeMap == levelNodeMap.end()){
-		list<itNode *> levelList;
+		vector<itNode *> levelList;
 		levelList.push_back(ptr);
 		levelNodeMap[currentLevel] = levelList;
 	}else{
 		itToLevelNodeMap->second.push_back(ptr);
 	}
-	setNodesForLevelInHashmap(ptr->left,currentLevel+1,levelNodeMap);
-	setNodesForLevelInHashmap(ptr->right,currentLevel+1,levelNodeMap);
+	if(key == ptr->value){
+		keyLevel = currentLevel;
+	}
+	setNodesForLevelInHashmap(ptr->left,currentLevel+1,levelNodeMap,key,keyLevel,height);
+	setNodesForLevelInHashmap(ptr->right,currentLevel+1,levelNodeMap,key,keyLevel,height);
 }
 
-void printNodesAtDistanceK(itNode *ptr,int value,unsigned int kValue){
+//Tested
+void printNodesAtDistanceK(itNode *ptr,int value,int kValue){
 	if(ptr == null){
 		return;
 	}
-	unsigned int keyLevel;
+	int keyLevel = 0,height = 0;
 	hash_map<unsigned int,vector<itNode *> > levelNodeMap;
 	hash_map<unsigned int,vector<itNode *> >::iterator itToLevelNodeMap;
-	setNodesForLevelInHashmap(ptr,1,levelNodeMap,value,keyLevel);
-	int difference = kValue - keyLevel;
-	while(difference){
-		itToLevelNodeMap = levelNodeMap.find(difference);
+	setNodesForLevelInHashmap(ptr,1,levelNodeMap,value,keyLevel,height);
+	while(height >= 0){
+		itToLevelNodeMap = levelNodeMap.find(height);
 		if(itToLevelNodeMap == levelNodeMap.end()){
 			break;
 		}
-		difference -= 1;
+		height -= 2;
 		for(unsigned int counter = 0;counter < itToLevelNodeMap->second.size();counter++){
-			printf("%d\t",itToLevelNodeMap->second[counter]->value);
+			if(itToLevelNodeMap->second[counter]->value != value)
+				printf("%d\t",itToLevelNodeMap->second[counter]->value);
 		}
 	}
 }
@@ -111,7 +117,8 @@ void printNodesAtDistanceK(itNode *ptr,int value,unsigned int kValue){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void pSetAncestorsForNode(itNode *ptr,int value,queue<itNode *> &ancestors){
+//Tested
+bool pSetAncestorsForNode(itNode *ptr,int value,queue<itNode *> &ancestors){
 	if(ptr == null){
 		return false;
 	}
@@ -126,18 +133,21 @@ void pSetAncestorsForNode(itNode *ptr,int value,queue<itNode *> &ancestors){
 	return truthValue;
 }
 
-void pPrintAllNodesAtLevel(itNode *ptr,unsigned int kLevel){
+//Tested
+void pPrintAllNodesAtLevel(itNode *ptr,unsigned int kLevel,int value){
 	if(ptr == null){
 		return;
 	}
-	if(level == 0){
-		printf("%d\t",ptr->value);
+	if(kLevel == 0){
+		if(ptr->value != value)
+			printf("%d\t",ptr->value);
 		return;
 	}
-	pPrintAllNodesAtLevel(ptr->left,kLevel-1);
-	pPrintAllNodesAtLevel(ptr->right,kLevel-1);
+	pPrintAllNodesAtLevel(ptr->left,kLevel-1,value);
+	pPrintAllNodesAtLevel(ptr->right,kLevel-1,value);
 }
 
+//Tested
 void printAllNodesAtKDistance(itNode *ptr,int value,unsigned int kDistance){
 	if(ptr == null){
 		return;
@@ -148,7 +158,7 @@ void printAllNodesAtKDistance(itNode *ptr,int value,unsigned int kDistance){
 	while(kDistance > 0 && !ancestors.empty()){
 		currentNode = ancestors.front();
 		ancestors.pop();
-		pPrintAllNodesAtLevel(currentNode,kDistance);
+		pPrintAllNodesAtLevel(currentNode,kDistance,value);
 		kDistance -= 1;
 	}
 }
@@ -185,6 +195,7 @@ void printAllNodesAtKDistance(iptNode *ptr,unsigned int kDistance,int value){
 	}
 	iptNode *currentNode = searchForNodes(ptr,value);
 	while(currentNode != null && kDistance > 0){
+		printf("asd");
 		printAllNodesAtLevel(currentNode,kDistance);
 		kDistance -= 1;
 		currentNode = currentNode->parent;

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\constructcompletetreefromsill.h
  *  Created on			: Nov 13, 2014 :: 1:05:02 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-linked-list-representation-of-complete-tree-convert-it-to-linked-representation/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *constructTreeFromSill(sillNode *head){
 	if(head == null){
 		return null;
@@ -82,7 +83,6 @@ itNode *constructTreeFromSill(sillNode *head){
 	itNode *currentNode;
 	while(crawler != null){
 		currentNode = auxSpace.front();
-		auxSpace.pop();
 		if(currentNode->left == null){
 			currentNode->left = new itNode(crawler->value);
 			auxSpace.push(currentNode->left);
@@ -93,14 +93,16 @@ itNode *constructTreeFromSill(sillNode *head){
 		}
 		crawler = crawler->next;
 	}
+	return root;
 }
 
+//Tested
 itNode *constructTreeFromSillHashmap(sillNode *head){
 	if(head == null){
 		return null;
 	}
 	hash_map<unsigned int,int> indexValueMap;
-	unsigned int counter = 0;
+	unsigned int counter = 1;
 	sillNode *crawler = head;
 	while(crawler != null){
 		indexValueMap.insert(pair<unsigned int,int>(counter++,crawler->value));
@@ -113,6 +115,7 @@ itNode *constructTreeFromSillHashmap(sillNode *head){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void insertValueIntoTree(itNode **root,int value){
 	if(*root == null){
 		(*root) = new itNode(value);
@@ -139,6 +142,7 @@ void insertValueIntoTree(itNode **root,int value){
 	}
 }
 
+//Tested
 itNode *constructCompleteTreeON2(sillNode *head){
 	if(head == null){
 		return null;

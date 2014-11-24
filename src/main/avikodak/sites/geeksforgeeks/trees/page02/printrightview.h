@@ -4,7 +4,7 @@
  *  Created on			: Nov 16, 2014 :: 12:11:12 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printRightView(itNode *ptr,int currentLevel,int *maxLevel){
+//Tested
+void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
 	if(ptr == null){
 		return;
 	}
@@ -79,8 +80,8 @@ void printRightView(itNode *ptr,int currentLevel,int *maxLevel){
 		printf("%d\t",ptr->value);
 		*maxLevel = currentLevel;
 	}
-	printRightView(ptr->left,currentLevel+1,maxLevel);
-	printRightView(ptr->right,currentLevel+1,maxLevel);
+	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
+	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
 }
 
 /****************************************************************************************************************************************************/
