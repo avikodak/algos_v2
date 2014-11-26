@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: equilibriumindex.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\equilibriumindex.h
+ *  Created on			: Nov 26, 2014 :: 5:31:48 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
-****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,56 +65,57 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef EQUILIBRIUMINDEX_H_
+#define EQUILIBRIUMINDEX_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
-		return;
+unsigned int getEquilibriumIndex(vector<int> userInput){
+	if(userInput.size() == 0){
+		return UINT_MAX;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	vector<int> leftSum(userInput.size()),rightSum(userInput.size());
+	leftSum[0] = 0;
+	rightSum[userInput.size()-1] = 0;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		leftSum[counter] = userInput[counter-1] + leftSum[counter-1];
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
+		rightSum[counter] = rightSum[counter+1] + userInput[counter+1];
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(leftSum[counter] == rightSum[counter]){
+			return counter;
+		}
+	}
+	return UINT_MAX;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
+unsigned int getEquilibriumIndexON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return UINT_MAX;
 	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
+	int leftSum,rightSum;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		leftSum = rightSum = 0;
+		for(unsigned int leftCounter = 0;leftCounter < outerCounter;leftCounter++){
+			leftSum += userInput[leftCounter];
 		}
-		flag = true;
-		return;
+		for(unsigned int rightCounter = outerCounter+1;rightCounter < userInput.size();rightCounter++){
+			rightSum += userInput[rightCounter];
+		}
+		if(leftSum == rightSum){
+			return outerCounter;
+		}
 	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+	return UINT_MAX;
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
-
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* EQUILIBRIUMINDEX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

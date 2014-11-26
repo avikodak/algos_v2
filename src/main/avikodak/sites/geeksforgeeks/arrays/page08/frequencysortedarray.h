@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: frequencysortedarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\frequencysortedarray.h
+ *  Created on			: Nov 26, 2014 :: 6:29:43 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,81 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef FREQUENCYSORTEDARRAY_H_
+#define FREQUENCYSORTEDARRAY_H_
+
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int getLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MAX;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		if(middleIndex-1 <= startIndex && userInput[middleIndex-1] == key){
+			return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+		}else{
+			return middleIndex;
+		}
+	}else if(userInput[middleIndex] > key){
+		return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+	}else{
+		return getLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+	}
+}
+
+int getHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key ){
+			return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+		}else{
+			return middleIndex;
+		}
+	}else if(userInput[middleIndex] > key){
+		return getHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+	}else{
+		return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+	}
+}
+
+int getFrequencySortedArray(vector<int> userInput,int key){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	int lowIndex = getLowerBoundBinarySearch(userInput,key,0,userInput.size()-1);
+	if(lowIndex == INT_MAX){
+		return 0;
+	}
+	int highIndex = getHigherBoundBinarySearch(userInput,key,0,userInput.size()-1);
+	if(highIndex == INT_MIN){
+		return 0;
+	}
+	return highIndex - lowIndex + 1;
+}
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
-		return;
+unsigned int frequencySortedArrayON(vector<int> userInput,int key){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
-	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
+	unsigned int frequency = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == key){
+			frequency++;
 		}
-		flag = true;
-		return;
 	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+	return frequency;
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
-
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* FREQUENCYSORTEDARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

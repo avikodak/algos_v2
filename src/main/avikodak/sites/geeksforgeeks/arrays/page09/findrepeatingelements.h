@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesortedarray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\mergesortedarray.h
- *  Created on			: Oct 17, 2014 :: 6:47:42 PM
+ *  File Name   		: findrepeatingelements.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\findrepeatingelements.h
+ *  Created on			: Nov 26, 2014 :: 2:27:12 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/merge-one-array-of-size-n-into-another-one-of-size-mn/
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -55,7 +55,6 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -66,65 +65,81 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MERGESORTEDARRAY_H_
-#define MERGESORTEDARRAY_H_
+#ifndef FINDREPEATINGELEMENTS_H_
+#define FINDREPEATINGELEMENTS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> mergeSortedArray(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+iPair *getTwoRepeatingElements(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		userInput[userInput[counter]] *= -1;
 	}
-	unsigned int firstArrayCounter = 0,secondArrayCounter = 0;
-	while(firstArrayCounter < firstSortedArray.size() || secondArrayCounter < secondSortedArray.size()){
-		if(firstArrayCounter >= firstSortedArray.size() || secondArrayCounter >= secondSortedArray.size()){
-			if(firstArrayCounter < firstSortedArray.size()){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
-			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
-			}
+	iPair *result = new iPair(0,0);
+	for(unsigned int counter = 0;counter< userInput.size();counter++){
+		if(result->firstValue == 0){
+			result->firstValue = userInput[counter];
 		}else{
-			if(firstSortedArray[firstArrayCounter] == secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				firstArrayCounter++;
-				secondArrayCounter++;
-			}else if(firstSortedArray[firstArrayCounter] < secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
+			result->secondValue = userInput[counter];
+			return result;
+		}
+	}
+	return null;
+}
+
+iPair *getTwoRepeatingElementsHashmap(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == userInput.end()){
+			frequencyMap[userInput[counter]] = 1;
+		}else{
+			frequencyMap[userInput[counter]] += 1;
+		}
+	}
+	iPair *result = new iPair(0,0);
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		if(itToFrequencyMap->second == 2){
+			if(result->firstValue == 0){
+				result->firstValue = itToFrequencyMap->first;
 			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
+				result->secondValue = itToFrequencyMap->first;
+				return result;
 			}
 		}
 	}
-	return mergedArray;
+	return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+iPair *getTwoRepeatingElementsSorting(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	sort(userInput.begin(),userInput.end());
+	iPair *result = new iPair(0,0);
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		if(userInput[counter] == userInput[counter+1]){
+			if(result->firstValue == 0){
+				result->firstValue = userInput[counter];
+			}else{
+				result->secondValue = userInput[counter];
+				return result;
+			}
+		}
 	}
-	std::merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
-	sort(mergedArray.begin(),mergedArray.end());
-	return mergedArray;
+	return null;
 }
 
-void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+void gtrRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
@@ -147,103 +162,36 @@ void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
-void msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+ifpAvlNode *gtrInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
-		return null;
+		return;
 	}
 	if(currentNode->value == value){
 		currentNode->frequency += 1;
-		return null;
+		return;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
 			currentNode->left = new ifpAvlNode(value);
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return gtrInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
-		if(currentNode->right== null){
+		if(currentNode->right == null){
 			currentNode->right = new ifpAvlNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return gtrInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
-
 }
 
-void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
-	ifpAvlNode *z = msaInsertAtRightPlace(root,*root,value);
-	if(z == null){
-		return;
-	}
-	ifpAvlNode *y,*x;
-	int leftHeight,rightHeight;
-	while(z != null){
-		leftHeight = z->left == null?0:z->left->height;
-		rightHeight = z->right == null?0:z->right->height;
-		if(abs(leftHeight - rightHeight) > 1){
-			y = z->value > value?z->left:z->right;
-			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) && (z->right == y && y->right == x)){
-				if(z->parent == null){
-					(*root) = y;
-				}
-				msaRotateNodes(z,y);
-				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
-			}else{
-				if(z->parent == null){
-					(*root) = x;
-				}
-				msaRotateNodes(y,x);
-				msaRotateNodes(z,x);
-				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
-				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
-			}
-			return;
-		}
-		z->height = 1 + max(leftHeight,rightHeight);
-		z = z->parent;
-	}
-}
 
-void setInorderValuesInVector(ifpAvlNode *ptr,vector<int> &mergedArray){
-	if(ptr == null){
-		return;
-	}
-	setInorderValuesInVector(ptr->left,mergedArray);
-	while(ptr->frequency--){
-		mergedArray.push_back(ptr->value);
-	}
-	setInorderValuesInVector(ptr->right,mergedArray);
-}
-
-vector<int> mergedSortedArraysAvl(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
-	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
-	}
-	ifpAvlNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,firstSortedArray[counter]);
-	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,secondSortedArray[counter]);
-	}
-	setInorderValuesInVector(root,mergedArray);
-	return mergedArray;
-}
-
-void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
-	if(parent ==  null || child == null){
+void gtrRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+	if(parent == null || child == null){
 		return;
 	}
 	ifRbTreeNode *grandParent = parent->parent;
@@ -265,7 +213,7 @@ void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
-ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+ifRbTreeNode *gtrInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
 		(*root)->isRedNode = false;
@@ -280,7 +228,7 @@ ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 			currentNode->left->parent = currentNode;
 			return currentNode->left;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return gtrInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
@@ -288,12 +236,12 @@ ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 			currentNode->right->parent = currentNode;
 			return currentNode->right;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return gtrInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
-void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+void gtrReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
 	}
@@ -302,11 +250,11 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 		return;
 	}
 	if(grandParent->left == parent){
-		if(grandParent->right  == null || !grandParent->right->isRedNode){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			msaRotateNodes(grandParent,parent);
+			gtrRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -318,14 +266,14 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			gtrReorganizeTreePostInsertion(root,grandParent);
 		}
 	}else{
 		if(grandParent->left == null || !grandParent->left->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			msaRotateNodes(grandParent,parent);
+			gtrRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -337,50 +285,20 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			gtrReorganizeTreePostInsertion(root,grandParent);
 		}
 	}
 }
 
-void msaInsertIntoRbTree(ifRbTreeNode **root,int value){
-	ifRbTreeNode *ptrToKey = msaInsertAtRightPlace(root,*root,value);
+void gtrInsertAtRightPlace(ifRbTreeNode **root,int value){
+	ifRbTreeNode *ptrToKey = gtrInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
 	}
 	if(!ptrToKey->parent->isRedNode){
 		return;
 	}
-	msaReorganizeTree(root,ptrToKey);
-}
-
-void setValuesInVectorInorderRbTree(ifRbTreeNode *ptr,vector<int> &sortedValue){
-	if(ptr == null){
-		return;
-	}
-	setValuesInVectorInorderRbTree(ptr->left,sortedValue);
-	while(ptr->frequency--){
-		sortedValue.push_back(ptr->value);
-	}
-	setValuesInVectorInorderRbTree(ptr->right,sortedValue);
-}
-
-vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
-	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
-	}
-	ifRbTreeNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,firstSortedArray[counter]);
-	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,secondSortedArray[counter]);
-	}
-	setValuesInVectorInorderRbTree(root,mergedArray);
-	return mergedArray;
+	gtrReorganizeTreePostInsertion(root,ptrToKey);
 }
 
 /****************************************************************************************************************************************************/
@@ -388,7 +306,7 @@ vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> seco
 /****************************************************************************************************************************************************/
 
 
-#endif /* MERGESORTEDARRAY_H_ */
+#endif /* FINDREPEATINGELEMENTS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

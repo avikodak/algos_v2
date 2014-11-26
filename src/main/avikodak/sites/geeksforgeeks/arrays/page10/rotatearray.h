@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: rotatearray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearray.h
+ *  Created on			: Nov 25, 2014 :: 7:08:55 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,49 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef ROTATEARRAY_H_
+#define ROTATEARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
+void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy){
+	if(userInput.size() == 0){
 		return;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	vector<int> auxSpace;
+	unsigned int counter;
+	for(counter = 0;counter < rotateBy;counter++){
+		auxSpace.push_back(userInput[counter]);
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+	int fillCounter = -1;
+	while(counter < userInput.size()){
+		userInput[++fillCounter] = userInput[counter++];
+	}
+	for(counter = 0;counter < auxSpace.size();counter++){
+		userInput[++fillCounter] = auxSpace[counter];
+	}
 }
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
+void rotateArrayByOne(vector<int> &userInput){
+	int temp = userInput[0];
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		userInput[counter] = userInput[counter+1];
 	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
-		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+	userInput[userInput.size()-1] = temp;
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
+void rotateArrayON2(vector<int> &userInput,unsigned rotateBy){
+	while(rotateBy--){
+		rotateArrayByOne(userInput);
 	}
 }
 
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* ROTATEARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

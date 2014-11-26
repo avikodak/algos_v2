@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: sortarray0s1s2s.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\sortarray0s1s2s.h
+ *  Created on			: Nov 26, 2014 :: 12:55:15 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
-****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,56 +65,68 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef SORTARRAY0S1S2S_H_
+#define SORTARRAY0S1S2S_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
+//Dutch national flag problem
+void sortArray0s1s2s(vector<int> &userInput){
+	int startIndex = 0,midIndex = 0,endIndex = userInput.size()-1;
+	while(midIndex < endIndex){
+		switch (userInput[midIndex]) {
+		case 0:
+			swap(userInput.begin() + startIndex,userInput.begin() + midIndex);
+			startIndex++;
+			break;
+		case 2:
+			swap(userInput.begin() + midIndex,userInput.begin() + endIndex);
+			endIndex--;
+			break;
+		}
+		midIndex++;
+	}
+}
+
+void sortArray0s1s2s(vector<int> &userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	unsigned int zeroFrequency = 0,oneFrequency = 0,twoFrequency = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == 0){
+			zeroFrequency++;
+		}else if(userInput[counter] == 1){
+			oneFrequency++;
+		}else{
+			twoFrequency++;
+		}
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+	int fillCounter = -1;
+	while(zeroFrequency--){
+		userInput[++fillCounter] = 0;
+	}
+	while(oneFrequency--){
+		userInput[++fillCounter] = 1;
+	}
+	while(twoFrequency--){
+		userInput[++fillCounter] = 2;
+	}
+}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void sortArray0s1s2s(vector<int> userInput){
+	sort(userInput.begin(),userInput.end());
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
-		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
-}
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
 
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* SORTARRAY0S1S2S_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

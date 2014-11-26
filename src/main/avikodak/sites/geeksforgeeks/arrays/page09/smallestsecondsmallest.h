@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
+ *  File Name   		: smallestsecondsmallest.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\smallestsecondsmallest.h
+ *  Created on			: Nov 25, 2014 :: 11:12:26 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -55,7 +55,6 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -66,94 +65,110 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef GETPAIRFORGIVENSUM_H_
-#define GETPAIRFORGIVENSUM_H_
+#ifndef SMALLESTSECONDSMALLEST_H_
+#define SMALLESTSECONDSMALLEST_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
+iPair *getSmallestAndSecondSmallest(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
-	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
-	hash_map<int,unsigned int> itToFrequencyMap;
+	int smallestValue = userInput[0],secondSmallestValue = userInput[0];
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(userInput[counter] < smallestValue){
+			secondSmallestValue = smallestValue;
+			smallestValue = userInput[counter];
+		}else if(userInput[counter] < secondSmallestValue){
+			secondSmallestValue = userInput[counter];
 		}
 	}
-	return null;
+	return new iPair(smallestValue,secondSmallestValue);
 }
+
+iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	if(userInput.size() == 1){
+		return new iPair(userInput[0],INT_MAX);
+	}
+	int smallestValue = userInput[0],secondSmallestValue = INT_MAX;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(smallestValue > userInput[counter]){
+			smallestValue = userInput[counter];
+		}
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(secondSmallestValue> userInput[counter]){
+			if(smallestValue != userInput[counter]){
+				secondSmallestValue = userInput[counter];
+			}
+		}
+	}
+	return new iPair(smallestValue,secondSmallestValue);
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSum(vector<int> userInput,int sum){
+iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
+	if(userInput.size() == 1){
+		return new iPair(userInput[0],INT_MAX);
+	}
 	sort(userInput.begin(),userInput.end());
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	int currentSum;
-	while(frontCrawler < rearCrawler){
-		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
-		if(currentSum == sum){
-			iPair *result = new iPair();
-			result->firstValue = userInput[frontCrawler];
-			result->secondValue = userInput[rearCrawler];
-			return result;
-		}
-		if(currentSum > sum){
-			rearCrawler--;
-		}else{
-			frontCrawler++;
-		}
- 	}
-	return null;
+	return new iPair(userInput[0],userInput[1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
+iPair *getSmallestAndSecondSmallestON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
+	if(userInput.size() == 1){
+		return new iPair(userInput[0],INT_MAX);
+	}
+	int smallestValueIndex,secondSmallestValueIndex;
+	bool isMin;
 	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-				iPair *result = new iPair();
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-				return result;
+		isMin = true;
+		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
+			if(innerCrawler != outerCrawler){
+				if(userInput[outerCrawler] > userInput[innerCrawler]){
+					isMin = false;
+				}
 			}
 		}
-	}
-}
-
-iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	treeutils *utils = new treeutils();
-	itNode *rootBST = utils->getBSTFromVector(userInput);
-	itNode *temp;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
-		if(temp != null){
-			iPair *result = new iPair();
-			result->firstValue = userInput[counter];
-			result->secondValue = sum - userInput[counter];
-			return result;
+		if(isMin){
+			smallestValueIndex = outerCrawler;
 		}
 	}
-	return null;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		if(outerCrawler == smallestValueIndex){
+			continue;
+		}
+		isMin = true;
+		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
+			if(innerCrawler != outerCrawler){
+				if(userInput[outerCrawler] > userInput[innerCrawler]){
+					isMin = false;
+				}
+			}
+		}
+		if(isMin){
+			secondSmallestValueIndex = outerCrawler;
+		}
+	}
+	return new iPair(userInput[smallestValueIndex],userInput[secondSmallestValueIndex]);
 }
 
-#endif /* GETPAIRFORGIVENSUM_H_ */
+#endif /* SMALLESTSECONDSMALLEST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

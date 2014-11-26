@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\majorityelement.h
  *  Created on			: Oct 11, 2014 :: 11:20:57 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/majority-element/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,6 +72,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int majorityElementMooreVotingAlgo(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -83,6 +84,7 @@ int majorityElementMooreVotingAlgo(vector<int> userInput){
 		}else{
 			if(frequency == 1){
 				index = counter;
+				frequency = 1;
 			}else{
 				frequency--;
 			}
@@ -97,6 +99,7 @@ int majorityElementMooreVotingAlgo(vector<int> userInput){
 	return frequency > userInput.size()/2?userInput[index]:INT_MIN;
 }
 
+//Tested
 int majorityElementONHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -107,7 +110,7 @@ int majorityElementONHashmap(vector<int> userInput){
 		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
 			frequencyMap[userInput[counter]] += 1;
 		}else{
-			frequency[userInput[counter]] = 1;
+			frequencyMap[userInput[counter]] = 1;
 		}
 	}
 	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
@@ -121,16 +124,242 @@ int majorityElementONHashmap(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int majorityElementONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}
 	sort(userInput.begin(),userInput.end());
+	unsigned int requiredFrequency = userInput.size() / 2;
+	for(unsigned int counter = 0;counter <= userInput.size()/2;counter++){
+		if(userInput[counter] == userInput[counter + requiredFrequency]){
+			return userInput[counter];
+		}
+	}
+	return INT_MIN;
+}
+
+//Tested
+void meRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+	ifpAvlNode *grandParent = parent->parent;
+	child->parent = grandParent;
+	parent->parent = child;
+	if(grandParent != null){
+		if(grandParent->left == parent){
+			grandParent->left = child;
+		}else{
+			grandParent->right = child;
+		}
+	}
+	if(parent->left == child){
+		parent->left = child->right;
+		child->right = parent;
+	}else{
+		parent->right = child->left;
+		child->left = parent;
+	}
+}
+
+//Tested
+ifpAvlNode *meInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new ifpAvlNode(value);
+		return null;
+	}
+	if(currentNode->value == value){
+		currentNode->frequency += 1;
+		return null;
+	}else if(currentNode->value > value){
+		if(currentNode->left == null){
+			currentNode->left = new ifpAvlNode(value);
+			currentNode->left->parent = currentNode;
+			return currentNode;
+		}else{
+			return meInsertAtRightPlace(root,currentNode->left,value);
+		}
+	}else{
+		if(currentNode->right == null){
+			currentNode->right = new ifpAvlNode(value);
+			currentNode->right->parent = currentNode;
+			return currentNode;
+		}else{
+			return meInsertAtRightPlace(root,currentNode->right,value);
+		}
+	}
+}
+
+//Tested
+int majorityElememtInorder(ifpAvlNode *ptr,unsigned int size){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	if(ptr->frequency > size/2){
+		return ptr->value;
+	}
+	int leftResult = majorityElememtInorder(ptr->left,size);
+	if(leftResult != INT_MIN){
+		return leftResult;
+	}
+	return majorityElememtInorder(ptr->right,size);
+}
+
+//Tested
+int majorityElementAvlTree(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	ifpAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		meInsertAtRightPlace(&root,root,userInput[counter]);
+	}
+	return majorityElememtInorder(root,userInput.size());
+}
+
+//Tested
+void meRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+	if(parent == null || child == null){
+		return;
+	}
+	ifRbTreeNode *grandParent = parent->parent;
+	parent->parent = child;
+	child->parent = grandParent;
+	if(grandParent != null){
+		if(grandParent->left == parent){
+			grandParent->left = child;
+		}else{
+			grandParent->right = child;
+		}
+	}
+	if(parent->left == child){
+		parent->left = child->right;
+		child->right = parent;
+	}else{
+		parent->right = child->left;
+		child->left = parent;
+	}
+}
+
+//Tested
+ifRbTreeNode *meInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new ifRbTreeNode(value);
+		(*root)->isRedNode = false;
+		return null;
+	}
+	if(currentNode->value == value){
+		currentNode->frequency += 1;
+		return null;
+	}else if(currentNode->value > value){
+		if(currentNode->left == null){
+			currentNode->left = new ifRbTreeNode(value);
+			currentNode->left->parent = currentNode;
+			return currentNode->left;
+		}else{
+			return meInsertAtRightPlace(root,currentNode->left,value);
+		}
+	}else{
+		if(currentNode->right == null){
+			currentNode->right = new ifRbTreeNode(value);
+			currentNode->right->parent = currentNode;
+			return currentNode->right;
+		}else{
+			return meInsertAtRightPlace(root,currentNode->right,value);
+		}
+	}
+}
+
+//Tested
+void meReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+	if(currentNode == null){
+		return;
+	}
+	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
+	if(!parent->isRedNode){
+		return;
+	}
+	if(grandParent->left == parent){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			meRotateNodes(grandParent,parent);
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+			return;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->isRedNode = false;
+			if(grandParent->parent == null){
+				(*root) = parent;
+				grandParent->isRedNode = false;
+				return;
+			}
+			meReorganizeTreePostInsertion(root,parent);
+		}
+	}else{
+		if(grandParent->left == null || !grandParent->left->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			meRotateNodes(grandParent,parent);
+			grandParent->isRedNode = true;
+			parent->isRedNode = false;
+			return;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->isRedNode = false;
+			if(grandParent->parent == null){
+				(*root) = parent;
+				grandParent->isRedNode = false;
+				return;
+			}
+			meReorganizeTreePostInsertion(root,grandParent);
+		}
+	}
+}
+
+//Tested
+void meInsertIntoRbTree(ifRbTreeNode **root,int value){
+	ifRbTreeNode *ptrToKey = meInsertAtRightPlace(root,*root,value);
+	if(ptrToKey == null || !ptrToKey->parent->isRedNode){
+		return;
+	}
+	meReorganizeTreePostInsertion(root,ptrToKey);
+}
+
+//Tested
+int getMajorityElementInorderRBTree(ifRbTreeNode *ptr,unsigned int size){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	if(ptr->frequency > size/2){
+		return ptr->value;
+	}
+	int leftResult = getMajorityElementInorderRBTree(ptr->left,size);
+	if(leftResult != INT_MIN){
+		return leftResult;
+	}
+	return getMajorityElementInorderRBTree(ptr->right,size);
+}
+
+//Tested
+int getMajorityElementRbTree(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	ifRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		meInsertIntoRbTree(&root,userInput[counter]);
+	}
+	return getMajorityElementInorderRBTree(root,userInput.size());
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int majorityElementON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -150,6 +379,7 @@ int majorityElementON2(vector<int> userInput){
 	return INT_MIN;
 }
 
+//Tested
 int getMajorityElementPreOrderBST(iftNode *ptr,unsigned int vectorSize){
 	if(ptr == null){
 		return INT_MIN;
@@ -158,19 +388,20 @@ int getMajorityElementPreOrderBST(iftNode *ptr,unsigned int vectorSize){
 		return ptr->value;
 	}
 	int leftResult = getMajorityElementPreOrderBST(ptr->left,vectorSize);
-	if(leftResult == INT_MIN){
+	if(leftResult != INT_MIN){
 		return leftResult;
 	}
 	return getMajorityElementPreOrderBST(ptr->right,vectorSize);
 }
 
+//Tested
 int getMajorityElementON2BST(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}
 	treeutils *utils = new treeutils();
-	iftNode *rootBST = utils->getBSTFromVector(userInput);
-	return getMajorityElementPreOrderBST(ptr,userInput.size());
+	iftNode *rootBST = utils->getFBSTFromVector(userInput);
+	return getMajorityElementPreOrderBST(rootBST,userInput.size());
 }
 
 #endif /* MAJORITYELEMENT_H_ */

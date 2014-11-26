@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lowestancestorstree.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\lowestancestorstree.h
- *  Created on			: Nov 15, 2014 :: 7:08:02 PM
+ *  File Name   		: maxminarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
+ *  Created on			: Nov 26, 2014 :: 10:53:30 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,122 +65,127 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LOWESTANCESTORSTREE_H_
-#define LOWESTANCESTORSTREE_H_
+#ifndef MAXMINARRAY_H_
+#define MAXMINARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-bool lowestAncestor(itNode *ptr,itNode **lowAncestor,int firstUserinput,int secondUserinput){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->value == firstUserinput || ptr->value == secondUserinput){
-		return true;
-	}
-	bool leftTruthValue = lowestAncestor(ptr->left,lowAncestor,firstUserinput,secondUserinput);
-	bool rightTruthValue = lowestAncestor(ptr->right,lowAncestor,firstUserinput,secondUserinput);
-	if(leftTruthValue && rightTruthValue){
-		if(*lowAncestor == null){
-			(*lowAncestor) = ptr;
-		}
-		return false;
-	}
-	return leftTruthValue || rightTruthValue;
-}
-
-//Tested
-void copyStacks(stack<itNode *> source,stack<itNode *> &destination){
-	if(source.size() == 0){
-		return;
-	}
-	stack<itNode *> temp;
-	while(!source.empty()){
-		temp.push(source.top());
-		source.pop();
-	}
-	while(!temp.empty()){
-		destination.push(temp.top());
-		temp.pop();
-	}
-}
-
-//Tested
-void lowestAncestorMain(itNode *ptr,stack<itNode *> auxSpace,stack<itNode *> &firstValAncestors,stack<itNode *> &secondValAncestors,int firstVal,int secondVal){
-	if(ptr == null){
-		return;
-	}
-	auxSpace.push(ptr);
-	if(ptr->value == firstVal || ptr->value == secondVal){
-		if(ptr->value == firstVal){
-			copyStacks(auxSpace,firstValAncestors);
-		}else{
-			copyStacks(auxSpace,secondValAncestors);
-		}
-		return;
-	}
-	lowestAncestorMain(ptr->left,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);
-	lowestAncestorMain(ptr->right,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);
-}
-
-//Tested
-itNode *lowestAncestorsAuxspace(itNode *ptr,int firstVal,int secondVal){
-	if(ptr == null){
+iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
 		return null;
 	}
-	stack<itNode *> auxSpace,firstValAncestors,secondValAncestors;
-	lowestAncestorMain(ptr,auxSpace,firstValAncestors,secondValAncestors,firstVal,secondVal);
-	if(firstValAncestors.size() != secondValAncestors.size()){
-		if(firstValAncestors.size() > secondValAncestors.size()){
-			while(firstValAncestors.size() != secondValAncestors.size()){
-				firstValAncestors.pop();
-			}
+	if(startIndex == endIndex){
+		return new iMaxMin(userInput[startIndex],userInput[startIndex]);
+	}
+	if(endIndex - startIndex == 1){
+		return new iMaxMin(min(userInput[startIndex],userInput[endIndex]),max(userInput[startIndex],userInput[endIndex]));
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	iMaxMin *leftResult = getMaxMinArray3NBy2(userInput,startIndex,middleIndex);
+	iMaxMin *rightResult = getMaxMinArray3NBy2(userInput,middleIndex+1,endIndex);
+	if(leftResult == null || rightResult == null){
+		return leftResult == null?rightResult:leftResult;
+	}
+	return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
+}
+
+iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iMaxMin *result = new iMaxMin();
+	unsigned int counter = 0;
+	if(userInput % 2 == 0){
+		result->minValue = min(userInput[0],userInput[1]);
+		result->maxValue = max(userInput[0],userInput[1]);
+		counter = 2;
+	}else{
+		result->maxValue = userInput[0];
+		result->minValue = userInput[0];
+		counter = 1;
+	}
+	for(;counter < userInput.size()-1;counter++){
+		if(userInput[counter] > userInput[counter+1]){
+			result->maxValue = max(result->maxValue,userInput[counter]);
+			result->minValue = min(result->minValue,userInput[counter+1]);
 		}else{
-			while(firstValAncestors.size() != secondValAncestors.size()){
-				secondValAncestors.pop();
-			}
+			result->maxValue = max(result->maxValue,userInput[counter+1]);
+			result->minValue = min(result->minValue,userInput[counter]);
 		}
 	}
-	itNode *commonAncestors = null;
-	while(firstValAncestors.size() > 0){
-		if(firstValAncestors.top() == secondValAncestors.top()){
-			return firstValAncestors.top();
-		}
-		firstValAncestors.pop();
-		secondValAncestors.pop();
+	return result;
+}
+
+iMaxMin *getMaxMinArrayO2N(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	return commonAncestors;
+	iMaxMin *result = new iMaxMin();
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(result->maxValue < userInput[counter]){
+			result->maxValue = userInput[counter];
+		}
+		if(result->minValue > userInput[counter]){
+			result->minValue = userInput[counter];
+		}
+	}
+	return result;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	sort(userInput.begin(),userInput.end());
+	return new iMaxMin(userInput[0],userInput[userInput.size()-1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool tIsValuePresentInTree(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->value == value){
-		return true;
-	}
-	return isValuePresentInTree(ptr->left,value) && isValuePresentInTree(ptr->right,value);
-}
-
-itNode *tLowestCommonAncestorsON2(itNode *ptr,int firstValue,int secondValue){
-	if(ptr == null){
+iMaxMin *getMaxMinArrayON2(vector<int> userInput){
+	if(userInput.size() == 0){
 		return null;
 	}
-	if(tIsValuePresentInTree(ptr->left,firstValue) && tIsValuePresentInTree(ptr->right,secondValue)){
-		return ptr;
+	if(userInput.size() == 1){
+		return iMaxMin(userInput[0],userInput[0]);
 	}
-	itNode *leftResult = tLowestCommonAncestorsON2(ptr->left,firstValue,secondValue);
-	if(leftResult != null){
-		return leftResult;
+	iMaxMin *result = new iMaxMin();
+	bool flag;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		flag = true;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(outerCounter != innerCounter){
+				if(userInput[innerCounter] < userInput[outerCounter]){
+					flag = false;
+				}
+			}
+		}
+		if(flag){
+			result->minValue = userInput[outerCounter];
+		}
 	}
-	return tLowestCommonAncestorsON2(ptr->right,firstValue,secondValue);
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		flag = true;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(outerCounter != innerCounter){
+				if(userInput[innerCounter] > userInput[outerCounter]){
+					flag = false;
+				}
+			}
+		}
+		if(flag){
+			result->maxValue = userInput[outerCounter];
+		}
+	}
+	return result;
 }
 
-#endif /* LOWESTANCESTORSTREE_H_ */
+#endif /* MAXMINARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

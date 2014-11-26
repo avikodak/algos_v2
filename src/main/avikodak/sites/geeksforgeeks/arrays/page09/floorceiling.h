@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: floorceiling.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\floorceiling.h
+ *  Created on			: Nov 26, 2014 :: 4:07:02 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,48 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef FLOORCEILING_H_
+#define FLOORCEILING_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+floorceiling *floorCeilingBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	if(key <= userInput[startIndex]){
+		return new floorceiling(INT_MIN,userInput[startIndex]);
+	}
+	if(key >= userInput[endIndex]){
+		return new floorceiling(userInput[endIndex],INT_MAX);
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		return middleIndex;
+	}
+	if(userInput[middleIndex] > key){
+		if(startIndex <= middleIndex-1 && userInput[middleIndex-1] < key){
+			return new floorceiling(userInput[middleIndex-1],userInput[middleIndex+1]);
+		}else{
+			return floorCeilingBinarySearch(userInput,key,startIndex,middleIndex-1);
+		}
+	}else{
+		if(endIndex >= middleIndex + 1 && userInput[middleIndex+1] > key){
+			return new floorceiling(userInput[middleIndex],userInput[middleIndex+1]);
+		}else{
+			return floorCeilingBinarySearch(userInput,key,middleIndex+1,endIndex);
+		}
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
-		return;
-	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
-	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
-}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
-		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
-}
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
-
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* FLOORCEILING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: leadersofarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\leadersofarray.h
+ *  Created on			: Nov 25, 2014 :: 12:03:29 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,77 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef LEADERSOFARRAY_H_
+#define LEADERSOFARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
+void printLeadersInArray(vector<int> userInput){
+	if(userInput.size() == 0){
 		return;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	int maxTillNow = INT_MIN;
+	for(int counter = userInput.size()-1;counter >= 0;counter--){
+		if(userInput[counter] > maxTillNow){
+			printf("%d\t",userInput[counter]);
+			maxTillNow = userInput[counter];
+		}
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+}
+
+int printLeaders(vector<int> userInput,unsigned int counter){
+	if(counter >= userInput.size()){
+		return INT_MIN;
+	}
+	int resultTillNow = printLeaders(userInput,counter+1);
+	if(userInput[counter] > resultTillNow){
+		printf("%d\t",userInput[counter]);
+		resultTillNow = userInput[counter];
+	}
+	return resultTillNow;
+}
+
+void printLeadersAuxSpace(vector<int> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	stack<int> auxSpace;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace.push(userInput[counter]);
+	}
+	int maxTillNow = INT_MIN;
+	while(!auxSpace.empty()){
+		if(auxSpace.top() > maxTillNow){
+			printf("%d\t",auxSpace.top());
+			maxTillNow = auxSpace.top();
+		}
+		auxSpace.pop();
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
+void printLeadersInArrayON2(vector<int> userInput){
+	if(userInput.size() == 0){
 		return;
 	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
+	bool isLeader;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		isLeader = true;
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			if(userInput[innerCounter] > userInput[outerCounter]){
+				isLeader = false;
+			}
 		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
-}
-
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
+		if(isLeader){
+			printf("%d\t",userInput[outerCounter]);
+		}
 	}
 }
 
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* LEADERSOFARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

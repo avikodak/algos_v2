@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: segregate0s1s.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregate0s1s.h
+ *  Created on			: Nov 25, 2014 :: 11:42:21 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
-****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,56 +65,123 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef SEGREGATE0S1S_H_
+#define SEGREGATE0S1S_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
+void segregate0s1s(vector<bool> userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	unsigned int zeroFrequency = 0,oneFrequency = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(!userInput[counter]){
+			zeroFrequency += 1;
+		}else{
+			oneFrequency += 1;
+		}
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+	int fillCounter = -1;
+	while(zeroFrequency--){
+		userInput[++fillCounter] = 0;
+	}
+	while(oneFrequency--){
+		userInput[++fillCounter] = 1;
+	}
+}
+
+void segregate0s1sQuickSortDivideMethod(vector<bool> userInput){
+	int startIndex = 0,endIndex = userInput.size()-1;
+	while(startIndex < endIndex){
+		while(!userInput[startIndex]){
+			startIndex++;
+		}
+		while(userInput[endIndex]){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			userInput[startIndex] = false;
+			userInput[endIndex] = true;
+		}
+	}
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+	vector<int> temp;
+	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
+		if(firstCrawler > middleIndex || secondCrawler > endIndex){
+			if(firstCrawler <= middleIndex){
+				temp.push_back(userInput[firstCrawler]);
+				firstCrawler++;
+			}else{
+				temp.push_back(userInputp[secondCrawler]);
+				secondCrawler++;
+			}
+		}else{
+			if(userInput[firstCrawler] < userInput[secondCrawler]){
+				temp.push_back(userInput[firstCrawler]);
+				firstCrawler++;
+			}else{
+				temp.push_back(userInput[secondCrawler]);
+				secondCrawler++;
+			}
+		}
+	}
+	for(unsigned int counter = 0;counter < temp.size();counter++){
+		userInput[startIndex+counter] = temp[counter];
+	}
+}
+
+void mergeSort(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	mergeSort(userInput,startIndex,middleIndex);
+	mergeSort(userInput,middleIndex+1,endIndex);
+	merge(userInput,startIndex,middleIndex,endIndex);
+}
+
+void segregate0s1s(vector<int> userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	mergeSort(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
+void segregate0s1sON2(vector<bool> userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
+	int innerCounter;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		if(userInput[outerCounter]){
+			for(innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+				if(!userInput[innerCounter]){
+					break;
+				}
+			}
+			if(innerCounter < userInput.size()){
+				userInput[outerCounter] = false;
+				userInput[innerCounter] = true;
+			}else{
+				break;
+			}
 		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
-}
-
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
 	}
 }
 
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* SEGREGATE0S1S_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

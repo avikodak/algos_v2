@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesortedarray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\mergesortedarray.h
- *  Created on			: Oct 17, 2014 :: 6:47:42 PM
+ *  File Name   		: getpairforgivensum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
+ *  Created on			: Oct 10, 2014 :: 4:13:13 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/merge-one-array-of-size-n-into-another-one-of-size-mn/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -66,69 +66,63 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MERGESORTEDARRAY_H_
-#define MERGESORTEDARRAY_H_
+#ifndef GETPAIRFORGIVENSUM_H_
+#define GETPAIRFORGIVENSUM_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> mergeSortedArray(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+//Tested
+iPair *getPairForGivenSumON(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
-	}
-	unsigned int firstArrayCounter = 0,secondArrayCounter = 0;
-	while(firstArrayCounter < firstSortedArray.size() || secondArrayCounter < secondSortedArray.size()){
-		if(firstArrayCounter >= firstSortedArray.size() || secondArrayCounter >= secondSortedArray.size()){
-			if(firstArrayCounter < firstSortedArray.size()){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
-			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
-			}
-		}else{
-			if(firstSortedArray[firstArrayCounter] == secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				firstArrayCounter++;
-				secondArrayCounter++;
-			}else if(firstSortedArray[firstArrayCounter] < secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
-			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
-			}
+	hash_map<int,unsigned int> frequencyMap = getFrequencyMapFromVector(userInput);
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if((itToFrequencyMap = frequencyMap.find(sum - userInput[counter])) != frequencyMap.end()){
+			iPair *result = new iPair();
+			result->firstValue = userInput[counter];
+			result->secondValue = sum - userInput[counter];
+			return result;
 		}
 	}
-	return mergedArray;
+	return null;
 }
-
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+//Tested
+iPair *getPairForGivenSum(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	sort(userInput.begin(),userInput.end());
+	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+	int currentSum;
+	while(frontCrawler < rearCrawler){
+		currentSum = userInput[frontCrawler] + userInput[rearCrawler];
+		if(currentSum == sum){
+			iPair *result = new iPair();
+			result->firstValue = userInput[frontCrawler];
+			result->secondValue = userInput[rearCrawler];
+			return result;
+		}
+		if(currentSum > sum){
+			rearCrawler--;
+		}else{
+			frontCrawler++;
+		}
 	}
-	std::merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
-	sort(mergedArray.begin(),mergedArray.end());
-	return mergedArray;
+	return null;
 }
 
-void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+//Tested
+void gpsRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
-	ifpAvlNode *grandParent = parent->parent;
+	ipAvlNode *grandParent = parent->parent;
 	parent->parent = child;
 	child->parent = grandParent;
 	if(grandParent != null){
@@ -147,60 +141,60 @@ void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
-void msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
-	if(*root == null){
-		(*root) = new ifpAvlNode(value);
+//Tested
+ipAvlNode *insertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
+	if((*root) == null){
+		(*root) = new ipAvlNode(value);
 		return null;
 	}
 	if(currentNode->value == value){
-		currentNode->frequency += 1;
 		return null;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
-			currentNode->left = new ifpAvlNode(value);
+			currentNode->left = new ipAvlNode(value);
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return insertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
-		if(currentNode->right== null){
-			currentNode->right = new ifpAvlNode(value);
+		if(currentNode->right == null){
+			currentNode->right = new ipAvlNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return insertAtRightPlace(root,currentNode->right,value);
 		}
 	}
-
 }
 
-void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
-	ifpAvlNode *z = msaInsertAtRightPlace(root,*root,value);
-	if(z == null){
+//Tested
+void gpsInsertIntoAvlTree(ipAvlNode **root,int value){
+	ipAvlNode *ptrToKey = insertAtRightPlace(root,*root,value);
+	if(ptrToKey == null){
 		return;
 	}
-	ifpAvlNode *y,*x;
+	ipAvlNode *z = ptrToKey,*y,*x;
 	int leftHeight,rightHeight;
 	while(z != null){
 		leftHeight = z->left == null?0:z->left->height;
 		rightHeight = z->right == null?0:z->right->height;
-		if(abs(leftHeight - rightHeight) > 1){
+		if(abs(rightHeight - leftHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) && (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x) || (z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
-				msaRotateNodes(z,y);
+				rotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 			}else{
 				if(z->parent == null){
 					(*root) = x;
 				}
-				msaRotateNodes(y,x);
-				msaRotateNodes(z,x);
+				rotateNodes(y,x);
+				rotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
@@ -212,43 +206,42 @@ void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
-void setInorderValuesInVector(ifpAvlNode *ptr,vector<int> &mergedArray){
+//Tested
+ipAvlNode *gpsSearchForNode(ipAvlNode *ptr,int value){
 	if(ptr == null){
-		return;
+		return null;
 	}
-	setInorderValuesInVector(ptr->left,mergedArray);
-	while(ptr->frequency--){
-		mergedArray.push_back(ptr->value);
+	if(ptr->value == value){
+		return ptr;
+	}else if(ptr->value > value){
+		return gpsSearchForNode(ptr->left,value);
+	}else{
+		return gpsSearchForNode(ptr->right,value);
 	}
-	setInorderValuesInVector(ptr->right,mergedArray);
 }
 
-vector<int> mergedSortedArraysAvl(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+//Tested
+iPair *getPairForGivenSumAvlTree(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	ipAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		gpsInsertIntoAvlTree(&root,userInput[counter]);
 	}
-	ifpAvlNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,firstSortedArray[counter]);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(gpsSearchForNode(root,sum-userInput[counter])){
+			return new iPair(userInput[counter],sum - userInput[counter]);
+		}
 	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,secondSortedArray[counter]);
-	}
-	setInorderValuesInVector(root,mergedArray);
-	return mergedArray;
+	return null;
 }
 
-void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
-	if(parent ==  null || child == null){
-		return;
-	}
-	ifRbTreeNode *grandParent = parent->parent;
-	parent->parent = child;
+//Tested
+void gpsRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
+	iRbTreeNode *grandParent = parent->parent;
 	child->parent = grandParent;
+	parent->parent = child;
 	if(grandParent != null){
 		if(grandParent->left == parent){
 			grandParent->left = child;
@@ -265,48 +258,49 @@ void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
-ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+//Tested
+iRbTreeNode *gpsInsertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
 	if(*root == null){
-		(*root) = new ifRbTreeNode(value);
+		(*root) = new iRbTreeNode(value);
 		(*root)->isRedNode = false;
 		return null;
 	}
 	if(currentNode->value == value){
-		currentNode->frequency += 1;
 		return null;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
-			currentNode->left = new ifRbTreeNode(value);
+			currentNode->left = new iRbTreeNode(value);
 			currentNode->left->parent = currentNode;
 			return currentNode->left;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return gpsInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
-			currentNode->right = new ifRbTreeNode(value);
+			currentNode->right = new iRbTreeNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode->right;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return gpsInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
-void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+//Tested
+void gpsReorganizeTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
 	}
-	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
+	iRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
 	if(!parent->isRedNode){
 		return;
 	}
 	if(grandParent->left == parent){
-		if(grandParent->right  == null || !grandParent->right->isRedNode){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			msaRotateNodes(grandParent,parent);
+			gpsRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -315,17 +309,15 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 			grandParent->left->isRedNode = false;
 			grandParent->right->isRedNode = false;
 			if(grandParent->parent == null){
+				(*root) = grandParent;
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			gpsReorganizeTreePostInsertion(root,grandParent);
 		}
 	}else{
 		if(grandParent->left == null || !grandParent->left->isRedNode){
-			if(grandParent->parent == null){
-				(*root) = parent;
-			}
-			msaRotateNodes(grandParent,parent);
+			gpsRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -334,61 +326,100 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 			grandParent->left->isRedNode = false;
 			grandParent->right->isRedNode = false;
 			if(grandParent->parent == null){
+				(*root) = grandParent;
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			gpsReorganizeTreePostInsertion(root,currentNode->parent);
 		}
 	}
 }
 
-void msaInsertIntoRbTree(ifRbTreeNode **root,int value){
-	ifRbTreeNode *ptrToKey = msaInsertAtRightPlace(root,*root,value);
+//Tested
+void gpsInsertIntoRedBlackTree(iRbTreeNode **root,int value){
+	iRbTreeNode *ptrToKey = gpsInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
 	}
 	if(!ptrToKey->parent->isRedNode){
 		return;
 	}
-	msaReorganizeTree(root,ptrToKey);
+	gpsReorganizeTreePostInsertion(root,ptrToKey);
 }
 
-void setValuesInVectorInorderRbTree(ifRbTreeNode *ptr,vector<int> &sortedValue){
+//Tested
+iRbTreeNode *gpsSearchForValue(iRbTreeNode *ptr,int value){
 	if(ptr == null){
-		return;
+		return null;
 	}
-	setValuesInVectorInorderRbTree(ptr->left,sortedValue);
-	while(ptr->frequency--){
-		sortedValue.push_back(ptr->value);
+	if(ptr->value == value){
+		return ptr;
+	}else if(ptr->value > value){
+		return gpsSearchForValue(ptr->left,value);
+	}else{
+		return gpsSearchForValue(ptr->right,value);
 	}
-	setValuesInVectorInorderRbTree(ptr->right,sortedValue);
 }
 
-vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+//Tested
+iPair *getPairForSumRebBlackTree(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	iRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		gpsInsertIntoRedBlackTree(&root,userInput[counter]);
 	}
-	ifRbTreeNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,firstSortedArray[counter]);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(gpsSearchForValue(root,sum-userInput[counter])){
+			return new iPair(userInput[counter],sum-userInput[counter]);
+		}
 	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,secondSortedArray[counter]);
-	}
-	setValuesInVectorInorderRbTree(root,mergedArray);
-	return mergedArray;
+	return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+iPair *getPairForGivenSumON2(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
+	}
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
+				iPair *result = new iPair();
+				result->firstValue = userInput[outerCrawler];
+				result->secondValue = userInput[innerCrawler];
+				return result;
+			}
+		}
+	}
+	return null;
+}
 
+//Tested
+iPair *getPairForGivenSumBST(vector<int> userInput,int sum){
+	if(userInput.size() == 0){
+		return null;
+	}
+	treeutils *utils = new treeutils();
+	itNode *rootBST = utils->getBSTFromVector(userInput);
+	itNode *temp;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		temp = utils->searchForValueBST(rootBST,sum-userInput[counter]);
+		if(temp != null){
+			iPair *result = new iPair();
+			result->firstValue = userInput[counter];
+			result->secondValue = sum - userInput[counter];
+			return result;
+		}
+	}
+	return null;
+}
 
-#endif /* MERGESORTEDARRAY_H_ */
+#endif /* GETPAIRFORGIVENSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

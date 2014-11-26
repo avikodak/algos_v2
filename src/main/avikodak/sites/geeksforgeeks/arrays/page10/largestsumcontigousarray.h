@@ -4,7 +4,7 @@
  *  Created on			: Oct 17, 2014 :: 6:26:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -66,24 +66,65 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef LARGESTSUMCONTIGOUSARRAY_H_
+#define LARGESTSUMCONTIGOUSARRAY_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int largestSumContinousSubArray(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	int maxSum = userInput[0],continousSum = userInput[0];
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		continousSum = max(continousSum,userInput[counter]);
+		maxSum = max(maxSum,continousSum);
+	}
+	return maxSum;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int largestSumContigousSubArrayON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	int currentSum,maxSum = INT_MIN;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		currentSum = 0;
+		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+			currentSum += userInput[innerCounter];
+			maxSum = max(maxSum,currentSum);
+		}
+	}
+	return maxSum;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int largestSumContigousSubArrayON3(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	int sum,maxSum = INT_MIN;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		for(unsigned int middleCrawler = outerCrawler;middleCrawler < userInput.size();middleCrawler++){
+			sum = 0;
+			for(unsigned int innerCrawler = outerCrawler;innerCrawler <= middleCrawler;innerCrawler++){
+				sum += userInput[innerCrawler];
+			}
+			maxSum = max(sum,maxSum);
+		}
+	}
+	return maxSum;
+}
+
+
+#endif /* LARGESTSUMCONTIGOUSARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef LARGESTSUMCONTIGOUSARRAY_H_
-#define LARGESTSUMCONTIGOUSARRAY_H_
-
-
-#endif /* LARGESTSUMCONTIGOUSARRAY_H_ */

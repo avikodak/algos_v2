@@ -168,6 +168,9 @@
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page04/intersectionofsill.h"
 #include "main/avikodak/sites/geeksforgeeks/linkedlists/page03/mergesort.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/getpairforgivensum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/majorityelement.h"
+
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/prefixaverages.h"
@@ -187,8 +190,8 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> sequence = getVectorForUserInput();
-	printf("%d\n",longestIncreasingSubSequenceMemoization(sequence,8));
+	vector<int> userInput = getVectorForUserInput();
+	printf("%d\t",getMajorityElementRbTree(userInput));//6 1 4 45 6 10 -8
 }
 
 void p(inrNode *ptr){
@@ -213,9 +216,8 @@ void treeTester(){
 	treeutils *utils = new treeutils();
 	//vector<int> userInput = getVectorForUserInput();
 	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	itNode *root = utils->getITreeFromHashmap(getUserInputForIndexValueMap());
-	stack<itNode *> auxSpace;
-	printNodesAtKDistanceON2(root,1);//8 1 1 2 2 3 3 4 4 5 5 6 6 7 7 13 8
+	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
+	printNodesAtKDistancePostorderTraversalIterative(root,1);//8 1 1 2 2 3 3 4 4 5 5 6 6 7 7 13 8
 }
 
 void avlTreeTester(){
@@ -272,7 +274,7 @@ void trieTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	treeTester();
+	arrayTester();
 	return 0;
 }
 

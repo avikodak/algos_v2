@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesortedarray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\mergesortedarray.h
- *  Created on			: Oct 17, 2014 :: 6:47:42 PM
+ *  File Name   		: sortbyfrequency.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\sortbyfrequency.h
+ *  Created on			: Nov 24, 2014 :: 11:28:10 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/merge-one-array-of-size-n-into-another-one-of-size-mn/
+ *  URL 				: http://www.geeksforgeeks.org/sort-elements-by-frequency/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -55,7 +55,6 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -66,65 +65,61 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MERGESORTEDARRAY_H_
-#define MERGESORTEDARRAY_H_
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-vector<int> mergeSortedArray(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
-	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
-	}
-	unsigned int firstArrayCounter = 0,secondArrayCounter = 0;
-	while(firstArrayCounter < firstSortedArray.size() || secondArrayCounter < secondSortedArray.size()){
-		if(firstArrayCounter >= firstSortedArray.size() || secondArrayCounter >= secondSortedArray.size()){
-			if(firstArrayCounter < firstSortedArray.size()){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
-			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
-			}
-		}else{
-			if(firstSortedArray[firstArrayCounter] == secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				firstArrayCounter++;
-				secondArrayCounter++;
-			}else if(firstSortedArray[firstArrayCounter] < secondSortedArray[secondArrayCounter]){
-				mergedArray.push_back(firstSortedArray[firstArrayCounter]);
-				firstArrayCounter++;
-			}else{
-				mergedArray.push_back(secondSortedArray[secondArrayCounter]);
-				secondArrayCounter++;
-			}
-		}
-	}
-	return mergedArray;
-}
+#ifndef SORTBYFREQUENCY_H_
+#define SORTBYFREQUENCY_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+int divideStepQuickSortFrequencyVector(vector<iFrequency *> valueFrequency,int startIndex,int endIndex){
+	int key = valueFrequency[endIndex]->frequency;
+	iFrequency *temp;
+	while(startIndex < endIndex){
+		while(valueFrequency[startIndex]->frequency < key){
+			startIndex++;
+		}
+		while(valueFrequency[endIndex]->frequency > key){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			temp = valueFrequency[startIndex];
+			valueFrequency[startIndex] = valueFrequency[endIndex];
+			valueFrequency[endIndex] = temp;
+		}
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
-	}
-	std::merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
-	sort(mergedArray.begin(),mergedArray.end());
-	return mergedArray;
+	return endIndex;
 }
 
-void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+void quickSortFrequencyVector(vector<iFrequency *> valueFrequency,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return;
+	}
+	int dividingIndex;
+	quickSort(valueFrequency,startIndex,dividingIndex);
+	quickSort(valueFrequency,dividingIndex+1,endIndex);
+}
+
+void sortByFrequency(vector<int> userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
+			frequencyMap[userInput[counter]] = 1;
+		}else{
+			frequencyMap[userInput[counter]] += 1;
+		}
+	}
+	vector<iFrequency *> valueFrequency;
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		valueFrequency.push_back(new iFrequency(itToFrequencyMap->first,itToFrequencyMap->second));
+	}
+	quickSortFrequencyVector(valueFrequency,0,valueFrequency.size()-1);
+}
+
+void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
@@ -147,7 +142,7 @@ void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
-void msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+ifpAvlNode *sbfInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
 		return null;
@@ -161,26 +156,25 @@ void msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return sbfInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
-		if(currentNode->right== null){
+		if(currentNode->right == null){
 			currentNode->right = new ifpAvlNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return sbfInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
-
 }
 
-void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
-	ifpAvlNode *z = msaInsertAtRightPlace(root,*root,value);
+void sbfInsertIntoAvlTre(ifpAvlNode **root,int value){
+	ifpAvlNode *z = sbfInsertAtRightPlace(root,*root,value);
 	if(z == null){
 		return;
 	}
-	ifpAvlNode *y,*x;
+	ipAvlNode *y,*x;
 	int leftHeight,rightHeight;
 	while(z != null){
 		leftHeight = z->left == null?0:z->left->height;
@@ -188,62 +182,59 @@ void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
 		if(abs(leftHeight - rightHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) && (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
-				msaRotateNodes(z,y);
+				sbfRotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 			}else{
 				if(z->parent == null){
 					(*root) = x;
 				}
-				msaRotateNodes(y,x);
-				msaRotateNodes(z,x);
+				sbfRotateNodes(y,x);
+				sbfRotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
 			}
 			return;
 		}
-		z->height = 1 + max(leftHeight,rightHeight);
 		z = z->parent;
 	}
 }
 
-void setInorderValuesInVector(ifpAvlNode *ptr,vector<int> &mergedArray){
+void setValueFrequencyInVectorAvlTree(ifpAvlNode *ptr,vector<iFrequency *> &valueFrequency){
 	if(ptr == null){
 		return;
 	}
-	setInorderValuesInVector(ptr->left,mergedArray);
-	while(ptr->frequency--){
-		mergedArray.push_back(ptr->value);
-	}
-	setInorderValuesInVector(ptr->right,mergedArray);
+	setValueFrequencyInVectorAvlTree(ptr->left,valueFrequency);
+	valueFrequency.push_back(new iFrequency(ptr->value,ptr->frequency));
+	setValueFrequencyInVectorAvlTree(ptr->right,valueFrequency);
 }
 
-vector<int> mergedSortedArraysAvl(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
+void sortByFrequencyAvlTree(vector<int> userInput){
+	if(userInput.size() < 2){
+		return;
 	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+	ifAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		insertIntoAvlTree(&root,userInput[counter]);
 	}
-	ifpAvlNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,firstSortedArray[counter]);
+	vector<iFrequency *> valueFrequency;
+	setValueFrequencyInVectorAvlTree(ptr,valueFrequency);
+	quickSortFrequencyVector(valueFrequency,0,valueFrequency.size()-1);
+	int fillCounter = -1;
+	for(unsigned int counter = 0;counter < valueFrequency.size();counter++){
+		while(valueFrequency[counter]->frequency--){
+			userInput[++fillCounter] = valueFrequency[counter]->value;
+		}
 	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoAvlTree(&root,secondSortedArray[counter]);
-	}
-	setInorderValuesInVector(root,mergedArray);
-	return mergedArray;
 }
 
-void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
-	if(parent ==  null || child == null){
+void sbfRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+	if(parent == null || child == null){
 		return;
 	}
 	ifRbTreeNode *grandParent = parent->parent;
@@ -265,7 +256,7 @@ void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
-ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+ifRbTreeNode *sbfInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
 		(*root)->isRedNode = false;
@@ -280,7 +271,7 @@ ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 			currentNode->left->parent = currentNode;
 			return currentNode->left;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->left,value);
+			return sbfInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
@@ -288,25 +279,22 @@ ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 			currentNode->right->parent = currentNode;
 			return currentNode->right;
 		}else{
-			return msaInsertAtRightPlace(root,currentNode->right,value);
+			return sbfInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
-void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+void sbfReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
 	}
 	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
-	if(!parent->isRedNode){
-		return;
-	}
 	if(grandParent->left == parent){
-		if(grandParent->right  == null || !grandParent->right->isRedNode){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			msaRotateNodes(grandParent,parent);
+			sbfRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -318,14 +306,14 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			sbfReorganizeTreePostInsertion(root,grandParent);
 		}
 	}else{
 		if(grandParent->left == null || !grandParent->left->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			msaRotateNodes(grandParent,parent);
+			sbfRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -337,58 +325,55 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 				grandParent->isRedNode = false;
 				return;
 			}
-			msaReorganizeTree(root,grandParent);
+			sbfReorganizeTreePostInsertion(root,grandParent);
 		}
 	}
 }
 
-void msaInsertIntoRbTree(ifRbTreeNode **root,int value){
-	ifRbTreeNode *ptrToKey = msaInsertAtRightPlace(root,*root,value);
+void sbfInsertIntoRbTree(ifRbTreeNode **root,int value){
+	ifRbTreeNode *ptrToKey = sbfInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
 	}
 	if(!ptrToKey->parent->isRedNode){
 		return;
 	}
-	msaReorganizeTree(root,ptrToKey);
+	sbfReorganizeTreePostInsertion(root,ptrToKey);
 }
 
-void setValuesInVectorInorderRbTree(ifRbTreeNode *ptr,vector<int> &sortedValue){
+void setValueFrequencyInVectorRbTree(ifRbTreeNode *ptr,vector<iFrequency *> &valueFrequency){
 	if(ptr == null){
 		return;
 	}
-	setValuesInVectorInorderRbTree(ptr->left,sortedValue);
-	while(ptr->frequency--){
-		sortedValue.push_back(ptr->value);
-	}
-	setValuesInVectorInorderRbTree(ptr->right,sortedValue);
+	setValueFrequencyInVectorRbTree(ptr->left,valueFrequency);
+	valueFrequency.push_back(new iFrequency(ptr->value,ptr->frequency));
+	setValueFrequencyInVectorRbTree(ptr->right,valueFrequency);
 }
 
-vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray;
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return mergedArray;
-	}
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
+void sbSortByFrequencyRbTree(vector<int> userInput){
+	if(userInput.size() == 0){
+		return;
 	}
 	ifRbTreeNode *root = null;
-	for(unsigned int counter = 0;counter < firstSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,firstSortedArray[counter]);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sbfInsertIntoRbTree(&root,userInput[counter]);
 	}
-	for(unsigned int counter = 0;counter < secondSortedArray.size();counter++){
-		msaInsertIntoRbTree(&root,secondSortedArray[counter]);
+	vector<iFrequency *> valueFrequency;
+	setValueFrequencyInVectorRbTree(root,valueFrequency);
+	quickSortFrequencyVector(valueFrequency,0,valueFrequency.size()-1);
+	int fillCounter = -1;
+	for(unsigned int counter = 0;counter < valueFrequency.size();counter++){
+		while(valueFrequency[counter]->frequency--){
+			userInput[++fillCounter] = valueFrequency[counter]->value;
+		}
 	}
-	setValuesInVectorInorderRbTree(root,mergedArray);
-	return mergedArray;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-
-#endif /* MERGESORTEDARRAY_H_ */
+#endif /* SORTBYFREQUENCY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

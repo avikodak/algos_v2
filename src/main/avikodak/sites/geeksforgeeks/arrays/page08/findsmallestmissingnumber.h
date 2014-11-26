@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: findsmallestmissingnumber.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findsmallestmissingnumber.h
+ *  Created on			: Nov 26, 2014 :: 6:27:58 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,96 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef FINDSMALLESTMISSINGNUMBER_H_
+#define FINDSMALLESTMISSINGNUMBER_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int findSmallestMissingNumber(vector<unsigned int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return userInput.size();
+	}
+	if(startIndex != userInput[startIndex]){
+		return startIndex;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] > middleIndex){
+		return findSmallestMissingNumber(userInput,startIndex,middleIndex-1);
+	}else{
+		return findSmallestMissingNumber(userInput,middleIndex+1,endIndex);
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
-		return;
+unsigned int findSmallestMissingNumbers(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(counter != userInput[counter]){
+			return counter;
+		}
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+	return userInput.size();
 }
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool smnBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return false;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		return middleIndex;
+	}else if(userInput[middleIndex] > key){
+		return smnBinarySearch(userInput,startIndex,middleIndex-1);
+	}else{
+		return smnBinarySearch(userInput,middleIndex+1,endIndex);
+	}
+}
+
+unsigned int findSmallestMissingNumbers(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(!smnBinarySearch(userInput,0,userInput.size()-1)){
+			return counter;
+		}
+	}
+	return userInput.size();
+}
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
+unsigned int findSmallestMissingNumberON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
+	bool valFound;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		valFound = false;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(userInput[innerCounter] != counter){
+				valFound = true;
+				break;
+			}
 		}
-		flag = true;
-		return;
+		if(!valFound){
+			return counter;
+		}
 	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+	return userInput.size();
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
-
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* FINDSMALLESTMISSINGNUMBER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

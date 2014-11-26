@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
- *  Created on			: Nov 16, 2014 :: 12:11:12 AM
+ *  File Name   		: segregateevenoddnumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregateevenoddnumbers.h
+ *  Created on			: Nov 26, 2014 :: 12:40:07 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,72 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRINTRIGHTVIEW_H_
-#define PRINTRIGHTVIEW_H_
+#ifndef SEGREGATEEVENODDNUMBERS_H_
+#define SEGREGATEEVENODDNUMBERS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
+void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
+	int startIndex = 0,rearIndex = userInput.size() - 1;
+	while(startIndex < rearIndex){
+		while(userInput[startIndex]%2 == 0){
+			startIndex++;
+		}
+		while(userInput[rearIndex]%2 == 1){
+			rearIndex--;
+		}
+		if(startIndex < rearIndex){
+			swap(userInput[startIndex],userInput[rearIndex]);
+		}
 	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+}
+
+void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	queue<int> evenAuxspace,oddAuxspace;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter]%2 == 0){
+			evenAuxspace.push(userInput[counter]);
+		}else{
+			oddAuxspace.push(userInput[counter]);
+		}
+	}
+	int fillCounter = -1;
+	while(!evenAuxspace.empty()){
+		userInput[++fillCounter] = evenAuxspace.front();
+		evenAuxspace.pop();
+	}
+	while(!oddAuxspace.empty()){
+		userInput[++fillCounter] = oddAuxspace.front();
+		oddAuxspace.pop();
+	}
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void seoSortFunc(int firstUserInput,int secondUserInput){
+	return firstUserInput%2 == 0?firstUserInput:secondUserInput;
+}
+
+void segregateEvenOddNumbers(vector<int> userInput){
+	sort(userInput.begin(),userInput.end(),seoSortFunc);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
-		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+void segregateEvenOddNumbersON2(vector<int> &userInput){
+
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
-}
-
-#endif /* PRINTRIGHTVIEW_H_ */
+#endif /* SEGREGATEEVENODDNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
