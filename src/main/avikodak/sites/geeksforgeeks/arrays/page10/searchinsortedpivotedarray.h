@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\searchinsortedpivotedarray.h
  *  Created on			: Oct 17, 2014 :: 6:49:44 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,6 +72,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getPivotElementIndex(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
@@ -89,6 +90,7 @@ int getPivotElementIndex(vector<int> userInput,int startIndex,int endIndex){
 	}
 }
 
+//Tested
 bool binarySearchPivot(vector<int> userInput,int startIndex,int endIndex,int key){
 	if(startIndex > endIndex){
 		return false;
@@ -103,18 +105,20 @@ bool binarySearchPivot(vector<int> userInput,int startIndex,int endIndex,int key
 	}
 }
 
+//Tested
 bool searchInSortedPivotedArray(vector<int> userInput,int key){
 	int pivotIndex = getPivotElementIndex(userInput,0,userInput.size()-1);
 	if(pivotIndex == INT_MAX){
 		return false;
 	}
-	if(userInput[0] >= key){
+	if(userInput[0] <= key && key <= userInput[pivotIndex]){
 		return binarySearchPivot(userInput,0,pivotIndex,key);
 	}else{
 		return binarySearchPivot(userInput,pivotIndex+1,userInput.size()-1,key);
 	}
 }
 
+//Tested
 bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return false;
@@ -123,13 +127,13 @@ bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key,int startInde
 	if(userInput[middleIndex] == key){
 		return true;
 	}else if(userInput[startIndex] < userInput[middleIndex]){
-		if(key >= userInput[startIndex] && key <userInput[middleIndex]){
+		if(key >= userInput[startIndex] && key <= userInput[middleIndex-1]){
 			return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
 		}else{
 			return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
 		}
 	}else{
-		if(key > userInput[middleIndex] && key < userInput[startIndex]){
+		if(key >= userInput[middleIndex+1] && key <= userInput[endIndex]){
 			return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
 		}else{
 			return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
@@ -137,13 +141,18 @@ bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key,int startInde
 	}
 }
 
-bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key){
-
+//Tested
+bool searchInSortedPivotedArrayOLOGN(vector<int> &userInput,int key){
+	if(userInput.size() == 0){
+		return false;
+	}
+	return searchInSortedPivotedArrayOLOGN(userInput,key,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool searchInRotatedArray(vector<int> userInput,int key){
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if(userInput[counter] == key){

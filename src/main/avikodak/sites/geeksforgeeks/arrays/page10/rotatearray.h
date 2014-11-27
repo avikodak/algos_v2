@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy){
 	if(userInput.size() == 0){
 		return;
@@ -89,10 +90,10 @@ void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy){
 	}
 }
 
-
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void rotateArrayByOne(vector<int> &userInput){
 	int temp = userInput[0];
 	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
@@ -101,6 +102,7 @@ void rotateArrayByOne(vector<int> &userInput){
 	userInput[userInput.size()-1] = temp;
 }
 
+//Tested
 void rotateArrayON2(vector<int> &userInput,unsigned rotateBy){
 	while(rotateBy--){
 		rotateArrayByOne(userInput);

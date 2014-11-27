@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\findmissingnumber.h
  *  Created on			: Oct 17, 2014 :: 6:26:42 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-the-missing-number/
  ****************************************************************************************************************************************************/
 
@@ -72,12 +72,13 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int findMissingNumberHashmap(vector<unsigned int> userInput){
+//Tested
+int findMissingNumberHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 1;
 	}
-	hash_map<unsigned int,bool> visitedNumbers;
-	hash_map<unsigned int,bool>::iterator itToVisitedNumbers;
+	hash_map<int,bool> visitedNumbers;
+	hash_map<int,bool>::iterator itToVisitedNumbers;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		visitedNumbers.insert(pair<unsigned int,bool>(userInput[counter],true));
 	}
@@ -87,8 +88,10 @@ unsigned int findMissingNumberHashmap(vector<unsigned int> userInput){
 			return counter;
 		}
 	}
+	return INT_MAX;
 }
 
+//Tested
 unsigned int findMissingNumberXOR(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 1;
@@ -101,11 +104,12 @@ unsigned int findMissingNumberXOR(vector<unsigned int> userInput){
 	return xorArray ^ xorNumbers;
 }
 
-unsigned int findMissingNumberSum(vector<int> userInput){
+//Tested
+unsigned int findMissingNumberSum(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 1;
 	}
-	unsigned int sumOfArray,requiredSum = userInput.size()+1;
+	unsigned int sumOfArray = 0,requiredSum = userInput.size()+1;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		requiredSum += counter+1;
 		sumOfArray += userInput[counter];
@@ -116,19 +120,21 @@ unsigned int findMissingNumberSum(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int findMissingNumberONLOGN(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 1;
 	}
 	sort(userInput.begin(),userInput.end());
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] !=  counter){
-			return counter;
+		if(userInput[counter] !=  counter+1){
+			return counter+1;
 		}
 	}
 	return userInput.size()+1;
 }
 
+//Tested
 void fmnRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -152,6 +158,7 @@ void fmnRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	}
 }
 
+//Tested
 ipAvlNode *fmnInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ipAvlNode(value);
@@ -165,7 +172,7 @@ ipAvlNode *fmnInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int val
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return fmInsertAtRightPlace(root,currentNode->left,value);
+			return fmnInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
@@ -173,13 +180,14 @@ ipAvlNode *fmnInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int val
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return fmInsertAtRightPlace(root,currentNode->right,value);
+			return fmnInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
+//Tested
 void fmnInsertIntoAvlTree(ipAvlNode **root,int value){
-	ipAvlNode *z = fmInsertAtRightPlace(root,*root,value);
+	ipAvlNode *z = fmnInsertAtRightPlace(root,*root,value);
 	if(z == null){
 		return;
 	}
@@ -215,6 +223,7 @@ void fmnInsertIntoAvlTree(ipAvlNode **root,int value){
 	}
 }
 
+//Tested
 bool fmnSearchForValue(ipAvlNode *ptr,int value){
 	if(ptr == null){
 		return false;
@@ -228,6 +237,7 @@ bool fmnSearchForValue(ipAvlNode *ptr,int value){
 	}
 }
 
+//Tested
 int findMissingNumbersAvlTree(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 1;
@@ -237,12 +247,14 @@ int findMissingNumbersAvlTree(vector<int> userInput){
 		fmnInsertIntoAvlTree(&root,userInput[counter]);
 	}
 	for(unsigned int counter = 0;counter <= userInput.size()+2;counter++){
-		if(!fmnSearchForValue(&root,counter)){
-			return counter;
+		if(!fmnSearchForValue(root,counter+1)){
+			return counter+1;
 		}
 	}
+	return 1;
 }
 
+//Tested
 void fmnRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
@@ -250,7 +262,7 @@ void fmnRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
 	iRbTreeNode *grandParent = parent->parent;
 	parent->parent = child;
 	child->parent = grandParent;
-	if(grandParent->parent != null){
+	if(grandParent != null){
 		if(grandParent->left == parent){
 			grandParent->left = child;
 		}else{
@@ -266,6 +278,7 @@ void fmnRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
 	}
 }
 
+//Tested
 iRbTreeNode *fmnInsertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new iRbTreeNode(value);
@@ -293,6 +306,7 @@ iRbTreeNode *fmnInsertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,i
 	}
 }
 
+//Tested
 void fmnReorganiseTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
@@ -342,6 +356,7 @@ void fmnReorganiseTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode)
 	}
 }
 
+//Tested
 void fmnInsertIntoRbTree(iRbTreeNode **root,int value){
 	iRbTreeNode *ptrToKey = fmnInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
@@ -353,6 +368,7 @@ void fmnInsertIntoRbTree(iRbTreeNode **root,int value){
 	fmnReorganiseTreePostInsertion(root,ptrToKey);
 }
 
+//Tested
 bool fmnSearchForValueInRbTree(iRbTreeNode *ptr,int value){
 	if(ptr == null){
 		return false;
@@ -366,6 +382,7 @@ bool fmnSearchForValueInRbTree(iRbTreeNode *ptr,int value){
 	}
 }
 
+//Tested
 unsigned int findMissingNumberRbTree(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 1;
@@ -379,11 +396,13 @@ unsigned int findMissingNumberRbTree(vector<int> userInput){
 			return counter;
 		}
 	}
+	return UINT_MAX;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int findMissingNumberON2(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 1;
@@ -398,9 +417,10 @@ unsigned int findMissingNumberON2(vector<unsigned int> userInput){
 			}
 		}
 		if(!flag){
-			return userInput[outerCounter];
+			return outerCounter;
 		}
 	}
+	return UINT_MAX;
 }
 
 #endif /* FINDMISSINGNUMBER_H_ */

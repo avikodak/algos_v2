@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\leadersofarray.h
  *  Created on			: Nov 25, 2014 :: 12:03:29 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/leaders-in-an-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printLeadersInArray(vector<int> userInput){
 	if(userInput.size() == 0){
 		return;
@@ -84,7 +85,8 @@ void printLeadersInArray(vector<int> userInput){
 	}
 }
 
-int printLeaders(vector<int> userInput,unsigned int counter){
+//Tested
+int printLeaders(vector<int> userInput,unsigned int counter = 0){
 	if(counter >= userInput.size()){
 		return INT_MIN;
 	}
@@ -96,6 +98,7 @@ int printLeaders(vector<int> userInput,unsigned int counter){
 	return resultTillNow;
 }
 
+//Tested
 void printLeadersAuxSpace(vector<int> userInput){
 	if(userInput.size() == 0){
 		return;
@@ -117,6 +120,7 @@ void printLeadersAuxSpace(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void printLeadersInArrayON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return;

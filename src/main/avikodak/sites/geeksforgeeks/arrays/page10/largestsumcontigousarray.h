@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\largestsumcontigousarray.h
  *  Created on			: Oct 17, 2014 :: 6:26:07 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 ****************************************************************************************************************************************************/
 
@@ -72,13 +72,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int largestSumContinousSubArray(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}
 	int maxSum = userInput[0],continousSum = userInput[0];
 	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		continousSum = max(continousSum,userInput[counter]);
+		continousSum = max(continousSum+userInput[counter],userInput[counter]);
 		maxSum = max(maxSum,continousSum);
 	}
 	return maxSum;
@@ -87,6 +88,7 @@ int largestSumContinousSubArray(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int largestSumContigousSubArrayON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -105,6 +107,7 @@ int largestSumContigousSubArrayON2(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int largestSumContigousSubArrayON3(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;

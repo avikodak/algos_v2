@@ -170,6 +170,20 @@
 
 #include "main/avikodak/sites/geeksforgeeks/arrays/page11/getpairforgivensum.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page11/majorityelement.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/findmissingnumber.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/largestsumcontigousarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/leadersofarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/mergesortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/numberoddtimes.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/reversearray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/rotatearray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/rotatearrayreversealgo.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/searchinsortedpivotedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/sortbyfrequency.h" // Not tested
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/checkformajorityelement.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/findrepeatingelements.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/floorceiling.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/maxminarray.h"
 
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
@@ -190,8 +204,20 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	printf("%d\t",getMajorityElementRbTree(userInput));//6 1 4 45 6 10 -8
+	vector<int> userInput;
+	userInput.clear();
+	userInput = getVectorForUserInput();
+	//vector<int> userInput2 = getVectorForUserInput();
+	//printf("%d\t",largestSumContigousSubArrayON3(userInput));//5 2 8 13 15 20 4 5 7 9 25
+	/*vector<int> mergeSorted = mergedSortedArraysAvl(userInput,userInput2);
+	for(unsigned int counter = 0;counter < mergeSorted.size();counter++){
+		printf("%d\t",mergeSorted[counter]);
+	}*/
+	//printf("%d\t",searchInSortedPivotedArrayOLOGN(userInput,temp));
+	int temp;
+	scanf("%d",&temp);
+	floorceiling *result = floorCeilingON2(userInput,temp);//7 4 2 4 5 2 3 1
+	printf("%d\t%d",result->floor,result->ceiling);
 }
 
 void p(inrNode *ptr){

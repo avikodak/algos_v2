@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversearray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\reversearray.h
- *  Created on			: Nov 25, 2014 :: 6:38:54 PM
+ *  File Name   		: findifarrayissubset.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findifarrayissubset.h
+ *  Created on			: Nov 26, 2014 :: 8:48:11 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,59 +65,73 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REVERSEARRAY_H_
-#define REVERSEARRAY_H_
+#ifndef FINDIFARRAYISSUBSET_H_
+#define FINDIFARRAYISSUBSET_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void reverseArrayMain(vector<int> &userInput,unsigned int &startIndex,unsigned int endIndex){
-	if(userInput.size() == 0 || endIndex >= userInput.size()){
-		return;
+bool isArraySubsetOfAnother(vector<int> largeArray,vector<int> smallArray){
+	if(smallArray.size() == 0){
+		return true;
 	}
-	reverseArrayMain(userInput,startIndex,endIndex+1);
-	if(startIndex < endIndex){
-		swap(userInput[startIndex],userInput[endIndex]);
-		startIndex++;
+	if(largeArray.size() == 0){
+		return false;
 	}
-}
-
-//Tested
-void rReverseArray(vector<int> &userInput){
-	unsigned int startIndex = 0;
-	reverseArrayMain(userInput,startIndex,0);
-}
-
-//Tested
-void reverseArrayIterative(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
+	hash_map<int,unsigned int> valueFrequencyMap;
+	hash_map<int,unsigned int>::iterator itToValueFrequencyMap;
+	for(unsigned int counter = 0;counter < largeArray.size();counter++){
+		if((itToValueFrequencyMap = valueFrequencyMap.find(largeArray[counter])) == valueFrequencyMap.end()){
+			valueFrequencyMap[largeArray[counter]] = 1;
+		}else{
+			valueFrequencyMap[largeArray[counter]] += 1;
+		}
 	}
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		swap(userInput[frontCrawler],userInput[rearCrawler]);
-		frontCrawler++;
-		rearCrawler--;
+	for(unsigned int counter = 0;counter < smallArray.size();counter++){
+		itToValueFrequencyMap = valueFrequencyMap.find(smallArray[counter]);
+		if(itToValueFrequencyMap == valueFrequencyMap.end()){
+			return false;
+		}
+		if(itToValueFrequencyMap->second == 1){
+			valueFrequencyMap.erase(smallArray[counter]);
+		}else{
+			valueFrequencyMap[smallArray[counter]]--;
+		}
 	}
 }
 
-//Tested
-void reverseArrayAuxspace(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//works if unique
+bool isArraySubsetOfAnotherON2(vector<int> largeArray,vector<int> smallArray){
+	if(smallArray.size() == 0){
+		return true;
 	}
-	stack<int> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace.push(userInput[counter]);
+	if(largeArray.size() == 0){
+		return false;
 	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] = auxSpace.top();
-		auxSpace.pop();
+	bool valueFound;
+	for(unsigned int outerCounter = 0;outerCounter < smallArray.size();outerCounter++){
+		valueFound = false;
+		for(unsigned int innerCounter = 0;innerCounter < largeArray.size();innerCounter++){
+			if(smallArray[outerCounter] == largeArray[innerCounter]){
+				valueFound = true;
+			}
+		}
+		if(!valueFound){
+			return false;
+		}
 	}
+	return true;
 }
 
-#endif /* REVERSEARRAY_H_ */
+#endif /* FINDIFARRAYISSUBSET_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\checkformajorityelement.h
  *  Created on			: Nov 26, 2014 :: 1:19:34 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-for-majority-element-in-a-sorted-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getLowIndexSortedArray(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -89,6 +90,7 @@ int getLowIndexSortedArray(vector<int> userInput,int key,int startIndex,int endI
 	}
 }
 
+//Tested
 bool checkForMajorityElementOLOGN(vector<int> userInput,int key){
 	if(userInput.size() == 0){
 		return false;
@@ -103,6 +105,7 @@ bool checkForMajorityElementOLOGN(vector<int> userInput,int key){
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool checkForMajorityElementON(vector<int> userInput,int key){
 	unsigned int frequency = 0;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){

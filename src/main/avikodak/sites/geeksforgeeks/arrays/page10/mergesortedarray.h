@@ -72,6 +72,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> mergeSortedArray(vector<int> firstSortedArray,vector<int> secondSortedArray){
 	vector<int> mergedArray;
 	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
@@ -111,6 +112,7 @@ vector<int> mergeSortedArray(vector<int> firstSortedArray,vector<int> secondSort
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray){
 	vector<int> mergedArray;
 	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
@@ -119,7 +121,9 @@ vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> seco
 	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
 		return firstSortedArray.size() != 0?firstSortedArray:secondSortedArray;
 	}
-	std::merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
+	mergedArray.reserve(firstSortedArray.size() + secondSortedArray.size());
+	mergedArray.insert(mergedArray.end(),firstSortedArray.begin(),firstSortedArray.end());
+	mergedArray.insert(mergedArray.end(),secondSortedArray.begin(),secondSortedArray.end());
 	sort(mergedArray.begin(),mergedArray.end());
 	return mergedArray;
 }
@@ -147,7 +151,7 @@ void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
-void msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+ifpAvlNode *msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
 		return null;
@@ -242,6 +246,7 @@ vector<int> mergedSortedArraysAvl(vector<int> firstSortedArray,vector<int> secon
 	return mergedArray;
 }
 
+//Tested
 void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent ==  null || child == null){
 		return;
@@ -265,6 +270,7 @@ void msaRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
@@ -293,6 +299,7 @@ ifRbTreeNode *msaInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
@@ -342,6 +349,7 @@ void msaReorganizeTree(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	}
 }
 
+//Tested
 void msaInsertIntoRbTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = msaInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
@@ -353,6 +361,7 @@ void msaInsertIntoRbTree(ifRbTreeNode **root,int value){
 	msaReorganizeTree(root,ptrToKey);
 }
 
+//Tested
 void setValuesInVectorInorderRbTree(ifRbTreeNode *ptr,vector<int> &sortedValue){
 	if(ptr == null){
 		return;
@@ -364,6 +373,7 @@ void setValuesInVectorInorderRbTree(ifRbTreeNode *ptr,vector<int> &sortedValue){
 	setValuesInVectorInorderRbTree(ptr->right,sortedValue);
 }
 
+//Tested
 vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> secondSortedArray){
 	vector<int> mergedArray;
 	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){

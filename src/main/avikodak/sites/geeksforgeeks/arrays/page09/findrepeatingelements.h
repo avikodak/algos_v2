@@ -4,7 +4,7 @@
  *  Created on			: Nov 26, 2014 :: 2:27:12 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-the-two-repeating-elements-in-a-given-array/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,25 +71,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getTwoRepeatingElements(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[userInput[counter]] *= -1;
+		userInput[abs(userInput[counter])-1] *= -1;
 	}
 	iPair *result = new iPair(0,0);
-	for(unsigned int counter = 0;counter< userInput.size();counter++){
-		if(result->firstValue == 0){
-			result->firstValue = userInput[counter];
-		}else{
-			result->secondValue = userInput[counter];
-			return result;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] > 0){
+			if(result->firstValue == 0){
+				result->firstValue = counter+1;
+			}else{
+				result->secondValue = counter+1;
+				return result;
+			}
 		}
 	}
 	return null;
 }
 
+//Tested
 iPair *getTwoRepeatingElementsHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -97,7 +101,7 @@ iPair *getTwoRepeatingElementsHashmap(vector<int> userInput){
 	hash_map<int,unsigned int> frequencyMap;
 	hash_map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == userInput.end()){
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
 			frequencyMap[userInput[counter]] = 1;
 		}else{
 			frequencyMap[userInput[counter]] += 1;
@@ -120,6 +124,7 @@ iPair *getTwoRepeatingElementsHashmap(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getTwoRepeatingElementsSorting(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -139,6 +144,7 @@ iPair *getTwoRepeatingElementsSorting(vector<int> userInput){
 	return null;
 }
 
+//Tested
 void gtrRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -162,14 +168,15 @@ void gtrRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *gtrInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
-		return;
+		return null;
 	}
 	if(currentNode->value == value){
 		currentNode->frequency += 1;
-		return;
+		return null;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
 			currentNode->left = new ifpAvlNode(value);
@@ -189,7 +196,75 @@ ifpAvlNode *gtrInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}
 }
 
+//Tested
+void gtrInsertIntoAvlTree(ifpAvlNode **root,int value){
+	ifpAvlNode *z = gtrInsertAtRightPlace(root,*root,value);
+	if(z == null){
+		return;
+	}
+	int leftHeight,rightHeight;
+	ifpAvlNode *y,*x;
+	while(z != null){
+		leftHeight = z->left == null?0:z->left->height;
+		rightHeight = z->right == null?0:z->right->height;
+		if(abs(leftHeight - rightHeight) > 1){
+			y = z->value > value?z->left:z->right;
+			x = y->value > value?y->left:y->right;
+			if((z->left == y && y->left == x) && (z->right == y && y->right == x)){
+				if(z->parent == null){
+					(*root) = y;
+				}
+				gtrRotateNodes(z,y);
+				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+			}else{
+				if(z->parent == null){
+					(*root) = x;
+				}
+				gtrRotateNodes(y,x);
+				gtrRotateNodes(z,x);
+				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
+			}
+		}
+		z->height = 1 + max(leftHeight,rightHeight);
+		z = z->parent;
+	}
+}
 
+//Tested
+void findTwoRepeatingNumbersInorder(ifpAvlNode *ptr,iPair *result){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->frequency > 1){
+		if(result->firstValue == 0){
+			result->firstValue = ptr->value;
+		}else{
+			result->secondValue = ptr->value;
+			return;
+		}
+	}
+	findTwoRepeatingNumbersInorder(ptr->left,result);
+	findTwoRepeatingNumbersInorder(ptr->right,result);
+}
+
+//Tested
+iPair *findRepeatingNumbersAvlTree(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	ifpAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		gtrInsertIntoAvlTree(&root,userInput[counter]);
+	}
+	iPair *result = new iPair(0,0);
+	findTwoRepeatingNumbersInorder(root,result);
+	return result;
+}
+
+//Tested
 void gtrRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
@@ -213,6 +288,7 @@ void gtrRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *gtrInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
@@ -241,6 +317,7 @@ ifRbTreeNode *gtrInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void gtrReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
@@ -290,7 +367,8 @@ void gtrReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
-void gtrInsertAtRightPlace(ifRbTreeNode **root,int value){
+//Tested
+void gtrInsertIntoRbTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = gtrInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
@@ -301,10 +379,60 @@ void gtrInsertAtRightPlace(ifRbTreeNode **root,int value){
 	gtrReorganizeTreePostInsertion(root,ptrToKey);
 }
 
+//Tested
+void findTwoRepeatingNumbersInorder(ifRbTreeNode *ptr,iPair *result){
+	if(ptr == null){
+		return;
+	}
+	if(ptr->frequency > 1){
+		if(result->firstValue == 0){
+			result->firstValue = ptr->value;
+		}else{
+			result->secondValue = ptr->value;
+			return;
+		}
+	}
+	findTwoRepeatingNumbersInorder(ptr->left,result);
+	findTwoRepeatingNumbersInorder(ptr->right,result);
+}
+
+//Tested
+iPair *findTwoRepeatingNumbersRedBlackTrees(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	ifRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		gtrInsertIntoRbTree(&root,userInput[counter]);
+	}
+	iPair *result = new iPair(0,0);
+	findTwoRepeatingNumbersInorder(root,result);
+	return result;
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+//Tested
+iPair *findTwoRepeatingNumbersON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(0,0);
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			if(userInput[outerCounter] == userInput[innerCounter]){
+				if(result->firstValue == 0){
+					result->firstValue = userInput[outerCounter];
+				}else{
+					result->secondValue = userInput[outerCounter];
+					return result;
+				}
+			}
+		}
+	}
+	return result;
+}
 
 #endif /* FINDREPEATINGELEMENTS_H_ */
 

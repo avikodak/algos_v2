@@ -71,11 +71,11 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSortFrequencyVector(vector<iFrequency *> valueFrequency,int startIndex,int endIndex){
-	int key = valueFrequency[endIndex]->frequency;
+int divideStepQuickSortFrequencyVector(vector<iFrequency *> &valueFrequency,int startIndex,int endIndex){
+	unsigned int key = valueFrequency[endIndex]->frequency;
 	iFrequency *temp;
 	while(startIndex < endIndex){
-		while(valueFrequency[startIndex]->frequency < key){
+		while(valueFrequency[startIndex]->frequency <= key){
 			startIndex++;
 		}
 		while(valueFrequency[endIndex]->frequency > key){
@@ -90,16 +90,16 @@ int divideStepQuickSortFrequencyVector(vector<iFrequency *> valueFrequency,int s
 	return endIndex;
 }
 
-void quickSortFrequencyVector(vector<iFrequency *> valueFrequency,int startIndex,int endIndex){
+void quickSortFrequencyVector(vector<iFrequency *> &valueFrequency,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return;
 	}
-	int dividingIndex;
-	quickSort(valueFrequency,startIndex,dividingIndex);
-	quickSort(valueFrequency,dividingIndex+1,endIndex);
+	int dividingIndex = divideStepQuickSortFrequencyVector(valueFrequency,startIndex,endIndex);
+	quickSortFrequencyVector(valueFrequency,startIndex,dividingIndex);
+	quickSortFrequencyVector(valueFrequency,dividingIndex+1,endIndex);
 }
 
-void sortByFrequency(vector<int> userInput){
+void sortByFrequency(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
@@ -117,6 +117,12 @@ void sortByFrequency(vector<int> userInput){
 		valueFrequency.push_back(new iFrequency(itToFrequencyMap->first,itToFrequencyMap->second));
 	}
 	quickSortFrequencyVector(valueFrequency,0,valueFrequency.size()-1);
+	int fillCounter = -1;
+	for(unsigned int counter = 0;counter < valueFrequency.size();counter++){
+		while(valueFrequency[counter]->frequency--){
+			userInput[++fillCounter] = valueFrequency[counter]->value;
+		}
+	}
 }
 
 void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
@@ -174,7 +180,7 @@ void sbfInsertIntoAvlTre(ifpAvlNode **root,int value){
 	if(z == null){
 		return;
 	}
-	ipAvlNode *y,*x;
+	ifpAvlNode *y,*x;
 	int leftHeight,rightHeight;
 	while(z != null){
 		leftHeight = z->left == null?0:z->left->height;
@@ -218,12 +224,12 @@ void sortByFrequencyAvlTree(vector<int> userInput){
 	if(userInput.size() < 2){
 		return;
 	}
-	ifAvlNode *root = null;
+	ifpAvlNode *root = null;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		insertIntoAvlTree(&root,userInput[counter]);
+		sbfInsertIntoAvlTre(&root,userInput[counter]);
 	}
 	vector<iFrequency *> valueFrequency;
-	setValueFrequencyInVectorAvlTree(ptr,valueFrequency);
+	setValueFrequencyInVectorAvlTree(root,valueFrequency);
 	quickSortFrequencyVector(valueFrequency,0,valueFrequency.size()-1);
 	int fillCounter = -1;
 	for(unsigned int counter = 0;counter < valueFrequency.size();counter++){

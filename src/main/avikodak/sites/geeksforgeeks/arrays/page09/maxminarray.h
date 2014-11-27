@@ -4,7 +4,7 @@
  *  Created on			: Nov 26, 2014 :: 10:53:30 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -96,7 +96,7 @@ iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
 	}
 	iMaxMin *result = new iMaxMin();
 	unsigned int counter = 0;
-	if(userInput % 2 == 0){
+	if(userInput.size() % 2 == 0){
 		result->minValue = min(userInput[0],userInput[1]);
 		result->maxValue = max(userInput[0],userInput[1]);
 		counter = 2;
@@ -152,7 +152,7 @@ iMaxMin *getMaxMinArrayON2(vector<int> userInput){
 		return null;
 	}
 	if(userInput.size() == 1){
-		return iMaxMin(userInput[0],userInput[0]);
+		return new iMaxMin(userInput[0],userInput[0]);
 	}
 	iMaxMin *result = new iMaxMin();
 	bool flag;

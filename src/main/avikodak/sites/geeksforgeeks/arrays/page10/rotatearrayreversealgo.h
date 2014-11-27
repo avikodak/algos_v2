@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void rotateArrayReverseAlgo(vector<int> userInput,unsigned int rotateBy){
+//Tested
+void rotateArrayReverseAlgo(vector<int> &userInput,unsigned int rotateBy){
 	reverseArray(userInput,0,rotateBy-1);
 	reverseArray(userInput,rotateBy,userInput.size()-1);
 	reverseArray(userInput,0,userInput.size()-1);
