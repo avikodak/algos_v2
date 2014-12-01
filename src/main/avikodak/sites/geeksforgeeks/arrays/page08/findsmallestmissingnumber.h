@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findsmallestmissingnumber.h
  *  Created on			: Nov 26, 2014 :: 6:27:58 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-the-first-missing-number/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int findSmallestMissingNumber(vector<unsigned int> userInput,int startIndex,int endIndex){
+//Tested
+int findSmallestMissingNumberMain(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return userInput.size();
 	}
@@ -80,16 +81,22 @@ int findSmallestMissingNumber(vector<unsigned int> userInput,int startIndex,int 
 	}
 	int middleIndex = (startIndex + endIndex)/2;
 	if(userInput[middleIndex] > middleIndex){
-		return findSmallestMissingNumber(userInput,startIndex,middleIndex-1);
+		return findSmallestMissingNumberMain(userInput,startIndex,middleIndex-1);
 	}else{
-		return findSmallestMissingNumber(userInput,middleIndex+1,endIndex);
+		return findSmallestMissingNumberMain(userInput,middleIndex+1,endIndex);
 	}
+}
+
+//Tested
+int findSmallestMissingNumber(vector<int> userInput){
+	return findSmallestMissingNumberMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int findSmallestMissingNumbers(vector<unsigned int> userInput){
+//Tested
+unsigned int findSmallestMissingNumbersLinear(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 0;
 	}
@@ -104,26 +111,28 @@ unsigned int findSmallestMissingNumbers(vector<unsigned int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool smnBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return false;
 	}
 	int middleIndex = (startIndex + endIndex)/2;
 	if(userInput[middleIndex] == key){
-		return middleIndex;
+		return true;
 	}else if(userInput[middleIndex] > key){
-		return smnBinarySearch(userInput,startIndex,middleIndex-1);
+		return smnBinarySearch(userInput,key,startIndex,middleIndex-1);
 	}else{
-		return smnBinarySearch(userInput,middleIndex+1,endIndex);
+		return smnBinarySearch(userInput,key,middleIndex+1,endIndex);
 	}
 }
 
+//Tested
 unsigned int findSmallestMissingNumbers(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 0;
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(!smnBinarySearch(userInput,0,userInput.size()-1)){
+		if(!smnBinarySearch(userInput,counter,0,userInput.size()-1)){
 			return counter;
 		}
 	}
@@ -134,7 +143,8 @@ unsigned int findSmallestMissingNumbers(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int findSmallestMissingNumberON2(vector<int> userInput){
+//Tested
+unsigned int findSmallestMissingNumberON2(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
 		return 0;
 	}
@@ -142,7 +152,7 @@ unsigned int findSmallestMissingNumberON2(vector<int> userInput){
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		valFound = false;
 		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] != counter){
+			if(userInput[innerCounter] == counter){
 				valFound = true;
 				break;
 			}

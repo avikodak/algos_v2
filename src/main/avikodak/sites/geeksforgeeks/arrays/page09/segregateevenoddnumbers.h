@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -89,6 +90,7 @@ void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
 	}
 }
 
+//Tested
 void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
@@ -115,11 +117,13 @@ void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void seoSortFunc(int firstUserInput,int secondUserInput){
-	return firstUserInput%2 == 0?firstUserInput:secondUserInput;
+//Tested
+bool seoSortFunc(int firstUserInput,int secondUserInput){
+	return firstUserInput%2 == 0?true:false;
 }
 
-void segregateEvenOddNumbers(vector<int> userInput){
+//Tested
+void segregateEvenOddNumbers(vector<int> &userInput){
 	sort(userInput.begin(),userInput.end(),seoSortFunc);
 }
 

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findduplicates.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findduplicates.h
- *  Created on			: Nov 26, 2014 :: 4:50:48 PM
+ *  File Name   		: twooddoccurence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\twooddoccurence.h
+ *  Created on			: Nov 27, 2014 :: 7:59:19 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,88 +65,76 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FINDDUPLICATES_H_
-#define FINDDUPLICATES_H_
+#ifndef TWOODDOCCURENCE_H_
+#define TWOODDOCCURENCE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void printDuplicatesHashmap(vector<int> userInput){
+iPair *getTwoOddOccurenceHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return null;
 	}
 	hash_map<int,unsigned int> frequencyMap;
 	hash_map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+
 		}else{
-			frequencyMap[userInput[counter]] += 1;
-		}
-	}
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		if(itToFrequencyMap->second > 1){
-			printf("%d\t",itToFrequencyMap->first);
+
 		}
 	}
 }
 
-//Tested
-void printDuplicatesArrayAuxspace(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int *frequency = (int *)malloc(sizeof(int) *userInput.size());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		frequency[counter] = 0;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		frequency[userInput[counter]] += 1;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(frequency[userInput[counter]] > 1){
-			printf("%d\t",userInput[counter]);
-			frequency[userInput[counter]] = 0;
+int divideArrayOddOccurence(vector<int> &userInput,int xorResult){
+	int startCrawler = 0,endCrawler = userInput.size()-1;
+	int setBitPosition = log2(xorResult&-xorResult)+1,temp;
+	while(startCrawler < endCrawler){
+		while(!(userInput[startCrawler] & (1 << setBitPosition))){
+			startCrawler++;
+		}
+		while((userInput[endCrawler] & (1 << setBitPosition))){
+			endCrawler--;
+		}
+		if(startCrawler < endCrawler){
+			temp = userInput[startCrawler];
+			userInput[startCrawler] = userInput[endCrawler];
+			userInput[endCrawler] = temp;
 		}
 	}
+	return endCrawler;
 }
 
-//Tested
-void printDuplicates(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *getTwoOddOccurenceXOR(vector<int> userInput){
+	if(userInput.size() < 2){
+		return null;
 	}
+	int xorResult = 0;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[abs(userInput[counter])] > 0){
-			userInput[abs(userInput[counter])] *= -1;
-		}else{
-			printf("%d\t",abs(userInput[counter]));
-		}
+		xorResult ^= userInput[counter];
 	}
+	int dividingIndex = divideArrayOddOccurence(userInput,xorResult);
+	iPair *result = new iPair(0,0);
+	for(unsigned int counter = 0;counter <= dividingIndex;counter++){
+		result->firstValue ^= userInput[counter];
+	}
+	for(unsigned int counter = dividingIndex+1;counter <userInput.size();counter++){
+		result->secondValue ^= userInput[counter];
+	}
+	return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void printDuplicatesONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *getTwoOddOccurenceSorting(vector<int> userInput){
+	if(userInput.size() < 2){
+		return null;
 	}
 	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter] == userInput[counter+1]){
-			printf("%d\t",userInput[counter]);
-			while(counter < userInput.size() && userInput[counter] == userInput[counter+1]){
-				counter++;
-			}
-		}
-	}
 }
 
-//Tested
-void pdRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+void toddoRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
@@ -169,8 +157,7 @@ void pdRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
-//Tested
-ifpAvlNode *pdInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+ifpAvlNode *toddoInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
 		return null;
@@ -184,7 +171,7 @@ ifpAvlNode *pdInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int v
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return pdInsertAtRightPlace(root,currentNode->left,value);
+			return toddoInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
@@ -192,14 +179,13 @@ ifpAvlNode *pdInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int v
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return pdInsertAtRightPlace(root,currentNode->right,value);
+
 		}
 	}
 }
 
-//Tested
-void pdInsertIntoAvlTree(ifpAvlNode **root,int value){
-	ifpAvlNode *z = pdInsertAtRightPlace(root,*root,value);
+void toddoInsertIntoAvlTree(ifpAvlNode **root,int value){
+	ifpAvlNode *z = toddoInsertAtRightPlace(root,*root,value);
 	if(z == null){
 		return;
 	}
@@ -211,21 +197,21 @@ void pdInsertIntoAvlTree(ifpAvlNode **root,int value){
 		if(abs(leftHeight - rightHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) || (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
-				pdRotateNodes(z,y);
+				toddoRotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,z->right == null?0:z->right->height);
 			}else{
 				if(z->parent == null){
 					(*root) = x;
 				}
-				pdRotateNodes(y,x);
-				pdRotateNodes(z,x);
+				toddoRotateNodes(y,x);
+				toddoRotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
-				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
+				y->height = 1 + max(y->left == null?0:y->left->height,z->right == null?0:z->right->height);
 				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
 			}
 			return;
@@ -235,36 +221,39 @@ void pdInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
-//Tested
-void printDuplicatesAvlTreeInorder(ifpAvlNode *ptr){
+void getTwoOddOccurenceInorderAvlTree(ifpAvlNode *ptr,iPair *result){
 	if(ptr == null){
 		return;
 	}
-	printDuplicatesAvlTreeInorder(ptr->left);
-	if(ptr->frequency > 1){
-		printf("%d\t",ptr->value);
+	getTwoOddOccurenceInorderAvlTree(ptr->left,result);
+	if(ptr->frequency%2 == 1){
+		if(result->firstValue == INT_MIN){
+			result->firstValue = ptr->value;
+		}else{
+			result->secondValue = ptr->value;
+		}
 	}
-	printDuplicatesAvlTreeInorder(ptr->right);
+	getTwoOddOccurenceInorderAvlTree(ptr->right,result);
 }
 
-//Tested
-void printDuplicatesAvlTree(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *getTwoOddOccurenceAvlTree(vector<int> userInput){
+	if(userInput.size() < 2){
+		return null;
 	}
 	ifpAvlNode *root = null;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		pdInsertIntoAvlTree(&root,userInput[counter]);
+		toddoInsertIntoAvlTree(&root,userInput[counter]);
 	}
-	printDuplicatesAvlTreeInorder(root);
+	iPair *result = new iPair(INT_MIN,INT_MIN);
+	getTwoOddOccurenceInorderAvlTree(root,result);
+	return result;
 }
 
-//Tested
-void pdRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+void toddoRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
 	}
-	ifRbTreeNode *grandParent = parent->parent;
+	iRbTreeNode *grandParent = parent->parent;
 	parent->parent = child;
 	child->parent = grandParent;
 	if(grandParent != null){
@@ -283,8 +272,7 @@ void pdRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
-//Tested
-ifRbTreeNode *pdInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+ifRbTreeNode *toddoInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
 		(*root)->isRedNode = false;
@@ -299,7 +287,7 @@ ifRbTreeNode *pdInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode
 			currentNode->left->parent = currentNode;
 			return currentNode->left;
 		}else{
-			return pdInsertAtRightPlace(root,currentNode->left,value);
+			return toddoInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
@@ -307,14 +295,13 @@ ifRbTreeNode *pdInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode
 			currentNode->right->parent = currentNode;
 			return currentNode->right;
 		}else{
-			return pdInsertAtRightPlace(root,currentNode->right,value);
+			return toddoInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
-//Tested
-void pdReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
-	if(currentNode == null){
+void toddoReorganizePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+	if(*root == null || currentNode == null){
 		return;
 	}
 	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
@@ -326,105 +313,112 @@ void pdReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			pdRotateNodes(grandParent,parent);
-			grandParent->isRedNode = true;
+			toddoRotateNodes(grandParent,parent);
 			parent->isRedNode = false;
+			grandParent->isRedNode = true;
 			return;
 		}else{
-			grandParent->isRedNode = true;
-			grandParent->left->isRedNode = false;
-			grandParent->right->isRedNode = false;
+			grandParent->isRedNode = false;
+			grandParent->left->isRedNode = true;
+			grandParent->right->isRedNode = true;
 			if(grandParent->parent == null){
 				grandParent->isRedNode = false;
 				return;
 			}
-			pdReorganizeTreePostInsertion(root,grandParent);
+			toddoReorganizePostInsertion(root,grandParent);
 		}
 	}else{
 		if(grandParent->left == null || !grandParent->left->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			pdRotateNodes(grandParent,parent);
-			grandParent->isRedNode = true;
+			toddoRotateNodes(grandParent,parent);
 			parent->isRedNode = false;
+			grandParent->isRedNode = true;
 			return;
 		}else{
-			grandParent->isRedNode = true;
-			grandParent->left->isRedNode = false;
-			grandParent->right->isRedNode = false;
+			grandParent->isRedNode = false;
+			grandParent->left->isRedNode = true;
+			grandParent->right->isRedNode = true;
 			if(grandParent->parent == null){
 				grandParent->isRedNode = false;
 				return;
 			}
-			pdReorganizeTreePostInsertion(root,grandParent);
+			toddoReorganizePostInsertion(root,grandParent);
 		}
 	}
 }
 
-//Tested
-void pdInsertIntoRbTree(ifRbTreeNode **root,int value){
-	ifRbTreeNode *ptrToKey = pdInsertAtRightPlace(root,*root,value);
+void toddoInsertIntoRBTree(ifRbTreeNode **root,int value){
+	ifRbTreeNode *ptrToKey = toddoInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
 	}
 	if(!ptrToKey->parent->isRedNode){
 		return;
 	}
-	pdReorganizeTreePostInsertion(root,ptrToKey);
+	toddoReorganizePostInsertion(root,ptrToKey);
 }
 
-//Tested
-void printDuplicatesRbTreeInorder(ifRbTreeNode *ptr){
+void setTwoOddOccurenceRbTreeInorder(ifRbTreeNode *ptr,iPair *result){
 	if(ptr == null){
 		return;
 	}
-	printDuplicatesRbTreeInorder(ptr->left);
-	if(ptr->frequency > 1){
-		printf("%d\t",ptr->value);
+	setTwoOddOccurenceRbTreeInorder(ptr->left,result);
+	if(ptr->frequency % 2 == 1){
+		if(result->firstValue == INT_MIN){
+			result->firstValue = ptr->value;
+		}else{
+			result->secondValue = ptr->value;
+		}
 	}
-	printDuplicatesRbTreeInorder(ptr->right);
+	setTwoOddOccurenceRbTreeInorder(ptr->right,result);
 }
 
-//Tested
-void printDuplicatesRbTree(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *getTwoOddOccurenceRbTree(vector<int> userInput){
+	if(userInput.size() < 2){
+		return null;
 	}
 	ifRbTreeNode *root = null;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		pdInsertIntoRbTree(&root,userInput[counter]);
+		toddoInsertIntoRBTree(&root,userInput[counter]);
 	}
-	printDuplicatesRbTreeInorder(root);
+	iPair *result = new iPair(INT_MIN,INT_MIN);
+	setTwoOddOccurenceRbTreeInorder(root,result);
+	return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void printDuplicatesON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *twoOddOccurenceON2(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	vector<bool> flags(userInput.size(),false);
-	unsigned int frequency;
+	unsigned int frequency = 0;
+	iPair *result = new iPair(INT_MIN,INT_MIN);
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
 		frequency = 0;
 		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
 			if(userInput[outerCounter] == userInput[innerCounter]){
-				frequency += 1;
+				frequency++;
 			}
 		}
-		if(frequency > 1){
-			if(!flags[userInput[outerCounter]]){
-				printf("%d\t",userInput[outerCounter]);
-				flags[userInput[outerCounter]] = true;
+		if(frequency%2 == 1){
+			if(result->firstValue != userInput[outerCounter]){
+				if(result->firstValue == INT_MIN){
+					result->firstValue = userInput[outerCounter];
+				}else{
+					result->secondValue = userInput[outerCounter];
+					return result;
+				}
 			}
 		}
 	}
+	return null;
 }
 
-#endif /* FINDDUPLICATES_H_ */
+#endif /* TWOODDOCCURENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

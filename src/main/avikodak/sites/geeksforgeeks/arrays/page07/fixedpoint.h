@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: fixedpoint.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\fixedpoint.h
+ *  Created on			: Nov 27, 2014 :: 7:50:15 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,42 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef FIXEDPOINT_H_
+#define FIXEDPOINT_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int findFixedPointON(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return -1;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == middleIndex){
+		return middleIndex;
+	}else if(userInput[middleIndex] > middleIndex){
+		return findFixedPointON(userInput,startIndex,middleIndex-1);
+	}else{
+		return findFixedPointON(userInput,middleIndex+1,endIndex);
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
+int findFixedPointON(vector<int> userInput){
 	if(userInput.size() == 0){
-		return true;
+		return -1;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
+		if(userInput[counter] == counter){
+			return counter;
 		}
 	}
-	return true;
+	return -1;
 }
-*/
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
-			}
-		}
-		if(!valFound){
-			return false;
-		}
-	}
-	return true;
-}*/
-
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* FIXEDPOINT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

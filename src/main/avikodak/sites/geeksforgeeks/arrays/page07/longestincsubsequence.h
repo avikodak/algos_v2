@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: longestincsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\longestincsubsequence.h
+ *  Created on			: Nov 28, 2014 :: 1:58:53 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,78 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef LONGESTINCSUBSEQUENCE_H_
+#define LONGESTINCSUBSEQUENCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
+int longestIncreasingSubSequenceONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
-		return true;
+		return 0;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+	vector<int> activeLists;
+	activeLists.reserve(userInput.size());
+	activeLists[0] = userInput[0];
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(activeLists[0] > userInput[counter]){
+			activeLists[0] = userInput[counter];
+		}else if(activeLists[activeLists.size()-1] < userInput[counter]){
+			activeLists[activeLists.size()+1] = userInput[counter];
 		}else{
-			return false;
+			int innerCounter = 1;
+			while(innerCounter < activeLists.size()-1 && userInput[counter] > activeLists[innerCounter]){
+				innerCounter++;
+			}
+			activeLists[innerCounter-1] = userInput[counter];
 		}
 	}
-	return true;
+	return activeLists.size();
 }
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+int longestIncreasingSubSequenceDP(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	vector<int> maxLengths;
+	int finalMaxVal = 1,currentMax;
+	maxLengths.push_back(1);
+	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
+		currentMax = 1;
+		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
+			if(userInput[outerCounter] > userInput[innerCounter]){
+				currentMax = max(currentMax,1 + maxLengths[innerCounter]);
 			}
 		}
-		if(!valFound){
-			return false;
+		maxLengths.push_back(currentMax);
+		finalMaxVal = max(finalMaxVal,currentMax);
+	}
+	return maxLength;
+}
+
+int longestIncreasingSubSequence(vector<int> userInput,int currentIndex){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	if(currentIndex >= userInput.size()){
+		return INT_MAX;
+	}
+	if(currentIndex == 0){
+		return 1;
+	}
+	int maxLength = 1;
+	for(int counter = currentIndex-1;counter >= 0;counter--){
+		if(userInput[counter] > userInput[currentIndex]){
+			maxLength = max(maxLength,longestIncreasingSubSequence(userInput,counter));
 		}
 	}
-	return true;
-}*/
+	return maxLength;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* LONGESTINCSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

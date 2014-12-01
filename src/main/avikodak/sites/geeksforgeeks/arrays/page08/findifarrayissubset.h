@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findifarrayissubset.h
  *  Created on			: Nov 26, 2014 :: 8:48:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-whether-an-array-is-subset-of-another-array-set-1/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isArraySubsetOfAnother(vector<int> largeArray,vector<int> smallArray){
 	if(smallArray.size() == 0){
 		return true;
@@ -98,6 +99,7 @@ bool isArraySubsetOfAnother(vector<int> largeArray,vector<int> smallArray){
 			valueFrequencyMap[smallArray[counter]]--;
 		}
 	}
+	return true;
 }
 
 
@@ -108,6 +110,7 @@ bool isArraySubsetOfAnother(vector<int> largeArray,vector<int> smallArray){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 //works if unique
 bool isArraySubsetOfAnotherON2(vector<int> largeArray,vector<int> smallArray){
 	if(smallArray.size() == 0){

@@ -4,7 +4,7 @@
  *  Created on			: Nov 25, 2014 :: 11:42:21 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/segregate-0s-and-1s-in-an-array-by-traversing-array-once/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void segregate0s1s(vector<bool> userInput){
+//Tested
+void segregate0s1sFrequency(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
@@ -92,7 +93,8 @@ void segregate0s1s(vector<bool> userInput){
 	}
 }
 
-void segregate0s1sQuickSortDivideMethod(vector<bool> userInput){
+//Tested
+void segregate0s1sQuickSortDivideMethod(vector<int> &userInput){
 	int startIndex = 0,endIndex = userInput.size()-1;
 	while(startIndex < endIndex){
 		while(!userInput[startIndex]){
@@ -102,8 +104,8 @@ void segregate0s1sQuickSortDivideMethod(vector<bool> userInput){
 			endIndex--;
 		}
 		if(startIndex < endIndex){
-			userInput[startIndex] = false;
-			userInput[endIndex] = true;
+			userInput[startIndex] = 0;
+			userInput[endIndex] = 1;
 		}
 	}
 }
@@ -111,7 +113,7 @@ void segregate0s1sQuickSortDivideMethod(vector<bool> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+//Tested
 void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
 	vector<int> temp;
@@ -121,7 +123,7 @@ void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 				temp.push_back(userInput[firstCrawler]);
 				firstCrawler++;
 			}else{
-				temp.push_back(userInputp[secondCrawler]);
+				temp.push_back(userInput[secondCrawler]);
 				secondCrawler++;
 			}
 		}else{
@@ -139,8 +141,12 @@ void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	}
 }
 
-void mergeSort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+void mergeSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
+		return;
+	}
+	if(startIndex == endIndex){
 		return;
 	}
 	int middleIndex = (startIndex + endIndex)/2;
@@ -149,7 +155,8 @@ void mergeSort(vector<int> userInput,int startIndex,int endIndex){
 	merge(userInput,startIndex,middleIndex,endIndex);
 }
 
-void segregate0s1s(vector<int> userInput){
+//Tested
+void segregate0s1s(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
@@ -159,11 +166,12 @@ void segregate0s1s(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void segregate0s1sON2(vector<bool> userInput){
+//Tested
+void segregate0s1sON2(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
-	int innerCounter;
+	unsigned int innerCounter;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
 		if(userInput[outerCounter]){
 			for(innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
@@ -172,8 +180,8 @@ void segregate0s1sON2(vector<bool> userInput){
 				}
 			}
 			if(innerCounter < userInput.size()){
-				userInput[outerCounter] = false;
-				userInput[innerCounter] = true;
+				userInput[outerCounter] = 0;
+				userInput[innerCounter] = 1;
 			}else{
 				break;
 			}

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: implementtwostacksarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\implementtwostacksarray.h
+ *  Created on			: Nov 27, 2014 :: 7:51:34 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -60,102 +60,79 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define SIZE_OF_STACK_ARRAY 10
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef IMPLEMENTTWOSTACKSARRAY_H_
+#define IMPLEMENTTWOSTACKSARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+class twostacks {
+private:
+	int *userInput;
+	unsigned int size;
+	int firstStackTop,secondStackTop;
+public:
+	twostacks(){
+		userInput = (int *)malloc(sizeof(int) * SIZE_OF_STACK_ARRAY);
+		firstStackTop = -1;
+		secondStackTop = SIZE_OF_STACK_ARRAY;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
+
+	twostacks(unsigned int userInput){
+		userInput = (int *)malloc(sizeof(int) *userInput);
+		firstStackTop = -1;
+		secondStackTop = userInput;
+	}
+
+	void push(int value,bool firstStack = true){
+		if(firstStackTop+1 == secondStackTop){
+			throw "Stack full";
 		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+		if(firstStack){
+			userInput[++firstStackTop] = value;
 		}else{
-			return false;
+			userInput[--secondStackTop] = value;
 		}
 	}
-	return true;
-}
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
+	bool empty(bool firstStack = true){
+		if(firstStack){
+			return firstStackTop == -1;
+		}else{
+			return secondStackTop == size;
 		}
 	}
-	return true;
-}
-*/
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	void pop(bool firstStack = true){
+		if(firstStack){
+			if(this->empty()){
+				throw "Stack empty";
 			}
-		}
-		if(!valFound){
-			return false;
+			firstStackTop--;
+		}else{
+			if(this->empty(false)){
+				throw "Stack empty";
+			}
+			secondStackTop++;
 		}
 	}
-	return true;
-}*/
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+	int size(bool firstStack){
+		if(firstStack){
+			return firstStackTop == -1?0:firstStackTop+1;
+		}else{
+			return size - secondStackTop;
+		}
+	}
+};
+
+#endif /* IMPLEMENTTWOSTACKSARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

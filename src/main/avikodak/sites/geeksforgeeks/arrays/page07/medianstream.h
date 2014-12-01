@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: medianstream.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\medianstream.h
+ *  Created on			: Nov 29, 2014 :: 1:33:56 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,98 +65,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
-
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
-		}
-	}
-	return true;
-}
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
-			}
-		}
-		if(!valFound){
-			return false;
-		}
-	}
-	return true;
-}*/
-
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+
+#ifndef MEDIANSTREAM_H_
+#define MEDIANSTREAM_H_
+
+
+#endif /* MEDIANSTREAM_H_ */

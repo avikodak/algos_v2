@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\equilibriumindex.h
  *  Created on			: Nov 26, 2014 :: 5:31:48 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/equilibrium-index-of-an-array/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,21 +71,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int getEquilibriumIndex(vector<int> userInput){
 	if(userInput.size() == 0){
 		return UINT_MAX;
 	}
-	vector<int> leftSum(userInput.size()),rightSum(userInput.size());
-	leftSum[0] = 0;
-	rightSum[userInput.size()-1] = 0;
+	vector<int> leftSums(userInput.size()),rightSums(userInput.size());
+	leftSums[0] = 0;
+	rightSums[userInput.size()-1] = 0;
 	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		leftSum[counter] = userInput[counter-1] + leftSum[counter-1];
+		leftSums[counter] = userInput[counter-1] + leftSums[counter-1];
 	}
 	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		rightSum[counter] = rightSum[counter+1] + userInput[counter+1];
+		rightSums[counter] = rightSums[counter+1] + userInput[counter+1];
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(leftSum[counter] == rightSum[counter]){
+		if(leftSums[counter] == rightSums[counter]){
+			return counter;
+		}
+	}
+	return UINT_MAX;
+}
+
+//Tested
+unsigned int getEquilibriumIndexSpaceOptimized(vector<int> userInput){
+	if(userInput.size() == 0){
+		return UINT_MAX;
+	}
+	vector<int> leftSum;
+	leftSum.push_back(0);
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		leftSum.push_back(leftSum[counter-1]+userInput[counter-1]);
+	}
+	int rightSum = 0;
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
+		rightSum += userInput[counter+1];
+		if(leftSum[counter] == rightSum){
 			return counter;
 		}
 	}
@@ -95,6 +116,7 @@ unsigned int getEquilibriumIndex(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int getEquilibriumIndexON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return UINT_MAX;

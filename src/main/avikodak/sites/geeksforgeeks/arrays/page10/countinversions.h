@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: countinversions.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\countinversions.h
+ *  Created on			: Nov 27, 2014 :: 6:30:16 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,71 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef COUNTINVERSIONS_H_
+#define COUNTINVERSIONS_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+unsigned int icMerge(vector<int> &userInput,int startIndex,int midIndex,int endIndex){
+	int firstCrawler = startIndex,secondCrawler = midIndex+1;
+	vector<int> temp;
+	unsigned int inversionCount = 0;
+	while(firstCrawler <= midIndex || secondCrawler <= endIndex){
+		if(firstCrawler > midIndex || secondCrawler > endIndex){
+			if(firstCrawler <= midIndex){
+				temp.push_back(userInput[firstCrawler]);
+				firstCrawler++;
+			}else{
+				temp.push_back(userInput[secondCrawler]);
+				secondCrawler++;
+			}
 		}else{
-			return false;
+			if(userInput[firstCrawler] < userInput[secondCrawler]){
+				firstCrawler++;
+			}else{
+				secondCrawler++;
+				inversionCount += midIndex - firstCrawler;
+			}
 		}
 	}
-	return true;
+	return inversionCount;
 }
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
+unsigned int inversionCount(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return 0;
+	}
+	if(startIndex == endIndex){
+		return 0;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	unsigned int counter = inversionCount(userInput,startIndex,middleIndex);
+	counter += inversionCount(userInput,middleIndex+1,endIndex);
+	counter += icMerge(userInput,startIndex,middleIndex,endIndex);
+	return counter;
 }
 
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+unsigned int countInversionsON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	unsigned int inversionCount = 0;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			if(userInput[outerCounter] > userInput[innerCounter]){
+				inversionCount++;
 			}
 		}
-		if(!valFound){
-			return false;
-		}
 	}
-	return true;
-}*/
+	return inversionCount;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* COUNTINVERSIONS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

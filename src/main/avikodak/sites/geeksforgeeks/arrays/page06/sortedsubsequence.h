@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: sortedsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\sortedsubsequence.h
+ *  Created on			: Nov 27, 2014 :: 7:59:40 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef SORTEDSUBSEQUENCE_H_
+#define SORTEDSUBSEQUENCE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+iTriplet *getSortedTripletON(vector<int> userInput){
+	if(userInput.size() < 3){
+		return null;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
+	vector<int> leftMin;
+	vector<int> rightMax;
+	leftMin.push_back(INT_MAX);
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		leftMin.push_back(min(leftMin[counter-1],userInput[counter-1]));
+	}
+	rightMax.reserve(userInput.size());
+	rightMax[userInput.size()-1] = INT_MIN;
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
+		rightMax[counter] = max(userInput[counter+1],rightMax[counter+1]);
+	}
+	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
+		if(userInput[counter] > leftMin[counter] && userInput[counter] < rightMax[counter]){
+			return new iTriplet(leftMin[counter],userInput[counter],rightMax[counter]);
 		}
 	}
-	return true;
+	return null;
 }
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+iTriplet *getSortedTripletON3(vector<int> userInput){
+	if(userInput.size() < 3){
+		return null;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
+		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size()-1;middleCounter++){
+			for(unsigned int innerCounter = middleCounter+1;innerCounter < userInput.size();innerCounter++){
+				if(userInput[middleCounter] > userInput[outerCounter] && userInput[middleCounter] < userInput[innerCounter]){
+					return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
+				}
 			}
 		}
-		if(!valFound){
-			return false;
-		}
 	}
-	return true;
-}*/
+	return null;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* SORTEDSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

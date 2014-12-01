@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: fourelementsforsumon2logn.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsumon2logn.h
+ *  Created on			: Nov 30, 2014 :: 10:11:29 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,43 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef FOURELEMENTSFORSUMON2LOGN_H_
+#define FOURELEMENTSFORSUMON2LOGN_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(N^2*logn) Algorithm 																*/
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+bool sortFuncValIndex(iValueIndex *firstPtr,iValueIndex *secondPtr){
+	return firstPtr->value > secondPtr->value?firstPtr:secondPtr;
+}
+
+iQuadruple *findFourElementsON2LogN(vector<int> userInput,int sum){
+	if(userInput.size() < 3){
+		return null;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
+	vector<iValueIndex *> auxSpace;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
 		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+	}
+	sort(auxSpace.begin(),auxSpace.end(),sortFuncValIndex);
+	int firstCrawler = 0,secondCrawler = userInput.size()-1;
+	int currentSum = 0;
+	while(firstCrawler < secondCrawler){
+		currentSum = auxSpace[firstCrawler]->value + auxSpace[secondCrawler]->value;
+		if(currentSum == sum){
+			return new iQuadruple(userInput[auxSpace[firstCrawler]->firstValueIndex],userInput[auxSpace[firstCrawler]->secondvalueIndex],userInput[auxSpace[secondCrawler]->firstValueIndex],userInput[auxSpace[secondCrawler]->secondvalueIndex]);
+		}else if(currentSum < sum){
+			firstCrawler++;
 		}else{
-			return false;
+			secondCrawler--;
 		}
 	}
-	return true;
+	return null;
 }
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
-			}
-		}
-		if(!valFound){
-			return false;
-		}
-	}
-	return true;
-}*/
-
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* FOURELEMENTSFORSUMON2LOGN_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

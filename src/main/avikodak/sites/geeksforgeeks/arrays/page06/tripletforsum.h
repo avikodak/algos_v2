@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: tripletforsum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\tripletforsum.h
+ *  Created on			: Nov 27, 2014 :: 7:58:22 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,97 +65,55 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef TRIPLETFORSUM_H_
+#define TRIPLETFORSUM_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+iTriplet *getTripletForSumON3(vector<int> userInput,int sum){
+	if(userInput.size() < 3){
+		return null;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
+		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size()-1;middleCounter++){
+			for(unsigned int innerCounter = middleCounter+1;innerCounter < userInput.size();innerCounter++){
+				if(userInput[outerCounter] + userInput[middleCounter] + userInput[innerCounter] == sum){
+					return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
+				}
+			}
 		}
 	}
-	return true;
 }
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+iTriplet *getTripletForSumON2(vector<int> userInput,int sum){
+	if(userInput.size() < 3){
+		return null;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	sort(userInput.begin(),userInput.end());
+	int currentSum;
+	unsigned int startCrawler,endCrawler;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
+		startCrawler = outerCounter + 1;
+		endCrawler = userInput.size()-1;
+		while(startCrawler < endCrawler){
+			currentSum = userInput[outerCounter] + userInput[startCrawler] + userInput[endCrawler];
+			if(currentSum  == sum){
+				return new iTriplet(userInput[outerCounter],userInput[startCrawler],userInput[endCrawler]);
+			}else if(currentSum > sum){
+				endCrawler--;
+			}else{
+				startCrawler++;
 			}
 		}
-		if(!valFound){
-			return false;
-		}
 	}
-	return true;
-}*/
+	return null;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* TRIPLETFORSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: differencebetweenindexes.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\differencebetweenindexes.h
+ *  Created on			: Dec 1, 2014 :: 11:14:19 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,58 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef DIFFERENCEBETWEENINDEXES_H_
+#define DIFFERENCEBETWEENINDEXES_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+int maxIJIndexAuxspace(vector<int> userInput){
+	if(userInput.size() < 1){
+		return 0;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+	vector<int> lMin,rMax;
+	lMin.push_back(userInput[0]);
+	rMax.reserve(userInput.size());
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		lMin.push_back(userInput[counter],lMin[counter-1]);
+	}
+	rMax[userInput.size()-1] = userInput[userInput.size()-1];
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
+		rMax[counter] = max(userInput[counter],rMax[counter+1]);
+	}
+	int maxDistance = 0;
+	int firstCrawler = 0,secondCrawler = 0;
+	while(firstCrawler < secondCrawler){
+		if(lMin[firstCrawler] < rMax[secondCrawler]){
+			maxDistance = max(maxDistance,secondCrawler-firstCrawler);
+			secondCrawler++;
 		}else{
-			return false;
+			firstCrawler++;
 		}
 	}
-	return true;
+	return maxDistance;
 }
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+int maxIJIndexesON2(vector<int> userInput){
+	if(userInput.size() < 1){
+		return 0;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	unsigned int maxDiffIndex = 0;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[innerCrawler] > userInput[outerCrawler]){
+				maxDiffIndex = max(maxDiffIndex,innerCrawler - outerCrawler);
 			}
 		}
-		if(!valFound){
-			return false;
-		}
 	}
-	return true;
-}*/
+	return maxDiffIndex;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* DIFFERENCEBETWEENINDEXES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

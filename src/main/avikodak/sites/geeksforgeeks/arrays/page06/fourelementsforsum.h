@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: fourelementsforsum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsum.h
+ *  Created on			: Nov 27, 2014 :: 8:00:32 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,97 +65,93 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef FOURELEMENTSFORSUM_H_
+#define FOURELEMENTSFORSUM_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																	O(N^2*LogN) Algorithm 															*/
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+bool sortFucnValueIndex(iValueIndex *firstPtr,iValueIndex *secondPtr){
+	return firstPtr->value > secondPtr->value?true:false;
+}
+
+iQuadruple *findFourValuesForON2LogN(vector<int> userInput,int sum){
+	if(userInput.size() < 3){
+		return null;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
+	vector<iValueIndex *> auxSpace;
+	int currentSum;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
 		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
+	}
+	sort(auxSpace.begin(),auxSpace.end(),sortFucnValueIndex);
+	unsigned int startCrawler = 0,endCrawler = userInput.size()-1;
+	while(startCrawler < endCrawler){
+		currentSum = userInput[startCrawler] + userInput[endCrawler];
+		if(currentSum == sum){
+			return new iQuadruple(auxSpace[startCrawler]->firstValueIndex,auxSpace[startCrawler]->secondvalueIndex,auxSpace[endCrawler]->firstValueIndex,auxSpace[endCrawler]->secondvalueIndex);
+		}else if(currentSum < sum){
+			startCrawler++;
 		}else{
-			return false;
+			endCrawler--;
 		}
 	}
-	return true;
+	return null;
 }
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iQuadruple *findFourValuesForON3(vector<int> userInput,int sum){
+	if(userInput.size() < 3){
+		return null;
 	}
 	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	unsigned int thirdCounter,fourthCounter;
+	int currentSum;
+	for(unsigned int firstCounter = 0;firstCounter < userInput.size()-3;firstCounter++){
+		for(unsigned int secondCounter = firstCounter;secondCounter < userInput.size()-2;secondCounter++){
+			thirdCounter = secondCounter+1;
+			fourthCounter = userInput.size()-1;
+			while(thirdCounter < fourthCounter){
+				currentSum = userInput[firstCounter] + userInput[secondCounter] + userInput[thirdCounter] + userInput[fourthCounter];
+				if(currentSum == currentSum){
+					return new iQuadruple(userInput[firstCounter],userInput[secondCounter],userInput[thirdCounter],userInput[fourthCounter]);
+				}else if(currentSum < sum){
+					thirdCounter++;
+				}else{
+					fourthCounter--;
+				}
 			}
 		}
-		if(!valFound){
-			return false;
+	}
+	return null;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^4) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iQuadruple *findFourValuesForSum(vector<int> userInput,int sum){
+	if(userInput.size() < 4){
+		return null;
+	}
+	for(unsigned firstCounter = 0;firstCounter < userInput.size()-3;firstCounter++){
+		for(unsigned int secondCounter = firstCounter+1;secondCounter < userInput.size()-2;secondCounter++){
+			for(unsigned int thirdCounter = secondCounter+1;thirdCounter < userInput.size()-1;thirdCounter++){
+				for(unsigned int fourthCounter = thirdCounter+1;fourthCounter < userInput.size();fourthCounter++){
+					if(userInput[firstCounter] +  userInput[secondCounter] + userInput[thirdCounter] + userInput[fourthCounter] == sum){
+						return new iQuadruple(userInput[firstCounter],userInput[secondCounter],userInput[thirdCounter],userInput[fourthCounter]);
+					}
+				}
+			}
 		}
 	}
-	return true;
-}*/
+	return null;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* FOURELEMENTSFORSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

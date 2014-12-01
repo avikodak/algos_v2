@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getSmallestAndSecondSmallest(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -80,13 +81,14 @@ iPair *getSmallestAndSecondSmallest(vector<int> userInput){
 		if(userInput[counter] < smallestValue){
 			secondSmallestValue = smallestValue;
 			smallestValue = userInput[counter];
-		}else if(userInput[counter] < secondSmallestValue){
+		}else if(userInput[counter] < secondSmallestValue && userInput[counter] != smallestValue){
 			secondSmallestValue = userInput[counter];
 		}
 	}
 	return new iPair(smallestValue,secondSmallestValue);
 }
 
+//Tested
 iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -113,6 +115,8 @@ iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+//Distinct
 iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -132,7 +136,10 @@ iPair *getSmallestAndSecondSmallestON2(vector<int> userInput){
 		return null;
 	}
 	if(userInput.size() == 1){
-		return new iPair(userInput[0],INT_MAX);
+		iPair *result = new iPair();
+		result->firstValue = userInput[0];
+		result->secondValue = INT_MAX;
+		return result;
 	}
 	int smallestValueIndex,secondSmallestValueIndex;
 	bool isMin;

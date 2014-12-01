@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: minimumdistancenumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\minimumdistancenumbers.h
+ *  Created on			: Nov 27, 2014 :: 7:47:50 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,97 +65,54 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef MINIMUMDISTANCENUMBERS_H_
+#define MINIMUMDISTANCENUMBERS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
+	int prevIndex = -1;
+	int minDistance = INT_MAX;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
+		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
+			if(prevIndex == -1){
+				prevIndex = counter;
+			}else{
+				if(userInput[counter] != userInput[prevIndex]){
+					minDistance = min(minDistance,counter - prevIndex);
+				}
+				prevIndex = counter;
+			}
 		}
 	}
-	return true;
+	return minDistance;
 }
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
+int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber){
 	if(userInput.size() < 2){
-		return true;
+		return 0;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	int minDistance = INT_MAX;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		if(userInput[outerCounter] == firstNumber || userInput[outerCounter] == secondNumber){
+			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+				if(userInput[innerCounter] == userInput[outerCounter] ^ firstNumber ^ secondNumber){
+					minDistance = min(minDistance,innerCounter - outerCounter);
+				}
 			}
 		}
-		if(!valFound){
-			return false;
-		}
 	}
-	return true;
-}*/
+	return minDistance;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+#endif /* MINIMUMDISTANCENUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

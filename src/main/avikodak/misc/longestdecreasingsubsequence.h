@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: longestdecreasingsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\longestdecreasingsubsequence.h
+ *  Created on			: Nov 29, 2014 :: 10:16:42 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,97 +65,57 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef LONGESTDECREASINGSUBSEQUENCE_H_
+#define LONGESTDECREASINGSUBSEQUENCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
-		}
-	}
-	return true;
-}
 
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+int longestDecreasingSequence(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	vector<int> lengths;
+	lengths.push_back(1);
+	int maxLength;
+	for(unsigned int  outerCounter = 1;outerCounter < userInput.size();outerCounter++){
+		maxLength = 1;
+		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
+			if(userInput[innerCounter] > userInput[outerCounter]){
+				maxLength = max(maxLength,1 + lengths[innerCounter]);
 			}
 		}
-		if(!valFound){
-			return false;
+		lengths.push_back(maxLength);
+	}
+	return lengths[lengths.size()-1];
+}
+
+int longestDecreasingSubSequence(vector<int> userInput,int currentIndex = 0){
+	if(currentIndex >= userInput.size()){
+		return INT_MAX;
+	}
+	if(userInput.size() == 0){
+		return 0;
+	}
+	if(currentIndex == 1){
+		return 1;
+	}
+	int maxLength = 1;
+	for(int counter = currentIndex - 1;counter >= 0;counter--){
+		if(userInput[counter] > userInput[currentIndex]){
+			maxLength = max(maxLength,longestDecreasingSubSequence(userInput,counter));
 		}
 	}
-	return true;
-}*/
+	return maxLength;
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+
+#endif /* LONGESTDECREASINGSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nextgreaterelement.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\nextgreaterelement.h
- *  Created on			: Nov 26, 2014 :: 6:27:12 PM
+ *  File Name   		: searchinrowcolumnsortedmatrix.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\searchinrowcolumnsortedmatrix.h
+ *  Created on			: Dec 1, 2014 :: 12:31:00 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/next-greater-element/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,56 +65,27 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef NEXTGREATERELEMENT_H_
-#define NEXTGREATERELEMENT_H_
+#ifndef SEARCHINROWCOLUMNSORTEDMATRIX_H_
+#define SEARCHINROWCOLUMNSORTEDMATRIX_H_
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-void printNextGreatestElementStack(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
+iPair *searchInRowColumnSortedMatrix(vector<vector<int> > userInput,int key){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return null;
 	}
-	stack<int> auxSpace;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
-		}
-		if(auxSpace.empty()){
-			printf("%d\t",INT_MAX);
+	int rowIndex = 0,columnIndex = userInput[0].size()-1;
+	while(rowIndex >= 0 && rowIndex < userInput.size() && columnIndex >= 0 && columnIndex < userInput[0].size()){
+		if(userInput[rowIndex][columnIndex] == key){
+			return new iPair(rowIndex,columnIndex);
+		}else if(userInput[rowIndex][columnIndex] < key){
+			columnIndex--;
 		}else{
-			printf("%d\t",auxSpace.top());
+			rowIndex++;
 		}
-		auxSpace.push(userInput[counter]);
 	}
+	return null;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-void printNextGreatestElement(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	bool nextGreatestFound;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		nextGreatestFound = false;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				printf("%d\t",userInput[innerCounter]);
-				nextGreatestFound = true;
-				break;
-			}
-		}
-		if(!nextGreatestFound){
-			printf("%d",INT_MAX);
-		}
-	}
-}
-
-#endif /* NEXTGREATERELEMENT_H_ */
+#endif /* SEARCHINROWCOLUMNSORTEDMATRIX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

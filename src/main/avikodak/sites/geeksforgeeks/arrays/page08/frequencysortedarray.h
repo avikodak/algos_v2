@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\frequencysortedarray.h
  *  Created on			: Nov 26, 2014 :: 6:29:43 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/count-number-of-occurrences-in-a-sorted-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,13 +72,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
 	}
 	int middleIndex = (startIndex + endIndex)/2;
 	if(userInput[middleIndex] == key){
-		if(middleIndex-1 <= startIndex && userInput[middleIndex-1] == key){
+		if(middleIndex-1 >= startIndex && userInput[middleIndex-1] == key){
 			return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
 		}else{
 			return middleIndex;
@@ -90,6 +91,7 @@ int getLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int e
 	}
 }
 
+//Tested
 int getHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -108,6 +110,7 @@ int getHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int 
 	}
 }
 
+//Tested
 int getFrequencySortedArray(vector<int> userInput,int key){
 	if(userInput.size() == 0){
 		return 0;
@@ -126,6 +129,7 @@ int getFrequencySortedArray(vector<int> userInput,int key){
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int frequencySortedArrayON(vector<int> userInput,int key){
 	if(userInput.size() == 0){
 		return 0;

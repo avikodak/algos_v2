@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\productarraypuzzle.h
  *  Created on			: Nov 26, 2014 :: 1:12:53 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/a-product-array-puzzle/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void productArrayPuzzle(vector<int> userInput){
+//Tested
+void productArrayPuzzle(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
 	}

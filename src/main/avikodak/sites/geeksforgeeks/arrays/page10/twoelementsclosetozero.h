@@ -69,18 +69,47 @@ using namespace __gnu_cxx;
 #define TWOELEMENTSCLOSETOZERO_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+iPair *getTwoElementsClosestToZero(vector<int> userInput){
+	sort(userInput.begin(),userInput.end());
+	int startCrawler = 0,endCrawler = userInput.size()-1,sum,min = INT_MAX;
+	iPair *result = new iPair(INT_MAX,INT_MAX);
+	while(startCrawler < endCrawler){
+		sum = userInput[startCrawler] + userInput[endCrawler];
+		if(abs(min) > abs(sum)){
+			min = sum;
+			result->firstValue =  userInput[startCrawler];
+			result->secondValue = userInput[endCrawler];
+		}
+		if(sum > 0){
+			endCrawler--;
+		}else{
+			startCrawler++;
+		}
+	}
+	return result;
+}
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 iPair *getTwoElementsClosestToZero(vector<int> userInput){
-
+	if(userInput.size() == 0){
+		return null;
+	}
+	int minSum = INT_MAX;
+	iPair *result = new iPair(INT_MAX,INT_MAX);
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(abs(minSum) > abs(userInput[outerCrawler] + userInput[innerCrawler])){
+				result->firstValue = userInput[outerCrawler];
+				result->secondValue = userInput[innerCrawler];
+			}
+		}
+	}
+	return result;
 }
 
 #endif /* TWOELEMENTSCLOSETOZERO_H_ */

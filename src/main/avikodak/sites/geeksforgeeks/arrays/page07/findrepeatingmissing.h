@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: findrepeatingmissing.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\findrepeatingmissing.h
+ *  Created on			: Nov 27, 2014 :: 7:47:09 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,97 +65,124 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef FINDREPEATINGMISSING_H_
+#define FINDREPEATINGMISSING_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
+iPair *findRepeatingAndMissingNumber(vector<int> userInput){
 	if(userInput.size() == 0){
-		return true;
+		return null;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
 			frequencyMap[userInput[counter]] = 1;
 		}else{
-			return false;
+			frequencyMap[userInput[counter]] += 1;
 		}
 	}
-	return true;
-}
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+	iPair *result = new iPair(0,0);
+	for(unsigned int counter = 1;counter <= userInput.size();counter++){
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
+			result->secondValue = userInput[counter];
+		}else{
+			if(itToFrequencyMap->second > 1){
+				result->firstValue = userInput[counter];
+			}
+		}
 	}
-	int minValue = min_element(userInput.begin(),userInput.end());
+	return result;
+}
+
+iPair *findMissingRepeatingElementsArray(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(0,0);
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
+		if(userInput[counter] < 0){
+			result->secondValue = counter+1;
+		}else{
+			userInput[abs(userInput[counter])-1] *= -1;
 		}
 	}
-	return true;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] > 0){
+			result->firstValue = counter+1;
+		}
+	}
+	return result;
 }
-*/
+
+iPair *findMissingRepeatingElementEquations(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	int sequenceSum = 0,arraySum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sequenceSum += counter+1;
+		arraySum += userInput[counter];
+	}
+	iPair *result = new iPair(0,0);
+	result->firstValue = (sequenceSum + arraySum)/3;
+	result->secondValue = (3*sequenceSum - result->firstValue)/3;
+	return result;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iPair *findMissingRepeatingSorting(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(0,0);
+	sort(userInput.begin(),userInput.end());
+	if(userInput[0] != 1){
+		result->firstValue = 1;
+	}
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		if(userInput[counter] == userInput[counter+1]){
+			result->secondValue = userInput[counter];
+			counter++;
+		}else if(userInput[counter+1] - userInput[counter] > 1){
+			result->firstValue = userInput[counter] + 1;
+		}
+	}
+	if(result->secondValue == 0){
+		result->firstValue = userInput.size();
+	}
+	return result;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
+iPair *findMissingRepeatingON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	iPair *result = new iPair(0,0);
+	unsigned int frequency;
+	for(unsigned int outerCounter = 1;outerCounter <= userInput.size();outerCounter++){
+		frequency = 0;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(userInput[innerCounter] == (int)outerCounter){
+				frequency++;
 			}
 		}
-		if(!valFound){
-			return false;
+		if(frequency == 0){
+			result->firstValue = outerCounter;
+		}else if(frequency > 1){
+			result->secondValue = outerCounter;
 		}
 	}
-	return true;
-}*/
-
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+	return result;
+}
+#endif /* FINDREPEATINGMISSING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

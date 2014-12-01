@@ -59,6 +59,7 @@
 /****************************************************************************************************************************************************/
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
+/*
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/treetraversals.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/sizeoftree.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page10/aretreesidentical.h"
@@ -133,6 +134,7 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page04/treeisomorphism.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page04/printprefrompostinorder.h" // Should be changed
 
+
 #include "main/avikodak/sites/geeksforgeeks/trees/page03/addgreatervaluesbst.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page03/checkifallleavesareatsamelevel.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page03/printleftview.h"
@@ -184,6 +186,27 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page09/findrepeatingelements.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page09/floorceiling.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page09/maxminarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/productarraypuzzle.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/segregate0s1s.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/segregateevenoddnumbers.h"
+//#include "main/avikodak/sites/geeksforgeeks/arrays/page09/smallestsecondsmallest.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/sortarray0s1s2s.h"
+//#include "main/avikodak/sites/geeksforgeeks/arrays/page09/unionintersectionsortedarray.h"
+//#include "main/avikodak/sites/geeksforgeeks/arrays/page08/checkarrayisconsecutive.h"
+ *
+ */
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/equilibriumindex.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findduplicates.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findifarrayissubset.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findsmallestmissingnumber.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/frequencysortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/nextgreaterelement.h"
+
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/booleanmatrix.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/countsmallerrightside.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/findrepeatingmissing.h"
+/*
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
 
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
@@ -200,6 +223,7 @@
 #include "main/avikodak/tuts/saurabhacademy/generatesets.h"
 #include "main/avikodak/tuts/saurabhacademy/permutation.h"
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
+*/
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
@@ -207,17 +231,7 @@ void arrayTester() {
 	vector<int> userInput;
 	userInput.clear();
 	userInput = getVectorForUserInput();
-	//vector<int> userInput2 = getVectorForUserInput();
-	//printf("%d\t",largestSumContigousSubArrayON3(userInput));//5 2 8 13 15 20 4 5 7 9 25
-	/*vector<int> mergeSorted = mergedSortedArraysAvl(userInput,userInput2);
-	for(unsigned int counter = 0;counter < mergeSorted.size();counter++){
-		printf("%d\t",mergeSorted[counter]);
-	}*/
-	//printf("%d\t",searchInSortedPivotedArrayOLOGN(userInput,temp));
-	int temp;
-	scanf("%d",&temp);
-	floorceiling *result = floorCeilingON2(userInput,temp);//7 4 2 4 5 2 3 1
-	printf("%d\t%d",result->floor,result->ceiling);
+	printIVector(countSmallerValueRightSideBST(userInput));//7 12 1 2 3 0 11 4
 }
 
 void p(inrNode *ptr){
@@ -239,21 +253,15 @@ void s(isuccesssorNode *ptr){
 }
 
 void treeTester(){
-	treeutils *utils = new treeutils();
+	//treeutils *utils = new treeutils();
 	//vector<int> userInput = getVectorForUserInput();
 	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
-	printNodesAtKDistancePostorderTraversalIterative(root,1);//8 1 1 2 2 3 3 4 4 5 5 6 6 7 7 13 8
+//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
 }
 
 void avlTreeTester(){
-	avlutils *utils = new avlutils();
+	//avlutils *utils = new avlutils();
 	vector<int> sequence = generateISequenceVector(10);
-	ipAvlNode *root = null;
-	for(unsigned int counter = 1;counter <= 10;counter++){
-		insertIntoAvlTree(&root,counter);
-	}
-	utils->inorderTraversal(root);
 	PRINT_NEW_LINE;
 
 }
@@ -269,14 +277,12 @@ void twoFourTreeTester(){
 void sillTester(){
 	sillutils *utils = new sillutils();
 	sillNode *head = utils->getRandomSill(10,1,50);
-	mergeSort(&head);
 	utils->printSill(head);
 }
 
 void customTester(){
 	char inputSequence[4];
 	scanf("%s",inputSequence);
-	printPermutation(inputSequence,0,3);
 }
 
 void redblackTreeTester(){

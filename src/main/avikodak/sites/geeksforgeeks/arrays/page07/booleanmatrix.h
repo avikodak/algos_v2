@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkarrayisconsecutive.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
- *  Created on			: Nov 26, 2014 :: 9:06:50 PM
+ *  File Name   		: booleanmatrix.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\booleanmatrix.h
+ *  Created on			: Nov 28, 2014 :: 1:37:18 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,97 +65,54 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKARRAYISCONSECUTIVE_H_
-#define CHECKARRAYISCONSECUTIVE_H_
+#ifndef BOOLEANMATRIX_H_
+#define BOOLEANMATRIX_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
+void booleanMatrixAuxspace(vector<vector<bool> > &userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return;
 	}
-	hash_map<unsigned int,unsigned int> frequencyMap;
-	//hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	int minValue = min_element(userInput.begin(),userInput.end());
-	/*for(unsigned int counter = 0;counter < userInput.size();userInput++){
-		if(userInput[counter] >= minValue + userInput.size()){
-			return false;
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isArrayConsecutiveSum(vector<unsigned int> userInput){
-	return true;
-}
-
-//Works for positive elements..if array contains +/- separate using quicksort divide step
-bool isArrayConsecutiveArrayAsFlags(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int minValue = min_element(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue+userInput.size()){
-			return false;
-		}
-		if(userInput[userInput[counter] - minValue] < 0){
-			return false;
-		}
-		userInput[userInput[counter] - minValue] *= -1;
-	}
-	return true;
-}*/
-
-/**************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm																  s*/
-/**************************************************************************************************************************************************/
-/*
-bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter+1] - userInput[counter] > 1){
-			return false;
-		}
-	}
-	return true;
-}
-*/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-/*bool isArrayConsecutiveON2(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int minVal = uMinValueVector(userInput);
-	bool valFound;
-	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();counter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
+	vector<bool> columnFlags(userInput[0].size(),false);
+	vector<bool> rowFlags(userInput.size(),false);
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter]){
+				columnFlags[columnCounter] = true;
+				rowFlags[rowCounter] = true;
 			}
 		}
-		if(!valFound){
-			return false;
+	}
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			userInput[rowCounter][columnCounter] = rowFlags[rowCounter] || columnFlags[columnCounter];
 		}
 	}
-	return true;
-}*/
+}
 
-#endif /* CHECKARRAYISCONSECUTIVE_H_ */
+void booleanMatrix(vector<vector<bool> > &userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return;
+	}
+	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter]){
+				userInput[rowCounter][0] = true;
+				userInput[0][columnCounter] = true;
+			}
+		}
+	}
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			userInput[rowCounter][columnCounter] = userInput[rowCounter][0] || userInput[0][columnCounter];
+		}
+	}
+}
+
+
+#endif /* BOOLEANMATRIX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

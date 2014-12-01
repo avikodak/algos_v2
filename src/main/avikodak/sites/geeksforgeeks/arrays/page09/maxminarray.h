@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
  *  Created on			: Nov 26, 2014 :: 10:53:30 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
  ****************************************************************************************************************************************************/
 
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return null;
@@ -90,6 +91,7 @@ iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
 	return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
 }
 
+//Tested
 iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -136,6 +138,7 @@ iMaxMin *getMaxMinArrayO2N(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -147,6 +150,7 @@ iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iMaxMin *getMaxMinArrayON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
