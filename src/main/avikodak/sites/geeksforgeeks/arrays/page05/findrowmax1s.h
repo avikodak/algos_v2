@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: replaceeveryelementwithgreatest.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
- *  Created on			: Nov 27, 2014 :: 8:00:16 PM
+ *  File Name   		: findrowmax1s.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\findrowmax1s.h
+ *  Created on			: Dec 1, 2014 :: 3:45:10 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,57 +65,69 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REPLACEEVERYELEMENTWITHGREATEST_H_
-#define REPLACEEVERYELEMENTWITHGREATEST_H_
+#ifndef FINDROWMAX1S_H_
+#define FINDROWMAX1S_H_
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-void replaceEveryElementON(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
+int getLowIndex(vector<bool> userInput,bool key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MAX;
 	}
-	stack<int> auxSpace;
-	userInput.push_back(auxSpace);
-	userInput[userInput.size()-1] = INT_MAX;
-	int temp;
-	for(int counter = userInput.size()-2;counter>=0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
-		}
-		temp = userInput[counter];
-		if(!auxSpace.empty()){
-			userInput[counter] = auxSpace.top();
+	if(startIndex == endIndex){
+		return key == userInput[startIndex];
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		if(middleIndex-1 >= startIndex && userInput[middleIndex-1]){
+			return getLowIndex(userInput,key,startIndex,middleIndex-1);
 		}else{
-			userInput[counter] = INT_MAX;
+			return middleIndex;
 		}
-		auxSpace.push(temp);
+	}else{
+		return getLowIndex(userInput,key,middleIndex+1,endIndex);
 	}
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-void replaceEveryElementON2(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
+
+unsigned int findRowWithMaxOnes(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return UINT_MAX;
 	}
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				break;
+	int lowIndex = INT_MAX;
+	unsigned int maxOnes = 0;
+	int startColumnCounter = 0,endColumnCounter = userInput[0].size(),rowCounter = 0;
+	while(rowCounter < userInput.size()){
+		if(lowIndex == INT_MAX || userInput[rowCounter][lowIndex]){
+			endColumnCounter = lowIndex;
+			lowIndex = getLowIndex(userInput[rowCounter],true,startColumnCounter,endColumnCounter);
+		}else{
+			rowCounter++;
+		}
+	}
+	return lowIndex == INT_MAX?0:userInput.size()-lowIndex;
+}
+
+unsigned int findRowWithMax1s(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return UINT_MAX;
+	}
+	int maxOnes = 0,frequency;
+	int maxOnesRowIndex = INT_MIN;
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		frequency = 0;
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter]){
+				frequency += 1;
 			}
 		}
-		if(innerCounter >= userInput.size()){
-			userInput[outerCounter] = INT_MAX;
-		}else{
-			userInput[outerCounter] = userInput[innerCounter];
+		if(frequency > maxOnes){
+			frequency = maxOnes;
+			maxOnesRowIndex = rowCounter;
 		}
 	}
+	return maxOnesRowIndex;
 }
 
-#endif /* REPLACEEVERYELEMENTWITHGREATEST_H_ */
+#endif /* FINDROWMAX1S_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

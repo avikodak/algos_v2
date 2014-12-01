@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: replaceeveryelementwithgreatest.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
- *  Created on			: Nov 27, 2014 :: 8:00:16 PM
+ *  File Name   		: maxlenchainofpairs.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxlenchainofpairs.h
+ *  Created on			: Dec 1, 2014 :: 3:30:35 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,57 +65,63 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REPLACEEVERYELEMENTWITHGREATEST_H_
-#define REPLACEEVERYELEMENTWITHGREATEST_H_
+#ifndef MAXLENCHAINOFPAIRS_H_
+#define MAXLENCHAINOFPAIRS_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void replaceEveryElementON(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
+
+int getMaxLengthChainOfPairsONLOGN(vector<iPair *> userInput){
+	if(userInput.size() == 0){
+		return 0;
 	}
-	stack<int> auxSpace;
-	userInput.push_back(auxSpace);
-	userInput[userInput.size()-1] = INT_MAX;
-	int temp;
-	for(int counter = userInput.size()-2;counter>=0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
-		}
-		temp = userInput[counter];
-		if(!auxSpace.empty()){
-			userInput[counter] = auxSpace.top();
-		}else{
-			userInput[counter] = INT_MAX;
-		}
-		auxSpace.push(temp);
+	if(userInput.size() == 1){
+		return 1;
 	}
+	vector<int> activeLists;
+
+	return activeLists.size();
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void replaceEveryElementON2(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				break;
-			}
-		}
-		if(innerCounter >= userInput.size()){
-			userInput[outerCounter] = INT_MAX;
-		}else{
-			userInput[outerCounter] = userInput[innerCounter];
-		}
-	}
+bool sortFuncChain(iPair *firstPair,iPair *secondPair){
+	return firstPair->firstValue > secondPair->firstValue?firstPair:secondPair;
 }
 
-#endif /* REPLACEEVERYELEMENTWITHGREATEST_H_ */
+int getMaxLengthChainOfPairs(vector<iPair *> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	if(userInput.size() == 1){
+		return 1;
+	}
+	vector<int> lengths;
+	lengths.push_back(1);
+	int maxLength;
+	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
+		maxLength = 1;
+		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
+			if(userInput[outerCrawler]->firstValue > userInput[innerCrawler]->secondValue){
+				maxLength  = max(maxLength,lengths[innerCrawler]);
+			}
+		}
+		lengths.push_back(maxLength);
+	}
+	return userInput[userInput.size()-1];
+}
+
+int maxLengthChainOfPairs(vector<iPair *> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	sort(userInput.begin(),userInput.end(),sortFuncChain);
+
+}
+
+#endif /* MAXLENCHAINOFPAIRS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

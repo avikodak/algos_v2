@@ -285,6 +285,32 @@ struct ifpAvlNode{
 	}
 };
 
+struct ipAuxAvlNode{
+	int value;
+	int auxVal;
+	unsigned int height;
+	ipAuxAvlNode *left;
+	ipAuxAvlNode *right;
+	ipAuxAvlNode *parent;
+
+	ipAuxAvlNode(){
+		this->auxVal = 0;
+		this->height = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	ipAuxAvlNode(int value){
+		this->value = value;
+		this->auxVal = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+};
+
 struct cTernaryNode{
 	char ch;
 	cTernaryNode *left;
@@ -368,6 +394,27 @@ struct cpTrieNode{
 		}
 		this->parent = parent;
 	}
+};
+
+struct bpTrieNode{
+	bpTrieNode *children[2];
+	bpTrieNode *parent;
+	bool isEOW; // end of word
+
+	bpTrieNode(){
+		this->children[0] = null;
+		this->children[1] = null;
+		this->parent = null;
+		this->isEOW = false;
+	}
+
+	bpTrieNode(bpTrieNode *parent){
+		this->isEOW = false;
+		this->children[0] = null;
+		this->children[1] = null;
+		this->parent = null;
+	}
+
 };
 
 struct i24Node{
@@ -479,6 +526,31 @@ struct ifRbTreeNode{
 
 	ifRbTreeNode(int value){
 		this->frequency = 1;
+		this->value = value;
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct ipAuxRbTreeNode{
+	int value;
+	bool isRedNode;
+	int auxVal;
+	ipAuxRbTreeNode *left;
+	ipAuxRbTreeNode *right;
+	ipAuxRbTreeNode *parent;
+
+	ipAuxRbTreeNode(){
+		this->auxVal = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	ipAuxRbTreeNode(int value){
+		this->auxVal = 1;
 		this->value = value;
 		this->isRedNode = true;
 		this->left = null;

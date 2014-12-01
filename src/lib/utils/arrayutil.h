@@ -91,6 +91,31 @@ vector<int> getVectorForUserInput(){
 	return userInput;
 }
 
+vector<unsigned int> getUVectorForUserInput(){
+	vector<unsigned int> userInput;
+	unsigned int sizeOfInput;
+	unsigned int temp;
+	scanf("%d",&sizeOfInput);
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%u",&temp);
+		userInput.push_back(temp);
+	}
+	return userInput;
+}
+
+hash_map<unsigned int,int> getUserInputForIndexValueMap(){
+	hash_map<unsigned int,int> userInput;
+	unsigned int sizeOfInput;
+	unsigned int index;
+	int value;
+	scanf("%d",&sizeOfInput);
+	while(sizeOfInput--){
+		scanf("%d %d",&index,&value);
+		userInput.insert(pair<unsigned int,int>(index,value));
+	}
+	return userInput;
+}
+
 hash_map<int,unsigned int> getFrequencyMapFromVector(vector<int> userInput){
 	hash_map<int,unsigned int> frequencyMap;
 	if(userInput.size() == 0){
@@ -111,7 +136,7 @@ bool isVectorSorted(vector<int> userInput){
 	if(userInput.size() == 0 || userInput.size() == 1){
 		return true;
 	}
-	for(unsigned int counter = 1;counter < userInput.size();counter){
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
 		if(userInput[counter] < userInput[counter-1]){
 			return false;
 		}
@@ -130,6 +155,31 @@ bool areIVectorsEquivalent(vector<int> firstVector,vector<int> secondVector){
 		}
 	}
 	return true;
+}
+
+//Tested
+void reverseArray(vector<int> &userInput,unsigned int startIndex = 0,unsigned int endIndex = 0){
+	if(endIndex == 0){
+		endIndex = userInput.size()-1;
+	}
+	while(startIndex < endIndex){
+		swap(userInput[startIndex],userInput[endIndex]);
+		startIndex++;
+		endIndex--;
+	}
+}
+
+unsigned int uMinValueVector(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	unsigned int minValue = UINT_MAX;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] < minValue){
+			minValue = userInput[counter];
+		}
+	}
+	return minValue;
 }
 
 #endif /* ARRAYUTIL_H_ */

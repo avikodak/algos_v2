@@ -68,6 +68,125 @@ struct iPair{
 	}
 };
 
+struct iTriplet{
+	int firstValue;
+	int secondValue;
+	int thirdValue;
+
+	iTriplet(){
+
+	}
+
+	iTriplet(int firstValue,int secondValue,int thirdValue){
+		this->firstValue = firstValue;
+		this->secondValue = secondValue;
+		this->thirdValue = thirdValue;
+	}
+};
+
+struct iFrequency{
+	int value;
+	unsigned int frequency;
+
+	iFrequency(){
+
+	}
+
+	iFrequency(int value){
+		this->value = value;
+		this->frequency = 1;
+	}
+
+	iFrequency(int value,unsigned int frequency){
+		this->value = value;
+		this->frequency = frequency;
+	}
+};
+
+struct iPairVector{
+	vector<int> firstVector;
+	vector<int> secondVector;
+
+	iPairVector(){
+
+	}
+
+	iPairVector(vector<int> firstVector){
+		this->firstVector = firstVector;
+	}
+
+	iPairVector(vector<int> firstVector,vector<int> secondVector){
+		this->firstVector = firstVector;
+		this->secondVector = secondVector;
+	}
+};
+
+struct iMaxMin{
+	int maxValue;
+	int minValue;
+
+	iMaxMin(){
+		this->maxValue = INT_MIN;
+		this->minValue = INT_MAX;
+	}
+
+	iMaxMin(int minValue,int maxValue){
+		this->minValue = minValue;
+		this->maxValue = maxValue;
+	}
+};
+
+struct floorceiling{
+	int floor;
+	int ceiling;
+
+	floorceiling(){
+
+	}
+
+	floorceiling(int floor,int ceiling){
+		this->floor = floor;
+		this->ceiling = ceiling;
+	}
+};
+
+struct iQuadruple{
+	int firstValue;
+	int secondValue;
+	int thirdValue;
+	int fourthValue;
+
+	iQuadruple(){
+		this->firstValue = INT_MAX;
+		this->secondValue = INT_MAX;
+		this->thirdValue = INT_MAX;
+		this->fourthValue = INT_MAX;
+	}
+
+	iQuadruple(int firstValue,int secondValue,int thirdValue,int fourthValue){
+		this->firstValue = firstValue;
+		this->secondValue = secondValue;
+		this->thirdValue = thirdValue;
+		this->fourthValue = fourthValue;
+	}
+};
+
+struct iValueIndex{
+	int value;
+	unsigned int firstValueIndex;
+	unsigned int secondvalueIndex;
+
+	iValueIndex(){
+
+	}
+
+	iValueIndex(int value,unsigned int firstIndex,unsigned int secondIndex){
+		this->value = value;
+		this->firstValueIndex = firstIndex;
+		this->secondvalueIndex = secondIndex;
+	}
+
+};
 #endif /* COMMONDS_H_ */
 
 /****************************************************************************************************************************************************/

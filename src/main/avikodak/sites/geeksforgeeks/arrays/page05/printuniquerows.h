@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: replaceeveryelementwithgreatest.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
- *  Created on			: Nov 27, 2014 :: 8:00:16 PM
+ *  File Name   		: printuniquerows.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\printuniquerows.h
+ *  Created on			: Dec 1, 2014 :: 4:08:29 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,57 +65,76 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REPLACEEVERYELEMENTWITHGREATEST_H_
-#define REPLACEEVERYELEMENTWITHGREATEST_H_
+#ifndef PRINTUNIQUEROWS_H_
+#define PRINTUNIQUEROWS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void replaceEveryElementON(vector<int> &userInput){
-	if(userInput.size() < 2){
+void printUniqueRowsON(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() ==  0){
 		return;
 	}
-	stack<int> auxSpace;
-	userInput.push_back(auxSpace);
-	userInput[userInput.size()-1] = INT_MAX;
-	int temp;
-	for(int counter = userInput.size()-2;counter>=0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
+	hash_map<int,unsigned int> frequencyMap;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	int	sum;
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		sum = 0;
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter]){
+				sum += pow(2,columnCounter);
+			}
 		}
-		temp = userInput[counter];
-		if(!auxSpace.empty()){
-			userInput[counter] = auxSpace.top();
+		if(frequencyMap.find(sum) == frequencyMap.end()){
+			frequencyMap[sum] = 1;
 		}else{
-			userInput[counter] = INT_MAX;
+			frequencyMap[sum] += 1;
 		}
-		auxSpace.push(temp);
+	}
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		sum = 0;
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter]){
+				sum += pow(2,columnCounter);
+			}
+		}
+		if(frequencyMap.find(sum)->second == 1){
+			for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+				printf("%d\t",userInput[rowCounter][columnCounter]);
+			}
+			PRINT_NEW_LINE;
+		}
 	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void replaceEveryElementON2(vector<int> &userInput){
-	if(userInput.size() < 2){
+void printUniqueRowsON2(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() ==  0){
 		return;
 	}
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				break;
+	bool isRowUnique;
+	for(unsigned int outerRowCounter = 0;outerRowCounter < userInput.size();outerRowCounter++){
+		isRowUnique = true;
+		for(unsigned int innerRowCounter = 0;innerRowCounter < userInput.size();innerRowCounter++){
+			for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+				if(userInput[outerRowCounter][columnCounter] != userInput[innerRowCounter][columnCounter]){
+					isRowUnique = false;
+					break;
+				}
 			}
 		}
-		if(innerCounter >= userInput.size()){
-			userInput[outerCounter] = INT_MAX;
-		}else{
-			userInput[outerCounter] = userInput[innerCounter];
+		if(isRowUnique){
+			for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+				printf("%d\t",userInput[outerRowCounter][columnCounter]);
+			}
+			PRINT_NEW_LINE;
 		}
 	}
 }
 
-#endif /* REPLACEEVERYELEMENTWITHGREATEST_H_ */
+#endif /* PRINTUNIQUEROWS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
