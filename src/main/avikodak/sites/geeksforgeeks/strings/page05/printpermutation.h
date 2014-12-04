@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: printpermutation.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printpermutation.h
+ *  Created on			: Dec 3, 2014 :: 10:41:24 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,44 +65,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef PRINTPERMUTATION_H_
+#define PRINTPERMUTATION_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
-}
-
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+void printPermutation(char *userInput,int startIndex,int endIndex){
+	if(startIndex == endIndex){
+		printf("%s",userInput);
 		return;
 	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
+	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
+		swap(userInput[startIndex],userInput[counter]);
+		printPermutation(userInput,startIndex+1,endIndex);
+		swap(userInput[startIndex],userInput[counter]);
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+
+#endif /* PRINTPERMUTATION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

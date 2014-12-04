@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: heapsort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\heapsort.h
+ *  Created on			: Dec 1, 2014 :: 10:14:57 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,44 +65,61 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef HEAPSORT_H_
+#define HEAPSORT_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+void hsHeapify(vector<int> &userInput,int index,int size = INT_MIN){
+	if(size == INT_MIN){
+		size = userInput.size();
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
-}
-
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+	if(index > size){
 		return;
 	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
+	int temp;
+	while(2*index+1 < size){
+		if(2*index + 2 < size){
+			if(userInput[2*index+1] < userInput[2*index+2]){
+				temp = userInput[2*index+1];
+				userInput[2*index+1] = userInput[index];
+				userInput[index] = temp;
+			}else{
+				temp = userInput[2*index+2];
+				userInput[2*index+2] = userInput[index];
+				userInput[index] = temp;
+			}
+		}else{
+			temp = userInput[2*index+1];
+			userInput[2*index+1] = userInput[index];
+			userInput[index] = temp;
+		}
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void heapSort(vector<int> &userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	for(int counter = userInput.size()/2;counter >= 0;counter--){
+		hsHeapify(userInput,counter);
+	}
+	int tempForSwap;
+	for(int counter = 0;counter < userInput.size();counter++){
+		tempForSwap = userInput[0];
+		userInput[userInput.size()-1-counter] = userInput[0];
+		userInput[userInput.size()-1-counter] = tempForSwap;
+		hsHeapify(userInput,0,userInput.size()-counter);
+	}
+	reverse(userInput.begin(),userInput.end());
+}
+
+
+#endif /* HEAPSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

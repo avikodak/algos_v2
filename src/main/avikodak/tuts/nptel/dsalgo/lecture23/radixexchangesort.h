@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: radixexchangesort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\radixexchangesort.h
+ *  Created on			: Dec 2, 2014 :: 12:21:42 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,44 +65,41 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef RADIXEXCHANGESORT_H_
+#define RADIXEXCHANGESORT_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
+void divideStepRadixSort(vector<int> &userInput,int bitposition){
+	int startCrawler = 0,endCrawler = userInput.size()-1,temp;
+	while(startCrawler < endCrawler){
+		while(!(userInput[startCrawler]&1 << bitposition)){
+			startCrawler++;
 		}
-		while(userInput[endIndex] > key){
-			endIndex--;
+		while(userInput[endCrawler] & 1 << bitposition){
+			endCrawler--;
 		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
+		if(startCrawler < endCrawler){
+			temp = userInput[startCrawler];
+			userInput[startCrawler] = userInput[endCrawler];
+			userInput[endCrawler] = temp;
 		}
 	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+	return endCrawler;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+void radixExchangeSort(vector<int> &userInput){
+	if(userInput.size() == 0){
 		return;
 	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
+	int binaryDigits = log2(max_element(userInput.begin(),userInput.end())) + 1;
+	for(int counter = binaryDigits-1;counter >= 0;counter++){
+		divideStepRadixSort(userInput,counter);
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+#endif /* RADIXEXCHANGESORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

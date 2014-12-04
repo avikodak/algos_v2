@@ -205,6 +205,15 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/booleanmatrix.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/countsmallerrightside.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findrepeatingmissing.h"
+
+
+#include "main/avikodak/sites/geeksforgeeks/strings/page05/maxfreqchar.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page05/removeduplicates.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page05/printduplicates.h"
+
+#include "main/avikodak/sites/geeksforgeeks/strings/page04/reversewordsstring.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page04/runlengthencoding.h"
+
 /*
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
 
@@ -304,9 +313,16 @@ void trieTester(){
 
 }
 
+void stringTester(){
+	char userInput[] = "geeksforgeeks";
+	//scanf("%s",userInput);
+	//reverseWordsInString(userInput);
+	printf("%s",runLengthEncoding(userInput));
+}
+
 int main() {
 	PRINT_NEW_LINE;
-	arrayTester();
+	stringTester();
 	return 0;
 }
 

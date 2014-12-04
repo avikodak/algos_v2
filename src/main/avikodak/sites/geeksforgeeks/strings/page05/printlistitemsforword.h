@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: printlistitemsforword.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printlistitemsforword.h
+ *  Created on			: Dec 4, 2014 :: 9:38:25 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,44 +65,88 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef PRINTLISTITEMSFORWORD_H_
+#define PRINTLISTITEMSFORWORD_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+hash_map<char,unsigned int> getCharsFrequencyMap(char *userInput){
+	hash_map<char,unsigned int> frequencyMap;
+	while(*userInput != '\0'){
+		if(frequencyMap.find(userInput[0]) == frequencyMap.end()){
+			frequencyMap[userInput[0]] = 1;
+		}else{
+			frequencyMap[userInput[0]] += 1;
+		}
+		userInput++;
+	}
+	return frequencyMap;
+}
+
+bool wordContainsAllCharacters(char *word,hash_map<char,unsigned int> &frequencyMap){
+	hash_map<char,unsigned int>::iterator itToFrequencyMap;
+	while(*word != '\0'){
+		if((itToFrequencyMap = frequencyMap.find(word[0])) == frequencyMap.end()){
+			return false;
+		}else{
+			if(itToFrequencyMap->second == 1){
+				frequencyMap.erase(itToFrequencyMap->first);
+			}else{
+				itToFrequencyMap->second--;
+			}
+		}
+		word++;
+	}
+	return true;
+}
+
+vector<char *> printListItemsForWordON(vector<char *> wordsList,char *userInput){
+	vector<char *> resultList;
+	if(resultList.size() == 0){
+		return resultList;
+	}
+	hash_map<char,unsigned int> frequencyMap;
+	hash_map<char,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < wordsList.size();counter++){
+		frequencyMap = getCharsFrequencyMap(wordsList[counter]);
+		if(wordContainsAllCharacters(wordsList[counter],frequencyMap)){
+			resultList.push_back(wordsList[counter]);
+		}
+		frequencyMap.clear();
+	}
+	return resultList;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+vector<char *> printListItemsForWordON2(vector<char *> wordsList,char *userInput){
+	vector<char *> resultWordList;
+	if(resultWordList.size() == 0){
+		return resultWordList;
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
+	char *keyCrawler,*wordCrawler;
+	for(unsigned int counter = 0;counter < wordsList.size();counter++){
+		wordCrawler = wordsList[counter];
+		keyCrawler = userInput;
+		while(*keyCrawler != '\0'){
+			while(*wordCrawler != '\0' && *wordCrawler != keyCrawler[0]){
+				wordCrawler++;
+			}
+			if(*wordCrawler == '\0'){
+				break;
+			}
+			keyCrawler++;
 		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
+		if(keyCrawler[0] == '\0'){
+			resultWordList.push_back(wordCrawler[counter]);
 		}
 	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+	return resultWordList;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* PRINTLISTITEMSFORWORD_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

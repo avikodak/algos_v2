@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: runlengthencoding.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\runlengthencoding.h
+ *  Created on			: Dec 4, 2014 :: 6:36:08 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -60,49 +60,45 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define RUN_LENGTH_ENCODING_MAX_DIGIT_COUNT 5
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef RUNLENGTHENCODING_H_
+#define RUNLENGTHENCODING_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+//Tested
+char *runLengthEncoding(char *userInput){
+	if(userInput == null){
+		return null;
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
+	char *encodedString = (char *)malloc(sizeof(char)*(2*strlen(userInput)+1));
+	int frequency;
+	int fillCounter = -1;
+	int innerCounter = 0;
+	char countInChar[RUN_LENGTH_ENCODING_MAX_DIGIT_COUNT];
+	while(*userInput != '\0'){
+		frequency = 1;
+		while(userInput[1] != '\0' && userInput[0] == userInput[1]){
+			frequency++;
+			userInput++;
 		}
-		while(userInput[endIndex] > key){
-			endIndex--;
+		encodedString[++fillCounter] = userInput[0];
+		sprintf(countInChar,"%d",frequency);
+		for(innerCounter = 0;countInChar[innerCounter] != '\0';innerCounter++){
+			encodedString[++fillCounter] = countInChar[innerCounter];
 		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
+		userInput++;
 	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+	return encodedString;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* RUNLENGTHENCODING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

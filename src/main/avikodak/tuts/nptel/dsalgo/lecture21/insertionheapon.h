@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: insertionheapon.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\insertionheapon.h
+ *  Created on			: Dec 1, 2014 :: 10:15:06 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,44 +65,46 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef INSERTIONHEAPON_H_
+#define INSERTIONHEAPON_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+void heapify(vector<int> &userInput,int index){
+	int temp;
+	while(2*index + 1 < userInput.size()){
+		if(2*index + 2 < userInput.size()){
+			if(userInput[index] > userInput[2*index + 1] || userInput[index] > userInput[2*index+2]){
+				if(userInput[2*index+1] < userInput[2*index+2]){
+					temp = userInput[2*index+1];
+					userInput[2*index+1] = userInput[index];
+					userInput[index] = temp;
+					index = 2*index+1;
+				}else{
+					temp = userInput[2*index+2];
+					userInput[2*index+2] = userInput[index];
+					userInput[index] = temp;
+					index = 2*index+2;
+				}
+			}
+		}else{
+			temp = userInput[2*index+1];
+			userInput[2*index+1] = userInput[index];
+			userInput[index] = temp;
+			index = 2*index+1;
+		}
+
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
+void insertionHeapON(vector<int> &userInput){
+	for(int counter = userInput.size()/2;counter >= 0;counter--){
+		heapify(userInput,counter);
 	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
 }
 
-#endif /* QUICKSORT_H_ */
+#endif /* INSERTIONHEAPON_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

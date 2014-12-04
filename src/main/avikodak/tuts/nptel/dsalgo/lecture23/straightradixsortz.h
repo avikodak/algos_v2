@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: straightradixsortz.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\straightradixsortz.h
+ *  Created on			: Dec 2, 2014 :: 11:56:51 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -64,46 +64,50 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
-
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef STRAIGHTRADIXSORTZ_H_
+#define STRAIGHTRADIXSORTZ_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+
+void reorganizeNumbersForDigitPosition(vector<int> &userInput,int digitPosition){
+	map<int,queue<int> > buckets;
+	map<int,queue<int> >::iterator itToBuckets;
+	int digit;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		digit = (userInput[counter]/pow(10,digitPosition))%10;
+		if((itToBuckets = buckets.find(digit)) != buckets.end()){
+			itToBuckets->second.push(userInput[counter]);
+		}else{
+			queue<int> digitBucket;
+			digitBucket.push(userInput[counter]);
+			buckets.insert(pair<int,queue<int> >(digit,digitBucket));
+		}
+
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
+	int fillCounter = -1;
+	for(itToBuckets = buckets.begin();itToBuckets != buckets.end();itToBuckets++){
+		while(!itToBuckets->second.empty()){
+			userInput[++fillCounter] = itToBuckets->second.front();
+			itToBuckets->second.pop();
 		}
 	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+void straightRadixSortWholeNumbers(vector<int> &userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
+	int totalDigits = log(max_element(userInput.begin(),userInput.end())) + 1;
+	for(unsigned int counter = 0;counter < totalDigits;counter++){
+		reorganizeNumbersForDigitPosition(userInput,counter);
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+#endif /* STRAIGHTRADIXSORTZ_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+

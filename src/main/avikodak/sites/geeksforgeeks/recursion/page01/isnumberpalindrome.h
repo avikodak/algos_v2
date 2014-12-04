@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: isnumberpalindrome.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\isnumberpalindrome.h
+ *  Created on			: Dec 3, 2014 :: 11:08:37 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,44 +65,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef ISNUMBERPALINDROME_H_
+#define ISNUMBERPALINDROME_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
+bool isNumberPalindrome(int crawler,int *origNumb){
+	if(crawler >=0 && crawler <= 9){
+		return true;
 	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
+	bool truthValue = isNumberPalindrome(crawler/10,origNumb);
+	if(!truthValue){
+		return false;
 	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+	*origNumb /= 10;
+	return crawler%1 == (*origNumb)%10;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* ISNUMBERPALINDROME_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

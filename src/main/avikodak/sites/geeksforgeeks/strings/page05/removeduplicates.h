@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
- *  Created on			: Nov 18, 2014 :: 2:48:46 PM
+ *  File Name   		: removeduplicates.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\removeduplicates.h
+ *  Created on			: Dec 3, 2014 :: 7:50:18 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -65,44 +65,51 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef REMOVEDUPLICATES_H_
+#define REMOVEDUPLICATES_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void removeDuplicatesHashmap(char *userInput){
+	if(userInput == null){
+		return;
+	}
+	hash_map<char,unsigned int> frequencyMap;
+	hash_map<char,unsigned int>::iterator itToFrequencyMap;
+	char *crawler = userInput;
+	while(*crawler != '\0'){
+		if(frequencyMap.find(crawler[0]) == frequencyMap.end()){
+			frequencyMap[crawler[0]] = 1;
+		}else{
+			frequencyMap[crawler[0]] += 1;
+		}
+		crawler++;
+	}
+	int fillCounter = -1;
+	crawler = userInput;
+	while(*crawler != '\0'){
+		itToFrequencyMap = frequencyMap.find(crawler[0]);
+		if(itToFrequencyMap->second > 1){
+			itToFrequencyMap->second--;
+		}else{
+			userInput[++fillCounter] = crawler[0];
+		}
+		crawler++;
+	}
+	userInput[++fillCounter] = '\0';
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
-}
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* REMOVEDUPLICATES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

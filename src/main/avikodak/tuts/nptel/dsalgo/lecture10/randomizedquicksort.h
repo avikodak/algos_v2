@@ -76,7 +76,8 @@ int dividingStepRandomizedQuickSort(vector<int> userInput,int startIndex,int end
 		return -1;
 	}
 	srand(time(NULL));
-	int key = userInput[rand() % endIndex + startIndex];
+	int pivotIndex = rand() % endIndex + startIndex;
+	int key = userInput[pivotIndex];
 	while(startIndex < endIndex){
 		while(userInput[startIndex] <= key){
 			startIndex++;
@@ -88,6 +89,7 @@ int dividingStepRandomizedQuickSort(vector<int> userInput,int startIndex,int end
 			swap(userInput[startIndex],userInput[endIndex]);
 		}
 	}
+	swap(userInput[pivotIndex],userInput[endIndex]);
 	return endIndex;
 }
 
