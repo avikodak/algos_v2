@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void postOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -80,6 +81,7 @@ void postOrderTraversal(itNode *ptr){
 	printf("%d\t",ptr->value);
 }
 
+//Tested
 void postOrderTraversalIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -108,6 +110,7 @@ void postOrderTraversalIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void postOrderTraversalIterativeV2(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -116,6 +119,7 @@ void postOrderTraversalIterativeV2(itNode *ptr){
 	itNode *currentNode = ptr;
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
+			auxSpace.push(currentNode);
 			currentNode = currentNode->left;
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
@@ -128,7 +132,7 @@ void postOrderTraversalIterativeV2(itNode *ptr){
 				auxSpace.pop();
 			}
 		}
-		currentNode = auxSpace.empty()?null:auxSpace.top();
+		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 	}
 }
 

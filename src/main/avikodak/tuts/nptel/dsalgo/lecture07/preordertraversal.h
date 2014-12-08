@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void preOrderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -80,6 +81,7 @@ void preOrderTraversal(itNode *ptr){
 	preOrderTraversal(ptr->right);
 }
 
+//Tested
 void preOrderTraversalIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -100,6 +102,7 @@ void preOrderTraversalIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void morrisPreorderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;

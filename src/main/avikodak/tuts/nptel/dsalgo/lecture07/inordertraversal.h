@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void inorderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -80,6 +81,7 @@ void inorderTraversal(itNode *ptr){
 	inorderTraversal(ptr->right);
 }
 
+//Tested
 void inorderTraversalIterative(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -99,6 +101,7 @@ void inorderTraversalIterative(itNode *ptr){
 	}
 }
 
+//Tested
 void morrisInorderTraversal(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -125,6 +128,7 @@ void morrisInorderTraversal(itNode *ptr){
 	}
 }
 
+//Tested
 void tFixLeftPtr(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -136,6 +140,7 @@ void tFixLeftPtr(itNode *ptr){
 	tFixLeftPtr(ptr->right);
 }
 
+//Tested
 void tFixRightPtr(itNode **ptr){
 	if(*ptr == null){
 		return;
@@ -147,12 +152,13 @@ void tFixRightPtr(itNode **ptr){
 	while(currentNode != null){
 		currentNode->right = prevNode;
 		prevNode = currentNode;
-		currentNode = currentNode->right;
+		currentNode = currentNode->left;
 	}
 	(*ptr) = prevNode;
 }
 
-void inorderTraversalDllConversionON(itNode *ptr){
+//Tested
+void itInorderTraversalDllConversionON(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
@@ -164,12 +170,13 @@ void inorderTraversalDllConversionON(itNode *ptr){
 	}
 }
 
+//Tested
 void inorderTraversalDllConversionONMain(itNode *ptr,itNode **head){
 	if(ptr == null){
 		return;
 	}
 	static itNode *prevNode = null;
-	inorderTraversalDllConversionONMain(ptr->left);
+	inorderTraversalDllConversionONMain(ptr->left,head);
 	ptr->left = prevNode;
 	if(prevNode == null){
 		(*head) = ptr;
@@ -177,9 +184,10 @@ void inorderTraversalDllConversionONMain(itNode *ptr,itNode **head){
 		prevNode->right = ptr;
 	}
 	prevNode = ptr;
-	inorderTraversalDllConversionONMain(ptr->right);
+	inorderTraversalDllConversionONMain(ptr->right,head);
 }
 
+//Tested
 void inorderTraversalDllConversionON(itNode *ptr){
 	if(ptr == null){
 		return;
@@ -192,6 +200,7 @@ void inorderTraversalDllConversionON(itNode *ptr){
 	}
 }
 
+//Tested
 itNode *convertTreeToDllON2Main(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -216,7 +225,8 @@ itNode *convertTreeToDllON2Main(itNode *ptr){
 	return ptr;
 }
 
-void inorderTraversalTreeDllConversionON(itNode *ptr){
+//Tested
+void inorderTraversalTreeDllConversionON2(itNode *ptr){
 	if(ptr == null){
 		return;
 	}

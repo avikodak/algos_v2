@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *getMinNodeBst(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -81,6 +82,7 @@ itNode *getMinNodeBst(itNode *ptr){
 	return getMinNodeBst(ptr->left);
 }
 
+//Tested
 itNode *getMinNodeBstIterative(itNode *ptr){
 	if(ptr == null){
 		return null;

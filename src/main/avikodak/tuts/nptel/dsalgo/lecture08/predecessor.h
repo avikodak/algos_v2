@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *predecessor(itNode *ptr,int value){
 	static bool keyFound = false;
 	if(ptr == null){
@@ -97,6 +98,7 @@ itNode *predecessor(itNode *ptr,int value){
 	}
 }
 
+//Tested
 itNode *predecessorIterative(itNode *ptr,int value){
 	if(ptr == null){
 		return null;

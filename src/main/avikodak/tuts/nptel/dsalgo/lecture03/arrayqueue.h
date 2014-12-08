@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -72,25 +72,29 @@ using namespace __gnu_cxx;
 class arrayqueue {
 private:
 	int *queue;
-	int frontIndex=-1,rearIndex=0;
-	unsigned int maxSize;
+	int frontIndex,rearIndex;
+	int maxSize;
 public:
 	arrayqueue(){
 		this->maxSize = 1024;
+		frontIndex = -1;
+		rearIndex = 0;
 		this->queue = (int *)malloc(sizeof(int)*maxSize);
 	}
 
-	arrayqueue(unsigned int size){
+	arrayqueue(int size){
 		this->maxSize = size;
 		this->queue = (int *)malloc(sizeof(int)*maxSize);
+		frontIndex = -1;
+		rearIndex = 0;
 	}
 
 	bool isFull(){
-		return rearIndex+1 == frontIndex;
+		return (rearIndex+1)%maxSize == frontIndex;
 	}
 
 	bool isEmpty(){
-		return frontIndex == -1;
+		return frontIndex == -1 ||  rearIndex == frontIndex;
 	}
 
 	void push(int value){
@@ -98,11 +102,10 @@ public:
 			throw "Queue is full";
 		}
 		if(frontIndex == -1){
-			queue[rearIndex++] = value;
 			frontIndex = 0;
-		}else{
-			queue[++frontIndex] = value;
 		}
+		queue[rearIndex] = value;
+		rearIndex = (rearIndex+1)%maxSize;
 	}
 
 	void pop(){

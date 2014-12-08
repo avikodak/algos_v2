@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *getSuccessor(itNode *ptr,int value){
 	static bool keyFound = false;
 	if(ptr == null){
@@ -97,6 +98,7 @@ itNode *getSuccessor(itNode *ptr,int value){
 	}
 }
 
+//Tested
 itNode *getSuccessorIterative(itNode *ptr,int value){
 	if(ptr == null){
 		return null;
@@ -108,7 +110,7 @@ itNode *getSuccessorIterative(itNode *ptr,int value){
 				return probableSuccessor;
 			}else{
 				currentNode = currentNode->right;
-				while(currentNode != null){
+				while(currentNode->left != null){
 					currentNode = currentNode->left;
 				}
 				return currentNode;
@@ -120,6 +122,7 @@ itNode *getSuccessorIterative(itNode *ptr,int value){
 			currentNode = currentNode->right;
 		}
 	}
+	return currentNode;
 }
 
 #endif /* SUCCESSOR_H_ */

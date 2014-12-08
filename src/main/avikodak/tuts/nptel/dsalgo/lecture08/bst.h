@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void insertIntoBst(itNode **root,itNode *currentNode,int userInput){
 	if(*root == null){
 		(*root) = new itNode(userInput);
@@ -96,6 +97,7 @@ void insertIntoBst(itNode **root,itNode *currentNode,int userInput){
 	}
 }
 
+//Tested
 void insertIntoBstIterative(itNode **root,int userInput){
 	if(*root == null){
 		(*root) = new itNode(userInput);

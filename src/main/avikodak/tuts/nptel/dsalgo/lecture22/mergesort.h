@@ -71,8 +71,9 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void mMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
-	int firstCrawler = firstCrawler,secondCrawler = middleIndex+1;
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
 	vector<int> auxSpace;
 	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
 		if(firstCrawler > middleIndex || secondCrawler > endIndex){
@@ -98,7 +99,8 @@ void mMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	}
 }
 
-void mMergeSort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+void mMergeSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex || startIndex == endIndex){
 		return;
 	}

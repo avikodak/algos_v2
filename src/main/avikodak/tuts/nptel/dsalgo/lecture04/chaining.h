@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -69,19 +69,22 @@ using namespace __gnu_cxx;
 #ifndef CHAINING_H_
 #define CHAINING_H_
 
+//Tested
 class iHashmap{
 private:
 	sillNode *headPtr[SIZE_OF_HASHMAP];
 
+	//Tested
 	int getHashValue(int userInput){
 		return userInput % SIZE_OF_HASHMAP;
 	}
 public:
+	//Tested
 	void insert(int userInput){
 		int hashVal = getHashValue(userInput);
 		sillNode *crawler = headPtr[hashVal];
 		if(crawler == null){
-			headPtr = new sillNode(userInput);
+			headPtr[hashVal] = new sillNode(userInput);
 			return;
 		}else{
 			while(crawler->next != null){
@@ -90,10 +93,13 @@ public:
 				}
 				crawler = crawler->next;
 			}
-			crawler->next = new sillNode(userInput);
+			if(crawler->value != userInput){
+				crawler->next = new sillNode(userInput);
+			}
 		}
 	}
 
+	//Tested
 	bool search(int userInput){
 		int hashVal = getHashValue(userInput);
 		sillNode *crawler = headPtr[hashVal];
@@ -101,10 +107,12 @@ public:
 			if(crawler->value == userInput){
 				return true;
 			}
+			crawler = crawler->next;
 		}
 		return false;
 	}
 
+	//Tested
 	void remove(int userInput){
 		int hashVal = getHashValue(userInput);
 		sillNode *crawler = headPtr[hashVal],*nodeToBeDeleted = null;

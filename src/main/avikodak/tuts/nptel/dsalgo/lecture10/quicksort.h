@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+int divideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return -1;
 	}
@@ -92,8 +93,8 @@ int divideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
-
-void quicksort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+void quicksort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return;
 	}

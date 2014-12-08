@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -68,6 +68,7 @@ using namespace __gnu_cxx;
 #ifndef TREEFROMPREINORDER_H_
 #define TREEFROMPREINORDER_H_
 
+//Tested
 int getInorderIndexForValue(vector<int> inOrder,int startIndex,int endIndex,int value){
 	if(inOrder.size() == 0 || startIndex > endIndex){
 		return UINT_MAX;
@@ -80,6 +81,7 @@ int getInorderIndexForValue(vector<int> inOrder,int startIndex,int endIndex,int 
 	return UINT_MAX;
 }
 
+//Tested
 itNode *constructTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return null;
@@ -93,30 +95,35 @@ itNode *constructTreeFromPreInorder(vector<int> preOrder,vector<int> inOrder,int
 	return node;
 }
 
+//Tested
 void setIndexForValues(vector<int> inorder,hash_map<int,unsigned int> &valueIndexMap){
 	if(inorder.size() == 0){
 		return;
 	}
-	for(unsigned int counter = 0;counter < valueIndexMap.size();counter++){
+	for(unsigned int counter = 0;counter < inorder.size();counter++){
 		valueIndexMap.insert(pair<int,unsigned int>(inorder[counter],counter));
 	}
 }
 
-itNode *constructTreeFromPreInorderV2(vector<int> preOrder,vector<int> inOrder,int startIndex,int endIndex){
-	if(startIndex > endIndex || preOrder.size() == 0 || inOrder.size() == 0){
+//Tested
+itNode *constructTreeFromPreInorderV2Main(vector<int> preOrder,vector<int> inOrder,int startIndex,int endIndex,hash_map<int,unsigned int> &valueIndexMap){
+	static unsigned int preOrderIndex = 0;
+	if(startIndex > endIndex || preOrderIndex >= preOrder.size()|| preOrder.size() == 0 || inOrder.size() == 0){
 		return null;
 	}
-	static hash_map<int,unsigned int> valueIndexMap;
-	if(valueIndexMap.size() == 0){
-		setIndexForValues(inOrder,valueIndexMap);
-	}
-	static int preOrderIndex = -1;
-	int value = preOrder[preOrderIndex];
+	int value = preOrder[preOrderIndex++];
 	itNode *node = new itNode(value);
 	int index = (int)valueIndexMap.find(value)->second;
-	node->left = constructTreeFromPreInorderV2(preOrder,inOrder,startIndex,index-1);
-	node->right = constructTreeFromPreInorder(preOrder,inOrder,index+1,endIndex);
-	return value;
+	node->left = constructTreeFromPreInorderV2Main(preOrder,inOrder,startIndex,index-1,valueIndexMap);
+	node->right = constructTreeFromPreInorderV2Main(preOrder,inOrder,index+1,endIndex,valueIndexMap);
+	return node;
+}
+
+//Tested
+itNode *constructTreeFromPreInorderV2(vector<int> preOrder,vector<int> inOrder){
+	hash_map<int,unsigned int> valueIndexMap;
+	setIndexForValues(inOrder,valueIndexMap);
+	return constructTreeFromPreInorderV2Main(preOrder,inOrder,0,inOrder.size(),valueIndexMap);
 }
 
 #endif /* TREEFROMPREINORDER_H_ */

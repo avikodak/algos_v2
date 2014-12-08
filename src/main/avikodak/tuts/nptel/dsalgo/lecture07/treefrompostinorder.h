@@ -80,17 +80,20 @@ int getIndexOfValueFromInorder(vector<int> inOrder,int value,int startIndex,int 
 	return INT_MAX;
 }
 
-
-itNode *constructTreeFromPostInorder(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int &postOrderIndex){
+itNode *constructTreeFromPostInorderMain(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int postOrderStartIndex,int postOrderEndIndex){
 	if(startIndex > endIndex || postOrder.size() == 0 || inOrder.size() == 0 || postOrderIndex < 0){
 		return null;
 	}
-	int value = postOrderIndex--;
+	int value = postOrder[postOrderEndIndex];
 	itNode *node = new itNode(value);
 	int index = getIndexOfValueFromInorder(inOrder,value,startIndex,endIndex);
-	node->left = constructTreeFromPostInorder(postOrder,inOrder,startIndex,index-1,postOrderIndex);
-	node->right = constructTreeFromPostInorder(postOrder,inOrder,index+1,endIndex,postOrderIndex);
+	/*node->right = constructTreeFromPostInorderMain(postOrder,inOrder,startIndex,index-1,postOrderStartIndex,postOrderStartIndex);
+	node->left = constructTreeFromPostInorderMain(postOrder,inOrder,index+1,endIndex,postOrderIndex);*/
 	return node;
+}
+
+itNode *constructTreeFromPostInorder(vector<int> postOrder,vector<int> inOrder){
+	return constructTreeFromPostInorderMain(postOrder,inOrder,0,inOrder.size()-1,0,postOrder.size()-1);
 }
 
 void setValueIndexMap(vector<int> inOrder,hash_map<int,unsigned int> &valueIndexMap){
@@ -110,7 +113,7 @@ itNode *constructTreeFromPostInOrderV2(vector<int> postOrder,vector<int> inOrder
 	if(valueIndexMap.size() == 0){
 		setValueIndexMap(inOrder,valueIndexMap);
 	}
-	int value = postOrderIndex--;
+	int value = postOrder[postOrderIndex--];
 	itNode *node = new itNode(value);
 	int index = valueIndexMap.find(value)->second;
 	node->left = constructTreeFromPostInOrderV2(postOrder,inOrder,startIndex,index-1,postOrderIndex);

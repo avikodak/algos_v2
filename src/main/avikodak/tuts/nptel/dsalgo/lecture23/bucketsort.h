@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void bucketSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -85,7 +86,7 @@ void bucketSort(vector<int> &userInput){
 		}
 	}
 	unsigned int counter = 0;
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();frequencyMap++){
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
 		while(itToFrequencyMap->second--){
 			userInput[counter++] = itToFrequencyMap->first;
 		}

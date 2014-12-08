@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *searchInBst(itNode *ptr,int userInput){
 	if(ptr == null){
 		return null;
@@ -84,6 +85,7 @@ itNode *searchInBst(itNode *ptr,int userInput){
 	}
 }
 
+//Tested
 itNode *searchInBstIterative(itNode *ptr,int userInput){
 	if(ptr == null){
 		return null;

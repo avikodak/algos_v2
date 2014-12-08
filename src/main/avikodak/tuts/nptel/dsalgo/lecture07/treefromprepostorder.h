@@ -82,13 +82,12 @@ int getIndexFromPostOrder(vector<int> postOrder,int startIndex,int endIndex,int 
 
 itNode *constructTreeFromPrePostOrder(vector<int> preOrder,vector<int> postOrder,int startIndex,int endIndex){
 	static int preOrderIndex = 0;
-	if(preOrderIndex >= preOrder.size() || startIndex > endIndex){
+	if(preOrderIndex >= (int)preOrder.size() || startIndex > endIndex){
 		return null;
 	}
-	int value = preOrder[preOrderIndex];
-	itNode *node = new itNode(preOrder[preOrderIndex]);
-	preOrderIndex++;
-	if(abs(startIndex - endIndex) < 1 || preOrderIndex >= preOrder.size()){
+	int value = preOrder[preOrderIndex++];
+	itNode *node = new itNode(value);
+	if(abs(startIndex - endIndex) < 1 || preOrderIndex >= (int)preOrder.size()){
 		return node;
 	}
 	int index = getIndexFromPostOrder(postOrder,startIndex,endIndex,preOrder[preOrderIndex]);

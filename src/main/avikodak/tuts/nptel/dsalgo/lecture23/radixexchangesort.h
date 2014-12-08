@@ -71,8 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
-void divideStepRadixSort(vector<int> &userInput,int bitposition){
-	int startCrawler = 0,endCrawler = userInput.size()-1,temp;
+int divideStepRadixSort(vector<int> &userInput,int startIndex,int endIndex,int bitposition){
+	int startCrawler = startIndex,endCrawler = endIndex;
 	while(startCrawler < endCrawler){
 		while(!(userInput[startCrawler]&1 << bitposition)){
 			startCrawler++;
@@ -81,22 +81,31 @@ void divideStepRadixSort(vector<int> &userInput,int bitposition){
 			endCrawler--;
 		}
 		if(startCrawler < endCrawler){
-			temp = userInput[startCrawler];
-			userInput[startCrawler] = userInput[endCrawler];
-			userInput[endCrawler] = temp;
+			swap(userInput[startCrawler],userInput[endCrawler]);
 		}
 	}
 	return endCrawler;
+}
+
+void radixExchangeSort(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
+	if(startIndex > endIndex){
+		return;
+	}
+	int dividingIndex = divideStepRadixSort(userInput,startIndex,endIndex,bitPosition);
 }
 
 void radixExchangeSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
 	}
-	int binaryDigits = log2(max_element(userInput.begin(),userInput.end())) + 1;
-	for(int counter = binaryDigits-1;counter >= 0;counter++){
-		divideStepRadixSort(userInput,counter);
+	int maxElement = INT_MIN;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(maxElement < userInput[counter]){
+			maxElement = userInput[counter];
+		}
 	}
+	int binaryDigits = log2(maxElement) + 1;
+
 }
 
 #endif /* RADIXEXCHANGESORT_H_ */

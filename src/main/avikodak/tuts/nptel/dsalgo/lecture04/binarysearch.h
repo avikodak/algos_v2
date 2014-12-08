@@ -72,19 +72,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-unsigned int binarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
+//Tested
+int binarySearchMain(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
-		return -1;
+		return INT_MIN;
 	}
 	unsigned int middleIndex = (startIndex  + endIndex)/2;
 	if(userInput[middleIndex] == key){
 		return middleIndex;
 	}
 	if(userInput[middleIndex] > key){
-		return binarySearch(userInput,key,startIndex,middleIndex-1);
+		return binarySearchMain(userInput,key,startIndex,middleIndex-1);
 	}else{
-		return binarySearch(userInput,key,middleIndex+1,endIndex);
+		return binarySearchMain(userInput,key,middleIndex+1,endIndex);
 	}
+}
+
+//Tested
+int binarySearch(vector<int> userInput,int key){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	return binarySearchMain(userInput,key,0,userInput.size()-1);
 }
 
 #endif /* BINARYSEARCH_H_ */

@@ -40,6 +40,7 @@
 #include <limits.h>
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/linkedlistds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
@@ -49,6 +50,7 @@
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -216,7 +218,7 @@
 
 /*
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
-
+ */
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/getmaxelement.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/insertionsort.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture01/prefixaverages.h"
@@ -226,21 +228,51 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/tightstrategy.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicstack.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture02/dynamicset.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture02/span.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture03/arrayqueue.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture04/binarysearch.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture04/chaining.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture04/linearsearch.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture06/ttreeutil.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture07/eulertraversal.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture07/inordertraversal.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture07/postordertraversal.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture07/preordertraversal.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture07/treefrompreinorder.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/balancedbstfromsortedvector.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/bst.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/minimumbst.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/maxvalbst.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/predecessor.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/ordereddictionary.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/successor.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/searchinbst.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture08/unordereddictionary.h"  // To Be Tested
+#include "main/avikodak/tuts/nptel/dsalgo/lecture09/bstsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture10/quicksort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture10/randomizedquicksort.h" // To Be Tested
+#include "main/avikodak/tuts/nptel/dsalgo/lecture22/mergesort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture22/selectionsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture23/bucketsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencylist.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencymatrix.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
 
+/*
 #include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
 #include "main/avikodak/tuts/saurabhacademy/coinchange.h"
 #include "main/avikodak/tuts/saurabhacademy/generatesets.h"
 #include "main/avikodak/tuts/saurabhacademy/permutation.h"
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
-*/
+ */
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
 	vector<int> userInput;
 	userInput.clear();
-	userInput = getVectorForUserInput();
-	printIVector(countSmallerValueRightSideBST(userInput));//7 12 1 2 3 0 11 4
+	userInput = generateIRandomVector(10,1,50);
+
 }
 
 void p(inrNode *ptr){
@@ -265,7 +297,7 @@ void treeTester(){
 	//treeutils *utils = new treeutils();
 	//vector<int> userInput = getVectorForUserInput();
 	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
+	//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
 }
 
 void avlTreeTester(){
@@ -322,7 +354,7 @@ void stringTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	stringTester();
+	arrayTester();
 	return 0;
 }
 

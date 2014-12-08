@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void getBstFromVectorMain(itNode **root,itNode *currentNode,vector<int> userInput,unsigned int counter){
 	if(counter >= userInput.size()){
 		return;
@@ -99,6 +100,7 @@ void getBstFromVectorMain(itNode **root,itNode *currentNode,vector<int> userInpu
 	}
 }
 
+//Tested
 void setVectorWithInorderValues(itNode *ptr,vector<int> &userInput){
 	if(ptr == null){
 		return;
@@ -109,14 +111,67 @@ void setVectorWithInorderValues(itNode *ptr,vector<int> &userInput){
 	setVectorWithInorderValues(ptr->right,userInput);
 }
 
+//Tested
 void bstSort(vector<int> &userInput){
 	if(userInput.size() <= 1){
 		return;
 	}
 	itNode *rootBST = null;
 	getBstFromVectorMain(&rootBST,rootBST,userInput,0);
-	setVectorWithInorderValues(ptr,userInput);
+	setVectorWithInorderValues(rootBST,userInput);
 }
+
+//Tested
+vector<int> getVectorWithInorderIterative(itNode *ptr){
+	vector<int> inorderValues;
+	if(ptr == null){
+		return inorderValues;
+	}
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	while(!auxSpace.empty() || currentNode != null){
+		if(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}else{
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			inorderValues.push_back(currentNode->value);
+			currentNode = currentNode->right;
+		}
+	}
+	return inorderValues;
+}
+
+//Tested
+vector<int> getVectorWithInorderValuesMorrisInorder(itNode *ptr){
+	vector<int> inorderValues;
+	if(ptr == null){
+		return inorderValues;
+	}
+	itNode *currentNode = ptr,*temp;
+	while(currentNode != null){
+		if(currentNode->left != null){
+			temp = currentNode->left;
+			while(temp->right != null && temp->right != currentNode){
+				temp = temp->right;
+			}
+			if(temp->right == null){
+				temp->right = currentNode;
+				currentNode = currentNode->left;
+			}else{
+				temp->right = null;
+				inorderValues.push_back(currentNode->value);
+				currentNode = currentNode->right;
+			}
+		}else{
+			inorderValues.push_back(currentNode->value);
+			currentNode = currentNode->right;
+		}
+	}
+	return inorderValues;
+}
+
 
 #endif /* BSTSORT_H_ */
 

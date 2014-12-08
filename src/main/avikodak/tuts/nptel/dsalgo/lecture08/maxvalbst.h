@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 itNode *getMaxBst(itNode *ptr){
 	if(ptr == null){
 		return null;
@@ -81,6 +82,7 @@ itNode *getMaxBst(itNode *ptr){
 	return getMaxBst(ptr->right);
 }
 
+//Tested
 itNode *getMaxBstIterative(itNode *ptr){
 	if(ptr == null){
 		return null;

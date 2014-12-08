@@ -68,11 +68,12 @@ using namespace __gnu_cxx;
 #ifndef TTREEUTIL_H_
 #define TTREEUTIL_H_
 
+//Tested
 itNode *getTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0){
 	if(currentIndex >= userInput.size()){
 		return null;
 	}
-	itNode *node = userInput[currentIndex];
+	itNode *node = new itNode(userInput[currentIndex]);
 	node->left = getTreeFromVector(userInput,2*currentIndex+1);
 	node->right = getTreeFromVector(userInput,2*currentIndex+2);
 	return node;

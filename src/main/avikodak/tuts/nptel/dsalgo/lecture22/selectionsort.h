@@ -71,17 +71,20 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void selectionsortON2(vector<int> &userInput){
 	if(userInput.size() < 1){
 		return;
 	}
-	int minVal;
+	int minValIndex;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		minVal = userInput[outerCounter];
+		minValIndex = outerCounter;
 		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			minVal = min(minVal,userInput[innerCounter]);
+			if(userInput[minValIndex] > userInput[innerCounter]){
+				minValIndex = innerCounter;
+			}
 		}
-		userInput[outerCounter] = minVal;
+		swap(userInput[outerCounter],userInput[minValIndex]);
 	}
 }
 

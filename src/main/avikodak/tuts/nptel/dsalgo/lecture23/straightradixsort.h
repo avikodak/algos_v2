@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -98,7 +98,13 @@ void  straightRadixSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
 	}
-	int totalBits = log2(max_element(userInput.begin(),userInput.end()))+1;
+	int maxElement = INT_MIN;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(maxElement < userInput[counter]){
+			maxElement = userInput[counter];
+		}
+	}
+	int totalBits = log2(maxElement) + 1;
 	for(int counter = 0;counter < totalBits;counter++){
 		reorganizeStraightRadixSort(userInput,counter);
 	}

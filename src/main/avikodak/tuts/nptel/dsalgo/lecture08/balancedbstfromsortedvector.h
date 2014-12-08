@@ -70,15 +70,21 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *getBalancedBstSortedArray(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+itNode *getBalancedBstSortedArrayMain(vector<int> userInput,int startIndex,int endIndex){
 	if(userInput.size() == 0 || startIndex > endIndex){
 		return null;
 	}
 	int middleIndex = (startIndex + endIndex) / 2;
 	itNode *node = new itNode(userInput[middleIndex]);
-	node->left = getBalancedBstSortedArray(userInput,startIndex,middleIndex-1);
-	node->right = getBalancedBstSortedArray(userInput,middleIndex+1,endIndex);
+	node->left = getBalancedBstSortedArrayMain(userInput,startIndex,middleIndex-1);
+	node->right = getBalancedBstSortedArrayMain(userInput,middleIndex+1,endIndex);
 	return node;
+}
+
+//Tested
+itNode *getBalancedBstSortedArray(vector<int> userInput){
+	return getBalancedBstSortedArrayMain(userInput,0,userInput.size()-1);
 }
 
 #endif /* BALANCEDBSTFROMSORTEDVECTOR_H_ */

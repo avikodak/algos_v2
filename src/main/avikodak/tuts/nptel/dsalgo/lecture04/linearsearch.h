@@ -69,6 +69,7 @@ using namespace __gnu_cxx;
 #ifndef LINEARSEARCH_H_
 #define LINEARSEARCH_H_
 
+//Tested
 unsigned int linearSearch(vector<int> userInput,int value,unsigned int index = 0){
 	if(index >= userInput.size()){
 		return UINT_MAX;
@@ -76,7 +77,8 @@ unsigned int linearSearch(vector<int> userInput,int value,unsigned int index = 0
 	return userInput[index] == value?index:linearSearch(userInput,value,index+1);
 }
 
-unsigned int linearSearch(vector<int> userInput,int value){
+//Tested
+unsigned int linearSearchIterative(vector<int> userInput,int value){
 	if(userInput.size() == 0){
 		return UINT_MAX;
 	}

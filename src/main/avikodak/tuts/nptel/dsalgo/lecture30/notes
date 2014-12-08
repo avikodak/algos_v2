@@ -1,0 +1,9 @@
+Spanning Trees
+==============
+	A subgraph which contains all vertices and is a tree 
+	Length of spanning tree = Sum of lengths of edges in the tree
+	Krushkals Algo
+		Greedy algo
+		Take the best option available without thinking about the future
+	MST is unique if edge lengths are unique
+			
