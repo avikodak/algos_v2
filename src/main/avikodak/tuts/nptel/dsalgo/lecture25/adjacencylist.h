@@ -71,12 +71,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<vector<int> > getAdjacencyListForUndirectedGraph(){
-	vector<vector<int> > adjacencyList;
 	int noOfVertices,noOfEdges;
 	int sourceVertex,destinationVertex;
 	scanf("%d",&noOfVertices);
-	adjacencyList.reserve(noOfVertices);
+	vector<vector<int> > adjacencyList(noOfVertices);
 	scanf("%d",&noOfEdges);
 	while(noOfEdges--){
 		scanf("%d %d",&sourceVertex,&destinationVertex);
@@ -86,12 +86,12 @@ vector<vector<int> > getAdjacencyListForUndirectedGraph(){
 	return adjacencyList;
 }
 
+//Tested
 vector<vector<int> > getAdjacencyListForDirectedGraph(){
-	vector<vector<int> > adjacencyList;
 	int noOfVertices,noOfEdges;
 	int sourceVertex,destinationVertex;
 	scanf("%d",&noOfVertices);
-	adjacencyList.reserve(noOfVertices);
+	vector<vector<int> > adjacencyList(noOfVertices);
 	scanf("%d",&noOfEdges);
 	while(noOfEdges--){
 		scanf("%d %d",&sourceVertex,&destinationVertex);

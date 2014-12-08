@@ -70,13 +70,13 @@ using namespace __gnu_cxx;
 #ifndef ADJACENCYMATRIX_H_
 #define ADJACENCYMATRIX_H_
 
+//Tested
 vector<vector<bool> > getAdjacencyMatrixForUndirectedGraph(){
 	int noOfVertices;
 	scanf("%d",&noOfVertices);
-	vector<vector<bool> > adjacencyMatrix;
-	adjacencyMatrix.reserve(noOfVertices);
+	vector<vector<bool> > adjacencyMatrix(noOfVertices);
 	for(int outerCounter = 0;outerCounter < noOfVertices;outerCounter++){
-		adjacencyMatrix[outerCounter].reserve(noOfVertices);
+		adjacencyMatrix[outerCounter].resize(noOfVertices);
 		for(int innerCounter = 0;innerCounter < noOfVertices;innerCounter++){
 			adjacencyMatrix[outerCounter][innerCounter] = false;
 		}
@@ -91,13 +91,13 @@ vector<vector<bool> > getAdjacencyMatrixForUndirectedGraph(){
 	return adjacencyMatrix;
 }
 
+//Tested
 vector<vector<bool> > getAdjacencyMatrixForDirectedGraph(){
 	int noOfVertices;
 	scanf("%d",&noOfVertices);
-	vector<vector<bool> > adjacencyMatrix;
-	adjacencyMatrix.reserve(noOfVertices);
+	vector<vector<bool> > adjacencyMatrix(noOfVertices);
 	for(int outerCounter = 0;outerCounter < noOfVertices;outerCounter++){
-		adjacencyMatrix[outerCounter].reserve(noOfVertices);
+		adjacencyMatrix[outerCounter].resize(noOfVertices);
 		for(int innerCounter = 0;innerCounter < noOfVertices;innerCounter++){
 			adjacencyMatrix[outerCounter][innerCounter] = false;
 		}

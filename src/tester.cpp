@@ -352,9 +352,14 @@ void stringTester(){
 	printf("%s",runLengthEncoding(userInput));
 }
 
+void graphTester(){
+	vector<vector<bool> > adjacencyMatrix = getAdjacencyMatrixForDirectedGraph();
+	printIVector(getBfsLevels(adjacencyMatrix,0),false);//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
+}
+
 int main() {
 	PRINT_NEW_LINE;
-	arrayTester();
+	graphTester();
 	return 0;
 }
 

@@ -74,6 +74,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> getBfsLevels(vector<vector<int> > adjacencyList,unsigned int sourceVertex){
 	if(sourceVertex >= adjacencyList.size()){
 		throw "Invalid vertex";
@@ -98,6 +99,7 @@ vector<int> getBfsLevels(vector<vector<int> > adjacencyList,unsigned int sourceV
 	return bfsLevelsForVertex;
 }
 
+//Tested
 vector<int> getBfsLevels(vector<vector<bool> > adjacencyMatrix,unsigned int sourceVertex){
 	if(sourceVertex >= adjacencyMatrix.size()){
 		throw "Invalid vertex";
