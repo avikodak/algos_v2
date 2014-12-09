@@ -65,24 +65,43 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef ISGRAPHACYCLIC_H_
+#define ISGRAPHACYCLIC_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+bool isGraphAcyclic(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() == 0){
+		return true;
+	}
+	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+	vector<int> predecessor(adjacencyList.size(),INT_MIN);
+	queue<int> auxSpace;
+	int currentNode;
+	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
+		auxSpace.push(counter);
+		while(!auxSpace.empty()){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();adjacentNodeCounter++){
+				if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == INT_MIN){
+					predecessor[adjacencyList[currentNode][adjacentNodeCounter]] = currentNode;
+					bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = bfsLevels[currentNode];
+					auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
+				}else{
+					if(predecessor[currentNode] != adjacencyList[currentNode][adjacentNodeCounter]){
+						return false;
+					}
+				}
+			}
+		}
+	}
+	return true;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
+#endif /* ISGRAPHACYCLIC_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef ISGRAPHACYCLIC_H_
-#define ISGRAPHACYCLIC_H_
-
-
-#endif /* ISGRAPHACYCLIC_H_ */

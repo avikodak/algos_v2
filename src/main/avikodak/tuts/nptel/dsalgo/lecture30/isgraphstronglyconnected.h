@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkforpath.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\checkforpath.h
- *  Created on			: Dec 4, 2014 :: 10:36:56 PM
+ *  File Name   		: isgraphstronglyconnected.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture30\isgraphstronglyconnected.h
+ *  Created on			: Dec 9, 2014 :: 11:22:18 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,38 +67,47 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHECKFORPATH_H_
-#define CHECKFORPATH_H_
+#ifndef ISGRAPHSTRONGLYCONNECTED_H_
+#define ISGRAPHSTRONGLYCONNECTED_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N+M) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-bool checkForPath(vector<vector<int> > adjacencyList,int sourceVertex,int destinationVertex){
-	if(sourceVertex >= (int)adjacencyList.size()){
-		return false;
+int isGraphStronglyConnected(vector<vector<int> > adjacencyList,bool &flag,int sourceVertex = 0){
+	if(adjacencyList.size() == 0){
+		return true;
 	}
-	vector<bool> visitedFlags(adjacencyList.size(),false);
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentIndex;
-	while(!auxSpace.empty()){
-		currentIndex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
-			if(!visitedFlags[adjacencyList[currentIndex][counter]]){
-				if(adjacencyList[currentIndex][counter] == destinationVertex){
-					return true;
+	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+	static vector<int> predecessor(adjacencyList.size());
+	static int timeCounter = -1;
+	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+	int minArrivalTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] == INT_MIN){
+			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+			minArrivalTime = min(minArrivalTime,isGraphStronglyConnected(adjacencyList,flag,adjacencyList[sourceVertex][counter]));
+			if(!flag){
+				return INT_MAX;
+			}
+		}else{
+			if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] > arrivalDepartureTimes[sourceVertex]){
+				if(adjacencyList[sourceVertex][counter] != predecessor[sourceVertex]){
+					minArrivalTime = min(minArrivalTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
 				}
-				visitedFlags[adjacencyList[currentIndex][counter]] = true;
-				auxSpace.push(adjacencyList[currentIndex][counter]);
 			}
 		}
 	}
-	return false;
+	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+	flag = sourceVertex == 0?true:minArrivalTime < arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+	return minArrivalTime;
 }
 
-#endif /* CHECKFORPATH_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N*M) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+
+#endif /* ISGRAPHSTRONGLYCONNECTED_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

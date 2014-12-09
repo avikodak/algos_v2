@@ -257,7 +257,7 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencylist.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencymatrix.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
-
+#include "main/avikodak/tuts/nptel/dsalgo/lecture25/checkforpath.h"
 /*
 #include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
 #include "main/avikodak/tuts/saurabhacademy/coinchange.h"
@@ -353,8 +353,9 @@ void stringTester(){
 }
 
 void graphTester(){
-	vector<vector<bool> > adjacencyMatrix = getAdjacencyMatrixForDirectedGraph();
-	printIVector(getBfsLevels(adjacencyMatrix,0),false);//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
+	vector<vector<int> > adjacencyList = getAdjacencyListForDirectedGraph();
+	printf("%d\n",checkForPath(adjacencyList,1,3));//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
+	printf("%d",checkForPath(adjacencyList,3,1));//4 6 0 1 0 2 1 2 2 0 2 3 3 3
 }
 
 int main() {

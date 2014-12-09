@@ -71,28 +71,30 @@ using namespace __gnu_cxx;
 #define DFSINDIRECTEDGRAPH_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+void setDfsTimesInDirectedGraphMain(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes){
+	if(adjacencyList.size() == 0 || sourceVertex  >= adjacencyList.size()){
+		return;
+	}
+	static int timeCounter = -1;
+	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN){
+			setDfsTimesInDirectedGraphMain(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
+		}
+	}
+	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+vector<dfsTimes *> getDfsTimesInDirectedGraph(vector<vector<int> > adjacencyList,int sourceVertex){
+	vector<dfsTimes *> arrivalDepartureTimes;
+	if(adjacencyList.size() == 0){
+		return arrivalDepartureTimes;
+	}
+	setDfsTimesInDirectedGraphMain(adjacencyList,sourceVertex,arrivalDepartureTimes);
+	return arrivalDepartureTimes;
+}
 
 #endif /* DFSINDIRECTEDGRAPH_H_ */
 

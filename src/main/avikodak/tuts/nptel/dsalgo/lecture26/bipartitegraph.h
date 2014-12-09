@@ -65,24 +65,45 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef BIPARTITEGRAPH_H_
+#define BIPARTITEGRAPH_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+bool isGraphBipartite(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() == 0){
+		return false;
+	}
+	queue<int> auxSpace;
+	int currentNode;
+	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+	bfsLevels[0] = 0;
+	for(unsigned int counter = 0;counter < bfsLevels.size();counter++){
+		if(bfsLevels[counter] == INT_MIN){
+			auxSpace.push(counter);
+			bfsLevels[counter] = 0;
+			while(!auxSpace.empty()){
+				currentNode = auxSpace.front();
+				auxSpace.pop();
+				for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();adjacentNodeCounter++){
+					if(adjacencyList[currentNode][adjacentNodeCounter] == INT_MIN){
+						bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = 1 + bfsLevels[currentNode];
+						auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
+					}else{
+						if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == bfsLevels[currentNode]){
+							return false;
+						}
+					}
+				}
+			}
+		}
+	}
+	return true;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
+#endif /* BIPARTITEGRAPH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef BIPARTITEGRAPH_H_
-#define BIPARTITEGRAPH_H_
-
-
-#endif /* BIPARTITEGRAPH_H_ */

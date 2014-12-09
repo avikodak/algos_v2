@@ -63,8 +63,6 @@ using namespace __gnu_cxx;
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
 
-
-
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
@@ -75,7 +73,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+void setDfstimes(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes){
+	if(adjacencyList.size() == 0){
+		return arrivalDepartureTimes;
+	}
+	static int timeCounter = -1;
+	arrivalDepartureTimes[sourceVertex]->arrivalTimes  = ++timeCounter;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX){
+			setDfstimes(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
+		}
+	}
+	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+}
 
+vector<dfsTimes *> getDfsTimes(vector<vector<int> > adjacencyList){
+	vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+	if(adjacencyList.size() == 0){
+		return arrivalDepartureTimes;
+	}
+	setDfstimes(adjacencyList,0,arrivalDepartureTimes);
+	return arrivalDepartureTimes;
+}
 
 #endif /* DFS_H_ */
 

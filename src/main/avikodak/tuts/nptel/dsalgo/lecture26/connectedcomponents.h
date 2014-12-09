@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,40 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
+#ifndef CONNECTEDCOMPONENTS_H_
+#define CONNECTEDCOMPONENTS_H_
+
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int getNumberOfConnectedComponents(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() == 0){
+		return 0;
+	}
+	queue<int> auxSpace;
+	vector<int> connectedComponents(adjacencyList.size(),INT_MIN);
+	int componentCounter = -1,currentNode;
+	for(unsigned int counter = 0;counter < connectedComponentCounter.size();counter++){
+		if(connectedComponents[counter] == INT_MIN){
+			auxSpace.push(counter);
+			connectedComponents[counter] = ++componentCounter;
+			while(!auxSpace.empty()){
+				currentNode = auxSpace.front();
+				auxSpace.pop();
+				for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();counter++){
+					if(adjacencyList[counter][adjacentNodeCounter] == INT_MIN){
+						connectedComponents[adjacencyList[counter][adjacentNodeCounter]] = connectedComponents[counter];
+						auxSpace.push(adjacencyList[counter][adjacentNodeCounter]);
+					}
+				}
+			}
+		}
+	}
+	return componentCounter;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
+#endif /* CONNECTEDCOMPONENTS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef CONNECTEDCOMPONENTS_H_
-#define CONNECTEDCOMPONENTS_H_
-
-
-#endif /* CONNECTEDCOMPONENTS_H_ */

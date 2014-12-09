@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,28 +71,31 @@ using namespace __gnu_cxx;
 #define ISGRAPHTWOEDGECONNECTED_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int isGraphTwoEdgeConnectedMain(vector<vector<int> > adjacencyList,int sourceVertex,bool &flag){
+	if(adjacencyList.size() == 0){
+		return INT_MIN;
+	}
+	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+	static vector<int> predecessor(adjacencyList.size(),INT_MIN);
+	static int timeCounter = -1;
+	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+	int minTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MIN){
+			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+			minTime = min(minTime,isGraphTwoEdgeConnectedMain(adjacencyList,adjacencyList[sourceVertex][counter]));
+		}else{
+			if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]){
+				minTime = min(minTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
+			}
+		}
+	}
+	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+	flag = sourceVertex == 0?true:arrivalDepartureTimes[sourceVertex]->arrivalTimes > minTime;
+	return minTime;
+}
 
 #endif /* ISGRAPHTWOEDGECONNECTED_H_ */
 

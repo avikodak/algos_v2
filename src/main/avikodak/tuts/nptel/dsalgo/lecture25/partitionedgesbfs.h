@@ -72,12 +72,34 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 vector<vector<edge *> > partitionOfEdgesInGraph(vector<vector<int> > adjacencyList){
-	vector<vector<edge *> > edges;
+	vector<vector<edge *> > edges(2);
 	if(adjacencyList.size() == 0){
 		return edges;
 	}
 	queue<int>	auxSpace;
-
+	vector<int> predecessor(adjacencyList.size(),INT_MIN);
+	int currentNode;
+	for(unsigned int counter = 0;counter < predecessor.size();counter++){
+		if(predecessor[counter] == INT_MIN){
+			auxSpace.push(counter);
+			while(!auxSpace.empty()){
+				currentNode = auxSpace.front();
+				auxSpace.pop();
+				for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();adjacentNodeCounter){
+					if(predecessor[adjacencyList[currentNode][adjacentNodeCounter]] == INT_MIN){
+						edges[0].push_back(new edge(currentNode,adjacencyList[currentNode][adjacentNodeCounter]));
+						predecessor[adjacencyList[currentNode][adjacentNodeCounter]] = counter;
+						auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
+					}else{
+						if(predecessor[adjacencyList[currentNode][adjacentNodeCounter]] != currentNode){
+							edges[1].push_back(new edge(currentNode,adjacencyList[currentNode][adjacentNodeCounter]));
+						}
+					}
+				}
+			}
+		}
+	}
+	return edges;
 }
 
 #endif /* PARTITIONEDGESBFS_H_ */
