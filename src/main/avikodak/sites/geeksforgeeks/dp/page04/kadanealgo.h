@@ -71,13 +71,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxContinousSubArraySum(vector<int> userInput){
+//Tested
+int maxContinousSubArraySumON(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}
 	int currentSum = 0,maxSum = INT_MIN;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter],currentSum);
+		currentSum = max(userInput[counter]+currentSum,userInput[counter]);
 		maxSum = max(maxSum,currentSum);
 	}
 	return maxSum;
@@ -86,7 +87,8 @@ int maxContinousSubArraySum(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxContinousSubArraySum(vector<int> userInput){
+//Tested
+int maxContinousSubArraySumON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}

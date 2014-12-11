@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestcommonsubsequence.h
- *  Created on			: Oct 29, 2014 :: 6:16:39 PM
+ *  File Name   		: primsalgo.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture33\primsalgo.h
+ *  Created on			: Dec 9, 2014 :: 1:18:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,22 +67,62 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOMMONSUBSEQUENCE_H_
-#define LONGESTCOMMONSUBSEQUENCE_H_
+#ifndef PRIMSALGO_H_
+#define PRIMSALGO_H_
 
-int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
-	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
-		return 0;
-	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubsequence(firstUserInput+1,secondUserInput+1);
-	}else{
-		return max(longestCommonSubsequence(firstUserInput+1,secondUserInput),longestCommonSubsequence(firstUserInput,secondUserInput+1));
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Works only in directed edges should be slightly modified for undirected
+void insertVerticesEdgesIntoHeap(vector<wEdge *> &heap,vector<vector<wVertex *> > adjacencyList,int sourceVertex){
+	wEdge *temp;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		heap.push_back(new wEdge(sourceVertex,adjacencyList[sourceVertex][counter]->vertex,adjacencyList[sourceVertex][counter]->weight,false));
+		int vertexIndex = heap.size()-1;
+		while(vertexIndex > 0){
+			if(heap[vertexIndex]->weight < heap[vertexIndex/2]->weight){
+				temp = heap[vertexIndex];
+				heap[vertexIndex] = heap[vertexIndex/2];
+				heap[vertexIndex/2] = temp;
+			}else{
+				break;
+			}
+			vertexIndex /= 2;
+		}
 	}
 }
 
+void heapify(vector<wEdge *> &heap,int index){
+	while(2*index + 1 < heap.size()){
+		if(2*index + 2 < heap.size()){
 
-#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
+		}else{
+
+		}
+	}
+}
+
+void deleteMinEdgeFromHeap(vector<wEdge *> &heap){
+	heap[0] = heap[heap.size()-1];
+	heap.erase(heap.size()-1);
+	heapify(heap,0);
+}
+
+wEdge *getMinEdge(vector<wEdge *> heap){
+	if(heap.size() == 0){
+		return null;
+	}
+	return heap[0];
+}
+
+vector<wEdge *> minSpanningTreePrimsAlgo(vector<vector<wVertex *> > adjacencyList,int noOfVertices){
+	vector<bool> flagsForVertices(noOfVertices);
+	flagsForVertices[0] = 1;
+	vertex<wEdge *> heap;
+
+}
+
+#endif /* PRIMSALGO_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

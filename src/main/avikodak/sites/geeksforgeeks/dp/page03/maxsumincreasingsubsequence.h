@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestcommonsubsequence.h
- *  Created on			: Oct 29, 2014 :: 6:16:39 PM
+ *  File Name   		: maxsumincreasingsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\maxsumincreasingsubsequence.h
+ *  Created on			: Dec 9, 2014 :: 8:02:58 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,22 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOMMONSUBSEQUENCE_H_
-#define LONGESTCOMMONSUBSEQUENCE_H_
+#ifndef MAXSUMINCREASINGSUBSEQUENCE_H_
+#define MAXSUMINCREASINGSUBSEQUENCE_H_
 
-int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
-	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
-		return 0;
-	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubsequence(firstUserInput+1,secondUserInput+1);
-	}else{
-		return max(longestCommonSubsequence(firstUserInput+1,secondUserInput),longestCommonSubsequence(firstUserInput,secondUserInput+1));
-	}
-}
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
 
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* MAXSUMINCREASINGSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

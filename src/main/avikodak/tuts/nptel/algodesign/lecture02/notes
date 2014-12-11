@@ -1,0 +1,26 @@
+Framework for algorithms analysis
+=================================
+	The framework can also be used for other resources as well(memory etc) apart from the computations
+	Basic idea is to develop a mathematical model of a computer , mentally execute the algorithm and evaluate the execution time
+	Time of execution of the algorithm will depend on the input instance provided for example in case of quick sort / insertion sort
+	Basic terminology
+		Problem : Specification of what are valid inputs and what is the acceptable outputs for inputs
+		Input instance : A valid input value for a given problem
+		Size of the input instance : The number of bits required to represent the given input ( formal def )
+			Any parameter which grows roughly with the formal notion of size ( informal def )
+		Algorithm:
+			An abstract computational procedure which converts the given input and produces the required output
+		Program:
+			Implementation of an algorithm
+		Pseudo code
+	Mathematical model of a computer
+		RAM : Random access machine
+		It consists a processor and a memory
+		Memory is a array of locations which has address assigned to each location
+		Instruction set
+			Arithematic and logical
+			Jumps and conditional jumps
+			Pointer instructions + Array operations
+			
+			
+			

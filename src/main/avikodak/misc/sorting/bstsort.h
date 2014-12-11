@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestcommonsubsequence.h
- *  Created on			: Oct 29, 2014 :: 6:16:39 PM
+ *  File Name   		: bstsort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\bstsort.h
+ *  Created on			: Dec 11, 2014 :: 1:01:27 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,22 +67,61 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOMMONSUBSEQUENCE_H_
-#define LONGESTCOMMONSUBSEQUENCE_H_
+#ifndef BSTSORT_H_
+#define BSTSORT_H_
 
-int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
-	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
-		return 0;
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,int currentIndex){
+	if(currentIndex >= userInput.size()){
+		return;
 	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubsequence(firstUserInput+1,secondUserInput+1);
+	if(*root == null){
+		(*root) = new iftNode(userInput[currentIndex]);
+		bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+	}else if(currentNode->value == userInput[currentIndex]){
+		currentNode->frequency += 1;
+		bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+	}else if(currentNode->value > userInput[currentIndex]){
+		if(currentNode->left == null){
+			currentNode->left = new iftNode(userInput[currentIndex]);
+			bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+		}else{
+			bsInsertIntoBST(root,currentNode->left,userInput,currentIndex);
+		}
 	}else{
-		return max(longestCommonSubsequence(firstUserInput+1,secondUserInput),longestCommonSubsequence(firstUserInput,secondUserInput+1));
+		if(currentNode->right == null){
+			currentNode->right = new iftNode(userInput[currentIndex]);
+			bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+		}else{
+			bsInsertIntoBST(root,currentNode->right,userInput,currentIndex);
+		}
 	}
 }
 
+void bsSetVectorWithInorderValues(iftNode *ptr,vector<int> &userInput){
+	if(ptr == null){
+		return;
+	}
+	static int fillCounter = -1;
+	bsSetVectorWithInorderValues(ptr->left,userInput);
+	while(ptr->frequency--){
+		userInput[++fillCounter] = ptr->value;
+	}
+	bsSetVectorWithInorderValues(ptr->right,userInput);
+}
 
-#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
+void bstSort(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	iftNode *root = null;
+	bsInsertIntoBST(&root,root,userInput,0);
+	bsSetVectorWithInorderValues(root,userInput);
+}
+
+#endif /* BSTSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

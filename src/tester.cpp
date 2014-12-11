@@ -216,6 +216,13 @@
 #include "main/avikodak/sites/geeksforgeeks/strings/page04/reversewordsstring.h"
 #include "main/avikodak/sites/geeksforgeeks/strings/page04/runlengthencoding.h"
 
+
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/fibonnacinumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/longestincreasingsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/uglynumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/maxsizesubmatrixones.h"
+
 /*
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
  */
@@ -258,21 +265,23 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencymatrix.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/checkforpath.h"
-/*
+
 #include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
 #include "main/avikodak/tuts/saurabhacademy/coinchange.h"
 #include "main/avikodak/tuts/saurabhacademy/generatesets.h"
-#include "main/avikodak/tuts/saurabhacademy/permutation.h"
+#include "main/avikodak/tuts/saurabhacademy/chainmatrixmultiplication.h"
+#include "main/avikodak/tuts/saurabhacademy/01knapsack.h"
+#include "main/avikodak/tuts/saurabhacademy/longestcommonsubsequence.h"
+/*#include "main/avikodak/tuts/saurabhacademy/permutation.h"
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
  */
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput;
-	userInput.clear();
-	userInput = generateIRandomVector(10,1,50);
-
+	char firstUserInput[20],secondUserInput[20];
+	scanf("%s %s",firstUserInput,secondUserInput);
+	printf("%d",longestCommonSubsequence(firstUserInput,secondUserInput)); //apbcadcqer rasbtaucve
 }
 
 void p(inrNode *ptr){
@@ -360,7 +369,7 @@ void graphTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	graphTester();
+	arrayTester();
 	return 0;
 }
 

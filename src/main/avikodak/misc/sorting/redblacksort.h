@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: krushkalsalgo.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture31\krushkalsalgo.h
- *  Created on			: Dec 9, 2014 :: 12:32:24 PM
+ *  File Name   		: redblacksort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\redblacksort.h
+ *  Created on			: Dec 11, 2014 :: 1:01:43 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,120 +67,142 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef KRUSHKALSALGO_H_
-#define KRUSHKALSALGO_H_
+#ifndef REDBLACKSORT_H_
+#define REDBLACKSORT_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void eMerge(vector<wEdge *> &edgeList,int startIndex,int middleIndex,int endIndex){
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	vector<wEdge *> auxSpace;
-	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler > middleIndex || secondCrawler > endIndex){
-			if(firstCrawler <= middleIndex){
-				auxSpace.push_back(edgeList[firstCrawler++]);
-			}else{
-				auxSpace.push_back(edgeList[secondCrawler++]);
-			}
+void srbRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+	if(parent == null || child == null){
+		return;
+	}
+	ifRbTreeNode *grandParent = parent->parent;
+	parent->parent = child;
+	child->parent = grandParent;
+	if(grandParent != null){
+		if(grandParent->left == parent){
+			grandParent->left =  child;
 		}else{
-			if(edgeList[firstCrawler]->weight < edgeList[secondCrawler]->weight){
-				auxSpace.push_back(edgeList[firstCrawler++]);
-			}else{
-				auxSpace.push_back(edgeList[secondCrawler++]);
-			}
+			grandParent->right = child;
 		}
 	}
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		edgeList[startIndex + counter] = auxSpace[counter];
+	if(parent->left == parent){
+		parent->left = child->right;
+		child->right = parent;
+	}else{
+		parent->right = child->left;
+		child->left = parent;
 	}
 }
 
-void eMergeSort(vector<wEdge *> edgeList,int startIndex,int endIndex){
-	if(startIndex > endIndex || startIndex == endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	eMergeSort(edgeList,startIndex,middleIndex);
-	eMergeSort(edgeList,middleIndex+1,endIndex);
-	eMerge(edgeList,startIndex,middleIndex,endIndex);
-}
-
-int eQuickDivideStep(vector<wEdge *> edgeList,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int pivotIndex = endIndex;
-	int key = edgeList[pivotIndex]->weight;
-	wEdge *temp;
-	while(startIndex < endIndex){
-		while(edgeList[startIndex]->weight < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && edgeList[endIndex]->weight >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			temp = edgeList[startIndex];
-			edgeList[startIndex] = edgeList[endIndex];
-			edgeList[endIndex] = temp;
-		}
-	}
-	temp = edgeList[pivotIndex];
-	edgeList[pivotIndex] = edgeList[endIndex];
-	edgeList[endIndex] = temp;
-	return endIndex;
-}
-
-void eQuickSort(vector<wEdge *> edgeList,int startIndex,int endIndex){
-	if(startIndex > endIndex || startIndex == endIndex){
-		return;
-	}
-	int dividingIndex = eQuickDivideStep(edgeList,startIndex,endIndex);
-	eQuickSort(edgeList,startIndex,dividingIndex-1);
-	eQuickSort(edgeList,dividingIndex+1,endIndex);
-}
-
-ncUnionfind *findInUnionDS(vector<ncUnionfind *> unionDs,int vertex){
-	if(vertex >= unionDs.size()){
+ifRbTreeNode *srbInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new ifRbTreeNode(value);
+		(*root)->isRedNode = false;
 		return null;
 	}
-	ncUnionfind *ptrToVertex = unionDs[vertex];
-	while(ptrToVertex->parentVertex != ptrToVertex->vertex){
-		ptrToVertex = ptrToVertex->parentVertex;
-	}
-	return ptrToVertex;
-}
-
-void unionOfComponents(ncUnionfind *firstComponent,ncUnionfind *secondComponent){
-	if(firstComponent->nodeCounter < secondComponent->nodeCounter){
-		firstComponent->parentVertex = secondComponent->vertex;
+	if(currentNode->value == value){
+		currentNode->frequency += 1;
+		return null;
+	}else if(currentNode->value > value){
+		if(currentNode->left == null){
+			currentNode->left = new ifRbTreeNode(value);
+			currentNode->left->parent = currentNode;
+			return currentNode->left;
+		}else{
+			return srbInsertAtRightPlace(root,currentNode->left,value);
+		}
 	}else{
-		secondComponent->parentVertex = firstComponent->vertex;
-	}
-}
-
-vector<wEdge *> krushkalsMinSpanningTree(vector<wEdge *> edgeList,int noOfVertices){
-	vector<wEdge *> minEdges;
-	eMergeSort(edgeList,0,edgeList.size()-1);
-	vector<ncUnionfind *> components(noOfVertices);
-	for(unsigned int counter = 0;counter < noOfVertices;components++){
-		components[counter]->vertex = counter;
-		components[counter]->parentVertex = counter;
-	}
-	ncUnionfind *ptrToSourceVertex,*ptrToDestinationVertex;
-	for(unsigned int counter = 0;counter < edgeList.size();counter++){
-		ptrToSourceVertex = findInUnionDS(edgeList[counter]->sourceVertex);
-		ptrToDestinationVertex = findInUnionDS(edgeList[counter]->destinationVertex);
-		if(ptrToSourceVertex != ptrToDestinationVertex){
-			minEdges.push_back(edgeList[counter]);
-			unionOfComponents(ptrToSourceVertex,ptrToDestinationVertex);
+		if(currentNode->right == null){
+			currentNode->right = new ifRbTreeNode(value);
+			currentNode->right->parent = currentNode;
+			return currentNode->right;
+		}else{
+			return srbInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
-	return minEdges;
 }
 
-#endif /* KRUSHKALSALGO_H_ */
+void srbReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+	if(*root == null || currentNode == null){
+		return;
+	}
+	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
+	if(!parent->isRedNode){
+		return;
+	}
+	if(grandParent->left == parent){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
+			if(grandParent->parent ==  null){
+				(*root) = parent;
+			}
+			srbRotateNodes(grandParent,parent);
+			parent->isRedNode = false;
+			grandParent->isRedNode = true;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->isRedNode = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			srbReorganizeTreePostInsertion(root,grandParent);
+		}
+	}else{
+		if(grandParent->left == null || !grandParent->left->isRedNode){
+			if(grandParent->parent ==  null){
+				(*root) = parent;
+			}
+			srbRotateNodes(grandParent,parent);
+			parent->isRedNode = false;
+			grandParent->isRedNode = true;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->isRedNode = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			srbReorganizeTreePostInsertion(root,grandParent);
+		}
+	}
+}
+
+void srbInsertIntoRbTree(ifRbTreeNode **root,int value){
+	ifRbTreeNode *ptrToKey = srbInsertAtRightPlace(root,*root,value);
+	if(ptrToKey == null || !ptrToKey->parent->isRedNode){
+		return;
+	}
+	srbReorganizeTreePostInsertion(root,ptrToKey);
+}
+
+void srbSetVectorWithInorderValues(ifRbTreeNode *ptr,vector<int> &userInput){
+	if(ptr == null){
+		return;
+	}
+	static int fillCounter = -1;
+	srbSetVectorWithInorderValues(ptr->left,userInput);
+	while(ptr->frequency--){
+		userInput[++fillCounter] = ptr->value;
+	}
+	srbSetVectorWithInorderValues(ptr->right,userInput);
+}
+
+void srbRbTreeSort(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	ifRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		srbInsertIntoRbTree(&root,userInput[counter]);
+	}
+	srbSetVectorWithInorderValues(root,userInput);
+}
+
+#endif /* REDBLACKSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

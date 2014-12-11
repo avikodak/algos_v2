@@ -1,0 +1,4 @@
+
+Spanning tree in directed graph is called branching
+Shortest path tree - sub graph which is obtained in dijkstras
+When the edge lengths are negative the algo which is used is kind of gossiping

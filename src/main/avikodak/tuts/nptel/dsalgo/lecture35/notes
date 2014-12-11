@@ -1,0 +1,3 @@
+Dijikstra's algo
+================
+	If a graph contains a negative cycle then the shortest path is not defined

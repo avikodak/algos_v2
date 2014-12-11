@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestcommonsubsequence.h
- *  Created on			: Oct 29, 2014 :: 6:16:39 PM
+ *  File Name   		: mergesort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\mergesort.h
+ *  Created on			: Dec 11, 2014 :: 1:00:12 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,22 +67,49 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOMMONSUBSEQUENCE_H_
-#define LONGESTCOMMONSUBSEQUENCE_H_
+#ifndef MERGESORT_H_
+#define MERGESORT_H_
 
-int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
-	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
-		return 0;
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void msMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
+	if(startIndex > endIndex){
+		return;
 	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubsequence(firstUserInput+1,secondUserInput+1);
-	}else{
-		return max(longestCommonSubsequence(firstUserInput+1,secondUserInput),longestCommonSubsequence(firstUserInput,secondUserInput+1));
+	vector<int> auxSpace;
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+	while(startIndex <= middleIndex || secondCrawler <= endIndex){
+		if(startIndex > middleIndex || secondCrawler > endIndex){
+			if(startIndex <= middleIndex){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}else{
+			if(userInput[firstCrawler] < userInput[secondCrawler]){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}
+	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
 	}
 }
 
+void msMergeSort(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	msMergeSort(userInput,startIndex,middleIndex);
+	msMergeSort(userInput,middleIndex+1,endIndex);
+	msMerge(userInput,startIndex,middleIndex,endIndex);
+}
 
-#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
+#endif /* MERGESORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,0 +1,24 @@
+Overview of course
+==================	
+	Approach
+		Analytical
+		Build a mathematical model of a computer
+		Study properties of algos on the model
+	GCD
+		Algo 1
+		======
+			Find factors of first number
+			Find factors of second number
+			Return the common factors
+		
+		Algo 2
+		======
+		Euclid Algo
+			while m not divides n
+				reminder = n % m;
+				n = m
+				m = remainder
+		The sum of the numbers in the euclids inputs always reduces atleast by 3/2
+		So from the above fact we can say that the loop eventually terminates
+		To design faster algorithms we need to know the computation of the existing algos
+			

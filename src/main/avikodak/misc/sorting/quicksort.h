@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestcommonsubsequence.h
- *  Created on			: Oct 29, 2014 :: 6:16:39 PM
+ *  File Name   		: quicksort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
+ *  Created on			: Dec 11, 2014 :: 1:00:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,22 +67,46 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOMMONSUBSEQUENCE_H_
-#define LONGESTCOMMONSUBSEQUENCE_H_
+#ifndef QUICKSORT_H_
+#define QUICKSORT_H_
 
-int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
-	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
-		return 0;
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
 	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubsequence(firstUserInput+1,secondUserInput+1);
-	}else{
-		return max(longestCommonSubsequence(firstUserInput+1,secondUserInput),longestCommonSubsequence(firstUserInput,secondUserInput+1));
+	if(startIndex == endIndex){
+		return startIndex;
 	}
+	int pivotIndex = endIndex;
+	int key = userInput[endIndex];
+	while(startIndex < endIndex){
+		while(userInput[startIndex] < key){
+			startIndex++;
+		}
+		while(startIndex < endIndex && userInput[endIndex] >= key){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			swap(userInput[startIndex],userInput[endIndex]);
+		}
+	}
+	swap(userInput[endIndex],userInput[pivotIndex]);
+	return endIndex;
 }
 
+void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return;
+	}
+	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
+	qsQuickSort(userInput,startIndex,dividingIndex-1);
+	qsQuickSort(userInput,dividingIndex+1,endIndex);
+}
 
-#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
+#endif /* QUICKSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
