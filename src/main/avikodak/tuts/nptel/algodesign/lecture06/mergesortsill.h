@@ -67,15 +67,15 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MERGESORTSILL_H_
-#define MERGESORTSILL_H_
+#ifndef MERGESORTSILLV1_H_
+#define MERGESORTSILLV1_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
 
-sillNode *mergeSortedSill(sillNode *firstCrawler,sillNode *secondCrawler){
+sillNode *mergeSortedSillV2(sillNode *firstCrawler,sillNode *secondCrawler){
 	if(firstCrawler == null && secondCrawler == null){
 		return null;
 	}
@@ -83,7 +83,7 @@ sillNode *mergeSortedSill(sillNode *firstCrawler,sillNode *secondCrawler){
 		return firstCrawler == null?secondCrawler:firstCrawler;
 	}
 	sillNode *result = null,*resultCrawler;
-	if(firstCrawler->value < secondCrawler){
+	if(firstCrawler->value < secondCrawler->value){
 		result = new sillNode(firstCrawler->value);
 		firstCrawler = firstCrawler->next;
 	}else{
@@ -94,18 +94,18 @@ sillNode *mergeSortedSill(sillNode *firstCrawler,sillNode *secondCrawler){
 	while(firstCrawler != null || secondCrawler != null){
 		if(firstCrawler == null || secondCrawler == null){
 			if(firstCrawler != null){
-				result->next = new sillNode(firstCrawler->value);
+				resultCrawler->next = new sillNode(firstCrawler->value);
 				firstCrawler = firstCrawler->next;
 			}else{
-				result->next = new sillNode(secondCrawler->value);
+				resultCrawler->next = new sillNode(secondCrawler->value);
 				secondCrawler = secondCrawler->next;
 			}
 		}else{
 			if(firstCrawler->value < secondCrawler->value){
-				result->next = new sillNode(firstCrawler->value);
+				resultCrawler->next = new sillNode(firstCrawler->value);
 				firstCrawler = firstCrawler->next;
 			}else{
-				result->next = new sillNode(secondCrawler->value);
+				resultCrawler->next = new sillNode(secondCrawler->value);
 				secondCrawler = secondCrawler->next;
 			}
 		}
@@ -113,11 +113,12 @@ sillNode *mergeSortedSill(sillNode *firstCrawler,sillNode *secondCrawler){
 	return result;
 }
 
-sillNode *getMiddleSill(sillNode *ptr){
+void getMiddleSillV2(sillNode *ptr,sillNode **firstSill,sillNode **secondSill){
 	if(ptr == null){
-		return null;
+		return;
 	}
 	sillNode *fastPtr = ptr,*slowPtr = ptr;
+	(*firstSill) = ptr;
 	while(fastPtr != null){
 		fastPtr = fastPtr->next;
 		if(fastPtr->next != null){
@@ -125,22 +126,23 @@ sillNode *getMiddleSill(sillNode *ptr){
 			slowPtr = slowPtr->next;
 		}
 	}
-	return slowPtr;
+	(*secondSill) = slowPtr->next;
+	slowPtr->next = null;
+	return;
 }
 
-void mergeSortSill(sillNode **head){
+void mergeSortSillV2(sillNode **head){
 	if(*head == null){
 		return;
 	}
-	sillNode *middleSill = getMiddleSill(*head),*temp;
-	temp = middleSill->next;
-	middleSill->next = null;
-	mergeSortSill(head);
-	mergeSortSill(&temp);
-	(*head) = mergeSortedSill(*head,temp);
+	sillNode *firstSill = null,*secondSill = null;
+	getMiddleSillV2(*head,&firstSill,&secondSill);
+	mergeSortSillV2(&firstSill);
+	mergeSortSillV2(&secondSill);
+	(*head) = mergeSortedSillV2(firstSill,secondSill);
 }
 
-#endif /* MERGESORTSILL_H_ */
+#endif /* MERGESORTSILLV1_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

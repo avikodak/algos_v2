@@ -67,13 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef QUICKSORTV3_H_
+#define QUICKSORTV3_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int qsDivideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+int qsDivideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}
@@ -94,7 +95,8 @@ int qsDivideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
-void qsQuicksort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+void qsQuicksort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
 	}

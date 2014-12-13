@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iMaxMin *getMinMaxON(vector<int> userInput){
 	iMaxMin *result = new iMaxMin();
 	if(userInput.size() == 0){
@@ -94,6 +95,7 @@ iMaxMin *getMinMaxON(vector<int> userInput){
 	return result;
 }
 
+//Tested
 iMaxMin *getMinMaxDAD(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return null;
@@ -115,6 +117,7 @@ iMaxMin *getMinMaxDAD(vector<int> userInput,int startIndex,int endIndex){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iMaxMin *getMinMaxONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;

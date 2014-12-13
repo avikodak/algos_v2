@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *findFirstTwoMinsON(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -94,12 +95,13 @@ iPair *findFirstTwoMinsON(vector<int> userInput){
 	return result;
 }
 
+//Tested
 iPair *findFirstTwoMinDAD(vector<int> userInput,int startIndex,int endIndex){
 	if(userInput.size() == 0){
 		return null;
 	}
 	iPair *result = new iPair(INT_MAX,INT_MAX);
-	if(endIndex - startIndex == 1){
+	if(endIndex == startIndex){
 		result->firstValue = userInput[startIndex];
 		result->secondValue = INT_MAX;
 		return result;
@@ -128,6 +130,7 @@ iPair *findFirstTwoMinDAD(vector<int> userInput,int startIndex,int endIndex){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *findFirstTwoMinsONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;

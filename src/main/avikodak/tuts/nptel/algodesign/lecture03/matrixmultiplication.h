@@ -71,28 +71,35 @@ using namespace __gnu_cxx;
 #define MATRIXMULTIPLICATION_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+vector<vector<int> > matrixMultiplication(vector<vector<int> > firstUserinput,vector<vector<int> > secondUserinput){
+	vector<vector<int> > result;
+	if(firstUserinput.size() == 0 || secondUserinput.size() == 0){
+		return result;
+	}
+	if(firstUserinput[0].size() != secondUserinput.size()){
+		throw "Invalid input";
+	}
+	result.resize(firstUserinput.size());
+	for(unsigned int counter = 0;counter < result.size();counter++){
+		result[counter].resize(secondUserinput[0].size());
+	}
+	for(unsigned int rowCounter = 0;rowCounter < firstUserinput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < secondUserinput[0].size();columnCounter++){
+			result[rowCounter][columnCounter] = 0;
+		}
+	}
+	for(unsigned int rowCounter = 0;rowCounter < firstUserinput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < secondUserinput[0].size();columnCounter++){
+			for(unsigned int counter = 0;counter < secondUserinput.size();counter++){
+				result[rowCounter][columnCounter] += firstUserinput[rowCounter][counter] * secondUserinput[counter][columnCounter];
+			}
+		}
+	}
+	return result;
+}
 
 #endif /* MATRIXMULTIPLICATION_H_ */
 

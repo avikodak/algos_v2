@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int minElementON(vector<int> userInput,unsigned int currentIndex = 0){
 	if(currentIndex >= userInput.size()){
 		return INT_MAX;
@@ -80,9 +81,10 @@ int minElementON(vector<int> userInput,unsigned int currentIndex = 0){
 	return min(userInput[currentIndex],minElementON(userInput,currentIndex+1));
 }
 
+//Tested
 int minElementIterative(vector<int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return INT_MAX;
 	}
 	int minElement = INT_MAX;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
@@ -91,15 +93,13 @@ int minElementIterative(vector<int> userInput){
 	return minElement;
 }
 
+//Tested
 int minElementDAD(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
 	}
 	if(startIndex  == endIndex){
-		return startIndex;
-	}
-	if(endIndex - startIndex == 1){
-		return min(userInput[startIndex],userInput[endIndex]);
+		return userInput[startIndex];
 	}
 	int middleIndex = (startIndex + endIndex)/2;
 	return min(minElementDAD(userInput,startIndex,middleIndex),minElementDAD(userInput,middleIndex+1,endIndex));
@@ -108,6 +108,7 @@ int minElementDAD(vector<int> userInput,int startIndex,int endIndex){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int minElementONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -119,6 +120,7 @@ int minElementONLOGN(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int minElementON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;

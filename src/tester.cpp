@@ -266,7 +266,14 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/checkforpath.h"
 
+#include "main/avikodak/tuts/nptel/algodesign/lecture03/matrixmultiplication.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture05/firsttwomins.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture05/minelement.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture05/minmax.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture06/insertionsort.h"
 #include "main/avikodak/tuts/nptel/algodesign/lecture06/mergesort.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture06/mergesortsill.h"
+#include "main/avikodak/tuts/nptel/algodesign/lecture06/quicksort.h"
 
 #include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
 #include "main/avikodak/tuts/saurabhacademy/coinchange.h"
@@ -292,8 +299,8 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateIRandomVector(10,1,50);
-	countingSort(userInput);
+	vector<int> userInput = generateIRandomVector(10,0,50);
+	qsQuicksort(userInput,0,userInput.size()-1);
 	printIVector(userInput);
 }
 
