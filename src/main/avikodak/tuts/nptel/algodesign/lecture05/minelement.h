@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *  File Name   		: minelement.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\minelement.h
+ *  Created on			: Dec 12, 2014 :: 11:51:54 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,48 +67,76 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef MINELEMENT_H_
+#define MINELEMENT_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int minElementON(vector<int> userInput,unsigned int currentIndex = 0){
+	if(currentIndex >= userInput.size()){
+		return INT_MAX;
+	}
+	return min(userInput[currentIndex],minElementON(userInput,currentIndex+1));
+}
+
+int minElementIterative(vector<int> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	int minElement = INT_MAX;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		minElement = min(minElement,userInput[counter]);
+	}
+	return minElement;
+}
+
+int minElementDAD(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MAX;
+	}
+	if(startIndex  == endIndex){
+		return startIndex;
+	}
+	if(endIndex - startIndex == 1){
+		return min(userInput[startIndex],userInput[endIndex]);
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	return min(minElementDAD(userInput,startIndex,middleIndex),minElementDAD(userInput,middleIndex+1,endIndex));
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int minElementONLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	sort(userInput.begin(),userInput.end());
+	return userInput[0];
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+int minElementON2(vector<int> userInput){
+	if(userInput.size() == 0){
 		return INT_MIN;
 	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
+	int minElement;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		minElement = userInput[outerCrawler];
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			minElement = min(minElement,userInput[innerCrawler]);
 		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
+		if(minElement == userInput[outerCrawler]){
+			return minElement;
 		}
 	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
+	return INT_MIN;
 }
 
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* MINELEMENT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

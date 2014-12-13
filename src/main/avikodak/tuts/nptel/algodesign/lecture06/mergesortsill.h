@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *  File Name   		: mergesortsill.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture06\mergesortsill.h
+ *  Created on			: Dec 12, 2014 :: 2:10:04 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,48 +67,80 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef MERGESORTSILL_H_
+#define MERGESORTSILL_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+
+
+sillNode *mergeSortedSill(sillNode *firstCrawler,sillNode *secondCrawler){
+	if(firstCrawler == null && secondCrawler == null){
+		return null;
 	}
-	if(startIndex == endIndex){
-		return startIndex;
+	if(firstCrawler == null || secondCrawler == null){
+		return firstCrawler == null?secondCrawler:firstCrawler;
 	}
-	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
+	sillNode *result = null,*resultCrawler;
+	if(firstCrawler->value < secondCrawler){
+		result = new sillNode(firstCrawler->value);
+		firstCrawler = firstCrawler->next;
+	}else{
+		result = new sillNode(secondCrawler->value);
+		secondCrawler = secondCrawler->next;
+	}
+	resultCrawler = result;
+	while(firstCrawler != null || secondCrawler != null){
+		if(firstCrawler == null || secondCrawler == null){
+			if(firstCrawler != null){
+				result->next = new sillNode(firstCrawler->value);
+				firstCrawler = firstCrawler->next;
+			}else{
+				result->next = new sillNode(secondCrawler->value);
+				secondCrawler = secondCrawler->next;
+			}
+		}else{
+			if(firstCrawler->value < secondCrawler->value){
+				result->next = new sillNode(firstCrawler->value);
+				firstCrawler = firstCrawler->next;
+			}else{
+				result->next = new sillNode(secondCrawler->value);
+				secondCrawler = secondCrawler->next;
+			}
 		}
 	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
+	return result;
 }
 
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+sillNode *getMiddleSill(sillNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	sillNode *fastPtr = ptr,*slowPtr = ptr;
+	while(fastPtr != null){
+		fastPtr = fastPtr->next;
+		if(fastPtr->next != null){
+			fastPtr = fastPtr->next;
+			slowPtr = slowPtr->next;
+		}
+	}
+	return slowPtr;
+}
+
+void mergeSortSill(sillNode **head){
+	if(*head == null){
 		return;
 	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
+	sillNode *middleSill = getMiddleSill(*head),*temp;
+	temp = middleSill->next;
+	middleSill->next = null;
+	mergeSortSill(head);
+	mergeSortSill(&temp);
+	(*head) = mergeSortedSill(*head,temp);
 }
 
-#endif /* QUICKSORT_H_ */
+#endif /* MERGESORTSILL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

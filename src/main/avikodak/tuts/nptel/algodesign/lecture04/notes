@@ -1,0 +1,10 @@
+Classes of functions
+	Asymptotic notation
+	Two features required are
+		1) Constant multiplier should be ignored
+		2) Give more importance to behaviour as n tends to infinity
+	Theta functions
+		f,g : non negative functions taking non negative arguments
+		Theta(g) : {f|f is a non negative function such that there exists constants c1,c2,n0 c1g(n) <= f(n) <= c2g(n) for n>= n0 : Tight bound
+		BigOh(g) : {f|f is a non negative function such that there exists constants c2 and n0 f(n) <= c2g(n) : Upper bound
+		Omega(g) : {f|f is a non negative function such that there exists constants c2 and n0 c2g(n) <= f(n) : Lower bound

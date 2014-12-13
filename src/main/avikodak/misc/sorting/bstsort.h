@@ -67,13 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BSTSORT_H_
-#define BSTSORT_H_
+#ifndef BSTSORTV2_H_
+#define BSTSORTV2_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,int currentIndex){
+//Tested
+void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,unsigned int currentIndex){
 	if(currentIndex >= userInput.size()){
 		return;
 	}
@@ -100,6 +101,7 @@ void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,i
 	}
 }
 
+//Tested
 void bsSetVectorWithInorderValues(iftNode *ptr,vector<int> &userInput){
 	if(ptr == null){
 		return;
@@ -112,7 +114,8 @@ void bsSetVectorWithInorderValues(iftNode *ptr,vector<int> &userInput){
 	bsSetVectorWithInorderValues(ptr->right,userInput);
 }
 
-void bstSort(vector<int> &userInput){
+//Tested
+void sBstSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
@@ -121,7 +124,7 @@ void bstSort(vector<int> &userInput){
 	bsSetVectorWithInorderValues(root,userInput);
 }
 
-#endif /* BSTSORT_H_ */
+#endif /* BSTSORTV2_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *  File Name   		: insertionsort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture06\insertionsort.h
+ *  Created on			: Dec 12, 2014 :: 2:06:25 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,48 +67,30 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef INSERTIONSORT_H_
+#define INSERTIONSORT_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
-}
-
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+void adInsertionSort(vector<int> &userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
+	int key;
+	int innerCrawler;
+	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
+		key = userInput[outerCrawler];
+		innerCrawler = outerCrawler-1;
+		while(innerCrawler >= 0 && userInput[innerCrawler] > key){
+			userInput[innerCrawler+1] = userInput[innerCrawler];
+			innerCrawler--;
+		}
+		userInput[innerCrawler + 1] = key;
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+#endif /* INSERTIONSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

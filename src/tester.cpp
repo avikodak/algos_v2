@@ -266,6 +266,8 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/checkforpath.h"
 
+#include "main/avikodak/tuts/nptel/algodesign/lecture06/mergesort.h"
+
 #include "main/avikodak/tuts/saurabhacademy/cuttingrod.h"
 #include "main/avikodak/tuts/saurabhacademy/coinchange.h"
 #include "main/avikodak/tuts/saurabhacademy/generatesets.h"
@@ -275,13 +277,24 @@
 /*#include "main/avikodak/tuts/saurabhacademy/permutation.h"
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
  */
+
+#include "main/avikodak/misc/sorting/avlsort.h"
+#include "main/avikodak/misc/sorting/bstsort.h"
+#include "main/avikodak/misc/sorting/bubblesort.h"
+#include "main/avikodak/misc/sorting/insertionsort.h"
+#include "main/avikodak/misc/sorting/mergesortv2.h"
+#include "main/avikodak/misc/sorting/permutationsort.h"
+#include "main/avikodak/misc/sorting/quicksort.h"
+#include "main/avikodak/misc/sorting/redblacksort.h"
+#include "main/avikodak/misc/sorting/selectionsort.h"
+#include "main/avikodak/misc/sorting/countingsort.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	char firstUserInput[20],secondUserInput[20];
-	scanf("%s %s",firstUserInput,secondUserInput);
-	printf("%d",longestCommonSubsequence(firstUserInput,secondUserInput)); //apbcadcqer rasbtaucve
+	vector<int> userInput = generateIRandomVector(10,1,50);
+	countingSort(userInput);
+	printIVector(userInput);
 }
 
 void p(inrNode *ptr){

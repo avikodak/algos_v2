@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N!) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> *permutationSort(vector<int> userInput,int currentIndex){
+//Tested
+void  permutationSort(vector<int> userInput,unsigned int currentIndex = 0){
 	if(currentIndex == userInput.size()){
-		return isVectorSorted(userInput)?userInput:null;
+		if(isVectorSorted(userInput)){
+			printIVector(userInput);
+		}
 	}
-	vector<int> *result;
+	vector<int> result;
 	for(unsigned int counter = currentIndex;counter < userInput.size();counter++){
 		swap(userInput[currentIndex],userInput[counter]);
-		result = permutationSort(userInput,currentIndex+1);
-		if(result != null){
-			return result;
-		}
+		permutationSort(userInput,currentIndex+1);
 		swap(userInput[currentIndex],userInput[counter]);
 	}
-	return null;
+	return;
 }
 
 #endif /* PERMUTATIONSORT_H_ */

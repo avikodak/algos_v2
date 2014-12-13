@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *  File Name   		: mergesort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture06\mergesort.h
+ *  Created on			: Dec 12, 2014 :: 2:09:53 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,48 +67,75 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef MERGESORTV2_H_
+#define MERGESORTV2_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
-}
-
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
+void msMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex > endIndex){
 		return;
 	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
+	vector<int> auxSpace;
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
+		if(firstCrawler > middleIndex || secondCrawler > endIndex){
+			if(firstCrawler <= middleIndex){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}else{
+			if(userInput[firstCrawler] < userInput[secondCrawler]){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}
+	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
+	}
 }
 
-#endif /* QUICKSORT_H_ */
+void msMergeSort(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	msMergeSort(userInput,startIndex,middleIndex);
+	msMergeSort(userInput,middleIndex+1,endIndex);
+	msMerge(userInput,startIndex,middleIndex,endIndex);
+}
+
+void msMergeSortV2(vector<int> &userInput,int startIndex,int endIndex);
+
+void msMergeV2(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+	while(firstCrawler <= middleIndex && secondCrawler <= endIndex){
+		if(userInput[firstCrawler] > userInput[secondCrawler]){
+			swap(userInput[firstCrawler],userInput[secondCrawler]);
+		}
+		firstCrawler++;
+	}
+	msMergeSortV2(userInput,middleIndex,endIndex);
+}
+
+void msMergeSortV2(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	msMergeSortV2(userInput,startIndex,middleIndex);
+	msMergeSortV2(userInput,middleIndex+1,endIndex);
+	msMergeV2(userInput,startIndex,middleIndex,endIndex);
+}
+
+#endif /* MERGESORTV2_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

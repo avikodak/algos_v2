@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void asRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -96,6 +97,7 @@ void asRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *asInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -123,6 +125,7 @@ ifpAvlNode *asInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int v
 	}
 }
 
+//Tested
 void asInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = asInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -160,11 +163,12 @@ void asInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
-void asSetVectorWithInorderValues(ifpAvlNode *ptr,vector<int> userInput){
+//Tested
+void asSetVectorWithInorderValues(ifpAvlNode *ptr,vector<int> &userInput){
 	if(ptr == null){
 		return;
 	}
-	int fillCounter = -1;
+	static int fillCounter = -1;
 	asSetVectorWithInorderValues(ptr->left,userInput);
 	while(ptr->frequency--){
 		userInput[++fillCounter] = ptr->value;
@@ -172,6 +176,7 @@ void asSetVectorWithInorderValues(ifpAvlNode *ptr,vector<int> userInput){
 	asSetVectorWithInorderValues(ptr->right,userInput);
 }
 
+//Tested
 void avlSorting(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;

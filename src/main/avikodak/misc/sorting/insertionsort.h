@@ -67,26 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef INSERTIONSORT_H_
-#define INSERTIONSORT_H_
+#ifndef INSERTIONSORTV2_H_
+#define INSERTIONSORTV2_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void insertionSort(vector<int> &userInput){
+//Tested
+void insertionSortV2(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	int innerCrawler,key;
 	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
 		innerCrawler = outerCrawler-1;
-		while(innerCrawler >= 0 && userInput[innerCrawler] > userInput[innerCrawler+1]){
+		key = userInput[outerCrawler];
+		while(innerCrawler >= 0 && userInput[innerCrawler] > key){
 			userInput[innerCrawler+1] = userInput[innerCrawler];
+			innerCrawler--;
 		}
 		userInput[innerCrawler+1] = key;
 	}
 }
-#endif /* INSERTIONSORT_H_ */
+#endif /* INSERTIONSORTV2_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -67,12 +67,13 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTINGSORT_H_
-#define COUNTINGSORT_H_
+#ifndef COUNTINGSORTV2_H_
+#define COUNTINGSORTV2_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void countingSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -80,7 +81,18 @@ void countingSort(vector<int> &userInput){
 	map<int,unsigned int> frequencyMap;
 	map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()){
+			itToFrequencyMap->second += 1;
+		}else{
+			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
+		}
+	}
+	int fillCounter = -1,frequency;
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		frequency = itToFrequencyMap->second;
+		while(frequency--){
+			userInput[++fillCounter] = itToFrequencyMap->first;
+		}
 	}
 }
 

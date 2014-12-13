@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\mergesort.h
- *  Created on			: Dec 11, 2014 :: 1:00:12 PM
+ *  File Name   		: minmax.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\minmax.h
+ *  Created on			: Dec 12, 2014 :: 12:18:49 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,49 +67,74 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MERGESORT_H_
-#define MERGESORT_H_
+#ifndef MINMAX_H_
+#define MINMAX_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iMaxMin *getMinMaxON(vector<int> userInput){
+	iMaxMin *result = new iMaxMin();
+	if(userInput.size() == 0){
+		return null;
+	}
+	if(userInput.size() == 1){
+		result->maxValue = userInput[0];
+		result->minValue = userInput[0];
+		return result;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(result->minValue > userInput[counter]){
+			result->minValue = userInput[counter];
+		}
+		if(result->maxValue < userInput[counter]){
+			result->maxValue = userInput[counter];
+		}
+	}
+	return result;
+}
+
+iMaxMin *getMinMaxDAD(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return null;
+	}
+	iMaxMin *result = new iMaxMin();
+	if(startIndex == endIndex){
+		result->minValue = userInput[startIndex];
+		result->maxValue = userInput[startIndex];
+		return result;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	iMaxMin *leftResult = getMinMaxDAD(userInput,startIndex,middleIndex);
+	iMaxMin *rightResult = getMinMaxDAD(userInput,middleIndex+1,endIndex);
+	result->minValue = min(leftResult->minValue,rightResult->minValue);
+	result->maxValue = max(leftResult->maxValue,rightResult->maxValue);
+	return result;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void msMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
+iMaxMin *getMinMaxONLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	vector<int> auxSpace;
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	while(startIndex <= middleIndex || secondCrawler <= endIndex){
-		if(startIndex > middleIndex || secondCrawler > endIndex){
-			if(startIndex <= middleIndex){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}else{
-			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}
+	iMaxMin *result = new iMaxMin();
+	if(userInput.size() == 1){
+		result->minValue = result->maxValue = userInput[0];
+		return result;
 	}
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		userInput[startIndex + counter] = auxSpace[counter];
-	}
+	sort(userInput.begin(),userInput.end());
+	result->maxValue = userInput[userInput.size()-1];
+	result->minValue = userInput[0];
+	return result;
 }
 
-void msMergeSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	msMergeSort(userInput,startIndex,middleIndex);
-	msMergeSort(userInput,middleIndex+1,endIndex);
-	msMerge(userInput,startIndex,middleIndex,endIndex);
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* MERGESORT_H_ */
+#endif /* MINMAX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

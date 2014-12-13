@@ -1,0 +1,4 @@
+Finding median in O(N)
+======================
+	Rank of an element is the position of the element in the sorted array
+	If rank of the element is n/4 <= Rank(x) <= 3n/4 are approximate medians

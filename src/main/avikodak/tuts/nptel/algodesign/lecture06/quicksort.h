@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
  *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture06\quicksort.h
+ *  Created on			: Dec 12, 2014 :: 2:24:15 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,22 +67,18 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef QUICKSORT_H_
+#define QUICKSORT_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
+int qsDivideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
 	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
+	int key = userInput[pivotIndex];
 	while(startIndex < endIndex){
 		while(userInput[startIndex] < key){
 			startIndex++;
@@ -98,14 +94,13 @@ int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
+void qsQuicksort(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
 		return;
 	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
+	int dividingIndex = qsDivideStepQuickSort(userInput,startIndex,endIndex);
+	qsQuicksort(userInput,startIndex,dividingIndex-1);
+	qsQuicksort(userInput,dividingIndex+1,endIndex);
 }
 
 #endif /* QUICKSORT_H_ */

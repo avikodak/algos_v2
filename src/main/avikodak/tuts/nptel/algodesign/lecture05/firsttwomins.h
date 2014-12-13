@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\quicksort.h
- *  Created on			: Dec 11, 2014 :: 1:00:07 PM
+ *  File Name   		: firsttwomins.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\firsttwomins.h
+ *  Created on			: Dec 12, 2014 :: 12:27:23 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,48 +67,87 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef QUICKSORTV2_H_
-#define QUICKSORTV2_H_
+#ifndef FIRSTTWOMINS_H_
+#define FIRSTTWOMINS_H_
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iPair *findFirstTwoMinsON(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(INT_MAX,INT_MAX);
+	if(userInput.size() == 1){
+		result->firstValue = userInput[0];
+		result->secondValue = INT_MAX;
+		return result;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(result->firstValue > userInput[counter]){
+			result->secondValue = result->firstValue;
+			result->firstValue = userInput[counter];
+		}else if(result->secondValue > userInput[counter]){
+			result->secondValue = userInput[counter];
+		}
+	}
+	return result;
+}
+
+iPair *findFirstTwoMinDAD(vector<int> userInput,int startIndex,int endIndex){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(INT_MAX,INT_MAX);
+	if(endIndex - startIndex == 1){
+		result->firstValue = userInput[startIndex];
+		result->secondValue = INT_MAX;
+		return result;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	iPair *leftResult = findFirstTwoMinDAD(userInput,startIndex,middleIndex);
+	iPair *rightResult = findFirstTwoMinDAD(userInput,middleIndex+1,endIndex);
+	if(leftResult->firstValue > rightResult->firstValue){
+		result->firstValue = rightResult->firstValue;
+		if(leftResult->firstValue > rightResult->secondValue){
+			result->secondValue = rightResult->secondValue;
+		}else{
+			result->secondValue = leftResult->firstValue;
+		}
+	}else{
+		result->firstValue = leftResult->firstValue;
+		if(rightResult->firstValue > leftResult->secondValue){
+			result->secondValue = leftResult->secondValue;
+		}else{
+			result->secondValue = rightResult->firstValue;
+		}
+	}
+	return result;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+iPair *findFirstTwoMinsONLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iPair *result = new iPair(INT_MAX,INT_MAX);
+	if(userInput.size() == 1){
+		result->firstValue = userInput[0];
+		return result;
+	}
+	sort(userInput.begin(),userInput.end());
+	result->firstValue = userInput[0];
+	result->secondValue = userInput[1];
+	return result;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int qsDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[endIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
-}
 
-//Tested
-void qsQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = qsDivideStep(userInput,startIndex,endIndex);
-	qsQuickSort(userInput,startIndex,dividingIndex-1);
-	qsQuickSort(userInput,dividingIndex+1,endIndex);
-}
-
-#endif /* QUICKSORT_H_ */
+#endif /* FIRSTTWOMINS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
