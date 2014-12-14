@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
+//Tested
 void reorganizeStraightRadixSort(vector<int> &userInput,int bitPosition){
 	if(userInput.size() == 0){
 		return;
@@ -94,6 +95,7 @@ void reorganizeStraightRadixSort(vector<int> &userInput,int bitPosition){
 	}
 }
 
+//Tested
 void  straightRadixSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;

@@ -71,13 +71,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
+//Tested
 int divideStepRadixSort(vector<int> &userInput,int startIndex,int endIndex,int bitposition){
 	int startCrawler = startIndex,endCrawler = endIndex;
-	while(startCrawler < endCrawler){
-		while(!(userInput[startCrawler]&1 << bitposition)){
+	while(startCrawler <= endCrawler){
+		while(startCrawler <= endCrawler && !(userInput[startCrawler]&1 << bitposition)){
 			startCrawler++;
 		}
-		while(userInput[endCrawler] & 1 << bitposition){
+		while(startCrawler <= endCrawler && (userInput[endCrawler] & 1 << bitposition)){
 			endCrawler--;
 		}
 		if(startCrawler < endCrawler){
@@ -87,13 +88,17 @@ int divideStepRadixSort(vector<int> &userInput,int startIndex,int endIndex,int b
 	return endCrawler;
 }
 
-void radixExchangeSort(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
-	if(startIndex > endIndex){
+//Tested
+void radixExchangeSortMain(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
+	if(startIndex >= endIndex || bitPosition < 0){
 		return;
 	}
 	int dividingIndex = divideStepRadixSort(userInput,startIndex,endIndex,bitPosition);
+	radixExchangeSortMain(userInput,startIndex,dividingIndex,bitPosition-1);
+	radixExchangeSortMain(userInput,dividingIndex+1,endIndex,bitPosition-1);
 }
 
+//Tested
 void radixExchangeSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
@@ -105,7 +110,7 @@ void radixExchangeSort(vector<int> &userInput){
 		}
 	}
 	int binaryDigits = log2(maxElement) + 1;
-
+	radixExchangeSortMain(userInput,0,userInput.size()-1,binaryDigits-1);
 }
 
 #endif /* RADIXEXCHANGESORT_H_ */

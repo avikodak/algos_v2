@@ -261,6 +261,8 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture22/mergesort.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture22/selectionsort.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture23/bucketsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture23/straightradixsort.h"
+#include "main/avikodak/tuts/nptel/dsalgo/lecture23/radixexchangesort.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencylist.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/adjacencymatrix.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
@@ -285,23 +287,13 @@
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
  */
 
-#include "main/avikodak/misc/sorting/avlsort.h"
-#include "main/avikodak/misc/sorting/bstsort.h"
-#include "main/avikodak/misc/sorting/bubblesort.h"
-#include "main/avikodak/misc/sorting/insertionsort.h"
-#include "main/avikodak/misc/sorting/mergesortv2.h"
-#include "main/avikodak/misc/sorting/permutationsort.h"
-#include "main/avikodak/misc/sorting/quicksort.h"
-#include "main/avikodak/misc/sorting/redblacksort.h"
-#include "main/avikodak/misc/sorting/selectionsort.h"
-#include "main/avikodak/misc/sorting/countingsort.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
 	vector<int> userInput = generateIRandomVector(10,0,50);
-	qsQuicksort(userInput,0,userInput.size()-1);
-	printIVector(userInput);
+	radixExchangeSortV2(userInput);
+	printIVector(userInput,false);
 }
 
 void p(inrNode *ptr){

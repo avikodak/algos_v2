@@ -67,34 +67,51 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef RADIXEXCHANGESORT_H_
-#define RADIXEXCHANGESORT_H_
+#ifndef RADIXEXCHANGESORTV2_H_
+#define RADIXEXCHANGESORTV2_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
+/* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
+//Tested
+int divideStepRadixExchangeSort(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
+	if(userInput.size() == 0 || bitPosition < 0){
+		return INT_MIN;
+	}
+	while(startIndex <= endIndex){
+		while(startIndex <= endIndex && !(userInput[startIndex] & 1 << bitPosition)){
+			startIndex++;
+		}
+		while(startIndex <= endIndex && userInput[endIndex] & 1 << bitPosition){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			swap(userInput[startIndex],userInput[endIndex]);
+		}
+	}
+	return endIndex;
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+void radixExchangeSortMainV2(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
+	if(startIndex >= endIndex || bitPosition < 0){
+		return;
+	}
+	int dividingIndex = divideStepRadixExchangeSort(userInput,startIndex,endIndex,bitPosition);
+	radixExchangeSortMainV2(userInput,startIndex,dividingIndex,bitPosition-1);
+	radixExchangeSortMainV2(userInput,dividingIndex+1,endIndex,bitPosition-1);
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+void radixExchangeSortV2(vector<int> &userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	int maxVal = *max_element(userInput.begin(),userInput.end());
+	radixExchangeSortMainV2(userInput,0,userInput.size(),log2(maxVal));
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-#endif /* RADIXEXCHANGESORT_H_ */
+#endif /* RADIXEXCHANGESORTV2_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
