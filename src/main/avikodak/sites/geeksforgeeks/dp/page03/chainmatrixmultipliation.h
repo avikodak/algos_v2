@@ -70,6 +70,20 @@ using namespace __gnu_cxx;
 #ifndef CHAINMATRIXMULTIPLIATION_H_
 #define CHAINMATRIXMULTIPLIATION_H_
 
+int minChainMatrixMultiplication(vector<matrixsize *> sizes,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MAX;
+	}
+	if(startIndex == endIndex){
+		return 0;
+	}
+	int minOperations = INT_MAX;
+	for(unsigned int counter = startIndex;counter < endIndex;counter++){
+		minOperations = min(minOperations,minChainMatrixMultiplication(sizes,startIndex,counter) + minChainMatrixMultiplication(counter+1,endIndex) + sizes[startIndex]->rows*sizes[counter]->columns*sizes[endIndex]->columns);
+	}
+	return minOperations;
+}
+
 
 
 #endif /* CHAINMATRIXMULTIPLIATION_H_ */

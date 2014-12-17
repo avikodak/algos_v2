@@ -153,6 +153,27 @@ int longestIncreasingSubSequence2N(vector<int> userInput){
 	return longestIncreasingSubSequence2NMain(userInput,auxSpace,0);
 }
 
+int longestIncreasingSubSequence2NIterative(vector<int> userInput){
+	if(userInput.size() < 2){
+		return userInput.size();
+	}
+	int limit = pow(2,userInput.size());
+	vector<int> auxSpace;
+	int maxSize = INT_MIN;
+	for(int counter = 0;counter < limit;counter++){
+		auxSpace.clear();
+		for(unsigned int objCounter = 0;objCounter < userInput.size();objCounter++){
+			if(counter & 1 << objCounter){
+				auxSpace.push_back(userInput[objCounter]);
+			}
+		}
+		if(isVectorSorted(auxSpace)){
+			maxSize = max(maxSize,(int)auxSpace.size());
+		}
+	}
+	return maxSize;
+}
+
 #endif /* LONGESTINCREASINGSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/

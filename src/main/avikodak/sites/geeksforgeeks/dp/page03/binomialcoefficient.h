@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestpalindromesequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestpalindromesequence.h
- *  Created on			: Dec 11, 2014 :: 12:29:24 PM
+ *  File Name   		: binomialcoefficient.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\binomialcoefficient.h
+ *  Created on			: Dec 15, 2014 :: 11:27:57 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,50 +67,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTPALINDROMESEQUENCE_H_
-#define LONGESTPALINDROMESEQUENCE_H_
+#ifndef BINOMIALCOEFFICIENT_H_
+#define BINOMIALCOEFFICIENT_H_
 
-int longestPalindromicSequenceMemoization(char *userInput){
-	if(userInput == null){
+int binomialCoefficient(int n,int r){
+	if(n == 0){
 		return 0;
 	}
-	int length = strlen(userInput);
-	vector<vector<int> > auxSpace(length);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(auxSpace.size());
-		auxSpace[counter][counter] = 1;
-	}
-	for(int rowCounter = length-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = length-1;columnCounter > rowCounter;columnCounter--){
-			if(userInput[rowCounter] == userInput[columnCounter]){
-				auxSpace[rowCounter][columnCounter] = 2 + auxSpace[rowCounter+1][columnCounter-1];
-			}else{
-				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter+1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
-			}
-		}
-	}
-	return auxSpace[0][auxSpace.size()-1];
-}
-
-int longestPalindromicSequence(char *userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
+	if(r == 0){
 		return 1;
 	}
-	if(abs(startIndex - endIndex) == 1){
-		return userInput[startIndex] == userInput[endIndex]?2:1;
+	if(r == 1){
+		return n;
 	}
-	if(userInput[startIndex] == userInput[endIndex]){
-		return 2 + longestPalindromicSequence(userInput,startIndex+1,endIndex-1);
-	}else{
-		return max(longestPalindromicSequence(userInput,startIndex+1,endIndex),longestPalindromicSequence(userInput,startIndex,endIndex-1));
-	}
+	return binomialCoefficient(n-1,r-1) + binomialCoefficient(n-1,r);
 }
 
-
-#endif /* LONGESTPALINDROMESEQUENCE_H_ */
+#endif /* BINOMIALCOEFFICIENT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

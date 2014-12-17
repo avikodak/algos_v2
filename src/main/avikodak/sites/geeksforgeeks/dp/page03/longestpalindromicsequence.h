@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestpalindromesequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestpalindromesequence.h
- *  Created on			: Dec 11, 2014 :: 12:29:24 PM
+ *  File Name   		: longestpalindromicsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\longestpalindromicsequence.h
+ *  Created on			: Dec 15, 2014 :: 9:20:31 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,21 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTPALINDROMESEQUENCE_H_
-#define LONGESTPALINDROMESEQUENCE_H_
+#ifndef LONGESTPALINDROMICSEQUENCE_H_
+#define LONGESTPALINDROMICSEQUENCE_H_
 
-int longestPalindromicSequenceMemoization(char *userInput){
+int longestPalindromicSubSequence(char *userInput){
 	if(userInput == null){
 		return 0;
 	}
 	int length = strlen(userInput);
 	vector<vector<int> > auxSpace(length);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(auxSpace.size());
-		auxSpace[counter][counter] = 1;
+	for(unsigned int diagonalCounter = 0;diagonalCounter < auxSpace.size();diagonalCounter++){
+		auxSpace[diagonalCounter].resize(length);
+		auxSpace[diagonalCounter][diagonalCounter] = 1;
 	}
-	for(int rowCounter = length-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = length-1;columnCounter > rowCounter;columnCounter--){
+	for(unsigned int counter = 0;counter < auxSpace.size()-1;counter++){
+		if(userInput[counter] == userInput[counter+1]){
+			auxSpace[counter][counter+1] = 2;
+		}else{
+			auxSpace[counter][counter+1] = 1;
+		}
+	}
+
+	for(int rowCounter = auxSpace.size()-1;rowCounter  >= 0;rowCounter--){
+		for(int columnCounter = auxSpace.size()-1;columnCounter > rowCounter;columnCounter--){
 			if(userInput[rowCounter] == userInput[columnCounter]){
 				auxSpace[rowCounter][columnCounter] = 2 + auxSpace[rowCounter+1][columnCounter-1];
 			}else{
@@ -89,28 +97,28 @@ int longestPalindromicSequenceMemoization(char *userInput){
 			}
 		}
 	}
-	return auxSpace[0][auxSpace.size()-1];
+	return auxSpace[0][auxSpace[0].size()-1];
 }
 
-int longestPalindromicSequence(char *userInput,int startIndex,int endIndex){
+
+int longestPalindromicSubSequence(char *userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}
 	if(startIndex == endIndex){
 		return 1;
 	}
-	if(abs(startIndex - endIndex) == 1){
-		return userInput[startIndex] == userInput[endIndex]?2:1;
+	if(endIndex - startIndex == 1){
+		return userInput[startIndex] == userInput[endIndex]?2:0;
 	}
 	if(userInput[startIndex] == userInput[endIndex]){
-		return 2 + longestPalindromicSequence(userInput,startIndex+1,endIndex-1);
+		return 2 + longestPalindromicSubSequence(userInput,startIndex+1,endIndex-1);
 	}else{
-		return max(longestPalindromicSequence(userInput,startIndex+1,endIndex),longestPalindromicSequence(userInput,startIndex,endIndex-1));
+		return max(longestPalindromicSubSequence(userInput,startIndex+1,endIndex),longestPalindromicSubSequence(userInput,startIndex,endIndex-1));
 	}
 }
 
-
-#endif /* LONGESTPALINDROMESEQUENCE_H_ */
+#endif /* LONGESTPALINDROMICSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

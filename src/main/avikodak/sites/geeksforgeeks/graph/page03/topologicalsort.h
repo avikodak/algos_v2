@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestpalindromesequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestpalindromesequence.h
- *  Created on			: Dec 11, 2014 :: 12:29:24 PM
+ *  File Name   		: topologicalsort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\topologicalsort.h
+ *  Created on			: Dec 15, 2014 :: 6:54:52 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,50 +67,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTPALINDROMESEQUENCE_H_
-#define LONGESTPALINDROMESEQUENCE_H_
+#ifndef TOPOLOGICALSORT_H_
+#define TOPOLOGICALSORT_H_
 
-int longestPalindromicSequenceMemoization(char *userInput){
-	if(userInput == null){
-		return 0;
+void topologicalSort(vector<vector<int> > adjacencyList,int sourceVertex,vector<int> &sortedOrder){
+	if(adjacencyList.size() == 0 || sortedOrder >= adjacencyList.size()){
+		return;
 	}
-	int length = strlen(userInput);
-	vector<vector<int> > auxSpace(length);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(auxSpace.size());
-		auxSpace[counter][counter] = 1;
-	}
-	for(int rowCounter = length-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = length-1;columnCounter > rowCounter;columnCounter--){
-			if(userInput[rowCounter] == userInput[columnCounter]){
-				auxSpace[rowCounter][columnCounter] = 2 + auxSpace[rowCounter+1][columnCounter-1];
-			}else{
-				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter+1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
-			}
+	static vector<bool> visitedFlags(adjacencyList.size(),INT_MIN);
+	visitedFlags[sourceVertex] = true;
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(!visitedFlags[adjacencyList[sourceVertex][counter]]){
+			topologicalSort(adjacencyList,adjacencyList[sourceVertex][counter],sortedOrder);
 		}
 	}
-	return auxSpace[0][auxSpace.size()-1];
+	sortedOrder.push_back(sourceVertex);
 }
 
-int longestPalindromicSequence(char *userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return 1;
-	}
-	if(abs(startIndex - endIndex) == 1){
-		return userInput[startIndex] == userInput[endIndex]?2:1;
-	}
-	if(userInput[startIndex] == userInput[endIndex]){
-		return 2 + longestPalindromicSequence(userInput,startIndex+1,endIndex-1);
-	}else{
-		return max(longestPalindromicSequence(userInput,startIndex+1,endIndex),longestPalindromicSequence(userInput,startIndex,endIndex-1));
-	}
-}
-
-
-#endif /* LONGESTPALINDROMESEQUENCE_H_ */
+#endif /* TOPOLOGICALSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -100,6 +100,10 @@ int maxSizesubMatrixOnes(vector<vector<int> > userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+bool isMatrixUnitMatrix(vector<vector<int> > userInput,int startRowIndex,int startColumnColumnIndex,int size){
+	return false;
+}
+
 
 #endif /* MAXSIZESUBMATRIXONES_H_ */
 

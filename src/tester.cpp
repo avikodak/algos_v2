@@ -216,7 +216,7 @@
 #include "main/avikodak/sites/geeksforgeeks/strings/page04/reversewordsstring.h"
 #include "main/avikodak/sites/geeksforgeeks/strings/page04/runlengthencoding.h"
 
-
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/longestpalindromicsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/fibonnacinumbers.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/longestincreasingsubsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
@@ -268,6 +268,7 @@
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/bfs.h"
 #include "main/avikodak/tuts/nptel/dsalgo/lecture25/checkforpath.h"
 
+#include "main/avikodak/tuts/nptel/algodesign/lecture01/gcd.h"
 #include "main/avikodak/tuts/nptel/algodesign/lecture03/matrixmultiplication.h"
 #include "main/avikodak/tuts/nptel/algodesign/lecture05/firsttwomins.h"
 #include "main/avikodak/tuts/nptel/algodesign/lecture05/minelement.h"
@@ -291,9 +292,9 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateIRandomVector(10,0,50);
-	radixExchangeSortV2(userInput);
-	printIVector(userInput,false);
+	unsigned int firstNumber,secondNumber;
+	scanf("%d %d",&firstNumber,&secondNumber);
+	printf("%d",gcd(firstNumber,secondNumber));
 }
 
 void p(inrNode *ptr){
@@ -367,10 +368,10 @@ void trieTester(){
 }
 
 void stringTester(){
-	char userInput[] = "geeksforgeeks";
+	char userInput[] = "BBABCBCAB";
 	//scanf("%s",userInput);
 	//reverseWordsInString(userInput);
-	printf("%s",runLengthEncoding(userInput));
+	printf("%d",longestPalindromicSubSequence(userInput));
 }
 
 void graphTester(){
@@ -381,7 +382,7 @@ void graphTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	arrayTester();
+	stringTester();
 	return 0;
 }
 

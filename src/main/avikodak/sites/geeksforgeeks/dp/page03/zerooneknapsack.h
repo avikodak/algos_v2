@@ -73,12 +73,64 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+int zeroOneKnapsack(vector<int> weights,vector<int> benefits,int maxWeight){
+	if(weights.size() == 0){
+		return INT_MIN;
+	}
+	vector<vector<int> > auxSpace(weights.size());
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		auxSpace.resize(maxWeight+1);
+	}
+	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
+		auxSpace[rowCounter][0] = 0;
+	}
+	for(unsigned int columnCounter = 0;columnCounter < auxSpace.size();columnCounter++){
+		auxSpace[0][columnCounter] = 0;
+	}
+	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
+			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter];
+			if(weights[rowCounter] <= columnCounter){
+				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter][columnCounter],benefits[rowCounter] + auxSpace[rowCounter-1][columnCounter - weights[rowCounter]]);
+			}
+		}
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(2^N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int zeroOneKnapsackO2N(vector<int> weights,vector<int> benefits,int maxWeight,int currentIndex){
+	if(maxWeight < 0){
+		return INT_MIN;
+	}
+	if(maxWeight == 0 || currentIndex == weights.size()){
+		return 0;
+	}
+	return max(zeroOneKnapsackO2N(weights,benefits,maxWeight,currentIndex+1),benefits[currentIndex] + zeroOneKnapsackO2N(weights,benefits,maxWeight-weights[currentIndex],currentIndex+1));
+}
 
+int zeroOneKnapGenerateSets(vector<int> weights,vector<int> benefits,int maxWeights){
+	if(weights.size() < 2){
+		return weights.size();
+	}
+	int limit = pow(2,weights.size());
+	int maxBenefit = INT_MIN,itemsWeight,itemsBenefits;
+	for(unsigned int counter = 0;counter < limit;counter++){
+		itemsBenefits = 0;
+		itemsWeight = 0;
+		for(unsigned int itemCounter = 0;itemCounter < weights.size();itemCounter++){
+			if(counter & 1 << itemCounter){
+				itemsBenefits += benefits[itemCounter];
+				itemsWeight += weights[itemCounter];
+			}
+		}
+		if(itemsWeight <= maxWeights){
+			maxBenefit = max(maxBenefit,itemsBenefits);
+		}
+	}
+	return maxBenefit;
+}
 
 #endif /* ZEROONEKNAPSACK_H_ */
 

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestpalindromesequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\longestpalindromesequence.h
- *  Created on			: Dec 11, 2014 :: 12:29:24 PM
+ *  File Name   		: schedulingonenode.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture10\schedulingonenode.h
+ *  Created on			: Dec 16, 2014 :: 6:06:21 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,50 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTPALINDROMESEQUENCE_H_
-#define LONGESTPALINDROMESEQUENCE_H_
+#ifndef SCHEDULINGONENODE_H_
+#define SCHEDULINGONENODE_H_
 
-int longestPalindromicSequenceMemoization(char *userInput){
-	if(userInput == null){
-		return 0;
-	}
-	int length = strlen(userInput);
-	vector<vector<int> > auxSpace(length);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(auxSpace.size());
-		auxSpace[counter][counter] = 1;
-	}
-	for(int rowCounter = length-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = length-1;columnCounter > rowCounter;columnCounter--){
-			if(userInput[rowCounter] == userInput[columnCounter]){
-				auxSpace[rowCounter][columnCounter] = 2 + auxSpace[rowCounter+1][columnCounter-1];
-			}else{
-				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter+1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
-			}
-		}
-	}
-	return auxSpace[0][auxSpace.size()-1];
-}
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
 
-int longestPalindromicSequence(char *userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return 1;
-	}
-	if(abs(startIndex - endIndex) == 1){
-		return userInput[startIndex] == userInput[endIndex]?2:1;
-	}
-	if(userInput[startIndex] == userInput[endIndex]){
-		return 2 + longestPalindromicSequence(userInput,startIndex+1,endIndex-1);
-	}else{
-		return max(longestPalindromicSequence(userInput,startIndex+1,endIndex),longestPalindromicSequence(userInput,startIndex,endIndex-1));
-	}
-}
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* LONGESTPALINDROMESEQUENCE_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* SCHEDULINGONENODE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

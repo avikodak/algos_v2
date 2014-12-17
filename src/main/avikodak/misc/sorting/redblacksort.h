@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void srbRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
@@ -87,7 +88,7 @@ void srbRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 			grandParent->right = child;
 		}
 	}
-	if(parent->left == parent){
+	if(parent->left == child){
 		parent->left = child->right;
 		child->right = parent;
 	}else{
@@ -96,6 +97,7 @@ void srbRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *srbInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
@@ -124,6 +126,7 @@ ifRbTreeNode *srbInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void srbReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(*root == null || currentNode == null){
 		return;
@@ -171,6 +174,7 @@ void srbReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void srbInsertIntoRbTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = srbInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null || !ptrToKey->parent->isRedNode){
@@ -179,6 +183,7 @@ void srbInsertIntoRbTree(ifRbTreeNode **root,int value){
 	srbReorganizeTreePostInsertion(root,ptrToKey);
 }
 
+//Tested
 void srbSetVectorWithInorderValues(ifRbTreeNode *ptr,vector<int> &userInput){
 	if(ptr == null){
 		return;
@@ -191,6 +196,7 @@ void srbSetVectorWithInorderValues(ifRbTreeNode *ptr,vector<int> &userInput){
 	srbSetVectorWithInorderValues(ptr->right,userInput);
 }
 
+//Tested
 void srbRbTreeSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;

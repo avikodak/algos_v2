@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,29 +70,57 @@ using namespace __gnu_cxx;
 #ifndef LONGESTBITONICSUBSEQUENCE_H_
 #define LONGESTBITONICSUBSEQUENCE_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+vector<int> longestIncreasingSubsequence(vector<int> userInput){
+	vector<int> lengths;
+	if(userInput.size() == 0){
+		return lengths;
+	}
+	lengths.push_back(1);
+	int maxLength;
+	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
+		maxLength = 1;
+		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
+			if(userInput[outerCrawler] >= userInput[innerCrawler]){
+				maxLength = max(maxLength,1+lengths[innerCrawler]);
+			}
+		}
+		lengths.push_back(maxLength);
+	}
+	return lengths;
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+vector<int> longestDecreasingSubsequence(vector<int> userInput){
+	vector<int> lengths;
+	if(userInput.size() == 0){
+		return lengths;
+	}
+	lengths.reserve(userInput.size());
+	lengths[userInput.size()-1] = 1;
+	int maxLength;
+	for(int outerCrawler = userInput.size()-2;outerCrawler >= 0;outerCrawler--){
+		maxLength = 1;
+		for(int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[innerCrawler] < userInput[outerCrawler]){
+				maxLength = max(maxLength,1+userInput[innerCrawler]);
+			}
+		}
+		lengths[outerCrawler] = maxLength;
+	}
+	return lengths;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int longestBitonicSubsequence(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	vector<int> incLengths = longestIncreasingSubsequence(userInput);
+	vector<int> decLenghts = longestDecreasingSubsequence(userInput);
+	int maxLength;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		maxLength = max(maxLength,1+incLengths[counter]+decLenghts[counter]);
+	}
+	return maxLength;
+}
 
 #endif /* LONGESTBITONICSUBSEQUENCE_H_ */
 

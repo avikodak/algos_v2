@@ -70,7 +70,10 @@ using namespace __gnu_cxx;
 #ifndef GCD_H_
 #define GCD_H_
 
-
+//Tested
+unsigned int gcd(unsigned int firstNumber,unsigned int secondNumber){
+	return firstNumber%secondNumber == 0?secondNumber:gcd(secondNumber,firstNumber%secondNumber);
+}
 
 #endif /* GCD_H_ */
 

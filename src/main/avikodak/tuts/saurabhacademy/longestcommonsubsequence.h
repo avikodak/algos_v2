@@ -68,6 +68,33 @@ using namespace __gnu_cxx;
 #ifndef LONGESTCOMMONSUBSEQUENCE_H_
 #define LONGESTCOMMONSUBSEQUENCE_H_
 
+int longestCommonSubsequenceMemoization(char *firstUserInput,char *secondUserInput){
+	if(firstUserInput == null || secondUserInput == null){
+		return 0;
+	}
+	int firstStringLength = strlen(firstUserInput);
+	int secondStringLength = strlen(secondUserInput);
+	vector<vector<int> > auxSpace(firstStringLength);
+	for(unsigned int counter = 0;counter < firstStringLength;counter++){
+		auxSpace[counter].resize(secondStringLength);
+	}
+	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
+		auxSpace[rowCounter][0] = 0;
+	}
+	for(unsigned int columnCounter = 0;columnCounter < auxSpace[0].size();columnCounter++){
+		auxSpace[0][columnCounter] = 0;
+	}
+	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
+			if(firstUserInput[rowCounter] == secondUserInput[columnCounter]){
+				auxSpace[rowCounter][columnCounter] = 1 + auxSpace[rowCounter-1][columnCounter-1];
+			}else{
+				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
+			}
+		}
+	}
+}
+
 int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){
 	if(*firstUserInput == '\0' || *secondUserInput == '\0'){
 		return 0;

@@ -70,6 +70,21 @@ using namespace __gnu_cxx;
 #ifndef CHAINMATRIXMULTIPLICATION_H_
 #define CHAINMATRIXMULTIPLICATION_H_
 
+int minChainMatrixMultiplicationMemoization(vector<matrixsize *> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	vector<vector<int> > auxSpace(userInput.size());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace[counter].resize(userInput.size());
+		auxSpace[counter][counter] = 0;
+	}
+	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
+		auxSpace[counter][counter+1] = userInput[counter]->rows * userInput[counter]->columns * userInput[counter+1]->columns;
+	}
+
+}
+
 int minChainMatrixMultiplication(vector<matrixsize *> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
@@ -81,7 +96,6 @@ int minChainMatrixMultiplication(vector<matrixsize *> userInput,int startIndex,i
 	for(int counter = startIndex;counter < endIndex;counter++){
 		minOperations = min(minOperations,minChainMatrixMultiplication(userInput,startIndex,counter) + minChainMatrixMultiplication(userInput,counter+1,endIndex) + userInput[startIndex]->rows * userInput[counter]->columns * userInput[endIndex]->columns);
 	}
-	printf("%d %d %d\n",startIndex,endIndex,minOperations);
 	return minOperations;
 }
 
