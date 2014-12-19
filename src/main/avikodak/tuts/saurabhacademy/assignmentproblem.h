@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fractionalknapsack.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture12\fractionalknapsack.h
- *  Created on			: Dec 16, 2014 :: 6:07:05 PM
+ *  File Name   		: assignmentproblem.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\assignmentproblem.h
+ *  Created on			: Dec 18, 2014 :: 8:19:06 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,60 +67,28 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FRACTIONALKNAPSACK_H_
-#define FRACTIONALKNAPSACK_H_
+#ifndef ASSIGNMENTPROBLEM_H_
+#define ASSIGNMENTPROBLEM_H_
 
-int quickSortDivideStep(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+int assignmentProblem(vector<vector<int> > payMatrix,int jobCounter,hash_map<unsigned int,unsigned int> personJobMap){
+	if(jobCounter > payMatrix[0].size()){
+		return INT_MAX;
 	}
-	int pivotIndex = endIndex;
-	float key = (weights[pivotIndex]/(float)benefits[pivotIndex]);
-	while(startIndex < endIndex){
-		while((weights[startIndex]/(float)benefits[startIndex]) < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && (weights[endIndex]/(float)benefits[endIndex]) >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(weights[pivotIndex],weights[endIndex]);
-			swap(benefits[pivotIndex],benefits[endIndex]);
+	if(jobCounter == payMatrix[0].size()){
+		return 0;
+	}
+	int minAmount = INT_MAX;
+	for(unsigned int person = 0;person < payMatrix.size();person++){
+		if(personJobMap.find(person) == personJobMap.end()){
+			personJobMap.insert(pair<unsigned int,unsigned int>(person,jobCounter));
+			minAmount = min(minAmount,payMatrix[person][jobCounter] + assignmentProblem(payMatrix,jobCounter,personJobMap));
+			personJobMap.erase(person);
 		}
 	}
-	swap(weights[pivotIndex],weights[endIndex]);
-	swap(benefits[pivotIndex],benefits[endIndex]);
-	return endIndex;
+	return minAmount;
 }
 
-void quickSortWeightsAndBenefits(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = quickSortDivideStep(weights,benefits,startIndex,endIndex);
-	quickSortWeightsAndBenefits(weights,benefits,startIndex,dividingIndex-1);
-	quickSortWeightsAndBenefits(weights,benefits,dividingIndex+1,endIndex);
-}
-
-float fractionalKnapsack(vector<int> weights,vector<int> benefits,int maxWeight){
-	if(weights.size() == 0){
-		return 0.0;
-	}
-	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
-	float maxBenefit = 0;
-	for(unsigned int counter = 0;counter < weights.size();counter++){
-		if(weights[counter] <= maxWeight){
-			maxBenefit += benefits[counter];
-			maxWeight -= weights[counter];
-		}else{
-			maxBenefit += (benefits[counter] /(float)weights[counter])*maxWeight;
-			break;
-		}
-	}
-	return maxBenefit;
-}
-
-#endif /* FRACTIONALKNAPSACK_H_ */
+#endif /* ASSIGNMENTPROBLEM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

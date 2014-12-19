@@ -58,7 +58,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
-
+#include "../lecture12/fractionalknapsack.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -70,29 +70,50 @@ using namespace __gnu_cxx;
 #ifndef KNAPSACK_H_
 #define KNAPSACK_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+int zeroOneKnapSackBruteForce(vector<int> weights,vector<int> benefits,int maxWeight,int currentIndex){
+	if(currentIndex > weights.size()){
+		return INT_MIN;
+	}
+	if(currentIndex == weights.size()){
+		return 0;
+	}
+	if(weights[currentIndex] > maxWeight){
+		return zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1);
+	}else{
+		return max(zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1),benefits[currentIndex] + zeroOneKnapSackBruteForce(weights,benefits,maxWeight - weights[currentIndex],currentIndex+1));
+	}
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int zeroOneKnapSackBranchAndBoundMain(vector<int> weights,vector<int> benefits,int rejectedValue,int maxWeight,int currentIndex){
+	static int minRejectedValue = INT_MAX;
+	if(currentIndex > weights.size()){
+		return INT_MIN;
+	}
+	if(currentIndex == weights.size()){
+		minRejectedValue = min(minRejectedValue,rejectedValue);
+		return 0;
+	}
+	if(weights[currentIndex] >= maxWeight){
+		if(rejectedValue + benefits[currentIndex] < minRejectedValue){
+			return zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue + benefits[currentIndex],maxWeight,currentIndex+1);
+		}
+	}else{
+		int minValue = INT_MAX;
+		minValue = min(minValue,benefits[currentIndex] + zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue,maxWeight - weights[currentIndex],currentIndex+1));
+		if(rejectedValue + benefits[currentIndex] < minRejectedValue){
+			minValue = min(minValue,zeroOneKnapSackBranchAndBoundMain(weights,benefits,benefits[currentIndex] + rejectedValue,maxWeight,currentIndex+1));
+		}
+		return minValue;
+	}
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int zeroOneKnapSackBranchAndBound(vector<int> weights,vector<int> benefits,int maxWeight){
+	if(weights.size() == 0){
+		return INT_MIN;
+	}
+	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
+	return zeroOneKnapSackBranchAndBoundMain(weights,benefits,0,maxWeight,0);
+}
 
 #endif /* KNAPSACK_H_ */
 

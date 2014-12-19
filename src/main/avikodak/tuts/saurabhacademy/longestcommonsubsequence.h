@@ -75,7 +75,7 @@ int longestCommonSubsequenceMemoization(char *firstUserInput,char *secondUserInp
 	int firstStringLength = strlen(firstUserInput);
 	int secondStringLength = strlen(secondUserInput);
 	vector<vector<int> > auxSpace(firstStringLength);
-	for(unsigned int counter = 0;counter < firstStringLength;counter++){
+	for(int counter = 0;counter < firstStringLength;counter++){
 		auxSpace[counter].resize(secondStringLength);
 	}
 	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
@@ -93,6 +93,7 @@ int longestCommonSubsequenceMemoization(char *firstUserInput,char *secondUserInp
 			}
 		}
 	}
+	return auxSpace[firstStringLength-1][secondStringLength-1];
 }
 
 int longestCommonSubsequence(char *firstUserInput,char *secondUserInput){

@@ -82,7 +82,7 @@ int minChainMatrixMultiplicationMemoization(vector<matrixsize *> userInput){
 	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
 		auxSpace[counter][counter+1] = userInput[counter]->rows * userInput[counter]->columns * userInput[counter+1]->columns;
 	}
-
+	return auxSpace[0][userInput.size()-1];
 }
 
 int minChainMatrixMultiplication(vector<matrixsize *> userInput,int startIndex,int endIndex){

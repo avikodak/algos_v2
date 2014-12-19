@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fractionalknapsack.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture12\fractionalknapsack.h
- *  Created on			: Dec 16, 2014 :: 6:07:05 PM
+ *  File Name   		: bellmanfordalgo.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\bellmanfordalgo.h
+ *  Created on			: Dec 19, 2014 :: 8:12:38 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,60 +67,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FRACTIONALKNAPSACK_H_
-#define FRACTIONALKNAPSACK_H_
+#ifndef BELLMANFORDALGO_H_
+#define BELLMANFORDALGO_H_
 
-int quickSortDivideStep(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+int shortestPathBellmanFord(vector<wEdge *> edgeList,int noOfVertices,int sourceVertex,int destinationVertex){
+	if(noOfVertices == 0 || sourceVertex >= noOfVertices || destinationVertex >= noOfVertices){
+		return INT_MAX;
 	}
-	int pivotIndex = endIndex;
-	float key = (weights[pivotIndex]/(float)benefits[pivotIndex]);
-	while(startIndex < endIndex){
-		while((weights[startIndex]/(float)benefits[startIndex]) < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && (weights[endIndex]/(float)benefits[endIndex]) >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(weights[pivotIndex],weights[endIndex]);
-			swap(benefits[pivotIndex],benefits[endIndex]);
+	vector<int> distanceLabels(noOfVertices,INT_MAX);
+	distanceLabels[sourceVertex] = 0;
+	for(unsigned int counter = 0;counter < noOfVertices;counter++){
+		for(unsigned int edgeCounter = 0;edgeCounter < edgeList.size();edgeCounter++){
+			distanceLabels[edgeList[edgeCounter]->destinationVertex] = min(distanceLabels[edgeList[edgeCounter]->destinationVertex],edgeList[edgeCounter]->weight + distanceLabels[edgeList[edgeCounter]->sourceVertex]);
 		}
 	}
-	swap(weights[pivotIndex],weights[endIndex]);
-	swap(benefits[pivotIndex],benefits[endIndex]);
-	return endIndex;
+	return distanceLabels[destinationVertex];
 }
 
-void quickSortWeightsAndBenefits(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = quickSortDivideStep(weights,benefits,startIndex,endIndex);
-	quickSortWeightsAndBenefits(weights,benefits,startIndex,dividingIndex-1);
-	quickSortWeightsAndBenefits(weights,benefits,dividingIndex+1,endIndex);
-}
-
-float fractionalKnapsack(vector<int> weights,vector<int> benefits,int maxWeight){
-	if(weights.size() == 0){
-		return 0.0;
-	}
-	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
-	float maxBenefit = 0;
-	for(unsigned int counter = 0;counter < weights.size();counter++){
-		if(weights[counter] <= maxWeight){
-			maxBenefit += benefits[counter];
-			maxWeight -= weights[counter];
-		}else{
-			maxBenefit += (benefits[counter] /(float)weights[counter])*maxWeight;
-			break;
-		}
-	}
-	return maxBenefit;
-}
-
-#endif /* FRACTIONALKNAPSACK_H_ */
+#endif /* BELLMANFORDALGO_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

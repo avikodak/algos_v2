@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fractionalknapsack.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture12\fractionalknapsack.h
- *  Created on			: Dec 16, 2014 :: 6:07:05 PM
+ *  File Name   		: lowestcommonancestors.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\lowestcommonancestors.h
+ *  Created on			: Dec 19, 2014 :: 11:12:39 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,60 +67,39 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FRACTIONALKNAPSACK_H_
-#define FRACTIONALKNAPSACK_H_
+#ifndef LOWESTCOMMONANCESTORS_H_
+#define LOWESTCOMMONANCESTORS_H_
 
-int quickSortDivideStep(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+//Assuming all values are unique
+int lowestCommonAncestors(itNode *root,int firstValue,int secondValue){
+	if(root == null){
+		return INT_MAX;
 	}
-	int pivotIndex = endIndex;
-	float key = (weights[pivotIndex]/(float)benefits[pivotIndex]);
-	while(startIndex < endIndex){
-		while((weights[startIndex]/(float)benefits[startIndex]) < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && (weights[endIndex]/(float)benefits[endIndex]) >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(weights[pivotIndex],weights[endIndex]);
-			swap(benefits[pivotIndex],benefits[endIndex]);
+	treeutils *utils = new treeutils();
+	vector<int> inorder = utils->getValuesInInorder(root);
+	vector<int> postorder = utils->getValuesInPostorder(root);
+	hash_map<int,unsigned int> valueRankMap;
+	hash_map<int,unsigned int>::iterator itToValueRankMap;
+	int firstValIndex,secondValIndex;
+	for(unsigned int counter = 0;counter < postorder.size();counter++){
+		valueRankMap.insert(pair<int,unsigned int>(postorder[counter],counter));
+	}
+	for(unsigned int counter = 0;counter < inorder.size();counter++){
+		if(inorder[counter] == firstValue){
+			firstValIndex = counter;
+		}else if(inorder[counter] == secondValue){
+			secondValIndex = counter;
 		}
 	}
-	swap(weights[pivotIndex],weights[endIndex]);
-	swap(benefits[pivotIndex],benefits[endIndex]);
-	return endIndex;
+	unsigned int ancestorIndex = 0;
+	for(unsigned int counter = firstValIndex < secondValIndex?firstValIndex:secondValIndex;counter <= firstValIndex > secondValIndex?firstValIndex:secondValIndex;counter++){
+		itToValueRankMap = valueRankMap.find(postorder[counter]);
+		ancestorIndex = max(ancestorIndex,itToValueRankMap->second);
+	}
+	return postorder[ancestorIndex];
 }
 
-void quickSortWeightsAndBenefits(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = quickSortDivideStep(weights,benefits,startIndex,endIndex);
-	quickSortWeightsAndBenefits(weights,benefits,startIndex,dividingIndex-1);
-	quickSortWeightsAndBenefits(weights,benefits,dividingIndex+1,endIndex);
-}
-
-float fractionalKnapsack(vector<int> weights,vector<int> benefits,int maxWeight){
-	if(weights.size() == 0){
-		return 0.0;
-	}
-	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
-	float maxBenefit = 0;
-	for(unsigned int counter = 0;counter < weights.size();counter++){
-		if(weights[counter] <= maxWeight){
-			maxBenefit += benefits[counter];
-			maxWeight -= weights[counter];
-		}else{
-			maxBenefit += (benefits[counter] /(float)weights[counter])*maxWeight;
-			break;
-		}
-	}
-	return maxBenefit;
-}
-
-#endif /* FRACTIONALKNAPSACK_H_ */
+#endif /* LOWESTCOMMONANCESTORS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fractionalknapsack.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture12\fractionalknapsack.h
- *  Created on			: Dec 16, 2014 :: 6:07:05 PM
+ *  File Name   		: BoardGame15.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\BoardGame15.h
+ *  Created on			: Dec 18, 2014 :: 6:35:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,60 +67,57 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FRACTIONALKNAPSACK_H_
-#define FRACTIONALKNAPSACK_H_
+#ifndef BOARDGAME15_H_
+#define BOARDGAME15_H_
 
-int quickSortDivideStep(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+bool isGoalReached(vector<vector<int> > currentConfiguration){
+	if(currentConfiguration.size() || currentConfiguration[0].size() == 0){
+		return true;
 	}
-	int pivotIndex = endIndex;
-	float key = (weights[pivotIndex]/(float)benefits[pivotIndex]);
-	while(startIndex < endIndex){
-		while((weights[startIndex]/(float)benefits[startIndex]) < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && (weights[endIndex]/(float)benefits[endIndex]) >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(weights[pivotIndex],weights[endIndex]);
-			swap(benefits[pivotIndex],benefits[endIndex]);
+	for(unsigned int rowCounter = 0;rowCounter < currentConfiguration.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < currentConfiguration[0].size();columnCounter++){
+			if(rowCounter*columnCounter + columnCounter + 1 != currentConfiguration[rowCounter][columnCounter]){
+				return false;
+			}
 		}
 	}
-	swap(weights[pivotIndex],weights[endIndex]);
-	swap(benefits[pivotIndex],benefits[endIndex]);
-	return endIndex;
+	return true;
 }
 
-void quickSortWeightsAndBenefits(vector<int> &weights,vector<int> &benefits,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
+int minNumberOfSteps(vector<vector<int> > currentConfiguration,int esRow,int esColumn){
+	if(esRow < 0 || esColumn < 0 || esRow >= currentConfiguration.size() || esColumn >= currentConfiguration[0].size()){
+		return INT_MAX;
 	}
-	int dividingIndex = quickSortDivideStep(weights,benefits,startIndex,endIndex);
-	quickSortWeightsAndBenefits(weights,benefits,startIndex,dividingIndex-1);
-	quickSortWeightsAndBenefits(weights,benefits,dividingIndex+1,endIndex);
-}
-
-float fractionalKnapsack(vector<int> weights,vector<int> benefits,int maxWeight){
-	if(weights.size() == 0){
-		return 0.0;
-	}
-	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
-	float maxBenefit = 0;
-	for(unsigned int counter = 0;counter < weights.size();counter++){
-		if(weights[counter] <= maxWeight){
-			maxBenefit += benefits[counter];
-			maxWeight -= weights[counter];
-		}else{
-			maxBenefit += (benefits[counter] /(float)weights[counter])*maxWeight;
-			break;
+	if(esRow == currentConfiguration.size()-1 && esColumn == currentConfiguration.size() - 1){
+		if(isGoalReached(currentConfiguration)){
+			return 0;
 		}
 	}
-	return maxBenefit;
+	int minSteps = INT_MAX;
+	if(esRow-1 >= 0){
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow-1][esColumn]);
+		minSteps = min(minSteps,1+minNumberOfSteps(currentConfiguration,esRow-1,esColumn));
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow-1][esColumn]);
+	}
+	if(esRow+1 < currentConfiguration.size()){
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow+1][esColumn]);
+		minSteps = min(minSteps,1+minNumberOfSteps(currentConfiguration,esRow+1,esColumn));
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow+1][esColumn]);
+	}
+	if(esColumn-1 >= 0){
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow][esColumn-1]);
+		minSteps = min(minSteps,1+minNumberOfSteps(currentConfiguration,esRow,esColumn-1));
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow][esColumn-1]);
+	}
+	if(esColumn+1 < currentConfiguration.size()){
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow][esColumn+1]);
+		minSteps = min(minSteps,1+minNumberOfSteps(currentConfiguration,esRow,esColumn+1));
+		swap(currentConfiguration[esRow][esColumn],currentConfiguration[esRow][esColumn+1]);
+	}
+	return minSteps;
 }
 
-#endif /* FRACTIONALKNAPSACK_H_ */
+#endif /* BOARDGAME15_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
