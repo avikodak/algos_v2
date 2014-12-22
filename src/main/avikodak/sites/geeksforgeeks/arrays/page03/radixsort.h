@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nqueensproblem.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\nqueensproblem.h
- *  Created on			: Dec 19, 2014 :: 12:19:43 PM
+ *  File Name   		: radixsort.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\radixsort.h
+ *  Created on			: Dec 22, 2014 :: 3:39:04 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,121 +67,45 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef NQUEENSPROBLEM_H_
-#define NQUEENSPROBLEM_H_
+#ifndef RADIXSORT_H_
+#define RADIXSORT_H_
 
-bool isSafeMove(vector<vector<bool> > userInput,int keyRow,int keyColumn){
-	int columnCounter = 0,rowCounter;
-	for(rowCounter = 0;rowCounter < keyRow;rowCounter++){
-		if(userInput[rowCounter][keyColumn]){
-			return false;
+int getDividingIndexRadixSort(vector<int> &userInput,int start,int end,int index){
+	if(start > end || index < 0){
+		return INT_MIN;
+	}
+	while(start < end){
+		while(!(userInput[start] & 1 << index)){
+			start++;
+		}
+		while(userInput[end] & 1 << index){
+			end--;
+		}
+		if(start < end){
+			swap(userInput[start],userInput[end]);
 		}
 	}
-	rowCounter = keyRow - 1;
-	columnCounter = keyColumn - 1;
-	while(rowCounter >= 0 && columnCounter >= 0){
-		if(userInput[rowCounter][columnCounter]){
-			return false;
-		}
-		rowCounter -= 1;
-		columnCounter -= 1;
-	}
-	return true;
+	return end;
 }
 
-bool solveNQueenProblemMain(vector<vector<bool> > userInput,int queenCounter){
-	if(queenCounter < 0){
-		return false;
-	}
-	if(queenCounter == 0){
-		printIVector(userInput);
-		return true;
-	}
-	for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-		if(isSafeMove(userInput,queenCounter,columnCounter)){
-			userInput[queenCounter][columnCounter] = true;
-			if(solveNQueenProblemMain(userInput,queenCounter+1)){
-				return true;
-			}
-			userInput[queenCounter][columnCounter] = false;
-		}
-	}
-	return false;
-}
-
-void solveNQueenProblem(int queenCount){
-	if(queenCount < 4){
+int radixSortMain(vector<int> &userInput,int start,int end,int index){
+	if(start >= end || index < 0){
 		return;
 	}
-	vector<vector<bool> > board(queenCount);
-	for(unsigned int counter = 0;counter < queenCount;counter++){
-		board[counter].resize(queenCount);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < queenCount;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < queenCount;columnCounter++){
-			board[rowCounter][columnCounter] = false;
-		}
-	}
-	solveNQueenProblemMain(board,queenCount);
+	int dividingIndex = getDividingIndexRadixSort(userInput,start,end,index);
+	radixSortMain(userInput,start,dividingIndex,index-1);
+	radixSortMain(userInput,dividingIndex+1,end,index-1);
 }
 
-bool isGoalState(vector<vector<bool> > board){
-	if(board.size() == 0 || board[0].size() == 0){
-		return true;
-	}
-	int row,column;
-	for(unsigned int rowCounter = 0;rowCounter < board.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < board[0].size();columnCounter++){
-			row = rowCounter-1;
-			while(row >= 0){
-				if(board[row][columnCounter]){
-					return false;
-				}
-			}
-			row = rowCounter+1;
-			while(row < board.size()){
-				if(board[row][columnCounter]){
-					return false;
-				}
-			}
-			row = rowCounter-1;
-			column = columnCounter - 1;
-			while(row >= 0 && column >= 0){
-				if(board[row][column]){
-					return false;
-				}
-			}
-			row = rowCounter+1;
-			column = columnCounter+1;
-			while(row < board.size() && column < board[0].size()){
-				if(board[row][column]){
-					return false;
-				}
-			}
-		}
-	}
-	return true;
-}
-
-void solveNQueenProblemBruteForce(vector<vector<bool> > userInput,int queenCounter){
-	if(queenCounter < 0){
+void radixSort(vector<int> userInput){
+	if(userInput.size() < 2){
 		return;
 	}
-	if(queenCounter == 0){
-		if(isGoalState(userInput)){
-			printIVector(userInput);
-			PRINT_NEW_LINE;
-		}
-		return;
-	}
-	for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-		userInput[queenCounter][columnCounter] = true;
-		solveNQueenProblemBruteForce(userInput,queenCounter+1);
-		userInput[queenCounter][columnCounter] = false;
-	}
+	int noOfBits = log2(*max_element(userInput.begin(),userInput.end()));
+	radixSort(userInput,0,userInput.size()-1,noOfBits);
 }
 
-#endif /* NQUEENSPROBLEM_H_ */
+#endif /* RADIXSORT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
