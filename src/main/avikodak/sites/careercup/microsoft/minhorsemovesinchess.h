@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: issubarrayforzero.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\issubarrayforzero.h
- *  Created on			: Dec 22, 2014 :: 8:39:45 PM
+ *  File Name   		: minhorsemovesinchess.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\careercup\microsoft\minhorsemovesinchess.h
+ *  Created on			: Dec 22, 2014 :: 10:22:50 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.careercup.com/question?id=5657515507318784
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,50 +67,46 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ISSUBARRAYFORZERO_H_
-#define ISSUBARRAYFORZERO_H_
+#ifndef MINHORSEMOVESINCHESS_H_
+#define MINHORSEMOVESINCHESS_H_
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Should do more research
-bool isThereSubarrayForZeroON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return true;
+int minHorseMoveInChess(vector<vector<bool> > configuration,int destinationX,int destinationY,int currentX,int currentY){
+	if(currentX > configuration[0].size() || currentX < 0 || currentY > configuration.size() || currentY < 0){
+		return INT_MAX;
 	}
-	hash_map<int,bool> visitedFlags;
-	hash_map<int,bool>::iterator itToVisitedFlags;
-	int currentSum = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum += userInput[counter];
-		if(currentSum == 0 || visitedFlags.find(currentSum) != visitedFlags.end()){
-			return true;
-		}
-		visitedFlags[currentSum] = true;
+	if(currentX == destinationX && currentY == destinationY){
+		return 0;
 	}
-	return false;
+	int minMoves = INT_MAX;
+	configuration[currentX][currentY] = true;
+	if(!configuration[currentX+1][currentY-2]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY-2));
+	}
+	if(!configuration[currentX+1][currentY+2]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY+2));
+	}
+	if(!configuration[currentX+2][currentY-1]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY-1));
+	}
+	if(!configuration[currentX+2][currentY+1]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY+1));
+	}
+	if(!configuration[currentX-1][currentY-2]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY-2));
+	}
+	if(!configuration[currentX-1][currentY+2]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY+2));
+	}
+	if(!configuration[currentX-2][currentY-1]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY-1));
+	}
+	if(!configuration[currentX-2][currentY+1]){
+		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY+1));
+	}
+	return minMoves;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-bool isThereSubarrayForZeroON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int currentSum = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		currentSum = 0;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-			currentSum += userInput[innerCrawler];
-			if(currentSum == 0){
-				return true;
-			}
-		}
-	}
-	return false;
-}
-#endif /* ISSUBARRAYFORZERO_H_ */
+#endif /* MINHORSEMOVESINCHESS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
