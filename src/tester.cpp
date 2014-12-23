@@ -288,13 +288,14 @@
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
  */
 
+#include "main/avikodak/misc/sorting/heapsort.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	unsigned int firstNumber,secondNumber;
-	scanf("%d %d",&firstNumber,&secondNumber);
-	printf("%d",gcd(firstNumber,secondNumber));
+	vector<int> userInput = generateIRandomVector(10,0,50);
+	heapSort(userInput);
+	printIVector(userInput,false);
 }
 
 void p(inrNode *ptr){
@@ -382,7 +383,7 @@ void graphTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	stringTester();
+	arrayTester();
 	return 0;
 }
 

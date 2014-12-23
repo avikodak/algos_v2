@@ -73,22 +73,84 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void heapify(vector<int> heap,int size,int index){
+//Tested
+void heapify(vector<int> &heap,int size,int index){
 	if(size == 0 || index >= size){
 		return;
 	}
 	while(index < size){
 		if(2*index + 2 < size){
-
-		}else if(2*index + 1 < heap.size()){
-
+			if(heap[index] > heap[2*index+2] || heap[index] > heap[2*index+1]){
+				if(heap[2*index+1] < heap[2*index+2]){
+					swap(heap[index],heap[2*index+1]);
+					index = 2*index+1;
+				}else{
+					swap(heap[index],heap[2*index+2]);
+					index = 2*index+2;
+				}
+			}else{
+				return;
+			}
+		}else if(2*index + 1 < size){
+			if(heap[index] > heap[2*index+1]){
+				swap(heap[index],heap[2*index+1]);
+				index = 2*index+1;
+			}else{
+				return;
+			}
 		}else{
 			return;
 		}
 	}
 }
 
+int getMin(vector<int> heap,int size){
+	if(size == 0){
+		throw "Heap is empty";
+	}
+	return heap[0];
+}
 
+//Tested
+int deleteMin(vector<int> &userInput,int size){
+	if(size == 0){
+		return INT_MIN;
+	}
+	swap(userInput[0],userInput[size-1]);
+	if(size != 1){
+		heapify(userInput,size-1,0);
+		return size-1;
+	}
+	return 0;
+}
+
+//Tested
+void hsReverseArray(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	int startIndex = 0,endIndex = userInput.size()-1;
+	while(startIndex < endIndex){
+		swap(userInput[startIndex],userInput[endIndex]);
+		startIndex++;
+		endIndex--;
+	}
+}
+
+//Tested
+void heapSort(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	for(int counter = userInput.size()/2;counter >= 0;counter--){
+		heapify(userInput,(int)userInput.size(),counter);
+	}
+	int size = userInput.size();
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		size = deleteMin(userInput,size);
+	}
+	hsReverseArray(userInput);
+}
 
 #endif /* HEAPSORT_H_ */
 
