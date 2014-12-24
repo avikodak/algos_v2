@@ -91,6 +91,38 @@ vector<int> getVectorForUserInput(){
 	return userInput;
 }
 
+//Tested
+vector<iInterval *> getVectorForIntervalsUserInput(){
+	vector<iInterval *> userInput;
+	userInput.clear();
+	unsigned int sizeOfInput;
+	scanf("%d",&sizeOfInput);
+	int start,end;
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%d %d",&start,&end);
+		userInput.push_back(new iInterval(start,end));
+	}
+	return userInput;
+}
+
+//Tested
+vector<vector<int> > getVectorForMatrixUserInput(){
+	vector<vector<int> > userInput;
+	int rows,columns;
+	scanf("%d %d",&rows,&columns);
+	userInput.resize(rows);
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		userInput[rowCounter].resize(columns);
+	}
+	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < columns;columnCounter++){
+			scanf("%d",&userInput[rowCounter][columnCounter]);
+		}
+	}
+	return userInput;
+}
+
+//Tested
 vector<unsigned int> getUVectorForUserInput(){
 	vector<unsigned int> userInput;
 	unsigned int sizeOfInput;

@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -46,7 +46,6 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 #define TRIE_ALPHABET_SIZE 26
 #define TWO_FOUR_TREE_CHILDREN 4
-#define null NULL
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
@@ -69,6 +68,23 @@ struct itNode{
 		this->left = null;
 		this->right = null;
 		this->value = value;
+	}
+};
+
+struct ctNode{
+	char ch;
+	ctNode *left;
+	ctNode *right;
+
+	ctNode(){
+		this->left = null;
+		this->right = null;
+	}
+
+	ctNode(char ch){
+		this->ch = ch;
+		this->left = null;
+		this->right = null;
 	}
 };
 
@@ -131,6 +147,27 @@ struct iftNode{
 
 	iftNode(int value){
 		this->value = value;
+		this->frequency = 1;
+		this->left = null;
+		this->right = null;
+	}
+
+};
+
+struct cftNode{
+	char ch;
+	unsigned int frequency;
+	cftNode *left;
+	cftNode *right;
+
+	cftNode(){
+		this->frequency = 0;
+		this->left = null;
+		this->right = null;
+	}
+
+	cftNode(char ch){
+		this->ch = ch;
 		this->frequency = 1;
 		this->left = null;
 		this->right = null;
@@ -217,6 +254,27 @@ struct iAvlNode{
 	}
 };
 
+struct cAvlNode{
+	char ch;
+	unsigned int height;
+	cAvlNode *left;
+	cAvlNode *right;
+
+	cAvlNode(){
+		this->height = 0;
+		this->left = null;
+		this->right = null;
+	}
+
+	cAvlNode(char ch){
+		this->ch = ch;
+		this->height = 1;
+		this->left = null;
+		this->right = null;
+	}
+
+};
+
 struct ifAvlNode{
 	int value;
 	unsigned int frequency;
@@ -234,6 +292,29 @@ struct ifAvlNode{
 		this->value = value;
 		this->height = 1;
 		this->frequency = 1;
+		this->left = null;
+		this->right = null;
+	}
+};
+
+struct cfAvlNode{
+	char ch;
+	unsigned int frequency;
+	unsigned int height;
+	cfAvlNode *left;
+	cfAvlNode *right;
+
+	cfAvlNode(){
+		this->frequency = 0;
+		this->height = 0;
+		this->left = null;
+		this->right = null;
+	}
+
+	cfAvlNode(char ch){
+		this->ch = ch;
+		this->frequency = 1;
+		this->height = 1;
 		this->left = null;
 		this->right = null;
 	}
@@ -261,6 +342,29 @@ struct ipAvlNode{
 	}
 };
 
+struct cpAvlNode{
+	char ch;
+	unsigned int height;
+	cAvlNode *left;
+	cAvlNode *right;
+	cAvlNode *parent;
+
+	cpAvlNode(){
+		this->height = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	cpAvlNode(char ch){
+		this->ch = ch;
+		this->height = 1;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
 struct ifpAvlNode{
 	int value;
 	unsigned int height;
@@ -277,6 +381,32 @@ struct ifpAvlNode{
 
 	ifpAvlNode(int value){
 		this->value = value;
+		this->height = 1;
+		this->frequency = 1;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct cfpAvlNode{
+	char ch;
+	unsigned int height;
+	unsigned int frequency;
+	cfpAvlNode *left;
+	cfpAvlNode *right;
+	cfpAvlNode *parent;
+
+	cfpAvlNode(){
+		this->height = 0;
+		this->frequency = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	cfpAvlNode(char ch){
+		this->ch = ch;
 		this->height = 1;
 		this->frequency = 1;
 		this->left = null;
@@ -509,6 +639,29 @@ struct iRbTreeNode{
 	}
 };
 
+struct cpRbTNode{
+	char ch;
+	bool isRedNode;
+	cpRbTNode *left;
+	cpRbTNode *right;
+	cpRbTNode *parent;
+
+	cpRbTNode(){
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	cpRbTNode(char ch){
+		this->ch = ch;
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
 struct ifRbTreeNode{
 	int value;
 	bool isRedNode;
@@ -527,6 +680,31 @@ struct ifRbTreeNode{
 	ifRbTreeNode(int value){
 		this->frequency = 1;
 		this->value = value;
+		this->isRedNode = true;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+};
+
+struct cfpRbTNode{
+	char ch;
+	bool isRedNode;
+	unsigned int frequency;
+	cfpRbTNode *left;
+	cfpRbTNode *right;
+	cfpRbTNode *parent;
+
+	cfpRbTNode(){
+		this->frequency = 0;
+		this->left = null;
+		this->right = null;
+		this->parent = null;
+	}
+
+	cfpRbTNode(char ch){
+		this->frequency = 1;
+		this->ch = ch;
 		this->isRedNode = true;
 		this->left = null;
 		this->right = null;

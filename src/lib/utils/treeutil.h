@@ -218,6 +218,33 @@ private:
 		}
 	}
 
+	void getCFBSTFromString(cftNode **root,cftNode *currentNode,char *userInput){
+		if(*userInput != '\0'){
+			return;
+		}
+		if(*root == null){
+			(*root) = new cftNode(userInput[0]);
+			getCFBSTFromString(root,*root,userInput++);
+		}else if(currentNode->ch == userInput[0]){
+			currentNode->frequency += 1;
+			getCFBSTFromString(root,*root,userInput++);
+		}else if(currentNode->ch > userInput[0]){
+			if(currentNode->left == null){
+				currentNode->left = new cftNode(userInput[0]);
+				getCFBSTFromString(root,*root,userInput++);
+			}else{
+				getCFBSTFromString(root,currentNode->left,userInput);
+			}
+		}else{
+			if(currentNode->right == null){
+				currentNode->right  = new cftNode(userInput[0]);
+				getCFBSTFromString(root,*root,userInput);
+			}else{
+				getCFBSTFromString(root,currentNode->right,userInput);
+			}
+		}
+	}
+
 	void setNodesInPreorderMain(itNode *ptr,vector<itNode *> &auxSpace){
 		if(ptr == null){
 			return;
@@ -443,6 +470,7 @@ public:
 		return getITreeFromVector(randomValues);
 	}
 
+	//Tested
 	inrNode *getINRRandomTree(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX){
 		if(numberOfNodes == 0){
 			return null;
@@ -488,12 +516,22 @@ public:
 		return root;
 	}
 
+	//Tested
 	iftNode *getFBSTFromVector(vector<int> userInput){
 		if(userInput.size() == 0){
 			return null;
 		}
 		iftNode *root = null;
 		getFBSTFromVectorMain(&root,root,userInput,0);
+		return root;
+	}
+
+	cftNode *getCFBSTFromString(char *userInput){
+		if(userInput == null){
+			return null;
+		}
+		cftNode *root = null;
+		getCFBSTFromString(&root,root,userInput);
 		return root;
 	}
 
@@ -795,6 +833,15 @@ public:
 		preOrderTraversal(ptr->right);
 	}
 
+	void preOrderTraversal(cftNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		printf("%c(%d)\t",ptr->ch,ptr->frequency);
+		preOrderTraversal(ptr->left);
+		preOrderTraversal(ptr->right);
+	}
+
 	//Tested
 	void inOrderTraversal(itNode *ptr){
 		if(ptr == null){
@@ -815,6 +862,15 @@ public:
 		inorderTraversal(ptr->right);
 	}
 
+	void inOrderTraversal(cftNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		inOrderTraversal(ptr->left);
+		printf("%c(%d)\t",ptr->ch,ptr->frequency);
+		inOrderTraversal(ptr->right);
+	}
+
 	//Tested
 	void postOrderTraversal(itNode *ptr){
 		if(ptr == null){
@@ -823,6 +879,15 @@ public:
 		postOrderTraversal(ptr->left);
 		postOrderTraversal(ptr->right);
 		printf("%d\t",ptr->value);
+	}
+
+	void postOrderTraversal(cftNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		postOrderTraversal(ptr->left);
+		postOrderTraversal(ptr->right);
+		printf("%c(%d)\t",ptr->ch,ptr->frequency);
 	}
 
 	//Tested
@@ -982,7 +1047,6 @@ public:
 		return hashMapOfTree;
 	}
 };
-
 #endif /* TREEUTIL_H_ */
 
 /****************************************************************************************************************************************************/

@@ -58,22 +58,63 @@ using namespace __gnu_cxx;
 #ifndef GRAPHUTIL_H_
 #define GRAPHUTIL_H_
 
-struct edge{
-	int sourceVertex;
-	int destinationVertex;
-	bool isUndirectedEdge;
-
-	edge(){
-
+class graphutil {
+private:
+public:
+	vector<vector<int> > getAdjacencyList(bool forUndirectedGraph = true){
+		vector<vector<int> > adjacencyList;
+		int noOfVertices,noOfEdges;
+		int sourceVertex,destinationVertex;
+		scanf("%d",&noOfVertices);
+		adjacencyList.reserve(noOfVertices);
+		scanf("%d",&noOfEdges);
+		while(noOfEdges--){
+			scanf("%d %d",&sourceVertex,&destinationVertex);
+			adjacencyList[sourceVertex].push_back(destinationVertex);
+			if(forUndirectedGraph){
+				adjacencyList[destinationVertex].push_back(sourceVertex);
+			}
+		}
+		return adjacencyList;
 	}
 
-	edge(int sourceVertex,int destinationVertex,bool isUndirectedEdge){
-		this->sourceVertex = sourceVertex;
-		this->destinationVertex = destinationVertex;
-		this->isUndirectedEdge = isUndirectedEdge;
+	vector<vector<bool> > getAdjacencyMatrix(bool forUndirectedGraph = true){
+		vector<vector<bool> > adjacencyMatrix;
+		int noOfVertices,noOfEdges;
+		int sourceVertex,destinationVertex;
+		scanf("%d",&noOfVertices);
+		adjacencyMatrix.reserve(noOfVertices);
+		for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
+			adjacencyMatrix[counter].reserve(noOfVertices);
+		}
+		for(unsigned int rowCounter = 0;rowCounter < noOfVertices;rowCounter++){
+			for(unsigned int columnCounter = 0;columnCounter < noOfVertices;columnCounter++){
+				adjacencyMatrix[rowCounter][columnCounter] = false;
+			}
+		}
+		scanf("%d",&noOfEdges);
+		while(noOfEdges--){
+			scanf("%d %d",&sourceVertex,&destinationVertex);
+			adjacencyMatrix[sourceVertex][destinationVertex] = true;
+			if(forUndirectedGraph){
+				adjacencyMatrix[destinationVertex][sourceVertex] = true;
+			}
+		}
+		return adjacencyMatrix;
+	}
+
+	vector<edge *> getEdgeList(bool forUndirectedGraph){
+		vector<edge *> edgeDS;
+		int noOfEdges;
+		int sourceVertex,destinationVertex;
+		scanf("%d",&noOfEdges);
+		while(noOfEdges--){
+			scanf("%d %d",&sourceVertex,&destinationVertex);
+			edgeDS.push_back(new edge(sourceVertex,destinationVertex,forUndirectedGraph));
+		}
+		return edgeDS;
 	}
 };
-
 
 #endif /* GRAPHUTIL_H_ */
 

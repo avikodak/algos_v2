@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,24 +65,105 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+#ifndef GRAPHDS_H_
+#define GRAPHDS_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+struct edge{
+	int sourceVertex;
+	int destinationVertex;
+	bool isUndirectedEdge;
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
+	edge(){
+
+	}
+
+	edge(int sourceVertex,int destinationVertex,bool isUndirectedEdge){
+		this->sourceVertex = sourceVertex;
+		this->destinationVertex = destinationVertex;
+		this->isUndirectedEdge = isUndirectedEdge;
+	}
+};
+
+struct wEdge{
+	int sourceVertex;
+	int destinationVertex;
+	int weight;
+	bool isUndirectedEdge;
+
+	wEdge(){
+
+	}
+
+	wEdge(int sourceVertex,int destinationVertex,int weight){
+		this->sourceVertex = sourceVertex;
+		this->destinationVertex = destinationVertex;
+		this->weight = weight;
+		this->isUndirectedEdge = false;
+	}
+
+	wEdge(int sourceVertex,int destinationVertex,int weight,bool isUndirectedEdge){
+		this->sourceVertex = sourceVertex;
+		this->destinationVertex = destinationVertex;
+		this->weight = weight;
+		this->isUndirectedEdge = isUndirectedEdge;
+	}
+};
+
+struct dfsTimes{
+	int arrivalTimes;
+	int departureTimes;
+
+	dfsTimes(){
+		this->arrivalTimes = INT_MAX;
+		this->departureTimes = INT_MAX;
+	}
+
+	dfsTimes(int arrivalTimes,int departureTimes){
+		this->arrivalTimes = arrivalTimes;
+		this->departureTimes = departureTimes;
+	}
+};
+
+struct ncUnionfind{
+	int vertex;
+	int nodeCounter;
+	int parentVertex;
+
+	ncUnionfind(){
+		this->vertex = INT_MIN;
+		this->nodeCounter = 0;
+		this->parentVertex = null;
+	}
+
+	ncUnionfind(int vertex){
+		this->vertex = vertex;
+		this->nodeCounter = 1;
+		this->parentVertex = vertex;
+	}
+
+	ncUnionfind(int vertex,int parentVertex){
+		this->vertex = vertex;
+		this->parentVertex = parentVertex;
+		this->nodeCounter = 1;
+	}
+};
+
+struct wVertex{
+	int vertex;
+	int weight;
+
+	wVertex(){
+
+	}
+
+	wVertex(int vertex,int weight){
+		this->vertex = vertex;
+		this->weight = weight;
+	}
+};
+
+#endif /* GRAPHDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
-#ifndef GRAPHDS_H_
-#define GRAPHDS_H_
-
-
-#endif /* GRAPHDS_H_ */

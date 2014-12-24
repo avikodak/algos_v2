@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -75,6 +75,40 @@ void printIVector(vector<int> userInput,bool withHeadersAndFooters = true){
 	}
 }
 
+void printIVector(vector<vector<int> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return;
+	}
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			printf("%d\t",userInput[rowCounter][columnCounter]);
+		}
+		PRINT_NEW_LINE;
+	}
+}
+
+//Tested
+void printIVector(vector<iInterval *> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d-%d\t",userInput[counter]->start,userInput[counter]->end);
+	}
+}
+
+void printIVector(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return;
+	}
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			printf("%d\t",userInput[rowCounter][columnCounter]);
+		}
+		PRINT_NEW_LINE;
+	}
+}
+
 //Tested
 void printTIndexNodeMap(hash_map<unsigned int,itNode *> nodeIndexMap){
 	hash_map<unsigned int,itNode *>::iterator itToNodeIndexMap;
@@ -91,6 +125,43 @@ void printTNodeIndexMap(hash_map<uint32_t,unsigned int> indexNodeMap){
 	}
 }
 
+vector<int> generatePrimeNumbers(unsigned int number){
+	vector<int> primeNumbers;
+	if(number < 2){
+		return primeNumbers;
+	}
+	vector<bool> auxSpace(number+1,true);
+	auxSpace[1] = auxSpace[0] = false;
+	int multiplier;
+	for(unsigned int counter = 2;counter <= number/2;counter++){
+		if(auxSpace[counter]){
+			multiplier = 2;
+			while(counter * multiplier <= number){
+				auxSpace[counter * multiplier] = false;
+				multiplier++;
+			}
+		}
+	}
+	for(unsigned int counter = 1;counter < number;counter++){
+		if(auxSpace[counter]){
+			primeNumbers.push_back(counter);
+		}
+	}
+	return primeNumbers;
+}
+
+bool isNumberPrime(unsigned int number){
+	if(number < 2){
+		return true;
+	}
+	int sqrtOfInput = sqrt(number);
+	for(unsigned int counter = 1;counter <= sqrtOfInput;counter++){
+		if(number%counter == 0){
+			return false;
+		}
+	}
+	return true;
+}
 
 #endif /* COMMONUTIL_H_ */
 

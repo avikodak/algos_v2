@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -48,7 +48,6 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/arrayutil.h>
 #include <algorithm/utils/commonutil.h>
 
-
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -64,7 +63,38 @@ using namespace __gnu_cxx;
 
 class sillutils {
 private:
+	void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr){
+		if(ptr == null || ptr->next == null){
+			(*firstPtr) = ptr;
+			(*secondPtr) = null;
+			return;
+		}
+		sillNode *slowPtr = ptr,*fastPtr = ptr->next;
+		while(fastPtr != null){
+			fastPtr = fastPtr->next;
+			if(fastPtr != null){
+				fastPtr = fastPtr->next;
+				slowPtr = slowPtr->next;
+			}
+		}
+		(*secondPtr) = slowPtr->next;
+		slowPtr->next = null;
+		(*firstPtr)  = ptr;
+	}
 
+	sillNode *merge(sillNode *firstPtr,sillNode *secondPtr){
+		if(firstPtr == null || secondPtr == null){
+			return firstPtr == null?secondPtr:firstPtr;
+		}
+		sillNode *result = null;
+		if(firstPtr->value < secondPtr->value){
+			result  = firstPtr;
+			result->next = merge(firstPtr->next,secondPtr);
+		}else{
+			result = secondPtr;
+		}
+		return result;
+	}
 public:
 	//Tested
 	sillNode *getSillFromVector(vector<int> userInput,unsigned int currentIndex = 0){
@@ -113,6 +143,17 @@ public:
 			printf("%d\t",ptr->value);
 			ptr = ptr->next;
 		}
+	}
+
+	void mergeSort(sillNode **ptr){
+		if(*ptr == null || (*ptr)->next == null){
+			return;
+		}
+		sillNode *firstPtr = null,*secondPtr = null;
+		frontBackSplit(*ptr,&firstPtr,&secondPtr);
+		mergeSort(&firstPtr);
+		mergeSort(&secondPtr);
+		(*ptr) = merge(firstPtr,secondPtr);
 	}
 };
 

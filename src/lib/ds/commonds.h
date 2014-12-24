@@ -187,8 +187,72 @@ struct iValueIndex{
 	}
 
 };
+
+struct matrixsize{
+	int rows;
+	int columns;
+
+	matrixsize(){
+		this->rows = 0;
+		this->columns = 0;
+	}
+
+	matrixsize(int rows,int columns){
+		this->rows = rows;
+		this->columns = columns;
+	}
+};
+
+struct iInterval{
+	int start;
+	int end;
+
+	iInterval(){
+
+	}
+
+	iInterval(int start,int end){
+		this->start = start;
+		this->end = end;
+	}
+};
+
+struct rowColumn{
+	int row;
+	int column;
+
+	rowColumn(){
+		this->row = INT_MAX;
+		this->column = INT_MAX;
+	}
+
+	rowColumn(int row,int column){
+		this->row = row;
+		this->column = column;
+	}
+};
+
+struct iRowColumn{
+	int value;
+	int row;
+	int column;
+
+	iRowColumn(){
+		this->value = INT_MIN;
+		this->row = INT_MAX;
+		this->column = INT_MAX;
+	}
+
+	iRowColumn(int value,int row,int column){
+		this->value = value;
+		this->row = row;
+		this->column = column;
+	}
+};
+
 #endif /* COMMONDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
+
