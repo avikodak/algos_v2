@@ -73,21 +73,23 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void moveAllZerosToEnd(vector<int> userInput){
+//Tested
+void moveAllZerosToEnd(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
 	}
-	int fillCounter = -1;
+	unsigned int fillCounter = 0;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if(userInput[counter] != 0){
-			userInput[++fillCounter] = userInput[counter];
+			userInput[fillCounter++] = userInput[counter];
 		}
 	}
 	while(fillCounter < userInput.size()){
-		userInput[++fillCounter] = 0;
+		userInput[fillCounter++] = 0;
 	}
 }
 
+//Tested
 void moveAllZerosToEndBucketSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
@@ -98,13 +100,13 @@ void moveAllZerosToEndBucketSort(vector<int> &userInput){
 			auxSpace.push(userInput[counter]);
 		}
 	}
-	int fillCounter = -1;
+	unsigned int fillCounter = 0;
 	while(!auxSpace.empty()){
-		userInput[++fillCounter] = auxSpace.front();
+		userInput[fillCounter++] = auxSpace.front();
 		auxSpace.pop();
 	}
 	while(fillCounter < userInput.size()){
-		userInput[++fillCounter] = 0;
+		userInput[fillCounter++] = 0;
 	}
 }
 

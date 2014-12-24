@@ -208,6 +208,21 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/countsmallerrightside.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findrepeatingmissing.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page04/countingsort.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page04/maximumrepeatingnumber.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page04/mergeksortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page04/printallcombinations.h"
+
+
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/bucketsort.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/issubarrayforzero.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/kthsortedmatrix.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/moveallzeros.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/numberofzeros.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/pairsfordifference.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/radixsort.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/straightradixsort.h"
+
 
 #include "main/avikodak/sites/geeksforgeeks/strings/page05/maxfreqchar.h"
 #include "main/avikodak/sites/geeksforgeeks/strings/page05/removeduplicates.h"
@@ -222,6 +237,7 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/uglynumbers.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/maxsizesubmatrixones.h"
+
 
 /*
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
@@ -288,14 +304,13 @@
 #include "main/avikodak/tuts/saurabhacademy/longestincreasingsubsequence.h"
  */
 
-#include "main/avikodak/misc/sorting/heapsort.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateIRandomVector(10,0,50);
-	heapSort(userInput);
-	printIVector(userInput,false);
+	vector<vector<int> > userInput = getVectorForMatrixUserInput();
+	vector<int> mergedArray = mksaMergeKSortedArray(userInput);//3 4 1 3 5 7 2 4 6 8 0 9 10 11
+	printIVector(mergedArray,false);
 }
 
 void p(inrNode *ptr){

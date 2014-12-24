@@ -73,7 +73,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void heapify(vector<iRowColumn *> &heap,int index){
+//Tested
+void heapify(vector<iRowColumn *> &heap,unsigned int index){
 	if(index >= heap.size()){
 		throw "Heap is empty";
 	}
@@ -82,15 +83,18 @@ void heapify(vector<iRowColumn *> &heap,int index){
 			if(heap[index]->value > heap[2*index+2]->value || heap[index]->value > heap[2*index+1]->value){
 				if(heap[2*index+1]->value < heap[2*index+2]->value){
 					swap(heap[index],heap[2*index+1]);
+					index = 2*index+1;
 				}else{
 					swap(heap[index],heap[2*index+2]);
+					index = 2*index+2;
 				}
 			}else{
 				return;
 			}
 		}else if(2*index + 1 < heap.size()){
 			if(heap[index]->value > heap[2*index+1]->value){
-				swap(heap[index],heap[2*index+2]);
+				swap(heap[index],heap[2*index+1]);
+				index = 2*index+1;
 			}else{
 				return;
 			}
@@ -100,17 +104,19 @@ void heapify(vector<iRowColumn *> &heap,int index){
 	}
 }
 
+//Tested
 void deleteMin(vector<iRowColumn *> &heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
 	}
 	swap(heap[0],heap[heap.size()-1]);
-	heap.erase(heap.size()-1);
+	heap.erase(heap.begin() + heap.size() - 1);
 	if(heap.size() > 0){
 		heapify(heap,0);
 	}
 }
 
+//Tested
 iRowColumn *getMin(vector<iRowColumn *> heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
@@ -118,19 +124,22 @@ iRowColumn *getMin(vector<iRowColumn *> heap){
 	return	heap[0];
 }
 
-void insertIntoHeap(vector<iRowColumn *> heap,iRowColumn *key){
+//Tested
+void insertIntoHeap(vector<iRowColumn *> &heap,iRowColumn *key){
 	heap.push_back(key);
 	int index = heap.size()-1;
 	while(index > 0){
 		if(heap[index]->value < heap[index/2]->value){
 			swap(heap[index],heap[index/2]);
+			index = index/2;
 		}else{
 			break;
 		}
 	}
 }
 
-int kthValInSortedMatrix(vector<vector<int> > userInput,int kValue){
+//Tested
+int kthValInSortedMatrix(vector<vector<int> > userInput,unsigned int kValue){
 	if(userInput.size() == 0 || userInput[0].size() == 0 || kValue >= userInput.size() * userInput[0].size()){
 		return INT_MIN;
 	}
@@ -142,9 +151,10 @@ int kthValInSortedMatrix(vector<vector<int> > userInput,int kValue){
 		heapify(heap,counter);
 	}
 	iRowColumn *temp;
-	while(heap.size() && kValue--){
+	while(heap.size() > 0 && --kValue){
 		temp = getMin(heap);
-		if(temp->column + 1 < userInput[temp->row].size()){
+		deleteMin(heap);
+		if(temp->column + 1 < (int)userInput[temp->row].size()){
 			temp->value = userInput[temp->row][temp->column+1];
 			temp->column += 1;
 			insertIntoHeap(heap,temp);
@@ -156,7 +166,8 @@ int kthValInSortedMatrix(vector<vector<int> > userInput,int kValue){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int kthValueSortedMatrix(vector<vector<int> > userInput,int kValue){
+//Tested
+int kthValueSortedMatrix(vector<vector<int> > userInput,unsigned int kValue){
 	if(userInput.size() == 0){
 		return INT_MIN;
 	}

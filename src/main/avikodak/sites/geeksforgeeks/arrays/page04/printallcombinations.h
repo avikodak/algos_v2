@@ -70,7 +70,7 @@ using namespace __gnu_cxx;
 #ifndef PRINTALLCOMBINATIONS_H_
 #define PRINTALLCOMBINATIONS_H_
 
-void printAllCombinations(vector<int> userInput,vector<int> auxSpace,int r,unsigned int currentIndex = 0){
+void printAllCombinations(vector<int> userInput,vector<int> auxSpace,unsigned int r,unsigned int currentIndex = 0){
 	if(userInput.size() < r || currentIndex > userInput.size()){
 		return;
 	}
@@ -84,7 +84,7 @@ void printAllCombinations(vector<int> userInput,vector<int> auxSpace,int r,unsig
 	printAllCombinations(userInput,auxSpace,r,currentIndex+1);
 }
 
-void printAllCombinationsV2(vector<int> userInput,vector<int> auxSpace,int r,int start,int index){
+void printAllCombinationsV2(vector<int> userInput,vector<int> auxSpace,unsigned int r,int start,unsigned int index){
 	if(userInput.size() < r || index > userInput.size()){
 		return;
 	}

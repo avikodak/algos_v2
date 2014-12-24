@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef STRAIGHTRADIXSORT_H_
 #define STRAIGHTRADIXSORT_H_
 
+//Tested
 void rearrangeValuesStraightRadixSort(vector<int> &userInput,int bitPosition){
 	if(userInput.size() < 2){
 		return;
@@ -93,12 +94,13 @@ void rearrangeValuesStraightRadixSort(vector<int> &userInput,int bitPosition){
 	}
 }
 
+//Tested
 void straightRadixSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	int maxVal = *max_element(userInput.begin(),userInput.end());
-	int noOfBits = log2(maxVal) + 1;
+	unsigned int noOfBits = log2(maxVal) + 1;
 	for(unsigned int counter = 0;counter < noOfBits;counter++){
 		rearrangeValuesStraightRadixSort(userInput,counter);
 	}

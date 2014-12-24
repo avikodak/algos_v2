@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -73,7 +73,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getCountForDifferenceKON2(vector<int> userInput,int difference){
+//Tested
+int getCountForDifferenceKON(vector<int> userInput,int difference){
 	if(userInput.size() == 0){
 		return 0;
 	}
@@ -82,13 +83,20 @@ int getCountForDifferenceKON2(vector<int> userInput,int difference){
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		visitedFlags.insert(pair<int,bool>(userInput[counter],true));
 	}
-	int pairCounter;
+	int pairCounter = 0;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		itToVisitedFlags = visitedFlags.find(userInput[counter]);
+		itToVisitedFlags = visitedFlags.find(difference - userInput[counter]);
 		if(itToVisitedFlags != visitedFlags.end()){
 			pairCounter++;
-			visitedFlags.erase(userInput[counter]);
-			visitedFlags.erase(itToVisitedFlags);
+			visitedFlags.erase(difference - userInput[counter]);
+			visitedFlags.erase(itToVisitedFlags->first);
+		}else{
+			itToVisitedFlags = visitedFlags.find(userInput[counter] - difference);
+			if(itToVisitedFlags != visitedFlags.end()){
+				pairCounter++;
+				visitedFlags.erase(userInput[counter] - difference);
+				visitedFlags.erase(itToVisitedFlags->first);
+			}
 		}
 	}
 	return pairCounter;
@@ -97,12 +105,14 @@ int getCountForDifferenceKON2(vector<int> userInput,int difference){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getCountForDifferenceKONLOGN(vector<int> userInput,int difference){
 	if(userInput.size() < 2){
 		return 0;
 	}
 	sort(userInput.begin(),userInput.end());
-	int frontCrawler = 0,rearCrawler = 0,currentDifference,pairCounter = 0;
+	int currentDifference,pairCounter = 0;
+	unsigned int frontCrawler = 0,rearCrawler = 0;
 	while(frontCrawler < userInput.size() && rearCrawler < userInput.size()){
 		currentDifference = userInput[rearCrawler] - userInput[frontCrawler];
 		if(currentDifference == difference){
@@ -121,6 +131,7 @@ int getCountForDifferenceKONLOGN(vector<int> userInput,int difference){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getCountForDifferenceKON2(vector<int> userInput,int difference){
 	if(userInput.size() < 2){
 		return 0;

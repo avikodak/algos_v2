@@ -74,6 +74,7 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Should do more research
+//Tested
 bool isThereSubarrayForZeroON(vector<int> userInput){
 	if(userInput.size() == 0){
 		return true;
@@ -94,6 +95,7 @@ bool isThereSubarrayForZeroON(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isThereSubarrayForZeroON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return true;

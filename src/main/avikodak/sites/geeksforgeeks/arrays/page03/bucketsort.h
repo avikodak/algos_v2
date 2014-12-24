@@ -67,9 +67,10 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BUCKETSORT_H_
-#define BUCKETSORT_H_
+#ifndef BUCKETSORTVGFG_H_
+#define BUCKETSORTVGFG_H_
 
+//Tested
 void bucksetSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -78,7 +79,7 @@ void bucksetSort(vector<int> &userInput){
 	map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()){
-			frequencyMap.insert(pair<int,unsigned int>(userInput,itToFrequencyMap->second+1));
+			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],itToFrequencyMap->second+1));
 		}else{
 			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
 		}
@@ -91,7 +92,7 @@ void bucksetSort(vector<int> &userInput){
 	}
 }
 
-#endif /* BUCKETSORT_H_ */
+#endif /* BUCKETSORTVGFG_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

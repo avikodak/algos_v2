@@ -73,13 +73,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
+//Tested
 int getLowerBoundForZero(vector<int> userInput,int start,int end){
 	if(start > end){
 		return userInput.size();
 	}
 	int middleIndex = (start + end)/2;
 	if(userInput[middleIndex] == 0){
-		if(middleIndex-1 >= start){
+		if(middleIndex-1 > start){
 			return getLowerBoundForZero(userInput,start,middleIndex-1);
 		}else{
 			return middleIndex;
@@ -89,13 +90,15 @@ int getLowerBoundForZero(vector<int> userInput,int start,int end){
 	}
 }
 
-unsigned int frequencyOfZeros(vector<int> userInput){
+//Tested
+unsigned int frequencyOfZerosBinarySearch(vector<int> userInput){
 	return userInput.size() - getLowerBoundForZero(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int frequencyOfZeros(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 0;

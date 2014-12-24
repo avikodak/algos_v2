@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void countingSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -83,12 +84,14 @@ void countingSort(vector<int> &userInput){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
 			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
 		}else{
-			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],itToFrequencyMap->second+1));
+			frequencyMap[userInput[counter]] += 1;
 		}
 	}
 	int fillCounter = -1;
+	int frequency;
 	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		while(itToFrequencyMap->second--){
+		frequency = itToFrequencyMap->second;
+		while(frequency--){
 			userInput[++fillCounter] = itToFrequencyMap->first;
 		}
 	}

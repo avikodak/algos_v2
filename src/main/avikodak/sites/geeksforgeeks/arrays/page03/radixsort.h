@@ -70,15 +70,16 @@ using namespace __gnu_cxx;
 #ifndef RADIXSORT_H_
 #define RADIXSORT_H_
 
+//Tested
 int getDividingIndexRadixSort(vector<int> &userInput,int start,int end,int index){
 	if(start > end || index < 0){
 		return INT_MIN;
 	}
-	while(start < end){
-		while(!(userInput[start] & 1 << index)){
+	while(start <= end){
+		while(start <= end && !(userInput[start] & 1 << index)){
 			start++;
 		}
-		while(userInput[end] & 1 << index){
+		while(start <= end && userInput[end] & 1 << index){
 			end--;
 		}
 		if(start < end){
@@ -88,7 +89,8 @@ int getDividingIndexRadixSort(vector<int> &userInput,int start,int end,int index
 	return end;
 }
 
-int radixSortMain(vector<int> &userInput,int start,int end,int index){
+//Tested
+void radixSortMain(vector<int> &userInput,int start,int end,int index){
 	if(start >= end || index < 0){
 		return;
 	}
@@ -97,12 +99,13 @@ int radixSortMain(vector<int> &userInput,int start,int end,int index){
 	radixSortMain(userInput,dividingIndex+1,end,index-1);
 }
 
-void radixSort(vector<int> userInput){
+//Tested
+void radixSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	int noOfBits = log2(*max_element(userInput.begin(),userInput.end()));
-	radixSort(userInput,0,userInput.size()-1,noOfBits);
+	radixSortMain(userInput,0,userInput.size()-1,noOfBits+1);
 }
 
 #endif /* RADIXSORT_H_ */

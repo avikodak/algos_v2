@@ -4,7 +4,7 @@
  *  Created on			: Dec 22, 2014 :: 11:12:57 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-the-maximum-repeating-number-in-ok-time/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maximumRepeatingNumber(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MAX;
@@ -82,7 +83,7 @@ int maximumRepeatingNumber(vector<int> userInput){
 	}
 	int maxFrequency = userInput[0]/userInput.size(),maxFrequencyVal = 0;
 	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(maxFrequency < userInput[counter]/userInput.size()){
+		if(maxFrequency < userInput[counter]/(int)userInput.size()){
 			maxFrequency = userInput[counter]/userInput.size();
 			maxFrequencyVal = counter;
 		}
@@ -90,13 +91,14 @@ int maximumRepeatingNumber(vector<int> userInput){
 	return maxFrequencyVal;
 }
 
-int maximumRepeatingNumber(vector<int> userInput){
+//Tested
+int maximumRepeatingNumberHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MAX;
 	}
 	hash_map<int,unsigned int> frequencyMap;
 	hash_map<int,unsigned int>::iterator itToFrequencyMap,itToMaxFrequencyVal;
-	for(unsigned int counter = 0;counter < userInput.size();userInput++){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
 			frequencyMap[userInput[counter]] = 1;
 		}else{
@@ -104,7 +106,7 @@ int maximumRepeatingNumber(vector<int> userInput){
 		}
 	}
 	itToMaxFrequencyVal = frequencyMap.begin();
-	for(itToFrequencyMap = frequencyMap.begin()+1;itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
 		if(itToFrequencyMap->second > itToMaxFrequencyVal->second){
 			itToMaxFrequencyVal = itToFrequencyMap;
 		}
@@ -115,6 +117,7 @@ int maximumRepeatingNumber(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void mrnRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -123,7 +126,7 @@ void mrnRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	parent->parent = child;
 	child->parent = grandParent;
 	if(grandParent != null){
-		if(grandParent->left == null){
+		if(grandParent->left == parent){
 			grandParent->left = child;
 		}else{
 			grandParent->right = child;
@@ -138,6 +141,7 @@ void mrnRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *mrnInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -149,7 +153,7 @@ ifpAvlNode *mrnInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
 			currentNode->left = new ifpAvlNode(value);
-			currentNode->left->parent = currentNode->left;
+			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
 			return mrnInsertAtRightPlace(root,currentNode->left,value);
@@ -157,7 +161,7 @@ ifpAvlNode *mrnInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}else{
 		if(currentNode->right == null){
 			currentNode->right = new ifpAvlNode(value);
-			currentNode->right->parent = currentNode->right;
+			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
 			return mrnInsertAtRightPlace(root,currentNode->right,value);
@@ -165,6 +169,7 @@ ifpAvlNode *mrnInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}
 }
 
+//Tested
 void mrnInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = mrnInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -202,6 +207,35 @@ void mrnInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
+void getMaxFrequencyBST(ifpAvlNode *ptr,unsigned int &maxFrequency,int &value){
+	if(ptr == null){
+		return;
+	}
+	if(maxFrequency < ptr->frequency){
+		maxFrequency = ptr->frequency;
+		value = ptr->value;
+	}
+	getMaxFrequencyBST(ptr->left,maxFrequency,value);
+	getMaxFrequencyBST(ptr->right,maxFrequency,value);
+}
+
+//Tested
+int maximumRepeatingNumberAvlSort(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	ifpAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		mrnInsertIntoAvlTree(&root,userInput[counter]);
+	}
+	unsigned int maxFrequency = 0;
+	int value = INT_MIN;
+	getMaxFrequencyBST(root,maxFrequency,value);
+	return value;
+}
+
+//Tested
 void mrnRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
@@ -225,6 +259,7 @@ void mrnRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *mrnInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) =  new ifRbTreeNode(value);
@@ -253,6 +288,7 @@ ifRbTreeNode *mrnInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void mrnReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(root == null || currentNode == null){
 		return;
@@ -300,6 +336,7 @@ void mrnReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void mrnInsertIntoRbTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = mrnInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null || !ptrToKey->parent->isRedNode){
@@ -307,6 +344,35 @@ void mrnInsertIntoRbTree(ifRbTreeNode **root,int value){
 	}
 	mrnReorganizeTreePostInsertion(root,ptrToKey);
 }
+
+//Tested
+void getMaxFrequencyBST(ifRbTreeNode *ptr,unsigned int &maxFrequency,int &value){
+	if(ptr == null){
+		return;
+	}
+	if(maxFrequency < ptr->frequency){
+		maxFrequency = ptr->frequency;
+		value = ptr->value;
+	}
+	getMaxFrequencyBST(ptr->left,maxFrequency,value);
+	getMaxFrequencyBST(ptr->right,maxFrequency,value);
+}
+
+//Tested
+int maximumRepeatingNumberRbSort(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	ifRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		mrnInsertIntoRbTree(&root,userInput[counter]);
+	}
+	unsigned int maxFrequency = 0;
+	int value = INT_MIN;
+	getMaxFrequencyBST(root,maxFrequency,value);
+	return value;
+}
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
