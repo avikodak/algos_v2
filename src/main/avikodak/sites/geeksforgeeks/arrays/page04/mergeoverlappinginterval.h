@@ -4,7 +4,7 @@
  *  Created on			: Dec 22, 2014 :: 8:22:37 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/merging-intervals/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int divideStepQuickSortIntervals(vector<iInterval *> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -83,7 +84,7 @@ int divideStepQuickSortIntervals(vector<iInterval *> &userInput,int startIndex,i
 		while(userInput[startIndex]->start < key){
 			startIndex++;
 		}
-		while(startIndex <= endIndex && userInput[endIndex]->start > key){
+		while(startIndex < endIndex && userInput[endIndex]->start >= key){
 			endIndex--;
 		}
 		if(startIndex < endIndex){
@@ -91,8 +92,10 @@ int divideStepQuickSortIntervals(vector<iInterval *> &userInput,int startIndex,i
 		}
 	}
 	swap(userInput[pivotIndex],userInput[endIndex]);
+	return endIndex;
 }
 
+//Tested
 void quickSortIntervals(vector<iInterval *> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -102,6 +105,7 @@ void quickSortIntervals(vector<iInterval *> &userInput,int startIndex,int endInd
 	quickSortIntervals(userInput,dividingIndex+1,endIndex);
 }
 
+//Tested
 void mergeStepInterval(vector<iInterval *> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -128,6 +132,7 @@ void mergeStepInterval(vector<iInterval *> &userInput,int startIndex,int middleI
 	}
 }
 
+//Tested
 void mergeSortInterval(vector<iInterval *> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -138,19 +143,21 @@ void mergeSortInterval(vector<iInterval *> &userInput,int startIndex,int endInde
 	mergeStepInterval(userInput,startIndex,middleIndex,endIndex);
 }
 
+//Tested
 vector<iInterval *> mergeOverLappingInterval(vector<iInterval *> userInput){
 	vector<iInterval *> mergedIntervals;
 	if(userInput.size() == 0){
 		return mergedIntervals;
 	}
 	mergeSortInterval(userInput,0,userInput.size()-1);
-	int firstCrawler = 0,secondCrawler;
+	unsigned int firstCrawler = 0,secondCrawler;
 	while(firstCrawler < userInput.size()){
 		secondCrawler = firstCrawler;
 		while(secondCrawler+1 < userInput.size() && userInput[secondCrawler]->end > userInput[secondCrawler+1]->start){
 			secondCrawler++;
 		}
 		mergedIntervals.push_back(new iInterval(userInput[firstCrawler]->start,userInput[secondCrawler]->end));
+		firstCrawler = secondCrawler+1;
 	}
 	return mergedIntervals;
 }

@@ -4,7 +4,7 @@
  *  Created on			: Dec 22, 2014 :: 11:03:43 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,13 +69,13 @@ using namespace __gnu_cxx;
 
 #ifndef PRINTALLCOMBINATIONS_H_
 #define PRINTALLCOMBINATIONS_H_
-
+//Tested
 void printAllCombinations(vector<int> userInput,vector<int> auxSpace,unsigned int r,unsigned int currentIndex = 0){
 	if(userInput.size() < r || currentIndex > userInput.size()){
 		return;
 	}
 	if(auxSpace.size() == r){
-		printIVector(auxSpace);
+		printIVector(auxSpace,false);
 		PRINT_NEW_LINE;
 		return;
 	}
@@ -84,18 +84,19 @@ void printAllCombinations(vector<int> userInput,vector<int> auxSpace,unsigned in
 	printAllCombinations(userInput,auxSpace,r,currentIndex+1);
 }
 
+//Tested
 void printAllCombinationsV2(vector<int> userInput,vector<int> auxSpace,unsigned int r,int start,unsigned int index){
 	if(userInput.size() < r || index > userInput.size()){
 		return;
 	}
 	if(index == r){
-		printIVector(auxSpace);
+		printIVector(auxSpace,false);
 		PRINT_NEW_LINE;
 		return;
 	}
-	for(unsigned int counter = start;counter < auxSpace.size() && userInput.size()-counter+1 >= r-index;counter++){
+	for(unsigned int counter = start;counter < userInput.size();counter++){
 		auxSpace[index] = userInput[counter];
-		printAllCombinationsV2(userInput,auxSpace,r,start+1,index+1);
+		printAllCombinationsV2(userInput,auxSpace,r,counter+1,index+1);
 	}
 }
 

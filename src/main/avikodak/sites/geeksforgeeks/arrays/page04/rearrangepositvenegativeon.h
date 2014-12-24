@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\rearrangepositvenegativeon.h
  *  Created on			: Dec 22, 2014 :: 9:02:08 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/rearrange-positive-and-negative-numbers-publish/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,11 +73,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void rearrangePositiveNegative(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
-	int startCrawler = 0,endCrawler = userInput.size()-1;
+	unsigned int startCrawler = 0,endCrawler = userInput.size()-1;
 	while(startCrawler < endCrawler){
 		while(userInput[startCrawler] < 0){
 			startCrawler++;
@@ -88,6 +89,9 @@ void rearrangePositiveNegative(vector<int> &userInput){
 		if(startCrawler < endCrawler){
 			swap(userInput[startCrawler],userInput[endCrawler]);
 		}
+	}
+	for(unsigned int counter = 0;counter <= startCrawler && startCrawler < userInput.size()-1 && userInput[counter] < 0;counter+=2){
+		swap(userInput[counter],userInput[startCrawler++]);
 	}
 }
 

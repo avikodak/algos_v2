@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\productthreesequence.h
  *  Created on			: Dec 22, 2014 :: 2:47:07 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/increasing-subsequence-of-length-three-with-maximum-product/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,8 +71,9 @@ using namespace __gnu_cxx;
 #define PRODUCTTHREESEQUENCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void ptsRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -96,6 +97,7 @@ void ptsRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *ptsInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -123,6 +125,7 @@ ifpAvlNode *ptsInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}
 }
 
+//Tested
 void ptsInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = ptsInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -160,12 +163,13 @@ void ptsInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
 int getFloorAvlTree(ifpAvlNode *ptr,int value){
 	if(ptr == null){
 		return INT_MIN;
 	}
 	if(ptr->value == value){
-		return ptr->value;
+		return INT_MIN;
 	}
 	if(ptr->value > value){
 		return getFloorAvlTree(ptr->left,value);
@@ -175,16 +179,65 @@ int getFloorAvlTree(ifpAvlNode *ptr,int value){
 	}
 }
 
+//Tested
 int productThreeSequenceON(vector<int> userInput){
 	if(userInput.size() < 3){
 		return INT_MIN;
 	}
+	vector<int> lsl,rsl(userInput.size());
+	ifpAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		ptsInsertIntoAvlTree(&root,userInput[counter]);
+	}
+	lsl.push_back(INT_MIN);
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		lsl.push_back(getFloorAvlTree(root,userInput[counter]));
+	}
+	int maxVal = userInput[userInput.size()-1];
+	rsl[userInput.size()-1] = INT_MIN;
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
+		rsl[counter] = max(maxVal,userInput[counter+1]);
+	}
+	int maxProduct = INT_MIN;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		maxProduct = max(maxProduct,lsl[counter] * userInput[counter] * rsl[counter]);
+	}
+	return maxProduct;
+}
 
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+int productThreeSequenceON2(vector<int> userInput){
+	if(userInput.size() < 3){
+		return INT_MIN;
+	}
+	vector<int> lsl,rsl(userInput.size(),INT_MIN);
+	int maxElement;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		maxElement = INT_MIN;
+		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
+			maxElement = max(maxElement,userInput[innerCounter]);
+		}
+		lsl.push_back(maxElement);
+		maxElement = INT_MIN;
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			maxElement = max(maxElement,userInput[innerCounter]);
+		}
+		rsl[outerCounter] = maxElement;
+	}
+	int maxProduct = INT_MIN;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		maxProduct = max(maxProduct,lsl[counter] * userInput[counter] * rsl[counter]);
+	}
+	return maxProduct;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int productThreeSequenceON3(vector<int> userInput){
 	if(userInput.size() < 3){
 		return INT_MIN;

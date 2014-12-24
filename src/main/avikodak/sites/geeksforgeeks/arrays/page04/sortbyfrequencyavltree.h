@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\sortbyfrequencyavltree.h
  *  Created on			: Dec 22, 2014 :: 9:06:38 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/sort-elements-by-frequency-set-2/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -96,6 +97,7 @@ void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *sbfInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -123,6 +125,7 @@ ifpAvlNode *sbfInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}
 }
 
+//Tested
 void sbfInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = sbfInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -160,6 +163,17 @@ void sbfInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
+void getVectorForValFreqAvlTree(ifpAvlNode *ptr,vector<iFrequency *> &auxSpace){
+	if(ptr == null){
+		return;
+	}
+	getVectorForValFreqAvlTree(ptr->left,auxSpace);
+	auxSpace.push_back(new iFrequency(ptr->value,ptr->frequency));
+	getVectorForValFreqAvlTree(ptr->right,auxSpace);
+}
+
+//Tested
 void mergeStepFrequency(vector<iFrequency *> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -174,15 +188,19 @@ void mergeStepFrequency(vector<iFrequency *> &userInput,int startIndex,int middl
 				auxSpace.push_back(userInput[secondCrawler++]);
 			}
 		}else{
-			if(userInput[firstCrawler]->frequency <= userInput[secondCrawler]->frequency){
+			if(userInput[firstCrawler]->frequency >= userInput[secondCrawler]->frequency){
 				auxSpace.push_back(userInput[firstCrawler++]);
 			}else{
 				auxSpace.push_back(userInput[secondCrawler++]);
 			}
 		}
 	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
+	}
 }
 
+//Tested
 void mergeSortByFrequency(vector<iFrequency *> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -191,6 +209,26 @@ void mergeSortByFrequency(vector<iFrequency *> &userInput,int startIndex,int end
 	mergeSortByFrequency(userInput,startIndex,middleIndex);
 	mergeSortByFrequency(userInput,middleIndex+1,endIndex);
 	mergeStepFrequency(userInput,startIndex,middleIndex,endIndex);
+}
+
+//Tested
+void sortByFrequency(vector<int> &userInput){
+	if(userInput.size() < 3){
+		return;
+	}
+	ifpAvlNode *root = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sbfInsertIntoAvlTree(&root,userInput[counter]);
+	}
+	vector<iFrequency *> auxSpace;
+	getVectorForValFreqAvlTree(root,auxSpace);
+	mergeSortByFrequency(auxSpace,0,auxSpace.size()-1);
+	int fillCounter = -1;
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		while(auxSpace[counter]->frequency--){
+			userInput[++fillCounter] = auxSpace[counter]->value;
+		}
+	}
 }
 
 #endif /* SORTBYFREQUENCYAVLTREE_H_ */
