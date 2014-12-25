@@ -72,6 +72,8 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/countsmallerrightside.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/findrepeatingmissing.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/pancakesorting.h"
+
 #include "main/avikodak/sites/geeksforgeeks/arrays/page04/countingsort.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page04/maximumrepeatingnumber.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page04/mergeksortedarray.h"
@@ -117,10 +119,9 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateISequenceVector(5);
-	vector<int> auxSpace(3);
-	printAllCombinationsV2(userInput,auxSpace,3,0,0);
-	//-1, 2, -3, 4, 5, 6, -7, 8, 9]
+	vector<int> userInput = generateIRandomVector(10,0,50);
+	pancakeSorting(userInput);
+	printIVector(userInput,false);
 }
 
 void p(inrNode *ptr){
