@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: articulationpoints.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\articulationpoints.h
- *  Created on			: Dec 26, 2014 :: 5:46:22 PM
+ *  File Name   		: eulerianpathundirectedgraph.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\eulerianpathundirectedgraph.h
+ *  Created on			: Dec 26, 2014 :: 7:38:49 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,79 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ARTICULATIONPOINTS_H_
-#define ARTICULATIONPOINTS_H_
+#ifndef EULERIANPATHUNDIRECTEDGRAPH_H_
+#define EULERIANPATHUNDIRECTEDGRAPH_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int setArticulationPointAndDfsTimes(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,vector<int> &predecessor,vector<int> &articulationPoints,int sourceVertex){
-	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()){
-		return INT_MAX;
-	}
-	static int timeCounter = -1;
-	arrivalTimes[sourceVertex] = ++timeCounter;
-	int minArrivalTimes = arrivalTimes[sourceVertex];
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
-			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			minArrivalTimes = min(minArrivalTimes,setArticulationPointAndDfsTimes(adjacencyList,arrivalTimes,predecessor,articulationPoints,adjacencyList[sourceVertex][counter]));
-		}
-	}
-	if(sourceVertex != 0){
-		if(minArrivalTimes == arrivalTimes[sourceVertex]){
-			articulationPoints.push_back(sourceVertex);
-		}
-	}
-	return minArrivalTimes;
-}
-
-int getArticulationPoints(vector<vector<int> > adjacencyList){
-	vector<int> articulationPoints;
-	if(adjacencyList.size() == 0){
-		return articulationPoints;
-	}
-	vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
-	vector<int> &predecessor(adjacencyList.size(),INT_MAX);
-	setArticulationPointAndDfsTimes(adjacencyList,arrivalTimes,parentChildrenMap,articulationPoints,0);
-
-}
 
 /****************************************************************************************************************************************************/
-/* 																O(N^N) Algorithm 																    */
+/* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setDfsLevels(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,int removedVertex,int sourceVertex){
-	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size() || sourceVertex == removedVertex){
-		return;
-	}
-	static int timeCounter = -1;
-	arrivalTimes[sourceVertex] = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(adjacencyList[sourceVertex][counter] != removedVertex && arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
-			setDfsLevels(adjacencyList,arrivalTimes,removedVertex,adjacencyList[sourceVertex][counter]);
-		}
-	}
-}
 
-bool doesGraphContainsArticulationPoints(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	vector<int> arrivalTimes;
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-		arrivalTimes.assign(adjacencyList.size(),INT_MAX);
-		setDfsLevels(adjacencyList,arrivalTimes,counter,0);
-		for(unsigned int innerCounter = 0;innerCounter < adjacencyList.size();innerCounter++){
-			if(arrivalTimes[innerCounter] == INT_MAX){
-				return false;
-			}
-		}
-	}
-	return true;
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* ARTICULATIONPOINTS_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* EULERIANPATHUNDIRECTEDGRAPH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

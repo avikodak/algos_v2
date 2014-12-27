@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: articulationpoints.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\articulationpoints.h
- *  Created on			: Dec 26, 2014 :: 5:46:22 PM
+ *  File Name   		: biconnectedgraph.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\biconnectedgraph.h
+ *  Created on			: Dec 26, 2014 :: 7:29:51 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,79 +67,69 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ARTICULATIONPOINTS_H_
-#define ARTICULATIONPOINTS_H_
+#ifndef BICONNECTEDGRAPH_H_
+#define BICONNECTEDGRAPH_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int setArticulationPointAndDfsTimes(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,vector<int> &predecessor,vector<int> &articulationPoints,int sourceVertex){
+bool isGraphConnectedBFS(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() == 0){
+		return false;
+	}
+	queue<int> auxSpace;
+	vector<int> bfsLevels(adjacencyList.size(),INT_MAX);
+	auxSpace.push(0);
+	int currentVertex;
+	while(!auxSpace.empty()){
+		currentVertex = auxSpace.front();
+		auxSpace.pop();
+		for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
+			if(bfsLevels[adjacencyList[currentVertex][counter]] == INT_MAX){
+				bfsLevels[adjacencyList[currentVertex][counter]] = 1 + bfsLevels[currentVertex];
+				auxSpace.push(adjacencyList[currentVertex][counter]);
+			}
+		}
+	}
+	return find(bfsLevels.begin(),bfsLevels.end(),INT_MAX) != bfsLevels.end();
+}
+
+int isGraphTwoVertexConnectedMain(vector<vector<int> > adjacencyList,vector<int> &predecessor,bool &flag,int sourceVertex){
 	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()){
 		return INT_MAX;
 	}
 	static int timeCounter = -1;
+	static vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
 	arrivalTimes[sourceVertex] = ++timeCounter;
-	int minArrivalTimes = arrivalTimes[sourceVertex];
+	int minTime = arrivalTimes[sourceVertex];
 	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
 		if(arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
 			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			minArrivalTimes = min(minArrivalTimes,setArticulationPointAndDfsTimes(adjacencyList,arrivalTimes,predecessor,articulationPoints,adjacencyList[sourceVertex][counter]));
+			isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,adjacencyList[sourceVertex][counter]);
 		}
 	}
-	if(sourceVertex != 0){
-		if(minArrivalTimes == arrivalTimes[sourceVertex]){
-			articulationPoints.push_back(sourceVertex);
-		}
-	}
-	return minArrivalTimes;
+	flag = sourceVertex == 0?flag:minTime != arrivalTimes[sourceVertex];
+	return minTime;
 }
 
-int getArticulationPoints(vector<vector<int> > adjacencyList){
-	vector<int> articulationPoints;
-	if(adjacencyList.size() == 0){
-		return articulationPoints;
+bool isGraphTwoVertexConnected(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() < 2){
+		return true;
 	}
-	vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
-	vector<int> &predecessor(adjacencyList.size(),INT_MAX);
-	setArticulationPointAndDfsTimes(adjacencyList,arrivalTimes,parentChildrenMap,articulationPoints,0);
-
+	vector<int> predecessor;
+	bool flag = false;
+	isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,0);
+	return flag && count(predecessor.begin(),predecessor.end(),0) !=  1;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-void setDfsLevels(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,int removedVertex,int sourceVertex){
-	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size() || sourceVertex == removedVertex){
-		return;
+bool isGraphBiconnected(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() < 2){
+		return true;
 	}
-	static int timeCounter = -1;
-	arrivalTimes[sourceVertex] = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(adjacencyList[sourceVertex][counter] != removedVertex && arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
-			setDfsLevels(adjacencyList,arrivalTimes,removedVertex,adjacencyList[sourceVertex][counter]);
-		}
-	}
+	return isGraphConnectedBFS(adjacencyList) && isGraphTwoVertexConnected(adjacencyList);
 }
 
-bool doesGraphContainsArticulationPoints(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	vector<int> arrivalTimes;
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-		arrivalTimes.assign(adjacencyList.size(),INT_MAX);
-		setDfsLevels(adjacencyList,arrivalTimes,counter,0);
-		for(unsigned int innerCounter = 0;innerCounter < adjacencyList.size();innerCounter++){
-			if(arrivalTimes[innerCounter] == INT_MAX){
-				return false;
-			}
-		}
-	}
-	return true;
-}
-
-
-#endif /* ARTICULATIONPOINTS_H_ */
+#endif /* BICONNECTEDGRAPH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -71,28 +71,43 @@ using namespace __gnu_cxx;
 #define BRIDGESINGRAPH_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int twoEdgeConnectivityMain(vector<vector<int> > adjacencyList,int sourceVertex,bool &flag){
+	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()){
+		return INT_MAX;
+	}
+	static int timeCounter = -1;
+	static vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
+	static vector<int> predecessor(adjacencyList.size(),INT_MAX);
+	arrivalTimes[sourceVertex] = ++timeCounter;
+	int minArrivalTime = arrivalTimes[sourceVertex];
+	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
+		if(arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
+			minArrivalTime = min(minArrivalTime,twoEdgeConnectivityMain(adjacencyList,adjacencyList[sourceVertex][counter],flag));
+		}else{
+			if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]){
+				minArrivalTime = min(minArrivalTime,arrivalTimes[adjacencyList[sourceVertex][counter]]);
+			}
+		}
+	}
+	flag = sourceVertex == 0?flag:arrivalTimes[sourceVertex] != minArrivalTime;
+	return minArrivalTime;
+}
+
+bool isGraphTwoEdgeConnectivity(vector<vector<int> > adjacencyList){
+	if(adjacencyList.size() == 0){
+		return true;
+	}
+	bool flag = false;
+	twoEdgeConnectivityMain(adjacencyList,0,flag);
+	return flag;
+}
 
 /****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
+/* 																O(N*E) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
 
 #endif /* BRIDGESINGRAPH_H_ */
 
