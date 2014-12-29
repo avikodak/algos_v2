@@ -1,6 +1,6 @@
 /****************************************************************************************************************************************************
  *  File Name   		: majorityelement.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\majorityelement.h
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\majorityelement.h
  *  Created on			: Oct 11, 2014 :: 11:20:57 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested

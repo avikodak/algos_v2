@@ -61,16 +61,21 @@
 /****************************************************************************************************************************************************/
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/arrays/page10/medianofsortedarrays.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/findmissingnumber.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/largestsumcontigousarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/mergesortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/blockswapalgorotate.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> firstSortedArray = getVectorForUserInput();
-	vector<int> secondSortedArray = getVectorForUserInput();
-	printf("%d",medianByBinarySearch(firstSortedArray,secondSortedArray)); //5 1 12 15 26 38 5 2 13 17 30 45
-
+	vector<int> userInput = getVectorForUserInput();
+	int rotateBy;
+	scanf("%d",&rotateBy);
+	blockSwapRotateAlgo(userInput,rotateBy);
+	printIVector(userInput,false);
 }
 
 void p(inrNode *ptr){

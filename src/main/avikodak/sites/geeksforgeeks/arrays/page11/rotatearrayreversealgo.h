@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: blockswapalgorotate.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\blockswapalgorotate.h
- *  Created on			: Nov 25, 2014 :: 7:09:37 PM
+ *  File Name   		: rotatearrayreversealgo.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearrayreversealgo.h
+ *  Created on			: Nov 25, 2014 :: 7:09:28 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
- ****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/program-for-array-rotation-continued-reversal-algorithm/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,43 +65,20 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-
-#ifndef BLOCKSWAPALGOROTATE_H_
-#define BLOCKSWAPALGOROTATE_H_
+#ifndef ROTATEARRAYREVERSEALGO_H_
+#define ROTATEARRAYREVERSEALGO_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void blockSwap(vector<int> &userInput,int firstStartIndex,int secondStartIndex,int size){
-	int temp;
-	while(size--){
-		temp = userInput[secondStartIndex];
-		userInput[secondStartIndex] = userInput[firstStartIndex];
-		userInput[firstStartIndex] = temp;
-		firstStartIndex++;
-		secondStartIndex++;
-	}
+//Tested
+void rotateArrayReverseAlgo(vector<int> &userInput,unsigned int rotateBy){
+	reverseArray(userInput,0,rotateBy-1);
+	reverseArray(userInput,rotateBy,userInput.size()-1);
+	reverseArray(userInput,0,userInput.size()-1);
 }
 
-void rotateUsingBlockSwapAlgo(vector<int> &userInput,int rotateBy,int startIndex,int endIndex){
-	if(rotateBy == 0 || rotateBy == size){
-		return;
-	}
-	if(endIndex - startIndex == 2 * rotateBy){
-		blockSwap(userInput,startIndex,startIndex + rotateBy + 1,rotateBy);
-		return;
-	}else{
-		if(startIndex + rotateBy - 1 > endIndex - rotateBy + 1){
-			blockSwap(userInput,startIndex,endIndex-rotateBy+1,rotateBy);
-			rotateUsingBlockSwapAlgo(userInput,startIndex+rotateBy-1,endIndex);
-		}else{
-			blockSwap(userInput,startIndex,endIndex - rotateBy + 1,rotateBy);
-			rotateUsingBlockSwapAlgo(userInput,startIndex,endIndex-rotateBy+1);
-		}
-	}
-}
-
-#endif /* BLOCKSWAPALGOROTATE_H_ */
+#endif /* ROTATEARRAYREVERSEALGO_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

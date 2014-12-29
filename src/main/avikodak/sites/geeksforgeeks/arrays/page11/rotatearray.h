@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: largestsumcontigousarray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\largestsumcontigousarray.h
- *  Created on			: Oct 17, 2014 :: 6:26:07 PM
+ *  File Name   		: rotatearray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearray.h
+ *  Created on			: Nov 25, 2014 :: 7:08:55 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+ *  URL 				: http://www.geeksforgeeks.org/array-rotation/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -55,7 +55,6 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
 #include <algorithm/utils/treeutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
@@ -66,67 +65,51 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LARGESTSUMCONTIGOUSARRAY_H_
-#define LARGESTSUMCONTIGOUSARRAY_H_
+#ifndef ROTATEARRAY_H_
+#define ROTATEARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int largestSumContinousSubArray(vector<int> userInput){
+void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return;
 	}
-	int maxSum = userInput[0],continousSum = userInput[0];
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		continousSum = max(continousSum+userInput[counter],userInput[counter]);
-		maxSum = max(maxSum,continousSum);
+	vector<int> auxSpace;
+	unsigned int counter;
+	for(counter = 0;counter < rotateBy;counter++){
+		auxSpace.push_back(userInput[counter]);
 	}
-	return maxSum;
+	int fillCounter = -1;
+	while(counter < userInput.size()){
+		userInput[++fillCounter] = userInput[counter++];
+	}
+	for(counter = 0;counter < auxSpace.size();counter++){
+		userInput[++fillCounter] = auxSpace[counter];
+	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int largestSumContigousSubArrayON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+void rotateArrayByOne(vector<int> &userInput){
+	int temp = userInput[0];
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		userInput[counter] = userInput[counter+1];
 	}
-	int currentSum,maxSum = INT_MIN;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		currentSum = 0;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			currentSum += userInput[innerCounter];
-			maxSum = max(maxSum,currentSum);
-		}
-	}
-	return maxSum;
+	userInput[userInput.size()-1] = temp;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
 //Tested
-int largestSumContigousSubArrayON3(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+void rotateArrayON2(vector<int> &userInput,unsigned rotateBy){
+	while(rotateBy--){
+		rotateArrayByOne(userInput);
 	}
-	int sum,maxSum = INT_MIN;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int middleCrawler = outerCrawler;middleCrawler < userInput.size();middleCrawler++){
-			sum = 0;
-			for(unsigned int innerCrawler = outerCrawler;innerCrawler <= middleCrawler;innerCrawler++){
-				sum += userInput[innerCrawler];
-			}
-			maxSum = max(sum,maxSum);
-		}
-	}
-	return maxSum;
 }
 
-
-#endif /* LARGESTSUMCONTIGOUSARRAY_H_ */
+#endif /* ROTATEARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

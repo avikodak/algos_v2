@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversearray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\reversearray.h
- *  Created on			: Nov 25, 2014 :: 6:38:54 PM
+ *  File Name   		: blockswapalgorotate.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\blockswapalgorotate.h
+ *  Created on			: Nov 25, 2014 :: 7:09:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/block-swap-algorithm-for-array-rotation/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,59 +65,52 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef REVERSEARRAY_H_
-#define REVERSEARRAY_H_
+
+#ifndef BLOCKSWAPALGOROTATE_H_
+#define BLOCKSWAPALGOROTATE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void reverseArrayMain(vector<int> &userInput,unsigned int &startIndex,unsigned int endIndex){
-	if(userInput.size() == 0 || endIndex >= userInput.size()){
+void blockSwap(vector<int> &userInput,int firstStartIndex,int secondStartIndex,int size){
+	while(size--){
+		swap(userInput[firstStartIndex],userInput[secondStartIndex]);
+		firstStartIndex++;
+		secondStartIndex++;
+	}
+
+}
+
+//Tested
+void rotateUsingBlockSwapAlgoMain(vector<int> &userInput,int rotateBy,int startIndex,int endIndex){
+	if(rotateBy == 0 || rotateBy == endIndex - startIndex + 1){
 		return;
 	}
-	reverseArrayMain(userInput,startIndex,endIndex+1);
-	if(startIndex < endIndex){
-		swap(userInput[startIndex],userInput[endIndex]);
-		startIndex++;
+	if(endIndex - startIndex + 1== 2 * rotateBy){
+		blockSwap(userInput,startIndex,startIndex + rotateBy,rotateBy);
+		return;
+	}else{
+		if(startIndex + rotateBy - 1 >= endIndex - rotateBy + 1){
+			int size = endIndex - (startIndex + rotateBy) + 1;
+			blockSwap(userInput,startIndex,endIndex-size+1,size);
+			rotateUsingBlockSwapAlgoMain(userInput,2*rotateBy-(endIndex - startIndex + 1),startIndex+size,endIndex);
+		}else{
+			blockSwap(userInput,startIndex,endIndex - rotateBy + 1,rotateBy);
+			rotateUsingBlockSwapAlgoMain(userInput,rotateBy,startIndex,endIndex-rotateBy);
+		}
 	}
 }
 
 //Tested
-void rReverseArray(vector<int> &userInput){
-	unsigned int startIndex = 0;
-	reverseArrayMain(userInput,startIndex,0);
-}
-
-//Tested
-void reverseArrayIterative(vector<int> &userInput){
-	if(userInput.size() == 0){
+void blockSwapRotateAlgo(vector<int> &userInput,unsigned int rotateBy){
+	if(rotateBy == 0 || rotateBy == userInput.size()){
 		return;
 	}
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		swap(userInput[frontCrawler],userInput[rearCrawler]);
-		frontCrawler++;
-		rearCrawler--;
-	}
+	rotateUsingBlockSwapAlgoMain(userInput,rotateBy,0,userInput.size()-1);
 }
 
-//Tested
-void reverseArrayAuxspace(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	stack<int> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace.push(userInput[counter]);
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] = auxSpace.top();
-		auxSpace.pop();
-	}
-}
-
-#endif /* REVERSEARRAY_H_ */
+#endif /* BLOCKSWAPALGOROTATE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

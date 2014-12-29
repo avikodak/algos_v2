@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: numberoddtimes.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\numberoddtimes.h
- *  Created on			: Oct 17, 2014 :: 4:29:56 PM
+ *  File Name   		: findmissingnumber.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\findmissingnumber.h
+ *  Created on			: Oct 17, 2014 :: 6:26:42 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
+ *  URL 				: http://www.geeksforgeeks.org/find-the-missing-number/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -66,77 +66,96 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef NUMBERODDTIMES_H_
-#define NUMBERODDTIMES_H_
+#ifndef FINDMISSINGNUMBER_H_
+#define FINDMISSINGNUMBER_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int numberOccuringOddTimesXOR(vector<int> userInput){
+int findMissingNumberHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
-	int xorValue = 0;
-	for(unsigned int counter =0;counter < userInput.size();counter++){
-		xorValue ^= userInput[counter];
+	hash_map<int,bool> visitedNumbers;
+	hash_map<int,bool>::iterator itToVisitedNumbers;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		visitedNumbers.insert(pair<unsigned int,bool>(userInput[counter],true));
 	}
-	return xorValue;
+	for(unsigned int counter = 1;counter <= userInput.size()+1;counter++){
+		itToVisitedNumbers = visitedNumbers.find(counter);
+		if(itToVisitedNumbers == visitedNumbers.end()){
+			return counter;
+		}
+	}
+	return INT_MAX;
 }
 
 //Tested
-int numberOccuringOddTimesON(vector<int> userInput){
+unsigned int findMissingNumberXOR(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
+	unsigned int xorArray = 0,xorNumbers = userInput.size()+1;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
-			frequencyMap[userInput[counter]] += 1;
-		}else{
-			frequencyMap[userInput[counter]] = 1;
+		xorArray ^= userInput[counter];
+		xorNumbers ^= counter+1;
+	}
+	return xorArray ^ xorNumbers;
+}
+
+//Tested
+unsigned int findMissingNumberSum(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return 1;
+	}
+	unsigned int sumOfArray = 0,requiredSum = userInput.size()+1;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		requiredSum += counter+1;
+		sumOfArray += userInput[counter];
+	}
+	return requiredSum - sumOfArray;
+}
+
+//Tested
+unsigned int findMissingNumberArrayFlags(vector<int> userInput){
+	if(userInput.size() == 0){
+		return 1;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		userInput[abs(userInput[counter])-1] *= -1;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] > 0){
+			return counter+1;
 		}
 	}
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		if(itToFrequencyMap->second%2 == 1){
-			return itToFrequencyMap->first;
-		}
-	}
-	return INT_MIN;
+	return userInput.size()+1;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int numberOccuringOddTimesONLOGN(vector<int> userInput){
+unsigned int findMissingNumberONLOGN(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
 	sort(userInput.begin(),userInput.end());
-	unsigned int outerCrawler = 0,innerCrawler,frequency;
-	while(outerCrawler < userInput.size()){
-		innerCrawler = outerCrawler;
-		frequency = 0;
-		while(innerCrawler < userInput.size() && userInput[innerCrawler] == userInput[outerCrawler]){
-			frequency += 1;
-			innerCrawler++;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] !=  counter+1){
+			return counter+1;
 		}
-		if(frequency%2 == 1){
-			return userInput[outerCrawler];
-		}
-		outerCrawler += innerCrawler;
 	}
-	return INT_MAX;
+	return userInput.size()+1;
 }
 
 //Tested
-void notRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
+void fmnRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
-	ifpAvlNode *grandParent = parent;
+	ipAvlNode *grandParent = parent->parent;
 	parent->parent = child;
 	child->parent = grandParent;
 	if(grandParent != null){
@@ -156,60 +175,59 @@ void notRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 }
 
 //Tested
-ifpAvlNode *notInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
+ipAvlNode *fmnInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
 	if(*root == null){
-		(*root) = new ifpAvlNode(value);
+		(*root) = new ipAvlNode(value);
 		return null;
 	}
 	if(currentNode->value == value){
-		currentNode->frequency += 1;
 		return null;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
-			currentNode->left = new ifpAvlNode(value);
+			currentNode->left = new ipAvlNode(value);
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return notInsertAtRightPlace(root,currentNode->left,value);
+			return fmnInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
-			currentNode->right = new ifpAvlNode(value);
+			currentNode->right = new ipAvlNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return notInsertAtRightPlace(root,currentNode->right,value);
+			return fmnInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
 //Tested
-void notInsertIntoAvlTree(ifpAvlNode **root,int value){
-	ifpAvlNode *ptrToInsertedNode = notInsertAtRightPlace(root,*root,value);
-	if(ptrToInsertedNode == null){
+void fmnInsertIntoAvlTree(ipAvlNode **root,int value){
+	ipAvlNode *z = fmnInsertAtRightPlace(root,*root,value);
+	if(z == null){
 		return;
 	}
-	ifpAvlNode *z = ptrToInsertedNode,*y,*x;
+	ipAvlNode *x,*y;
 	int leftHeight,rightHeight;
 	while(z != null){
 		leftHeight = z->left == null?0:z->left->height;
 		rightHeight = z->right == null?0:z->right->height;
-		if(abs(leftHeight - rightHeight) > 1){
+		if(abs(leftHeight - rightHeight) > 0){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) || (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
-				notRotateNodes(z,y);
+				fmnRotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 			}else{
 				if(z->parent == null){
 					(*root) = x;
 				}
-				notRotateNodes(y,x);
-				notRotateNodes(z,x);
+				fmnRotateNodes(y,x);
+				fmnRotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
@@ -222,40 +240,44 @@ void notInsertIntoAvlTree(ifpAvlNode **root,int value){
 }
 
 //Tested
-int checkForOddFrequencyNode(ifpAvlNode *ptr){
+bool fmnSearchForValue(ipAvlNode *ptr,int value){
 	if(ptr == null){
-		return INT_MIN;
+		return false;
 	}
-	if(ptr->frequency % 2 == 1){
-		return ptr->value;
+	if(ptr->value == value){
+		return true;
+	}else if(ptr->value > value){
+		return fmnSearchForValue(ptr->left,value);
+	}else{
+		return fmnSearchForValue(ptr->right,value);
 	}
-	int leftResult = checkForOddFrequencyNode(ptr->left);
-	if(leftResult != INT_MIN){
-		return leftResult;
-	}
-	return checkForOddFrequencyNode(ptr->right);
 }
 
 //Tested
-int numberOccuringOddTimesAvlTree(vector<int> userInput){
+int findMissingNumbersAvlTree(vector<int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
-	ifpAvlNode *root = null;
+	ipAvlNode *root = null;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		notInsertIntoAvlTree(&root,userInput[counter]);
+		fmnInsertIntoAvlTree(&root,userInput[counter]);
 	}
-	return checkForOddFrequencyNode(root);
+	for(unsigned int counter = 0;counter <= userInput.size()+2;counter++){
+		if(!fmnSearchForValue(root,counter+1)){
+			return counter+1;
+		}
+	}
+	return 1;
 }
 
 //Tested
-void ntRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
+void fmnRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
 	}
-	ifRbTreeNode *grandParent = parent->parent;
-	child->parent = grandParent;
+	iRbTreeNode *grandParent = parent->parent;
 	parent->parent = child;
+	child->parent = grandParent;
 	if(grandParent != null){
 		if(grandParent->left == parent){
 			grandParent->left = child;
@@ -273,40 +295,39 @@ void ntRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 }
 
 //Tested
-ifRbTreeNode *ntInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
+iRbTreeNode *fmnInsertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
 	if(*root == null){
-		(*root) = new ifRbTreeNode(value);
+		(*root) = new iRbTreeNode(value);
 		(*root)->isRedNode = false;
 		return null;
 	}
 	if(currentNode->value == value){
-		currentNode->frequency += 1;
 		return null;
 	}else if(currentNode->value > value){
 		if(currentNode->left == null){
-			currentNode->left = new ifRbTreeNode(value);
+			currentNode->left = new iRbTreeNode(value);
 			currentNode->left->parent = currentNode;
 			return currentNode->left;
 		}else{
-			return ntInsertAtRightPlace(root,currentNode->left,value);
+			return fmnInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
 		if(currentNode->right == null){
-			currentNode->right = new ifRbTreeNode(value);
+			currentNode->right = new iRbTreeNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode->right;
 		}else{
-			return ntInsertAtRightPlace(root,currentNode->right,value);
+			return fmnInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
 //Tested
-void ntReorganizeRbTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
+void fmnReorganiseTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
 	}
-	ifRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
+	iRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
 	if(!parent->isRedNode){
 		return;
 	}
@@ -315,7 +336,7 @@ void ntReorganizeRbTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNo
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			ntRotateNodes(grandParent,parent);
+			fmnRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -327,14 +348,14 @@ void ntReorganizeRbTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNo
 				grandParent->isRedNode = false;
 				return;
 			}
-			ntReorganizeRbTreePostInsertion(root,parent);
+			fmnReorganiseTreePostInsertion(root,grandParent);
 		}
 	}else{
 		if(grandParent->left == null || !grandParent->left->isRedNode){
 			if(grandParent->parent == null){
 				(*root) = parent;
 			}
-			ntRotateNodes(grandParent,parent);
+			fmnRotateNodes(grandParent,parent);
 			grandParent->isRedNode = true;
 			parent->isRedNode = false;
 			return;
@@ -346,99 +367,79 @@ void ntReorganizeRbTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNo
 				grandParent->isRedNode = false;
 				return;
 			}
-			ntReorganizeRbTreePostInsertion(root,parent);
+			fmnReorganiseTreePostInsertion(root,grandParent);
 		}
 	}
 }
 
 //Tested
-void ntInsertIntoRbTree(ifRbTreeNode **root,int value){
-	ifRbTreeNode *ptrToKey = ntInsertAtRightPlace(root,*root,value);
+void fmnInsertIntoRbTree(iRbTreeNode **root,int value){
+	iRbTreeNode *ptrToKey = fmnInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
 		return;
 	}
 	if(!ptrToKey->parent->isRedNode){
 		return;
 	}
-	ntReorganizeRbTreePostInsertion(root,ptrToKey);
+	fmnReorganiseTreePostInsertion(root,ptrToKey);
 }
 
 //Tested
-int getNodeWithOddFrequency(ifRbTreeNode *ptr){
+bool fmnSearchForValueInRbTree(iRbTreeNode *ptr,int value){
 	if(ptr == null){
-		return INT_MIN;
+		return false;
 	}
-	if(ptr->frequency%2 == 1){
-		return ptr->value;
+	if(ptr->value == value){
+		return true;
+	}else if(ptr->value > value){
+		return fmnSearchForValueInRbTree(ptr->left,value);
+	}else{
+		return fmnSearchForValueInRbTree(ptr->right,value);
 	}
-	int leftResult = getNodeWithOddFrequency(ptr->left);
-	if(leftResult != INT_MIN){
-		return leftResult;
-	}
-	return getNodeWithOddFrequency(ptr->right);
 }
 
 //Tested
-int numberOccuringOddTimesRbTree(vector<int> userInput){
+unsigned int findMissingNumberRbTree(vector<int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
-	ifRbTreeNode *root = null;
+	iRbTreeNode *root = null;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		ntInsertIntoRbTree(&root,userInput[counter]);
+		fmnInsertIntoRbTree(&root,userInput[counter]);
 	}
-	return getNodeWithOddFrequency(root);
+	for(unsigned int counter = 1;counter <= userInput.size()+2;counter++){
+		if(!fmnSearchForValueInRbTree(root,counter)){
+			return counter;
+		}
+	}
+	return UINT_MAX;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int numberOccuringOddTimesON2(vector<int> userInput){
+unsigned int findMissingNumberON2(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 1;
 	}
-	unsigned int outerCrawler,innerCrawler,frequency;
-	for(outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		frequency = 0;
-		for(innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[innerCrawler] == userInput[outerCrawler]){
-				frequency++;
+	bool flag;
+	for(unsigned int outerCounter = 1;outerCounter <= userInput.size()+1;outerCounter++){
+		flag = false;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(userInput[innerCounter] == outerCounter){
+				flag = true;
+				break;
 			}
 		}
-		if(frequency%2 == 1){
-			return userInput[outerCrawler];
+		if(!flag){
+			return outerCounter;
 		}
 	}
-	return INT_MIN;
+	return UINT_MAX;
 }
 
-//Tested
-int getNumberOccuringOddNumber(iftNode *ptr){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	if(ptr->frequency % 2 == 1){
-		return ptr->value;
-	}
-	int leftValue = getNumberOccuringOddNumber(ptr->left);
-	if(leftValue != INT_MIN){
-		return leftValue;
-	}
-	return getNumberOccuringOddNumber(ptr->right);
-}
-
-//Tested
-int numberOccuringOddTimesBST(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	treeutils *utils = new treeutils();
-	iftNode *rootBST = utils->getFBSTFromVector(userInput);
-	return getNumberOccuringOddNumber(rootBST);
-}
-
-#endif /* NUMBERODDTIMES_H_ */
+#endif /* FINDMISSINGNUMBER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

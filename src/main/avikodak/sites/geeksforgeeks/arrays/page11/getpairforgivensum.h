@@ -1,6 +1,6 @@
 /****************************************************************************************************************************************************
  *  File Name   		: getpairforgivensum.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\getpairforgivensum.h
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\getpairforgivensum.h
  *  Created on			: Oct 10, 2014 :: 4:13:13 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested

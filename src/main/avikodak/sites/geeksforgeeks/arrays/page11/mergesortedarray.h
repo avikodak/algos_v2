@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\mergesortedarray.h
  *  Created on			: Oct 17, 2014 :: 6:47:42 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/merge-one-array-of-size-n-into-another-one-of-size-mn/
  ****************************************************************************************************************************************************/
 
@@ -128,6 +128,7 @@ vector<int> mergeSortedArrayONLOGN(vector<int> firstSortedArray,vector<int> seco
 	return mergedArray;
 }
 
+//Tested
 void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -151,6 +152,7 @@ void msaRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -179,6 +181,7 @@ ifpAvlNode *msaInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 
 }
 
+//Tested
 void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = msaInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -192,7 +195,7 @@ void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
 		if(abs(leftHeight - rightHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) && (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x) || (z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
@@ -216,6 +219,7 @@ void msaInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
 void setInorderValuesInVector(ifpAvlNode *ptr,vector<int> &mergedArray){
 	if(ptr == null){
 		return;
@@ -227,6 +231,7 @@ void setInorderValuesInVector(ifpAvlNode *ptr,vector<int> &mergedArray){
 	setInorderValuesInVector(ptr->right,mergedArray);
 }
 
+//Tested
 vector<int> mergedSortedArraysAvl(vector<int> firstSortedArray,vector<int> secondSortedArray){
 	vector<int> mergedArray;
 	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
@@ -396,7 +401,35 @@ vector<int> mergeSortedArrayRbTree(vector<int> firstSortedArray,vector<int> seco
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+void msaInsertionSort(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	int innerCounter,key;
+	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
+		key = userInput[outerCounter];
+		innerCounter = outerCounter-1;
+		while(innerCounter >= 0 && userInput[innerCounter] > key){
+			userInput[innerCounter+1] = userInput[innerCounter];
+		}
+		userInput[innerCounter+1] = key;
+	}
+}
 
+//Tested
+vector<int> mergeSortedArrayInsertionON2(vector<int> firstSortedArray,vector<int> secondSortedArray){
+	if(firstSortedArray.size() == 0){
+		return secondSortedArray;
+	}
+	if(secondSortedArray.size() == 0){
+		return firstSortedArray;
+	}
+	vector<int> mergedArray(firstSortedArray.size() + secondSortedArray.size());
+	merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
+	msaInsertionSort(mergedArray);
+	return mergedArray;
+}
 
 #endif /* MERGESORTEDARRAY_H_ */
 

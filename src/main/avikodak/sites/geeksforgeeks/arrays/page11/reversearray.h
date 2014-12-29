@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rotatearrayreversealgo.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearrayreversealgo.h
- *  Created on			: Nov 25, 2014 :: 7:09:28 PM
+ *  File Name   		: reversearray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\reversearray.h
+ *  Created on			: Nov 25, 2014 :: 6:38:54 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,20 +65,59 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ROTATEARRAYREVERSEALGO_H_
-#define ROTATEARRAYREVERSEALGO_H_
+#ifndef REVERSEARRAY_H_
+#define REVERSEARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rotateArrayReverseAlgo(vector<int> &userInput,unsigned int rotateBy){
-	reverseArray(userInput,0,rotateBy-1);
-	reverseArray(userInput,rotateBy,userInput.size()-1);
-	reverseArray(userInput,0,userInput.size()-1);
+void reverseArrayMain(vector<int> &userInput,unsigned int &startIndex,unsigned int endIndex){
+	if(userInput.size() == 0 || endIndex >= userInput.size()){
+		return;
+	}
+	reverseArrayMain(userInput,startIndex,endIndex+1);
+	if(startIndex < endIndex){
+		swap(userInput[startIndex],userInput[endIndex]);
+		startIndex++;
+	}
 }
 
-#endif /* ROTATEARRAYREVERSEALGO_H_ */
+//Tested
+void rReverseArray(vector<int> &userInput){
+	unsigned int startIndex = 0;
+	reverseArrayMain(userInput,startIndex,0);
+}
+
+//Tested
+void reverseArrayIterative(vector<int> &userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+	while(frontCrawler < rearCrawler){
+		swap(userInput[frontCrawler],userInput[rearCrawler]);
+		frontCrawler++;
+		rearCrawler--;
+	}
+}
+
+//Tested
+void reverseArrayAuxspace(vector<int> &userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	stack<int> auxSpace;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace.push(userInput[counter]);
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		userInput[counter] = auxSpace.top();
+		auxSpace.pop();
+	}
+}
+
+#endif /* REVERSEARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
