@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: blockswapalgorotate.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\blockswapalgorotate.h
- *  Created on			: Nov 25, 2014 :: 7:09:37 PM
+ *  File Name   		: partitionproblem.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\partitionproblem.h
+ *  Created on			: Dec 29, 2014 :: 12:53:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,43 +67,80 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-
-#ifndef BLOCKSWAPALGOROTATE_H_
-#define BLOCKSWAPALGOROTATE_H_
+#ifndef PARTITIONPROBLEM_H_
+#define PARTITIONPROBLEM_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void blockSwap(vector<int> &userInput,int firstStartIndex,int secondStartIndex,int size){
-	int temp;
-	while(size--){
-		temp = userInput[secondStartIndex];
-		userInput[secondStartIndex] = userInput[firstStartIndex];
-		userInput[firstStartIndex] = temp;
-		firstStartIndex++;
-		secondStartIndex++;
+bool partitionProblemDP(vector<int> userInput){
+	if(userInput.size() == 0){
+		return false;
 	}
-}
-
-void rotateUsingBlockSwapAlgo(vector<int> &userInput,int rotateBy,int startIndex,int endIndex){
-	if(rotateBy == 0 || rotateBy == size){
-		return;
+	int sum = sumVector(userInput);
+	if(sum % 2 == 1){
+		return false;
 	}
-	if(endIndex - startIndex == 2 * rotateBy){
-		blockSwap(userInput,startIndex,startIndex + rotateBy + 1,rotateBy);
-		return;
-	}else{
-		if(startIndex + rotateBy - 1 > endIndex - rotateBy + 1){
-			blockSwap(userInput,startIndex,endIndex-rotateBy+1,rotateBy);
-			rotateUsingBlockSwapAlgo(userInput,startIndex+rotateBy-1,endIndex);
-		}else{
-			blockSwap(userInput,startIndex,endIndex - rotateBy + 1,rotateBy);
-			rotateUsingBlockSwapAlgo(userInput,startIndex,endIndex-rotateBy+1);
+	vector<vector<bool> > auxSpace(userInput.size());
+	int requiredSum = sum/2;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace[counter].assign(sum+1,false);
+	}
+	for(unsigned int columnCounter = 0;columnCounter < auxSpace[0].size();columnCounter++){
+		auxSpace[0][columnCounter] = false;
+	}
+	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
+		auxSpace[rowCounter][0] = true;
+	}
+	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
+			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter];
+			if(columnCounter > userInput[rowCounter]){
+				auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter][columnCounter] || auxSpace[rowCounter-1][columnCounter - userInput[rowCounter]];
+			}
 		}
 	}
+	return auxSpace[userInput.size()-1][sum/2];
 }
 
-#endif /* BLOCKSWAPALGOROTATE_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool partitionProblemGenerateSets(vector<int> userInput,vector<int> subset,int requiredSum,int currentIndex){
+	if(currentIndex > userInput.size()){
+		return false;
+	}
+	if(currentIndex == userInput.size()){
+		return sumVector(subset) == requiredSum;
+	}
+	bool truthValue = partitionProblemGenerateSets(userInput,subset,requiredSum,currentIndex+1);
+	subset.push_back(userInput[currentIndex]);
+	return truthValue || partitionProblemGenerateSets(userInput,subset,requiredSum,currentIndex+1);
+}
+
+bool partitionProblemGenerateSetsIterative(vector<int> userInput){
+	if(userInput.size() == 0){
+		return false;
+	}
+	int limit = pow(2,userInput.size());
+	int sum = sumVector(userInput),currentSum;
+	vector<int> subset;
+	for(int subsetCounter = 0;subsetCounter < limit;subsetCounter++){
+		subset.clear();
+		for(unsigned int bitCounter = 0;bitCounter < userInput.size();bitCounter++){
+			if(subsetCounter & 1 << bitCounter){
+				subset.push_back(userInput[bitCounter]);
+			}
+		}
+		currentSum = sumVector(subset);
+		if(currentSum == sum/2){
+			return true;
+		}
+	}
+	return false;
+}
+
+#endif /* PARTITIONPROBLEM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

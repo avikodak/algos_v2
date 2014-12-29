@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: medianofsortedarrays.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\medianofsortedarrays.h
- *  Created on			: Nov 25, 2014 :: 9:01:27 PM
+ *  File Name   		: largestsubarray0s1s.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\largestsubarray0s1s.h
+ *  Created on			: Dec 29, 2014 :: 4:21:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,87 +67,88 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MEDIANOFSORTEDARRAYS_H_
-#define MEDIANOFSORTEDARRAYS_H_
-
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int medianByBinarySearchMain(vector<int> firstSortedArray,vector<int> secondSortedArray,int firstStartIndex,int firstEndIndex,int secondStartIndex,int secondEndIndex){
-	if(firstEndIndex - firstStartIndex == 0){
-		return (firstSortedArray[firstStartIndex] + secondSortedArray[secondStartIndex])/2;
-	}
-	if(firstEndIndex - firstStartIndex == 1){
-		return (max(firstSortedArray[firstStartIndex],secondSortedArray[secondStartIndex]) + min(firstSortedArray[firstEndIndex],secondSortedArray[secondEndIndex]))/2;
-	}
-	int firstMiddleIndex = (firstStartIndex + firstEndIndex)/2;
-	int secondMiddleIndex = (secondStartIndex + secondEndIndex)/2;
-	if(firstSortedArray[firstMiddleIndex] == secondSortedArray[secondMiddleIndex]){
-		return firstSortedArray[firstMiddleIndex];
-	}else if(firstSortedArray[firstMiddleIndex] > secondSortedArray[secondMiddleIndex]){
-		if((firstEndIndex - firstStartIndex) % 2 == 0){
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstStartIndex,firstMiddleIndex-1,secondMiddleIndex+1,secondEndIndex);
-		}else{
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstStartIndex,firstMiddleIndex,secondMiddleIndex,secondEndIndex);
-		}
-	}else{
-		if((firstEndIndex - firstStartIndex) % 2 == 0){
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstMiddleIndex+1,firstEndIndex,secondStartIndex,secondMiddleIndex-1);
-		}else{
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstMiddleIndex,firstEndIndex,secondStartIndex,secondMiddleIndex);
-		}
-	}
-}
-
-int medianByBinarySearch(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	if(firstSortedArray.size() != secondSortedArray.size()){
-		return INT_MIN;
-	}
-	return medianByBinarySearchMain(firstSortedArray,secondSortedArray,0,firstSortedArray.size()-1,0,secondSortedArray.size()-1);
-}
+#ifndef LARGESTSUBARRAY0S1S_H_
+#define LARGESTSUBARRAY0S1S_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int medianByMerging(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return INT_MIN;
+int largestEqualSubarray0s1s(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	int medianElement,prevMedianElement;
-	unsigned int firstCrawler = 0,secondCrawler = 0;
-	int requiredSize = (firstSortedArray.size() + secondSortedArray.size())/2 + 1;
-	bool isEven = (firstSortedArray.size() + secondSortedArray.size())%2 == 0;
-	while(requiredSize-- && firstCrawler < firstSortedArray.size() && secondCrawler < secondSortedArray.size()){
-		prevMedianElement = medianElement;
-		if(firstSortedArray[firstCrawler] < secondSortedArray[secondCrawler]){
-			medianElement = firstSortedArray[firstCrawler++];
-		}else{
-			medianElement = secondSortedArray[secondCrawler++];
+	int maxSize = INT_MIN;
+	int startIndex;
+	hash_map<int,unsigned int> valueIndexMap;
+	hash_map<int,unsigned int>::iterator itToValueIndexMap;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		userInput[counter] = userInput[counter-1] + userInput[counter] == 0?-1:1;
+		if(userInput[counter] == 0){
+			maxSize = max(maxSize,counter+1);
+			startIndex = 0;
+		}else {
+			if((itToValueIndexMap = valueIndexMap.find(userInput[counter]) == valueIndexMap.end())){
+				valueIndexMap.insert(pair<int,unsigned int>(userInput[counter],counter));
+			}else{
+				startIndex = itToValueIndexMap->second + 1;
+				maxSize = max(maxSize,counter - startIndex);
+			}
 		}
 	}
-	if(requiredSize  > 0){
-		return INT_MIN;
-	}
-	return isEven?(medianElement + prevMedianElement)/2:medianElement;
+	return maxSize;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int medianBySorting(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	vector<int> mergedArray(firstSortedArray.size()+secondSortedArray.size());
-	merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
-	sort(mergedArray.begin(),mergedArray.end());
-	if(mergedArray.size() % 2 == 1){
-		return mergedArray[mergedArray.size()/2];
-	}else{
-		return (mergedArray[mergedArray.size()/2] + mergedArray[mergedArray.size()/2 - 1])/2;
+int largestEqualSubarrays0s1sON2(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
 	}
+	int maxSize = INT_MIN;
+	int startIndex;
+	int currentSum;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		currentSum = 0;
+		for(unsigned int innerCounter = innerCounter;innerCounter < userInput.size();innerCounter++){
+			currentSum += userInput[innerCounter] == 0?-1:1;
+			if(currentSum == 0){
+				maxSize = max(maxSize,innerCounter - outerCounter + 1);
+			}
+		}
+	}
+	return maxSize;
 }
 
-#endif /* MEDIANOFSORTEDARRAYS_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int largestEqualSubarray0s1sON3(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
+	}
+	int maxSize = INT_MIN;
+	int zeroCounter,oneCounter;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size();middleCounter++){
+			zeroCounter = 0;
+			oneCounter = 0;
+			for(unsigned int innerCounter = outerCounter;innerCounter <= middleCounter;innerCounter++){
+				if(userInput[innerCounter] == 0){
+					zeroCounter++;
+				}else{
+					oneCounter++;
+				}
+			}
+			if(zeroCounter == oneCounter){
+				maxSize = max(maxSize,middleCounter - outerCounter + 1);
+			}
+		}
+	}
+	return maxSize;
+}
+
+#endif /* LARGESTSUBARRAY0S1S_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

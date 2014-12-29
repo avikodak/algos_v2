@@ -306,6 +306,118 @@ void setKthSmallestRbTree(iRbTreeNode *ptr,iRbTreeNode **kPtr,int &kValue){
 	setKthSmallestRbTree(ptr,kPtr,kValue);
 }
 
+void kmvMinHeapify(vector<int> &userInput,int index){
+	if(userInput.size() == 0){
+		return;
+	}
+	while(2*index+1 < userInput.size()){
+		if(2*index + 2 < userInput.size()){
+			if(userInput[index] > userInput[2*index + 2] || userInput[index] > userInput[2*index + 1]){
+				if(userInput[2*index+1] < userInput[2*index + 2]){
+					swap(userInput[index],userInput[2*index+1]);
+					index = 2*index + 1;
+				}else{
+					swap(userInput[index],userInput[2*index+2]);
+					index = 2*index + 2;
+				}
+			}else{
+				break;
+			}
+		}else{
+			if(userInput[index] > userInput[2*index+1]){
+				swap(userInput[index],userInput[2*index+1]);
+				index = 2*index + 1;
+			}else{
+				break;
+			}
+		}
+	}
+}
+
+void kmvInsertIntoMinHeap(vector<int> &heap,int value){
+	heap.push_back(value);
+	int index = heap.size() - 1;
+	while(index > 0){
+		if(heap[index] < heap[index/2]){
+			swap(heap[index],heap[index/2]);
+			index /= 2;
+		}else{
+			return;
+		}
+	}
+}
+
+void kmvDeleteMin(vector<int> &heap){
+	if(heap.size() == 0){
+		return;
+	}
+	swap(heap[0],heap[heap.size()-1]);
+	heap.pop_back();
+	kmvMinHeapify(heap,0);
+}
+
+int kthSmallestMinHeap(vector<int> userInput,int kValue){
+	if(userInput.size() < kValue){
+		return INT_MIN;
+	}
+	vector<int> heap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		kmvInsertIntoMinHeap(heap,userInput[counter]);
+	}
+	while(kValue--){
+		kmvDeleteMin(heap);
+	}
+	return heap[0];
+}
+
+void kmvMaxHeapify(vector<int> &heap,int index){
+	if(heap.size() == 0 || index >= heap.size()){
+		return;
+	}
+	while(2*index+1 < heap.size()){
+		if(2*index + 2 < heap.size()){
+			if(heap[index] < heap[2*index+2] || heap[index] < heap[2*index+1]){
+				if(heap[2*index+1] > heap[2*index+2]){
+					swap(heap[index],heap[2*index+1]);
+					index = 2*index+1;
+				}else{
+					swap(heap[index],heap[2*index+2]);
+					index = 2*index+2;
+				}
+			}else{
+				break;
+			}
+		}else{
+			if(heap[index] < heap[2*index+1]){
+				swap(heap[index],heap[2*index+1]);
+				index = 2*index+1;
+			}else{
+				break;
+			}
+		}
+	}
+}
+
+int kmvKthSmallestMaxHeap(vector<int> userInput,int kthValue){
+	if(userInput.size() == 0 || kthValue > userInput.size()){
+		return INT_MIN;
+	}
+	vector<int> heap;
+	for(unsigned int counter = 0;counter < kthValue;counter++){
+		heap.push_back(userInput[counter]);
+	}
+	for(int counter = heap.size()/2;counter >= 0;counter--){
+		kmvMaxHeapify(heap,counter);
+	}
+	for(unsigned int counter = kthValue;counter < userInput.size();counter++){
+		if(userInput[counter] < heap[0]){
+			heap[0] = userInput[counter];
+			kmvMaxHeapify(heap,0);
+		}
+	}
+	return heap[0];
+}
+
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/

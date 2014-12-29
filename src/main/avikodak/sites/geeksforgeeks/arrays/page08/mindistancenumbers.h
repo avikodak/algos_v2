@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: mindistancenumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\mindistancenumbers.h
+ *  Created on			: Dec 28, 2014 :: 11:39:10 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -40,8 +42,8 @@
 #include <limits.h>
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
-#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -54,114 +56,79 @@
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/arrays/page10/medianofsortedarrays.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
-void arrayTester() {
-	vector<int> firstSortedArray = getVectorForUserInput();
-	vector<int> secondSortedArray = getVectorForUserInput();
-	printf("%d",medianByBinarySearch(firstSortedArray,secondSortedArray)); //5 1 12 15 26 38 5 2 13 17 30 45
 
-}
+#ifndef MINDISTANCENUMBERS_H_
+#define MINDISTANCENUMBERS_H_
 
-void p(inrNode *ptr){
-	if(ptr == null){
-		return;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber){
+	if(userInput.size() < 2){
+		return INT_MAX;
 	}
-	printf("%d -> %d\n",ptr->value,ptr->nextRight != null?ptr->nextRight->value:0);
-	p(ptr->left);
-	p(ptr->right);
-}
-
-void s(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
+	int prevIndex = INT_MIN;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
+			prevIndex = counter;
+			break;
+		}
 	}
-	printf("%d -> %d\n",ptr->value,ptr->successor == null ?0:ptr->successor->value);
-	s(ptr->left);
-	s(ptr->right);
-}
-
-void treeTester(){
-	//treeutils *utils = new treeutils();
-	//vector<int> userInput = getVectorForUserInput();
-	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
-}
-
-void avlTreeTester(){
-	//avlutils *utils = new avlutils();
-	vector<int> sequence = generateISequenceVector(10);
-	PRINT_NEW_LINE;
-
-}
-
-void twoFourTreeTester(){
-	vector<int> sequence = generateISequenceVector(30);
-	twofourtreeutils *utils = new twofourtreeutils();
-	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
-	//utils->insertIntoTwoFourTree(&root,12);
-	utils->inorderTraversal(root);
-}
-
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	utils->printSill(head);
-}
-
-void customTester(){
-	char inputSequence[4];
-	scanf("%s",inputSequence);
-}
-
-void redblackTreeTester(){
-	rbutils *utils = new rbutils();
-	vector<int> sequence = generateISequenceVector(10);
-	iRbTreeNode *root = utils->getRbTreeFromVector(sequence);
-	utils->inorderTraversal(root);
-	PRINT_NEW_LINE;
-	for(unsigned int counter = 1;counter <= 10;counter++){
-		sequence.push_back(counter);
+	if(prevIndex == INT_MIN){
+		return INT_MAX;
 	}
-	ifRbTreeNode *root2 = utils->getFRbTreeFromVector(sequence);
-	utils->inorderTraversal(root2);
-	PRINT_NEW_LINE;
-	printf("%d %d",utils->height(root),utils->height(root2));
+	int minDistance = INT_MAX;
+	for(unsigned int counter = prevIndex+1;counter < userInput.size();counter++){
+		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
+			if(userInput[prevIndex] != userInput[counter]){
+				minDistance = min(minDistance,counter-prevIndex);
+			}
+			prevIndex = counter;
+		}
+	}
+	return minDistance;
 }
 
-void trieTester(){
-
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber){
+	if(userInput.size() < 2){
+		return INT_MAX;
+	}
+	unsigned int secondCrawler,thirdCrawler;
+	int minDistance = INT_MAX;
+	for(unsigned int firstCrawler = 0;firstCrawler < userInput.size();firstCrawler++){
+		secondCrawler = firstCrawler;
+		while(secondCrawler < userInput.size() && userInput[secondCrawler] != firstNumber & userInput[secondCrawler] != secondNumber){
+			secondCrawler++;
+		}
+		if(secondCrawler >= userInput.size()){
+			return minDistance;
+		}
+		thirdCrawler = secondCrawler+1;
+		while(thirdCrawler < userInput.size() && userInput[thirdCrawler] != userInput[secondCrawler]){
+			thirdCrawler++;
+		}
+		if(thirdCrawler < userInput.size()){
+			minDistance = min(minDistance,thirdCrawler-secondCrawler);
+		}
+	}
+	return minDistance;
 }
 
-void stringTester(){
-	//char userInput[] = "BBABCBCAB";
-	//scanf("%s",userInput);
-	//reverseWordsInString(userInput);
-}
-
-void graphTester(){
-	/*vector<vector<int> > adjacencyList = getAdjacencyListForDirectedGraph();
-	printf("%d\n",checkForPath(adjacencyList,1,3));//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
-	printf("%d",checkForPath(adjacencyList,3,1));//4 6 0 1 0 2 1 2 2 0 2 3 3 3*/
-}
-
-int main() {
-	PRINT_NEW_LINE;
-	arrayTester();
-	return 0;
-}
+#endif /* MINDISTANCENUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
