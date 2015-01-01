@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\differencebetweenindexes.h
  *  Created on			: Dec 1, 2014 :: 11:14:19 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,24 +71,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maxIJIndexAuxspace(vector<int> userInput){
 	if(userInput.size() < 1){
 		return 0;
 	}
 	vector<int> lMin,rMax;
-	lMin.push_back(userInput[0]);
-	rMax.reserve(userInput.size());
+	lMin.push_back(0);
+	rMax.assign(userInput.size(),INT_MIN);
 	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		lMin.push_back(userInput[counter],lMin[counter-1]);
+		lMin.push_back(userInput[counter] > userInput[lMin[counter-1]]?lMin[counter-1]:counter);
 	}
-	rMax[userInput.size()-1] = userInput[userInput.size()-1];
+	rMax[userInput.size()-1] = userInput.size()-1;
 	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		rMax[counter] = max(userInput[counter],rMax[counter+1]);
+		rMax[counter] = userInput[counter] > userInput[rMax[counter+1]]?counter:rMax[counter+1];
 	}
 	int maxDistance = 0;
 	int firstCrawler = 0,secondCrawler = 0;
-	while(firstCrawler < secondCrawler){
-		if(lMin[firstCrawler] < rMax[secondCrawler]){
+	while(firstCrawler < (int)userInput.size() && secondCrawler < (int)userInput.size()){
+		if(userInput[lMin[firstCrawler]] < userInput[rMax[secondCrawler]]){
 			maxDistance = max(maxDistance,secondCrawler-firstCrawler);
 			secondCrawler++;
 		}else{
@@ -101,6 +102,7 @@ int maxIJIndexAuxspace(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maxIJIndexesON2(vector<int> userInput){
 	if(userInput.size() < 1){
 		return 0;
