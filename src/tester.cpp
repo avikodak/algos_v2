@@ -62,20 +62,26 @@
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
 #include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page11/findmissingnumber.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page11/largestsumcontigousarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page11/mergesortedarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page11/blockswapalgorotate.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/twoelementsclosetozero.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/maxsumnoadjacent.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/sortbyfrequency.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/countinversions.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/smallestsecondsmallest.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/maxminarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/kthsmallest.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/maximumsizesubmatrix.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page10/maxdifferenceelements.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/segregateevenoddnumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/turnimageby90.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/searchinrowcolumnsortedmatrix.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page09/checkarrayisconsecutive.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	int rotateBy;
-	scanf("%d",&rotateBy);
-	blockSwapRotateAlgo(userInput,rotateBy);
-	printIVector(userInput,false);
+	vector<unsigned int> userInput = getUVectorForUserInput();
+	printf("%d",isArrayConsecutiveON2(userInput));
 }
 
 void p(inrNode *ptr){

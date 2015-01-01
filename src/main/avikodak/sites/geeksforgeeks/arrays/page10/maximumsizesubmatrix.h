@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnimageby90.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\turnimageby90.h
- *  Created on			: Nov 26, 2014 :: 9:12:14 PM
+ *  File Name   		: maximumsizesubmatrix.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maximumsizesubmatrix.h
+ *  Created on			: Dec 30, 2014 :: 6:07:02 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,30 +67,44 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNIMAGEBY90_H_
-#define TURNIMAGEBY90_H_
+#ifndef MAXIMUMSIZESUBMATRIX_H_
+#define MAXIMUMSIZESUBMATRIX_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<vector<int> > turnImageBy90(vector<vector<int> > userInput){
-	vector<vector<int> > rotatedImage;
+//Tested
+int maximumSizeSubMatrixAllOnes(vector<vector<int> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return rotatedImage;
+		return 0;
 	}
-	rotatedImage.reserve(userInput.size());
-	for(unsigned int counter = 0;counter < rotatedImage.size();counter++){
-		rotatedImage[counter].reserve(userInput[0].size());
+	vector<vector<int> > auxSpace(userInput.size());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace[counter].assign(userInput[0].size(),0);
 	}
 	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			rotatedImage[columnCounter][rowCounter] = userInput[rowCounter][columnCounter];
+		auxSpace[rowCounter][0] = userInput[rowCounter][0];
+	}
+	for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+		auxSpace[0][columnCounter] = userInput[0][columnCounter];
+	}
+	int maxSize = INT_MIN;
+	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter] == 1){
+				auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter-1],auxSpace[rowCounter-1][columnCounter]));
+				maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
+			}
 		}
 	}
-	return rotatedImage;
+	return maxSize;
 }
 
-#endif /* TURNIMAGEBY90_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* MAXIMUMSIZESUBMATRIX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxsumnoadjacent.h
  *  Created on			: Dec 28, 2014 :: 11:23:15 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maxSumSuchNoElementsAreAdjacent(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;

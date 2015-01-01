@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: smallestsecondsmallest.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\smallestsecondsmallest.h
- *  Created on			: Nov 25, 2014 :: 11:12:26 PM
+ *  File Name   		: maxminarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
+ *  Created on			: Nov 26, 2014 :: 10:53:30 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,117 +65,132 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SMALLESTSECONDSMALLEST_H_
-#define SMALLESTSECONDSMALLEST_H_
+#ifndef MAXMINARRAY_H_
+#define MAXMINARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getSmallestAndSecondSmallest(vector<int> userInput){
-	if(userInput.size() == 0){
+iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
 		return null;
 	}
-	int smallestValue = userInput[0],secondSmallestValue = userInput[0];
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] < smallestValue){
-			secondSmallestValue = smallestValue;
-			smallestValue = userInput[counter];
-		}else if(userInput[counter] < secondSmallestValue && userInput[counter] != smallestValue){
-			secondSmallestValue = userInput[counter];
-		}
+	if(startIndex == endIndex){
+		return new iMaxMin(userInput[startIndex],userInput[startIndex]);
 	}
-	return new iPair(smallestValue,secondSmallestValue);
+	if(endIndex - startIndex == 1){
+		return new iMaxMin(min(userInput[startIndex],userInput[endIndex]),max(userInput[startIndex],userInput[endIndex]));
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	iMaxMin *leftResult = getMaxMinArray3NBy2(userInput,startIndex,middleIndex);
+	iMaxMin *rightResult = getMaxMinArray3NBy2(userInput,middleIndex+1,endIndex);
+	if(leftResult == null || rightResult == null){
+		return leftResult == null?rightResult:leftResult;
+	}
+	return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
 }
 
 //Tested
-iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
+iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
-	if(userInput.size() == 1){
-		return new iPair(userInput[0],INT_MAX);
+	iMaxMin *result = new iMaxMin();
+	unsigned int counter = 0;
+	if(userInput.size() % 2 == 0){
+		result->minValue = min(userInput[0],userInput[1]);
+		result->maxValue = max(userInput[0],userInput[1]);
+		counter = 2;
+	}else{
+		result->maxValue = userInput[0];
+		result->minValue = userInput[0];
+		counter = 1;
 	}
-	int smallestValue = userInput[0],secondSmallestValue = INT_MAX;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(smallestValue > userInput[counter]){
-			smallestValue = userInput[counter];
+	for(;counter < userInput.size()-1;counter++){
+		if(userInput[counter] > userInput[counter+1]){
+			result->maxValue = max(result->maxValue,userInput[counter]);
+			result->minValue = min(result->minValue,userInput[counter+1]);
+		}else{
+			result->maxValue = max(result->maxValue,userInput[counter+1]);
+			result->minValue = min(result->minValue,userInput[counter]);
 		}
 	}
+	return result;
+}
+
+//Tested
+iMaxMin *getMaxMinArrayO2N(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	iMaxMin *result = new iMaxMin();
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(secondSmallestValue> userInput[counter]){
-			if(smallestValue != userInput[counter]){
-				secondSmallestValue = userInput[counter];
-			}
+		if(result->maxValue < userInput[counter]){
+			result->maxValue = userInput[counter];
+		}
+		if(result->minValue > userInput[counter]){
+			result->minValue = userInput[counter];
 		}
 	}
-	return new iPair(smallestValue,secondSmallestValue);
+	return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-//Distinct
-iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput){
+iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
-	if(userInput.size() == 1){
-		return new iPair(userInput[0],INT_MAX);
-	}
 	sort(userInput.begin(),userInput.end());
-	return new iPair(userInput[0],userInput[1]);
+	return new iMaxMin(userInput[0],userInput[userInput.size()-1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getSmallestAndSecondSmallestON2(vector<int> userInput){
+//Tested
+iMaxMin *getMaxMinArrayON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
 	if(userInput.size() == 1){
-		iPair *result = new iPair();
-		result->firstValue = userInput[0];
-		result->secondValue = INT_MAX;
-		return result;
+		return new iMaxMin(userInput[0],userInput[0]);
 	}
-	int smallestValueIndex,secondSmallestValueIndex;
-	bool isMin;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		isMin = true;
-		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
-			if(innerCrawler != outerCrawler){
-				if(userInput[outerCrawler] > userInput[innerCrawler]){
-					isMin = false;
+	iMaxMin *result = new iMaxMin();
+	bool flag;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		flag = true;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(outerCounter != innerCounter){
+				if(userInput[innerCounter] < userInput[outerCounter]){
+					flag = false;
 				}
 			}
 		}
-		if(isMin){
-			smallestValueIndex = outerCrawler;
+		if(flag){
+			result->minValue = userInput[outerCounter];
 		}
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		if(outerCrawler == smallestValueIndex){
-			continue;
-		}
-		isMin = true;
-		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
-			if(innerCrawler != outerCrawler){
-				if(userInput[outerCrawler] > userInput[innerCrawler]){
-					isMin = false;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		flag = true;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(outerCounter != innerCounter){
+				if(userInput[innerCounter] > userInput[outerCounter]){
+					flag = false;
 				}
 			}
 		}
-		if(isMin){
-			secondSmallestValueIndex = outerCrawler;
+		if(flag){
+			result->maxValue = userInput[outerCounter];
 		}
 	}
-	return new iPair(userInput[smallestValueIndex],userInput[secondSmallestValueIndex]);
+	return result;
 }
 
-#endif /* SMALLESTSECONDSMALLEST_H_ */
+#endif /* MAXMINARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

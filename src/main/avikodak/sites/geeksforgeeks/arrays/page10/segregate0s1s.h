@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxminarray.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
- *  Created on			: Nov 26, 2014 :: 10:53:30 AM
+ *  File Name   		: segregate0s1s.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregate0s1s.h
+ *  Created on			: Nov 25, 2014 :: 11:42:21 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+ *  URL 				: http://www.geeksforgeeks.org/segregate-0s-and-1s-in-an-array-by-traversing-array-once/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -65,131 +65,131 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXMINARRAY_H_
-#define MAXMINARRAY_H_
+#ifndef SEGREGATE0S1S_H_
+#define SEGREGATE0S1S_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
+void segregate0s1sFrequency(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
 	}
-	if(startIndex == endIndex){
-		return new iMaxMin(userInput[startIndex],userInput[startIndex]);
+	unsigned int zeroFrequency = 0,oneFrequency = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(!userInput[counter]){
+			zeroFrequency += 1;
+		}else{
+			oneFrequency += 1;
+		}
 	}
-	if(endIndex - startIndex == 1){
-		return new iMaxMin(min(userInput[startIndex],userInput[endIndex]),max(userInput[startIndex],userInput[endIndex]));
+	int fillCounter = -1;
+	while(zeroFrequency--){
+		userInput[++fillCounter] = 0;
 	}
-	int middleIndex = (startIndex + endIndex)/2;
-	iMaxMin *leftResult = getMaxMinArray3NBy2(userInput,startIndex,middleIndex);
-	iMaxMin *rightResult = getMaxMinArray3NBy2(userInput,middleIndex+1,endIndex);
-	if(leftResult == null || rightResult == null){
-		return leftResult == null?rightResult:leftResult;
+	while(oneFrequency--){
+		userInput[++fillCounter] = 1;
 	}
-	return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
 }
 
 //Tested
-iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iMaxMin *result = new iMaxMin();
-	unsigned int counter = 0;
-	if(userInput.size() % 2 == 0){
-		result->minValue = min(userInput[0],userInput[1]);
-		result->maxValue = max(userInput[0],userInput[1]);
-		counter = 2;
-	}else{
-		result->maxValue = userInput[0];
-		result->minValue = userInput[0];
-		counter = 1;
-	}
-	for(;counter < userInput.size()-1;counter++){
-		if(userInput[counter] > userInput[counter+1]){
-			result->maxValue = max(result->maxValue,userInput[counter]);
-			result->minValue = min(result->minValue,userInput[counter+1]);
-		}else{
-			result->maxValue = max(result->maxValue,userInput[counter+1]);
-			result->minValue = min(result->minValue,userInput[counter]);
+void segregate0s1sQuickSortDivideMethod(vector<int> &userInput){
+	int startIndex = 0,endIndex = userInput.size()-1;
+	while(startIndex < endIndex){
+		while(!userInput[startIndex]){
+			startIndex++;
+		}
+		while(userInput[endIndex]){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			userInput[startIndex] = 0;
+			userInput[endIndex] = 1;
 		}
 	}
-	return result;
-}
-
-iMaxMin *getMaxMinArrayO2N(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iMaxMin *result = new iMaxMin();
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(result->maxValue < userInput[counter]){
-			result->maxValue = userInput[counter];
-		}
-		if(result->minValue > userInput[counter]){
-			result->minValue = userInput[counter];
-		}
-	}
-	return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
+void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
+	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+	vector<int> temp;
+	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
+		if(firstCrawler > middleIndex || secondCrawler > endIndex){
+			if(firstCrawler <= middleIndex){
+				temp.push_back(userInput[firstCrawler]);
+				firstCrawler++;
+			}else{
+				temp.push_back(userInput[secondCrawler]);
+				secondCrawler++;
+			}
+		}else{
+			if(userInput[firstCrawler] < userInput[secondCrawler]){
+				temp.push_back(userInput[firstCrawler]);
+				firstCrawler++;
+			}else{
+				temp.push_back(userInput[secondCrawler]);
+				secondCrawler++;
+			}
+		}
 	}
-	sort(userInput.begin(),userInput.end());
-	return new iMaxMin(userInput[0],userInput[userInput.size()-1]);
+	for(unsigned int counter = 0;counter < temp.size();counter++){
+		userInput[startIndex+counter] = temp[counter];
+	}
+}
+
+//Tested
+void mergeSort(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return;
+	}
+	if(startIndex == endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	mergeSort(userInput,startIndex,middleIndex);
+	mergeSort(userInput,middleIndex+1,endIndex);
+	merge(userInput,startIndex,middleIndex,endIndex);
+}
+
+//Tested
+void segregate0s1s(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
+	}
+	mergeSort(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArrayON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
+void segregate0s1sON2(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
 	}
-	if(userInput.size() == 1){
-		return new iMaxMin(userInput[0],userInput[0]);
-	}
-	iMaxMin *result = new iMaxMin();
-	bool flag;
+	unsigned int innerCounter;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		flag = true;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(outerCounter != innerCounter){
-				if(userInput[innerCounter] < userInput[outerCounter]){
-					flag = false;
+		if(userInput[outerCounter]){
+			for(innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+				if(!userInput[innerCounter]){
+					break;
 				}
 			}
-		}
-		if(flag){
-			result->minValue = userInput[outerCounter];
-		}
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		flag = true;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(outerCounter != innerCounter){
-				if(userInput[innerCounter] > userInput[outerCounter]){
-					flag = false;
-				}
+			if(innerCounter < userInput.size()){
+				userInput[outerCounter] = 0;
+				userInput[innerCounter] = 1;
+			}else{
+				break;
 			}
 		}
-		if(flag){
-			result->maxValue = userInput[outerCounter];
-		}
 	}
-	return result;
 }
 
-#endif /* MAXMINARRAY_H_ */
+#endif /* SEGREGATE0S1S_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

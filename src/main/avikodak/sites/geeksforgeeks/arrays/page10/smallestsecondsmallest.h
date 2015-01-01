@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregateevenoddnumbers.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregateevenoddnumbers.h
- *  Created on			: Nov 26, 2014 :: 12:40:07 AM
+ *  File Name   		: smallestsecondsmallest.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\smallestsecondsmallest.h
+ *  Created on			: Nov 25, 2014 :: 11:12:26 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/segregate-even-and-odd-numbers/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/to-find-smallest-and-second-smallest-element-in-an-array/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,98 +65,119 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SEGREGATEEVENODDNUMBERS_H_
-#define SEGREGATEEVENODDNUMBERS_H_
+#ifndef SMALLESTSECONDSMALLEST_H_
+#define SMALLESTSECONDSMALLEST_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
+iPair *getSmallestAndSecondSmallest(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
 	}
-	int startIndex = 0,rearIndex = userInput.size() - 1;
-	while(startIndex < rearIndex){
-		while(userInput[startIndex]%2 == 0){
-			startIndex++;
-		}
-		while(userInput[rearIndex]%2 == 1){
-			rearIndex--;
-		}
-		if(startIndex < rearIndex){
-			swap(userInput[startIndex],userInput[rearIndex]);
+	int smallestValue = userInput[0],secondSmallestValue = userInput[0];
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] < smallestValue){
+			secondSmallestValue = smallestValue;
+			smallestValue = userInput[counter];
+		}else if(userInput[counter] < secondSmallestValue && userInput[counter] != smallestValue){
+			secondSmallestValue = userInput[counter];
 		}
 	}
+	return new iPair(smallestValue,secondSmallestValue);
 }
 
 //Tested
-void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
+iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return null;
 	}
-	queue<int> evenAuxspace,oddAuxspace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter]%2 == 0){
-			evenAuxspace.push(userInput[counter]);
-		}else{
-			oddAuxspace.push(userInput[counter]);
+	if(userInput.size() == 1){
+		return new iPair(userInput[0],INT_MAX);
+	}
+	int smallestValue = userInput[0],secondSmallestValue = INT_MAX;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(smallestValue > userInput[counter]){
+			smallestValue = userInput[counter];
 		}
 	}
-	int fillCounter = -1;
-	while(!evenAuxspace.empty()){
-		userInput[++fillCounter] = evenAuxspace.front();
-		evenAuxspace.pop();
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(secondSmallestValue> userInput[counter]){
+			if(smallestValue != userInput[counter]){
+				secondSmallestValue = userInput[counter];
+			}
+		}
 	}
-	while(!oddAuxspace.empty()){
-		userInput[++fillCounter] = oddAuxspace.front();
-		oddAuxspace.pop();
-	}
+	return new iPair(smallestValue,secondSmallestValue);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool seoSortFunc(int firstUserInput,int secondUserInput){
-	return firstUserInput%2 == 0?true:false;
-}
-
-//Tested
-void segregateEvenOddNumbers(vector<int> &userInput){
-	sort(userInput.begin(),userInput.end(),seoSortFunc);
+//Distinct
+iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return null;
+	}
+	if(userInput.size() == 1){
+		return new iPair(userInput[0],INT_MAX);
+	}
+	sort(userInput.begin(),userInput.end());
+	return new iPair(userInput[0],userInput[1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregateEvenOddNumbersON2(vector<int> &userInput){
+iPair *getSmallestAndSecondSmallestON2(vector<int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return null;
 	}
-	unsigned int zeroInnerCrawler = 0,oneInnerCrawler;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();){
-		oneInnerCrawler = outerCrawler;
-		while(oneInnerCrawler < userInput.size() && userInput[oneInnerCrawler] % 2 == 0){
-			oneInnerCrawler++;
-		}
-		if(oneInnerCrawler >= userInput.size()){
-			return;
-		}
-		zeroInnerCrawler = oneInnerCrawler + 1;
-		while(zeroInnerCrawler < userInput.size() && userInput[zeroInnerCrawler]%2 == 1){
-			zeroInnerCrawler++;
-		}
-		if(zeroInnerCrawler >= userInput.size()){
-			return;
-		}
-		swap(userInput[zeroInnerCrawler],userInput[oneInnerCrawler]);
-		outerCrawler = oneInnerCrawler;
+	if(userInput.size() == 1){
+		iPair *result = new iPair();
+		result->firstValue = userInput[0];
+		result->secondValue = INT_MAX;
+		return result;
 	}
+	unsigned int smallestValueIndex,secondSmallestValueIndex;
+	bool isMin;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		isMin = true;
+		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
+			if(innerCrawler != outerCrawler){
+				if(userInput[outerCrawler] > userInput[innerCrawler]){
+					isMin = false;
+					break;
+				}
+			}
+		}
+		if(isMin){
+			smallestValueIndex = outerCrawler;
+		}
+	}
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		if(outerCrawler != smallestValueIndex){
+			isMin = true;
+			for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
+				if(innerCrawler != outerCrawler && innerCrawler != smallestValueIndex){
+					if(userInput[outerCrawler] > userInput[innerCrawler]){
+						isMin = false;
+						break;
+					}
+				}
+			}
+			if(isMin){
+				secondSmallestValueIndex = outerCrawler;
+			}
+		}
+	}
+	return new iPair(userInput[smallestValueIndex],userInput[secondSmallestValueIndex]);
 }
 
-#endif /* SEGREGATEEVENODDNUMBERS_H_ */
+#endif /* SMALLESTSECONDSMALLEST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\countinversions.h
  *  Created on			: Nov 27, 2014 :: 6:30:16 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/counting-inversions/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int icMerge(vector<int> &userInput,int startIndex,int midIndex,int endIndex){
 	int firstCrawler = startIndex,secondCrawler = midIndex+1;
 	vector<int> temp;
@@ -78,29 +79,28 @@ unsigned int icMerge(vector<int> &userInput,int startIndex,int midIndex,int endI
 	while(firstCrawler <= midIndex || secondCrawler <= endIndex){
 		if(firstCrawler > midIndex || secondCrawler > endIndex){
 			if(firstCrawler <= midIndex){
-				temp.push_back(userInput[firstCrawler]);
-				firstCrawler++;
+				temp.push_back(userInput[firstCrawler++]);
 			}else{
-				temp.push_back(userInput[secondCrawler]);
-				secondCrawler++;
+				temp.push_back(userInput[secondCrawler++]);
 			}
 		}else{
 			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				firstCrawler++;
+				temp.push_back(userInput[firstCrawler++]);
 			}else{
-				secondCrawler++;
-				inversionCount += midIndex - firstCrawler;
+				temp.push_back(userInput[secondCrawler++]);
+				inversionCount += midIndex + 1 - firstCrawler;
 			}
 		}
+	}
+	for(unsigned int counter = 0;counter < temp.size();counter++){
+		userInput[startIndex + counter] = temp[counter];
 	}
 	return inversionCount;
 }
 
-unsigned int inversionCount(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return 0;
-	}
-	if(startIndex == endIndex){
+//Tested
+unsigned int inversionCount(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
 		return 0;
 	}
 	int middleIndex = (startIndex + endIndex)/2;
@@ -110,10 +110,19 @@ unsigned int inversionCount(vector<int> userInput,int startIndex,int endIndex){
 	return counter;
 }
 
+//Tested
+unsigned int inversionCountMerging(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
+	}
+	unsigned int counter = inversionCount(userInput,0,userInput.size()-1);
+	return counter;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int countInversionsON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 0;

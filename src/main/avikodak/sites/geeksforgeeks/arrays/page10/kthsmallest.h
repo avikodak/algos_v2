@@ -4,7 +4,7 @@
  *  Created on			: Nov 26, 2014 :: 1:06:44 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -75,7 +75,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int kthSmallestSortingONLOGN(vector<int> userInput,int kValue){
+//Tested
+int kthSmallestSortingONLOGN(vector<int> userInput,unsigned int kValue){
 	sort(userInput.begin(),userInput.end());
 	if(kValue > userInput.size()){
 		return INT_MIN;
@@ -132,7 +133,7 @@ ipAvlNode *kmvInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int val
 	}
 }
 
-ipAvlNode *kmvInsertIntoAvlTree(ipAvlNode **root,int value){
+void kmvInsertIntoAvlTree(ipAvlNode **root,int value){
 	ipAvlNode *z = kmvInsertAtRightPlace(root,*root,value);
 	if(z == null){
 		return;
@@ -141,7 +142,7 @@ ipAvlNode *kmvInsertIntoAvlTree(ipAvlNode **root,int value){
 	int leftHeight,rightHeight;
 	while(z != null){
 		leftHeight = z->left == null?0:z->left->height;
-		rightHeight = z->right = null?0:z->right->height;
+		rightHeight = z->right == null?0:z->right->height;
 		if(abs(leftHeight - rightHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
@@ -182,9 +183,10 @@ void setKthSmallestRbTree(ipAvlNode *ptr,ipAvlNode **kPtr,int &kValue){
 }
 
 int getKthSmallestRbTree(vector<int> userInput){
-	if(userInput.size() == null){
-		return null;
+	if(userInput.size() == 0){
+		return INT_MIN;
 	}
+	return INT_MIN;
 }
 
 void kmvRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
@@ -294,7 +296,7 @@ void kmvInsertIntoRbTree(iRbTreeNode **root,int value){
 	kmvReorganizeTreePostInsertion(root,ptrToKey);
 }
 
-void setKthSmallestRbTree(iRbTreeNode *ptr,iRbTreeNode **kPtr,int &kValue){
+void setKthSmallestRbTree(iRbTreeNode *ptr,iRbTreeNode **kPtr,unsigned int &kValue){
 	if(ptr == null){
 		return;
 	}
@@ -303,10 +305,22 @@ void setKthSmallestRbTree(iRbTreeNode *ptr,iRbTreeNode **kPtr,int &kValue){
 	if(kValue == 0){
 		(*kPtr) = ptr;
 	}
-	setKthSmallestRbTree(ptr,kPtr,kValue);
+	setKthSmallestRbTree(ptr->right,kPtr,kValue);
 }
 
-void kmvMinHeapify(vector<int> &userInput,int index){
+int getKthSmallestRbTree(vector<int> userInput,unsigned int kValue){
+	if(userInput.size() < kValue){
+		return INT_MIN;
+	}
+	iRbTreeNode *root = null,*kPtr = null;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		kmvInsertIntoRbTree(&root,userInput[counter]);
+	}
+	setKthSmallestRbTree(root,&kPtr,kValue);
+	return INT_MIN;
+}
+
+void kmvMinHeapify(vector<int> &userInput,unsigned int index){
 	if(userInput.size() == 0){
 		return;
 	}
@@ -334,6 +348,7 @@ void kmvMinHeapify(vector<int> &userInput,int index){
 	}
 }
 
+//Tested
 void kmvInsertIntoMinHeap(vector<int> &heap,int value){
 	heap.push_back(value);
 	int index = heap.size() - 1;
@@ -347,6 +362,7 @@ void kmvInsertIntoMinHeap(vector<int> &heap,int value){
 	}
 }
 
+//Tested
 void kmvDeleteMin(vector<int> &heap){
 	if(heap.size() == 0){
 		return;
@@ -356,7 +372,8 @@ void kmvDeleteMin(vector<int> &heap){
 	kmvMinHeapify(heap,0);
 }
 
-int kthSmallestMinHeap(vector<int> userInput,int kValue){
+//Tested
+int kthSmallestMinHeap(vector<int> userInput,unsigned int kValue){
 	if(userInput.size() < kValue){
 		return INT_MIN;
 	}
@@ -364,13 +381,14 @@ int kthSmallestMinHeap(vector<int> userInput,int kValue){
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		kmvInsertIntoMinHeap(heap,userInput[counter]);
 	}
-	while(kValue--){
+	while(--kValue){
 		kmvDeleteMin(heap);
 	}
 	return heap[0];
 }
 
-void kmvMaxHeapify(vector<int> &heap,int index){
+//Tested
+void kmvMaxHeapify(vector<int> &heap,unsigned int index){
 	if(heap.size() == 0 || index >= heap.size()){
 		return;
 	}
@@ -398,7 +416,8 @@ void kmvMaxHeapify(vector<int> &heap,int index){
 	}
 }
 
-int kmvKthSmallestMaxHeap(vector<int> userInput,int kthValue){
+//Tested
+int kmvKthSmallestMaxHeap(vector<int> userInput,unsigned int kthValue){
 	if(userInput.size() == 0 || kthValue > userInput.size()){
 		return INT_MIN;
 	}
@@ -424,7 +443,7 @@ int kmvKthSmallestMaxHeap(vector<int> userInput,int kthValue){
 //Distinct elements;
 void kmvInsertIntoBst(itAuxNode **root,itAuxNode *currentNode,vector<int> userInput,int counter){
 	if(*root == null){
-		(*root) = userInput[counter];
+		(*root) = new itAuxNode(userInput[counter]);
 		kmvInsertIntoBst(root,*root,userInput,counter+1);
 	}else{
 		if(currentNode->value == userInput[counter]){
@@ -450,7 +469,7 @@ void kmvInsertIntoBst(itAuxNode **root,itAuxNode *currentNode,vector<int> userIn
 	}
 }
 
-int getKthSmallestAuxBst(itAuxNode *ptr,int kValue){
+int getKthSmallestAuxBst(itAuxNode *ptr,unsigned int kValue){
 	if(ptr == null){
 		return INT_MIN;
 	}

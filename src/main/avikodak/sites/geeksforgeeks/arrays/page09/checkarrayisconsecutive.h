@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregateevenoddnumbers.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregateevenoddnumbers.h
- *  Created on			: Nov 26, 2014 :: 12:40:07 AM
+ *  File Name   		: checkarrayisconsecutive.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
+ *  Created on			: Nov 26, 2014 :: 9:06:50 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/segregate-even-and-odd-numbers/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/check-if-array-elements-are-consecutive/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -65,98 +65,111 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SEGREGATEEVENODDNUMBERS_H_
-#define SEGREGATEEVENODDNUMBERS_H_
+#ifndef CHECKARRAYISCONSECUTIVE_H_
+#define CHECKARRAYISCONSECUTIVE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int startIndex = 0,rearIndex = userInput.size() - 1;
-	while(startIndex < rearIndex){
-		while(userInput[startIndex]%2 == 0){
-			startIndex++;
-		}
-		while(userInput[rearIndex]%2 == 1){
-			rearIndex--;
-		}
-		if(startIndex < rearIndex){
-			swap(userInput[startIndex],userInput[rearIndex]);
-		}
-	}
-}
-
-//Tested
-void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
+bool isArrayConsecutiveHashmap(vector<unsigned int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return true;
 	}
-	queue<int> evenAuxspace,oddAuxspace;
+	hash_map<unsigned int,unsigned int> frequencyMap;
+	hash_map<unsigned int,unsigned int>::iterator itToFrequencyMap;
+	int minValue = *min_element(userInput.begin(),userInput.end());
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter]%2 == 0){
-			evenAuxspace.push(userInput[counter]);
+		if(userInput[counter] >= minValue + userInput.size()){
+			return false;
+		}
+		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
+			frequencyMap[userInput[counter]] = 1;
 		}else{
-			oddAuxspace.push(userInput[counter]);
+			return false;
 		}
 	}
-	int fillCounter = -1;
-	while(!evenAuxspace.empty()){
-		userInput[++fillCounter] = evenAuxspace.front();
-		evenAuxspace.pop();
-	}
-	while(!oddAuxspace.empty()){
-		userInput[++fillCounter] = oddAuxspace.front();
-		oddAuxspace.pop();
-	}
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-bool seoSortFunc(int firstUserInput,int secondUserInput){
-	return firstUserInput%2 == 0?true:false;
+	return true;
 }
 
 //Tested
-void segregateEvenOddNumbers(vector<int> &userInput){
-	sort(userInput.begin(),userInput.end(),seoSortFunc);
+bool isArrayConsecutiveSum(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return true;
+	}
+	unsigned int arraySum = 0;
+	unsigned int minElement = *min_element(userInput.begin(),userInput.end());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] >= minElement + userInput.size()){
+			return false;
+		}
+		arraySum += userInput[counter];
+	}
+	unsigned int requiredSum = (userInput.size())*(minElement + minElement + userInput.size() - 1);
+	return requiredSum == arraySum*2;
+}
+
+//Tested
+//Works for positive elements..if array contains +/- separate using quicksort divide step
+bool isArrayConsecutiveArrayAsFlags(vector<int> userInput){
+	if(userInput.size() == 0){
+		return true;
+	}
+	int minValue = *min_element(userInput.begin(),userInput.end());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(abs(userInput[counter]) >= minValue + (int)userInput.size()){
+			return false;
+		}
+		if(userInput[abs(userInput[counter]) - minValue] < 0){
+			return false;
+		}
+		userInput[abs(userInput[counter]) - minValue] *= -1;
+	}
+	return true;
+}
+
+/**************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm																  */
+/**************************************************************************************************************************************************/
+//Tested
+bool isArrayConsecutiveONLOGN(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return true;
+	}
+	sort(userInput.begin(),userInput.end());
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		if(userInput[counter+1] - userInput[counter] > 1){
+			return false;
+		}
+	}
+	return true;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregateEvenOddNumbersON2(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
+bool isArrayConsecutiveON2(vector<unsigned int> userInput){
+	if(userInput.size() < 2){
+		return true;
 	}
-	unsigned int zeroInnerCrawler = 0,oneInnerCrawler;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();){
-		oneInnerCrawler = outerCrawler;
-		while(oneInnerCrawler < userInput.size() && userInput[oneInnerCrawler] % 2 == 0){
-			oneInnerCrawler++;
+	unsigned int minVal = uMinValueVector(userInput);
+	bool valFound;
+	for(unsigned int counter = minVal;counter < minVal + userInput.size();counter++){
+		valFound = false;
+		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
+			if(userInput[innerCounter] == counter){
+				valFound = true;
+				break;
+			}
 		}
-		if(oneInnerCrawler >= userInput.size()){
-			return;
+		if(!valFound){
+			return false;
 		}
-		zeroInnerCrawler = oneInnerCrawler + 1;
-		while(zeroInnerCrawler < userInput.size() && userInput[zeroInnerCrawler]%2 == 1){
-			zeroInnerCrawler++;
-		}
-		if(zeroInnerCrawler >= userInput.size()){
-			return;
-		}
-		swap(userInput[zeroInnerCrawler],userInput[oneInnerCrawler]);
-		outerCrawler = oneInnerCrawler;
 	}
+	return true;
 }
 
-#endif /* SEGREGATEEVENODDNUMBERS_H_ */
+#endif /* CHECKARRAYISCONSECUTIVE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

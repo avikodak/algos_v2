@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregate0s1s.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregate0s1s.h
- *  Created on			: Nov 25, 2014 :: 11:42:21 PM
+ *  File Name   		: maxdifferenceelements.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxdifferenceelements.h
+ *  Created on			: Dec 30, 2014 :: 7:26:03 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/segregate-0s-and-1s-in-an-array-by-traversing-array-once/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-difference-between-two-elements/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,131 +67,49 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SEGREGATE0S1S_H_
-#define SEGREGATE0S1S_H_
+#ifndef MAXDIFFERENCEELEMENTS_H_
+#define MAXDIFFERENCEELEMENTS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregate0s1sFrequency(vector<int> &userInput){
+int maxDifferenceBetweenValues(vector<int> userInput){
 	if(userInput.size() < 2){
-		return;
+		return INT_MIN;
 	}
-	unsigned int zeroFrequency = 0,oneFrequency = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(!userInput[counter]){
-			zeroFrequency += 1;
+	int minVal = userInput[0];
+	int maxDifference = INT_MIN;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(minVal > userInput[counter]){
+			minVal = userInput[counter];
 		}else{
-			oneFrequency += 1;
+			maxDifference = max(maxDifference,userInput[counter] - minVal);
 		}
 	}
-	int fillCounter = -1;
-	while(zeroFrequency--){
-		userInput[++fillCounter] = 0;
-	}
-	while(oneFrequency--){
-		userInput[++fillCounter] = 1;
-	}
-}
-
-//Tested
-void segregate0s1sQuickSortDivideMethod(vector<int> &userInput){
-	int startIndex = 0,endIndex = userInput.size()-1;
-	while(startIndex < endIndex){
-		while(!userInput[startIndex]){
-			startIndex++;
-		}
-		while(userInput[endIndex]){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			userInput[startIndex] = 0;
-			userInput[endIndex] = 1;
-		}
-	}
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	vector<int> temp;
-	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler > middleIndex || secondCrawler > endIndex){
-			if(firstCrawler <= middleIndex){
-				temp.push_back(userInput[firstCrawler]);
-				firstCrawler++;
-			}else{
-				temp.push_back(userInput[secondCrawler]);
-				secondCrawler++;
-			}
-		}else{
-			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				temp.push_back(userInput[firstCrawler]);
-				firstCrawler++;
-			}else{
-				temp.push_back(userInput[secondCrawler]);
-				secondCrawler++;
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < temp.size();counter++){
-		userInput[startIndex+counter] = temp[counter];
-	}
-}
-
-//Tested
-void mergeSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	if(startIndex == endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	mergeSort(userInput,startIndex,middleIndex);
-	mergeSort(userInput,middleIndex+1,endIndex);
-	merge(userInput,startIndex,middleIndex,endIndex);
-}
-
-//Tested
-void segregate0s1s(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	mergeSort(userInput,0,userInput.size()-1);
+	return maxDifference;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregate0s1sON2(vector<int> &userInput){
+int maxDifferenceBetweenValuesON2(vector<int> userInput){
 	if(userInput.size() < 2){
-		return;
+		return INT_MIN;
 	}
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		if(userInput[outerCounter]){
-			for(innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-				if(!userInput[innerCounter]){
-					break;
-				}
-			}
-			if(innerCounter < userInput.size()){
-				userInput[outerCounter] = 0;
-				userInput[innerCounter] = 1;
-			}else{
-				break;
+	int maxDifference = INT_MIN;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[innerCrawler] > userInput[outerCrawler]){
+				maxDifference = max(maxDifference,userInput[innerCrawler] - userInput[outerCrawler]);
 			}
 		}
 	}
+	return maxDifference;
 }
 
-#endif /* SEGREGATE0S1S_H_ */
+#endif /* MAXDIFFERENCEELEMENTS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

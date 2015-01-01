@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\findrepeatingelements.h
  *  Created on			: Nov 26, 2014 :: 2:27:12 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-the-two-repeating-elements-in-a-given-array/
  ****************************************************************************************************************************************************/
 

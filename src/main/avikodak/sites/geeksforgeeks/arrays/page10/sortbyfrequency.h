@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\sortbyfrequency.h
  *  Created on			: Nov 24, 2014 :: 11:28:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/sort-elements-by-frequency/
  ****************************************************************************************************************************************************/
 
@@ -71,34 +71,36 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int divideStepQuickSortFrequencyVector(vector<iFrequency *> &valueFrequency,int startIndex,int endIndex){
 	unsigned int key = valueFrequency[endIndex]->frequency;
-	iFrequency *temp;
+	int pivotIndex = endIndex;
 	while(startIndex < endIndex){
-		while(valueFrequency[startIndex]->frequency <= key){
+		while(valueFrequency[startIndex]->frequency < key){
 			startIndex++;
 		}
-		while(valueFrequency[endIndex]->frequency > key){
+		while(startIndex < endIndex && valueFrequency[endIndex]->frequency >= key){
 			endIndex--;
 		}
 		if(startIndex < endIndex){
-			temp = valueFrequency[startIndex];
-			valueFrequency[startIndex] = valueFrequency[endIndex];
-			valueFrequency[endIndex] = temp;
+			swap(valueFrequency[startIndex],valueFrequency[endIndex]);
 		}
 	}
+	swap(valueFrequency[pivotIndex],valueFrequency[endIndex]);
 	return endIndex;
 }
 
+//Tested
 void quickSortFrequencyVector(vector<iFrequency *> &valueFrequency,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return;
 	}
 	int dividingIndex = divideStepQuickSortFrequencyVector(valueFrequency,startIndex,endIndex);
-	quickSortFrequencyVector(valueFrequency,startIndex,dividingIndex);
+	quickSortFrequencyVector(valueFrequency,startIndex,dividingIndex-1);
 	quickSortFrequencyVector(valueFrequency,dividingIndex+1,endIndex);
 }
 
+//Tested
 void sortByFrequency(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -125,6 +127,7 @@ void sortByFrequency(vector<int> &userInput){
 	}
 }
 
+//Tested
 void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -148,6 +151,7 @@ void sbfRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *sbfInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -175,6 +179,7 @@ ifpAvlNode *sbfInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int 
 	}
 }
 
+//Tested
 void sbfInsertIntoAvlTre(ifpAvlNode **root,int value){
 	ifpAvlNode *z = sbfInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -211,6 +216,7 @@ void sbfInsertIntoAvlTre(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
 void setValueFrequencyInVectorAvlTree(ifpAvlNode *ptr,vector<iFrequency *> &valueFrequency){
 	if(ptr == null){
 		return;
@@ -220,7 +226,8 @@ void setValueFrequencyInVectorAvlTree(ifpAvlNode *ptr,vector<iFrequency *> &valu
 	setValueFrequencyInVectorAvlTree(ptr->right,valueFrequency);
 }
 
-void sortByFrequencyAvlTree(vector<int> userInput){
+//Tested
+void sortByFrequencyAvlTree(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
@@ -239,6 +246,7 @@ void sortByFrequencyAvlTree(vector<int> userInput){
 	}
 }
 
+//Tested
 void sbfRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
@@ -262,6 +270,7 @@ void sbfRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *sbfInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
@@ -290,6 +299,7 @@ ifRbTreeNode *sbfInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void sbfReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(currentNode == null){
 		return;
@@ -336,6 +346,7 @@ void sbfReorganizeTreePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNod
 	}
 }
 
+//Tested
 void sbfInsertIntoRbTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = sbfInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
@@ -347,6 +358,7 @@ void sbfInsertIntoRbTree(ifRbTreeNode **root,int value){
 	sbfReorganizeTreePostInsertion(root,ptrToKey);
 }
 
+//Tested
 void setValueFrequencyInVectorRbTree(ifRbTreeNode *ptr,vector<iFrequency *> &valueFrequency){
 	if(ptr == null){
 		return;
@@ -356,7 +368,8 @@ void setValueFrequencyInVectorRbTree(ifRbTreeNode *ptr,vector<iFrequency *> &val
 	setValueFrequencyInVectorRbTree(ptr->right,valueFrequency);
 }
 
-void sbSortByFrequencyRbTree(vector<int> userInput){
+//Tested
+void sbSortByFrequencyRbTree(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
 	}

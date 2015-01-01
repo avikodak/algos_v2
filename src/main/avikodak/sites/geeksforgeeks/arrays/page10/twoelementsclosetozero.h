@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\twoelementsclosetozero.h
  *  Created on			: Nov 25, 2014 :: 6:38:30 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/two-elements-whose-sum-is-closest-to-zero/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iPair *getTwoElementsClosestToZero(vector<int> userInput){
+//Tested
+iPair *getTwoElementsClosestToZeroONLOGN(vector<int> userInput){
 	sort(userInput.begin(),userInput.end());
 	int startCrawler = 0,endCrawler = userInput.size()-1,sum,min = INT_MAX;
 	iPair *result = new iPair(INT_MAX,INT_MAX);
@@ -95,6 +96,7 @@ iPair *getTwoElementsClosestToZero(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getTwoElementsClosestToZero(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
