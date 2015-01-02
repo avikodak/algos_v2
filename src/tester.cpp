@@ -72,14 +72,17 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxlengthbitonicsubarray.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxvalincdecarray.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/minimumNumberJumps.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/largestsubarray0s1s.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestbitonicsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestincsubsequence.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<unsigned int> userInput = getUVectorForUserInput();
-	printf("%d\t",minimumNumberOfJumps(userInput));
-	//printIVector(result);//12, 4, 78, 90, 45, 23
+	vector<int> userInput = getVectorForUserInput();
+	printf("%d",longestIncreasingSubSequence(userInput,userInput.size()-1));//9 2 5 3 7 11 8 10 13 6
 }
 
 void p(inrNode *ptr){

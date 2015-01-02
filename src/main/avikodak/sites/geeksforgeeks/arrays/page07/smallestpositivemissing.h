@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestincsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\longestincsubsequence.h
- *  Created on			: Nov 28, 2014 :: 1:58:53 AM
+ *  File Name   		: smallestpositivemissing.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\smallestpositivemissing.h
+ *  Created on			: Jan 2, 2015 :: 12:33:01 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
- ****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,82 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTINCSUBSEQUENCE_H_
-#define LONGESTINCSUBSEQUENCE_H_
+#ifndef SMALLESTPOSITIVEMISSING_H_
+#define SMALLESTPOSITIVEMISSING_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int longestIncreasingSubSequenceONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> activeLists;
-	activeLists.push_back(userInput[0]);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(activeLists[0] > userInput[counter]){
-			activeLists[0] = userInput[counter];
-		}else if(activeLists[activeLists.size()-1] < userInput[counter]){
-			activeLists.push_back(userInput[counter]);
-		}else{
-			unsigned int innerCounter = 1;
-			while(innerCounter < activeLists.size()-1 && userInput[counter] > activeLists[innerCounter]){
-				innerCounter++;
-			}
-			activeLists[innerCounter] = userInput[counter];
-		}
-		printIVector(activeLists);
-		PRINT_NEW_LINE;
-	}
-	return activeLists.size();
-}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int longestIncreasingSubSequenceDP(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> maxLengths;
-	int finalMaxVal = 1,currentMax;
-	maxLengths.push_back(1);
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		currentMax = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter] > userInput[innerCounter]){
-				currentMax = max(currentMax,1 + maxLengths[innerCounter]);
-			}
-		}
-		maxLengths.push_back(currentMax);
-		finalMaxVal = max(finalMaxVal,currentMax);
-	}
-	return finalMaxVal;
-}
 
-//Tested
-int longestIncreasingSubSequence(vector<int> userInput,int currentIndex){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	if(currentIndex == 0){
-		return 1;
-	}
-	int maxLength = 1,result;
-	for(int counter = currentIndex-1;counter >= 0;counter--){
-		result = longestIncreasingSubSequence(userInput,counter);
-		if(userInput[counter] < userInput[currentIndex]){
-			maxLength = max(maxLength,1+result);
-		}else{
-			maxLength = max(maxLength,result);
-		}
-	}
-	return maxLength;
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* LONGESTINCSUBSEQUENCE_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* SMALLESTPOSITIVEMISSING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\longestbitonicsubsequence.h
  *  Created on			: Nov 28, 2014 :: 12:00:50 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-15-longest-bitonic-subsequence/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> getIncreasingLengthsubsequence(vector<int> userInput){
 	vector<int> incSubsequenceLen;
 	incSubsequenceLen.push_back(1);
@@ -84,25 +85,31 @@ vector<int> getIncreasingLengthsubsequence(vector<int> userInput){
 		}
 		incSubsequenceLen.push_back(maxCurrentLength);
 	}
+	return incSubsequenceLen;
 }
 
+//Tested
 vector<int> getDecreasignLengthSubsequence(vector<int> userInput){
 	vector<int> decSubsequenceLen;
-	decSubsequenceLen.reserve(userInput.size());
+	decSubsequenceLen.assign(userInput.size(),0);
 	decSubsequenceLen[decSubsequenceLen.size()-1] = 1;
 	int maxCurrentLength;
 	for(int outerCounter = userInput.size()-2;outerCounter >=0;outerCounter--){
 		maxCurrentLength = 1;
-		for(int innerCounter = userInput.size()-1;innerCounter > outerCounter;innerCounter--){
-			maxCurrentLength = max(maxCurrentLength,1+decSubsequenceLen[innerCounter]);
+		for(int innerCounter = outerCounter+1;innerCounter < (int)userInput.size();innerCounter++){
+			if(userInput[outerCounter] > userInput[innerCounter]){
+				maxCurrentLength = max(maxCurrentLength,1+decSubsequenceLen[innerCounter]);
+			}
 		}
 		decSubsequenceLen[outerCounter] = maxCurrentLength;
 	}
+	return decSubsequenceLen;
 }
 
+//Tested
 int longestBitonicSubsequence(vector<int> userInput){
 	if(userInput.size() == 0){
-		return;
+		return INT_MIN;
 	}
 	int maxLength = 0;
 	vector<int> incSubSequenceLen = getIncreasingLengthsubsequence(userInput);
