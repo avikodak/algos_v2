@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maxlengthbitonicsubarray.h
  *  Created on			: Nov 28, 2014 :: 1:48:16 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-length-bitonic-subarray/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> getIncreasingLengthSubArrays(vector<int> userInput){
 	vector<int> increasingSubArraysLength;
 	increasingSubArraysLength.push_back(1);
@@ -84,11 +85,13 @@ vector<int> getIncreasingLengthSubArrays(vector<int> userInput){
 	return increasingSubArraysLength;
 }
 
+//Tested
 vector<int> getDecreasingLengthSubArrays(vector<int> userInput){
 	vector<int> decreasingSubArraysLength;
 	if(userInput.size() == 0){
 		return decreasingSubArraysLength;
 	}
+	decreasingSubArraysLength.assign(userInput.size(),0);
 	decreasingSubArraysLength[userInput.size() - 1] = 1;
 	for(int counter = userInput.size()-2;counter >= 0;counter--){
 		if(userInput[counter] > userInput[counter+1]){
@@ -100,6 +103,7 @@ vector<int> getDecreasingLengthSubArrays(vector<int> userInput){
 	return decreasingSubArraysLength;
 }
 
+//Tested
 int maxLengthBitonicSubArrays(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 0;

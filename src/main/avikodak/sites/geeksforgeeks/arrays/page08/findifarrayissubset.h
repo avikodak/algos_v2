@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-whether-an-array-is-subset-of-another-array-set-1/
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -106,6 +106,29 @@ bool isArraySubsetOfAnother(vector<int> largeArray,vector<int> smallArray){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+bool isArraySubsetOfAnotherONLOGN(vector<int> largeArray,vector<int> smallArray){
+	if(smallArray.size() == 0){
+		return true;
+	}
+	if(largeArray.size() == 0){
+		return false;
+	}
+	sort(largeArray.begin(),largeArray.end());
+	sort(smallArray.begin(),smallArray.end());
+	unsigned int firstCrawler = 0,secondCrawler = 0;
+	while(firstCrawler < largeArray.size() && secondCrawler < smallArray.size()){
+		if(largeArray[firstCrawler] == smallArray[secondCrawler]){
+			firstCrawler++;
+			secondCrawler++;
+		}else if(largeArray[firstCrawler] < smallArray[secondCrawler]){
+			firstCrawler++;
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */

@@ -71,7 +71,11 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//This does not work with normal bst
 void getAuxBSTFromVector(itAuxNode **root,itAuxNode *current,vector<int> userInput,unsigned int counter){
+	if(counter >= userInput.size()){
+		return;
+	}
 	if(*root == null){
 		(*root) = new itAuxNode(userInput[counter]);
 		getAuxBSTFromVector(root,*root,userInput,counter+1);
@@ -81,7 +85,7 @@ void getAuxBSTFromVector(itAuxNode **root,itAuxNode *current,vector<int> userInp
 		}else if(current->value > userInput[counter]){
 			if(current->left == null){
 				current->left = new itAuxNode(userInput[counter]);
-				current->left->auxValue += 1;
+				current->auxValue += 1;
 				getAuxBSTFromVector(root,*root,userInput,counter+1);
 			}else{
 				current->auxValue += 1;
@@ -111,6 +115,7 @@ itAuxNode *csrSearch(itAuxNode *ptr,int value){
 	}
 }
 
+//This does not work with normal bst
 vector<int> countSmallerValueRightSideBST(vector<int> userInput){
 	vector<int> countSmallerElements;
 	if(userInput.size() == 0){
@@ -212,6 +217,36 @@ void csrInsertIntoAvlTree(ipAuxAvlNode **root,int value){
 		z = z->parent;
 	}
 }
+
+ipAuxAvlNode *csrSearch(ipAuxAvlNode *ptr,int value){
+	if(ptr == null){
+		return null;
+	}
+	if(ptr->value == value){
+		return ptr;
+	}else if(ptr->value > value){
+		return csrSearch(ptr->left,value);
+	}else{
+		return csrSearch(ptr->right,value);
+	}
+}
+
+vector<int> countSmallerValueRightSideAVL(vector<int> userInput){
+	vector<int> countSmallerElements;
+	if(userInput.size() == 0){
+		return countSmallerElements;
+	}
+	ipAuxAvlNode *root = null,*temp;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		csrInsertIntoAvlTree(&root,userInput[counter]);
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		temp = csrSearch(root,userInput[counter]);
+		countSmallerElements.push_back(temp->auxVal);
+	}
+	return countSmallerElements;
+}
+
 
 void csrRotateNodes(ipAuxRbTreeNode *parent,ipAuxRbTreeNode *child){
 	if(parent == null || child == null){

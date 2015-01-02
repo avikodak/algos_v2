@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\minimumNumberJumps.h
  *  Created on			: Nov 28, 2014 :: 2:04:27 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/minimum-number-of-jumps-to-reach-end-of-a-given-array/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -68,16 +68,19 @@ using namespace __gnu_cxx;
 #ifndef MINIMUMNUMBERJUMPS_H_
 #define MINIMUMNUMBERJUMPS_H_
 
-int minimumNumberOfJumps(vector<int> userInput,int currentIndex){
+//Tested
+int minimumNumberOfJumps(vector<unsigned int> userInput,unsigned int currentIndex = 0){
 	if(currentIndex == userInput.size()-1){
 		return 0;
 	}
 	if(currentIndex >= userInput.size()){
 		return INT_MAX;
 	}
-	int minJumps;
+	int minJumps = INT_MAX,result;
 	for(unsigned int counter = 1;counter <= userInput[currentIndex];counter++){
-		minJumps = min(minJumps,1+minimumNumberOfJumps(userInput,currentIndex+counter));
+		if((result = minimumNumberOfJumps(userInput,currentIndex+counter)) != INT_MAX){
+			minJumps = min(minJumps,1+result);
+		}
 	}
 	return minJumps;
 }

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\booleanmatrix.h
  *  Created on			: Nov 28, 2014 :: 1:37:18 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/a-boolean-matrix-question/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void booleanMatrixAuxspace(vector<vector<bool> > &userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return;
@@ -92,6 +93,7 @@ void booleanMatrixAuxspace(vector<vector<bool> > &userInput){
 	}
 }
 
+//Tested
 void booleanMatrix(vector<vector<bool> > &userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return;
@@ -104,11 +106,12 @@ void booleanMatrix(vector<vector<bool> > &userInput){
 			}
 		}
 	}
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+	for(int rowCounter = userInput.size()-1;rowCounter >= 0;rowCounter--){
+		for(int columnCounter = userInput[0].size()-1;columnCounter >= 0;columnCounter--){
 			userInput[rowCounter][columnCounter] = userInput[rowCounter][0] || userInput[0][columnCounter];
 		}
 	}
+
 }
 
 

@@ -4,7 +4,7 @@
  *  Created on			: Nov 28, 2014 :: 10:21:54 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-the-maximum-element-in-an-array-which-is-first-increasing-and-then-decreasing/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,7 +71,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getMaxValBitonicArrayBinarySearch(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+int getMaxValBitonicArrayBinarySearchMain(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}
@@ -89,15 +90,24 @@ int getMaxValBitonicArrayBinarySearch(vector<int> userInput,int startIndex,int e
 	if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]){
 		return userInput[middleIndex];
 	}else if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] < userInput[middleIndex+1]){
-		return getMaxValBitonicArrayBinarySearch(userInput,middleIndex+1,endIndex);
+		return getMaxValBitonicArrayBinarySearchMain(userInput,middleIndex+1,endIndex);
 	}else{
-		return getMaxValBitonicArrayBinarySearch(userInput,startIndex,middleIndex-1);
+		return getMaxValBitonicArrayBinarySearchMain(userInput,startIndex,middleIndex-1);
 	}
+}
+
+//Tested
+int getMaxValBitonicArrayBinarySearch(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	return getMaxValBitonicArrayBinarySearchMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maxValBitonicArray(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;

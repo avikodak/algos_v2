@@ -62,13 +62,24 @@
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/differencebetweenindexes.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findifarrayissubset.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/mindistancenumbers.h" // Tested
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/printmatrixinspiralorder.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findrepeatingmissing.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/booleanmatrix.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/fixedpoint.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/countsmallerrightside.h" // Should be updated
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxlengthbitonicsubarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxvalincdecarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/minimumNumberJumps.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	printf("%d",maxIJIndexesON2(userInput));
+	vector<unsigned int> userInput = getUVectorForUserInput();
+	printf("%d\t",minimumNumberOfJumps(userInput));
+	//printIVector(result);//12, 4, 78, 90, 45, 23
 }
 
 void p(inrNode *ptr){

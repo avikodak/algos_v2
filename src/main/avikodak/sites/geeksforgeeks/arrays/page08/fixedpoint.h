@@ -71,7 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int findFixedPointON(vector<int> userInput,int startIndex,int endIndex){
+int findFixedPointOLOGNMain(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return -1;
 	}
@@ -79,10 +79,17 @@ int findFixedPointON(vector<int> userInput,int startIndex,int endIndex){
 	if(userInput[middleIndex] == middleIndex){
 		return middleIndex;
 	}else if(userInput[middleIndex] > middleIndex){
-		return findFixedPointON(userInput,startIndex,middleIndex-1);
+		return findFixedPointOLOGNMain(userInput,startIndex,middleIndex-1);
 	}else{
-		return findFixedPointON(userInput,middleIndex+1,endIndex);
+		return findFixedPointOLOGNMain(userInput,middleIndex+1,endIndex);
 	}
+}
+
+int findFixedPointOLOGN(vector<int> userInput){
+	if(userInput.size() == 0){
+		return -1;
+	}
+	return findFixedPointOLOGNMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
@@ -93,7 +100,7 @@ int findFixedPointON(vector<int> userInput){
 		return -1;
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == counter){
+		if(userInput[counter] == (int)counter){
 			return counter;
 		}
 	}

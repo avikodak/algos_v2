@@ -4,7 +4,7 @@
  *  Created on			: Dec 28, 2014 :: 11:39:10 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-the-minimum-distance-between-two-numbers/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber){
 	if(userInput.size() < 2){
 		return INT_MAX;
@@ -91,7 +92,7 @@ int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int second
 	for(unsigned int counter = prevIndex+1;counter < userInput.size();counter++){
 		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
 			if(userInput[prevIndex] != userInput[counter]){
-				minDistance = min(minDistance,counter-prevIndex);
+				minDistance = min(minDistance,(int)counter-prevIndex);
 			}
 			prevIndex = counter;
 		}
@@ -106,21 +107,21 @@ int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secon
 	if(userInput.size() < 2){
 		return INT_MAX;
 	}
-	unsigned int secondCrawler,thirdCrawler;
+	int secondCrawler,thirdCrawler;
 	int minDistance = INT_MAX;
 	for(unsigned int firstCrawler = 0;firstCrawler < userInput.size();firstCrawler++){
 		secondCrawler = firstCrawler;
-		while(secondCrawler < userInput.size() && userInput[secondCrawler] != firstNumber & userInput[secondCrawler] != secondNumber){
+		while(secondCrawler < (int)userInput.size() && userInput[secondCrawler] != firstNumber && userInput[secondCrawler] != secondNumber){
 			secondCrawler++;
 		}
-		if(secondCrawler >= userInput.size()){
+		if(secondCrawler >= (int)userInput.size()){
 			return minDistance;
 		}
 		thirdCrawler = secondCrawler+1;
-		while(thirdCrawler < userInput.size() && userInput[thirdCrawler] != userInput[secondCrawler]){
+		while(thirdCrawler < (int)userInput.size() && userInput[thirdCrawler] != userInput[secondCrawler]){
 			thirdCrawler++;
 		}
-		if(thirdCrawler < userInput.size()){
+		if(thirdCrawler < (int)userInput.size()){
 			minDistance = min(minDistance,thirdCrawler-secondCrawler);
 		}
 	}

@@ -4,7 +4,7 @@
  *  Created on			: Nov 27, 2014 :: 7:47:09 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *findRepeatingAndMissingNumber(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -86,32 +87,33 @@ iPair *findRepeatingAndMissingNumber(vector<int> userInput){
 	}
 	iPair *result = new iPair(0,0);
 	for(unsigned int counter = 1;counter <= userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			result->secondValue = userInput[counter];
+		if((itToFrequencyMap = frequencyMap.find(counter)) == frequencyMap.end()){
+			result->secondValue = counter;
 		}else{
 			if(itToFrequencyMap->second > 1){
-				result->firstValue = userInput[counter];
+				result->firstValue = counter;
 			}
 		}
 	}
 	return result;
 }
 
+//Tested
 iPair *findMissingRepeatingElementsArray(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
 	iPair *result = new iPair(0,0);
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] < 0){
-			result->secondValue = counter+1;
+		if(userInput[abs(userInput[counter])-1] < 0){
+			result->firstValue = abs(userInput[counter]);
 		}else{
 			userInput[abs(userInput[counter])-1] *= -1;
 		}
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if(userInput[counter] > 0){
-			result->firstValue = counter+1;
+			result->secondValue = counter+1;
 		}
 	}
 	return result;
@@ -121,20 +123,23 @@ iPair *findMissingRepeatingElementEquations(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
 	}
-	int sequenceSum = 0,arraySum = 0;
+	int arrayProduct = 1,arraySum = 0,seqSum = 0,seqProduct = 1;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		sequenceSum += counter+1;
+		arrayProduct *= userInput[counter];
 		arraySum += userInput[counter];
+		seqSum += counter+1;
+		seqProduct *= (counter+1);
 	}
 	iPair *result = new iPair(0,0);
-	result->firstValue = (sequenceSum + arraySum)/3;
-	result->secondValue = (3*sequenceSum - result->firstValue)/3;
+	result->firstValue = (seqSum + arraySum)/3;
+	result->secondValue = (3*seqSum - result->firstValue)/3;
 	return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *findMissingRepeatingSorting(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -161,6 +166,7 @@ iPair *findMissingRepeatingSorting(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *findMissingRepeatingON2(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
