@@ -93,8 +93,8 @@ unsigned int findRowWithMaxOnes(vector<vector<bool> > userInput){
 		return UINT_MAX;
 	}
 	int lowIndex = INT_MAX;
-	unsigned int maxOnes = 0;
-	int startColumnCounter = 0,endColumnCounter = userInput[0].size(),rowCounter = 0;
+	int startColumnCounter = 0,endColumnCounter = userInput[0].size();
+	unsigned rowCounter = 0;
 	while(rowCounter < userInput.size()){
 		if(lowIndex == INT_MAX || userInput[rowCounter][lowIndex]){
 			endColumnCounter = lowIndex;

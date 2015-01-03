@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\shufflearray.h
  *  Created on			: Jan 3, 2015 :: 10:09:10 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/shuffle-a-given-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void shuffleArray(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -80,7 +81,7 @@ void shuffleArray(vector<int> &userInput){
 	srand(time(null));
 	int randomIndex;
 	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		randomIndex = (rand()%userInput.size()) + counter;
+		randomIndex = (rand()%(counter+1));
 		swap(userInput[counter],userInput[randomIndex]);
 	}
 }

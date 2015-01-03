@@ -74,10 +74,10 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 bool isSafe(vector<vector<bool> > userInput,vector<vector<bool> > visitedMatrix,int row,int column){
-	if(row < 0 || row >= userInput.size()){
+	if(row < 0 || row >= (int)userInput.size()){
 		return false;
 	}
-	if(column < 0 || column >= userInput[0].size()){
+	if(column < 0 || column >= (int)userInput[0].size()){
 		return false;
 	}
 	return !visitedMatrix[row][column] && userInput[row][column];
@@ -99,7 +99,7 @@ void noiDFS(vector<vector<bool> > userInput,vector<vector<bool> > &visitedMatrix
 
 int numberOfIslands(vector<vector<bool> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return;
+		return 0;
 	}
 	vector<vector<bool> > visitedMatrix(userInput.size());
 	for(unsigned int counter = 0;counter < visitedMatrix.size();counter++){
@@ -114,6 +114,7 @@ int numberOfIslands(vector<vector<bool> > userInput){
 			}
 		}
 	}
+	return islandCount;
 }
 
 #endif /* NUMBEROFISLANDS_H_ */

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsumon2logn.h
  *  Created on			: Nov 30, 2014 :: 10:11:29 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -57,6 +57,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
+#include "fourelementsforsum.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -71,22 +72,19 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2*logn) Algorithm 																*/
 /****************************************************************************************************************************************************/
-bool sortFuncValIndex(iValueIndex *firstPtr,iValueIndex *secondPtr){
-	return firstPtr->value > secondPtr->value?firstPtr:secondPtr;
-}
-
+//Tested
 iQuadruple *findFourElementsON2LogN(vector<int> userInput,int sum){
 	if(userInput.size() < 3){
 		return null;
 	}
 	vector<iValueIndex *> auxSpace;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
 			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
 		}
 	}
-	sort(auxSpace.begin(),auxSpace.end(),sortFuncValIndex);
-	int firstCrawler = 0,secondCrawler = userInput.size()-1;
+	mergeSort(auxSpace,0,auxSpace.size()-1);
+	int firstCrawler = 0,secondCrawler = auxSpace.size()-1;
 	int currentSum = 0;
 	while(firstCrawler < secondCrawler){
 		currentSum = auxSpace[firstCrawler]->value + auxSpace[secondCrawler]->value;

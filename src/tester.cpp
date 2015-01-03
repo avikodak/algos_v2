@@ -87,14 +87,24 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/partitionproblem.h"
 
 #include "main/avikodak/sites/geeksforgeeks/arrays/page06/replaceeveryelementwithgreatest.h"
-
-
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/maxlenchainofpairs.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/fourelementsforsum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/fourelementsforsumon2logn.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/sortnearlysortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/maxcircularsubarraysum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/findrowmax1s.h" //To be tested
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/counttriangles.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/iterativequicksort.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/shufflearray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/numberofislands.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	replaceEveryElementON2(userInput);
+	vector<int> userInput = generateIRandomVector(10,0,50);
+	printIVector(userInput);
+	PRINT_NEW_LINE;
+	shuffleArray(userInput);
 	printIVector(userInput);
 }
 

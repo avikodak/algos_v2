@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\counttriangles.h
  *  Created on			: Jan 3, 2015 :: 10:09:48 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-number-of-triangles-possible/
 ****************************************************************************************************************************************************/
 
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int countPossibleTrianglesON2(vector<int> userInput){
 	if(userInput.size() < 2){
 		return 0;
@@ -95,6 +96,7 @@ int countPossibleTrianglesON2(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int countPossibleTrianglesON3(vector<int> userInput){
 	if(userInput.size() < 2){
 		return 0;
@@ -103,7 +105,7 @@ int countPossibleTrianglesON3(vector<int> userInput){
 	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
 		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
 			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-				if(userInput[innerCrawler] < userInput[outerCrawler] + userInput[middleCrawler] && userInput[middleCrawler] < userInput[outerCrawler] + userInpu[innerCrawler] && userInput[outerCrawler] < userInput[middleCrawler]+userInput[innerCrawler]){
+				if(userInput[innerCrawler] < userInput[outerCrawler] + userInput[middleCrawler] && userInput[middleCrawler] < userInput[outerCrawler] + userInput[innerCrawler] && userInput[outerCrawler] < userInput[middleCrawler]+userInput[innerCrawler]){
 					counter++;
 				}
 			}

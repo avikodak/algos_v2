@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\sortnearlysortedarray.h
  *  Created on			: Jan 3, 2015 :: 10:07:58 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/nearly-sorted-algorithm/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N*K) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void snsaInsertionSort(vector<int> &userInput,int kValue){
 	if(userInput.size() < 2){
 		return;
@@ -81,7 +82,7 @@ void snsaInsertionSort(vector<int> &userInput,int kValue){
 	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
 		key = userInput[outerCrawler];
 		innerCrawler = outerCrawler-1;
-		while(innerCrawler >= 0 && innerCrawler > outerCrawler - kValue && userInput[innerCrawler] > key){
+		while(innerCrawler >= 0 && innerCrawler > (int)outerCrawler - kValue - 1&& userInput[innerCrawler] > key){
 			userInput[innerCrawler+1] = userInput[innerCrawler];
 			innerCrawler--;
 		}
@@ -92,13 +93,14 @@ void snsaInsertionSort(vector<int> &userInput,int kValue){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGK) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void snsaHeapify(vector<int> &heap,int index){
+//Tested
+void snsaHeapify(vector<int> &heap,unsigned int index){
 	if(heap.size() == 0 || index >= heap.size()){
 		return;
 	}
 	while(2*index + 1 < heap.size()){
 		if(2*index + 2 < heap.size()){
-			if(heap[2*index+2] > heap[index] || heap[2*index+1] > heap[index]){
+			if(heap[2*index+2] < heap[index] || heap[2*index+1] < heap[index]){
 				if(heap[2*index+1] < heap[2*index+2]){
 					swap(heap[2*index+1],heap[index]);
 					index = 2*index+1;
@@ -109,15 +111,16 @@ void snsaHeapify(vector<int> &heap,int index){
 			}else{
 				break;
 			}
+		}else if(heap[2*index + 1] < heap[index]){
+			swap(heap[2*index+1],heap[index]);
+			index = 2*index+1;
 		}else{
-			if(heap[2*index + 1] > heap[index]){
-				swap(heap[2*index+1],heap[index]);
-				index = 2*index+1;
-			}
+			break;
 		}
 	}
 }
 
+//Tested
 void snsaInsertIntoHeap(vector<int> &heap,int key){
 	heap.push_back(key);
 	int index = heap.size()-1;
@@ -131,6 +134,7 @@ void snsaInsertIntoHeap(vector<int> &heap,int key){
 	}
 }
 
+//Tested
 int snsaGetMin(vector<int> heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
@@ -138,6 +142,7 @@ int snsaGetMin(vector<int> heap){
 	return heap[0];
 }
 
+//Tested
 void snsaDeleteMin(vector<int> &heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
@@ -147,25 +152,34 @@ void snsaDeleteMin(vector<int> &heap){
 	snsaHeapify(heap,0);
 }
 
+//Tested
 void sortNearlySortedArray(vector<int> &userInput,unsigned int kValue){
-	if(userInput.size() < k){
+	if(userInput.size() < kValue){
 		return;
 	}
 	vector<int> heap;
 	for(unsigned int counter = 0;counter < kValue;counter++){
 		heap.push_back(userInput[counter]);
 	}
+	for(int counter = userInput.size()/2;counter >= 0;counter--){
+		snsaHeapify(heap,counter);
+	}
 	int fillCounter = -1;
 	for(unsigned int counter = kValue;counter < userInput.size();counter++){
 		userInput[++fillCounter] = snsaGetMin(heap);
 		snsaDeleteMin(heap);
-		snsaInsertIntoHeap(userInput[counter]);
+		snsaInsertIntoHeap(heap,userInput[counter]);
+	}
+	while(heap.size() > 0){
+		userInput[++fillCounter] = snsaGetMin(heap);
+		snsaDeleteMin(heap);
 	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void snsaMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -173,7 +187,7 @@ void snsaMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int end
 	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
 	vector<int> auxSpace;
 	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler >= middleIndex || secondCrawler >= endIndex){
+		if(firstCrawler > middleIndex || secondCrawler > endIndex){
 			if(firstCrawler <= middleIndex){
 				auxSpace.push_back(userInput[firstCrawler++]);
 			}else{
@@ -187,8 +201,12 @@ void snsaMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int end
 			}
 		}
 	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
+	}
 }
 
+//Tested
 void snsaMergeSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -202,6 +220,7 @@ void snsaMergeSort(vector<int> &userInput,int startIndex,int endIndex){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int snsaDivideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -225,6 +244,7 @@ int snsaDivideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
+//Tested
 void snsaQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;

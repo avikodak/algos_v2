@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\iterativequicksort.h
  *  Created on			: Dec 25, 2014 :: 6:09:14 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/iterative-quick-sort/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int partitionQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return INT_MIN;
@@ -94,6 +95,7 @@ int partitionQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
+//Tested
 void quickSortIterative(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;

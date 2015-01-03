@@ -4,7 +4,7 @@
  *  Created on			: Nov 27, 2014 :: 8:00:32 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-four-numbers-with-sum-equal-to-given-sum/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,10 +71,45 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N^2*LogN) Algorithm 															*/
 /****************************************************************************************************************************************************/
-bool sortFucnValueIndex(iValueIndex *firstPtr,iValueIndex *secondPtr){
-	return firstPtr->value > secondPtr->value?true:false;
+//Tested
+void mergeStep(vector<iValueIndex *> &userInput,int startIndex,int middleIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int firstCrawler = startIndex,secondCrawler = middleIndex + 1;
+	vector<iValueIndex *> auxSpace;
+	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
+		if(firstCrawler > middleIndex || secondCrawler > endIndex){
+			if(firstCrawler <= middleIndex){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}else{
+			if(userInput[firstCrawler]->value < userInput[secondCrawler]->value){
+				auxSpace.push_back(userInput[firstCrawler++]);
+			}else{
+				auxSpace.push_back(userInput[secondCrawler++]);
+			}
+		}
+	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
+	}
 }
 
+//Tested
+void mergeSort(vector<iValueIndex *> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	mergeSort(userInput,startIndex,middleIndex);
+	mergeSort(userInput,middleIndex+1,endIndex);
+	mergeStep(userInput,startIndex,middleIndex,endIndex);
+}
+
+//Tested
 iQuadruple *findFourValuesForON2LogN(vector<int> userInput,int sum){
 	if(userInput.size() < 3){
 		return null;
@@ -86,12 +121,12 @@ iQuadruple *findFourValuesForON2LogN(vector<int> userInput,int sum){
 			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
 		}
 	}
-	sort(auxSpace.begin(),auxSpace.end(),sortFucnValueIndex);
-	unsigned int startCrawler = 0,endCrawler = userInput.size()-1;
+	mergeSort(auxSpace,0,auxSpace.size()-1);
+	unsigned int startCrawler = 0,endCrawler = auxSpace.size()-1;
 	while(startCrawler < endCrawler){
-		currentSum = userInput[startCrawler] + userInput[endCrawler];
+		currentSum = auxSpace[startCrawler]->value + auxSpace[endCrawler]->value;
 		if(currentSum == sum){
-			return new iQuadruple(auxSpace[startCrawler]->firstValueIndex,auxSpace[startCrawler]->secondvalueIndex,auxSpace[endCrawler]->firstValueIndex,auxSpace[endCrawler]->secondvalueIndex);
+			return new iQuadruple(userInput[auxSpace[startCrawler]->firstValueIndex],userInput[auxSpace[startCrawler]->secondvalueIndex],userInput[auxSpace[endCrawler]->firstValueIndex],userInput[auxSpace[endCrawler]->secondvalueIndex]);
 		}else if(currentSum < sum){
 			startCrawler++;
 		}else{
@@ -104,6 +139,7 @@ iQuadruple *findFourValuesForON2LogN(vector<int> userInput,int sum){
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iQuadruple *findFourValuesForON3(vector<int> userInput,int sum){
 	if(userInput.size() < 3){
 		return null;
@@ -112,12 +148,12 @@ iQuadruple *findFourValuesForON3(vector<int> userInput,int sum){
 	unsigned int thirdCounter,fourthCounter;
 	int currentSum;
 	for(unsigned int firstCounter = 0;firstCounter < userInput.size()-3;firstCounter++){
-		for(unsigned int secondCounter = firstCounter;secondCounter < userInput.size()-2;secondCounter++){
+		for(unsigned int secondCounter = firstCounter+1;secondCounter < userInput.size()-2;secondCounter++){
 			thirdCounter = secondCounter+1;
 			fourthCounter = userInput.size()-1;
 			while(thirdCounter < fourthCounter){
 				currentSum = userInput[firstCounter] + userInput[secondCounter] + userInput[thirdCounter] + userInput[fourthCounter];
-				if(currentSum == currentSum){
+				if(currentSum == sum){
 					return new iQuadruple(userInput[firstCounter],userInput[secondCounter],userInput[thirdCounter],userInput[fourthCounter]);
 				}else if(currentSum < sum){
 					thirdCounter++;
@@ -133,6 +169,7 @@ iQuadruple *findFourValuesForON3(vector<int> userInput,int sum){
 /****************************************************************************************************************************************************/
 /* 																O(N^4) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iQuadruple *findFourValuesForSum(vector<int> userInput,int sum){
 	if(userInput.size() < 4){
 		return null;

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: moveallzeros.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\moveallzeros.h
- *  Created on			: Dec 22, 2014 :: 3:39:11 PM
+ *  File Name   		: pairsfordifference.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pairsfordifference.h
+ *  Created on			: Dec 22, 2014 :: 8:16:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/count-pairs-difference-equal-k/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,50 +67,87 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MOVEALLZEROS_H_
-#define MOVEALLZEROS_H_
+#ifndef PAIRSFORDIFFERENCE_H_
+#define PAIRSFORDIFFERENCE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void moveAllZerosToEnd(vector<int> &userInput){
+int getCountForDifferenceKON(vector<int> userInput,int difference){
 	if(userInput.size() == 0){
-		return;
+		return 0;
 	}
-	unsigned int fillCounter = 0;
+	hash_map<int,bool> visitedFlags;
+	hash_map<int,bool>::iterator itToVisitedFlags;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] != 0){
-			userInput[fillCounter++] = userInput[counter];
+		visitedFlags.insert(pair<int,bool>(userInput[counter],true));
+	}
+	int pairCounter = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		itToVisitedFlags = visitedFlags.find(difference - userInput[counter]);
+		if(itToVisitedFlags != visitedFlags.end()){
+			pairCounter++;
+			visitedFlags.erase(difference - userInput[counter]);
+			visitedFlags.erase(itToVisitedFlags->first);
+		}else{
+			itToVisitedFlags = visitedFlags.find(userInput[counter] - difference);
+			if(itToVisitedFlags != visitedFlags.end()){
+				pairCounter++;
+				visitedFlags.erase(userInput[counter] - difference);
+				visitedFlags.erase(itToVisitedFlags->first);
+			}
 		}
 	}
-	while(fillCounter < userInput.size()){
-		userInput[fillCounter++] = 0;
-	}
+	return pairCounter;
 }
 
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 //Tested
-void moveAllZerosToEndBucketSort(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
+int getCountForDifferenceKONLOGN(vector<int> userInput,int difference){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	queue<int> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] != 0){
-			auxSpace.push(userInput[counter]);
+	sort(userInput.begin(),userInput.end());
+	int currentDifference,pairCounter = 0;
+	unsigned int frontCrawler = 0,rearCrawler = 0;
+	while(frontCrawler < userInput.size() && rearCrawler < userInput.size()){
+		currentDifference = userInput[rearCrawler] - userInput[frontCrawler];
+		if(currentDifference == difference){
+			pairCounter += 1;
+			frontCrawler++;
+			rearCrawler++;
+		}else if(currentDifference > difference){
+			frontCrawler++;
+		}else{
+			rearCrawler++;
 		}
 	}
-	unsigned int fillCounter = 0;
-	while(!auxSpace.empty()){
-		userInput[fillCounter++] = auxSpace.front();
-		auxSpace.pop();
-	}
-	while(fillCounter < userInput.size()){
-		userInput[fillCounter++] = 0;
-	}
+	return pairCounter;
 }
 
-#endif /* MOVEALLZEROS_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+int getCountForDifferenceKON2(vector<int> userInput,int difference){
+	if(userInput.size() < 2){
+		return 0;
+	}
+	int pairCounter = 0;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(abs(userInput[outerCrawler] - userInput[innerCrawler]) == abs(difference)){
+				pairCounter++;
+			}
+		}
+	}
+	return pairCounter;
+}
+
+#endif /* PAIRSFORDIFFERENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

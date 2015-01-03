@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxcircularsubarraysum.h
  *  Created on			: Jan 3, 2015 :: 10:59:43 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-contiguous-circular-sum/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int kadanesAlgo(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -85,6 +86,7 @@ int kadanesAlgo(vector<int> userInput){
 	return maxSum;
 }
 
+//Tested
 int maxCircularSubArraySum(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
@@ -95,7 +97,7 @@ int maxCircularSubArraySum(vector<int> userInput){
 		sumOfArray += userInput[counter];
 		userInput[counter] *= -1;
 	}
-	int maxCircularSum = sumOfArray - kadanesAlgo(userInput);
+	int maxCircularSum = sumOfArray + kadanesAlgo(userInput);
 	return max(maxCircularSum,maxContigousSum);
 }
 
