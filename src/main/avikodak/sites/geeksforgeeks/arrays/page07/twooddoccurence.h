@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getTwoOddOccurenceHashmap(vector<int> userInput){
 	if(userInput.size() == 0){
 		return null;
@@ -79,13 +80,26 @@ iPair *getTwoOddOccurenceHashmap(vector<int> userInput){
 	hash_map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-
+			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
 		}else{
-
+			frequencyMap[userInput[counter]] += 1;
 		}
 	}
+	iPair *result = new iPair();
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		if(itToFrequencyMap->second % 2 == 1){
+			if(result->firstValue == INT_MAX){
+				result->firstValue = itToFrequencyMap->first;
+			}else{
+				result->secondValue = itToFrequencyMap->first;
+				return result;
+			}
+		}
+	}
+	return result;
 }
 
+//Tested
 int divideArrayOddOccurence(vector<int> &userInput,int xorResult){
 	int startCrawler = 0,endCrawler = userInput.size()-1;
 	int setBitPosition = log2(xorResult&-xorResult)+1,temp;
@@ -105,6 +119,7 @@ int divideArrayOddOccurence(vector<int> &userInput,int xorResult){
 	return endCrawler;
 }
 
+//Tested
 iPair *getTwoOddOccurenceXOR(vector<int> userInput){
 	if(userInput.size() < 2){
 		return null;
@@ -115,7 +130,7 @@ iPair *getTwoOddOccurenceXOR(vector<int> userInput){
 	}
 	int dividingIndex = divideArrayOddOccurence(userInput,xorResult);
 	iPair *result = new iPair(0,0);
-	for(unsigned int counter = 0;counter <= dividingIndex;counter++){
+	for(int counter = 0;counter <= dividingIndex;counter++){
 		result->firstValue ^= userInput[counter];
 	}
 	for(unsigned int counter = dividingIndex+1;counter <userInput.size();counter++){
@@ -127,13 +142,34 @@ iPair *getTwoOddOccurenceXOR(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getTwoOddOccurenceSorting(vector<int> userInput){
 	if(userInput.size() < 2){
 		return null;
 	}
 	sort(userInput.begin(),userInput.end());
+	unsigned int counter = 0,frequency;
+	iPair *result = new iPair();
+	while(counter < userInput.size()){
+		frequency = 1;
+		while(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]){
+			counter++;
+			frequency++;
+		}
+		if(frequency%2 == 1){
+			if(result->firstValue == INT_MAX){
+				result->firstValue = userInput[counter];
+			}else{
+				result->secondValue = userInput[counter];
+				return result;
+			}
+		}
+		counter++;
+	}
+	return result;
 }
 
+//Tested
 void toddoRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	if(parent == null || child == null){
 		return;
@@ -157,6 +193,7 @@ void toddoRotateNodes(ifpAvlNode *parent,ifpAvlNode *child){
 	}
 }
 
+//Tested
 ifpAvlNode *toddoInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifpAvlNode(value);
@@ -179,11 +216,12 @@ ifpAvlNode *toddoInsertAtRightPlace(ifpAvlNode **root,ifpAvlNode *currentNode,in
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-
+			return toddoInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
+//Tested
 void toddoInsertIntoAvlTree(ifpAvlNode **root,int value){
 	ifpAvlNode *z = toddoInsertAtRightPlace(root,*root,value);
 	if(z == null){
@@ -221,6 +259,7 @@ void toddoInsertIntoAvlTree(ifpAvlNode **root,int value){
 	}
 }
 
+//Tested
 void getTwoOddOccurenceInorderAvlTree(ifpAvlNode *ptr,iPair *result){
 	if(ptr == null){
 		return;
@@ -236,6 +275,7 @@ void getTwoOddOccurenceInorderAvlTree(ifpAvlNode *ptr,iPair *result){
 	getTwoOddOccurenceInorderAvlTree(ptr->right,result);
 }
 
+//Tested
 iPair *getTwoOddOccurenceAvlTree(vector<int> userInput){
 	if(userInput.size() < 2){
 		return null;
@@ -249,11 +289,12 @@ iPair *getTwoOddOccurenceAvlTree(vector<int> userInput){
 	return result;
 }
 
+//Tested
 void toddoRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	if(parent == null || child == null){
 		return;
 	}
-	iRbTreeNode *grandParent = parent->parent;
+	ifRbTreeNode *grandParent = parent->parent;
 	parent->parent = child;
 	child->parent = grandParent;
 	if(grandParent != null){
@@ -272,6 +313,7 @@ void toddoRotateNodes(ifRbTreeNode *parent,ifRbTreeNode *child){
 	}
 }
 
+//Tested
 ifRbTreeNode *toddoInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ifRbTreeNode(value);
@@ -300,6 +342,7 @@ ifRbTreeNode *toddoInsertAtRightPlace(ifRbTreeNode **root,ifRbTreeNode *currentN
 	}
 }
 
+//Tested
 void toddoReorganizePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode){
 	if(*root == null || currentNode == null){
 		return;
@@ -349,6 +392,7 @@ void toddoReorganizePostInsertion(ifRbTreeNode **root,ifRbTreeNode *currentNode)
 	}
 }
 
+//Tested
 void toddoInsertIntoRBTree(ifRbTreeNode **root,int value){
 	ifRbTreeNode *ptrToKey = toddoInsertAtRightPlace(root,*root,value);
 	if(ptrToKey == null){
@@ -360,6 +404,7 @@ void toddoInsertIntoRBTree(ifRbTreeNode **root,int value){
 	toddoReorganizePostInsertion(root,ptrToKey);
 }
 
+//Tested
 void setTwoOddOccurenceRbTreeInorder(ifRbTreeNode *ptr,iPair *result){
 	if(ptr == null){
 		return;
@@ -375,6 +420,7 @@ void setTwoOddOccurenceRbTreeInorder(ifRbTreeNode *ptr,iPair *result){
 	setTwoOddOccurenceRbTreeInorder(ptr->right,result);
 }
 
+//Tested
 iPair *getTwoOddOccurenceRbTree(vector<int> userInput){
 	if(userInput.size() < 2){
 		return null;
@@ -391,6 +437,7 @@ iPair *getTwoOddOccurenceRbTree(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *twoOddOccurenceON2(vector<int> userInput){
 	if(userInput.size() < 2){
 		return 0;

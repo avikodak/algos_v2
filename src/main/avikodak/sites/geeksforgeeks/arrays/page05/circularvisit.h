@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pairforgivendifference.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\pairforgivendifference.h
- *  Created on			: Nov 30, 2014 :: 10:39:18 PM
+ *  File Name   		: circularvisit.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\circularvisit.h
+ *  Created on			: Jan 3, 2015 :: 11:55:26 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,78 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PAIRFORGIVENDIFFERENCE_H_
-#define PAIRFORGIVENDIFFERENCE_H_
+#ifndef CIRCULARVISIT_H_
+#define CIRCULARVISIT_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-iPair *getPairForGivenDifferenceON(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			frequencyMap[userInput[counter]] += 1;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(difference + userInput[counter])) != frequencyMap.end()){
-			return new iPair(userInput[counter],difference+userInput[counter]);
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter] - difference)) != frequencyMap.end()){
-			return new iPair(userInput[counter],userInput[counter] - difference);
-		}
-	}
-	return null;
-}
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-iPair *getPairForGivenDifferenceONLOGN(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int firstCrawler = 0,secondCrawler = 1;
-	while(firstCrawler < userInput.size() && secondCrawler < userInput.size()){
-		if(firstCrawler != secondCrawler && userInput[secondCrawler] - userInput[firstCrawler] == difference){
-			return new iPair(userInput[firstCrawler],userInput[secondCrawler]);
-		}else if(userInput[secondCrawler] - userInput[firstCrawler] < difference){
-			secondCrawler++;
-		}else{
-			firstCrawler++;
-		}
-	}
-	return null;
-}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-iPair *getPairForGivenDifferenceON2(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			if(abs(userInput[outerCounter] - userInput[innerCounter]) == abs(difference)){
-				return new iPair(userInput[outerCounter],userInput[innerCounter]);
-			}
-		}
-	}
-	return null;
-}
 
-#endif /* PAIRFORGIVENDIFFERENCE_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* CIRCULARVISIT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

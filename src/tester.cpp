@@ -63,7 +63,7 @@
 /****************************************************************************************************************************************************/
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/differencebetweenindexes.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/findifarrayissubset.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/mindistancenumbers.h" // Tested
+#include "main/avikodak/sites/geeksforgeeks/arrays/page08/mindistancenumbers.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/printmatrixinspiralorder.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/findrepeatingmissing.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page08/booleanmatrix.h"
@@ -76,13 +76,24 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/largestsubarray0s1s.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestbitonicsubsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestincsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/maximumsumincreasingsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/tripletforsum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/twooddoccurence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/sortedsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/pairforgivendifference.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/smallestpositivemissing.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/maximumproductsubarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/implementtwostacksarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page07/partitionproblem.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
 	vector<int> userInput = getVectorForUserInput();
-	printf("%d",longestIncreasingSubSequence(userInput,userInput.size()-1));//9 2 5 3 7 11 8 10 13 6
+	int firstNumber,secondNumber;
+	scanf("%d %d",&firstNumber,&secondNumber);
+	printf("%d\t",minDistanceBetweenNumbersON2(userInput,firstNumber,secondNumber));//5 6 -3 -10 0 2  //5 -1 -3 -10 0 60 //5 -2 -3 0 -2 -40
 }
 
 void p(inrNode *ptr){

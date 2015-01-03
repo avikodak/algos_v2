@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\mindistancenumbers.h
  *  Created on			: Dec 28, 2014 :: 11:39:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-the-minimum-distance-between-two-numbers/
 ****************************************************************************************************************************************************/
 
@@ -103,30 +103,24 @@ int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int second
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber){
 	if(userInput.size() < 2){
-		return INT_MAX;
+		return 0;
 	}
-	int secondCrawler,thirdCrawler;
 	int minDistance = INT_MAX;
-	for(unsigned int firstCrawler = 0;firstCrawler < userInput.size();firstCrawler++){
-		secondCrawler = firstCrawler;
-		while(secondCrawler < (int)userInput.size() && userInput[secondCrawler] != firstNumber && userInput[secondCrawler] != secondNumber){
-			secondCrawler++;
-		}
-		if(secondCrawler >= (int)userInput.size()){
-			return minDistance;
-		}
-		thirdCrawler = secondCrawler+1;
-		while(thirdCrawler < (int)userInput.size() && userInput[thirdCrawler] != userInput[secondCrawler]){
-			thirdCrawler++;
-		}
-		if(thirdCrawler < (int)userInput.size()){
-			minDistance = min(minDistance,thirdCrawler-secondCrawler);
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		if(userInput[outerCounter] == firstNumber || userInput[outerCounter] == secondNumber){
+			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+				if(userInput[innerCounter] == (userInput[outerCounter] ^ firstNumber ^ secondNumber)){
+					minDistance = min(minDistance,(int)(innerCounter - outerCounter));
+				}
+			}
 		}
 	}
 	return minDistance;
 }
+
 
 #endif /* MINDISTANCENUMBERS_H_ */
 

@@ -72,22 +72,23 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-class twostacks {
+class twostacksv2 {
 private:
 	int *userInput;
-	unsigned int size;
+	int sizeOfArray;
 	int firstStackTop,secondStackTop;
 public:
-	twostacks(){
+	twostacksv2(){
 		userInput = (int *)malloc(sizeof(int) * SIZE_OF_STACK_ARRAY);
 		firstStackTop = -1;
 		secondStackTop = SIZE_OF_STACK_ARRAY;
 	}
 
-	twostacks(unsigned int userInput){
-		userInput = (int *)malloc(sizeof(int) *userInput);
+	twostacksv2(int size){
+		this->sizeOfArray = size;
+		userInput = (int *)malloc(sizeof(int)*this->sizeOfArray);
 		firstStackTop = -1;
-		secondStackTop = userInput;
+		secondStackTop = size - 1;
 	}
 
 	void push(int value,bool firstStack = true){
@@ -105,7 +106,7 @@ public:
 		if(firstStack){
 			return firstStackTop == -1;
 		}else{
-			return secondStackTop == size;
+			return secondStackTop == sizeOfArray;
 		}
 	}
 
@@ -127,7 +128,7 @@ public:
 		if(firstStack){
 			return firstStackTop == -1?0:firstStackTop+1;
 		}else{
-			return size - secondStackTop;
+			return sizeOfArray - secondStackTop;
 		}
 	}
 };

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumsumincreasingsubsequence.h
  *  Created on			: Nov 27, 2014 :: 7:56:46 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,22 +71,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> maximumSumInreasingSubsequence(vector<int> userInput){
+//Tested
+int maximumSumIncreasingSubsequence(vector<int> userInput){
 	vector<int> maxSumSubsequence;
 	if(userInput.size() == 0){
-		return maxSumSubsequence;
+		return INT_MIN;
 	}
 	maxSumSubsequence.push_back(userInput[0]);
 	int maxSum;
 	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		maxSum = userInput[outerCounter];
+		maxSum = INT_MIN;
 		for(unsigned int innercounter = 0;innercounter < outerCounter;innercounter++){
 			if(userInput[outerCounter] > userInput[innercounter]){
-				maxSum = max(maxSum,maxSumSubsequence[innercounter]+userInput[outerCounter]);
+				maxSum = max(maxSum,maxSumSubsequence[innercounter] + userInput[outerCounter]);
 			}
 		}
 		maxSumSubsequence.push_back(maxSum);
 	}
+	return *max_element(maxSumSubsequence.begin(),maxSumSubsequence.end());
 }
 
 #endif /* MAXIMUMSUMINCREASINGSUBSEQUENCE_H_ */

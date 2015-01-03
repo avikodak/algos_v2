@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumproductsubarray.h
  *  Created on			: Jan 2, 2015 :: 12:33:38 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/maximum-product-subarray/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,28 +71,49 @@ using namespace __gnu_cxx;
 #define MAXIMUMPRODUCTSUBARRAY_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+int maximumProductSubarray(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MAX;
+	}
+	int negativeProduct = 1,positiveProduct = 1,maxProduct = INT_MIN,temp;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] > 0){
+			positiveProduct *= userInput[counter];
+			negativeProduct = min(1,negativeProduct * userInput[counter]);
+		}else if(userInput[counter] == 0){
+			negativeProduct = 1;
+			positiveProduct = 1;
+		}else if(userInput[counter] < 0){
+			temp = maxProduct;
+			maxProduct = max(1,negativeProduct * userInput[counter]);
+			negativeProduct = min(negativeProduct,temp * userInput[counter]);
+		}
+		maxProduct = max(maxProduct,positiveProduct);
+	}
+	return maxProduct;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+//Tested
+int maxProductSubArrayON2(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MAX;
+	}
+	int maxProduct = INT_MIN,currentProduct;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		currentProduct = 1;
+		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+			currentProduct *= userInput[innerCounter];
+			maxProduct = max(maxProduct,currentProduct);
+		}
+	}
+	return maxProduct;
+}
 
 #endif /* MAXIMUMPRODUCTSUBARRAY_H_ */
 

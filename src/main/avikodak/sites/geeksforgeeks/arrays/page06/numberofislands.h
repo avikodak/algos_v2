@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minimumdistancenumbers.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\minimumdistancenumbers.h
- *  Created on			: Nov 27, 2014 :: 7:47:50 PM
+ *  File Name   		: numberofislands.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\numberofislands.h
+ *  Created on			: Jan 3, 2015 :: 10:09:24 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
- ****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/find-number-of-islands/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,54 +67,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MINIMUMDISTANCENUMBERS_H_
-#define MINIMUMDISTANCENUMBERS_H_
+#ifndef NUMBEROFISLANDS_H_
+#define NUMBEROFISLANDS_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber){
-	if(userInput.size() < 2){
-		return 0;
+bool isSafe(vector<vector<bool> > userInput,vector<vector<bool> > visitedMatrix,int row,int column){
+	if(row < 0 || row >= userInput.size()){
+		return false;
 	}
-	int prevIndex = -1;
-	int minDistance = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
-			if(prevIndex == -1){
-				prevIndex = counter;
-			}else{
-				if(userInput[counter] != userInput[prevIndex]){
-					minDistance = min(minDistance,counter - prevIndex);
-				}
-				prevIndex = counter;
+	if(column < 0 || column >= userInput[0].size()){
+		return false;
+	}
+	return !visitedMatrix[row][column] && userInput[row][column];
+}
+
+void noiDFS(vector<vector<bool> > userInput,vector<vector<bool> > &visitedMatrix,int row,int column){
+	if(userInput.size() == 0 || userInput[0].size() == 0 || userInput.size() != visitedMatrix.size() || userInput[0].size() != visitedMatrix[0].size()){
+		return;
+	}
+	int reachableRows[] = {-1,-1,-1,0,1,1,1,0};
+	int reachableColumns[] = {-1,0,1,1,1,0,-1,-1};
+	visitedMatrix[row][column] = true;
+	for(unsigned int counter = 0;counter < 8;counter++){
+		if(isSafe(userInput,visitedMatrix,row + reachableRows[counter],column + reachableColumns[counter])){
+			noiDFS(userInput,visitedMatrix,row+reachableRows[counter],column + reachableColumns[counter]);
+		}
+	}
+}
+
+int numberOfIslands(vector<vector<bool> > userInput){
+	if(userInput.size() == 0 || userInput[0].size() == 0){
+		return;
+	}
+	vector<vector<bool> > visitedMatrix(userInput.size());
+	for(unsigned int counter = 0;counter < visitedMatrix.size();counter++){
+		visitedMatrix[counter].assign(userInput[0].size(),false);
+	}
+	int islandCount = 0;
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+			if(userInput[rowCounter][columnCounter] && !visitedMatrix[rowCounter][columnCounter]){
+				islandCount++;
+				noiDFS(userInput,visitedMatrix,rowCounter,columnCounter);
 			}
 		}
 	}
-	return minDistance;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int minDistance = INT_MAX;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		if(userInput[outerCounter] == firstNumber || userInput[outerCounter] == secondNumber){
-			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[innerCounter] == userInput[outerCounter] ^ firstNumber ^ secondNumber){
-					minDistance = min(minDistance,innerCounter - outerCounter);
-				}
-			}
-		}
-	}
-	return minDistance;
-}
-
-#endif /* MINIMUMDISTANCENUMBERS_H_ */
+#endif /* NUMBEROFISLANDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

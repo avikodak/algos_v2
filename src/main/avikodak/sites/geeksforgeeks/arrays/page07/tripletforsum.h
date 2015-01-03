@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\tripletforsum.h
  *  Created on			: Nov 27, 2014 :: 7:58:22 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-a-triplet-that-sum-to-a-given-value/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,6 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iTriplet *getTripletForSumON3(vector<int> userInput,int sum){
 	if(userInput.size() < 3){
 		return null;
@@ -84,11 +85,13 @@ iTriplet *getTripletForSumON3(vector<int> userInput,int sum){
 			}
 		}
 	}
+	return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iTriplet *getTripletForSumON2(vector<int> userInput,int sum){
 	if(userInput.size() < 3){
 		return null;

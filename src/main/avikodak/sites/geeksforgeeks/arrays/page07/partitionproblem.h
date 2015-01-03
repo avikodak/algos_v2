@@ -4,7 +4,7 @@
  *  Created on			: Dec 29, 2014 :: 12:53:07 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-18-partition-problem/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -82,7 +82,6 @@ bool partitionProblemDP(vector<int> userInput){
 		return false;
 	}
 	vector<vector<bool> > auxSpace(userInput.size());
-	int requiredSum = sum/2;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		auxSpace[counter].assign(sum+1,false);
 	}
@@ -95,7 +94,7 @@ bool partitionProblemDP(vector<int> userInput){
 	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
 		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
 			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter];
-			if(columnCounter > userInput[rowCounter]){
+			if((int)columnCounter > userInput[rowCounter]){
 				auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter][columnCounter] || auxSpace[rowCounter-1][columnCounter - userInput[rowCounter]];
 			}
 		}
@@ -106,7 +105,7 @@ bool partitionProblemDP(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(2^N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool partitionProblemGenerateSets(vector<int> userInput,vector<int> subset,int requiredSum,int currentIndex){
+bool partitionProblemGenerateSets(vector<int> userInput,vector<int> subset,int requiredSum,unsigned int currentIndex){
 	if(currentIndex > userInput.size()){
 		return false;
 	}
