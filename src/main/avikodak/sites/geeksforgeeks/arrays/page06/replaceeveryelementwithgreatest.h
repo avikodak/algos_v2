@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
  *  Created on			: Nov 27, 2014 :: 8:00:16 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/replace-every-element-with-the-greatest-on-right-side/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,48 +71,38 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void replaceEveryElementON(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
-	stack<int> auxSpace;
-	userInput.push_back(auxSpace);
-	userInput[userInput.size()-1] = INT_MAX;
-	int temp;
-	for(int counter = userInput.size()-2;counter>=0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
-		}
+	int maxTillNow = userInput[userInput.size()-1],temp;
+	userInput[userInput.size()-1] = -1;
+	for(int counter = userInput.size()-2;counter >= 0;counter--){
 		temp = userInput[counter];
-		if(!auxSpace.empty()){
-			userInput[counter] = auxSpace.top();
-		}else{
-			userInput[counter] = INT_MAX;
-		}
-		auxSpace.push(temp);
+		userInput[counter] = maxTillNow;
+		maxTillNow = max(maxTillNow,temp);
 	}
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void replaceEveryElementON2(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	unsigned int innerCounter;
+	int maxElement;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		maxElement = userInput[outerCounter+1];
 		for(innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				break;
-			}
+			maxElement = max(maxElement,userInput[innerCounter]);
 		}
-		if(innerCounter >= userInput.size()){
-			userInput[outerCounter] = INT_MAX;
-		}else{
-			userInput[outerCounter] = userInput[innerCounter];
-		}
+		userInput[outerCounter] = maxElement;
 	}
+	userInput[userInput.size()-1] = -1;
 }
 
 #endif /* REPLACEEVERYELEMENTWITHGREATEST_H_ */

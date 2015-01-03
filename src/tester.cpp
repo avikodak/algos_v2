@@ -86,14 +86,16 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/implementtwostacksarray.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page07/partitionproblem.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/replaceeveryelementwithgreatest.h"
+
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
 	vector<int> userInput = getVectorForUserInput();
-	int firstNumber,secondNumber;
-	scanf("%d %d",&firstNumber,&secondNumber);
-	printf("%d\t",minDistanceBetweenNumbersON2(userInput,firstNumber,secondNumber));//5 6 -3 -10 0 2  //5 -1 -3 -10 0 60 //5 -2 -3 0 -2 -40
+	replaceEveryElementON2(userInput);
+	printIVector(userInput);
 }
 
 void p(inrNode *ptr){
