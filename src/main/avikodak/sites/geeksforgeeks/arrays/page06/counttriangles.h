@@ -4,7 +4,7 @@
  *  Created on			: Jan 3, 2015 :: 10:09:48 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-number-of-triangles-possible/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,28 +71,46 @@ using namespace __gnu_cxx;
 #define COUNTTRIANGLES_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int countPossibleTrianglesON2(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
+	}
+	int triangleCounter = 0;
+	sort(userInput.begin(),userInput.end());
+	unsigned int thirdSideCounter;
+	for(unsigned int firstSideCounter = 0;firstSideCounter < userInput.size()-2;firstSideCounter++){
+		thirdSideCounter = firstSideCounter + 2;
+		for(unsigned int secondSideCounter = firstSideCounter+1;secondSideCounter < userInput.size()-1;secondSideCounter++){
+			while(thirdSideCounter < userInput.size() && userInput[firstSideCounter] + userInput[secondSideCounter] > userInput[thirdSideCounter]){
+				thirdSideCounter++;
+			}
+			triangleCounter += thirdSideCounter - secondSideCounter - 1;
+		}
+	}
+	return triangleCounter;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int countPossibleTrianglesON3(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
+	}
+	int counter = 0;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
+		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
+			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+				if(userInput[innerCrawler] < userInput[outerCrawler] + userInput[middleCrawler] && userInput[middleCrawler] < userInput[outerCrawler] + userInpu[innerCrawler] && userInput[outerCrawler] < userInput[middleCrawler]+userInput[innerCrawler]){
+					counter++;
+				}
+			}
+		}
+	}
+	return counter;
+}
 
 #endif /* COUNTTRIANGLES_H_ */
 
