@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: uglynumbers.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\uglynumbers.h
- *  Created on			: Dec 5, 2014 :: 12:33:47 AM
+ *  File Name   		: pancakesortproblem.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\pancakesortproblem.h
+ *  Created on			: Jan 4, 2015 :: 3:54:04 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,50 +67,43 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef UGLYNUMBERS_H_
-#define UGLYNUMBERS_H_
+#ifndef PANCAKESORTPROBLEM_H_
+#define PANCAKESORTPROBLEM_H_
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int getUglyNumber(int userInput){
-	if(userInput < 0){
+int ceilSearch(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
 		return INT_MIN;
 	}
-	int twosCounter=2,threesCounter=3,fivesCounter=5;
-	int uglyNumber = 0;
-	while(userInput--){
-		uglyNumber = min(min(twosCounter,threesCounter),fivesCounter);
-		if(twosCounter == uglyNumber){
-			twosCounter = uglyNumber * 2;
-		}else if(threesCounter == uglyNumber){
-			threesCounter = uglyNumber * 3;
-		}else if(threesCounter == uglyNumber){
-			fivesCounter = uglyNumber * 5;
+	if(key < userInput[startIndex]){
+		return userInput[startIndex];
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		return userInput[middleIndex];
+	}
+	if(userInput[middleIndex] < key){
+		return ceilSearch(userInput,key,middleIndex+1,endIndex);
+	}else{
+		if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] > startIndex){
+			return ceilSearch(userInput,key,startIndex,middleIndex-1);
+		}else{
+			return middleIndex;
 		}
 	}
-	return uglyNumber;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int getUglyNumberIterative(int userInput){
-	if(userInput < 0){
-		return INT_MIN;
+
+
+void pancakeSortingProblem(vector<int> &userInput){
+	if(userInput.size() < 2){
+		return;
 	}
-	int uglyNumber,counter = 2;
-	while(userInput--){
-		while(counter % 2 != 0 && counter % 3 != 0 && counter % 5 != 0){
-			counter++;
-		}
-		uglyNumber = counter;
-		counter += 1;
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+
 	}
-	return uglyNumber;
 }
 
-#endif /* UGLYNUMBERS_H_ */
+#endif /* PANCAKESORTPROBLEM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
