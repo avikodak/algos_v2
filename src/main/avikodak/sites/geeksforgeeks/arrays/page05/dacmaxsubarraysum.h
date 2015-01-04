@@ -82,7 +82,7 @@ int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int end
 		sum += userInput[counter];
 		leftSum = max(leftSum,sum);
 	}
-	for(unsigned int counter = middleIndex+1;counter <= endIndex;counter++){
+	for(int counter = middleIndex+1;counter <= endIndex;counter++){
 		sum += userInput[counter];
 		rightSum = max(rightSum,sum);
 	}

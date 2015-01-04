@@ -70,29 +70,59 @@ using namespace __gnu_cxx;
 #ifndef TUGOFWAR_H_
 #define TUGOFWAR_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+void tugOfWarMain(vector<int> userInput,int arraySum,int &minDifference,vector<int> &minSetIndices,vector<int> runningSet,int currentIndex,unsigned int kValue){
+	if(kValue > userInput.size()){
+		throw "Invalid K value";
+	}
+	if(kValue == 0){
+		int currentSetSum = 0;
+		for(unsigned int counter = 0;counter < runningSet.size();counter++){
+			currentSetSum += userInput[runningSet[counter]];
+		}
+		if(minDifference > abs(2*currentSetSum - arraySum)){
+			minSetIndices.clear();
+			copy(runningSet.begin(),runningSet.end(),minSetIndices.begin());
+			minDifference = abs(2*currentSetSum - arraySum);
+		}
+		return;
+	}
+	tugOfWarMain(userInput,arraySum,minDifference,minSetIndices,runningSet,currentIndex+1,kValue);
+	runningSet.push_back(currentIndex);
+	tugOfWarMain(userInput,arraySum,minDifference,minSetIndices,runningSet,currentIndex+1,kValue-1);
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+vector<vector<int> > tugOfWar(vector<int> userInput){
+	vector<vector<int> > sets;
+	if(userInput.size() == 0){
+		return sets;
+	}
+	vector<int> firstSet,runningSet,secondSet;
+	int minDifference = INT_MAX,arraySum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		arraySum += userInput[counter];
+	}
+	tugOfWarMain(userInput,arraySum,minDifference,firstSet,runningSet,0,userInput.size()/2);
+	unsigned int firstCrawler = 0,secondCrawler = 0;
+	while(firstCrawler < userInput.size() || secondCrawler < firstSet.size()){
+		if(secondCrawler > firstSet.size()){
+			while(firstCrawler < userInput.size()){
+				secondSet.push_back(firstCrawler++);
+			}
+			break;
+		}else{
+			if(firstSet[secondCrawler] == (int)firstCrawler){
+				secondCrawler++;
+				firstCrawler++;
+			}else{
+				secondSet.push_back(firstCrawler);
+				firstCrawler++;
+			}
+		}
+	}
+	sets.push_back(firstSet);
+	sets.push_back(secondSet);
+	return sets;
+}
 
 #endif /* TUGOFWAR_H_ */
 

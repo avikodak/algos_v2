@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\numberofislands.h
  *  Created on			: Jan 3, 2015 :: 10:09:24 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/find-number-of-islands/
 ****************************************************************************************************************************************************/
 
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool isSafe(vector<vector<bool> > userInput,vector<vector<bool> > visitedMatrix,int row,int column){
 	if(row < 0 || row >= (int)userInput.size()){
 		return false;
@@ -83,6 +84,7 @@ bool isSafe(vector<vector<bool> > userInput,vector<vector<bool> > visitedMatrix,
 	return !visitedMatrix[row][column] && userInput[row][column];
 }
 
+//Tested
 void noiDFS(vector<vector<bool> > userInput,vector<vector<bool> > &visitedMatrix,int row,int column){
 	if(userInput.size() == 0 || userInput[0].size() == 0 || userInput.size() != visitedMatrix.size() || userInput[0].size() != visitedMatrix[0].size()){
 		return;
@@ -97,6 +99,7 @@ void noiDFS(vector<vector<bool> > userInput,vector<vector<bool> > &visitedMatrix
 	}
 }
 
+//Tested
 int numberOfIslands(vector<vector<bool> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return 0;

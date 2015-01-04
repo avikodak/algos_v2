@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlenbitonicsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxlenbitonicsubsequence.h
- *  Created on			: Nov 28, 2014 :: 10:49:23 AM
+ *  File Name   		: findkclosestelementstogivenvalue.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\findkclosestelementstogivenvalue.h
+ *  Created on			: Jan 4, 2015 :: 1:21:14 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -63,6 +65,13 @@ using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
+/****************************************************************************************************************************************************/
+
+#ifndef FINDKCLOSESTELEMENTSTOGIVENVALUE_H_
+#define FINDKCLOSESTELEMENTSTOGIVENVALUE_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -78,11 +87,15 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXLENBITONICSUBSEQUENCE_H_
-#define MAXLENBITONICSUBSEQUENCE_H_
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
+#endif /* FINDKCLOSESTELEMENTSTOGIVENVALUE_H_ */
 
-#endif /* MAXLENBITONICSUBSEQUENCE_H_ */
+/****************************************************************************************************************************************************/
+/* 																MAIN CODE END 																	    */
+/****************************************************************************************************************************************************/

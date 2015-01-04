@@ -97,15 +97,23 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page06/iterativequicksort.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page06/shufflearray.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page06/numberofislands.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page06/printuniquerows.h"
+
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/countingsort.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/dacmaxsubarraysum.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/longestincreasingsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/maximumrepeatingnumber.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/mergeoverlappinginterval.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/pancakesorting.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/rearrangepositvenegativeon.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/tugofwar.h"
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateIRandomVector(10,0,50);
-	printIVector(userInput);
-	PRINT_NEW_LINE;
-	shuffleArray(userInput);
-	printIVector(userInput);
+	vector<vector<bool> > userInput = getBVectorForMatrixUserInput();
+	printf("%d",numberOfIslands(userInput));
 }
 
 void p(inrNode *ptr){
