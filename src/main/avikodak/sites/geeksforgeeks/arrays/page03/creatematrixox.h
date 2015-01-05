@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kadanealgo.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\kadanealgo.h
- *  Created on			: Dec 5, 2014 :: 12:33:35 AM
+ *  File Name   		: creatematrixox.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\creatematrixox.h
+ *  Created on			: Jan 4, 2015 :: 6:16:55 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,73 +67,49 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef KADANEALGO_H_
-#define KADANEALGO_H_
+#ifndef CREATEMATRIXOX_H_
+#define CREATEMATRIXOX_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int maxContinousSubArraySumON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+void spiralOrderOsXs(vector<vector<bool> > &userInput,bool fill,int startRow,int startColumn,int endRow,int endColumn){
+	if(userInput.size() == 0 || userInput[0].size() == 0 || startRow > endRow || startColumn > endColumn){
+		return;
 	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter]+currentSum,userInput[counter]);
-		maxSum = max(maxSum,currentSum);
+	for(unsigned int columnCounter = startColumn;columnCounter <= endColumn;columnCounter++){
+		userInput[startRow][columnCounter] = fill;
 	}
-	return maxSum;
-}
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-int maxContinousSubArraySumON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+	for(unsigned int rowCounter = startRow + 1;rowCounter <= endRow;rowCounter++){
+		userInput[rowCounter][endColumn] = fill;
 	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		currentSum = 0;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			currentSum += userInput[innerCounter];
-			maxSum = max(maxSum,currentSum);
+	if(startRow < endRow){
+		for(int columnCounter;columnCounter >= startColumn;columnCounter--){
+			userInput[endRow][columnCounter] = fill;
 		}
 	}
-	return maxSum;
+	if(startColumn < endColumn){
+		for(int rowCounter = endRow - 1;rowCounter > startRow;rowCounter--){
+			userInput[rowCounter][startColumn] = fill;
+		}
+	}
+	spiralOrderOsXs(userInput,!fill,startRow+1,startColumn+1,endRow-1,endColumn-1);
 }
 
-int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
+vector<vector<bool> > createMatrixOsXs(int rows,int columns){
+	vector<vector<bool> > matrix(rows);
+	if(rows == 0 || columns == 0){
+		return matrix;
 	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
+	for(unsigned int counter = 0;counter < columns;counter++){
+		matrix[counter].assign(columns,false);
 	}
-	int leftSum = 0,rightSum = 0;
-	for(int counter = middleIndex;counter >= startIndex;counter--){
-		leftSum += userInput[counter];
-	}
-	for(int counter = middleIndex+1;counter <= endIndex;counter++){
-		rightSum += userInput[counter];
-	}
-	return max(leftSum,rightSum);
+	bool fill = true;
+	spiralOrderOsXs(matrix,fill,0,0,rows-1,columns-1);
+	return matrix;
 }
 
-int maxContigousSubArrayDAC(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	return max(maxContigousSubArrayDAC(userInput,startIndex,middleIndex),max(maxContigousSubArrayDAC(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
-}
-
-#endif /* KADANEALGO_H_ */
+#endif /* CREATEMATRIXOX_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

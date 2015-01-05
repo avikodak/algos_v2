@@ -200,6 +200,51 @@ vector<int> getKClosestElementsMergeSort(vector<int> userInput,int key,int kValu
 	return kClosestPoints;
 }
 
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int fkceDivideStepQuickSort(vector<int> &userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	int pivotIndex = endIndex;
+	int dividingKey = abs(userInput[pivotIndex] - key);
+	while(startIndex < endIndex){
+		while(abs(userInput[startIndex] - key) < dividingKey){
+			startIndex++;
+		}
+		while(startIndex < endIndex && abs(userInput[endIndex] - key) >= dividingKey){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			swap(userInput[startIndex],userInput[endIndex]);
+		}
+	}
+	swap(userInput[endIndex],userInput[pivotIndex]);
+	return endIndex;
+}
+
+void fkceQuickSort(vector<int> &userInput,int key,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int dividingIndex = fkceDivideStepQuickSort(userInput,key,startIndex,endIndex);
+	fkceQuickSort(userInput,key,startIndex,dividingIndex-1);
+	fkceQuickSort(userInput,key,dividingIndex+1,endIndex);
+}
+
+vector<int> getKClosestElementsQuickSort(vector<int> userInput,int key,int kValue){
+	vector<int> kClosestPoints;
+	if(userInput.size() < kValue){
+		return kClosestPoints;
+	}
+	fkceQuickSort(userInput,key,0,userInput.size()-1);
+	for(unsigned int counter = 0;counter < kValue;counter++){
+		kClosestPoints.push_back(userInput[counter]);
+	}
+	return kClosestPoints;
+}
+
 #endif /* FINDKCLOSESTELEMENTSTOGIVENVALUE_H_ */
 
 /****************************************************************************************************************************************************/

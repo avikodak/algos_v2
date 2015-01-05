@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kadanealgo.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\kadanealgo.h
- *  Created on			: Dec 5, 2014 :: 12:33:35 AM
+ *  File Name   		: smallestsubarraygreatersum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\smallestsubarraygreatersum.h
+ *  Created on			: Jan 5, 2015 :: 8:05:45 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -43,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -51,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -65,73 +67,51 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef KADANEALGO_H_
-#define KADANEALGO_H_
+#ifndef SMALLESTSUBARRAYGREATERSUM_H_
+#define SMALLESTSUBARRAYGREATERSUM_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int maxContinousSubArraySumON(vector<int> userInput){
+int smallestSubarrayGreaterSumON(vector<int> userInput,int sum){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 0;
 	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter]+currentSum,userInput[counter]);
-		maxSum = max(maxSum,currentSum);
+	unsigned int start = 0,end = 0;
+	int currentSum = 0,minSize = INT_MAX;
+	while(end < userInput.size()){
+		while(end < userInput.size() && currentSum + userInput[end] < sum){
+			currentSum += userInput[end++];
+		}
+		while(start <= end && currentSum > sum){
+			minSize = min(minSize,end - start + 1);
+			currentSum -= userInput[start++];
+		}
 	}
-	return maxSum;
+	return minSize;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int maxContinousSubArraySumON2(vector<int> userInput){
+int smallestSubarrayGreaterSumON2(vector<int> userInput,int sum){
 	if(userInput.size() == 0){
-		return INT_MIN;
+		return 0;
 	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+	int minSize = INT_MAX,innerCrawler,currentSum;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
 		currentSum = 0;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			currentSum += userInput[innerCounter];
-			maxSum = max(maxSum,currentSum);
+		for(innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
+			currentSum += userInput[innerCrawler];
+			if(currentSum > sum){
+				minSize = min(minSize,innerCrawler - outerCrawler + 1);
+			}
 		}
 	}
-	return maxSum;
+	return minSize;
 }
 
-int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int leftSum = 0,rightSum = 0;
-	for(int counter = middleIndex;counter >= startIndex;counter--){
-		leftSum += userInput[counter];
-	}
-	for(int counter = middleIndex+1;counter <= endIndex;counter++){
-		rightSum += userInput[counter];
-	}
-	return max(leftSum,rightSum);
-}
-
-int maxContigousSubArrayDAC(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	return max(maxContigousSubArrayDAC(userInput,startIndex,middleIndex),max(maxContigousSubArrayDAC(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
-}
-
-#endif /* KADANEALGO_H_ */
+#endif /* SMALLESTSUBARRAYGREATERSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
