@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nutsblotsproblem.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\nutsblotsproblem.h
- *  Created on			: Jan 5, 2015 :: 10:26:12 AM
+ *  File Name   		: alternatingpositivenegative.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\alternatingpositivenegative.h
+ *  Created on			: Jan 5, 2015 :: 11:24:44 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,53 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef NUTSBLOTSPROBLEM_H_
-#define NUTSBLOTSPROBLEM_H_
+#ifndef ALTERNATINGPOSITIVENEGATIVE_H_
+#define ALTERNATINGPOSITIVENEGATIVE_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int nabpDivideStep(vector<char> &userInput,char key,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int initStartIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			if(userInput[startIndex] == key){
-				swap(userInput[initStartIndex],userInput[startIndex]);
-			}
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[initStartIndex],userInput[endIndex]);
-	return endIndex;
-}
 
-void nutsAndBoltsSortingMain(vector<char> &nuts,vector<char> &bolts,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int pivotIndex = nabpDivideStep(nuts,bolts[endIndex],startIndex,endIndex);
-	nabpDivideStep(bolts,nuts[pivotIndex],startIndex,endIndex);
-	nutsAndBoltsSortingMain(nuts,bolts,startIndex,pivotIndex-1);
-	nutsAndBoltsSortingMain(nuts,bolts,pivotIndex+1,endIndex);
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-void nutsAndBlotsProblem(vector<char> &nuts,vector<char> &bolts){
-	if(nuts.size() < 2){
-		return;
-	}
-	nutsAndBoltsSortingMain(nuts,bolts,0,nuts.size()-1);
-}
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* NUTSBLOTSPROBLEM_H_ */
+#endif /* ALTERNATINGPOSITIVENEGATIVE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
