@@ -204,13 +204,210 @@ bool sdjSearchInAvlTree(ipAvlNode *ptr,int value){
 	return ptr->value == value || sdjSearchInAvlTree(ptr->left,value) || sdjSearchInAvlTree(ptr->right.value);
 }
 
+bool areSetsDisjointAvlTree(vector<int> firstSet,vector<int> secondSet){
+	if(firstSet.size() == 0 ||secondSet.size() == 0){
+		return true;
+	}
+	ipAvlNode *root = null;
+	for(unsigned int counter = 0;counter < firstSet.size();counter++){
+		sdjInsertIntoAvlTree(&root,firstSet[counter]);
+	}
+	for(unsigned int counter = 0;counter < secondSet.size();counter++){
+		if(sdjSearchInAvlTree(root,secondSet[counter])){
+			return false;
+		}
+	}
+	return true;
+}
 
+void sdjRotateNodes(iRbTreeNode *parent,iRbTreeNode *child){
+	if(parent == null || child == null){
+		return;
+	}
+	iRbTreeNode *grandParent = parent->parent;
+	parent->parent = child;
+	child->parent = grandParent;
+	if(grandParent->left == parent){
+		grandParent->left = child;
+	}else{
+		grandParent->right = child;
+	}
+	if(parent->left == child){
+		parent->left = child->right;
+		child->right = parent;
+	}else{
+		parent->right = child->left;
+		child->left = parent;
+	}
+}
+
+iRbTreeNode *sdjInsertAtRightPlace(iRbTreeNode **root,iRbTreeNode *currentNode,int value){
+	if(*root == null){
+		(*root) = new iRbTreeNode(value);
+		(*root)->isRedNode = false;
+		return null;
+	}
+	if(currentNode->value == value){
+		return null;
+	}else if(currentNode->value > value){
+		if(currentNode->left == null){
+			currentNode->left = new iRbTreeNode(value);
+			currentNode->left->parent = currentNode;
+			return currentNode->left;
+		}else{
+			return sdjInsertAtRightPlace(root,currentNode->left,value);
+		}
+	}else{
+		if(currentNode->right == null){
+			currentNode->right = new iRbTreeNode(value);
+			currentNode->right->parent = currentNode;
+			return currentNode->right;
+		}else{
+			return sdjInsertAtRightPlace(root,currentNode->right,value);
+		}
+	}
+}
+
+void sdjReorganizeTreePostInsertion(iRbTreeNode **root,iRbTreeNode *currentNode){
+	if(root == null || currentNode == null){
+		return;
+	}
+	if(!currentNode->parent->isRedNode){
+		return;
+	}
+	iRbTreeNode *parent = currentNode->parent,*grandParent = parent->parent;
+	if(grandParent->left == parent){
+		if(grandParent->right == null || !grandParent->right->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			sdjRotateNodes(grandParent,parent);
+			grandParent->isRedNode = false;
+			parent->isRedNode = true;
+			return;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->right = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			sdjReorganizeTreePostInsertion(root,grandParent);
+		}
+	}else{
+		if(grandParent->left == null || !grandParent->left->isRedNode){
+			if(grandParent->parent == null){
+				(*root) = parent;
+			}
+			sdjRotateNodes(grandParent,parent);
+			grandParent->isRedNode = false;
+			parent->isRedNode = true;
+			return;
+		}else{
+			grandParent->isRedNode = true;
+			grandParent->left->isRedNode = false;
+			grandParent->right->right = false;
+			if(grandParent->parent == null){
+				grandParent->isRedNode = false;
+				return;
+			}
+			sdjReorganizeTreePostInsertion(root,grandParent);
+		}
+	}
+}
+
+void sdjInsertIntoRbTree(iRbTreeNode **root,int value){
+	iRbTreeNode *ptrToKey = sdjInsertAtRightPlace(root,*root,value);
+	if(ptrToKey == null || !ptrToKey->parent->isRedNode){
+		return;
+	}
+	sdjReorganizeTreePostInsertion(root,ptrToKey);
+}
+
+bool sdjSearchRbTree(iRbTreeNode *ptr,int value){
+	if(ptr == null){
+		return false;
+	}
+	return ptr->value || sdjSearchRbTree(ptr->left,value) || sdjSearchRbTree(ptr->right,value);
+}
+
+bool areSetsDisjointRbTree(vector<int> firstSet,vector<int> secondSet){
+	if(firstSet.size() == 0 ||secondSet.size() == 0){
+		return true;
+	}
+	iRbTreeNode *root = null;
+	for(unsigned int counter = 0;counter < firstSet.size();counter++){
+		sdjInsertIntoRbTree(&root,firstSet[counter]);
+	}
+	for(unsigned int counter = 0;counter < secondSet.size();counter++){
+		if(sdjSearchRbTree(root,secondSet[counter])){
+			return false;
+		}
+	}
+	return true;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+void sdjInsertIntoBSTMain(itNode **root,itNode *currentNode,vector<int> userInput,int currentIndex){
+	if(*root == null){
+		(*root) = new itNode(userInput[currentIndex]);
+		sdjInsertIntoBSTMain(root,*root,userInput,currentIndex+1);
+	}else if(currentNode->value == userInput[currentIndex]){
+		sdjInsertIntoBSTMain(root,*root,userInput,currentIndex+1);
+	}else if(currentNode->value > userInput[currentIndex]){
+		if(currentNode->left == null){
+			currentNode->left = new itNode(userInput[currentIndex]);
+			sdjInsertIntoBSTMain(root,*root,userInput,currentIndex+1);
+		}else{
+			sdjInsertIntoBSTMain(root,currentNode->left,userInput,currentIndex);
+		}
+	}else{
+		if(currentNode->right == null){
+			currentNode->right = new itNode(userInput[currentIndex]);
+			sdjInsertIntoBSTMain(root,*root,userInput,currentIndex+1);
+		}else{
+			sdjInsertIntoBSTMain(root,currentNode->right,userInput,currentIndex);
+		}
+	}
+}
 
+bool sdjSearchInBST(itNode *ptr,int value){
+	if(ptr == null){
+		return false;
+	}
+	return ptr->value == value || sdjSearchInBST(ptr->left,value) || sdjSearchInBST(ptr->right,value);
+}
 
+bool areSetsDisjointBSTON2(vector<int> firstSet,vector<int> secondSet){
+	if(firstSet.size() == 0 ||secondSet.size() == 0){
+		return true;
+	}
+	itNode *root = null;
+	sdjInsertIntoBSTMain(root,*root,firstSet,0);
+	for(unsigned int counter = 0;counter < secondSet.size();counter++){
+		if(sdjSearchInBST(root,secondSet[counter])){
+			return false;
+		}
+	}
+	return true;
+}
+
+bool areSetsDisjointON2(vector<int> firstSet,vector<int> secondSet){
+	if(firstSet.size() == 0 ||secondSet.size() == 0){
+		return true;
+	}
+	for(unsigned int outerCrawler = 0;outerCrawler < secondSet.size();outerCrawler++){
+		for(unsigned int innerCrawler = 0;innerCrawler < firstSet.size();innerCrawler++){
+			if(firstSet[innerCrawler] == secondSet[outerCrawler]){
+				return false;
+			}
+		}
+	}
+	return true;
+}
 #endif /* ARESETSDISJOINT_H_ */
 
 /****************************************************************************************************************************************************/

@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -73,15 +73,111 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int findFirstRepeatingHashmapON(vector<int> userInput){
+	if(userInput.size() < 2){
+		return INT_MIN;
+	}
+	hash_map<int,bool> visitedVal;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(visitedVal.find(userInput[counter]) != visitedVal.end()){
+			return userInput[counter];
+		}
+		visitedVal.insert(pair<int,bool>(userInput[counter],true));
+	}
+	return INT_MIN;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int gfrGetLowerIndex(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	if(startIndex == endIndex){
+		if(userInput[startIndex] == key){
+			return startIndex;
+		}
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] == key){
+			return gfrGetLowerIndex(userInput,key,startIndex,middleIndex-1);
+		}else{
+			return middleIndex;
+		}
+	}else{
+		if(userInput[middleIndex] > key){
+			return gfrGetLowerIndex(userInput,key,startIndex,middleIndex-1);
+		}else{
+			return gfrGetLowerIndex(userInput,key,middleIndex+1,endIndex);
+		}
+	}
+}
+
+int gfrGetHigherIndex(vector<int> userInput,int key,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	if(startIndex == endIndex){
+		if(userInput[startIndex] == key){
+			return startIndex;
+		}
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] == key){
+		if(middleIndex+1 <= endIndex && userInput[middleInde+1] == key){
+			return gfrGetHigherIndex(userInput,key,middleIndex+1,endIndex);
+		}else{
+			return middleIndex;
+		}
+	}else{
+		if(userInput[middleIndex] > key){
+			return gfrGetHigherIndex(userInput,key,startIndex,middleIndex-1);
+		}else{
+			return gfrGetHigherIndex(userInput,key,middleIndex+1,endIndex);
+		}
+	}
+}
+
+int gfrGetFrequency(vector<int> userInput,int key){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	return gfrGetHigherIndex(userInput,key,0,userInput.size()-1) - gfrGetLowerIndex(userInput,key,0,userInput.size()-1) + 1;
+}
+
+int getFirstRepeatingSorting(vector<int> userInput){
+	if(userInput.size() < 2){
+		return INT_MIN;
+	}
+	vector<int> auxSpace(userInput.size());
+	copy(userInput.begin(),userInput.end(),auxSpace.begin());
+	sort(auxSpace.begin(),auxSpace.end());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(gfrGetFrequency(auxSpace,userInput[counter]) > 1){
+			return userInput[counter];
+		}
+	}
+	return INT_MIN;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+int getFirstRepeatingON2(vector<int> userInput){
+	if(userInput.size() < 2){
+		return INT_MIN;
+	}
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if(userInput[outerCrawler] == userInput[innerCrawler]){
+				return userInput[outerCrawler];
+			}
+		}
+	}
+	return INT_MIN;
+}
 
 #endif /* FINDFIRSTREPEATING_H_ */
 
