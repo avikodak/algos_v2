@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\stringsstartendone.h
  *  Created on			: Jan 5, 2015 :: 1:55:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-binary-string-count-number-substrings-start-end-1/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int countStringsStartEndOnesON(vector<bool> userInput){
 	if(userInput.size() == 0){
 		return 0;
@@ -83,12 +84,13 @@ int countStringsStartEndOnesON(vector<bool> userInput){
 			setBitCounter++;
 		}
 	}
-	return ((setBitCounter) * (setBitCounter+1))/2;
+	return ((setBitCounter) * (setBitCounter-1))/2;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int stringStartEndOnesON2(vector<bool> userInput){
 	if(userInput.size() == 0){
 		return 0;

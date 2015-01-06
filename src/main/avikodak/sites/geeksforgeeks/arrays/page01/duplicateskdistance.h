@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\duplicateskdistance.h
  *  Created on			: Jan 5, 2015 :: 10:23:53 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-given-array-contains-duplicate-elements-within-k-distance/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,7 +73,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool duplicatesAtKDistance(vector<int> userInput,int kDistance){
+//Tested
+bool duplicatesAtKDistance(vector<int> userInput,unsigned int kDistance){
 	if(userInput.size() == 0){
 		return false;
 	}
@@ -83,7 +84,7 @@ bool duplicatesAtKDistance(vector<int> userInput,int kDistance){
 		if((itToValIndexMap = valIndexMap.find(userInput[counter])) == valIndexMap.end()){
 			valIndexMap.insert(pair<int,unsigned int>(userInput[counter],counter));
 		}else{
-			if(counter - itToValIndexMap->second + 1 < kDistance){
+			if(counter - itToValIndexMap->second  <= kDistance){
 				return true;
 			}
 			valIndexMap[userInput[counter]] = counter;
@@ -92,6 +93,7 @@ bool duplicatesAtKDistance(vector<int> userInput,int kDistance){
 	return false;
 }
 
+//Tested
 bool duplicatesAtKDistanceSet(vector<int> userInput,int kDistance){
 	if(userInput.size() == 0){
 		return false;
@@ -102,22 +104,24 @@ bool duplicatesAtKDistanceSet(vector<int> userInput,int kDistance){
 			return true;
 		}
 		visitedValues.insert(userInput[counter]);
-		if(kDistance - counter + 1 >= 0){
-			visitedValues.erase(userInput[kDistance-counter+1]);
+		if(kDistance - counter >= 0){
+			visitedValues.erase(userInput[counter - kDistance]);
 		}
 	}
+	return false;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool duplicatesAtKDistanceON2(vector<int> userInput,unsigned int kDistance){
-	if(userInput.size() == 0 || kDistance){
+//Tested
+bool duplicatesAtKDistanceON2(vector<int> userInput,int kDistance){
+	if(userInput.size() == 0 || kDistance < 0){
 		return false;
 	}
 	int innerCounter;
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		for(innerCounter = outerCounter-1;innerCounter > outerCounter - kDistance+1;innerCounter--){
+	for(int outerCounter = 1;outerCounter < (int)userInput.size();outerCounter++){
+		for(innerCounter = outerCounter-1;innerCounter >= 0 && innerCounter >= outerCounter - kDistance;innerCounter--){
 			if(userInput[outerCounter] == userInput[innerCounter]){
 				return true;
 			}

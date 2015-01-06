@@ -80,8 +80,25 @@ int maxSumPathArrays(vector<int> firstSortedInput,vector<int> secondSortedInput)
 	int maxSum,maxFirstArraySum,maxSecondArraySum;
 	int firstCrawler = 0,secondCrawler = 0;
 	while(firstCrawler < firstSortedInput.size() && secondCrawler < secondSortedInput.size()){
-
+		if(firstSortedInput[firstCrawler] == secondSortedInput[secondCrawler]){
+			maxSum = firstSortedInput[firstCrawler] + max(maxFirstArraySum,maxSecondArraySum);
+			maxFirstArraySum = 0;
+			maxSecondArraySum = 0;
+			firstCrawler++;
+			secondCrawler++;
+		}else if(firstSortedInput[firstCrawler] < secondSortedInput[secondCrawler]){
+			maxFirstArraySum += firstSortedInput[firstCrawler++];
+		}else{
+			maxSecondArraySum += secondSortedInput[secondCrawler++];
+		}
 	}
+	while(firstCrawler < firstSortedInput.size()){
+		maxFirstArraySum += firstSortedInput[firstCrawler++];
+	}
+	while(secondCrawler < secondSortedInput.size()){
+		maxSecondArraySum += secondSortedInput[secondCrawler++];
+	}
+	return maxSum + max(maxFirstArraySum,maxSecondArraySum);
 }
 
 #endif /* MAXSUMPATHARRAYS_H_ */

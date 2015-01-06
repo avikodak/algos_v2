@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\kthsmallestrandompivot.h
  *  Created on			: Jan 5, 2015 :: 10:40:47 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,11 +73,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int randomizedDivideStep(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}
-	srand(NULL);
+	srand(time(NULL));
 	int randIndex = rand() % endIndex + startIndex;
 	swap(userInput[randIndex],userInput[endIndex]);
 	int pivotIndex = endIndex,key = userInput[pivotIndex];
@@ -85,7 +86,7 @@ int randomizedDivideStep(vector<int> &userInput,int startIndex,int endIndex){
 		while(userInput[startIndex] < key){
 			startIndex++;
 		}
-		while(startIndex < endIndex && userInput[endIndex] > key){
+		while(startIndex < endIndex && userInput[endIndex] >= key){
 			endIndex--;
 		}
 		if(startIndex < endIndex){
@@ -96,18 +97,17 @@ int randomizedDivideStep(vector<int> &userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
+//Tested
 int kthSmallestRandomizedQuickSort(vector<int> &userInput,int kValue,int startIndex,int endIndex){
 	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex == kValue+1){
-		return userInput[startIndex];
+		return INT_MIN;
 	}
 	int pivotIndex = randomizedDivideStep(userInput,startIndex,endIndex);
+
 	if(pivotIndex + 1 == kValue){
-		return userInput[pivotIndex+1];
+		return userInput[pivotIndex];
 	}
-	if(pivotIndex < kValue){
+	if(pivotIndex > kValue - 1){
 		return kthSmallestRandomizedQuickSort(userInput,kValue,startIndex,pivotIndex-1);
 	}else{
 		return kthSmallestRandomizedQuickSort(userInput,kValue,pivotIndex+1,endIndex);

@@ -108,12 +108,21 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page05/rearrangepositvenegativeon.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page05/tugofwar.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/aresetsdisjoint.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/duplicateskdistance.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/sortarraywaveform.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/stringsstartendone.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/nutsblotsproblem.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/kthsmallest.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/kthsmallestrandompivot.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<vector<bool> > userInput = getBVectorForMatrixUserInput();
-	printf("%d",numberOfIslands(userInput));
+	vector<int> userInput = getVectorForUserInput();
+	int kValue;
+	scanf("%d",&kValue);
+	printf("%d",kthSmallestRandomizedQuickSort(userInput,kValue,0,userInput.size()-1));//6 7 10 4 3 20 15 3
 }
 
 void p(inrNode *ptr){

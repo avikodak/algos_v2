@@ -71,28 +71,50 @@ using namespace __gnu_cxx;
 #define CLOSESTPAIR_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+iPair *getClosestPairSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
+	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
+		return null;
+	}
+	int frontCrawler = 0,rearCrawler = secondSortedArray.size()-1;
+	int difference,minDifference = INT_MAX,firstIndex,secondIndex;
+	while(frontCrawler < firstSortedArray.size() && rearCrawler >= 0){
+		difference = abs(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] - x);
+		if(difference < minDifference){
+			minDifference = difference;
+			firstIndex = frontCrawler;
+			secondIndex = rearCrawler;
+		}
+		if(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] < x){
+			frontCrawler++;
+		}else{
+			rearCrawler--;
+		}
+	}
+	return new iPair(firstIndex,secondIndex);
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+iPair *getClosestPairSortedArraysON2(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
+	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
+		return null;
+	}
+	int minDifference = INT_MAX,firstIndex,secondIndex,currentDifference;
+	for(unsigned int outerCrawler = 0;outerCrawler < firstSortedArray.size();outerCrawler++){
+		for(unsigned int innerCrawler = 0;innerCrawler < secondSortedArray.size();innerCrawler++){
+			currentDifference = abs(firstSortedArray[firstIndex] + secondSortedArray[secondIndex] - x);
+			if(minDifference > currentDifference){
+				minDifference = currentDifference;
+				firstIndex = outerCrawler;
+				secondIndex = innerCrawler;
+			}
+		}
+	}
+	return new iPair(firstIndex,secondIndex);
+}
 
 #endif /* CLOSESTPAIR_H_ */
 

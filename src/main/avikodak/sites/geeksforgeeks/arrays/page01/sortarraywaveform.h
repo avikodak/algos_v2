@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\sortarraywaveform.h
  *  Created on			: Jan 5, 2015 :: 10:24:38 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/sort-array-wave-form-2/
  ****************************************************************************************************************************************************/
 
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void sawfReorganizeArrayBitPosition(vector<int> &userInput,int bitPosition){
 	if(userInput.size() == 0){
 		return;
@@ -96,12 +97,13 @@ void sawfReorganizeArrayBitPosition(vector<int> &userInput,int bitPosition){
 	}
 }
 
+//Tested
 void waveSortStraightRadixSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	int maxVal = *max_element(userInput.begin(),userInput.end());
-	int totalBits = log2(maxVal)+1;
+	unsigned int totalBits = log2(maxVal)+1;
 	for(unsigned int counter = 0;counter < totalBits;counter++){
 		sawfReorganizeArrayBitPosition(userInput,counter);
 	}
@@ -110,6 +112,7 @@ void waveSortStraightRadixSort(vector<int> &userInput){
 	}
 }
 
+//Tested
 int sawfDivideStepRadixSort(vector<int> &userInput,int bitPosition,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -118,10 +121,10 @@ int sawfDivideStepRadixSort(vector<int> &userInput,int bitPosition,int startInde
 		return startIndex;
 	}
 	while(startIndex < endIndex){
-		while(startIndex < endIndex && !(userInput[startIndex] & 1 << bitPosition)){
+		while(startIndex <= endIndex && !(userInput[startIndex] & 1 << bitPosition)){
 			startIndex++;
 		}
-		while(startIndex < endIndex && (userInput[endIndex] & 1 << bitPosition)){
+		while(startIndex <= endIndex && (userInput[endIndex] & 1 << bitPosition)){
 			endIndex--;
 		}
 		if(startIndex < endIndex){
@@ -131,6 +134,7 @@ int sawfDivideStepRadixSort(vector<int> &userInput,int bitPosition,int startInde
 	return endIndex;
 }
 
+//Tested
 void sawfRadixSortMain(vector<int> &userInput,int bitPosition,int startIndex,int endIndex){
 	if(startIndex >= endIndex || bitPosition < 0){
 		return;
@@ -140,6 +144,7 @@ void sawfRadixSortMain(vector<int> &userInput,int bitPosition,int startIndex,int
 	sawfRadixSortMain(userInput,bitPosition-1,dividingIndex+1,endIndex);
 }
 
+//Tested
 void waveSortRadixSort(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -155,6 +160,7 @@ void waveSortRadixSort(vector<int> &userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void sawfMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -181,6 +187,7 @@ void sawfMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int end
 	}
 }
 
+//Tested
 void sawfMergeSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -191,6 +198,7 @@ void sawfMergeSort(vector<int> &userInput,int startIndex,int endIndex){
 	sawfMergeStep(userInput,startIndex,middleIndex,endIndex);
 }
 
+//Tested
 void sortWaveSortMergeSort(vector<int> &userInput){
 	if(userInput.size() == 0){
 		return;
@@ -204,7 +212,8 @@ void sortWaveSortMergeSort(vector<int> &userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int sawfDivideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
+//Tested
+int sawfDivideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return INT_MIN;
 	}
@@ -225,7 +234,8 @@ int sawfDivideStepQuickSort(vector<int> userInput,int startIndex,int endIndex){
 	return endIndex;
 }
 
-int sawfQuickSort(vector<int> &userInput,int startIndex,int endIndex){
+//Tested
+void sawfQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
 	}
@@ -234,6 +244,7 @@ int sawfQuickSort(vector<int> &userInput,int startIndex,int endIndex){
 	sawfQuickSort(userInput,dividingIndex+1,endIndex);
 }
 
+//Tested
 void sortArrayWaveFormQuickSort(vector<int> &userInput){
 	if(userInput.size() <  2){
 		return;

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\nutsblotsproblem.h
  *  Created on			: Jan 5, 2015 :: 10:26:12 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/nuts-bolts-problem-lock-key-problem/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,9 +73,10 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int nabpDivideStep(vector<char> &userInput,char key,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
-		return;
+		return INT_MIN;
 	}
 	int initStartIndex = startIndex;
 	while(startIndex < endIndex){
@@ -96,6 +97,7 @@ int nabpDivideStep(vector<char> &userInput,char key,int startIndex,int endIndex)
 	return endIndex;
 }
 
+//Tested
 void nutsAndBoltsSortingMain(vector<char> &nuts,vector<char> &bolts,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -106,6 +108,7 @@ void nutsAndBoltsSortingMain(vector<char> &nuts,vector<char> &bolts,int startInd
 	nutsAndBoltsSortingMain(nuts,bolts,pivotIndex+1,endIndex);
 }
 
+//Tested
 void nutsAndBlotsProblem(vector<char> &nuts,vector<char> &bolts){
 	if(nuts.size() < 2){
 		return;
