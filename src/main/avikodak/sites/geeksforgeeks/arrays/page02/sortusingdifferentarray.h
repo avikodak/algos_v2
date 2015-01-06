@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kthsmallestrandompivot.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\kthsmallestrandompivot.h
- *  Created on			: Jan 5, 2015 :: 10:40:47 AM
+ *  File Name   		: sortusingdifferentarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\sortusingdifferentarray.h
+ *  Created on			: Jan 6, 2015 :: 10:19:29 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,54 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef KTHSMALLESTRANDOMPIVOT_H_
-#define KTHSMALLESTRANDOMPIVOT_H_
+#ifndef SORTUSINGDIFFERENTARRAY_H_
+#define SORTUSINGDIFFERENTARRAY_H_
+
+/****************************************************************************************************************************************************/
+/* 																O(LOGN) Algorithm 															    	*/
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int randomizedDivideStep(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	srand(NULL);
-	int randIndex = rand() % endIndex + startIndex;
-	swap(userInput[randIndex],userInput[endIndex]);
-	int pivotIndex = endIndex,key = userInput[pivotIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
-}
 
-int kthSmallestRandomizedQuickSort(vector<int> &userInput,int kValue,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex == kValue+1){
-		return userInput[startIndex];
-	}
-	int pivotIndex = randomizedDivideStep(userInput,startIndex,endIndex);
-	if(pivotIndex + 1 == kValue){
-		return userInput[pivotIndex+1];
-	}
-	if(pivotIndex < kValue){
-		return kthSmallestRandomizedQuickSort(userInput,kValue,startIndex,pivotIndex-1);
-	}else{
-		return kthSmallestRandomizedQuickSort(userInput,kValue,pivotIndex+1,endIndex);
-	}
-}
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 
-#endif /* KTHSMALLESTRANDOMPIVOT_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* SORTUSINGDIFFERENTARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -71,12 +71,36 @@ using namespace __gnu_cxx;
 #define COMMONELEMENTSTHREESORTED_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+vector<int> commonElementsThreeSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,vector<int> thirdSortedArray){
+	vector<int> commonElements;
+	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0 || thirdSortedArray.size() == 0){
+		return commonElements;
+	}
+	int firstCounter = 0,secondCounter = 0,thirdCounter = 0;
+	while(firstCounter < firstSortedArray.size() && secondCounter < secondSortedArray.size() && thirdCounter < thirdSortedArray.size()){
+		if(firstSortedArray[firstCounter]  == secondSortedArray[secondCounter] && firstSortedArray[firstCounter] == thirdSortedArray[thirdCounter]){
+			commonElements.push_back(firstSortedArray[firstCounter]);
+			firstCounter++;secondCounter++;thirdCounter++;
+		}else{
+			if(firstSortedArray[firstCounter] < secondSortedArray[secondCounter]){
+				if(firstSortedArray[firstCounter] < thirdSortedArray[thirdCounter]){
+					firstCounter++;
+				}else{
+					thirdCounter++;
+				}
+			}else{
+				if(secondSortedArray[secondCounter] < thirdSortedArray[thirdCounter]){
+					secondCounter++;
+				}else{
+					thirdCounter++;
+				}
+			}
+		}
+	}
+	return commonElements;
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */

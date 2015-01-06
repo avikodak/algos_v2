@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,28 +71,60 @@ using namespace __gnu_cxx;
 #define DUPLICATESKDISTANCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+bool duplicatesAtKDistance(vector<int> userInput,int kDistance){
+	if(userInput.size() == 0){
+		return false;
+	}
+	hash_map<int,unsigned int> valIndexMap;
+	hash_map<int,unsigned int>::iterator itToValIndexMap;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if((itToValIndexMap = valIndexMap.find(userInput[counter])) == valIndexMap.end()){
+			valIndexMap.insert(pair<int,unsigned int>(userInput[counter],counter));
+		}else{
+			if(counter - itToValIndexMap->second + 1 < kDistance){
+				return true;
+			}
+			valIndexMap[userInput[counter]] = counter;
+		}
+	}
+	return false;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool duplicatesAtKDistanceSet(vector<int> userInput,int kDistance){
+	if(userInput.size() == 0){
+		return false;
+	}
+	set<int> visitedValues;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(visitedValues.find(userInput[counter]) != visitedValues.end()){
+			return true;
+		}
+		visitedValues.insert(userInput[counter]);
+		if(kDistance - counter + 1 >= 0){
+			visitedValues.erase(userInput[kDistance-counter+1]);
+		}
+	}
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool duplicatesAtKDistanceON2(vector<int> userInput,unsigned int kDistance){
+	if(userInput.size() == 0 || kDistance){
+		return false;
+	}
+	int innerCounter;
+	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
+		for(innerCounter = outerCounter-1;innerCounter > outerCounter - kDistance+1;innerCounter--){
+			if(userInput[outerCounter] == userInput[innerCounter]){
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 #endif /* DUPLICATESKDISTANCE_H_ */
 
