@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\printelementsrowcolumnsorted.h
  *  Created on			: Jan 5, 2015 :: 11:21:49 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/print-elements-sorted-order-row-column-wise-sorted-matrix/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,7 +73,8 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void pesmMinHeapify(vector<iRowColumn *> &heap,int index){
+//Tested
+void pesmMinHeapify(vector<iRowColumn *> &heap,unsigned int index){
 	if(heap.size() == 0 || index >= heap.size()){
 		return;
 	}
@@ -82,10 +83,10 @@ void pesmMinHeapify(vector<iRowColumn *> &heap,int index){
 			if(heap[index]->value > heap[2*index+2]->value || heap[index]->value > heap[2*index + 1]->value){
 				if(heap[2*index+1]->value < heap[2*index+2]->value){
 					swap(heap[2*index+1],heap[index]);
-					heap = 2*index+1;
+					index = 2*index+1;
 				}else{
 					swap(heap[2*index+2],heap[index]);
-					heap = 2*index+2;
+					index = 2*index+2;
 				}
 			}else{
 				break;
@@ -93,7 +94,7 @@ void pesmMinHeapify(vector<iRowColumn *> &heap,int index){
 		}else{
 			if(heap[2*index+1]->value < heap[index]->value){
 				swap(heap[2*index+1],heap[index]);
-				heap = 2*index+1;
+				index = 2*index+1;
 			}else{
 				break;
 			}
@@ -101,6 +102,7 @@ void pesmMinHeapify(vector<iRowColumn *> &heap,int index){
 	}
 }
 
+//Tested
 iRowColumn *pesmGetMinElement(vector<iRowColumn *> &heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
@@ -108,6 +110,7 @@ iRowColumn *pesmGetMinElement(vector<iRowColumn *> &heap){
 	return heap[0];
 }
 
+//Tested
 void pesmDeleteMin(vector<iRowColumn *> &heap){
 	if(heap.size() == 0){
 		throw "Heap is empty";
@@ -117,11 +120,12 @@ void pesmDeleteMin(vector<iRowColumn *> &heap){
 	pesmMinHeapify(heap,0);
 }
 
+//Tested
 void pesmInsertIntoHeap(vector<iRowColumn *> &heap,iRowColumn *key){
 	heap.push_back(key);
-	int index = heap.size()-1;
+	unsigned int index = heap.size()-1;
 	while(index > 0){
-		if(heap[index]->value > heap[index/2]->value){
+		if(heap[index]->value < heap[index/2]->value){
 			swap(heap[index],heap[index/2]);
 		}else{
 			break;
@@ -130,15 +134,16 @@ void pesmInsertIntoHeap(vector<iRowColumn *> &heap,iRowColumn *key){
 	}
 }
 
+//Tested
 void printElementsSortedMatrix(vector<vector<int> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return;
 	}
-	vector<int> heap;
+	vector<iRowColumn *> heap;
 	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
 		heap.push_back(new iRowColumn(userInput[rowCounter][0],rowCounter,0));
 	}
-	for(int counter = heap.size()/2;counter >= 0;counter--){
+	for(int counter = (int)(heap.size()/2);counter >= 0;counter--){
 		pesmMinHeapify(heap,counter);
 	}
 	iRowColumn *min;
@@ -146,7 +151,7 @@ void printElementsSortedMatrix(vector<vector<int> > userInput){
 		min = pesmGetMinElement(heap);
 		printf("%d\t",min->value);
 		pesmDeleteMin(heap);
-		if(min->column + 1 < userInput[min->row].size()){
+		if(min->column + 1 < (int)userInput[min->row].size()){
 			min->column += 1;
 			min->value = userInput[min->row][min->column];
 			pesmInsertIntoHeap(heap,min);

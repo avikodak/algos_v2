@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\sortusingdifferentarray.h
  *  Created on			: Jan 6, 2015 :: 10:19:29 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/sort-array-according-order-defined-another-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef SORTUSINGDIFFERENTARRAY_H_
 #define SORTUSINGDIFFERENTARRAY_H_
 
+//Tested
 void mergeStepSortingDifferrentArray(vector<int> &userInput,hash_map<int,unsigned int> valueRankMap,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -102,8 +103,12 @@ void mergeStepSortingDifferrentArray(vector<int> &userInput,hash_map<int,unsigne
 			}
  		}
 	}
+	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
+		userInput[startIndex + counter] = auxSpace[counter];
+	}
 }
 
+//Tested
 void mergeSortDifferentArrayMain(vector<int> &userInput,hash_map<int,unsigned int> valRankMap,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -114,6 +119,7 @@ void mergeSortDifferentArrayMain(vector<int> &userInput,hash_map<int,unsigned in
 	mergeStepSortingDifferrentArray(userInput,valRankMap,startIndex,middleIndex,endIndex);
 }
 
+//Tested
 void mergeSortDifferentArray(vector<int> &userInput,vector<int> rankInput){
 	if(userInput.size() < 2){
 		return;
@@ -125,6 +131,7 @@ void mergeSortDifferentArray(vector<int> &userInput,vector<int> rankInput){
 	mergeSortDifferentArrayMain(userInput,valRankMap,0,userInput.size()-1);
 }
 
+//Tested
 int lowerBoundForKeyBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
@@ -134,7 +141,7 @@ int lowerBoundForKeyBinarySearch(vector<int> userInput,int key,int startIndex,in
 		if(middleIndex-1 >= startIndex && userInput[middleIndex-1] == key){
 			return lowerBoundForKeyBinarySearch(userInput,key,startIndex,middleIndex-1);
 		}else{
-			middleIndex;
+			return middleIndex;
 		}
 	}else if(userInput[middleIndex] > key){
 		return lowerBoundForKeyBinarySearch(userInput,key,startIndex,middleIndex-1);
@@ -143,6 +150,7 @@ int lowerBoundForKeyBinarySearch(vector<int> userInput,int key,int startIndex,in
 	}
 }
 
+//Tested
 int higherBoundForKeyBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
@@ -161,6 +169,7 @@ int higherBoundForKeyBinarySearch(vector<int> userInput,int key,int startIndex,i
 	}
 }
 
+//Tested
 void sortUsingDifferentArray(vector<int> &userInput,vector<int> rankArray){
 	if(userInput.size() < 2){
 		return;
@@ -177,13 +186,13 @@ void sortUsingDifferentArray(vector<int> &userInput,vector<int> rankArray){
 			frequency = higherBoundForKeyBinarySearch(auxSpace,rankArray[counter],0,auxSpace.size()) - lowerIndex + 1;
 			while(frequency--){
 				userInput[++fillCounter] = rankArray[counter];
-				visitedArray[fillCounter] = true;
+				visitedArray[lowerIndex + frequency] = true;
 			}
 		}
 	}
 	for(unsigned int counter = 0;counter < visitedArray.size();counter++){
 		if(!visitedArray[counter]){
-			userInput[++fillCounter] = temp[counter];
+			userInput[++fillCounter] = auxSpace[counter];
 		}
 	}
 }

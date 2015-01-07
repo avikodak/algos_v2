@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\searchinalmostsortedarray.h
  *  Created on			: Jan 6, 2015 :: 10:20:47 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/search-almost-sorted-array/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
+//Tested
 bool searchInAlmostSortedArrayONLOGN(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return false;
@@ -100,6 +101,7 @@ bool searchInAlmostSortedArrayONLOGN(vector<int> userInput,int key,int startInde
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 bool searchInAlmostSortedArray(vector<int> userInput,int key){
 	if(userInput.size() == 0){
 		return false;

@@ -61,68 +61,18 @@
 /****************************************************************************************************************************************************/
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/differencebetweenindexes.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findifarrayissubset.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/mindistancenumbers.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/printmatrixinspiralorder.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/findrepeatingmissing.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/booleanmatrix.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/fixedpoint.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/countsmallerrightside.h" // Should be updated
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxlengthbitonicsubarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/maxvalincdecarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page08/minimumNumberJumps.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/findsubarraywithsum.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/largestsubarray0s1s.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestbitonicsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/longestincsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/maximumsumincreasingsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/tripletforsum.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/twooddoccurence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/sortedsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/pairforgivendifference.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/smallestpositivemissing.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/maximumproductsubarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/implementtwostacksarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page07/partitionproblem.h"
 
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/replaceeveryelementwithgreatest.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/maxlenchainofpairs.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/fourelementsforsum.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/fourelementsforsumon2logn.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/sortnearlysortedarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/maxcircularsubarraysum.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/findrowmax1s.h" //To be tested
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/counttriangles.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/iterativequicksort.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/shufflearray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/numberofislands.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page06/printuniquerows.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/printelementsrowcolumnsorted.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/searchinalmostsortedarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/maxsumpatharrays.h"
 
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/countingsort.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/dacmaxsubarraysum.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/longestincreasingsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/maximumrepeatingnumber.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/mergeoverlappinginterval.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/pancakesorting.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/rearrangepositvenegativeon.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/tugofwar.h"
-
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/aresetsdisjoint.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/duplicateskdistance.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/sortarraywaveform.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/stringsstartendone.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/nutsblotsproblem.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/kthsmallest.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/kthsmallestrandompivot.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	int kValue;
-	scanf("%d",&kValue);
-	printf("%d",kthSmallestRandomizedQuickSort(userInput,kValue,0,userInput.size()-1));//6 7 10 4 3 20 15 3
+	vector<int> firstUserInput = getVectorForUserInput();
+	vector<int> secondUserInput = getVectorForUserInput();
+	printf("%d",maxSumPathArrays(firstUserInput,secondUserInput));//5 2 3 7 10 12 4 1 5 7 8
 }
 
 void p(inrNode *ptr){

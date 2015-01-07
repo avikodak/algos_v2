@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeating.h
  *  Created on			: Jan 5, 2015 :: 8:50:09 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,23 +73,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int findFirstRepeatingHashmapON(vector<int> userInput){
 	if(userInput.size() < 2){
 		return INT_MIN;
 	}
-	hash_map<int,bool> visitedVal;
+	hash_map<int,unsigned int> visitedVal;
+	hash_map<int,unsigned int>::iterator itToVisitedVal;
+	unsigned int minIndex = UINT_MAX;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(visitedVal.find(userInput[counter]) != visitedVal.end()){
-			return userInput[counter];
+		if((itToVisitedVal = visitedVal.find(userInput[counter])) != visitedVal.end()){
+			minIndex = min(minIndex,itToVisitedVal->second);
 		}
-		visitedVal.insert(pair<int,bool>(userInput[counter],true));
+		visitedVal.insert(pair<int,bool>(userInput[counter],counter));
 	}
-	return INT_MIN;
+	return minIndex != INT_MAX?userInput[minIndex]:INT_MAX;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int gfrGetLowerIndex(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -115,6 +119,7 @@ int gfrGetLowerIndex(vector<int> userInput,int key,int startIndex,int endIndex){
 	}
 }
 
+//Tested
 int gfrGetHigherIndex(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -126,7 +131,7 @@ int gfrGetHigherIndex(vector<int> userInput,int key,int startIndex,int endIndex)
 	}
 	int middleIndex = (startIndex + endIndex)/2;
 	if(userInput[middleIndex] == key){
-		if(middleIndex+1 <= endIndex && userInput[middleInde+1] == key){
+		if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key){
 			return gfrGetHigherIndex(userInput,key,middleIndex+1,endIndex);
 		}else{
 			return middleIndex;
@@ -140,6 +145,7 @@ int gfrGetHigherIndex(vector<int> userInput,int key,int startIndex,int endIndex)
 	}
 }
 
+//Tested
 int gfrGetFrequency(vector<int> userInput,int key){
 	if(userInput.size() == 0){
 		return 0;
@@ -147,6 +153,7 @@ int gfrGetFrequency(vector<int> userInput,int key){
 	return gfrGetHigherIndex(userInput,key,0,userInput.size()-1) - gfrGetLowerIndex(userInput,key,0,userInput.size()-1) + 1;
 }
 
+//Tested
 int getFirstRepeatingSorting(vector<int> userInput){
 	if(userInput.size() < 2){
 		return INT_MIN;
@@ -165,6 +172,7 @@ int getFirstRepeatingSorting(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getFirstRepeatingON2(vector<int> userInput){
 	if(userInput.size() < 2){
 		return INT_MIN;

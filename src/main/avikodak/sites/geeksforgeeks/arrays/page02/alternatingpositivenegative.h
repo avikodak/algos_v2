@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\alternatingpositivenegative.h
  *  Created on			: Jan 5, 2015 :: 11:24:44 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void alternatePositiveNegativeNumbers(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
@@ -102,6 +103,7 @@ void alternatePositiveNegativeNumbers(vector<int> &userInput){
 	}
 }
 
+//Tested
 int alternatePositiveDivideStep(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return INT_MIN;
@@ -120,17 +122,20 @@ int alternatePositiveDivideStep(vector<int> &userInput,int startIndex,int endInd
 	return startIndex;
 }
 
+//Tested
 void alternatePositiveNegative(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	int pivotIndex = alternatePositiveDivideStep(userInput,0,userInput.size()-1);
-	int counter = 0;
-	while(counter < userInput.size() && pivotIndex < userInput.size()){
+	unsigned int counter = 1;
+	while(counter < userInput.size() && pivotIndex < (int)userInput.size()){
 		if(userInput[counter] < 0){
 			swap(userInput[counter],userInput[pivotIndex]);
 			counter += 2;
 			pivotIndex += 1;
+		}else{
+			break;
 		}
 	}
 }
@@ -138,6 +143,7 @@ void alternatePositiveNegative(vector<int> &userInput){
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void posNegMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -145,15 +151,15 @@ void posNegMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int e
 	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
 	vector<int> auxSpace;
 	while(firstCrawler <= middleIndex && userInput[firstCrawler] < 0){
-		auxSpace.push_back(userInput[firstCrawler]);
+		auxSpace.push_back(userInput[firstCrawler++]);
 	}
 	while(secondCrawler <= endIndex && userInput[secondCrawler] < 0){
 		auxSpace.push_back(userInput[secondCrawler++]);
 	}
-	while(firstCrawler <= middleIndex && userInput[firstCrawler] > 0){
-		auxSpace.push_back(userInput[firstCrawler]);
+	while(firstCrawler <= middleIndex && userInput[firstCrawler] >= 0){
+		auxSpace.push_back(userInput[firstCrawler++]);
 	}
-	while(secondCrawler <= endIndex && userInput[secondCrawler] > 0){
+	while(secondCrawler <= endIndex && userInput[secondCrawler] >= 0){
 		auxSpace.push_back(userInput[secondCrawler++]);
 	}
 	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
@@ -161,6 +167,7 @@ void posNegMergeStep(vector<int> &userInput,int startIndex,int middleIndex,int e
 	}
 }
 
+//Tested
 void positiveNegativeMergeSortMain(vector<int> &userInput,int startIndex,int endIndex){
 	if(startIndex >= endIndex){
 		return;
@@ -171,16 +178,41 @@ void positiveNegativeMergeSortMain(vector<int> &userInput,int startIndex,int end
 	posNegMergeStep(userInput,startIndex,middleIndex,endIndex);
 }
 
+//Tested
+int firstPositiveIndex(vector<int> userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	if(startIndex == endIndex){
+		return userInput[startIndex] > 0?startIndex:INT_MIN;
+	}
+	int middleIndex = (startIndex + endIndex)/2;
+	if(userInput[middleIndex] > 0){
+		if(middleIndex-1 >= startIndex && userInput[middleIndex-1] > 0){
+			return firstPositiveIndex(userInput,startIndex,middleIndex-1);
+		}else{
+			return middleIndex;
+		}
+	}else{
+		return firstPositiveIndex(userInput,middleIndex+1,endIndex);
+	}
+}
+
+//Tested
 void alternatePositiveNegativeMerge(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
 	positiveNegativeMergeSortMain(userInput,0,userInput.size()-1);
-	while(counter < userInput.size() && pivotIndex < userInput.size()){
+	int pivotIndex = firstPositiveIndex(userInput,0,userInput.size()-1);
+	unsigned int counter = 1;
+	while(counter < userInput.size() && pivotIndex < (int)userInput.size()){
 		if(userInput[counter] < 0){
 			swap(userInput[counter],userInput[pivotIndex]);
 			counter += 2;
 			pivotIndex += 1;
+		}else{
+			break;
 		}
 	}
 }
@@ -188,11 +220,12 @@ void alternatePositiveNegativeMerge(vector<int> &userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 void alternatePositiveNegativeON2(vector<int> &userInput){
 	if(userInput.size() < 2){
 		return;
 	}
-	bool shouldBePositive = true;
+	bool shouldBePositive = false;
 	unsigned int innerCounter;
 	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
 		if(shouldBePositive){
@@ -202,7 +235,7 @@ void alternatePositiveNegativeON2(vector<int> &userInput){
 						break;
 					}
 				}
-				if(innerCounter > userInput.size()){
+				if(innerCounter >= userInput.size()){
 					break;
 				}
 				swap(userInput[outerCounter],userInput[innerCounter]);
@@ -214,7 +247,7 @@ void alternatePositiveNegativeON2(vector<int> &userInput){
 						break;
 					}
 				}
-				if(innerCounter > userInput.size()){
+				if(innerCounter >= userInput.size()){
 					break;
 				}
 				swap(userInput[outerCounter],userInput[innerCounter]);

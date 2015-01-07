@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\commonelementsthreesorted.h
  *  Created on			: Jan 5, 2015 :: 11:23:46 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/O
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,12 +73,13 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 vector<int> commonElementsThreeSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,vector<int> thirdSortedArray){
 	vector<int> commonElements;
 	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0 || thirdSortedArray.size() == 0){
 		return commonElements;
 	}
-	int firstCounter = 0,secondCounter = 0,thirdCounter = 0;
+	unsigned int firstCounter = 0,secondCounter = 0,thirdCounter = 0;
 	while(firstCounter < firstSortedArray.size() && secondCounter < secondSortedArray.size() && thirdCounter < thirdSortedArray.size()){
 		if(firstSortedArray[firstCounter]  == secondSortedArray[secondCounter] && firstSortedArray[firstCounter] == thirdSortedArray[thirdCounter]){
 			commonElements.push_back(firstSortedArray[firstCounter]);

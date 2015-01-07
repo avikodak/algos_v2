@@ -73,7 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int frvLowerBoundBinarySearch(vector<int> userInput,int key,in startIndex,int endIndex){
+int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
 	}

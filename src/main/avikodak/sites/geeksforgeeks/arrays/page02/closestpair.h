@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\closestpair.h
  *  Created on			: Jan 5, 2015 :: 11:29:13 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/given-two-sorted-arrays-number-x-find-pair-whose-sum-closest-x/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,13 +73,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getClosestPairSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
 	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
 		return null;
 	}
 	int frontCrawler = 0,rearCrawler = secondSortedArray.size()-1;
 	int difference,minDifference = INT_MAX,firstIndex,secondIndex;
-	while(frontCrawler < firstSortedArray.size() && rearCrawler >= 0){
+	while(frontCrawler < (int)firstSortedArray.size() && rearCrawler >= 0){
 		difference = abs(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] - x);
 		if(difference < minDifference){
 			minDifference = difference;
@@ -92,12 +93,13 @@ iPair *getClosestPairSortedArrays(vector<int> firstSortedArray,vector<int> secon
 			rearCrawler--;
 		}
 	}
-	return new iPair(firstIndex,secondIndex);
+	return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 iPair *getClosestPairSortedArraysON2(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
 	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
 		return null;
@@ -113,7 +115,7 @@ iPair *getClosestPairSortedArraysON2(vector<int> firstSortedArray,vector<int> se
 			}
 		}
 	}
-	return new iPair(firstIndex,secondIndex);
+	return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
 }
 
 #endif /* CLOSESTPAIR_H_ */
