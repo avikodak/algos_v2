@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,29 +70,72 @@ using namespace __gnu_cxx;
 #ifndef SOLVECRYPTARTHIMETICPUZZLE_H_
 #define SOLVECRYPTARTHIMETICPUZZLE_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+struct cryptArithmeticDS{
+	vector<int> firstInput;
+	vector<int> secondInput;
+	vector<int> result;
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+};
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool isSafeCryptarthimeticPuzzle(vector<int> numbersAssigned,unsigned int index,int number){
+	for(unsigned int counter = 0;counter < numbersAssigned.size();counter++){
+		if(counter != index){
+			if(numbersAssigned[counter] == number){
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool checkSolution(cryptArithmeticDS puzzle,vecor<int> numbersAssigned){
+	int firstCounter = 0,secondCounter = 0;
+	int carry = 0,sum;
+	while(firstCounter < puzzle.firstInput.size() && secondCounter < puzzle.secondInput.size()){
+		sum = puzzle.firstInput[firstCounter] + puzzle.secondInput[secondCounter] + carry;
+		if(sum%10 != numbersAssigned[puzzle[firstCounter]]){
+			return false;
+		}
+		carry = sum/10;
+		firstCounter++;
+		secondCounter++;
+	}
+	while(firstCounter < puzzle.firstInput.size()){
+		sum = puzzle.firstInput[firstCounter] + carry;
+		if(sum%10 != numbersAssigned[puzzle[firstCounter]]){
+			return false;
+		}
+		carry = sum/10;
+		firstCounter++;
+	}
+	while(secondCounter < puzzle.secondInput.size()){
+		sum = puzzle.secondInput[secondCounter] + carry;
+		if(sum%10 != numbersAssigned[puzzle[secondCounter]]){
+			return false;
+		}
+		carry = sum/10;
+		secondCounter++;
+	}
+	return true;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool solveCryptarthimeticPuzzle(cryptArithmeticDS puzzle,vector<int> numbersAssigned,unsigned int currentIndex){
+	if(currentIndex == numbersAssigned.size()){
+		if(checkSolution(puzzle,numbersAssigned)){
+			return true;
+		}
+		return false;
+	}
+	for(unsigned int counter = 0;counter < 10;counter++){
+		if(isSafeCryptarthimeticPuzzle(numbersAssigned,currentIndex,counter)){
+			numbersAssigned[counter];
+			if(solveCryptarthimeticPuzzle(puzzle,numbersAssigned,currentIndex+1)){
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 #endif /* SOLVECRYPTARTHIMETICPUZZLE_H_ */
 

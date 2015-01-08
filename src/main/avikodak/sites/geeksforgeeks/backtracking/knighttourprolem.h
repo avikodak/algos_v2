@@ -60,6 +60,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define KNP_UN_ASSIGNED INT_MAX
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
@@ -68,6 +69,43 @@ using namespace __gnu_cxx;
 #ifndef KNIGHTTOURPROLEM_H_
 #define KNIGHTTOURPROLEM_H_
 
+bool ktpIsSafe(vector<vector<int> > solution,int xValue,int yValue){
+	if(xValue < 0 || xValue >= solution[0].size() || yValue < 0 || yValue >= solution.size() || solution[xValue][yValue] != KNP_UN_ASSIGNED){
+		return false;
+	}
+	return true;
+}
+
+bool solveKnightTourProblemMain(vector<vector<int> > solution,int moveCounter,int xValue,int yValue){
+	if(moveCounter = solution.size() * solution.size()){
+		printIVector(solution);
+		return true;
+	}
+	int validXValues = {-1,-1,-1,0,1,1,1,0};
+	int validYValues = {-1,0,1,1,1,0,-1,-1};
+	for(unsigned int counter = 0;counter < 8;counter++){
+		if(ktpIsSafe(solution,validXValues[counter],validYValues[counter])){
+			solution[xValue][yValue] = moveCounter;
+			if(solveKnightTourProblemMain(solution,moveCounter+1,validXValues[counter],validYValues[counter])){
+				return true;
+			}
+			solution[xValue][yValue] = KNP_UN_ASSIGNED;
+		}
+	}
+	return false;
+}
+
+void solveKnightTourProblem(int rows,int columns){
+	if(size < 0){
+		return;
+	}
+	vector<vector<int> > board[rows];
+	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
+		board[rows].assign(columns,KNP_UN_ASSIGNED);
+	}
+	board[0][0] = 1;
+	solveKnightTourProblemMain(board,1,0,0);
+}
 
 #endif /* KNIGHTTOURPROLEM_H_ */
 
