@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: oppositesigns.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\oppositesigns.h
+ *  Created on			: Jan 9, 2015 :: 5:25:15 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef OPPOSITESIGNS_H_
+#define OPPOSITESIGNS_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+bool oppositeSigns(int firstUserInput,int secondUserInput){
+	return firstUserInput ^ secondUserInput < 0;
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* OPPOSITESIGNS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

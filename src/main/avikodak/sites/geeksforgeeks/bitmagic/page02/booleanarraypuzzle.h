@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: booleanarraypuzzle.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\booleanarraypuzzle.h
+ *  Created on			: Jan 9, 2015 :: 11:38:47 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef BOOLEANARRAYPUZZLE_H_
+#define BOOLEANARRAYPUZZLE_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+void booleanArrayPuzzle(vector<bool> userInput){
+	userInput[userInput[1]] = userInput[!userInput[1]];
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* BOOLEANARRAYPUZZLE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

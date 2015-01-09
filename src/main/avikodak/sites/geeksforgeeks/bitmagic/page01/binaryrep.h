@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: binaryrep.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binaryrep.h
+ *  Created on			: Jan 9, 2015 :: 1:44:31 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,18 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef BINARYREP_H_
+#define BINARYREP_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+void printBinaryRepresentation(unsigned int number){
+	if(number == 0){
+		return;
+	}
+	printBinaryRepresentation(number/2);
+	printf("%d\t",number%2);
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* BINARYREP_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

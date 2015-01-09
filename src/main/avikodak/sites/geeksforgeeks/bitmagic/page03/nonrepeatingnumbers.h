@@ -80,7 +80,7 @@ iPair *findNonRepeatingNumbers(vector<int> userInput){
 		xorResult ^= userInput[counter];
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] & 1 << xorResult){
+		if(userInput[counter] &  (xorResult & -xorResult)){
 			result->firstValue ^= result->firstValue;
 		}else{
 			result->secondValue ^= result->secondValue;

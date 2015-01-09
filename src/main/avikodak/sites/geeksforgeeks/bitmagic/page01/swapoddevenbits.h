@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: swapoddevenbits.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapoddevenbits.h
+ *  Created on			: Jan 9, 2015 :: 5:04:16 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,18 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef SWAPODDEVENBITS_H_
+#define SWAPODDEVENBITS_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+int swapOddEvenBits(int userInput){
+	int evenUserInput = userInput & 0xAAAAAAAA;
+	int oddUserInput = userInput & 0x55555555;
+	evenUserInput >>= 1;
+	oddUserInput <<= 1;
+	return evenUserInput | oddUserInput;
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* SWAPODDEVENBITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

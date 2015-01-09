@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: binarypalindrome.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binarypalindrome.h
+ *  Created on			: Jan 9, 2015 :: 4:57:50 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,26 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef BINARYPALINDROME_H_
+#define BINARYPALINDROME_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+bool getKthBit(int userInput,int kValue){
+	return userInput & (1 << kValue-1);
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+bool isBinaryStringPalindrome(int userInput){
+	int rearCrawler = sizeof(int) * sizeof(char) - 1,frontCrawler = 0;
+	while(frontCrawler < rearCrawler){
+		if(getKthBit(userInput,frontCrawler) != getKthBit(userInput,rearCrawler)){
+			return false;
+		}
+		rearCrawler--;
+		frontCrawler++;
+	}
+	return true;
+}
+
+#endif /* BINARYPALINDROME_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

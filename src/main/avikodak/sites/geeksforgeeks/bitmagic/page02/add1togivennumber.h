@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: add1togivennumber.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\add1togivennumber.h
+ *  Created on			: Jan 9, 2015 :: 1:30:45 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef ADD1TOGIVENNUMBER_H_
+#define ADD1TOGIVENNUMBER_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+int addOneToNumber(int number){
+	return -(~number);
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* ADD1TOGIVENNUMBER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

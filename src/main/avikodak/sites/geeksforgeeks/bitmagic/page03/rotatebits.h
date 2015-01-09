@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: rotatebits.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\rotatebits.h
+ *  Created on			: Jan 9, 2015 :: 12:13:54 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,18 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef ROTATEBITS_H_
+#define ROTATEBITS_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+int leftRotate(int userInput,int rotateBy){
+	return userInput << rotateBy | (userInput >> (sizeof(int) * sizeof(char) - rotateBy));
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+int rightRotate(int userInput,int rotateBy){
+	return userInput >> rotateBy | (userInput << (sizeof(int) *sizeof(char) - rotateBy));
+}
+
+#endif /* ROTATEBITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

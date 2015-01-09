@@ -71,12 +71,22 @@ using namespace __gnu_cxx;
 #define ISPOWEROF2_H_
 
 bool isPowerOf2(int userInput){
-	int counter = 0;
-	while(userInput > 0){
-		counter += 1;
-		userInput &= (userInput - 1);
+	if(userInput == 0){
+		return false;
 	}
+	while(userInput > 1){
+		if(userInput & 1){
+			return false;
+		}
+		userInput = userInput >> 1;
+	}
+	return true;
 }
+
+bool isPowerOf2(int userInput){
+	return userInput && !(userInput & (userInput-1));
+}
+
 
 #endif /* ISPOWEROF2_H_ */
 

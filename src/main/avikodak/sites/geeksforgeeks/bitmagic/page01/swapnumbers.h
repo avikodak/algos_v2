@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
- *  Created on			: Jan 9, 2015 :: 10:45:37 AM
+ *  File Name   		: swapnumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapnumbers.h
+ *  Created on			: Jan 9, 2015 :: 1:45:02 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,14 +67,16 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TURNOFFRIGHTMOSTBIT_H_
-#define TURNOFFRIGHTMOSTBIT_H_
+#ifndef SWAPNUMBERS_H_
+#define SWAPNUMBERS_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+int swapTwoNumbers(int &firstNumber,int &secondNumber){
+	firstNumber = firstNumber ^ secondNumber;
+	firstNumber = firstNumber ^ secondNumber;
+	secondNumber = secondNumber ^ firstNumber;
 }
 
-#endif /* TURNOFFRIGHTMOSTBIT_H_ */
+#endif /* SWAPNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
