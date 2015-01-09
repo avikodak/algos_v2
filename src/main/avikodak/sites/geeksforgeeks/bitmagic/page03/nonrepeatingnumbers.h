@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: nonrepeatingnumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\nonrepeatingnumbers.h
+ *  Created on			: Jan 9, 2015 :: 9:43:24 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
 
+using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -40,8 +42,8 @@
 #include <limits.h>
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
-#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -54,119 +56,41 @@
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/printelementsrowcolumnsorted.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/searchinalmostsortedarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/maxsumpatharrays.h"
-
-
-#include "main/avikodak/sites/geeksforgeeks/bitmagic/page02/absolutevalue.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
-void arrayTester() {
-	int userInput;
-	scanf("%d",&userInput);
-	printf("%d",absoluteValueSub(userInput));
-}
 
-void p(inrNode *ptr){
-	if(ptr == null){
-		return;
+#ifndef NONREPEATINGNUMBERS_H_
+#define NONREPEATINGNUMBERS_H_
+
+iPair *findNonRepeatingNumbers(vector<int> userInput){
+	if(userInput.size() < 2){
+		return null;
 	}
-	printf("%d -> %d\n",ptr->value,ptr->nextRight != null?ptr->nextRight->value:0);
-	p(ptr->left);
-	p(ptr->right);
-}
-
-void s(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
+	iPair *result = new iPair(0,0);
+	int xorResult = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		xorResult ^= userInput[counter];
 	}
-	printf("%d -> %d\n",ptr->value,ptr->successor == null ?0:ptr->successor->value);
-	s(ptr->left);
-	s(ptr->right);
-}
-
-void treeTester(){
-	//treeutils *utils = new treeutils();
-	//vector<int> userInput = getVectorForUserInput();
-	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
-}
-
-void avlTreeTester(){
-	//avlutils *utils = new avlutils();
-	vector<int> sequence = generateISequenceVector(10);
-	PRINT_NEW_LINE;
-
-}
-
-void twoFourTreeTester(){
-	vector<int> sequence = generateISequenceVector(30);
-	twofourtreeutils *utils = new twofourtreeutils();
-	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
-	//utils->insertIntoTwoFourTree(&root,12);
-	utils->inorderTraversal(root);
-}
-
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	utils->printSill(head);
-}
-
-void customTester(){
-	char inputSequence[4];
-	scanf("%s",inputSequence);
-}
-
-void redblackTreeTester(){
-	rbutils *utils = new rbutils();
-	vector<int> sequence = generateISequenceVector(10);
-	iRbTreeNode *root = utils->getRbTreeFromVector(sequence);
-	utils->inorderTraversal(root);
-	PRINT_NEW_LINE;
-	for(unsigned int counter = 1;counter <= 10;counter++){
-		sequence.push_back(counter);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] & 1 << xorResult){
+			result->firstValue ^= result->firstValue;
+		}else{
+			result->secondValue ^= result->secondValue;
+		}
 	}
-	ifRbTreeNode *root2 = utils->getFRbTreeFromVector(sequence);
-	utils->inorderTraversal(root2);
-	PRINT_NEW_LINE;
-	printf("%d %d",utils->height(root),utils->height(root2));
+	return result;
 }
 
-void trieTester(){
-
-}
-
-void stringTester(){
-	//char userInput[] = "BBABCBCAB";
-	//scanf("%s",userInput);
-	//reverseWordsInString(userInput);
-}
-
-void graphTester(){
-	/*vector<vector<int> > adjacencyList = getAdjacencyListForDirectedGraph();
-	printf("%d\n",checkForPath(adjacencyList,1,3));//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
-	printf("%d",checkForPath(adjacencyList,3,1));//4 6 0 1 0 2 1 2 2 0 2 3 3 3*/
-}
-
-int main() {
-	PRINT_NEW_LINE;
-	arrayTester();
-	return 0;
-}
+#endif /* NONREPEATINGNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-
