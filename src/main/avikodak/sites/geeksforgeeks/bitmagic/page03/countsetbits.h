@@ -4,7 +4,7 @@
  *  Created on			: Jan 9, 2015 :: 9:18:01 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/count-set-bits-in-an-integer/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -90,11 +90,12 @@ int countSetBitsRightmostBit(int userInput){
 }
 
 int countSetBits(int counter){
-	unsigned int counter = 0;
+	unsigned int bitcounter = 0;
 	while(counter > 0){
+		bitcounter++;
 		counter = counter & (counter - 1);
 	}
-	return counter;
+	return bitcounter;
 }
 
 #endif /* COUNTSETBITS_H_ */

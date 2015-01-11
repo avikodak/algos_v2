@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\graphcoluring.h
  *  Created on			: Jan 7, 2015 :: 8:04:09 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/backttracking-set-5-m-coloring-problem/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,19 +71,21 @@ using namespace __gnu_cxx;
 #ifndef GRAPHCOLURING_H_
 #define GRAPHCOLURING_H_
 
-bool gcIsSafe(vector<vector<int> > adjacencyMatrix,vector<int> colors,int vertex,int color){
+//Tested
+bool gcIsSafe(vector<vector<int> > adjacencyMatrix,vector<int> colors,unsigned int vertex,int color){
 	if(vertex >= adjacencyMatrix.size()){
 		return false;
 	}
 	for(unsigned int counter = 0;counter < adjacencyMatrix[vertex].size();counter++){
-		if(colors[adjacencyMatrix[vertex][counter]] == color){
+		if(colors[adjacencyMatrix[vertex][counter]] != UN_ASSIGNED_GRAPH_COLOR && colors[adjacencyMatrix[vertex][counter]] == color){
 			return false;
 		}
 	}
 	return true;
 }
 
-bool graphColoring(vector<vector<int> > adjacencyMatrix,vector<int> &colors,int vertex){
+//Tested
+bool graphColoring(vector<vector<int> > adjacencyMatrix,vector<int> &colors,unsigned int vertex){
 	if(vertex == adjacencyMatrix.size()){
 		return true;
 	}
@@ -99,12 +101,14 @@ bool graphColoring(vector<vector<int> > adjacencyMatrix,vector<int> &colors,int 
 	return false;
 }
 
+//Tested
 int minColorsForGraph(vector<vector<int> > adjacencyMatrix){
 	if(adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0){
 		return 0;
 	}
-	vector<int> colors(adjacencyMatrix.size());
+	vector<int> colors(adjacencyMatrix.size(),UN_ASSIGNED_GRAPH_COLOR);
 	graphColoring(adjacencyMatrix,colors,0);
+	printIVector(colors);
 	return *max_element(colors.begin(),colors.end()) + 1;
 }
 

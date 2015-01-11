@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\reversebits.h
  *  Created on			: Jan 9, 2015 :: 10:13:15 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,10 +70,11 @@ using namespace __gnu_cxx;
 #ifndef REVERSEBITS_H_
 #define REVERSEBITS_H_
 
+//Tested
 unsigned int reverseBits(unsigned int userInput){
-	int reversedNumber = 0;
+	unsigned int reversedNumber = 0;
 	while(userInput > 0){
-		reversedNumber = reversedNumber << 1 & (userInput & 1);
+		reversedNumber = (reversedNumber << 1) | (userInput & 1);
 		userInput = userInput >> 1;
 	}
 	return reversedNumber;

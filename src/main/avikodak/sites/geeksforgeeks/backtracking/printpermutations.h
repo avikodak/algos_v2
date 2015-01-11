@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\printpermutations.h
  *  Created on			: Dec 5, 2014 :: 12:34:57 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,12 +68,14 @@ using namespace __gnu_cxx;
 #ifndef PRINTPERMUTATIONS_H_
 #define PRINTPERMUTATIONS_H_
 
-void printPermutations(vector<int> userInput,int currentIndex){
+//Tested
+void printPermutations(vector<int> userInput,unsigned int currentIndex){
 	if(currentIndex > userInput.size()){
 		return;
 	}
 	if(currentIndex == userInput.size()){
 		printIVector(userInput);
+		PRINT_NEW_LINE;
 		return;
 	}
 	for(unsigned int counter = currentIndex;counter < userInput.size();counter++){

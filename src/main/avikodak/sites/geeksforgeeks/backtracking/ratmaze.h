@@ -69,29 +69,40 @@ using namespace __gnu_cxx;
 #define RATMAZE_H_
 
 bool isSafeMoveRateMaze(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
-	if(yValue < 0 || yValue >= maze.size() || xValue < 0 || xValue >= maze[0].size() || !maze[xValue][yValue] || !solution[xValue][yValue]){
+	if(yValue < 0 || yValue >= (int)maze.size() || xValue < 0 || xValue >= (int)maze[0].size() || !maze[xValue][yValue] || solution[xValue][yValue]){
 		return false;
 	}
 	return true;
 }
 
-bool solveRatMazeProblem(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
-	if(xValue == maze[0].size() || yValue ==  maze.size()){
+bool solveRatMazeProblemMain(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
+	if(xValue == (int)maze[0].size() && yValue ==  (int)maze.size()){
 		printIVector(solution);
 		return true;
 	}
 	int xCoordinates[] = {-1,0,0,1};
 	int yCoordinates[] = {0,-1,1,0};
 	for(unsigned int counter = 0;counter < 4;counter++){
-		if(isSafeMoveRateMaze(maze,solution,xCoordinates[counter],yCoordinates[counter])){
-			solution[xCoordinates[counter]][yCoordinates[counter]] = 1;
-			if(solveRatMazeProblem(maze,solution,xValue + xCoordinates[counter]),yValue + yCoordinates[counter]){
+		if(isSafeMoveRateMaze(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
+			solution[xCoordinates[counter]][yCoordinates[counter]] = true;
+			if(solveRatMazeProblemMain(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
 				return true;
 			}
-			solution[xCoordinates[counter]][yCoordinates[counter]] = 0;
+			solution[xCoordinates[counter]][yCoordinates[counter]] = false;
 		}
 	}
 	return false;
+}
+
+void solveRatProblem(vector<vector<bool> > maze){
+	if(maze.size() == 0 || maze[0].size() == 0){
+		return;
+	}
+	vector<vector<bool> > solution(maze.size());
+	for(unsigned int counter = 0;counter < maze.size();counter++){
+		solution[counter].assign(maze[0].size(),false);
+	}
+	solveRatMazeProblemMain(maze,solution,0,0);
 }
 
 #endif /* RATMAZE_H_ */

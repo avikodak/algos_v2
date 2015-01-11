@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\countbitstoflippedatob.h
  *  Created on			: Jan 9, 2015 :: 9:36:55 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/count-number-of-bits-to-be-flipped-to-convert-a-to-b/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef COUNTBITSTOFLIPPEDATOB_H_
 #define COUNTBITSTOFLIPPEDATOB_H_
 
+//Tested
 int countBitsToFlipAToB(int firstUserInput,int secondUserInput){
 	int xorResult = firstUserInput ^ secondUserInput;
 	int counter;
@@ -80,12 +81,21 @@ int countBitsToFlipAToB(int firstUserInput,int secondUserInput){
 	return counter;
 }
 
+//Tested
 int countBitsToFlipAToBCounter(int firstUserInput,int secondUserInput){
 	int counter = 0;
 	while(firstUserInput > 0 && secondUserInput > 0){
+		counter += (firstUserInput & 1) ^ (secondUserInput & 1);
 		firstUserInput = firstUserInput >> 1;
 		secondUserInput = secondUserInput >> 1;
-		counter += (firstUserInput & 1) ^ (secondUserInput & 1);
+	}
+	while(firstUserInput > 0){
+		counter += firstUserInput & 1;
+		firstUserInput = firstUserInput >> 1;
+	}
+	while(secondUserInput > 0){
+		counter += secondUserInput & 1;
+		secondUserInput = secondUserInput >> 1;
 	}
 	return counter;
 }

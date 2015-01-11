@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\nextpower2.h
  *  Created on			: Jan 8, 2015 :: 7:12:54 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/next-power-of-2/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,15 +70,14 @@ using namespace __gnu_cxx;
 #ifndef NEXTPOWER2_H_
 #define NEXTPOWER2_H_
 
+//Tested
 int nextPowerOf2(int number){
 	int setBitPosition = log2(number);
-	return pow(2,setBitPosition);
+	return pow(2,setBitPosition+1);
 }
 
+//Tested
 int nextPowerOf2BitCount(int number){
-	if(number && !(number & (number-1))){
-		return number;
-	}
 	int bitCounter = 0;
 	while(number > 0){
 		number = number >> 1;
@@ -87,24 +86,21 @@ int nextPowerOf2BitCount(int number){
 	return pow(2,bitCounter);
 }
 
+//Tested
 int nextPowerOf2Increment(int number){
-	if(number && !(number & (number-1))){
-		return number;
-	}
-	unsigned int nextPower = 1;
-	while(nextPower < number){
+	int nextPower = 1;
+	while(nextPower <= number){
 		nextPower = nextPower << 1;
 	}
 	return nextPower;
 }
 
+//Tested
 int nextPowerOf2BySettingBits(int number){
 	number -= 1;
-	number = number | number >> 1;
-	number = number | number >> 2;
-	number = number | number >> 4;
-	number = number | number >> 8;
-	number = number | number >> 16;
+	for(unsigned int counter = 0;counter < sizeof(int);counter++){
+		number = number | (number >> (int)pow(2,counter));
+	}
 	return number + 1;
 }
 

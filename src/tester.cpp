@@ -62,20 +62,14 @@
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
 
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/printelementsrowcolumnsorted.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/searchinalmostsortedarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/maxsumpatharrays.h"
-
-
-#include "main/avikodak/sites/geeksforgeeks/bitmagic/page02/absolutevalue.h"
+#include "main/avikodak/sites/geeksforgeeks/backtracking/ratmaze.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	int userInput;
-	scanf("%d",&userInput);
-	printf("%d",absoluteValueSub(userInput));
+	vector<vector<bool> > userInput = getBVectorForMatrixUserInput();
+	solveRatProblem(userInput);//4 4 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 1
 }
 
 void p(inrNode *ptr){
@@ -155,9 +149,9 @@ void stringTester(){
 }
 
 void graphTester(){
-	/*vector<vector<int> > adjacencyList = getAdjacencyListForDirectedGraph();
-	printf("%d\n",checkForPath(adjacencyList,1,3));//5 7 0 1 0 2 2 1 1 3 2 3 2 4 3 4
-	printf("%d",checkForPath(adjacencyList,3,1));//4 6 0 1 0 2 1 2 2 0 2 3 3 3*/
+	graphutil *utils = new graphutil();
+	vector<vector<int> > adjacencyList = utils->getAdjacencyList();//4 5 0 1 1 2 2 3 3 0 0 2
+	printf("\n%d\t",minColorsForGraph(adjacencyList));
 }
 
 int main() {

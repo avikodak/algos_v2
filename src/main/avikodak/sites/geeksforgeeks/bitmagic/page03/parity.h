@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\parity.h
  *  Created on			: Jan 8, 2015 :: 10:25:01 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-a-c-program-to-find-the-parity-of-an-unsigned-integer/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,7 +70,18 @@ using namespace __gnu_cxx;
 #ifndef PARITY_H_
 #define PARITY_H_
 
+//Tested
 int parity(int userInput){
+	bool parity = true;
+	while(userInput > 0){
+		parity = !parity;
+		userInput = userInput & (userInput-1);
+	}
+	return parity;
+}
+
+//Tested
+int parityRightMostBit(int userInput){
 	bool parity = false;
 	while(userInput > 0){
 		parity = !parity;
@@ -79,21 +90,15 @@ int parity(int userInput){
 	return parity;
 }
 
-int parityRightMostBit(int userInput){
-	bool parity = false;
-	while(userInput & -userInput){
-		parity = !parity;
-	}
-	return parity;
-}
-
+//Tested
 int parityBitCounter(int userInput){
-	if(userInput > 0){
+	if(userInput == 0){
 		return 0;
 	}
 	unsigned int setBitCounter = 0;
 	while(userInput > 0){
 		setBitCounter += userInput & 1;
+		userInput = userInput >> 1;
 	}
 	return setBitCounter % 2 != 0;
 }

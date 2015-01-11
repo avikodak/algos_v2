@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\divisibilityby3.h
  *  Created on			: Jan 9, 2015 :: 9:06:44 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/write-an-efficient-method-to-check-if-a-number-is-multiple-of-3/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,7 +70,14 @@ using namespace __gnu_cxx;
 #ifndef DIVISIBILITYBY3_H_
 #define DIVISIBILITYBY3_H_
 
+//Tested
 int divisibilityBy3(int userInput){
+	if(userInput == 0){
+		return true;
+	}
+	if(userInput < 2){
+		return false;
+	}
 	unsigned int evenSetBitCounter = 0,oddSetBitCounter = 0;
 	while(userInput > 0){
 		if(userInput & 1){

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\multiplicationby7.h
  *  Created on			: Jan 8, 2015 :: 7:13:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/efficient-way-to-multiply-with-7/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,8 +70,9 @@ using namespace __gnu_cxx;
 #ifndef MULTIPLICATIONBY7_H_
 #define MULTIPLICATIONBY7_H_
 
+//Tested
 int multiplicationBy7(int userInput){
-	return userInput << 3 - userInput;
+	return (userInput << 3) - userInput;
 }
 
 

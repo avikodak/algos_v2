@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\oddfrequency.h
  *  Created on			: Jan 9, 2015 :: 9:13:16 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef ODDFREQUENCY_H_
 #define ODDFREQUENCY_H_
 
+//Tested
 int oddFrequencyVector(vector<int> userInput){
 	if(userInput.size() == 0){
 		return INT_MIN;
