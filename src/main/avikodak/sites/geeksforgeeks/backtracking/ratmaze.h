@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\ratmaze.h
  *  Created on			: Dec 5, 2014 :: 12:35:23 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/backttracking-set-2-rat-in-a-maze/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,6 +68,7 @@ using namespace __gnu_cxx;
 #ifndef RATMAZE_H_
 #define RATMAZE_H_
 
+//Tested
 bool isSafeMoveRateMaze(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
 	if(yValue < 0 || yValue >= (int)maze.size() || xValue < 0 || xValue >= (int)maze[0].size() || !maze[xValue][yValue] || solution[xValue][yValue]){
 		return false;
@@ -75,8 +76,9 @@ bool isSafeMoveRateMaze(vector<vector<bool> > maze,vector<vector<bool> > solutio
 	return true;
 }
 
+//Tested
 bool solveRatMazeProblemMain(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
-	if(xValue == (int)maze[0].size() && yValue ==  (int)maze.size()){
+	if(xValue == (int)maze[0].size()-1 && yValue ==  (int)maze.size()-1){
 		printIVector(solution);
 		return true;
 	}
@@ -84,16 +86,17 @@ bool solveRatMazeProblemMain(vector<vector<bool> > maze,vector<vector<bool> > so
 	int yCoordinates[] = {0,-1,1,0};
 	for(unsigned int counter = 0;counter < 4;counter++){
 		if(isSafeMoveRateMaze(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
-			solution[xCoordinates[counter]][yCoordinates[counter]] = true;
+			solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = true;
 			if(solveRatMazeProblemMain(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
 				return true;
 			}
-			solution[xCoordinates[counter]][yCoordinates[counter]] = false;
+			solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = false;
 		}
 	}
 	return false;
 }
 
+//Tested
 void solveRatProblem(vector<vector<bool> > maze){
 	if(maze.size() == 0 || maze[0].size() == 0){
 		return;
@@ -102,6 +105,7 @@ void solveRatProblem(vector<vector<bool> > maze){
 	for(unsigned int counter = 0;counter < maze.size();counter++){
 		solution[counter].assign(maze[0].size(),false);
 	}
+	solution[0][0] = true;
 	solveRatMazeProblemMain(maze,solution,0,0);
 }
 

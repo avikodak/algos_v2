@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\pathbetweenvertices.h
  *  Created on			: Dec 15, 2014 :: 6:25:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-if-there-is-a-path-between-two-vertices-in-a-given-graph/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef PATHBETWEENVERTICES_H_
 #define PATHBETWEENVERTICES_H_
 
+//Tested
 bool pathBetweenTwoVertices(vector<vector<int> > adjacencyList,int firstVertex,int secondVertex){
 	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
 	if(adjacencyList.size() == 0){

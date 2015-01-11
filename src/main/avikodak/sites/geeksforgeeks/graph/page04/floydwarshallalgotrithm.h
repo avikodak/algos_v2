@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\floydwarshallalgotrithm.h
  *  Created on			: Dec 26, 2014 :: 9:14:13 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-16-floyd-warshall-algorithm/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -63,6 +63,8 @@ using namespace __gnu_cxx;
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
 
+#define GRAPH_EDGE_INFINITY 99999
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
@@ -73,22 +75,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int shortestDistanceFloydWarshall(vector<vector<wEdge *> > adjacencyList,int sourceVertex,int destinationVertex){
-	if(adjacencyList.size() == 0){
+//Tested
+int shortestDistanceFloydWarshall(vector<wEdge *> edgeList,unsigned int noOfVertices,int sourceVertex,int destinationVertex){
+	if(edgeList.size() == 0){
 		return INT_MIN;
 	}
-	vector<vector<int> > adjacencyMatrix(adjacencyList.size());
+	vector<vector<int> > adjacencyMatrix(noOfVertices);
 	for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-		adjacencyMatrix.reserve(adjacencyList.size(),INT_MIN);
+		adjacencyMatrix[counter].assign(noOfVertices,GRAPH_EDGE_INFINITY);
 	}
-	for(unsigned int outerCounter = 0;outerCounter < adjacencyList.size();outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < adjacencyList[outerCounter].size();innerCounter++){
-			adjacencyMatrix[outerCounter][innerCounter] = adjacencyList[outerCounter][adjacencyList[outerCounter][innerCounter]];
-		}
+	wEdge *temp;
+	for(unsigned int outerCounter = 0;outerCounter < edgeList.size();outerCounter++){
+			temp = edgeList[outerCounter];
+			adjacencyMatrix[temp->sourceVertex][temp->destinationVertex] = temp->weight;
 	}
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-		for(unsigned int rowCounter = 0;rowCounter < adjacencyList.size();rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < adjacencyList[0].size();columnCounter++){
+	for(unsigned int counter = 0;counter < noOfVertices;counter++){
+		if(adjacencyMatrix[counter][counter] == GRAPH_EDGE_INFINITY)
+			adjacencyMatrix[counter][counter] = 0;
+	}
+	for(unsigned int counter = 0;counter < noOfVertices;counter++){
+		for(unsigned int rowCounter = 0;rowCounter < noOfVertices;rowCounter++){
+			for(unsigned int columnCounter = 0;columnCounter < noOfVertices;columnCounter++){
 				adjacencyMatrix[rowCounter][columnCounter] = min(adjacencyMatrix[rowCounter][columnCounter],adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter]);
 			}
 		}

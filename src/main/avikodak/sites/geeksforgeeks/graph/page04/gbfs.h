@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\gbfs.h
  *  Created on			: Dec 15, 2014 :: 6:08:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/breadth-first-traversal-for-a-graph/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef GBFS_H_
 #define GBFS_H_
 
+//Tested
 vector<int> gGetBfsLevel(vector<vector<int> > adjacencyList,int sourceVertex){
 	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
 	if(adjacencyList.size() == 0){
@@ -82,7 +83,7 @@ vector<int> gGetBfsLevel(vector<vector<int> > adjacencyList,int sourceVertex){
 	while(!auxSpace.empty()){
 		currentIndex = auxSpace.front();
 		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
+		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
 			if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN){
 				bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
 				auxSpace.push(adjacencyList[currentIndex][counter]);

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\detectcycledirected.h
  *  Created on			: Dec 15, 2014 :: 6:22:37 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/detect-cycle-in-a-graph/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef DETECTCYCLEDIRECTED_H_
 #define DETECTCYCLEDIRECTED_H_
 
+//Tested
 bool isGraphAcyclic(vector<vector<int> > adjacencyList,unsigned int currentIndex = 0){
 	if(adjacencyList.size() == 0){
 		return true;
@@ -77,7 +78,7 @@ bool isGraphAcyclic(vector<vector<int> > adjacencyList,unsigned int currentIndex
 	static vector<int> arrivalTimes(adjacencyList.size(),INT_MIN);
 	static int timeCounter = -1;
 	arrivalTimes[currentIndex] = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
+	for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
 		if(arrivalTimes[adjacencyList[currentIndex][counter]] == INT_MIN){
 			if(!isGraphAcyclic(adjacencyList,adjacencyList[currentIndex][counter])){
 				return false;

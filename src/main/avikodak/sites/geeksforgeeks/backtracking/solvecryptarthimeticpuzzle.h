@@ -88,12 +88,12 @@ bool isSafeCryptarthimeticPuzzle(vector<int> numbersAssigned,unsigned int index,
 	return false;
 }
 
-bool checkSolution(cryptArithmeticDS puzzle,vecor<int> numbersAssigned){
-	int firstCounter = 0,secondCounter = 0;
+bool checkSolution(cryptArithmeticDS puzzle,vector<int> numbersAssigned){
+	unsigned int firstCounter = 0,secondCounter = 0;
 	int carry = 0,sum;
 	while(firstCounter < puzzle.firstInput.size() && secondCounter < puzzle.secondInput.size()){
 		sum = puzzle.firstInput[firstCounter] + puzzle.secondInput[secondCounter] + carry;
-		if(sum%10 != numbersAssigned[puzzle[firstCounter]]){
+		if(sum%10 != numbersAssigned[puzzle.result[firstCounter]]){
 			return false;
 		}
 		carry = sum/10;
@@ -102,7 +102,7 @@ bool checkSolution(cryptArithmeticDS puzzle,vecor<int> numbersAssigned){
 	}
 	while(firstCounter < puzzle.firstInput.size()){
 		sum = puzzle.firstInput[firstCounter] + carry;
-		if(sum%10 != numbersAssigned[puzzle[firstCounter]]){
+		if(sum%10 != numbersAssigned[puzzle.result[firstCounter]]){
 			return false;
 		}
 		carry = sum/10;
@@ -110,7 +110,7 @@ bool checkSolution(cryptArithmeticDS puzzle,vecor<int> numbersAssigned){
 	}
 	while(secondCounter < puzzle.secondInput.size()){
 		sum = puzzle.secondInput[secondCounter] + carry;
-		if(sum%10 != numbersAssigned[puzzle[secondCounter]]){
+		if(sum%10 != numbersAssigned[puzzle.result[secondCounter]]){
 			return false;
 		}
 		carry = sum/10;

@@ -62,14 +62,20 @@
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
 
-#include "main/avikodak/sites/geeksforgeeks/backtracking/ratmaze.h"
+#include "main/avikodak/sites/geeksforgeeks/graph/page04/gdfs.h"
+#include "main/avikodak/sites/geeksforgeeks/graph/page04/gbfs.h"
+#include "main/avikodak/sites/geeksforgeeks/graph/page04/pathbetweenvertices.h"
+#include "main/avikodak/sites/geeksforgeeks/graph/page04/detectcycledirected.h"
+#include "main/avikodak/sites/geeksforgeeks/graph/page04/floydwarshallalgotrithm.h"
 
+#include "main/avikodak/sites/geeksforgeeks/graph/page03/transitiveclosureofgraph.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<vector<bool> > userInput = getBVectorForMatrixUserInput();
-	solveRatProblem(userInput);//4 4 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 1
+	vector<int> userInput = getVectorForUserInput();
+	int sum;
+	scanf("%d",&sum);
 }
 
 void p(inrNode *ptr){
@@ -150,13 +156,15 @@ void stringTester(){
 
 void graphTester(){
 	graphutil *utils = new graphutil();
-	vector<vector<int> > adjacencyList = utils->getAdjacencyList();//4 5 0 1 1 2 2 3 3 0 0 2
-	printf("\n%d\t",minColorsForGraph(adjacencyList));
+	vector<wEdge *> edgeList = utils->getWEdgeList(false);
+	int noOfVertices,sourceVertex,destinationVertex;
+	scanf("%d %d %d",&noOfVertices,&sourceVertex,&destinationVertex);
+	printf("%d",shortestDistanceFloydWarshall(edgeList,noOfVertices,sourceVertex,destinationVertex));//4 0 1 5 1 2 3 2 3 1 0 3 10 4 0 3
 }
 
 int main() {
 	PRINT_NEW_LINE;
-	arrayTester();
+	graphTester();
 	return 0;
 }
 
