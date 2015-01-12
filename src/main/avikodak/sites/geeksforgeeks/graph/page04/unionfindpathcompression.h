@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cycleunionfind.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\cycleunionfind.h
- *  Created on			: Dec 15, 2014 :: 9:09:06 PM
+ *  File Name   		: unionfindpathcompression.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\unionfindpathcompression.h
+ *  Created on			: Jan 12, 2015 :: 10:13:57 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,34 +67,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CYCLEUNIONFIND_H_
-#define CYCLEUNIONFIND_H_
+#ifndef UNIONFINDPATHCOMPRESSION_H_
+#define UNIONFINDPATHCOMPRESSION_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+void ufpcUnion(vector<ncUnionfind *> unionFindDS,ncUnionfind *firstComponent,ncUnionfind *secondComponent){
+	if(firstComponent->nodeCounter < secondComponent->nodeCounter){
+		int vertexCounter = firstComponent->parentVertex;
+		while(unionFindDS[vertexCounter]->parentVertex != vertexCounter){
+			unionFindDS[vertexCounter]->parentVertex = secondComponent->parentVertex;
+			vertexCounter = unionFindDS[vertexCounter]->parentVertex;
+		}
+		firstComponent->parentVertex = secondComponent->parentVertex;
+		secondComponent->nodeCounter += firstComponent->nodeCounter;
+	}else{
+		int vertexCounter = secondComponent->parentVertex;
+		while(unionFindDS[vertexCounter]->parentVertex != vertexCounter){
+			unionFindDS[vertexCounter]->parentVertex = firstComponent->parentVertex;
+			vertexCounter = unionFindDS[vertexCounter]->parentVertex;
+		}
+		secondComponent->parentVertex = firstComponent->parentVertex;
+		firstComponent->nodeCounter += secondComponent->nodeCounter;
+	}
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+ncUnionfind * ufpcFind(vector<ncUnionfind *> unionFindDS,int vertexIndex){
+	if(unionFindDS.size() == 0 || vertexIndex >= unionFindDS.size()){
+		return null;
+	}
+	while(unionFindDS[vertexIndex]->parentVertex != vertexIndex){
+		vertexIndex = unionFindDS[vertexIndex]->parentVertex;
+	}
+	return vertexIndex;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+void unionFindPathCompression(vector<edge *> edgeList,int vertexCount){
+	if(edgeList.size() == 0){
+		return;
+	}
+	vector<ncUnionfind *> unionFindDS;
+	for(unsigned int counter = 0;counter < vertexCount;counter++){
+		unionFindDS.push_back(new ncUnionfind(counter));
+	}
+	ncUnionfind *firstComponent,*secondComponent;
+	for(unsigned int counter = 0;counter < edgeList.size();counter++){
+		firstComponent = ufpcFind(edgeList[counter]->sourceVertex);
+		secondComponent = ufpcFind(edgeList[counter]->destinationVertex);
+		ufpcUnion(unionFindDS,firstComponent,secondComponent);
+	}
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-#endif /* CYCLEUNIONFIND_H_ */
+#endif /* UNIONFINDPATHCOMPRESSION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

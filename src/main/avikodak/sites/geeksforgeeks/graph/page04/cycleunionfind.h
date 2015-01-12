@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: hamiltoniancycle.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\hamiltoniancycle.h
- *  Created on			: Jan 12, 2015 :: 9:59:32 AM
+ *  File Name   		: cycleunionfind.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\cycleunionfind.h
+ *  Created on			: Dec 15, 2014 :: 9:09:06 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,54 +67,50 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef HAMILTONIANCYCLE_H_
-#define HAMILTONIANCYCLE_H_
+#ifndef CYCLEUNIONFIND_H_
+#define CYCLEUNIONFIND_H_
 
-bool hcIsSafe(vector<vector<bool> > adjacencyMatrix,vector<int> &cycle,int vertex,int currentIndex){
-	if(currentIndex >= cycle.size() || adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0){
-		return false;
+void ncUnion(ncUnionfind *firstComponent,ncUnionfind *secondComponent){
+	if(firstComponent->nodeCounter >= secondComponent->nodeCounter){
+		firstComponent->nodeCounter += secondComponent->nodeCounter;
+		secondComponent->parentVertex = firstComponent->parentVertex;
+	}else{
+		secondComponent->nodeCounter += firstComponent->nodeCounter;
+		firstComponent->parentVertex = secondComponent->parentVertex;
 	}
-	if(!adjacencyMatrix[cycle[currentIndex-1]][vertex]){
-		return false;
+}
+
+ncUnionfind *ncFind(vector<ncUnionfind *> unionFindDS,int vertex){
+	if(unionFindDS.size() >= vertex){
+		return null;
 	}
-	for(unsigned int counter = 0;counter < currentIndex;counter++){
-		if(cycle[counter] == vertex){
+	while(unionFindDS[vertex]->parentVertex != vertex){
+		vertex = unionFindDS[vertex]->parentVertex;
+	}
+	return unionFindDS[vertex];
+}
+
+bool isGraphAcyclic(vector<edge *> edgeList,int noOfVertices){
+	if(edgeList.size() == 0){
+		return true;
+	}
+	vector<ncUnionfind *>  unionFindDS;
+	for(unsigned int counter = 0;counter < noOfVertices;counter++){
+		unionFindDS.push_back(new ncUnionfind(counter));
+	}
+	ncUnionfind *firstComponent,*secondComponent;
+	for(unsigned int counter = 0;counter < edgeList.size();counter++){
+		firstComponent = ncFind(unionFindDS,edgeList[counter]->sourceVertex);
+		secondComponent = ncFind(unionFindDS,edgeList[counter]->destinationVertex);
+		if(firstComponent->parentVertex == secondComponent->parentVertex){
 			return false;
 		}
+		ncUnion(firstComponent,secondComponent);
 	}
 	return true;
 }
 
-bool hamiltonianCycleMain(vector<vector<bool> > adjacencyMatrix,vector<int> &cycle,int currentIndex){
-	if(adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0 || currentIndex > cycle.size()){
-		return false;
-	}
-	if(currentIndex == cycle.size()){
-		return adjacencyMatrix[cycle[currentIndex-1]][0];
-	}
-	for(unsigned int vertexCounter = 1;vertexCounter < cycle.size();vertexCounter++){
-		if(hcIsSafe(adjacencyMatrix,cycle,vertexCounter,currentIndex)){
-			cycle[currentIndex] = vertexCounter;
-			if(hamiltonianCycleMain(adjacencyMatrix,cycle,currentIndex+1)){
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-void printHamiltonianCycle(vector<vector<bool> > adjacencyMatrix){
-	if(adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0){
-		return;
-	}
-	vector<int> cycle(adjacencyMatrix.size(),INT_MIN);
-	cycle[0] = 0;
-	if(hamiltonianCycleMain(adjacencyMatrix,cycle,1)){
-		printIVector(cycle);
-	}
-}
-
-#endif /* HAMILTONIANCYCLE_H_ */
+#endif /* CYCLEUNIONFIND_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
