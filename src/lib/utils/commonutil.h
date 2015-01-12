@@ -59,7 +59,7 @@ using namespace __gnu_cxx;
 #define COMMONUTIL_H_
 
 //Tested
-void printIVector(vector<int> userInput,bool withHeadersAndFooters = true){
+void printIVector(vector<int> userInput,bool withHeadersAndFooters = false){
 	if(withHeadersAndFooters){
 		printf("\n====================================================================================================================================\n");
 		printf("PRINTING VECTOR START\n");
@@ -75,12 +75,32 @@ void printIVector(vector<int> userInput,bool withHeadersAndFooters = true){
 	}
 }
 
+void printIVector(vector<bool> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d\t",userInput[counter]==true?1:0);
+	}
+}
+
+//Tested
+void printGVector(vector<dfsTimes *> times){
+	for(unsigned int counter = 0;counter < times.size();counter++){
+		printf("%d->%d %d\n",counter,times[counter]->arrivalTimes,times[counter]->departureTimes);
+	}
+}
+
+void printIVector(vector<char> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%c\t",userInput[counter]);
+	}
+}
+
+//Tested
 void printIVector(vector<vector<int> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return;
 	}
 	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < userInput[rowCounter].size();columnCounter++){
 			printf("%d\t",userInput[rowCounter][columnCounter]);
 		}
 		PRINT_NEW_LINE;
@@ -97,13 +117,34 @@ void printIVector(vector<iInterval *> userInput){
 	}
 }
 
+//Tested
+void printIVector(vector<iPair *> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("(%d,%d)\t",userInput[counter]->firstValue,userInput[counter]->secondValue);
+	}
+}
+
+//Tested
+void printIVector(vector<iValueIndex *> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("(%d,%d,%d)\t",userInput[counter]->value,userInput[counter]->firstValueIndex,userInput[counter]->secondvalueIndex);
+	}
+}
+
+//Tested
 void printIVector(vector<vector<bool> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return;
 	}
 	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
 		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			printf("%d\t",userInput[rowCounter][columnCounter]);
+			printf("%d\t",userInput[rowCounter][columnCounter]==true?1:0);
 		}
 		PRINT_NEW_LINE;
 	}

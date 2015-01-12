@@ -61,12 +61,12 @@ using namespace __gnu_cxx;
 class graphutil {
 private:
 public:
+	//Tested
 	vector<vector<int> > getAdjacencyList(bool forUndirectedGraph = true){
-		vector<vector<int> > adjacencyList;
 		int noOfVertices,noOfEdges;
 		int sourceVertex,destinationVertex;
 		scanf("%d",&noOfVertices);
-		adjacencyList.reserve(noOfVertices);
+		vector<vector<int> > adjacencyList(noOfVertices);
 		scanf("%d",&noOfEdges);
 		while(noOfEdges--){
 			scanf("%d %d",&sourceVertex,&destinationVertex);
@@ -79,13 +79,12 @@ public:
 	}
 
 	vector<vector<bool> > getAdjacencyMatrix(bool forUndirectedGraph = true){
-		vector<vector<bool> > adjacencyMatrix;
 		int noOfVertices,noOfEdges;
 		int sourceVertex,destinationVertex;
 		scanf("%d",&noOfVertices);
-		adjacencyMatrix.reserve(noOfVertices);
+		vector<vector<bool> > adjacencyMatrix(noOfVertices);
 		for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-			adjacencyMatrix[counter].reserve(noOfVertices);
+			adjacencyMatrix[counter].assign(noOfVertices,false);
 		}
 		for(unsigned int rowCounter = 0;rowCounter < noOfVertices;rowCounter++){
 			for(unsigned int columnCounter = 0;columnCounter < noOfVertices;columnCounter++){
@@ -111,6 +110,18 @@ public:
 		while(noOfEdges--){
 			scanf("%d %d",&sourceVertex,&destinationVertex);
 			edgeDS.push_back(new edge(sourceVertex,destinationVertex,forUndirectedGraph));
+		}
+		return edgeDS;
+	}
+
+	vector<wEdge *> getWEdgeList(bool forUndirectedGraph){
+		vector<wEdge *> edgeDS;
+		int noOfEdges;
+		int sourceVertex,destinationVertex,weight;
+		scanf("%d",&noOfEdges);
+		while(noOfEdges--){
+			scanf("%d %d %d",&sourceVertex,&destinationVertex,&weight);
+			edgeDS.push_back(new wEdge(sourceVertex,destinationVertex,weight,forUndirectedGraph));
 		}
 		return edgeDS;
 	}

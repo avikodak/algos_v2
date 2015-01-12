@@ -92,6 +92,44 @@ vector<int> getVectorForUserInput(){
 }
 
 //Tested
+vector<iPair *> getPairVectorForUserInput(){
+	vector<iPair *> userInput;
+	unsigned int sizeOfInput;
+	int firstInput,secondInput;
+	scanf("%d",&sizeOfInput);
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%d %d",&firstInput,&secondInput);
+		userInput.push_back(new iPair(firstInput,secondInput));
+	}
+	return userInput;
+}
+
+//Tested
+vector<bool> getBVectorForUserInput(){
+	vector<bool> userInput;
+	unsigned int sizeOfInput;
+	int temp;
+	scanf("%d",&sizeOfInput);
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%d",&temp);
+		userInput.push_back(temp);
+	}
+	return userInput;
+}
+
+vector<char> getCVectorForUserInput(){
+	vector<char> userInput;
+	unsigned int sizeOfInput;
+	char temp;
+	scanf("%d",&sizeOfInput);
+	for(unsigned int counter = 0;counter < sizeOfInput;counter++){
+		scanf("%c",&temp);
+		userInput.push_back(temp);
+	}
+	return userInput;
+}
+
+//Tested
 vector<iInterval *> getVectorForIntervalsUserInput(){
 	vector<iInterval *> userInput;
 	userInput.clear();
@@ -117,6 +155,24 @@ vector<vector<int> > getVectorForMatrixUserInput(){
 	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
 		for(unsigned int columnCounter = 0;columnCounter < columns;columnCounter++){
 			scanf("%d",&userInput[rowCounter][columnCounter]);
+		}
+	}
+	return userInput;
+}
+
+//Tested
+vector<vector<bool> > getBVectorForMatrixUserInput(){
+	vector<vector<bool> > userInput;
+	int rows,columns,temp;
+	scanf("%d %d",&rows,&columns);
+	userInput.resize(rows);
+	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
+		userInput[rowCounter].resize(columns);
+	}
+	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < columns;columnCounter++){
+			scanf("%d",&temp);
+			userInput[rowCounter][columnCounter] = temp;
 		}
 	}
 	return userInput;
@@ -212,6 +268,13 @@ unsigned int uMinValueVector(vector<unsigned int> userInput){
 		}
 	}
 	return minValue;
+}
+
+int sumVector(vector<int> userInput,int currentIndex = 0){
+	if(currentIndex >= userInput.size()){
+		return 0;
+	}
+	return userInput[currentIndex] + sumVector(userInput,currentIndex+1);
 }
 
 #endif /* ARRAYUTIL_H_ */

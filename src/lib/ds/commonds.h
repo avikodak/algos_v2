@@ -59,7 +59,8 @@ struct iPair{
 	int secondValue;
 
 	iPair(){
-
+		this->firstValue = INT_MAX;
+		this->secondValue = INT_MAX;
 	}
 
 	iPair(int firstValue,int secondValue){
