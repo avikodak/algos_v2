@@ -71,6 +71,64 @@ using namespace __gnu_cxx;
 #define LONGESTPALINDROMICSUBSTRING_H_
 
 
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int longestPalindromicSubSequenceON2(char *userInput,int length){
+	if(userInput == null || length == 0){
+		return 0;
+	}
+	vector<vector<bool> > auxSpace(length);
+	int maxLength = 1;
+	for(unsigned int counter = 0;counter < length;counter++){
+		auxSpace[counter].assign(length,false);
+		auxSpace[counter][counter] = true;
+	}
+	for(unsigned int counter = 0;counter < length - 1;counter++){
+		if(userInput[counter] == userInput[counter+1]){
+			auxSpace[counter][counter+1] = true;
+			maxLength = 2;
+		}
+	}
+	for(int rowCounter = length-1;rowCounter >= 0;rowCounter--){
+		for(int columnCounter = rowCounter+1;columnCounter < length;length++){
+			if(userInput[rowCounter] == userInput[columnCounter] && auxSpace[rowCounter+1][columnCounter-1]){
+				maxLength = max(maxLength,columnCounter - rowCounter + 1);
+			}
+		}
+	}
+	return maxLength;
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int isSubStringPalindrome(char *userInput,int start,int length){
+	int startCrawler = start,endCrawler = start + length - 1;
+	while(startCrawler < endCrawler){
+		if(userInput[startCrawler] != userInput[endCrawler]){
+			return false;
+		}
+		startCrawler++;
+		endCrawler--;
+	}
+	return true;
+}
+
+int longestPalindromicSubstring(char *userInput,unsigned int size){
+	if(userInput == null){
+		return 0;
+	}
+	int maxLength = INT_MIN;
+	for(unsigned int outerCrawler = 0;outerCrawler < size;outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
+			if(isSubStringPalindrome(userInput,outerCrawler,innerCrawler)){
+				maxLength = max(maxLength,(int)(innerCrawler - outerCrawler + 1));
+			}
+		}
+	}
+	return maxLength;
+}
 
 #endif /* LONGESTPALINDROMICSUBSTRING_H_ */
 

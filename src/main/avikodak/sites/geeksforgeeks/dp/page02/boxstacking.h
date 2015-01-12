@@ -70,6 +70,61 @@ using namespace __gnu_cxx;
 #ifndef BOXSTACKING_H_
 #define BOXSTACKING_H_
 
+int bsDivideStepQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return INT_MIN;
+	}
+	int pivotIndex = endIndex;
+	int key = userInput[pivotIndex]->length * userInput[pivotIndex]->width;
+	while(startIndex < endIndex){
+		while(userInput[startIndex]->length * userInput[startIndex]->width < key){
+			startIndex++;
+		}
+		while(startIndex < endIndex && userInput[endIndex]->length *userInput[endIndex]->width >= key){
+			endIndex--;
+		}
+		if(startIndex < endIndex){
+			swap(userInput[startIndex],userInput[endIndex]);
+		}
+	}
+	swap(userInput[endIndex],userInput[pivotIndex]);
+	return endIndex;
+}
+
+void bsQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int dividingIndex = bsDivideStepQuickSort(userInput,startIndex,endIndex);
+	bsQuickSort(userInput,startIndex,dividingIndex-1);
+	bsQuickSort(userInput,dividingIndex+1,endIndex);
+}
+
+int getMaxHeightBoxStacking(vector<dimensions *> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	vector<dimensions *> auxSpace;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace.push_back(userInput[counter]);
+		auxSpace.push_back(new dimensions(userInput[counter]->height,userInput[counter]->length,userInput[counter]->width));
+		auxSpace.push_back(new dimensions(userInput[counter]->width,userInput[counter]->length,userInput[counter]->height));
+	}
+	bsQuickSort(auxSpace,0,auxSpace.size()-1);
+	vector<int> maxHeights(auxSpace.size());
+	maxHeights.push_back(1);
+	int height;
+	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
+		height = INT_MIN;
+		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
+			if(userInput[innerCrawler]->length >= userInput[outerCrawler]->length && userInput[innerCrawler]->width >= userInput[outerCrawler]->width){
+				height = max(height,maxHeights[innerCrawler] + userInput[outerCrawler]->height);
+			}
+		}
+		maxHeights.push_back(height);
+	}
+	return maxHeights[maxHeights.size()-1];
+}
 
 #endif /* BOXSTACKING_H_ */
 

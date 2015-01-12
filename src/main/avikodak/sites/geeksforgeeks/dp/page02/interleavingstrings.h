@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlengthchainofpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\maxlengthchainofpairs.h
- *  Created on			: Dec 15, 2014 :: 11:43:32 AM
+ *  File Name   		: interleavingstrings.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
+ *  Created on			: Jan 12, 2015 :: 4:09:13 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,71 +67,32 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXLENGTHCHAINOFPAIRS_H_
-#define MAXLENGTHCHAINOFPAIRS_H_
+#ifndef INTERLEAVINGSTRINGS_H_
+#define INTERLEAVINGSTRINGS_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int mlcDivideStepQuickSort(vector<iPair *> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[pivotIndex]->second;
-	while(startIndex < endIndex){
-		while(userInput[startIndex]->firstValue < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex]->firstValue >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[endIndex],userInput[startIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
-}
 
-void mlcQuickSort(vector<iPair *> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = mlcDivideStepQuickSort(userInput,startIndex,endIndex);
-	mlcQuickSort(userInput,startIndex,dividingIndex-1);
-	mlcQuickSort(userInput,dividingIndex+1,endIndex);
-}
-
-int maxLengthChainOfPairs(vector<iPair *> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	mlcQuickSort(userInput,0,userInput.size());
-	vector<int> lengths;
-	lengths.push_back(1);
-	int maxLength = 1;
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		maxLength = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter]->firstValue > userInput[innerCounter]->secondValue){
-				maxLength = max(maxLength,1 + lengths[innerCounter]);
-			}
-		}
-		lengths.push_back(maxLength);
-	}
-	return lengths[lengths.size()-1];
-}
 
 /****************************************************************************************************************************************************/
 /* 																O(2^N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxLengthChainPairsGeneratingSubsetsMain(vector<iPair *> userInput,vector<iPair *> generatedSets,unsigned int currentIndex){
-
+bool isStringInterleaved(char *firstString,char *secondString,char *thirdString){
+	if(firstString == null && secondString == null && thirdString == null){
+		return true;
+	}
+	if(thirdString == null){
+		return false;
+	}
+	bool truthValue = false;
+	if(firstString != null){
+		truthValue = thirdString[0] == firstString[0] && isStringInterleaved(firstString+1,secondString,thirdString+1);
+	}
+	return truthValue || (thirdString[0] == secondString[0] && isStringInterleaved(firstString,secondString+1,thirdString));
 }
 
-
-#endif /* MAXLENGTHCHAINOFPAIRS_H_ */
+#endif /* INTERLEAVINGSTRINGS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

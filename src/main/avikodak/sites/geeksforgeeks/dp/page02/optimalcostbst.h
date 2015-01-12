@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlengthchainofpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\maxlengthchainofpairs.h
- *  Created on			: Dec 15, 2014 :: 11:43:32 AM
+ *  File Name   		: optimalcostbst.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\optimalcostbst.h
+ *  Created on			: Jan 12, 2015 :: 4:46:32 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,71 +67,27 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXLENGTHCHAINOFPAIRS_H_
-#define MAXLENGTHCHAINOFPAIRS_H_
+#ifndef OPTIMALCOSTBST_H_
+#define OPTIMALCOSTBST_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int mlcDivideStepQuickSort(vector<iPair *> &userInput,int startIndex,int endIndex){
+int optimalCostBSTMain(vector<int> frequencies,int startIndex,int endIndex){
 	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[pivotIndex]->second;
-	while(startIndex < endIndex){
-		while(userInput[startIndex]->firstValue < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex]->firstValue >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[endIndex],userInput[startIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
-}
-
-void mlcQuickSort(vector<iPair *> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = mlcDivideStepQuickSort(userInput,startIndex,endIndex);
-	mlcQuickSort(userInput,startIndex,dividingIndex-1);
-	mlcQuickSort(userInput,dividingIndex+1,endIndex);
-}
-
-int maxLengthChainOfPairs(vector<iPair *> userInput){
-	if(userInput.size() == 0){
 		return 0;
 	}
-	mlcQuickSort(userInput,0,userInput.size());
-	vector<int> lengths;
-	lengths.push_back(1);
-	int maxLength = 1;
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		maxLength = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter]->firstValue > userInput[innerCounter]->secondValue){
-				maxLength = max(maxLength,1 + lengths[innerCounter]);
-			}
-		}
-		lengths.push_back(maxLength);
+	if(startIndex == endIndex){
+		return frequencies[startIndex];
 	}
-	return lengths[lengths.size()-1];
+	int sumFrequencies = 0,minCost = INT_MAX;
+	for(int counter = startIndex;counter <= endIndex;counter++){
+		sumFrequencies += frequencies[counter];
+	}
+	for(int counter = startIndex;counter < endIndex;counter++){
+		minCost = min(minCost,optimalCostBSTMain(frequencies,startIndex,counter) + optimalCostBSTMain(frequencies,counter+1,endIndex));
+	}
+	return sumFrequencies + minCost;
 }
 
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-int maxLengthChainPairsGeneratingSubsetsMain(vector<iPair *> userInput,vector<iPair *> generatedSets,unsigned int currentIndex){
-
-}
-
-
-#endif /* MAXLENGTHCHAINOFPAIRS_H_ */
+#endif /* OPTIMALCOSTBST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

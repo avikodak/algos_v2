@@ -67,25 +67,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DICETHROW_H_
-#define DICETHROW_H_
+#ifndef SINGLEDICETHROW_H_
+#define SINGLEDICETHROW_H_
 
-int minThrowsForSum(int noOfFaces,int sum){
+int countNoOfWaysForSum(int noOfFaces,int sum){
 	if(sum < 0){
-		return INT_MAX;
-	}
-	if(sum == 0){
 		return 0;
 	}
-	int minThrows = INT_MAX;
-	for(unsigned int counter = 1;counter <= noOfFaces;counter++){
-		minThrows = min(minThrows,minThrowsForSum(noOfFaces,sum-counter));
+	if(sum == 0){
+		return 1;
 	}
-	return minThrows;
+	int counter = 0;
+	for(unsigned int counter = 1;counter <= noOfFaces;counter++){
+		counter = countNoOfWaysForSum(noOfFaces,sum - counter);
+	}
+	return counter;
 }
 
-
-#endif /* DICETHROW_H_ */
+#endif /* SINGLEDICETHROW_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
