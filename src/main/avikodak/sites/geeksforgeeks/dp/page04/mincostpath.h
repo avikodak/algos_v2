@@ -4,7 +4,7 @@
  *  Created on			: Dec 5, 2014 :: 12:41:46 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,17 +73,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int minCostPath(vector<vector<int> > costs,vector<vector<int> > minCostsAuxspace,int currentRowIndex,int currentColumnIndex){
-
+int minCostPath(vector<vector<int> > costs){
+	if(costs.size() == 0 || costs[0].size() == 0){
+		return 0;
+	}
+	vector<vector<int> > auxSpace(costs.size());
 }
 
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int minCostPath(vector<vector<int> > costs,int currentRowIndex,int currentColumnIndex){
+//Tested
+int minCostPath(vector<vector<int> > costs,unsigned int currentRowIndex,unsigned int currentColumnIndex){
 	if(currentRowIndex >= costs.size() || currentColumnIndex >= costs[0].size()){
 		return INT_MAX;
+	}
+	if(currentRowIndex == costs.size()-1 && currentColumnIndex == costs[0].size()-1){
+		return costs[currentRowIndex][currentColumnIndex];
 	}
 	int minCost = INT_MAX;
 	minCost = min(min(minCostPath(costs,currentRowIndex+1,currentColumnIndex),minCostPath(costs,currentRowIndex,currentColumnIndex+1)),minCostPath(costs,currentRowIndex+1,currentColumnIndex+1));

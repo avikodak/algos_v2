@@ -71,6 +71,34 @@ using namespace __gnu_cxx;
 #define EDITDISTANCE_H_
 
 //Tested
+int minEditsMemoization(char *firstUserInput,char *secondUserInput,int firstLength,int secondLength){
+	if(firstLength == 0 && secondLength == 0){
+		return 0;
+	}
+	if(firstLength == 0 || secondLength == 0){
+		return firstLength == 0?secondLength:firstLength;
+	}
+	vector<vector<int> > auxSpace(firstLength+1);
+	for(int rowCounter = 0;rowCounter <= firstLength;rowCounter++){
+		auxSpace[rowCounter].assign(secondLength+1,0);
+		auxSpace[rowCounter][0] = rowCounter;
+	}
+	for(int columnCounter = 0;columnCounter <= secondLength;columnCounter++){
+		auxSpace[0][columnCounter] = columnCounter;
+	}
+	for(int rowCounter = 1;rowCounter <= firstLength;rowCounter++){
+		for(int columnCounter = 1;columnCounter <= secondLength;columnCounter++){
+			if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]){
+				auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter-1];
+			}else{
+				auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter][columnCounter-1],auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter-1][columnCounter-1]);
+			}
+		}
+	}
+	return auxSpace[firstLength][secondLength];
+}
+
+//Tested
 int minEdits(char *firstUserInput,char *secondUserInput,int firstLength,int secondLength){
 	if(firstLength == 0 && secondLength == 0){
 		return 0;

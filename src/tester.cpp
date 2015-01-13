@@ -85,14 +85,14 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/longestincreasingsubsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/longestcommonsubsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/editdistance.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/mincostpath.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	char X[] = "trials";
-	char Y[] = "zeil";
-	printf("%d",minEdits(X,Y,strlen(X),strlen(Y)));
+	vector<vector<int> > costMatrix = getVectorForMatrixUserInput();
+	printf("%d",minCostPath(costMatrix,0,0));
 }
 
 void p(inrNode *ptr){
