@@ -86,13 +86,17 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/longestcommonsubsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/editdistance.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/mincostpath.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/minjumps.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/maxlengthwithoutrepeating.h"
+
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/coinchange.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<vector<int> > costMatrix = getVectorForMatrixUserInput();
-	printf("%d",minCostPath(costMatrix,0,0));
+	char userInput[] = "GEEKSFORGEEKS";
+	printf("%d",maxLengthWithoutRepeatingON(userInput));
 }
 
 void p(inrNode *ptr){

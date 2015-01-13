@@ -70,7 +70,7 @@ using namespace __gnu_cxx;
 #ifndef COINCHANGE_H_
 #define COINCHANGE_H_
 
-int minCoinChange(vector<int> denominations,int amount){
+int minCoinChangeMemoization(vector<int> denominations,int amount){
 	if(amount < 0){
 		return INT_MAX;
 	}

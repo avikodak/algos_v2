@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\mincostpath.h
  *  Created on			: Dec 5, 2014 :: 12:41:46 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -73,11 +73,35 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int minCostPath(vector<vector<int> > costs){
+//Tested
+int minCostPathMemoization(vector<vector<int> > costs){
 	if(costs.size() == 0 || costs[0].size() == 0){
 		return 0;
 	}
 	vector<vector<int> > auxSpace(costs.size());
+	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
+		auxSpace[rowCounter].assign(costs[0].size(),0);
+	}
+	auxSpace[auxSpace.size()-1][auxSpace[0].size()-1] = costs[costs.size()-1][costs[0].size()-1];
+	int minCost;
+	for(int rowCounter = auxSpace.size()-1;rowCounter >= 0;rowCounter--){
+		for(int columnCounter = auxSpace[0].size()-1;columnCounter >= 0;columnCounter--){
+			minCost = INT_MAX;
+			if(rowCounter+1 < (int)auxSpace.size()){
+				minCost = min(minCost,auxSpace[rowCounter+1][columnCounter]);
+			}
+			if(columnCounter+1 < (int)auxSpace[0].size()){
+				minCost = min(minCost,auxSpace[rowCounter][columnCounter+1]);
+			}
+			if(rowCounter+1 < (int)auxSpace.size() && columnCounter+1 <(int)auxSpace.size()){
+				minCost = min(minCost,auxSpace[rowCounter+1][columnCounter+1]);
+			}
+			if(minCost != INT_MAX){
+				auxSpace[rowCounter][columnCounter] = costs[rowCounter][columnCounter] + minCost;
+			}
+		}
+	}
+	return auxSpace[0][0];
 }
 
 

@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\minjumps.h
  *  Created on			: Dec 9, 2014 :: 8:02:03 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/minimum-number-of-jumps-to-reach-end-of-a-given-array/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,7 +70,48 @@ using namespace __gnu_cxx;
 #ifndef MINJUMPS_H_
 #define MINJUMPS_H_
 
+//Tested
+int minJumpsToEndMemoization(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MAX;
+	}
+	if(userInput[0] == INT_MAX){
+		return 0;
+	}
+	vector<int> auxSpace(userInput.size());
+	userInput[userInput.size()-1] = 0;
+	int minJumps;
+	for(int outerCounter = userInput.size()-2;outerCounter >= 0;outerCounter--){
+		minJumps = INT_MAX;
+		if(userInput[outerCounter] != 0){
+			for(int innerCounter = outerCounter+1;innerCounter <= outerCounter + userInput[outerCounter] && innerCounter < (int)userInput.size();innerCounter++){
+				if(auxSpace[innerCounter] != INT_MAX){
+					minJumps = min(minJumps,1+auxSpace[innerCounter]);
+				}
+			}
+		}
+		auxSpace[outerCounter] = minJumps;
+	}
+	return auxSpace[0];
+}
 
+//Tested
+int minJumpsToEnd(vector<int> userInput,unsigned int index = 0){
+	if(index >= userInput.size()){
+		return INT_MAX;
+	}
+	if(index == userInput.size()-1){
+		return 0;
+	}
+	if(userInput[index] == 0){
+		return INT_MAX;
+	}
+	int minJumps = INT_MAX;
+	for(int counter = 1;counter <= userInput[index];counter++){
+		minJumps = min(minJumps,minJumpsToEnd(userInput,index + counter));
+	}
+	return minJumps == INT_MAX?INT_MAX:1+minJumps;
+}
 
 #endif /* MINJUMPS_H_ */
 
