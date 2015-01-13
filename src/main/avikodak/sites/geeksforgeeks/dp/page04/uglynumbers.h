@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\uglynumbers.h
  *  Created on			: Dec 5, 2014 :: 12:33:47 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/ugly-numbers/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -71,41 +71,78 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int getUglyNumber(int userInput){
-	if(userInput < 0){
-		return INT_MIN;
+	if(userInput == 1){
+		return 1;
 	}
-	int twosCounter=2,threesCounter=3,fivesCounter=5;
-	int uglyNumber = 0;
+	vector<int> uglyNumbers;
+	uglyNumbers.push_back(1);
+	int twoPtr = 0,threePtr = 0,fivePtr = 0;
+	int nextUglyNumber;
+	userInput -= 1;
 	while(userInput--){
-		uglyNumber = min(min(twosCounter,threesCounter),fivesCounter);
-		if(twosCounter == uglyNumber){
-			twosCounter = uglyNumber * 2;
-		}else if(threesCounter == uglyNumber){
-			threesCounter = uglyNumber * 3;
-		}else if(threesCounter == uglyNumber){
-			fivesCounter = uglyNumber * 5;
+		nextUglyNumber = min(uglyNumbers[twoPtr] * 2,uglyNumbers[threePtr] *3,uglyNumbers[fivePtr] *5);
+		if(nextUglyNumber == uglyNumbers[twoPtr] * 2){
+			twoPtr++;
 		}
+		if(nextUglyNumber == uglyNumbers[threePtr] * 3){
+			threePtr++;
+		}
+		if(nextUglyNumber == uglyNumbers[fivePtr] * 5){
+			fivePtr++;
+		}
+		uglyNumbers.push_back(nextUglyNumber);
 	}
-	return uglyNumber;
+	return uglyNumbers[uglyNumbers.size()-1];
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
+int maxDivide(int userInput,int divideBy){
+	if(userInput == 0){
+		return 0;
+	}
+	if(userInput == 1){
+		return 1;
+	}
+	while(userInput%divideBy == 0){
+		userInput /= divideBy;
+	}
+	return userInput;
+}
+
+//Tested
+bool isUglyNumber(int userInput){
+	userInput = maxDivide(userInput,2);
+	userInput = maxDivide(userInput,3);
+	userInput = maxDivide(userInput,5);
+	return userInput == 1;
+}
+
+//Tested
 int getUglyNumberIterative(int userInput){
 	if(userInput < 0){
 		return INT_MIN;
 	}
-	int uglyNumber,counter = 2;
-	while(userInput--){
-		while(counter % 2 != 0 && counter % 3 != 0 && counter % 5 != 0){
-			counter++;
-		}
-		uglyNumber = counter;
-		counter += 1;
+	if(userInput == 1){
+		return 1;
 	}
-	return uglyNumber;
+	userInput -= 1;
+	int counter = 2;
+	while(userInput--){
+		while(true){
+			if(!isUglyNumber(counter)){
+				counter++;
+			}else{
+				break;
+			}
+		}
+		counter++;
+	}
+	return counter-1;
 }
 
 #endif /* UGLYNUMBERS_H_ */

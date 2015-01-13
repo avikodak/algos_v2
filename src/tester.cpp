@@ -69,13 +69,25 @@
 #include "main/avikodak/sites/geeksforgeeks/graph/page04/floydwarshallalgotrithm.h"
 
 #include "main/avikodak/sites/geeksforgeeks/graph/page03/transitiveclosureofgraph.h"
+
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/catalannumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/maxproductcutting.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/countpathstopleftbottomright.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/countwalks.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/decodingsdigitsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page01/shortestpathdirectedkedges.h"
+
+
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/uglynumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/maxsizesubmatrixones.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	int sum;
-	scanf("%d",&sum);
+	for(unsigned int counter = 1;counter <= 20;counter++){
+		printf("%d\t",getUglyNumberIterative(counter));
+	}
 }
 
 void p(inrNode *ptr){
@@ -164,7 +176,7 @@ void graphTester(){
 
 int main() {
 	PRINT_NEW_LINE;
-	graphTester();
+	arrayTester();
 	return 0;
 }
 

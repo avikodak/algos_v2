@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -103,6 +103,7 @@ int maxContinousSubArraySumON2(vector<int> userInput){
 	return maxSum;
 }
 
+//Tested
 int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -110,16 +111,20 @@ int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int end
 	if(startIndex == endIndex){
 		return userInput[startIndex];
 	}
-	int leftSum = 0,rightSum = 0;
+	int leftSum = 0,rightSum = 0,sum = 0;
 	for(int counter = middleIndex;counter >= startIndex;counter--){
-		leftSum += userInput[counter];
+		sum += userInput[counter];
+		leftSum = max(leftSum,sum);
 	}
+	sum = 0;
 	for(int counter = middleIndex+1;counter <= endIndex;counter++){
-		rightSum += userInput[counter];
+		sum += userInput[counter];
+		rightSum = max(rightSum,sum);
 	}
-	return max(leftSum,rightSum);
+	return leftSum + rightSum;
 }
 
+//Tested
 int maxContigousSubArrayDAC(vector<int> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;

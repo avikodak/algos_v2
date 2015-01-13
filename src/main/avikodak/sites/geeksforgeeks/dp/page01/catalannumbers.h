@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: decodingsdigitsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\decodingsdigitsequence.h
- *  Created on			: Jan 12, 2015 :: 11:11:56 PM
+ *  File Name   		: catalannumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\catalannumbers.h
+ *  Created on			: Jan 13, 2015 :: 12:40:12 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-decodings-given-digit-sequence/
- ****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/program-nth-catalan-number/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,47 +67,41 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef DECODINGSDIGITSEQUENCE_H_
-#define DECODINGSDIGITSEQUENCE_H_
+#ifndef CATALANNUMBERS_H_
+#define CATALANNUMBERS_H_
 
 //Tested
-int noOfDecodingsDigitSequence(char *userInput,int length){
-	if(length <= 1){
+int catalanNumber(int number){
+	if(number < 2){
 		return 1;
 	}
-	int counter = 0;
-	if(userInput[length-1] != '0'){
-		counter += noOfDecodingsDigitSequence(userInput,length-1);
-	}
-	if(userInput[length-2] < '2' || (userInput[length-2] == '2' && userInput[length-1] <'7')){
-		counter += noOfDecodingsDigitSequence(userInput,length-2);
-	}
-	return counter;
-}
-
-//Tested
-int noOfDecodingsDigitSequenceMemoization(char *userInput,int length){
-	if(length <= 1){
-		return 1;
-	}
-	vector<int> auxSpace;
-	auxSpace.push_back(1);
-	auxSpace.push_back(1);
 	int total = 0;
-	for(int counter = 2;counter <= length;counter++){
-		total = 0;
-		if(userInput[counter-1] != '0'){
-			total += auxSpace[counter-1];
-		}
-		if(userInput[counter-2] < '2' || (userInput[counter-2] == '2' && userInput[counter-1] < '7')){
-			total += auxSpace[counter-2];
-		}
-		auxSpace.push_back(total);
+	for(int counter = 0;counter < number;counter++){
+		total += catalanNumber(counter)*catalanNumber(number-counter-1);
 	}
-	return auxSpace[auxSpace.size()-1];
+	return total;
 }
 
-#endif /* DECODINGSDIGITSEQUENCE_H_ */
+//Tested
+int catalanNumberMemoization(int number){
+	if(number < 2){
+		return 1;
+	}
+	vector<int> userInput;
+	userInput.push_back(1);
+	userInput.push_back(1);
+	int total;
+	for(int outerCounter = 2;outerCounter <= number;outerCounter++){
+		total = 0;
+		for(int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
+			total += userInput[innerCounter] * userInput[outerCounter-innerCounter-1];
+		}
+		userInput.push_back(total);
+	}
+	return userInput[userInput.size()-1];
+}
+
+#endif /* CATALANNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
