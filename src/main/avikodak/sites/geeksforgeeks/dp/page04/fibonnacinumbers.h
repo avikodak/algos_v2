@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\fibonnacinumbers.h
  *  Created on			: Dec 9, 2014 :: 7:38:50 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
+//Tested
 unsigned int getNthFibonnaciNumber(unsigned int number){
 	if(number == 0){
 		return 0;

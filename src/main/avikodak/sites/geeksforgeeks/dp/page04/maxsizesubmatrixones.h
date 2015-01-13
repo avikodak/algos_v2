@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\maxsizesubmatrixones.h
  *  Created on			: Dec 9, 2014 :: 7:39:11 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
  ****************************************************************************************************************************************************/
 
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int maxSizesubMatrixOnes(vector<vector<int> > userInput){
 	if(userInput.size() == 0 || userInput[0].size() == 0){
 		return 0;

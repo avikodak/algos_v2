@@ -81,12 +81,18 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/uglynumbers.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/maxsizesubmatrixones.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/fibonnacinumbers.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/longestincreasingsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/longestcommonsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page04/editdistance.h"
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<vector<int> > userInput = getVectorForMatrixUserInput();
-	printf("%d",maxSizesubMatrixOnes(userInput));//6 5 0 1 1 0 1 1 1 0 1 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 0 0 0 0 0
+	char X[] = "trials";
+	char Y[] = "zeil";
+	printf("%d",minEdits(X,Y,strlen(X),strlen(Y)));
 }
 
 void p(inrNode *ptr){

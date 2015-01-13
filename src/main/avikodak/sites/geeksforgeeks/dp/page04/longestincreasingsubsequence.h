@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\longestincreasingsubsequence.h
  *  Created on			: Dec 5, 2014 :: 6:18:35 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -153,6 +153,7 @@ int longestIncreasingSubSequence2N(vector<int> userInput){
 	return longestIncreasingSubSequence2NMain(userInput,auxSpace,0);
 }
 
+//Tested
 int longestIncreasingSubSequence2NIterative(vector<int> userInput){
 	if(userInput.size() < 2){
 		return userInput.size();

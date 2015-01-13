@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\editdistance.h
  *  Created on			: Dec 15, 2014 :: 9:18:43 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,6 +69,21 @@ using namespace __gnu_cxx;
 
 #ifndef EDITDISTANCE_H_
 #define EDITDISTANCE_H_
+
+//Tested
+int minEdits(char *firstUserInput,char *secondUserInput,int firstLength,int secondLength){
+	if(firstLength == 0 && secondLength == 0){
+		return 0;
+	}
+	if(firstLength == 0 || secondLength == 0){
+		return firstLength == 0?secondLength:firstLength;
+	}
+	if(firstUserInput[firstLength-1] == secondUserInput[secondLength-1]){
+		return minEdits(firstUserInput,secondUserInput,firstLength-1,secondLength-1);
+	}else{
+		return 1 + min(minEdits(firstUserInput,secondUserInput,firstLength-1,secondLength),minEdits(firstUserInput,secondUserInput,firstLength,secondLength-1),minEdits(firstUserInput,secondUserInput,firstLength-1,secondLength-1));
+	}
+}
 
 
 #endif /* EDITDISTANCE_H_ */
