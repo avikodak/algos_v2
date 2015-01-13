@@ -85,9 +85,8 @@
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	for(unsigned int counter = 1;counter <= 20;counter++){
-		printf("%d\t",getUglyNumberIterative(counter));
-	}
+	vector<vector<int> > userInput = getVectorForMatrixUserInput();
+	printf("%d",maxSizesubMatrixOnes(userInput));//6 5 0 1 1 0 1 1 1 0 1 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 0 0 0 0 0
 }
 
 void p(inrNode *ptr){

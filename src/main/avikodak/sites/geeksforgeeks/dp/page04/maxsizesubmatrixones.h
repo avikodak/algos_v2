@@ -4,8 +4,8 @@
  *  Created on			: Dec 9, 2014 :: 7:39:11 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -90,10 +90,13 @@ int maxSizesubMatrixOnes(vector<vector<int> > userInput){
 	}
 	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
 		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
-			userInput[rowCounter][columnCounter] = 1 + min(userInput[rowCounter-1][columnCounter-1],min(userInput[rowCounter-1][columnCounter],userInput[rowCounter][columnCounter-1]));
-			maxSize = max(maxSize,userInput[rowCounter][columnCounter]);
+			if(userInput[rowCounter][columnCounter] == 1){
+				auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter-1][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]));
+				maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
+			}
 		}
 	}
+	printIVector(auxSpace);
 	return maxSize;
 }
 
