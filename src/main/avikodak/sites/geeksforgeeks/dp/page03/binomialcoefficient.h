@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\binomialcoefficient.h
  *  Created on			: Dec 15, 2014 :: 11:27:57 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-9-binomial-coefficient/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,29 @@ using namespace __gnu_cxx;
 #ifndef BINOMIALCOEFFICIENT_H_
 #define BINOMIALCOEFFICIENT_H_
 
+//Tested
+int binomialCoefficientMemoization(int n,int r){
+	if(n < r){
+		return INT_MIN;
+	}
+	vector<vector<int> > auxSpace(n+1);
+	for(int rowCounter = 0;rowCounter < n+1;rowCounter++){
+		auxSpace[rowCounter].assign(r+1,0);
+		auxSpace[rowCounter][0] = 1;
+	}
+	for(unsigned int columnCounter = 0;columnCounter < auxSpace[0].size();columnCounter++){
+		auxSpace[0][columnCounter] = 0;
+	}
+	auxSpace[0][0] = 1;
+	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
+		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
+			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter-1] + auxSpace[rowCounter-1][columnCounter];
+		}
+	}
+	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+}
+
+//Tested
 int binomialCoefficient(int n,int r){
 	if(n == 0){
 		return 0;

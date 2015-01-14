@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumincreasingsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\maxsumincreasingsubsequence.h
- *  Created on			: Dec 9, 2014 :: 8:02:58 PM
+ *  File Name   		: coinchange.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\coinchange.h
+ *  Created on			: Dec 9, 2014 :: 8:01:55 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
-****************************************************************************************************************************************************/
+ *  URL 				: TODO
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,30 +67,52 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXSUMINCREASINGSUBSEQUENCE_H_
-#define MAXSUMINCREASINGSUBSEQUENCE_H_
+#ifndef MINCOINCHANGE_H_
+#define MINCOINCHANGE_H_
 
 //Tested
-int maxSumIncreasingSubsequence(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+int minCoinChangeMemoization(vector<int> denominations,int amount){
+	if(amount < 0){
+		return INT_MAX;
 	}
-	vector<int> maxSumsAuxspace;
-	maxSumsAuxspace.push_back(userInput[0]);
-	int maxSum;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		maxSum = INT_MIN;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler] > userInput[innerCrawler]){
-				maxSum = max(maxSum,userInput[outerCrawler]+maxSumsAuxspace[innerCrawler]);
+	if(amount == 0){
+		return 0;
+	}
+	vector<int> minDenominations(amount+1,0);
+	int minChange;
+	for(unsigned int outerCralwer = 1;outerCralwer < minDenominations.size();outerCralwer++){
+		minChange = INT_MAX;
+		for(unsigned int innerCrawler = 0;innerCrawler < denominations.size();innerCrawler++){
+			if(amount >= denominations[innerCrawler]){
+				minChange = min(minChange,1+minDenominations[amount-denominations[innerCrawler]]);
 			}
 		}
-		maxSumsAuxspace.push_back(maxSum);
+		minDenominations[outerCralwer] = minChange;
 	}
-	return *max_element(maxSumsAuxspace.begin(),maxSumsAuxspace.end());
+	return minDenominations[minDenominations.size()-1];
 }
 
-#endif /* MAXSUMINCREASINGSUBSEQUENCE_H_ */
+//Tested
+int minCoinChange(vector<int> denominations,int amount){
+	if(amount < 0){
+		return INT_MAX;
+	}
+	if(amount == 0){
+		return 0;
+	}
+	int minCoins = INT_MAX,result;;
+	for(unsigned int counter = 0;counter < denominations.size();counter++){
+		if(denominations[counter] <= amount){
+			result = minCoinChange(denominations,amount-denominations[counter]);
+			if(result != INT_MAX){
+				minCoins = min(minCoins,1+result);
+			}
+		}
+	}
+	return minCoins;
+}
+
+#endif /* MINCOINCHANGE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

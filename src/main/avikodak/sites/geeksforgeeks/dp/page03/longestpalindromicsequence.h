@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\longestpalindromicsequence.h
  *  Created on			: Dec 15, 2014 :: 9:20:31 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,26 +70,26 @@ using namespace __gnu_cxx;
 #ifndef LONGESTPALINDROMICSEQUENCE_H_
 #define LONGESTPALINDROMICSEQUENCE_H_
 
-int longestPalindromicSubSequence(char *userInput){
+//Tested
+int longestPalindromicSubSequenceMemoization(char *userInput){
 	if(userInput == null){
 		return 0;
 	}
 	int length = strlen(userInput);
 	vector<vector<int> > auxSpace(length);
 	for(unsigned int diagonalCounter = 0;diagonalCounter < auxSpace.size();diagonalCounter++){
-		auxSpace[diagonalCounter].resize(length);
+		auxSpace[diagonalCounter].assign(length,0);
 		auxSpace[diagonalCounter][diagonalCounter] = 1;
 	}
-	for(unsigned int counter = 0;counter < auxSpace.size()-1;counter++){
+	for(int counter = 0;counter < length-1;counter++){
 		if(userInput[counter] == userInput[counter+1]){
 			auxSpace[counter][counter+1] = 2;
 		}else{
 			auxSpace[counter][counter+1] = 1;
 		}
 	}
-
-	for(int rowCounter = auxSpace.size()-1;rowCounter  >= 0;rowCounter--){
-		for(int columnCounter = auxSpace.size()-1;columnCounter > rowCounter;columnCounter--){
+	for(int rowCounter = length-2;rowCounter >= 0;rowCounter--){
+		for(int columnCounter = rowCounter+2;columnCounter < length;columnCounter++){
 			if(userInput[rowCounter] == userInput[columnCounter]){
 				auxSpace[rowCounter][columnCounter] = 2 + auxSpace[rowCounter+1][columnCounter-1];
 			}else{
@@ -100,7 +100,41 @@ int longestPalindromicSubSequence(char *userInput){
 	return auxSpace[0][auxSpace[0].size()-1];
 }
 
+//Tested
+int longestPalindromicSubsequenceV2(char *userInput){
+	if(userInput == null){
+		return 0;
+	}
+	int length = strlen(userInput);
+	vector<vector<int> > auxSpace(length);
+	for(unsigned int diagonalCounter = 0;diagonalCounter < auxSpace.size();diagonalCounter++){
+		auxSpace[diagonalCounter].assign(length,0);
+		auxSpace[diagonalCounter][diagonalCounter] = 1;
+	}
+	for(int counter = 0;counter < length-1;counter++){
+		if(userInput[counter] == userInput[counter+1]){
+			auxSpace[counter][counter+1] = 2;
+		}else{
+			auxSpace[counter][counter+1] = 1;
+		}
+	}
+	int innerCounter;
+	for(int lengthCounter = 2;lengthCounter <= length;lengthCounter++){
+		for(int outerCounter = 0;outerCounter < length - lengthCounter+1;outerCounter++){
+			innerCounter = outerCounter + lengthCounter - 1;
+			if(userInput[outerCounter] == userInput[innerCounter] && abs(innerCounter - outerCounter) == 1){
+				auxSpace[outerCounter][innerCounter] = 2;
+			}else if(userInput[outerCounter] == userInput[innerCounter]){
+				auxSpace[outerCounter][innerCounter] = 2 + auxSpace[outerCounter+1][innerCounter-1];
+			}else{
+				auxSpace[outerCounter][innerCounter] = max(auxSpace[outerCounter+1][innerCounter],auxSpace[outerCounter][innerCounter-1]);
+			}
+		}
+	}
+	return auxSpace[0][length-1];
+}
 
+//Tested
 int longestPalindromicSubSequence(char *userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -109,7 +143,7 @@ int longestPalindromicSubSequence(char *userInput,int startIndex,int endIndex){
 		return 1;
 	}
 	if(endIndex - startIndex == 1){
-		return userInput[startIndex] == userInput[endIndex]?2:0;
+		return userInput[startIndex] == userInput[endIndex]?2:1;
 	}
 	if(userInput[startIndex] == userInput[endIndex]){
 		return 2 + longestPalindromicSubSequence(userInput,startIndex+1,endIndex-1);

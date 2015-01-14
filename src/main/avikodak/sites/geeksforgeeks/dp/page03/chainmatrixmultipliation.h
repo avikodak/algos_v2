@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\chainmatrixmultipliation.h
  *  Created on			: Dec 11, 2014 :: 12:49:52 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,7 +70,33 @@ using namespace __gnu_cxx;
 #ifndef CHAINMATRIXMULTIPLIATION_H_
 #define CHAINMATRIXMULTIPLIATION_H_
 
-int minChainMatrixMultiplication(vector<matrixsize *> sizes,int startIndex,int endIndex){
+//Tested
+int matrixChainMultiplicationMemoization(vector<matrixsize *> userInput){
+	if(userInput.size() == 0){
+		return 0;
+	}
+	vector<vector<int> > auxSpace(userInput.size());
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		auxSpace[counter].assign(userInput.size(),0);
+	}
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		auxSpace[counter][counter+1] = userInput[counter]->rows * userInput[counter]->columns * userInput[counter+1]->columns;
+	}
+	int minValue;
+	for(int rowCounter = userInput.size()-2;rowCounter >= 0;rowCounter--){
+		for(unsigned int columnCounter = rowCounter+2;columnCounter < userInput.size();columnCounter++){
+			minValue = INT_MAX;
+			for(unsigned int counter = rowCounter;counter < columnCounter;counter++){
+				minValue = min(minValue,auxSpace[rowCounter][counter] + auxSpace[counter+1][columnCounter] + userInput[rowCounter]->rows * userInput[counter]->columns * userInput[columnCounter]->columns);
+			}
+			auxSpace[rowCounter][columnCounter] = minValue;
+		}
+	}
+	return auxSpace[0][auxSpace.size()-1];
+}
+
+//Tested
+int minChainMatrixMultiplication(vector<matrixsize *> userInput,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
 	}
@@ -78,13 +104,11 @@ int minChainMatrixMultiplication(vector<matrixsize *> sizes,int startIndex,int e
 		return 0;
 	}
 	int minOperations = INT_MAX;
-	for(unsigned int counter = startIndex;counter < endIndex;counter++){
-		minOperations = min(minOperations,minChainMatrixMultiplication(sizes,startIndex,counter) + minChainMatrixMultiplication(counter+1,endIndex) + sizes[startIndex]->rows*sizes[counter]->columns*sizes[endIndex]->columns);
+	for(int counter = startIndex;counter < endIndex;counter++){
+		minOperations = min(minOperations,minChainMatrixMultiplication(userInput,startIndex,counter) + minChainMatrixMultiplication(userInput,counter+1,endIndex) + userInput[startIndex]->rows*userInput[counter]->columns*userInput[endIndex]->columns);
 	}
 	return minOperations;
 }
-
-
 
 #endif /* CHAINMATRIXMULTIPLIATION_H_ */
 

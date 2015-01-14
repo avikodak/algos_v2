@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
  *  File Name   		: coinchange.h 
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\coinchange.h
- *  Created on			: Dec 9, 2014 :: 8:01:55 PM
+ *  Created on			: Jan 14, 2015 :: 8:53:41 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -70,41 +70,33 @@ using namespace __gnu_cxx;
 #ifndef COINCHANGE_H_
 #define COINCHANGE_H_
 
-int minCoinChangeMemoization(vector<int> denominations,int amount){
+//Tested
+int coinChange(vector<int> denominations,unsigned int currentIndex,int amount){
 	if(amount < 0){
-		return INT_MAX;
-	}
-	if(amount == 0){
 		return 0;
 	}
-	vector<int> minDenominations(amount+1,0);
-	int minChange;
-	for(unsigned int outerCralwer = 1;outerCralwer < minDenominations.size();outerCralwer++){
-		minChange = INT_MAX;
-		for(unsigned int innerCrawler = 0;innerCrawler < denominations.size();innerCrawler++){
-			if(amount >= denominations[innerCrawler]){
-				minChange = min(minChange,minDenominations[amount-denominations[innerCrawler]]);
-			}
-		}
-		minDenominations[outerCralwer] = minChange;
+	if(amount == 0){
+		return 1;
 	}
-	return minDenominations[minDenominations.size()-1];
+	if(currentIndex == denominations.size()){
+		return amount == 0;
+	}
+	return coinChange(denominations,currentIndex+1,amount) + coinChange(denominations,currentIndex,amount - denominations[currentIndex]);
 }
 
-int minCoinChange(vector<int> denominations,int amount){
-	if(amount < 0){
-		return INT_MAX;
-	}
+//Tested
+int coinChangeMemoization(vector<int> denominations,int amount){
 	if(amount == 0){
 		return 0;
 	}
-	int minCoins = INT_MAX;
-	for(unsigned int counter = 0;counter < denominations.size();counter++){
-		if(denominations[counter] <= amount){
-			minCoins = min(minCoins,1+minCoinChange(denominations,amount-denominations[counter]));
+	vector<int> auxSpace(amount+1,0);
+	auxSpace[0] = 1;
+	for(unsigned int coinCounter = 0;coinCounter < denominations.size();coinCounter++){
+		for(int amountCounter = denominations[coinCounter];amountCounter <= amount;amountCounter++){
+			auxSpace[amountCounter] += auxSpace[amountCounter - denominations[coinCounter]];
 		}
 	}
-	return minCoins;
+	return auxSpace[auxSpace.size()-1];
 }
 
 #endif /* COINCHANGE_H_ */

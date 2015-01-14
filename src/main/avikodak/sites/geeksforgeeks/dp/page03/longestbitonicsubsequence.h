@@ -99,7 +99,7 @@ vector<int> longestDecreasingSubsequence(vector<int> userInput){
 	int maxLength;
 	for(int outerCrawler = userInput.size()-2;outerCrawler >= 0;outerCrawler--){
 		maxLength = 1;
-		for(int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
 			if(userInput[innerCrawler] < userInput[outerCrawler]){
 				maxLength = max(maxLength,1+userInput[innerCrawler]);
 			}
@@ -115,7 +115,7 @@ int longestBitonicSubsequence(vector<int> userInput){
 	}
 	vector<int> incLengths = longestIncreasingSubsequence(userInput);
 	vector<int> decLenghts = longestDecreasingSubsequence(userInput);
-	int maxLength;
+	int maxLength = INT_MIN;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		maxLength = max(maxLength,1+incLengths[counter]+decLenghts[counter]);
 	}

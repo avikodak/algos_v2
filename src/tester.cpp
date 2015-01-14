@@ -89,14 +89,24 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/minjumps.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page04/maxlengthwithoutrepeating.h"
 
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/mincoinchange.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/chainmatrixmultipliation.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/binomialcoefficient.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/coinchange.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/cuttingrod.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/maxsumincreasingsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/longestpalindromicsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/longestbitonicsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/eggdroppingpuzzle.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/minpalindromicsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/maxlengthchainofpairs.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	char userInput[] = "GEEKSFORGEEKS";
-	printf("%d",maxLengthWithoutRepeatingON(userInput));
+	vector<iPair *> userInput = getPairVectorForUserInput();
+	printf("%d",maxLengthChainOfPairs(userInput));//5 5 24 39 60 15 28 27 40 50 90
 }
 
 void p(inrNode *ptr){

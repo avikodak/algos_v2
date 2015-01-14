@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumincreasingsubsequence.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\maxsumincreasingsubsequence.h
- *  Created on			: Dec 9, 2014 :: 8:02:58 PM
+ *  File Name   		: minpalindromicsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\minpalindromicsequence.h
+ *  Created on			: Jan 14, 2015 :: 1:26:42 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-17-palindrome-partitioning/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,30 +67,75 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef MAXSUMINCREASINGSUBSEQUENCE_H_
-#define MAXSUMINCREASINGSUBSEQUENCE_H_
+#ifndef MINPALINDROMICSEQUENCE_H_
+#define MINPALINDROMICSEQUENCE_H_
 
 //Tested
-int maxSumIncreasingSubsequence(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
+bool isStringPalindrome(char *userInput,int startIndex,int endIndex){
+	if(startIndex == endIndex){
+		return true;
 	}
-	vector<int> maxSumsAuxspace;
-	maxSumsAuxspace.push_back(userInput[0]);
-	int maxSum;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		maxSum = INT_MIN;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler] > userInput[innerCrawler]){
-				maxSum = max(maxSum,userInput[outerCrawler]+maxSumsAuxspace[innerCrawler]);
-			}
+	while(startIndex < endIndex){
+		if(userInput[startIndex] != userInput[endIndex]){
+			return false;
 		}
-		maxSumsAuxspace.push_back(maxSum);
+		startIndex++;
+		endIndex--;
 	}
-	return *max_element(maxSumsAuxspace.begin(),maxSumsAuxspace.end());
+	return true;
 }
 
-#endif /* MAXSUMINCREASINGSUBSEQUENCE_H_ */
+//Tested
+int minPalindromicPartition(char *userInput,int startIndex,int endIndex){
+	if(startIndex > endIndex){
+		return 0;
+	}
+	if(startIndex == endIndex || isStringPalindrome(userInput,startIndex,endIndex)){
+		return 0;
+	}
+	int minPartitions = INT_MAX;
+	for(int counter = startIndex;counter < endIndex;counter++){
+		minPartitions = min(minPartitions,1+minPalindromicPartition(userInput,startIndex,counter)+minPalindromicPartition(userInput,counter+1,endIndex));
+	}
+	return minPartitions;
+}
+
+int minPalindromicPartitionsMemoization(char *userInput){
+	if(userInput == null){
+		return 0;
+	}
+	int length = strlen(userInput);
+	vector<vector<bool> > flag(length);
+	vector<vector<int> > auxSpace(length);
+	for(int rowCounter = 0;rowCounter < length;rowCounter++){
+		flag[rowCounter].assign(length,false);
+		flag[rowCounter][rowCounter] = true;
+		auxSpace[rowCounter].assign(length,0);
+	}
+	int innerCrawler,minPartitions;
+	for(int lengthCounter = 2;lengthCounter < length;lengthCounter++){
+		for(int outerCrawler = 0;outerCrawler < length - lengthCounter+1;outerCrawler++){
+			innerCrawler = outerCrawler + lengthCounter - 1;
+			if(userInput[outerCrawler] == userInput[innerCrawler] && lengthCounter == 2){
+				flag[outerCrawler][innerCrawler] = true;
+			}else{
+				flag[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler] && flag[outerCrawler+1][innerCrawler-1];
+			}
+			if(flag[outerCrawler][innerCrawler]){
+				auxSpace[outerCrawler][innerCrawler] = 0;
+			}else{
+				minPartitions = INT_MAX;
+				for(int counter = outerCrawler;counter < innerCrawler;counter++){
+					minPartitions = min(minPartitions,1+auxSpace[outerCrawler][counter]+auxSpace[counter+1][innerCrawler]);
+				}
+				auxSpace[outerCrawler][innerCrawler] = minPartitions;
+			}
+		}
+	}
+	return auxSpace[0][length-1];
+}
+
+#endif /* MINPALINDROMICSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
