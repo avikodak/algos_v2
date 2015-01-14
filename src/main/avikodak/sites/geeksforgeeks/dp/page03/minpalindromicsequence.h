@@ -100,6 +100,7 @@ int minPalindromicPartition(char *userInput,int startIndex,int endIndex){
 	return minPartitions;
 }
 
+//Tested
 int minPalindromicPartitionsMemoization(char *userInput){
 	if(userInput == null){
 		return 0;
@@ -113,11 +114,11 @@ int minPalindromicPartitionsMemoization(char *userInput){
 		auxSpace[rowCounter].assign(length,0);
 	}
 	int innerCrawler,minPartitions;
-	for(int lengthCounter = 2;lengthCounter < length;lengthCounter++){
+	for(int lengthCounter = 2;lengthCounter <= length;lengthCounter++){
 		for(int outerCrawler = 0;outerCrawler < length - lengthCounter+1;outerCrawler++){
 			innerCrawler = outerCrawler + lengthCounter - 1;
-			if(userInput[outerCrawler] == userInput[innerCrawler] && lengthCounter == 2){
-				flag[outerCrawler][innerCrawler] = true;
+			if(lengthCounter == 2){
+				flag[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler];
 			}else{
 				flag[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler] && flag[outerCrawler+1][innerCrawler-1];
 			}

@@ -100,13 +100,16 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/eggdroppingpuzzle.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/minpalindromicsequence.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/maxlengthchainofpairs.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page03/partitionproblem.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<iPair *> userInput = getPairVectorForUserInput();
-	printf("%d",maxLengthChainOfPairs(userInput));//5 5 24 39 60 15 28 27 40 50 90
+	vector<int> userInput = getVectorForUserInput();
+	int sum;
+	scanf("%d",&sum);
+	printf("%d",partitionProblem(userInput,sum));
 }
 
 void p(inrNode *ptr){
