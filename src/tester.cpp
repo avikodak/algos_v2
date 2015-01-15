@@ -102,14 +102,27 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/maxlengthchainofpairs.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page03/partitionproblem.h"
 
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/boxstacking.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/longestpalindromicsubstring.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/optimalcostbst.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/subsetsumproblem.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/largestindependentsetproblem.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/multipledicethrows.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/interleavingstrings.h"
+#include "main/avikodak/sites/geeksforgeeks/dp/page02/mininsertionspalindrome.h"
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	int sum;
-	scanf("%d",&sum);
-	printf("%d",partitionProblem(userInput,sum));
+	char a[] = "YX";
+	char b[] = "X";
+	char c[] = "XXY";
+	printf("%d",isStringInterleaved(a,b,c));
+	/*printf("%d",isStringInterleaved("XY" ,"WZ" ,"WZXY"));
+	printf("%d",isStringInterleaved("XY", "X", "XXY"));
+	printf("%d",isStringInterleaved("YX", "X", "XXY"));
+	printf("%d",isStringInterleaved("XXY", "XXZ", "XXXXZY"));*/
 }
 
 void p(inrNode *ptr){

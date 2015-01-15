@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\optimalcostbst.h
  *  Created on			: Jan 12, 2015 :: 4:46:32 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-24-optimal-binary-search-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef OPTIMALCOSTBST_H_
 #define OPTIMALCOSTBST_H_
 
+//Tested
 int optimalCostBSTMain(vector<int> frequencies,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return 0;
@@ -81,8 +82,8 @@ int optimalCostBSTMain(vector<int> frequencies,int startIndex,int endIndex){
 	for(int counter = startIndex;counter <= endIndex;counter++){
 		sumFrequencies += frequencies[counter];
 	}
-	for(int counter = startIndex;counter < endIndex;counter++){
-		minCost = min(minCost,optimalCostBSTMain(frequencies,startIndex,counter) + optimalCostBSTMain(frequencies,counter+1,endIndex));
+	for(int counter = startIndex;counter <= endIndex;counter++){
+		minCost = min(minCost,optimalCostBSTMain(frequencies,startIndex,counter-1) + optimalCostBSTMain(frequencies,counter+1,endIndex));
 	}
 	return sumFrequencies + minCost;
 }

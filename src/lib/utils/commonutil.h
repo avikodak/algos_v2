@@ -127,6 +127,15 @@ void printIVector(vector<iPair *> userInput){
 	}
 }
 
+void printDimensionVector(vector<dimensions *> userInput){
+	if(userInput.size() == 0){
+		return;
+	}
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d %d %d\n",userInput[counter]->length,userInput[counter]->width,userInput[counter]->height);
+	}
+}
+
 //Tested
 void printIVector(vector<iValueIndex *> userInput){
 	if(userInput.size() == 0){

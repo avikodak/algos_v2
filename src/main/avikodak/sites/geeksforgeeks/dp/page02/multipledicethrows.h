@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\multipledicethrows.h
  *  Created on			: Jan 12, 2015 :: 7:03:38 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dice-throw-problem/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef MULTIPLEDICETHROWS_H_
 #define MULTIPLEDICETHROWS_H_
 
+//Tested
 int countNumberWaysToSum(int diceFaces,int diceIndex,int sum){
 	if(diceIndex < 0){
 		return 0;
@@ -78,7 +79,7 @@ int countNumberWaysToSum(int diceFaces,int diceIndex,int sum){
 		return sum == 0?1:0;
 	}
 	int total = 0;
-	for(unsigned int counter = 1;counter < diceFaces;counter++){
+	for(int counter = 1;counter <= diceFaces;counter++){
 		total += countNumberWaysToSum(diceFaces,diceIndex-1,sum - counter);
 	}
 	return total;

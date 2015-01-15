@@ -107,7 +107,7 @@ bool partitionProblemMemoization(vector<int> userInput,int sum){
 		return true;
 	}
 	vector<vector<bool> > auxSpace(sum+1);
-	for(unsigned int rowCounter = 0;rowCounter < sum;rowCounter++){
+	for(int rowCounter = 0;rowCounter < sum;rowCounter++){
 		auxSpace[rowCounter].assign(userInput.size()+1,false);
 		auxSpace[rowCounter][0] = true;
 	}

@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\largestindependentsetproblem.h
  *  Created on			: Jan 12, 2015 :: 4:54:53 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/largest-independent-set-problem/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,12 +70,10 @@ using namespace __gnu_cxx;
 #ifndef LARGESTINDEPENDENTSETPROBLEM_H_
 #define LARGESTINDEPENDENTSETPROBLEM_H_
 
+//Tested
 int largestIndependentSetProblem(itNode *ptr){
 	if(ptr == null){
 		return 0;
-	}
-	if(ptr->left == null && ptr->right == null){
-		return 1;
 	}
 	int maxExcludingElement = largestIndependentSetProblem(ptr->left) + largestIndependentSetProblem(ptr->right);
 	int maxIncludingElement = 1 + (ptr->left != null?largestIndependentSetProblem(ptr->left->left) + largestIndependentSetProblem(ptr->left->right):0) + (ptr->right != null?largestIndependentSetProblem(ptr->right->left) + largestIndependentSetProblem(ptr->right->right):0);

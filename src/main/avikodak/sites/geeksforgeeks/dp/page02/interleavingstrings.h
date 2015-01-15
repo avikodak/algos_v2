@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
  *  Created on			: Jan 12, 2015 :: 4:09:13 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/check-whether-a-given-string-is-an-interleaving-of-two-other-given-strings-set-2/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -79,17 +79,20 @@ using namespace __gnu_cxx;
 /* 																O(2^N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 bool isStringInterleaved(char *firstString,char *secondString,char *thirdString){
-	if(firstString == null && secondString == null && thirdString == null){
+	if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0'){
 		return true;
 	}
-	if(thirdString == null){
+	if(thirdString[0] == '\0'){
 		return false;
 	}
 	bool truthValue = false;
-	if(firstString != null){
-		truthValue = thirdString[0] == firstString[0] && isStringInterleaved(firstString+1,secondString,thirdString+1);
+	if(firstString[0] != '\0'){
+		truthValue = truthValue || (thirdString[0] == firstString[0] && isStringInterleaved(firstString+1,secondString,thirdString+1));
 	}
-	return truthValue || (thirdString[0] == secondString[0] && isStringInterleaved(firstString,secondString+1,thirdString));
+	if(secondString[0]  != '\0'){
+		truthValue = truthValue || (thirdString[0] == secondString[0] && isStringInterleaved(firstString,secondString+1,thirdString+1));
+	}
+	return truthValue;
 }
 
 #endif /* INTERLEAVINGSTRINGS_H_ */

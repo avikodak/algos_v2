@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\longestbitonicsubsequence.h
  *  Created on			: Dec 9, 2014 :: 8:03:16 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-15-longest-bitonic-subsequence/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef LONGESTBITONICSUBSEQUENCE_H_
 #define LONGESTBITONICSUBSEQUENCE_H_
 
+//Tested
 vector<int> longestIncreasingSubsequence(vector<int> userInput){
 	vector<int> lengths;
 	if(userInput.size() == 0){
@@ -80,7 +81,7 @@ vector<int> longestIncreasingSubsequence(vector<int> userInput){
 	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
 		maxLength = 1;
 		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler] >= userInput[innerCrawler]){
+			if(userInput[outerCrawler] > userInput[innerCrawler]){
 				maxLength = max(maxLength,1+lengths[innerCrawler]);
 			}
 		}
@@ -89,26 +90,29 @@ vector<int> longestIncreasingSubsequence(vector<int> userInput){
 	return lengths;
 }
 
+//Tested
 vector<int> longestDecreasingSubsequence(vector<int> userInput){
 	vector<int> lengths;
 	if(userInput.size() == 0){
 		return lengths;
 	}
-	lengths.reserve(userInput.size());
-	lengths[userInput.size()-1] = 1;
+	lengths.assign(userInput.size(),0);
+	lengths[lengths.size()-1] = 1;
 	int maxLength;
+	int fillCounter = lengths.size()-1;
 	for(int outerCrawler = userInput.size()-2;outerCrawler >= 0;outerCrawler--){
-		maxLength = 1;
+		maxLength = 0;
 		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
 			if(userInput[innerCrawler] < userInput[outerCrawler]){
-				maxLength = max(maxLength,1+userInput[innerCrawler]);
+				maxLength = max(maxLength,lengths[innerCrawler]);
 			}
 		}
-		lengths[outerCrawler] = maxLength;
+		lengths[--fillCounter] = 1 + maxLength;
 	}
 	return lengths;
 }
 
+//Tested
 int longestBitonicSubsequence(vector<int> userInput){
 	if(userInput.size() == 0){
 		return 0;
@@ -117,7 +121,7 @@ int longestBitonicSubsequence(vector<int> userInput){
 	vector<int> decLenghts = longestDecreasingSubsequence(userInput);
 	int maxLength = INT_MIN;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		maxLength = max(maxLength,1+incLengths[counter]+decLenghts[counter]);
+		maxLength = max(maxLength,incLengths[counter]+decLenghts[counter]-1);
 	}
 	return maxLength;
 }
