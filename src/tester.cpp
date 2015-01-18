@@ -111,18 +111,20 @@
 #include "main/avikodak/sites/geeksforgeeks/dp/page02/interleavingstrings.h"
 #include "main/avikodak/sites/geeksforgeeks/dp/page02/mininsertionspalindrome.h"
 
+#include "main/avikodak/sites/geeksforgeeks/strings/page05/longestsubstringwithoutrepeatingchar.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page04/permutationrepeating.h"
+
+#include "main/avikodak/sites/geeksforgeeks/arrays/page05/peakelement.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/nextgreaternumbersetdigits.h"
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	char a[] = "YX";
-	char b[] = "X";
-	char c[] = "XXY";
-	printf("%d",isStringInterleaved(a,b,c));
-	/*printf("%d",isStringInterleaved("XY" ,"WZ" ,"WZXY"));
-	printf("%d",isStringInterleaved("XY", "X", "XXY"));
-	printf("%d",isStringInterleaved("YX", "X", "XXY"));
-	printf("%d",isStringInterleaved("XXY", "XXZ", "XXXXZY"));*/
+	vector<char> userInput = getCVectorForUserInput();
+	userInput = nextGreaterNumberSetDigits(userInput);
+	printCVector(userInput);
+
 }
 
 void p(inrNode *ptr){

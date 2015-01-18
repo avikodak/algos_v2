@@ -1,8 +1,7 @@
-
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
- *  Created on			: Oct 29, 2014 :: 10:22:41 AM
+ *  File Name   		: arestringsanagrams.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\arestringsanagrams.h
+ *  Created on			: Jan 16, 2015 :: 10:06:56 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -44,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -52,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -66,38 +67,66 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PERMUTATION_H_
-#define PERMUTATION_H_
+#ifndef ARESTRINGSANAGRAMS_H_
+#define ARESTRINGSANAGRAMS_H_
 
-//Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
-		return;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool areStringsAnagramsON(char *firstUserInput,char *secondUserInput){
+	if(firstUserInput == '\0' && secondUserInput == '\0'){
+		return true;
 	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
+	int firstLength = strlen(firstUserInput),secondLength = strlen(secondUserInput);
+	if(firstLength != secondLength){
+		return false;
 	}
+	hash_map<char,unsigned int> frequencyMap;
+	hash_map<char,unsigned int>::iterator itToFrequencyMap;
+	for(unsigned int counter = 0;counter < firstLength;counter++){
+		if((itToFrequencyMap = frequencyMap.find(firstUserInput[counter])) == frequencyMap.end()){
+			frequencyMap[firstUserInput[counter]] = 1;
+		}else{
+			frequencyMap[firstUserInput[counter]] += 1;
+		}
+	}
+	for(unsigned int counter = 0;counter < secondLength;counter++){
+		if((itToFrequencyMap = frequencyMap.find(secondUserInput[counter])) == frequencyMap.end()){
+			return false;
+		}
+		if(itToFrequencyMap->second == 1){
+			frequencyMap.erase(secondUserInput[counter]);
+		}else{
+			itToFrequencyMap->second -= 1;
+		}
+	}
+	return frequencyMap.size() == 0;
 }
 
-//Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+bool areStringsAnagramONLOGN(char *firstUserInput,char *secondUserInput){
+	if(firstUserInput == '\0' && secondUserInput == '\0'){
+		return true;
 	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
+	char *firstCrawler = firstUserInput,*secondCrawler = secondUserInput;
+	while(firstCrawler[0] != '\0' && secondCrawler[0] != '\0'){
+		if(firstCrawler[0] != secondCrawler[0]){
+			return false;
+		}
+		firstCrawler++;
+		secondCrawler++;
 	}
+	return firstCrawler[0] == '\0' && secondCrawler[0] == '\0';
 }
 
-#endif /* PERMUTATION_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+
+#endif /* ARESTRINGSANAGRAMS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

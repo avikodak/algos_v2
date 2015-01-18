@@ -1,12 +1,11 @@
-
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
- *  Created on			: Oct 29, 2014 :: 10:22:41 AM
+ *  File Name   		: largestindependentset.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\largestindependentset.h
+ *  Created on			: Jan 16, 2015 :: 9:01:42 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -44,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -52,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -66,38 +67,20 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PERMUTATION_H_
-#define PERMUTATION_H_
+#ifndef LARGESTINDEPENDENTSET_H_
+#define LARGESTINDEPENDENTSET_H_
 
-//Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
-		return;
+int largestIndependentSet(itNode *ptr){
+	if(ptr == null){
+		return 0;
 	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
-	}
+	int excl = largestIndependentSet(ptr->left) + largestIndependentSet(ptr->right);
+	int incl = 1 + ptr->left == null?0:(largestIndependentSet(ptr->left->left)+largestIndependentSet(ptr->left->right)) + ptr->right == null?0:(largestIndependentSet(ptr->right->left)+largestIndependentSet(ptr->right->right));
+	return max(excl,incl);
 }
 
-//Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
-	}
-}
 
-#endif /* PERMUTATION_H_ */
+#endif /* LARGESTINDEPENDENTSET_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

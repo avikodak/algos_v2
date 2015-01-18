@@ -1,12 +1,11 @@
-
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
- *  Created on			: Oct 29, 2014 :: 10:22:41 AM
+ *  File Name   		: nextgreaternumbersetdigits.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\nextgreaternumbersetdigits.h
+ *  Created on			: Jan 18, 2015 :: 9:53:02 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
- ****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-next-greater-number-set-digits/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -44,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -52,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -66,38 +67,41 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PERMUTATION_H_
-#define PERMUTATION_H_
+#ifndef NEXTGREATERNUMBERSETDIGITS_H_
+#define NEXTGREATERNUMBERSETDIGITS_H_
 
 //Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
-		return;
+vector<char> nextGreaterNumberSetDigits(vector<char> userInput){
+	if(userInput.size() < 2){
+		return userInput;
 	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
+	int outerCounter,innerCounter;
+	for(outerCounter = userInput.size() - 2;outerCounter >= 0;outerCounter--){
+		if(userInput[outerCounter] < userInput[outerCounter+1]){
+			break;
+		}
 	}
+	if(outerCounter < 0){
+		return userInput;
+	}
+	int minDigit = INT_MIN;
+	for(innerCounter = userInput.size()-1;innerCounter > outerCounter;innerCounter--){
+		if(userInput[innerCounter] > userInput[outerCounter]){
+			if(minDigit == INT_MIN){
+				minDigit = innerCounter;
+			}else{
+				if(userInput[minDigit] > userInput[innerCounter]){
+					minDigit = innerCounter;
+				}
+			}
+		}
+	}
+	swap(userInput[outerCounter],userInput[minDigit]);
+	sort(userInput.begin()+outerCounter+1,userInput.end());
+	return userInput;
 }
 
-//Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
-	}
-}
-
-#endif /* PERMUTATION_H_ */
+#endif /* NEXTGREATERNUMBERSETDIGITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -81,6 +81,18 @@ void printIVector(vector<bool> userInput){
 	}
 }
 
+void printSVector(vector<string> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		cout << userInput[counter];
+	}
+}
+
+void printCVector(vector<char> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%c",userInput[counter]);
+	}
+}
+
 //Tested
 void printGVector(vector<dfsTimes *> times){
 	for(unsigned int counter = 0;counter < times.size();counter++){

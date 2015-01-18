@@ -1,12 +1,11 @@
-
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
- *  Created on			: Oct 29, 2014 :: 10:22:41 AM
+ *  File Name   		: printstringsinterleaving.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\printstringsinterleaving.h
+ *  Created on			: Jan 16, 2015 :: 9:45:39 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
- ****************************************************************************************************************************************************/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -44,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -52,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -66,38 +67,21 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PERMUTATION_H_
-#define PERMUTATION_H_
+#ifndef PRINTSTRINGSINTERLEAVING_H_
+#define PRINTSTRINGSINTERLEAVING_H_
 
-//Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
+void printStringsInterleavingMain(char *firstUserinput,char *secondUserinput,char *result,int index,int length){
+	if(index == length){
+		printf("%s",result);
 		return;
 	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
-	}
+	result[index] = firstUserinput[0];
+	printStringsInterleavingMain(firstUserinput+1,secondUserinput,result,index+1,length);
+	result[index] = secondUserinput[0];
+	printStringsInterleavingMain(firstUserinput,secondUserinput+1,result,index+1,length);
 }
 
-//Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
-	}
-}
-
-#endif /* PERMUTATION_H_ */
+#endif /* PRINTSTRINGSINTERLEAVING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

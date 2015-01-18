@@ -1,8 +1,7 @@
-
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
- *  Created on			: Oct 29, 2014 :: 10:22:41 AM
+ *  File Name   		: countpairstriplets.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\countpairstriplets.h
+ *  Created on			: Jan 18, 2015 :: 9:23:47 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -44,6 +43,7 @@ using namespace __gnu_cxx;
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -52,6 +52,7 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/btreeutil.h>
 #include <algorithm/utils/commonutil.h>
 #include <algorithm/utils/dillutil.h>
+#include <algorithm/utils/graphutil.h>
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
@@ -66,38 +67,58 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PERMUTATION_H_
-#define PERMUTATION_H_
+#ifndef COUNTPAIRSTRIPLETS_H_
+#define COUNTPAIRSTRIPLETS_H_
 
-//Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
-		return;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int countPairsTripletsMultiplesThree(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
+	vector<unsigned int> remainderFrequency(3,0);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		remainderFrequency[userInput[counter]%3] += 1;
 	}
+	int counter = 0;
+	counter += (remainderFrequency[0] * (remainderFrequency[0]-1))/2;
+	counter += (remainderFrequency[1] * remainderFrequency[2]);
+	counter += (remainderFrequency[0] * remainderFrequency[1] * remainderFrequency[2]);
+	counter += (remainderFrequency[0] * (remainderFrequency[0]-1) * (remainderFrequency[0]-2))/6;
+	counter += (remainderFrequency[1] * (remainderFrequency[1]-1) * (remainderFrequency[1]-2))/6;
+	counter += (remainderFrequency[2] * (remainderFrequency[2]-1) * (remainderFrequency[2]-2))/6;
+	return counter;
 }
 
-//Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int countPairsTripletsMultiplesThreeON3(vector<int> userInput){
+	if(userInput.size() < 2){
+		return 0;
 	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
+	unsigned int counter = 0;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
+		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+			if((userInput[outerCrawler] + userInput[innerCrawler])%3 == 0){
+				counter += 1;
+			}
+		}
 	}
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
+		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
+			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+				if((userInput[outerCrawler] + userInput[middleCrawler] + userInput[innerCrawler])%3 == 0){
+					counter += 1;
+				}
+			}
+		}
+	}
+	return counter;
 }
 
-#endif /* PERMUTATION_H_ */
+#endif /* COUNTPAIRSTRIPLETS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
