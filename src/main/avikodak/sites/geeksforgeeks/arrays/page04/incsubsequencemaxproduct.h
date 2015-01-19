@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pairsfordifference.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pairsfordifference.h
- *  Created on			: Dec 22, 2014 :: 8:16:10 PM
+ *  File Name   		: incsubsequencemaxproduct.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\incsubsequencemaxproduct.h
+ *  Created on			: Jan 19, 2015 :: 10:58:42 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-pairs-difference-equal-k/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,68 +67,13 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PAIRSFORDIFFERENCE_H_
-#define PAIRSFORDIFFERENCE_H_
-
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-//Tested
-int getCountForDifferenceKON(vector<int> userInput,int difference){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	hash_map<int,bool> visitedFlags;
-	hash_map<int,bool>::iterator itToVisitedFlags;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		visitedFlags.insert(pair<int,bool>(userInput[counter],true));
-	}
-	int pairCounter = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		itToVisitedFlags = visitedFlags.find(difference - userInput[counter]);
-		if(itToVisitedFlags != visitedFlags.end()){
-			pairCounter++;
-			visitedFlags.erase(difference - userInput[counter]);
-			visitedFlags.erase(itToVisitedFlags->first);
-		}else{
-			itToVisitedFlags = visitedFlags.find(userInput[counter] - difference);
-			if(itToVisitedFlags != visitedFlags.end()){
-				pairCounter++;
-				visitedFlags.erase(userInput[counter] - difference);
-				visitedFlags.erase(itToVisitedFlags->first);
-			}
-		}
-	}
-	return pairCounter;
-}
+#ifndef INCSUBSEQUENCEMAXPRODUCT_H_
+#define INCSUBSEQUENCEMAXPRODUCT_H_
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int getCountForDifferenceKONLOGN(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	sort(userInput.begin(),userInput.end());
-	int currentDifference,pairCounter = 0;
-	unsigned int frontCrawler = 0,rearCrawler = 0;
-	while(frontCrawler < userInput.size() && rearCrawler < userInput.size()){
-		currentDifference = userInput[rearCrawler] - userInput[frontCrawler];
-		if(currentDifference == difference){
-			pairCounter += 1;
-			frontCrawler++;
-			rearCrawler++;
-		}else if(currentDifference > difference){
-			frontCrawler++;
-		}else{
-			rearCrawler++;
-		}
-	}
-	return pairCounter;
-}
-
-void pfdRotateNodes(ipAvlNode *parent,ipAvlNode *child){
+void incSubRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	if(parent == null || child == null){
 		return;
 	}
@@ -151,7 +96,7 @@ void pfdRotateNodes(ipAvlNode *parent,ipAvlNode *child){
 	}
 }
 
-ipAvlNode *pfdInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
+void incSubInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int value){
 	if(*root == null){
 		(*root) = new ipAvlNode(value);
 		return null;
@@ -165,21 +110,21 @@ ipAvlNode *pfdInsertAtRightPlace(ipAvlNode **root,ipAvlNode *currentNode,int val
 			currentNode->left->parent = currentNode;
 			return currentNode;
 		}else{
-			return pfdInsertAtRightPlace(root,currentNode->left,value);
+			return incSubInsertAtRightPlace(root,currentNode->left,value);
 		}
 	}else{
-		if(currentNode->right == null){
+		if(currentNode->right== null){
 			currentNode->right = new ipAvlNode(value);
 			currentNode->right->parent = currentNode;
 			return currentNode;
 		}else{
-			return pfdInsertAtRightPlace(root,currentNode->right,value);
+			return incSubInsertAtRightPlace(root,currentNode->right,value);
 		}
 	}
 }
 
-void pfdInsertIntoAvlTree(ipAvlNode **root,int value){
-	ipAvlNode *z = pfdInsertAtRightPlace(root,*root,value);
+void incSubInsertIntoAvlTree(ipAvlNode **root,int value){
+	ipAvlNode *z = incSubInsertAtRightPlace(root,*root,value);
 	if(z == null){
 		return;
 	}
@@ -191,90 +136,85 @@ void pfdInsertIntoAvlTree(ipAvlNode **root,int value){
 		if(abs(leftHeight - rightHeight) > 1){
 			y = z->value > value?z->left:z->right;
 			x = y->value > value?y->left:y->right;
-			if((z->left == y && y->left == x) || (z->right == y && y->right == x)){
+			if((z->left == y && y->left == x)||(z->right == y && y->right == x)){
 				if(z->parent == null){
 					(*root) = y;
 				}
-				pfdRotateNodes(z,y);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 			}else{
 				if(z->parent == null){
 					(*root) = x;
 				}
-				pfdRotateNodes(y,x);
-				pfdRotateNodes(z,x);
 				z->height = 1 + max(z->left == null?0:z->left->height,z->right == null?0:z->right->height);
 				y->height = 1 + max(y->left == null?0:y->left->height,y->right == null?0:y->right->height);
 				x->height = 1 + max(x->left == null?0:x->left->height,x->right == null?0:x->right->height);
 			}
 			return;
 		}
-		z->height = 1 + max(leftHeight,rightHeight);
-		z = z->left;
+		z->left = 1 + max(leftHeight,rightHeight);
+		z = z->parent;
 	}
 }
 
-bool pfdSearchInAvlTree(ipAvlNode *ptr,int value){
+ipAvlNode *incSubGetFloorForValueAvlTree(ipAvlNode *ptr,int value){
 	if(ptr == null){
-		return;
+		return null;
 	}
 	if(ptr->value == value){
-		return true;
+		return ptr;
 	}
-	return pfdSearchInAvlTree(ptr->left,value) || pfdSearchInAvlTree(ptr->right,value);
+	if(ptr->value > value){
+		return incSubGetFloorForValueAvlTree(ptr->left,value);
+	}else{
+		ipAvlNode *floor = incSubGetFloorForValueAvlTree(ptr->right,value);
+		return floor == null?ptr:floor;
+	}
 }
 
-int getCountPairsForDifference(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return 0;
+int incSubsequenceLengthThreeMaxProduct(vector<int> userInput){
+	if(userInput.size() < 3){
+		return INT_MIN;
 	}
-	ipAvlNode *root = null;
+	vector<int> auxSpace;
+	ipAvlNode *root = null,*floor;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		pfdInsertIntoAvlTree(&root,userInput[counter]);
+		floor = incSubGetFloorForValueAvlTree(root,userInput[counter]);
+		auxSpace.push_back(floor == null?INT_MIN:floor->value);
+		incSubInsertIntoAvlTree(root,userInput[counter]);
 	}
-	hash_map<int,bool> visitedFlags;
-	hash_map<int,bool>::iterator itToVisitedFlags;
-	int counter = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToVisitedFlags = visitedFlags.find(userInput[counter])) == visitedFlags.end()){
-			if(visitedFlags.find(userInput[counter] - difference) == visitedFlags.end()){
-				if(pfdSearchInAvlTree(root,userInput[counter] - difference)){
-					visitedFlags.insert(pair<int,bool>(userInput[counter] - difference,true));
-				}
-				counter += 1;
-			}
-			if(visitedFlags.find(userInput[counter] + difference) == visitedFlags.end()){
-				if(pfdSearchInAvlTree(root,userInput[counter] + difference)){
-					visitedFlags.insert(pair<int,bool>(userInput[counter] + difference,true));
-				}
-				counter += 1;
-			}
+	int maxTillNow = userInput[userInput.size()-1];
+	int maxProduct = INT_MIN;
+	for(unsigned int counter = userInput.size()-2;counter > 0;counter--){
+		if(maxTillNow > userInput[counter] && auxSpace[counter] != INT_MIN){
+			maxProduct = max(maxProduct,userInput[counter] * auxSpace[counter] * maxTillNow);
 		}
+		maxTillNow = max(maxTillNow,userInput[counter]);
 	}
-	return counter;
+	return maxProduct;
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int getCountForDifferenceKON2(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return 0;
+int incSubsequenceMaxProduct(vector<int> userInput){
+	if(userInput.size() < 3){
+		return INT_MIN;
 	}
-	int pairCounter = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(abs(userInput[outerCrawler] - userInput[innerCrawler]) == abs(difference)){
-				pairCounter++;
+	int maxProduct = INT_MIN;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
+		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
+			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+				if(userInput[innerCrawler] > userInput[middleCrawler] && userInput[middleCrawler] > userInput[outerCrawler]){
+					maxProduct = max(maxProduct,userInput[outerCrawler] * userInput[middleCrawler] * userInput[innerCrawler]);
+				}
 			}
 		}
 	}
-	return pairCounter;
+	return maxProduct;
 }
 
-#endif /* PAIRSFORDIFFERENCE_H_ */
+#endif /* INCSUBSEQUENCEMAXPRODUCT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
