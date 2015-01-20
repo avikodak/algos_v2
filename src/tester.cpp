@@ -124,15 +124,14 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page03/binarystrnoconsecutiveones.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page03/countpairstriplets.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
+
+#include "main/avikodak/sites/geeksforgeeks/strings/page04/lexicographicpermutation.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	int ar1[] = {1, 12, 15, 26, 38};
-	int ar2[] = {2, 13, 17, 30, 45};
-
-	int n1 = sizeof(ar1)/sizeof(ar1[0]);
-	printf("%d",medianByBinarySearch(ar1,ar2,n1));
+	vector<char> userInput = getCVectorForUserInput();
+	printLexicographicPermutation(userInput);
 }
 
 void p(inrNode *ptr){
