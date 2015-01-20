@@ -123,12 +123,16 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page02/smallestnumbernosumsubset.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page03/binarystrnoconsecutiveones.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page03/countpairstriplets.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = getVectorForUserInput();
-	printf("%d",countPairsTripletsMultiplesThreeON3(userInput));
+	int ar1[] = {1, 12, 15, 26, 38};
+	int ar2[] = {2, 13, 17, 30, 45};
+
+	int n1 = sizeof(ar1)/sizeof(ar1[0]);
+	printf("%d",medianByBinarySearch(ar1,ar2,n1));
 }
 
 void p(inrNode *ptr){

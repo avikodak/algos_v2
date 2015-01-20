@@ -3,9 +3,9 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\medianofsortedarrays.h
  *  Created on			: Nov 25, 2014 :: 9:01:27 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/median-of-two-sorted-arrays/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -71,37 +71,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int medianByBinarySearchMain(vector<int> firstSortedArray,vector<int> secondSortedArray,int firstStartIndex,int firstEndIndex,int secondStartIndex,int secondEndIndex){
-	if(firstEndIndex - firstStartIndex == 0){
-		return (firstSortedArray[firstStartIndex] + secondSortedArray[secondStartIndex])/2;
+//Tested
+int medianSortedArray(int userInput[], int size){
+    if (size%2 == 0)
+        return (userInput[size/2] + userInput[size/2-1])/2;
+    else
+        return userInput[size/2];
+}
+
+//Tested
+int medianByBinarySearchMain(int firstSortedArray[],int secondSortedArray[],int size){
+	if(size == 1){
+		return (firstSortedArray[0] + secondSortedArray[0])/2;
 	}
-	if(firstEndIndex - firstStartIndex == 1){
-		return (max(firstSortedArray[firstStartIndex],secondSortedArray[secondStartIndex]) + min(firstSortedArray[firstEndIndex],secondSortedArray[secondEndIndex]))/2;
+	if(size == 2){
+		return (max(firstSortedArray[0],secondSortedArray[0])+min(firstSortedArray[1],secondSortedArray[1]))/2;
 	}
-	int firstMiddleIndex = (firstStartIndex + firstEndIndex)/2;
-	int secondMiddleIndex = (secondStartIndex + secondEndIndex)/2;
-	if(firstSortedArray[firstMiddleIndex] == secondSortedArray[secondMiddleIndex]){
-		return firstSortedArray[firstMiddleIndex];
-	}else if(firstSortedArray[firstMiddleIndex] > secondSortedArray[secondMiddleIndex]){
-		if((firstEndIndex - firstStartIndex) % 2 == 0){
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstStartIndex,firstMiddleIndex-1,secondMiddleIndex+1,secondEndIndex);
+	int medianFirstArray = medianSortedArray(firstSortedArray,size);
+	int medianSecondArray = medianSortedArray(secondSortedArray,size);
+	if(medianFirstArray < medianSecondArray){
+		if(size%2 == 0){
+			return medianByBinarySearchMain(firstSortedArray + size/2 -1 ,secondSortedArray,size - size/2 + 1);
 		}else{
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstStartIndex,firstMiddleIndex,secondMiddleIndex,secondEndIndex);
+			return medianByBinarySearchMain(firstSortedArray + size/2,secondSortedArray,size - size/2);
 		}
 	}else{
-		if((firstEndIndex - firstStartIndex) % 2 == 0){
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstMiddleIndex+1,firstEndIndex,secondStartIndex,secondMiddleIndex-1);
+		if(size%2 == 0){
+			return medianByBinarySearchMain(secondSortedArray + size/2 -1 ,firstSortedArray,size - size/2 + 1);
 		}else{
-			return medianByBinarySearchMain(firstSortedArray,secondSortedArray,firstMiddleIndex,firstEndIndex,secondStartIndex,secondMiddleIndex);
+			return medianByBinarySearchMain(secondSortedArray + size/2,firstSortedArray,size - size/2);
 		}
 	}
 }
 
-int medianByBinarySearch(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	if(firstSortedArray.size() != secondSortedArray.size()){
-		return INT_MIN;
-	}
-	return medianByBinarySearchMain(firstSortedArray,secondSortedArray,0,firstSortedArray.size()-1,0,secondSortedArray.size()-1);
+//Tested
+int medianByBinarySearch(int firstSortedArray[],int secondSortedArray[],int size){
+	return medianByBinarySearchMain(firstSortedArray,secondSortedArray,size);
 }
 
 /****************************************************************************************************************************************************/
