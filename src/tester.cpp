@@ -117,14 +117,18 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page05/peakelement.h"
 #include "main/avikodak/sites/geeksforgeeks/arrays/page03/nextgreaternumbersetdigits.h"
 
+#include "main/avikodak/sites/geeksforgeeks/arrays/page01/factorial.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/findfirstrepeatingbinarysearch.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/largestcontigoussubarray.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page02/smallestnumbernosumsubset.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/binarystrnoconsecutiveones.h"
+#include "main/avikodak/sites/geeksforgeeks/arrays/page03/countpairstriplets.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<char> userInput = getCVectorForUserInput();
-	userInput = nextGreaterNumberSetDigits(userInput);
-	printCVector(userInput);
-
+	vector<int> userInput = getVectorForUserInput();
+	printf("%d",countPairsTripletsMultiplesThreeON3(userInput));
 }
 
 void p(inrNode *ptr){

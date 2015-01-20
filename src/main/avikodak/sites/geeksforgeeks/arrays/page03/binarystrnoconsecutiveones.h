@@ -3,7 +3,7 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\binarystrnoconsecutiveones.h
  *  Created on			: Jan 19, 2015 :: 8:47:30 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/count-number-binary-strings-without-consecutive-1s/
 ****************************************************************************************************************************************************/
 
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef BINARYSTRNOCONSECUTIVEONES_H_
 #define BINARYSTRNOCONSECUTIVEONES_H_
 
+//Tested
 int countBinaryStringsNoConsecutiveOnes(unsigned int nValue){
 	if(nValue == 0){
 		return 1;
@@ -77,7 +78,7 @@ int countBinaryStringsNoConsecutiveOnes(unsigned int nValue){
 	vector<int> endingWithZero,endingWithOne;
 	endingWithOne.push_back(1);
 	endingWithZero.push_back(1);
-	for(unsigned int counter = 1;counter <= nValue;counter++){
+	for(unsigned int counter = 1;counter < nValue;counter++){
 		endingWithZero.push_back(endingWithZero[counter-1] + endingWithOne[counter-1]);
 		endingWithOne.push_back(endingWithZero[counter-1]);
 	}

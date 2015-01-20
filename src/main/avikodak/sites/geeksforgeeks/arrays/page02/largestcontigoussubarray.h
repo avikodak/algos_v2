@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpairstriplets.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\countpairstriplets.h
- *  Created on			: Jan 18, 2015 :: 9:23:47 PM
+ *  File Name   		: largestcontigoussubarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\largestcontigoussubarray.h
+ *  Created on			: Jan 20, 2015 :: 11:02:25 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-groups-size-2-3-sum-multiple-3/
- ****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/length-largest-subarray-contiguous-elements-set-1/
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,60 +67,70 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPAIRSTRIPLETS_H_
-#define COUNTPAIRSTRIPLETS_H_
+#ifndef LARGESTCONTIGOUSSUBARRAY_H_
+#define LARGESTCONTIGOUSSUBARRAY_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPairsTripletsMultiplesThree(vector<int> userInput){
-	if(userInput.size() < 2){
+int lengthOfLargestContigousSubArrayON2(vector<int> userInput){
+	if(userInput.size() == 0){
 		return 0;
 	}
-	vector<unsigned int> remainderFrequency(3,0);
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		remainderFrequency[userInput[counter]%3] += 1;
+	int maxVal,minVal,maxLength = INT_MIN;
+	for(int outerCounter = 0;outerCounter < (int)userInput.size()-1;outerCounter++){
+		maxVal = userInput[outerCounter];
+		minVal = userInput[outerCounter];
+		for(int innerCounter = outerCounter+1;innerCounter < (int)userInput.size();innerCounter++){
+			maxVal = max(maxVal,userInput[innerCounter]);
+			minVal = min(minVal,userInput[innerCounter]);
+			if(maxVal - minVal == innerCounter - outerCounter){
+				maxLength = max(maxLength,innerCounter - outerCounter + 1);
+			}
+		}
 	}
-	int counter = 0;
-	counter += (remainderFrequency[0] * (remainderFrequency[0]-1))/2;
-	counter += (remainderFrequency[1] * remainderFrequency[2]);
-	counter += (remainderFrequency[0] * remainderFrequency[1] * remainderFrequency[2]);
-	counter += (remainderFrequency[0] * (remainderFrequency[0]-1) * (remainderFrequency[0]-2))/6;
-	counter += (remainderFrequency[1] * (remainderFrequency[1]-1) * (remainderFrequency[1]-2))/6;
-	counter += (remainderFrequency[2] * (remainderFrequency[2]-1) * (remainderFrequency[2]-2))/6;
-	return counter;
+	return maxLength;
 }
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPairsTripletsMultiplesThreeON3(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
+bool isVectorContigous(vector<int> userInput){
+	if(userInput.size() == 0){
+		return true;
 	}
-	unsigned int counter = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if((userInput[outerCrawler] + userInput[innerCrawler])%3 == 0){
-				counter += 1;
-			}
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(userInput[counter] - userInput[counter-1] != 1){
+			return false;
 		}
 	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
-		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
-			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-				if((userInput[outerCrawler] + userInput[middleCrawler] + userInput[innerCrawler])%3 == 0){
-					counter += 1;
-				}
-			}
-		}
-	}
-	return counter;
+	return true;
 }
 
-#endif /* COUNTPAIRSTRIPLETS_H_ */
+//Tested
+int lengthOfLargestContigousSubArray(vector<int> userInput){
+	if(userInput.size() < 2){
+		return userInput.size();
+	}
+	vector<int> auxSpace;
+	int maxLength = INT_MIN;
+	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+		auxSpace.clear();
+		for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
+			auxSpace.push_back(userInput[innerCrawler]);
+			sort(auxSpace.begin(),auxSpace.end());//Insertion sort works better
+			if(isVectorContigous(auxSpace)){
+				maxLength = max(maxLength,(int)auxSpace.size());
+			}
+		}
+	}
+	return maxLength;
+}
+
+#endif /* LARGESTCONTIGOUSSUBARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

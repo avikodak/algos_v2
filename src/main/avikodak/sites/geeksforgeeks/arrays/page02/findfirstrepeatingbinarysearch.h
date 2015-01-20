@@ -3,8 +3,8 @@
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeatingbinarysearch.h
  *  Created on			: Jan 5, 2015 :: 11:24:23 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
+//Tested
 int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MIN;
@@ -93,6 +94,7 @@ int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int e
 	}	return frvLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
+//Tested
 int frvHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
 	if(startIndex > endIndex){
 		return INT_MAX;
@@ -113,8 +115,9 @@ int frvHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int 
 	}	return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
+//Tested
 int findFirstRepeatingValueBinarySearch(vector<int> userInput){
-	if(userInput.size() > 0){
+	if(userInput.size() == 0){
 		return INT_MIN;
 	}
 	vector<int> auxSpace(userInput.size());
