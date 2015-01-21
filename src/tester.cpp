@@ -126,12 +126,15 @@
 #include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
 
 #include "main/avikodak/sites/geeksforgeeks/strings/page04/lexicographicpermutation.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page03/longestcommonsubstring.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page03/printlongestcommonsubsequence.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page03/lcs.h"
+#include "main/avikodak/sites/geeksforgeeks/strings/page03/atoi.h"
+
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<char> userInput = getCVectorForUserInput();
-	printLexicographicPermutation(userInput);
 }
 
 void p(inrNode *ptr){

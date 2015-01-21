@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lcs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\lcs.h
- *  Created on			: Jan 16, 2015 :: 11:59:06 AM
+ *  File Name   		: printlongestcommonsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\printlongestcommonsubsequence.h
+ *  Created on			: Jan 20, 2015 :: 7:32:09 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/printing-longest-common-subsequence/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,32 +67,24 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LCS_H_
-#define LCS_H_
+#ifndef PRINTLONGESTCOMMONSUBSEQUENCE_H_
+#define PRINTLONGESTCOMMONSUBSEQUENCE_H_
 
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 //Tested
-int longestCommonSubSequence(char firstUserInput[],char secondUserInput[],int firstCurrentIndex,int secondCurrentIndex){
-	if(firstCurrentIndex < 0 || secondCurrentIndex < 0){
-		return 0;
-	}
-	if(firstUserInput[firstCurrentIndex] == secondUserInput[secondCurrentIndex]){
-		return 1 + longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex-1);
-	}else{
-		return max(longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex),longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex,secondCurrentIndex-1));
-	}
-}
-
-//Tested
-int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInput[],int firstStringLength,int secondStringLength){
+//This prints the subsequence in reverse
+void printLongestCommonSubsequence(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength){
 	if(firstStringLength == 0 || secondStringLength == 0){
-		return 0;
+		return;
 	}
 	vector<vector<int> > auxSpace(firstStringLength+1);
 	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
 		auxSpace[counter].assign(secondStringLength+1,0);
 	}
-	for(int outerCrawler = 1;outerCrawler <= firstStringLength;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler <= secondStringLength;innerCrawler++){
+	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
+		for(unsigned int innerCrawler = 1;innerCrawler < auxSpace[0].size();innerCrawler++){
 			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
 				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
 			}else{
@@ -100,10 +92,23 @@ int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInp
 			}
 		}
 	}
-	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+	int firstCrawler = auxSpace.size()-1,secondCrawler = auxSpace[0].size()-1;
+	while(firstCrawler > 0 && secondCrawler > 0 && auxSpace[firstCrawler][secondCrawler] > 0){
+		if(firstUserInput[firstCrawler-1] == secondUserInput[secondCrawler-1]){
+			printf("%c",firstUserInput[firstCrawler-1]);
+			firstCrawler -= 1;
+			secondCrawler -= 1;
+		}else{
+			if(auxSpace[firstCrawler-1][secondCrawler] > auxSpace[firstCrawler][secondCrawler-1]){
+				firstCrawler -= 1;
+			}else{
+				secondCrawler -= 1;
+			}
+		}
+	}
 }
 
-#endif /* LCS_H_ */
+#endif /* PRINTLONGESTCOMMONSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

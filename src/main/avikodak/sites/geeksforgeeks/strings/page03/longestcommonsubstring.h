@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lcs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\lcs.h
- *  Created on			: Jan 16, 2015 :: 11:59:06 AM
+ *  File Name   		: longestcommonsubstring.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\longestcommonsubstring.h
+ *  Created on			: Jan 20, 2015 :: 7:44:24 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: TODO
+ *  URL 				: http://www.geeksforgeeks.org/longest-common-substring/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,23 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LCS_H_
-#define LCS_H_
+#ifndef LONGESTCOMMONSUBSTRING_H_
+#define LONGESTCOMMONSUBSTRING_H_
 
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
 //Tested
-int longestCommonSubSequence(char firstUserInput[],char secondUserInput[],int firstCurrentIndex,int secondCurrentIndex){
-	if(firstCurrentIndex < 0 || secondCurrentIndex < 0){
-		return 0;
-	}
-	if(firstUserInput[firstCurrentIndex] == secondUserInput[secondCurrentIndex]){
-		return 1 + longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex-1);
-	}else{
-		return max(longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex),longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex,secondCurrentIndex-1));
-	}
-}
-
-//Tested
-int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInput[],int firstStringLength,int secondStringLength){
+int longestCommonSubstring(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength){
 	if(firstStringLength == 0 || secondStringLength == 0){
 		return 0;
 	}
@@ -91,19 +82,19 @@ int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInp
 	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
 		auxSpace[counter].assign(secondStringLength+1,0);
 	}
+	int maxLength = INT_MIN;
 	for(int outerCrawler = 1;outerCrawler <= firstStringLength;outerCrawler++){
 		for(int innerCrawler = 1;innerCrawler <= secondStringLength;innerCrawler++){
 			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
 				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+				maxLength = max(maxLength,auxSpace[outerCrawler][innerCrawler]);
 			}
 		}
 	}
-	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+	return maxLength;
 }
 
-#endif /* LCS_H_ */
+#endif /* LONGESTCOMMONSUBSTRING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

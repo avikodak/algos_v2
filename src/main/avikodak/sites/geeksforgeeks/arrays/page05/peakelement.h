@@ -98,6 +98,26 @@ int findPeakElementBinarySearch(vector<int> userInput,int startIndex,int endInde
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+int findPeakElementON(vector<int> userInput){
+	if(userInput.size() == 0){
+		return INT_MIN;
+	}
+	if(userInput.size() == 1){
+		return userInput[0];
+	}
+	if(userInput[0] > userInput[1]){
+		return userInput[0];
+	}
+	if(userInput[userInput.size()-1] > userInput[userInput.size()-2]){
+		return userInput[userInput.size()-1];
+	}
+	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
+		if(userInput[counter] > userInput[counter-1] && userInput[counter] > userInput[counter+1]){
+			return userInput[counter];
+		}
+	}
+	return INT_MIN;
+}
 
 #endif /* PEAKELEMENT_H_ */
 

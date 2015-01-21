@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lcs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\lcs.h
- *  Created on			: Jan 16, 2015 :: 11:59:06 AM
+ *  File Name   		: findfirstcirculartour.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\findfirstcirculartour.h
+ *  Created on			: Jan 21, 2015 :: 9:29:44 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: TODO
+ *  Testing Status 		: TODO
+ *  URL 				: http://www.geeksforgeeks.org/find-a-tour-that-visits-all-stations/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,43 +67,38 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LCS_H_
-#define LCS_H_
+#ifndef FINDFIRSTCIRCULARTOUR_H_
+#define FINDFIRSTCIRCULARTOUR_H_
 
-//Tested
-int longestCommonSubSequence(char firstUserInput[],char secondUserInput[],int firstCurrentIndex,int secondCurrentIndex){
-	if(firstCurrentIndex < 0 || secondCurrentIndex < 0){
-		return 0;
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+int getFirstStartingPoint(vector<petrolPump *> userInput){
+	if(userInput.size() == 0){
+		return -1;
 	}
-	if(firstUserInput[firstCurrentIndex] == secondUserInput[secondCurrentIndex]){
-		return 1 + longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex-1);
-	}else{
-		return max(longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex),longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex,secondCurrentIndex-1));
-	}
-}
-
-//Tested
-int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInput[],int firstStringLength,int secondStringLength){
-	if(firstStringLength == 0 || secondStringLength == 0){
-		return 0;
-	}
-	vector<vector<int> > auxSpace(firstStringLength+1);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].assign(secondStringLength+1,0);
-	}
-	for(int outerCrawler = 1;outerCrawler <= firstStringLength;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler <= secondStringLength;innerCrawler++){
-			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
-				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+	int startIndex = 0;
+	int endIndex = 1;
+	int currentDistance = userInput[0]->petrol - userInput[0]->nextDistance;
+	while(startIndex != endIndex || currentDistance < 0){
+		while(currentDistance < 0 && endIndex != startIndex){
+			currentDistance = currentDistance - userInput[startIndex]->petrol + userInput[startIndex]->nextDistance;
+			startIndex = (startIndex + 1)%(userInput.size());
+			if(startIndex == 0){
+				return -1;
 			}
 		}
+		currentDistance += userInput[endIndex]->petrol - userInput[endIndex]->nextDistance;
+		endIndex = (endIndex+1)%(userInput.size());
 	}
-	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+	return startIndex;
 }
 
-#endif /* LCS_H_ */
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* FINDFIRSTCIRCULARTOUR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
