@@ -70,6 +70,22 @@ using namespace __gnu_cxx;
 #ifndef BINARYSTRNOCONSECUTIVEONES_H_
 #define BINARYSTRNOCONSECUTIVEONES_H_
 
+int countBinaryStringsByGeneratingSets(vector<bool> userInput,unsigned int nValue){
+	if(nValue == 0){
+		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+			if(userInput[counter] && userInput[counter+1]){
+				return 0;
+			}
+		}
+		return userInput.size() == 0?0:1;
+	}
+	int counter = 0;
+	userInput[nValue-1] = false;
+	counter += countBinaryStringsByGeneratingSets(userInput,nValue-1);
+	userInput[nValue-1] = true;
+	return counter + countBinaryStringsByGeneratingSets(userInput,nValue-1);
+}
+
 //Tested
 int countBinaryStringsNoConsecutiveOnes(unsigned int nValue){
 	if(nValue == 0){

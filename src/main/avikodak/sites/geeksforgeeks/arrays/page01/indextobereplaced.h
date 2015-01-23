@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: indextobereplaced.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\indextobereplaced.h
+ *  Created on			: Jan 21, 2015 :: 5:28:40 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/find-index-0-replaced-1-get-longest-continuous-sequence-1s-binary-array/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,38 +67,73 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
+#ifndef INDEXTOBEREPLACED_H_
+#define INDEXTOBEREPLACED_H_
 
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
+int getZeroIndexToBeReplaced(vector<int> userInput){
+	if(userInput.size() < 2){
+		return userInput.size() == 0?0:userInput[0] == 0?1:0;
 	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
+	int prevZeroIndex = -1,prevToPrevZeroIndex = -1,maxOneSubArray = INT_MIN,zeroIndex = -1;
+	for(int counter = 0;counter < (int)userInput.size();counter++){
+		if(userInput[counter] == 0){
+			if(prevToPrevZeroIndex != -1){
+				if(counter - prevToPrevZeroIndex > maxOneSubArray){
+					maxOneSubArray = counter - prevToPrevZeroIndex;
+					zeroIndex = prevZeroIndex;
+				}
+			}
+			prevToPrevZeroIndex = prevZeroIndex;
+			prevZeroIndex = counter;
+		}
+	}
+	if(prevToPrevZeroIndex == -1){
+		zeroIndex = userInput.size()-1;
+	}else{
+		if((int)userInput.size() - prevToPrevZeroIndex > maxOneSubArray){
+			maxOneSubArray = userInput.size() - prevToPrevZeroIndex;
+			zeroIndex = prevZeroIndex;
+		}
+	}
+	return zeroIndex;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
+int getZeroIndexToBeReplacedON2(vector<int> userInput){
+	if(userInput.size() < 2){
+		return userInput.size() == 0?0:userInput[0] == 0?1:0;
 	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
-	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
+	unsigned int maxOneSubArray = 0;
+	int zeroIndex = -1;
+	unsigned int innerCounter,oneFrequency;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		if(userInput[outerCounter] == 0){
+			innerCounter = outerCounter-1;
+			oneFrequency = 0;
+			while(innerCounter >= 0 && userInput[innerCounter--] == 1){
+				oneFrequency += 1;
+			}
+			innerCounter = outerCounter + 1;
+			while(innerCounter < userInput.size() && userInput[innerCounter++] == 1){
+				oneFrequency += 1;
+			}
+			if(maxOneSubArray < oneFrequency){
+				maxOneSubArray = oneFrequency;
+				zeroIndex = outerCounter;
+			}
 		}
 	}
-	return auxSpace[row-1][column-1];
+	return zeroIndex;
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+#endif /* INDEXTOBEREPLACED_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

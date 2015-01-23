@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: topview.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\topview.h
+ *  Created on			: Jan 22, 2015 :: 7:40:14 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
-****************************************************************************************************************************************************/
+ *  URL 				: http://www.geeksforgeeks.org/print-nodes-top-view-binary-tree/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,38 +67,36 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-
-//Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
-	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
-}
+#ifndef TOPVIEW_H_
+#define TOPVIEW_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
+void topViewMain(itNode *ptr,map<int,int> &levelValueMap,int verticalLevel){
+	if(ptr == null){
+		return;
 	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
-	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
-		}
-	}
-	return auxSpace[row-1][column-1];
+	topViewMain(ptr->left,levelValueMap,verticalLevel-1);
+	topViewMain(ptr->right,levelValueMap,verticalLevel+1);
+	levelValueMap[verticalLevel] = ptr->value;
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+//Tested
+void topView(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	map<int,int> levelValueMap;
+	map<int,int>::iterator itToLevelValueMap;
+	topViewMain(ptr,levelValueMap,0);
+	for(itToLevelValueMap = levelValueMap.begin();itToLevelValueMap != levelValueMap.end();itToLevelValueMap++){
+		printf("%d\t",itToLevelValueMap->second);
+	}
+}
+
+#endif /* TOPVIEW_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

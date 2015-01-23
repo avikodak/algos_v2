@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: diagonalsum.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\diagonalsum.h
+ *  Created on			: Jan 22, 2015 :: 7:39:44 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+ *  URL 				: http://www.geeksforgeeks.org/diagonal-sum-binary-tree/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,38 +67,41 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-
-//Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
-	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
-}
+#ifndef DIAGONALSUM_H_
+#define DIAGONALSUM_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
+void diagonalSumMain(itNode *ptr,hash_map<int,int> &diagonalSum,int level){
+	if(ptr == null){
+		return;
 	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
+	hash_map<int,int>::iterator itToDiagonalSum;
+	if((itToDiagonalSum = diagonalSum.find(level)) == diagonalSum.end()){
+		diagonalSum[level] = ptr->value;
+	}else{
+		diagonalSum[level] += ptr->value;
 	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
-		}
-	}
-	return auxSpace[row-1][column-1];
+	diagonalSumMain(ptr->left,diagonalSum,level-1);
+	diagonalSumMain(ptr->right,diagonalSum,level);
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+//Tested
+void printDiagonalSums(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	hash_map<int,int> diagonalSumMap;
+	diagonalSumMain(ptr,diagonalSumMap,0);
+	hash_map<int,int>::iterator itToDiagonalSumMap;
+	for(itToDiagonalSumMap = diagonalSumMap.begin();itToDiagonalSumMap != diagonalSumMap.end();itToDiagonalSumMap++){
+		printf("%d\t",itToDiagonalSumMap->second);
+	}
+}
+
+#endif /* DIAGONALSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

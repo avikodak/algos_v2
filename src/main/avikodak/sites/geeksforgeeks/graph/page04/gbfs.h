@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/breadth-first-traversal-for-a-graph/
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -87,6 +87,28 @@ vector<int> gGetBfsLevel(vector<vector<int> > adjacencyList,int sourceVertex){
 			if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN){
 				bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
 				auxSpace.push(adjacencyList[currentIndex][counter]);
+			}
+		}
+	}
+	return bfsLevels;
+}
+
+vector<int> gGetBfsLevelAdjacencyMatrix(vector<vector<bool> > adjacencyMatrix,int sourceVertex){
+	vector<int> bfsLevels(adjacencyMatrix.size(),INT_MIN);
+	if(adjacencyMatrix.size() == 0){
+		return bfsLevels;
+	}
+	queue<int> auxSpace;
+	auxSpace.push(sourceVertex);
+	int currentVertex,currentVertexLevel;
+	bfsLevels[0] = 0;
+	while(!auxSpace.empty()){
+		currentVertex = auxSpace.front();
+		auxSpace.pop();
+		currentVertexLevel = bfsLevels[currentVertex];
+		for(unsigned int counter = 0;counter < adjacencyMatrix[currentVertex].size();counter++){
+			if(adjacencyMatrix[currentVertex][counter] == INT_MIN){
+				bfsLevels[adjacencyMatrix[currentVertex][counter]] = currentVertexLevel+1;
 			}
 		}
 	}

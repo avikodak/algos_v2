@@ -70,7 +70,7 @@ using namespace __gnu_cxx;
 #ifndef TOPOLOGICALSORT_H_
 #define TOPOLOGICALSORT_H_
 
-void topologicalSort(vector<vector<int> > adjacencyList,int sourceVertex,vector<int> &sortedOrder){
+void topologicalSort(vector<vector<int> > adjacencyList,int sourceVertex,stack<int> &sortedOrder){
 	if(adjacencyList.size() == 0 || sortedOrder >= adjacencyList.size()){
 		return;
 	}

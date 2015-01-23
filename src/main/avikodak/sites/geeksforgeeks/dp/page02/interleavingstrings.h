@@ -73,7 +73,36 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-
+bool isStringInterleavedMemoization(char *firstString,char *secondString,char *thirdString){
+	if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0'){
+		return true;
+	}
+	int firstStringLength = strlen(firstString);
+	int secondStringLength = strlen(secondString);
+	int thirdStringLength = strlen(thirdString);
+	vector<vector<bool> > auxSpace(firstString+1);
+	for(unsigned int counter = 0;counter <= firstStringLength;counter++){
+		auxSpace[counter].assign(secondStringLength+1,false);
+	}
+	for(unsigned int outerCounter = 0;outerCounter <= firstStringLength;outerCounter++){
+		for(unsigned int innerCounter = 0;innerCounter <= secondStringLength;innerCounter++){
+			if(outerCounter == 0 && innerCounter == 0){
+				auxSpace[outerCounter][innerCounter] = true;
+			}else if(outerCounter == 0 && secondString[innerCounter-1] == thirdString[innerCounter-1]){
+				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
+			}else if(innerCounter == 0 && firstString[innerCounter] == thirdString[innerCounter-1]){
+				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
+			}else if(firstString[outerCounter] == thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] != thirdString[outerCounter+innerCounter-1]){
+				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
+			}else if(firstString[outerCounter] != thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] == thirdString[outerCounter+innerCounter-1]){
+				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
+			}else{
+				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1] || auxSpace[outerCounter-1][innerCounter];
+			}
+		}
+	}
+	return auxSpace[firstStringLength-1][secondStringLength-1];
+}
 
 /****************************************************************************************************************************************************/
 /* 																O(2^N) Algorithm 																    */

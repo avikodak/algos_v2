@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: pathstopleftbottomright.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pathstopleftbottomright.h
+ *  Created on			: Dec 22, 2014 :: 6:10:47 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
  *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
@@ -67,12 +67,12 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
+#ifndef PATHSTOPLEFTBOTTOMRIGHT_H_
+#define PATHSTOPLEFTBOTTOMRIGHT_H_
 
 //Tested
 int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
+	if(row == 1 || column == 1){
 		return 1;
 	}
 	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
@@ -82,23 +82,23 @@ int countPathsFromTopLeftToBottomRight(int row,int column){
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
+int countPathsFromTopLeftBottomRightMemoization(int row,int column){
+	if(row == 0 || column == 0){
 		return 1;
 	}
 	vector<vector<int> > auxSpace(row);
 	for(int counter = 0;counter < row;counter++){
 		auxSpace[counter].assign(column,1);
 	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
+	for(int rowCounter = 1;rowCounter < row;rowCounter++){
+		for(int columnCounter = 1;columnCounter < column;columnCounter++){
+			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter] + auxSpace[rowCounter][columnCounter-1];
 		}
 	}
 	return auxSpace[row-1][column-1];
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+#endif /* PATHSTOPLEFTBOTTOMRIGHT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

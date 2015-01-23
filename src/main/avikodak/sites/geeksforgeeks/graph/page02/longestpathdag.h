@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pathstopleftbottomright.h
- *  Created on			: Dec 22, 2014 :: 6:10:47 PM
+ *  File Name   		: longestpathdag.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\longestpathdag.h
+ *  Created on			: Jan 22, 2015 :: 7:14:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,34 +67,50 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PATHSTOPLEFTBOTTOMRIGHT_H_
-#define PATHSTOPLEFTBOTTOMRIGHT_H_
-
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+#ifndef LONGESTPATHDAG_H_
+#define LONGESTPATHDAG_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
+void getTopologicalOrderDFS(vector<vector<int> > adjacencyMatrix,int sourceVertex,stack<int> &auxSpace){
+	if(adjacencyMatrix.size() == 0){
+		return;
+	}
+	static vector<int> flags(adjacencyMatrix.size(),false);
+	flags[sourceVertex] = true;
+	for(unsigned int counter = 0;counter  < adjacencyMatrix[sourceVertex].size();counter++){
+		if(adjacencyMatrix[sourceVertex][counter] != INT_MAX && !flags[adjacencyMatrix[sourceVertex][counter]]){
+			getTopologicalOrderDFS(adjacencyMatrix,adjacencyMatrix[sourceVertex][counter],auxSpace);
+		}
+	}
+	auxSpace.push(sourceVertex);
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
+int getLongestPathDAG(vector<vector<int> > adjacencyMatrix,int source){
+	if(adjacencyMatrix.size() == 0){
+		return 0;
+	}
+	vector<int> distance(adjacencyMatrix.size(),INT_MAX);
+	stack<int> topologicalOrder;
+	getTopologicalOrderDFS(adjacencyMatrix,source,topologicalOrder);
+	int currentVertex;
+	distance[source] = 0;
+	while(!topologicalOrder.empty()){
+		currentVertex = topologicalOrder.top();
+		topologicalOrder.pop();
+		if(distance[currentVertex] != INT_MAX){
+			for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
+				if(adjacencyMatrix[currentVertex][counter] != INT_MAX){
+					distance[counter] = max(distance[counter],distance[currentVertex] + adjacencyMatrix[currentVertex][counter]);
+				}
+			}
+		}
+	}
+	printIVector(distance);
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-#endif /* PATHSTOPLEFTBOTTOMRIGHT_H_ */
+#endif /* LONGESTPATHDAG_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

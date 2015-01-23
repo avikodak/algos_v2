@@ -70,49 +70,7 @@ using namespace __gnu_cxx;
 #ifndef HAMILTONIANCYCLE_H_
 #define HAMILTONIANCYCLE_H_
 
-bool hcIsSafe(vector<vector<bool> > adjacencyMatrix,vector<int> cycle,int currentIndex,int vertex){
-	if(currentIndex >= cycle.size() || vertex >= adjacencyMatrix.size()){
-		return false;
-	}
-	if(!adjacencyMatrix[cycle[currentIndex-1]][vertex]){
-		return false;
-	}
-	for(unsigned int counter = 0;counter < currentIndex;counter++){
-		if(cycle[counter] == vertex){
-			return false;
-		}
-	}
-	return true;
-}
 
-bool hamiltonianCycleMain(vector<vector<bool> > adjacencyMatrix,vector<int> &cycle,int currentIndex){
-	if(adjacencyMatrix.size() == 0 || currentIndex > adjacencyMatrix.size()){
-		return false;
-	}
-	if(currentIndex == cycle.size()){
-		return adjacencyMatrix[currentIndex-1][0];
-	}
-	for(unsigned int counter = 1;counter < adjacencyMatrix.size();counter++){
-		if(hcIsSafe(adjacencyMatrix,cycle,currentIndex,counter)){
-			cycle[currentIndex] = counter;
-			if(hamiltonianCycleMain(adjacencyMatrix,cycle,currentIndex+1)){
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-void printHamiltonianCycle(vector<vector<bool> > adjacencyMatrix){
-	if(adjacencyMatrix.size() == 0){
-		return;
-	}
-	vector<int> cycle(adjacencyMatrix.size(),INT_MIN);
-	cycle[0] = 0;
-	if(hamiltonianCycleMain(adjacencyMatrix,cycle,1)){
-		printIVector(cycle);
-	}
-}
 
 #endif /* HAMILTONIANCYCLE_H_ */
 

@@ -96,6 +96,21 @@ bool pathBetweenTwoVertices(vector<vector<int> > adjacencyList,int firstVertex,i
 	return false;
 }
 
+bool pathBetweenTwoVerticesDFS(vector<vector<int> > adjacencyList,int currentVertex,int destinationVertex){
+	if(currentVertex >= adjacencyList.size()){
+		return false;
+	}
+	static vector<int> flags(adjacencyList.size());
+	flags[currentVertex] = true;
+	for(unsigned int counter = 0;counter < adjacencyList[currentVertex].size();counter++){
+		if(!flags[adjacencyList[currentVertex][counter]]){
+			if(adjacencyList[currentVertex][counter] == destinationVertex || pathBetweenTwoVerticesDFS(adjacencyList,adjacencyList[currentVertex][counter],destinationVertex)){
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 #endif /* PATHBETWEENVERTICES_H_ */
 

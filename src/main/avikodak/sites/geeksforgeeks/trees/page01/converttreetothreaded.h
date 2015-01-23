@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: converttreetothreaded.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\converttreetothreaded.h
+ *  Created on			: Jan 22, 2015 :: 7:40:53 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,38 +67,36 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-
-//Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
-	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
-}
+#ifndef CONVERTTREETOTHREADED_H_
+#define CONVERTTREETOTHREADED_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
+void convertTreeToThreaded(itNode *ptr){
+	if(ptr == null){
+		return;
 	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
-	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
+	itNode *currentNode = ptr,*temp;
+	while(currentNode != null){
+		if(currentNode->left != null){
+			temp = currentNode->left;
+			while(temp->right != null && temp->right != currentNode){
+				temp = temp->right;
+			}
+			if(temp->right == null){
+				temp->right = currentNode;
+				currentNode = currentNode->left;
+			}else{
+				currentNode = currentNode->right;
+			}
+		}else{
+			currentNode = currentNode->right;
 		}
 	}
-	return auxSpace[row-1][column-1];
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+#endif /* CONVERTTREETOTHREADED_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

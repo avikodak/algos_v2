@@ -61,80 +61,18 @@
 /****************************************************************************************************************************************************/
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
-
-#include "main/avikodak/sites/geeksforgeeks/graph/page04/gdfs.h"
-#include "main/avikodak/sites/geeksforgeeks/graph/page04/gbfs.h"
-#include "main/avikodak/sites/geeksforgeeks/graph/page04/pathbetweenvertices.h"
-#include "main/avikodak/sites/geeksforgeeks/graph/page04/detectcycledirected.h"
-#include "main/avikodak/sites/geeksforgeeks/graph/page04/floydwarshallalgotrithm.h"
-
-#include "main/avikodak/sites/geeksforgeeks/graph/page03/transitiveclosureofgraph.h"
-
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/catalannumbers.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/maxproductcutting.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/countpathstopleftbottomright.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/countwalks.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/decodingsdigitsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page01/shortestpathdirectedkedges.h"
-
-
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/kadanealgo.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/uglynumbers.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/maxsizesubmatrixones.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/fibonnacinumbers.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/longestincreasingsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/longestcommonsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/editdistance.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/mincostpath.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/minjumps.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page04/maxlengthwithoutrepeating.h"
-
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/mincoinchange.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/chainmatrixmultipliation.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/binomialcoefficient.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/coinchange.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/cuttingrod.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/maxsumincreasingsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/longestpalindromicsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/longestbitonicsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/eggdroppingpuzzle.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/minpalindromicsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/maxlengthchainofpairs.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page03/partitionproblem.h"
-
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/boxstacking.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/longestpalindromicsubstring.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/optimalcostbst.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/subsetsumproblem.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/largestindependentsetproblem.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/multipledicethrows.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/interleavingstrings.h"
-#include "main/avikodak/sites/geeksforgeeks/dp/page02/mininsertionspalindrome.h"
-
-#include "main/avikodak/sites/geeksforgeeks/strings/page05/longestsubstringwithoutrepeatingchar.h"
-#include "main/avikodak/sites/geeksforgeeks/strings/page04/permutationrepeating.h"
-
-#include "main/avikodak/sites/geeksforgeeks/arrays/page05/peakelement.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page03/nextgreaternumbersetdigits.h"
-
-#include "main/avikodak/sites/geeksforgeeks/arrays/page01/factorial.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/findfirstrepeatingbinarysearch.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/largestcontigoussubarray.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page02/smallestnumbernosumsubset.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page03/binarystrnoconsecutiveones.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page03/countpairstriplets.h"
-#include "main/avikodak/sites/geeksforgeeks/arrays/page11/medianofsortedarrays.h"
-
-#include "main/avikodak/sites/geeksforgeeks/strings/page04/lexicographicpermutation.h"
-#include "main/avikodak/sites/geeksforgeeks/strings/page03/longestcommonsubstring.h"
-#include "main/avikodak/sites/geeksforgeeks/strings/page03/printlongestcommonsubsequence.h"
-#include "main/avikodak/sites/geeksforgeeks/strings/page03/lcs.h"
-#include "main/avikodak/sites/geeksforgeeks/strings/page03/atoi.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/serializedeserializetree.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/bottomview.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/topview.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/diagonalsum.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/printnodesbetweenlevels.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
+	/*vector<int> userInput = getVectorForUserInput();
+	printf("%d",getZeroIndexToBeReplaced(userInput));//13 1 1 0 0 1 0 1 1 1 0 1 1 1*/
 }
 
 void p(inrNode *ptr){
@@ -156,10 +94,12 @@ void s(isuccesssorNode *ptr){
 }
 
 void treeTester(){
-	//treeutils *utils = new treeutils();
+	treeutils *utils = new treeutils();
 	//vector<int> userInput = getVectorForUserInput();
-	//hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	//	itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
+	hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
+	//itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
+	itNode *root = utils->getITreeFromHashmap(indexValueMap);
+	printDiagonalSums(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14
 }
 
 void avlTreeTester(){
@@ -218,12 +158,12 @@ void graphTester(){
 	vector<wEdge *> edgeList = utils->getWEdgeList(false);
 	int noOfVertices,sourceVertex,destinationVertex;
 	scanf("%d %d %d",&noOfVertices,&sourceVertex,&destinationVertex);
-	printf("%d",shortestDistanceFloydWarshall(edgeList,noOfVertices,sourceVertex,destinationVertex));//4 0 1 5 1 2 3 2 3 1 0 3 10 4 0 3
+
 }
 
 int main() {
 	PRINT_NEW_LINE;
-	arrayTester();
+	treeTester();
 	return 0;
 }
 

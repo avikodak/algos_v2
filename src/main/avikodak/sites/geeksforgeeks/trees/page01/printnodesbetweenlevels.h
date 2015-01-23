@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
- *  Created on			: Jan 12, 2015 :: 11:44:09 PM
+ *  File Name   		: printnodesbetweenlevels.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\printnodesbetweenlevels.h
+ *  Created on			: Jan 22, 2015 :: 7:41:06 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+ *  URL 				: http://www.geeksforgeeks.org/given-binary-tree-print-nodes-two-given-level-numbers/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,38 +67,73 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
-#define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
+#ifndef PRINTNODESBETWEENLEVELS_H_
+#define PRINTNODESBETWEENLEVELS_H_
 
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
+void printLevelUsingQueue(itNode *ptr,int firstLevel,int secondLevel){
+	if(ptr == null){
+		return;
 	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
+	queue<itNode *> auxSpace;
+	int levelCounter = 1,nodeLevelCounter;
+	auxSpace.push(ptr);
+	itNode *currentNode;
+	while(!auxSpace.empty()){
+		nodeLevelCounter = auxSpace.size();
+		while(nodeLevelCounter--){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			if(levelCounter >= firstLevel && levelCounter <= secondLevel){
+				printf("%d\t",currentNode->value);
+			}
+			if(currentNode->left != null){
+				auxSpace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
+		}
+		levelCounter++;
+		if(levelCounter > secondLevel){
+			break;
+		}
+		PRINT_NEW_LINE;
+	}
 }
+
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
+void printLevel(itNode *ptr,int level){
+	if(ptr == null){
+		return;
 	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
+	if(level == 0){
+		printf("%d\t",ptr->value);
+		return;
 	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
-		}
-	}
-	return auxSpace[row-1][column-1];
+	printLevel(ptr->left,level-1);
+	printLevel(ptr->right,level-1);
 }
 
-#endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */
+//Tested
+void printNodesBetweenLevels(itNode *ptr,int firstLevel,int secondLevel){
+	if(ptr == null){
+		return;
+	}
+	for(int counter = firstLevel;counter <= secondLevel;counter++){
+		printLevel(ptr,counter-1);
+		PRINT_NEW_LINE;
+	}
+}
+
+#endif /* PRINTNODESBETWEENLEVELS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
