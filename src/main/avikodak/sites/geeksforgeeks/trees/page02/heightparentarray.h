@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: specificlevelorder.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\specificlevelorder.h
- *  Created on			: Jan 22, 2015 :: 7:44:11 PM
+ *  File Name   		: heightparentarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\heightparentarray.h
+ *  Created on			: Jan 24, 2015 :: 9:40:18 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/perfect-binary-tree-specific-level-order-traversal/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,47 +67,83 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SPECIFICLEVELORDER_H_
-#define SPECIFICLEVELORDER_H_
+#ifndef HEIGHTPARENTARRAY_H_
+#define HEIGHTPARENTARRAY_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void perfectTreeSpecificLevelOrder(itNode *ptr){
-	if(ptr == null){
+void fillDepthHeightParent(vector<int> parent,vector<int> depth,int currentNodeIndex){
+	if(depth[currentNodeIndex] == INT_MIN){
 		return;
 	}
-	queue<itNode *> auxSpace;
-	itNode *firstNode,*secondNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		firstNode = auxSpace.front();
-		auxSpace.pop();
-		printf("%d\t",firstNode->value);
-		if(!auxSpace.empty()){
-			secondNode = auxSpace.front();
-			auxSpace.pop();
-			printf("%d\t",secondNode->value);
-		}else{
-			secondNode = null;
-		}
-		if(firstNode->left != null){
-			auxSpace.push(firstNode->left);
-		}
-		if(secondNode != null && secondNode->right != null){
-			auxSpace.push(secondNode->right);
-		}
-		if(firstNode->right != null){
-			auxSpace.push(firstNode->right);
-		}
-		if(secondNode != null && secondNode->left != null){
-			auxSpace.push(secondNode->left);
-		}
+	if(parent[currentNodeIndex] == -1){
+		depth[currentNodeIndex] = 1;
+		return;
 	}
+	if(depth[parent[currentNodeIndex]] == INT_MIN){
+		fillDepthHeightParent(parent,depth,parent[currentNodeIndex]);
+	}
+	depth[currentNodeIndex] = 1 + depth[parent[currentNodeIndex]];
 }
 
-#endif /* SPECIFICLEVELORDER_H_ */
+int getHeightParentArray(vector<int> parent){
+	if(parent.size() == 0){
+		return 0;
+	}
+	vector<int> depth(parent.size(),INT_MIN);
+	fillDepthHeightParent(parent,depth,0);
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+itNode *constructTreeParentArray(vector<int> parentArray,int currentIndex){
+	if(currentIndex >= parentArray.size()){
+		return null;
+	}
+	itNode *root = new itNode(currentIndex);
+	int leftChildIndex = INT_MIN,rightChildIndex = INT_MIN;
+	for(unsigned int counter = 0;counter < parentArray.size();counter++){
+		if(parentArray[counter] == currentIndex){
+			leftChildIndex = counter;
+			break;
+		}
+	}
+	if(leftChildIndex != INT_MIN){
+		root->left = constructTreeParentArray(parentArray,leftChildIndex);
+	}
+	for(unsigned int counter = 0;counter < parentArray.size() && counter != leftChildIndex;counter++){
+		if(parentArray[counter] == currentIndex){
+			rightChildIndex = counter;
+			break;
+		}
+	}
+	if(rightChildIndex != INT_MIN){
+		root->right = constructTreeParentArray(parentArray,rightChildIndex);
+	}
+	return root;
+}
+
+int getHeightOfTreeByConstruction(vector<int> parentArray){
+	if(parentArray.size() == 0){
+		return 0;
+	}
+	unsigned int rootIndex;
+	for(rootIndex = 0;rootIndex < parentArray.size();rootIndex++){
+		if(parentArray[rootIndex] == -1){
+			break;
+		}
+	}
+	if(rootIndex >= parentArray.size()){
+		throw "Invalid user input";
+	}
+	itNode *root = constructTreeParentArray(parentArray,rootIndex);
+	treeutils *utils = new treeutils();
+	return utils->getHeightOfTree(root);
+}
+
+#endif /* HEIGHTPARENTARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

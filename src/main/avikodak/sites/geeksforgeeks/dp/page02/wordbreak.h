@@ -70,29 +70,51 @@ using namespace __gnu_cxx;
 #ifndef WORDBREAK_H_
 #define WORDBREAK_H_
 
-/****************************************************************************************************************************************************/
-/* 																O(LOGN) Algorithm 															    	*/
-/****************************************************************************************************************************************************/
+bool checkWordDictionary(string word){
+	string dictionary[] = {"mobile","samsung","sam","sung","man","mango","icecream","and","go","i","like","ice","cream"};
+	int size = sizeof(dictionary)/sizeof(dictionary[0]);
+	for(unsigned int counter = 0;counter < size;counter++){
+		if(word.compare(dictionary[counter]) == 0){
+			return true;
+		}
+	}
+	return false;
+}
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool wordBreakMain(string userInput){
+	if(userInput.size() == 0){
+		return false;
+	}
+	for(unsigned int lengths = 1;lengths <= userInput.size();lengths++){
+		if(checkWordDictionary(userInput.substr(0,lengths)) && wordBreakMain(userInput.substr(lengths,userInput.size() - lengths))){
+			return true;
+		}
+	}
+	return false;
+}
 
-/****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(N^3) Algorithm 																    */
-/****************************************************************************************************************************************************/
-
-/****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
-/****************************************************************************************************************************************************/
+bool wordBreakDP(string userInput){
+	if(userInput.size() == 0){
+		return true;
+	}
+	vector<bool> auxSpace(userInput.size()+1,false);
+	for(unsigned int lengthCounter = 1;lengthCounter <= userInput.size();lengthCounter++){
+		if(!auxSpace[lengthCounter] && checkWordDictionary(userInput.substr(0,lengthCounter))){
+			auxSpace[lengthCounter] = true;
+		}
+		if(auxSpace[lengthCounter]){
+			for(unsigned int innerCounter = lengthCounter+1;innerCounter <= userInput.size();innerCounter++){
+				if(!auxSpace[innerCounter] && checkWordDictionary(userInput.substr(lengthCounter,innerCounter-lengthCounter))){
+					auxSpace[innerCounter] = true;
+				}
+				if(innerCounter == userInput.size() && auxSpace[innerCounter]){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
 
 #endif /* WORDBREAK_H_ */
 

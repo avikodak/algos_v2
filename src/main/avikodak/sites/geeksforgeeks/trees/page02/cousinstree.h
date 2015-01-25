@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: specificlevelorder.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\specificlevelorder.h
- *  Created on			: Jan 22, 2015 :: 7:44:11 PM
+ *  File Name   		: cousinstree.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\cousinstree.h
+ *  Created on			: Jan 24, 2015 :: 12:39:27 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/perfect-binary-tree-specific-level-order-traversal/
- ****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,47 +67,59 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SPECIFICLEVELORDER_H_
-#define SPECIFICLEVELORDER_H_
+#ifndef COUSINSTREE_H_
+#define COUSINSTREE_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-void perfectTreeSpecificLevelOrder(itNode *ptr){
+bool areNodesSibilings(itNode *ptr,int firstValue,int secondValue){
 	if(ptr == null){
-		return;
+		return false;
 	}
-	queue<itNode *> auxSpace;
-	itNode *firstNode,*secondNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		firstNode = auxSpace.front();
-		auxSpace.pop();
-		printf("%d\t",firstNode->value);
-		if(!auxSpace.empty()){
-			secondNode = auxSpace.front();
-			auxSpace.pop();
-			printf("%d\t",secondNode->value);
-		}else{
-			secondNode = null;
-		}
-		if(firstNode->left != null){
-			auxSpace.push(firstNode->left);
-		}
-		if(secondNode != null && secondNode->right != null){
-			auxSpace.push(secondNode->right);
-		}
-		if(firstNode->right != null){
-			auxSpace.push(firstNode->right);
-		}
-		if(secondNode != null && secondNode->left != null){
-			auxSpace.push(secondNode->left);
-		}
+	if(ptr->left != null && ptr->right != null){
+		return (ptr->left->value == firstValue && ptr->right->value == secondValue) || (ptr->left->value == secondValue && ptr->right->value == firstValue);
 	}
+	return areNodesSibilings(ptr->left,firstValue,secondValue) || areNodesSibilings(ptr->right,firstValue,secondValue);
 }
 
-#endif /* SPECIFICLEVELORDER_H_ */
+int levelOfNode(itNode *ptr,int userInput,int level){
+	if(ptr == null){
+		return INT_MIN;
+	}
+	if(ptr->value == userInput){
+		return level;
+	}
+	int leftResult = levelOfNode(ptr->left,userInput,level+1);
+	if(leftResult != null){
+		return leftResult;
+	}
+	return levelOfNode(ptr->right,userInput,level+1);
+}
+
+bool areNodesCousins(itNode *ptr,int firstValue,int secondValue){
+	if(levelOfNode(ptr,firstValue,0) && levelOfNode(ptr,secondValue,0) && !areNodesSibilings(ptr,firstValue,secondValue)){
+		return true;
+	}
+	return false;
+}
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(N^3) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+/****************************************************************************************************************************************************/
+/* 																O(2^N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+
+#endif /* COUSINSTREE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

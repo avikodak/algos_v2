@@ -66,6 +66,8 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page01/topview.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page01/diagonalsum.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page01/printnodesbetweenlevels.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/closestleaf.h"
+#include "main/avikodak/sites/geeksforgeeks/trees/page01/specificlevelorder.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
@@ -95,11 +97,8 @@ void s(isuccesssorNode *ptr){
 
 void treeTester(){
 	treeutils *utils = new treeutils();
-	//vector<int> userInput = getVectorForUserInput();
-	hash_map<unsigned int,int> indexValueMap = getUserInputForIndexValueMap();
-	//itNode *root = utils->getITreeFromVector(generateISequenceVector(7));
-	itNode *root = utils->getITreeFromHashmap(indexValueMap);
-	printDiagonalSums(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14
+	itNode *root = utils->getITreeFromVector(generateISequenceVector(31));
+	perfectTreeSpecificLevelOrder(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14 //10 1 1 2 2 3 3 6 4 7 5 12 6 15 7 24 8 25 9 30 10
 }
 
 void avlTreeTester(){
