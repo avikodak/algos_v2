@@ -69,6 +69,12 @@
 #include "main/avikodak/sites/geeksforgeeks/trees/page01/closestleaf.h"
 #include "main/avikodak/sites/geeksforgeeks/trees/page01/specificlevelorder.h"
 
+#include "main/avikodak/sites/hackerrank/warmup/loveletter.h"
+#include "main/avikodak/sites/hackerrank/warmup/alternatingchar.h"
+
+
+#include "main/avikodak/sites/codeforces/waytoolongwords.h"
+#include "main/avikodak/sites/codeforces/stringtask.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
@@ -147,9 +153,13 @@ void trieTester(){
 }
 
 void stringTester(){
-	//char userInput[] = "BBABCBCAB";
-	//scanf("%s",userInput);
-	//reverseWordsInString(userInput);
+	char userInput[101];
+	/*int testCases;
+	scanf("%d",&testCases);
+	while(testCases--){*/
+		scanf("%s",userInput);
+		stringTask(userInput);
+	/*}*/
 }
 
 void graphTester(){
@@ -161,8 +171,9 @@ void graphTester(){
 }
 
 int main() {
-	PRINT_NEW_LINE;
-	arrayTester();
+	char userInput[101];
+	scanf("%s",userInput);
+	stringTask(userInput);
 	return 0;
 }
 
