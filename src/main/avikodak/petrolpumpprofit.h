@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tlg.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\tlg.h
- *  Created on			: Feb 3, 2015 :: 6:55:31 PM
+ *  File Name   		: petrolpumpprofit.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\petrolpumpprofit.h
+ *  Created on			: Feb 4, 2015 :: 12:56:22 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.codechef.com/problems/TLG
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,27 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TLG_H_
-#define TLG_H_
+#ifndef PETROLPUMPPROFIT_H_
+#define PETROLPUMPPROFIT_H_
 
-//Tested
-void printWinner(){
-	int noOfRounds;
-	scanf("%d",&noOfRounds);
-	int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
-	while(noOfRounds--){
-		scanf("%d %d",&firstPersonScore,&secondPersonScore);
-		firstLead += (firstPersonScore - secondPersonScore);
-		secondLead += (secondPersonScore - firstPersonScore);
-		if(firstLead > maxLead){
-			maxLead = firstLead;
-			maxLeadPerson = 1;
-		}else if(secondLead > maxLead){
-			maxLead = secondLead;
-			maxLeadPerson = 2;
-		}
-	}
-	printf("%d %d\n",maxLeadPerson,maxLead);
+void calculateProfit(vector < int > prices) {
+    int maxTillNow = prices.size() - 1,maxProfit = 0,buy,sell;
+    for(int counter = prices.size()-2;counter >= 0;counter--){
+        if(prices[counter] < prices[maxTillNow]){
+            if(maxProfit < prices[maxTillNow] - prices[counter]){
+                maxProfit = prices[maxTillNow] - prices[counter];
+                buy = counter;
+                sell = maxTillNow;
+            }
+        }else{
+            maxTillNow = counter;
+        }
+    }
+    printf("%d %d\n",buy+1,prices[buy]);
+    printf("%d %d\n",sell+1,prices[sell]);
 }
 
-#endif /* TLG_H_ */
+#endif /* PETROLPUMPPROFIT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

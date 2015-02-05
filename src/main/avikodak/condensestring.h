@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tlg.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\tlg.h
- *  Created on			: Feb 3, 2015 :: 6:55:31 PM
+ *  File Name   		: condensestring.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\condensestring.h
+ *  Created on			: Feb 4, 2015 :: 12:58:14 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.codechef.com/problems/TLG
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TLG_H_
-#define TLG_H_
+#ifndef CONDENSESTRING_H_
+#define CONDENSESTRING_H_
 
-//Tested
-void printWinner(){
-	int noOfRounds;
-	scanf("%d",&noOfRounds);
-	int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
-	while(noOfRounds--){
-		scanf("%d %d",&firstPersonScore,&secondPersonScore);
-		firstLead += (firstPersonScore - secondPersonScore);
-		secondLead += (secondPersonScore - firstPersonScore);
-		if(firstLead > maxLead){
-			maxLead = firstLead;
-			maxLeadPerson = 1;
-		}else if(secondLead > maxLead){
-			maxLead = secondLead;
-			maxLeadPerson = 2;
-		}
-	}
-	printf("%d %d\n",maxLeadPerson,maxLead);
+string condenseString(string str) {
+    string result;
+    int crawler = 0,frequency = 0;
+    stringstream convert;
+    while(crawler < str.length()){
+        frequency = 1;
+        while(crawler+1 < str.length() && str[crawler] == str[crawler+1]){
+            frequency++;
+            crawler++;
+        }
+        if(frequency == 1){
+            result.push_back(str[crawler]);
+        }else if(frequency == 2){
+            result.push_back(str[crawler]);
+            result.push_back(str[crawler]);
+        }else{
+            convert << frequency;
+            result.append(convert.str());
+            convert.str("");
+            result.push_back('@');
+            result.push_back(str[crawler]);
+        }
+        crawler++;
+    }
+    return result;
 }
 
-#endif /* TLG_H_ */
+#endif /* CONDENSESTRING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

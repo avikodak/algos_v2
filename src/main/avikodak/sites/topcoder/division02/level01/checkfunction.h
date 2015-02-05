@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tlg.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\tlg.h
- *  Created on			: Feb 3, 2015 :: 6:55:31 PM
+ *  File Name   		: checkfunction.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\checkfunction.h
+ *  Created on			: Feb 5, 2015 :: 9:10:30 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.codechef.com/problems/TLG
-****************************************************************************************************************************************************/
+ *  Testing Status 		: TODO
+ *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=4788 ( Single Round Match 271 Round 1 - Division II, Level One )
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,30 +67,48 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TLG_H_
-#define TLG_H_
+#ifndef CHECKFUNCTION_H_
+#define CHECKFUNCTION_H_
 
-//Tested
-void printWinner(){
-	int noOfRounds;
-	scanf("%d",&noOfRounds);
-	int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
-	while(noOfRounds--){
-		scanf("%d %d",&firstPersonScore,&secondPersonScore);
-		firstLead += (firstPersonScore - secondPersonScore);
-		secondLead += (secondPersonScore - firstPersonScore);
-		if(firstLead > maxLead){
-			maxLead = firstLead;
-			maxLeadPerson = 1;
-		}else if(secondLead > maxLead){
-			maxLead = secondLead;
-			maxLeadPerson = 2;
-		}
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+unsigned int checkFunction(char *userInput){
+	if(userInput[0] == '\0'){
+		return 0;
 	}
-	printf("%d %d\n",maxLeadPerson,maxLead);
+	unsigned dashFrequency = 0;
+	while(userInput[0] != '\0'){
+		switch(userInput[0]){
+		case 0:
+		case 6:
+		case 9:
+			dashFrequency += 6;
+			break;
+		case 1:
+			dashFrequency += 2;
+			break;
+		case 2:
+		case 3:
+		case 5:
+			dashFrequency += 5;
+			break;
+		case 4:
+			dashFrequency += 4;
+			break;
+		case 7:
+			dashFrequency += 3;
+			break;
+		case 8:
+			dashFrequency += 7;
+			break;
+		}
+		userInput++;
+	}
+	return dashFrequency;
 }
 
-#endif /* TLG_H_ */
+#endif /* CHECKFUNCTION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

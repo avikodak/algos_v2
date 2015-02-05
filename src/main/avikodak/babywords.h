@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tlg.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\tlg.h
- *  Created on			: Feb 3, 2015 :: 6:55:31 PM
+ *  File Name   		: babywords.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\babywords.h
+ *  Created on			: Feb 4, 2015 :: 12:56:40 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.codechef.com/problems/TLG
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,47 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TLG_H_
-#define TLG_H_
+#ifndef BABYWORDS_H_
+#define BABYWORDS_H_
 
-//Tested
-void printWinner(){
-	int noOfRounds;
-	scanf("%d",&noOfRounds);
-	int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
-	while(noOfRounds--){
-		scanf("%d %d",&firstPersonScore,&secondPersonScore);
-		firstLead += (firstPersonScore - secondPersonScore);
-		secondLead += (secondPersonScore - firstPersonScore);
-		if(firstLead > maxLead){
-			maxLead = firstLead;
-			maxLeadPerson = 1;
-		}else if(secondLead > maxLead){
-			maxLead = secondLead;
-			maxLeadPerson = 2;
-		}
-	}
-	printf("%d %d\n",maxLeadPerson,maxLead);
+bool existsInDictionary(vector<string> baby_words,string userInput){
+    for(unsigned int counter = 0;counter < baby_words.size();counter++){
+        if(baby_words[counter].compare(userInput) == 0){
+            return true;
+        }
+    }
+    return false;
 }
 
-#endif /* TLG_H_ */
+bool doesExists(vector<string> baby_words,queue<string> breakedWords,string garbled_text){
+    if(garbled_text.size() == 0){
+        while(!breakedWords.empty()){
+            cout << breakedWords.front() + " ";
+            breakedWords.pop();
+        }
+        return true;
+    }
+    int counter = 1;
+    while(counter <= garbled_text.size()){
+        string subString = garbled_text.substr(0,counter);
+        if(existsInDictionary(baby_words,subString)){
+            breakedWords.push(subString);
+            if(doesExists(baby_words,breakedWords,garbled_text.substr(counter,garbled_text.size() - (counter)))){
+                return true;
+            }
+            breakedWords.pop();
+        }
+        counter++;
+    }
+    return false;
+}
+
+void findBabyWords(vector < string > baby_words, string garbled_text) {
+    queue<string> auxSpace;
+    doesExists(baby_words,auxSpace,garbled_text);
+}
+
+#endif /* BABYWORDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
