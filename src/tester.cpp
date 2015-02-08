@@ -75,12 +75,13 @@ using namespace std;
 
 #include "main/avikodak/sites/codeforces/waytoolongwords.h"
 #include "main/avikodak/sites/codeforces/stringtask.h"
+
+#include "main/avikodak/sites/codechef/sumtrian.h"
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	vector<int> userInput = generateIRandomVector(10,0,10);
-	printIVector(userInput);
+	maxSumTriangle();
 }
 
 void p(inrNode *ptr){
@@ -171,9 +172,7 @@ void graphTester(){
 }
 
 int main() {
-	char userInput[101];
-	scanf("%s",userInput);
-	stringTask(userInput);
+	arrayTester();
 	return 0;
 }
 
