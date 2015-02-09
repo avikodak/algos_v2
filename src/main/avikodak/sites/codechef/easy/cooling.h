@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: cooling.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cooling.h
+ *  Created on			: Feb 8, 2015 :: 8:46:05 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/COOLING
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,16 +62,54 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define MAX_SIZE 30
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef COOLING_H_
+#define COOLING_H_
 
+/****************************************************************************************************************************************************/
+/* 																O(NLOGN) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void getMaxPiesCooled(){
+	int testCases,size,input;
+	int pieWeights[MAX_SIZE],maxWeights[MAX_SIZE];
+	scanf("%d",&testCases);
+	int maxPies,pieCounter,weightCounter;
+	while(testCases--){
+		scanf("%d",&size);
+		for(int counter = 0;counter < size;counter++){
+			scanf("%d",&input);
+			pieWeights[counter] = input;
+		}
+		for(int counter = 0;counter < size;counter++){
+			scanf("%d",&input);
+			maxWeights[counter] = input;
+		}
+		sort(pieWeights,pieWeights+size);
+		sort(maxWeights,maxWeights+size);
+		maxPies = 0;
+		pieCounter = 0;
+		weightCounter = 0;
+		while(pieCounter < size && weightCounter < size){
+			while(weightCounter < size && maxWeights[weightCounter] < pieWeights[pieCounter]){
+				weightCounter++;
+			}
+			if(weightCounter < size){
+				maxPies++;
+				weightCounter++;
+				pieCounter++;
+			}
+		}
+		printf("%d\n",maxPies);
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* COOLING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

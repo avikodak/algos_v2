@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: lecandy.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\lecandy.h
+ *  Created on			: Feb 9, 2015 :: 12:40:10 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/LECANDY/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,30 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef LECANDY_H_
+#define LECANDY_H_
 
+//Tested
+void areElephantsHappy(){
+	int testCases,totalElephants,totalCandies,input;
+	scanf("%d",&testCases);
+	int sumCandies;
+	while(testCases--){
+		scanf("%d %d",&totalElephants,&totalCandies);
+		sumCandies = 0;
+		while(totalElephants--){
+			scanf("%d",&input);
+			sumCandies += input;
+		}
+		if(sumCandies <= totalCandies){
+			printf("Yes\n");
+		}else{
+			printf("No\n");
+		}
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* LECANDY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

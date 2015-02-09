@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: horses.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\horses.h
+ *  Created on			: Feb 9, 2015 :: 4:14:53 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/HORSES/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,32 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef HORSES_H_
+#define HORSES_H_
 
+//Tested
+void printMinDifference(){
+	int testCases,input,size,minDiff;
+	scanf("%d",&testCases);
+	vector<int> userInput;
+	while(testCases--){
+		scanf("%d",&size);
+		userInput.clear();
+		while(size--){
+			scanf("%d",&input);
+			userInput.push_back(input);
 
-#endif /* TAXI_H_ */
+		}
+		sort(userInput.begin(),userInput.end());
+		minDiff = INT_MAX;
+		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+			minDiff = min(minDiff,userInput[counter+1] - userInput[counter]);
+		}
+		printf("%d\n",minDiff);
+	}
+}
+
+#endif /* HORSES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

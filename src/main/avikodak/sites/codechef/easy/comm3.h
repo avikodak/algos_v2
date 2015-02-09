@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: comm3.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\comm3.h
+ *  Created on			: Feb 9, 2015 :: 8:24:38 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/COMM3
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,39 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef COMM3_H_
+#define COMM3_H_
 
+double distance(int x1,int y1,int x2,int y2){
+	return sqrt(pow(x2-x1,2)+pow(y2-y1,2));
+}
 
-#endif /* TAXI_H_ */
+void isCommPossible(){
+	int testCases,maxDistance;
+	double chefHeadDis,chefSousDis,sousHeadDis;
+	scanf("%d",&testCases);
+	int chefX,chefY,headX,headY,sousX,sousY;
+	while(testCases--){
+		scanf("%d",&maxDistance);
+		scanf("%d %d %d %d %d %d",&chefX,&chefY,&headX,&headY,&sousX,&sousY);
+		chefHeadDis = distance(chefX,chefY,headX,headY);
+		chefSousDis = distance(chefX,chefY,sousX,sousY);
+		if(chefHeadDis <= maxDistance && chefSousDis <= maxDistance){
+			printf("yes\n");
+		}else if(chefHeadDis <= maxDistance || chefSousDis <= maxDistance){
+			sousHeadDis = distance(sousX,sousY,headX,headY);
+			if(sousHeadDis <= maxDistance){
+				printf("yes\n");
+			}else{
+				printf("no\n");
+			}
+		}else{
+			printf("no\n");
+		}
+	}
+}
+
+#endif /* COMM3_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

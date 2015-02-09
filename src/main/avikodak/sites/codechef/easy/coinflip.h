@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: coinflip.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\coinflip.h
+ *  Created on			: Feb 9, 2015 :: 9:01:40 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/CONFLIP
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,31 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef COINFLIP_H_
+#define COINFLIP_H_
 
+//Tested
+void predictResult(){
+	int testCases,noOfGames,initState,coins,result;
+	scanf("%d",&testCases);
+	while(testCases--){
+		scanf("%d",&noOfGames);
+		while(noOfGames--){
+			scanf("%d %d %d",&initState,&coins,&result);
+			if(coins%2 == 0){
+				printf("%d\n",coins/2);
+			}else{
+				if(initState == result){
+					printf("%d\n",coins/2);
+				}else{
+					printf("%d\n",(coins/2)+1);
+				}
+			}
+		}
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* COINFLIP_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

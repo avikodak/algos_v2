@@ -1,16 +1,18 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tester.cpp 
- *	File Location		: D:\algos\algos_v2\src\tester.cpp
- *  Created on			: Oct 9, 2014 :: 12:55:16 PM
+ *  File Name   		: marcha1.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\marcha1.h
+ *  Created on			: Feb 9, 2015 :: 10:47:42 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://www.codechef.com/problems/MARCHA1
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
 /****************************************************************************************************************************************************/
+
 using namespace std;
+using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
 /* 																INCLUDES		 																    */
@@ -40,8 +42,8 @@ using namespace std;
 #include <limits.h>
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
-#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/linkedlistds.h>
+#include <algorithm/ds/graphds.h>
 #include <algorithm/ds/mathds.h>
 #include <algorithm/ds/treeds.h>
 #include <algorithm/utils/arrayutil.h>
@@ -54,128 +56,68 @@ using namespace std;
 #include <algorithm/utils/mathutil.h>
 #include <algorithm/utils/redblacktreeutil.h>
 #include <algorithm/utils/sillutil.h>
-#include <algorithm/utils/trieutil.h>
 #include <algorithm/utils/treeutil.h>
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															Testing Includes																	    */
+/* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/serializedeserializetree.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/bottomview.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/topview.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/diagonalsum.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/printnodesbetweenlevels.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/closestleaf.h"
-#include "main/avikodak/sites/geeksforgeeks/trees/page01/specificlevelorder.h"
-
-#include "main/avikodak/sites/hackerrank/warmup/loveletter.h"
-#include "main/avikodak/sites/hackerrank/warmup/alternatingchar.h"
-
-
-#include "main/avikodak/sites/codeforces/waytoolongwords.h"
-#include "main/avikodak/sites/codeforces/stringtask.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
-void arrayTester() {
-	/*maxSumTriangle();*/
-}
 
-void p(inrNode *ptr){
-	if(ptr == null){
-		return;
+#ifndef MARCHA1_H_
+#define MARCHA1_H_
+
+//Tested
+bool subsetForMoney(map<int,int> notesFrequency,int amount){
+	if(amount == 0){
+		return true;
 	}
-	printf("%d -> %d\n",ptr->value,ptr->nextRight != null?ptr->nextRight->value:0);
-	p(ptr->left);
-	p(ptr->right);
-}
-
-void s(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
+	map<int,int>::iterator itToNotesFrequency;
+	for(itToNotesFrequency = notesFrequency.begin();itToNotesFrequency != notesFrequency.end();itToNotesFrequency++){
+		if(itToNotesFrequency->first > amount){
+			return false;
+		}
+		if(itToNotesFrequency->second > 0){
+			itToNotesFrequency->second -= 1;
+			if(subsetForMoney(notesFrequency,amount - itToNotesFrequency->first)){
+				return true;
+			}
+			itToNotesFrequency->second += 1;
+		}
 	}
-	printf("%d -> %d\n",ptr->value,ptr->successor == null ?0:ptr->successor->value);
-	s(ptr->left);
-	s(ptr->right);
+	return false;
 }
 
-void treeTester(){
-	treeutils *utils = new treeutils();
-	itNode *root = utils->getITreeFromVector(generateISequenceVector(31));
-	perfectTreeSpecificLevelOrder(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14 //10 1 1 2 2 3 3 6 4 7 5 12 6 15 7 24 8 25 9 30 10
-}
-
-void avlTreeTester(){
-	//avlutils *utils = new avlutils();
-	vector<int> sequence = generateISequenceVector(10);
-	PRINT_NEW_LINE;
-
-}
-
-void twoFourTreeTester(){
-	vector<int> sequence = generateISequenceVector(30);
-	twofourtreeutils *utils = new twofourtreeutils();
-	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
-	//utils->insertIntoTwoFourTree(&root,12);
-	utils->inorderTraversal(root);
-}
-
-void sillTester(){
-	sillutils *utils = new sillutils();
-	sillNode *head = utils->getRandomSill(10,1,50);
-	utils->printSill(head);
-}
-
-void customTester(){
-	char inputSequence[4];
-	scanf("%s",inputSequence);
-}
-
-void redblackTreeTester(){
-	rbutils *utils = new rbutils();
-	vector<int> sequence = generateISequenceVector(10);
-	iRbTreeNode *root = utils->getRbTreeFromVector(sequence);
-	utils->inorderTraversal(root);
-	PRINT_NEW_LINE;
-	for(unsigned int counter = 1;counter <= 10;counter++){
-		sequence.push_back(counter);
-	}
-	ifRbTreeNode *root2 = utils->getFRbTreeFromVector(sequence);
-	utils->inorderTraversal(root2);
-	PRINT_NEW_LINE;
-	printf("%d %d",utils->height(root),utils->height(root2));
-}
-
-void trieTester(){
-
-}
-
-void stringTester(){
-	char userInput[101];
-	/*int testCases;
+//Tested
+void solveSubsetMoneyProblem(){
+	int testCases,note,amount,size;
+	map<int,int> notesFrequency;
+	map<int,int>::iterator itToNotesFrequency;
 	scanf("%d",&testCases);
-	while(testCases--){*/
-		scanf("%s",userInput);
-		stringTask(userInput);
-	/*}*/
+	while(testCases--){
+		scanf("%d %d",&size,&amount);
+		notesFrequency.clear();
+		while(size--){
+			scanf("%d",&note);
+			if((itToNotesFrequency = notesFrequency.find(note)) == notesFrequency.end()){
+				notesFrequency.insert(pair<int,int>(note,1));
+			}else{
+				notesFrequency[note] += 1;
+			}
+		}
+		if(subsetForMoney(notesFrequency,amount)){
+			printf("Yes\n");
+		}else{
+			printf("No\n");
+		}
+	}
 }
 
-void graphTester(){
-	graphutil *utils = new graphutil();
-	vector<wEdge *> edgeList = utils->getWEdgeList(false);
-	int noOfVertices,sourceVertex,destinationVertex;
-	scanf("%d %d %d",&noOfVertices,&sourceVertex,&destinationVertex);
-
-}
-
-int main() {
-	arrayTester();
-	return 0;
-}
+#endif /* MARCHA1_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
 /****************************************************************************************************************************************************/
-

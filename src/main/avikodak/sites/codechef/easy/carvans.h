@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: carvans.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\carvans.h
+ *  Created on			: Feb 9, 2015 :: 8:42:56 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/CARVANS
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef CARVANS_H_
+#define CARVANS_H_
 
+//Tested
+void getCarsAtMaxSpeed(){
+	int testCases,size,input,minTillNow,carsAtMaxSpeed;
+	scanf("%d",&testCases);
+	while(testCases--){
+		scanf("%d",&size);
+		minTillNow = INT_MAX;
+		carsAtMaxSpeed = 0;
+		while(size--){
+			scanf("%d",&input);
+			if(minTillNow >= input){
+				carsAtMaxSpeed++;
+				minTillNow = input;
+			}
+		}
+		printf("%d\n",carsAtMaxSpeed);
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* CARVANS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

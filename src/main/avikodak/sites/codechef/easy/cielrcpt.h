@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: cielrcpt.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cielrcpt.h
+ *  Created on			: Feb 9, 2015 :: 9:56:03 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/CIELRCPT
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,11 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef CIELRCPT_H_
+#define CIELRCPT_H_
 
+//Tested
+void minItemsMenu(){
+	int testCases;
+	scanf("%d",&testCases);
+	int counter = 2048;
+	int minItems,userInput;
+	while(testCases--){
+		scanf("%d",&userInput);
+		counter = 2048;
+		minItems = 0;
+		while(userInput > 0){
+			minItems += userInput/counter;
+			userInput = userInput%counter;
+			counter >> 1;
+		}
+		printf("%d\n",minItems);
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* CIELRCPT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

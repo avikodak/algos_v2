@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: cleanup.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cleanup.h
+ *  Created on			: Feb 9, 2015 :: 11:16:01 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/CLEANUP
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,11 +67,63 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef CLEANUP_H_
+#define CLEANUP_H_
 
+//Tested
+void printVector(vector<int> jobs){
+	for(unsigned int counter = 0;counter < jobs.size();counter++){
+		printf("%d ",jobs[counter]);
+	}
+	PRINT_NEW_LINE;
+}
 
-#endif /* TAXI_H_ */
+//Tested
+void assignJobs(){
+	int testCases,totalJobs,jobsCount,jobIndex;
+	unsigned int finishedJobIndex;
+	scanf("%d",&testCases);
+	bool flag;
+	vector<int> finishedJobs,chefJobs,assistantJobs;
+	while(testCases--){
+		finishedJobs.clear();
+		chefJobs.clear();
+		assistantJobs.clear();
+		scanf("%d %d",totalJobs,jobsCount);
+		while(jobsCount--){
+			scanf("%d",jobIndex);
+			finishedJobs.push_back(jobIndex);
+		}
+		sort(finishedJobs.begin(),finishedJobs.end());
+		finishedJobIndex = 0;
+		flag = true;
+		int counter = 1;
+		for(;counter <= totalJobs && finishedJobIndex < finishedJobs.size();counter++){
+			if(counter != finishedJobs[finishedJobIndex]){
+				if(flag){
+					chefJobs.push_back(counter);
+				}else{
+					assistantJobs.push_back(counter);
+				}
+				flag = !flag;
+			}else{
+				finishedJobIndex++;
+			}
+		}
+		for(;counter <= totalJobs;counter++){
+			if(flag){
+				chefJobs.push_back(counter);
+			}else{
+				assistantJobs.push_back(counter);
+			}
+			flag = !flag;
+		}
+		printVector(chefJobs);
+		printVector(assistantJobs);
+	}
+}
+
+#endif /* CLEANUP_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

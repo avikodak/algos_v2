@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: cielab.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cielab.h
+ *  Created on			: Feb 9, 2015 :: 9:02:37 AM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.codechef.com/problems/CIELAB
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,11 +67,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef CIELAB_H_
+#define CIELAB_H_
 
+//Tested
+void printWrongSub(){
+	int firstUserInput,secondUserInput;
+	scanf("%d %d",&firstUserInput,&secondUserInput);
+	int difference = firstUserInput - secondUserInput;
+	if(difference%10 == 1){
+		difference /= 10;
+		difference = difference * 10 + 2;
+	}else{
+		difference /= 10;
+		difference = difference * 10 + 1;
+	}
+	printf("%d",difference);
+}
 
-#endif /* TAXI_H_ */
+#endif /* CIELAB_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

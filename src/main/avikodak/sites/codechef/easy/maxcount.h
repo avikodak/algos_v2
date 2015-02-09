@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
- *  Created on			: Feb 3, 2015 :: 12:39:04 PM
+ *  File Name   		: maxcount.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\maxcount.h
+ *  Created on			: Feb 8, 2015 :: 7:07:41 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
- *  URL 				: http://codeforces.com/problemset/problem/158/B
+ *  URL 				: http://www.codechef.com/problems/MAXCOUNT
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,16 +62,44 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define MAX_SIZE 10001
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef TAXI_H_
-#define TAXI_H_
+#ifndef MAXCOUNT_H_
+#define MAXCOUNT_H_
 
+/****************************************************************************************************************************************************/
+/* 																	O(N) Algorithm 																    */
+/****************************************************************************************************************************************************/
+//Tested
+void getMaxFrequencyElement(){
+	int testCases,size,number;
+	vector<int> frequencyMap;
+	scanf("%d",&testCases);
+	int maxFrequency = 0,minElement;
+	while(testCases--){
+		scanf("%d",&size);
+		frequencyMap.clear();
+		frequencyMap.assign(MAX_SIZE,0);
+		maxFrequency = 0;
+		while(size--){
+			scanf("%d",&number);
+			frequencyMap[number] += 1;
+			if(maxFrequency < frequencyMap[number]){
+				maxFrequency = frequencyMap[number];
+				minElement = number;
+			}else if(maxFrequency == frequencyMap[number]){
+				minElement = min(minElement,number);
+			}
+		}
+		printf("%d %d\n",minElement,maxFrequency);
+	}
+}
 
-#endif /* TAXI_H_ */
+#endif /* MAXCOUNT_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
