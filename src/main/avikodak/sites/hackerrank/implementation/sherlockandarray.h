@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: sherlockandarray.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\sherlockandarray.h
+ *  Created on			: Feb 10, 2015 :: 6:45:22 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  URL 				: https://www.hackerrank.com/challenges/sherlock-and-array
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,39 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef SHERLOCKANDARRAY_H_
+#define SHERLOCKANDARRAY_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
+void doesEquilibriumElementExists(){
+	int testCases,size;
+	long int input,sumOfArray,leftSum;
 	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
+	vector<int> userInput;
+	bool flag;
 	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+		scanf("%d",&size);
+		sumOfArray = 0;
+		userInput.clear();
+		while(size--){
+			scanf("%ld",&input);
+			sumOfArray += input;
+			userInput.push_back(input);
 		}
-		printf("%ld\n",total);
+		leftSum = 0;
+		flag = false;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			if(leftSum == sumOfArray - leftSum - userInput[counter]){
+				flag = true;
+				break;
+			}
+			leftSum += userInput[counter];
+		}
+		printf("%s\n",flag?"YES":"NO");
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* SHERLOCKANDARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

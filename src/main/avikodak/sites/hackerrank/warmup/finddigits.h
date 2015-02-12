@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: finddigits.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\finddigits.h
+ *  Created on			: Feb 10, 2015 :: 9:56:52 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  URL 				: https://www.hackerrank.com/challenges/find-digits
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,31 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef FINDDIGITS_H_
+#define FINDDIGITS_H_
 
 //Tested
-void totalChocolates(){
+void countDigitDivisor(){
 	int testCases;
 	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
+	long int input,temp,counter;
 	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+		scanf("%ld",&input);
+		counter = 0;
+		temp = input;
+		while(input > 0){
+			if(input % 10 != 0){
+				if(temp % (input % 10) == 0){
+					counter++;
+				}
+			}
+			input /= 10;
 		}
-		printf("%ld\n",total);
+		printf("%ld\n",counter);
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* FINDDIGITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

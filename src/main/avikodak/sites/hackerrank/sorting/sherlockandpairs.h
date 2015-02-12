@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: sherlockandpairs.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\sherlockandpairs.h
+ *  Created on			: Feb 12, 2015 :: 3:13:12 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef SHERLOCKANDPAIRS_H_
+#define SHERLOCKANDPAIRS_H_
 
-//Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
+void countEqualPairs(){
+	long int testCases,size,input;
+	scanf("%ld",&testCases);
+	vector<long int> userInput;
+	long int crawler,counter,total;
 	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+		scanf("%ld",&size);
+		userInput.clear();
+		while(size--){
+			scanf("%ld",&input);
+			userInput.push_back(input);
+		}
+		sort(userInput.begin(),userInput.end());
+		crawler = counter = total = 0;
+		while(crawler < userInput.size()){
+			counter = 1;
+			while(crawler+1 < userInput.size() && userInput[crawler] == userInput[crawler+1]){
+				counter += 1;
+				crawler++;
+			}
+			total += (counter * (counter-1));
+			crawler++;
 		}
 		printf("%ld\n",total);
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* SHERLOCKANDPAIRS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

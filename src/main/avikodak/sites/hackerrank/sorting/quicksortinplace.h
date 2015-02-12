@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: quicksortinplace.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksortinplace.h
+ *  Created on			: Feb 12, 2015 :: 2:47:37 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,45 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef QUICKSORTINPLACE_H_
+#define QUICKSORTINPLACE_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
+void printVector(vector<int> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d ",userInput[counter]);
 	}
+	printf("\n");
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+//Tested
+int partitionArray(vector<int> &userInput,int start,int end){
+	int pivotElement = end;
+	int key = userInput[end];
+	int frontCrawler = start,rearCrawler = start;
+	while(rearCrawler <= end){
+		if(userInput[rearCrawler] < key){
+			swap(userInput[frontCrawler],userInput[rearCrawler]);
+			frontCrawler++;
+		}
+		rearCrawler++;
+	}
+	swap(userInput[frontCrawler],userInput[pivotElement]);
+	printVector(userInput);
+	return frontCrawler;
+}
+
+//Tested
+void quickSort(vector<int> &userInput,int startIndex,int endIndex){
+	if(startIndex >= endIndex){
+		return;
+	}
+	int dividingIndex = partitionArray(userInput,startIndex,endIndex);
+	quickSort(userInput,startIndex,dividingIndex-1);
+	quickSort(userInput,dividingIndex+1,endIndex);
+}
+
+#endif /* QUICKSORTINPLACE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

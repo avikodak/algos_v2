@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: servicelane.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\servicelane.h
+ *  Created on			: Feb 11, 2015 :: 10:25:42 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef SERVICELANE_H_
+#define SERVICELANE_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
+void maxVehicleServiceLane(){
+	long int size,intervalSize,start,end,input;
+	scanf("%ld %ld",&size,&intervalSize);
+	vector<long int> userInput;
+	while(size--){
+		scanf("%ld",&input);
+		userInput.push_back(input);
+	}
+	while(intervalSize--){
+		scanf("%ld %ld",&start,&end);
+		printf("%ld\n",*min_element(userInput.begin()+start,userInput.end()+end));
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* SERVICELANE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

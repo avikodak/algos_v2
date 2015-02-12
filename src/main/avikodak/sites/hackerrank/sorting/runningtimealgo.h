@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: runningtimealgo.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\runningtimealgo.h
+ *  Created on			: Feb 12, 2015 :: 1:40:24 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,32 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef RUNNINGTIMEALGO_H_
+#define RUNNINGTIMEALGO_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
+void analysisInsertionSort(){
+	int size,input;
+	scanf("%d",&size);
+	vector<int> userInput;
+	int counter = 0;
+	while(size--){
+		scanf("%d",&input);
+		userInput.push_back(input);
 	}
+	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
+		int key = userInput[outerCrawler],crawler = outerCrawler-1;
+		while(crawler >= 0 && userInput[crawler] > key){
+			userInput[crawler+1] = userInput[crawler];
+			crawler--;
+			counter++;
+		}
+		userInput[crawler+1] = key;
+	}
+	printf("%d",counter);
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* RUNNINGTIMEALGO_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

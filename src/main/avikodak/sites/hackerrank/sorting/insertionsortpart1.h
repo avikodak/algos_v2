@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: insertionsortpart1.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\insertionsortpart1.h
+ *  Created on			: Feb 12, 2015 :: 12:25:57 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,36 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef INSERTIONSORTPART1_H_
+#define INSERTIONSORTPART1_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
+void printVector(vector<int> userInput){
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		printf("%d ",userInput[counter]);
 	}
+	printf("\n");
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+//Tested
+void insertionSortMainStep(){
+	int size,input;
+	scanf("%d",&size);
+	vector<int> userInput;
+	while(size--){
+		scanf("%d",&input);
+		userInput.push_back(input);
+	}
+	int key = userInput[userInput.size()-1],crawler = userInput.size()-2;
+	while(crawler >= 0 && userInput[crawler] > key){
+		userInput[crawler+1] = userInput[crawler];
+		printVector(userInput);
+	}
+	userInput[crawler+1] = key;
+	printVector(userInput);
+}
+
+#endif /* INSERTIONSORTPART1_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

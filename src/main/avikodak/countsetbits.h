@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: countsetbits.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\countsetbits.h
+ *  Created on			: Feb 11, 2015 :: 10:25:08 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef COUNTSETBITS_H_
+#define COUNTSETBITS_H_
 
-//Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
+int count_bits(int userInput){
+	int counter = 0;
+	int temp = userInput;
+	if(userInput < 0){
+		temp = ~temp;
 	}
+	while(temp != 0){
+		if(temp&1){
+			counter++;
+		}
+		temp = temp >> 1;
+	}
+	return userInput > 0?counter:32-counter;
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* COUNTSETBITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

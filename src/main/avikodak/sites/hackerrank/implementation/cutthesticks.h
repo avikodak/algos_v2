@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: cutthesticks.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\cutthesticks.h
+ *  Created on			: Feb 11, 2015 :: 11:50:19 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,40 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef CUTTHESTICKS_H_
+#define CUTTHESTICKS_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+void printSticksUsed(){
+	int size,input;
+	scanf("%d",&size);
+	vector<int> userInput;
+	while(size--){
+		scanf("%d",&input);
+		userInput.push_back(input);
+	}
+	int minValue,cutsMade;
+	while(true){
+		minValue = *min_element(userInput.begin(),userInput.end());
+		if(minValue == INT_MAX){
+			return;
 		}
-		printf("%ld\n",total);
+		cutsMade = 0;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			if(userInput[counter] != INT_MAX){
+				if(userInput[counter] == minValue){
+					userInput[counter] = INT_MAX;
+				}else{
+					userInput[counter] -= minValue;
+				}
+				cutsMade++;
+			}
+		}
+		printf("%d\n",cutsMade);
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* CUTTHESTICKS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

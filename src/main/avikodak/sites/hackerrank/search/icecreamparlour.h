@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: icecreamparlour.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\search\icecreamparlour.h
+ *  Created on			: Feb 11, 2015 :: 12:32:13 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
-****************************************************************************************************************************************************/
+ *  URL 				: https://www.hackerrank.com/challenges/icecream-parlor
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,27 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef ICECREAMPARLOUR_H_
+#define ICECREAMPARLOUR_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
+void getIndicesForSum(){
+	int testCases,size,sum,input;
+	vector<int> userInput;
+	bool flag;
 	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+		scanf("%d %d",&sum,&size);
+		userInput.clear();
+		while(size--){
+			scanf("%d",&input);
+			userInput.push_back(input);
 		}
-		printf("%ld\n",total);
+		flag = false;
+		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+			for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
+				if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
+					printf("%d %d\n",outerCrawler+1,innerCrawler+1);
+					flag = true;
+				}
+			}
+			if(flag){
+				break;
+			}
+		}
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* ICECREAMPARLOUR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

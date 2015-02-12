@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: missingnumbers.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\search\missingnumbers.h
+ *  Created on			: Feb 12, 2015 :: 12:06:39 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,55 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef MISSINGNUMBERS_H_
+#define MISSINGNUMBERS_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+void printMissingNumbers(){
+	vector<int> firstList,secondList;
+	int firstListSize,secondListSize,input;
+	scanf("%d",&firstListSize);
+	while(firstListSize--){
+		scanf("%d",&input);
+		firstList.push_back(input);
+	}
+	sort(firstList.begin(),firstList.end());
+	scanf("%d",&secondListSize);
+	while(secondListSize--){
+		scanf("%d",&input);
+		secondList.push_back(input);
+	}
+	sort(secondList.begin(),secondList.end());
+	unsigned int firstCrawler = 0,secondCrawler = 0,prevNumber = INT_MIN;
+	while(firstCrawler < firstList.size() || secondCrawler < secondList.size()){
+		if(firstCrawler > firstList.size() || secondCrawler > secondList.size()){
+			if(firstCrawler < firstList.size()){
+				break;
+			}else{
+				if(prevNumber != secondList[secondCrawler]){
+					printf("%d ",secondList[secondCrawler]);
+					prevNumber = secondList[secondCrawler];
+				}
+				secondCrawler++;
+			}
+		}else{
+			if(firstList[firstCrawler] == secondList[secondCrawler]){
+				firstCrawler++;
+				secondCrawler++;
+			}else if(firstList[firstCrawler] > secondList[secondCrawler]){
+				if(prevNumber != secondList[secondCrawler]){
+					printf("%d ",secondList[secondCrawler]);
+					prevNumber = secondList[secondCrawler];
+				}
+				secondCrawler++;
+			}else{
+				firstCrawler++;
+			}
 		}
-		printf("%ld\n",total);
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* MISSINGNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

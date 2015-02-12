@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
- *  Created on			: Feb 6, 2015 :: 9:06:34 AM
+ *  File Name   		: isfibo.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\isfibo.h
+ *  Created on			: Feb 10, 2015 :: 9:39:28 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/chocolate-feast
-****************************************************************************************************************************************************/
+ *  URL 				: https://www.hackerrank.com/challenges/is-fibo
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,27 +67,48 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOCOLATEFEAST_H_
-#define CHOCOLATEFEAST_H_
+#ifndef ISFIBO_H_
+#define ISFIBO_H_
 
 //Tested
-void totalChocolates(){
+void isNumberFibonacci(){
+	vector<long int> fibonacciSequence;
+	fibonacciSequence.push_back(0);
+	fibonacciSequence.push_back(1);
+	fibonacciSequence.push_back(1);
 	int testCases;
+	long int input,prevVal,prevPrevVal,nextVal;
 	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
 	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+		scanf("%ld",&input);
+		if(fibonacciSequence[fibonacciSequence.size()-1] >= input){
+			if(binary_search(fibonacciSequence.begin(),fibonacciSequence.end(),input)){
+				printf("IsFibo\n");
+			}else{
+				printf("IsNotFibo\n");
+			}
+		}else{
+			prevVal = fibonacciSequence[fibonacciSequence.size()-1];
+			prevPrevVal = fibonacciSequence[fibonacciSequence.size()-2];
+			while(true){
+				nextVal = prevVal + prevPrevVal;
+				prevPrevVal = prevVal;
+				prevVal = nextVal;
+				fibonacciSequence.push_back(nextVal);
+				if(nextVal >= input){
+					if(nextVal == input){
+						printf("IsFibo\n");
+					}else{
+						printf("IsNotFibo\n");
+					}
+					break;
+				}
+			}
 		}
-		printf("%ld\n",total);
 	}
 }
 
-#endif /* CHOCOLATEFEAST_H_ */
+#endif /* ISFIBO_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
