@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: gemstones.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\strings\gemstones.h
+ *  Created on			: Feb 13, 2015 :: 9:17:08 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,36 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef GEMSTONES_H_
+#define GEMSTONES_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
+void printLettersInAllGemStones(){
+	long int testSize;
+	string userInput;
+	scanf("%ld",&testSize);
+	vector<bool> flags;
+	vector<long int> alphaCounter(26,0);
+	for(long int counter = 0;counter < testSize;counter++){
+		cin >> userInput;
+		flags.clear();
+		flags.assign(26,false);
+		for(unsigned int strCounter = 0;strCounter < userInput.size();strCounter++){
+			if(!flags[userInput[strCounter]-'a']){
+				flags[userInput[strCounter]-'a'] = true;
+				alphaCounter[userInput[strCounter]-'a'] += 1;
+			}
 		}
 	}
+	int total = 0;
+	for(unsigned int counter = 0;counter < 26;counter++){
+		if(alphaCounter[counter] == testSize){
+			total+=1;
+		}
+	}
+	printf("%d",total);
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+#endif /* GEMSTONES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

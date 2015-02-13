@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: longestcommonsubsequence.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\longestcommonsubsequence.h
+ *  Created on			: Feb 13, 2015 :: 9:35:50 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,36 +67,57 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef LONGESTCOMMONSUBSEQUENCE_H_
+#define LONGESTCOMMONSUBSEQUENCE_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
+void printLongestCommonSubsequence(){
+	int firstInputSize = 5,secondInputSize = 6;
+	int input;
+	scanf("%d %d",&firstInputSize,&secondInputSize);
+	vector<int> firstUserInput,secondUserInput;
+	vector<vector<int> > auxSpace(firstInputSize+1);
+	for(int counter = 0;counter < firstInputSize+1;counter++){
+		auxSpace[counter].assign(secondInputSize+1,0);
 	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
+	while(firstInputSize--){
+		scanf("%d",&input);
+		firstUserInput.push_back(input);
 	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
+	while(secondInputSize--){
+		scanf("%d",&input);
+		secondUserInput.push_back(input);
+	}
+	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
+		for(unsigned int innerCrawler = 1;innerCrawler < auxSpace[0].size();innerCrawler++){
+			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
+				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
+			}else{
+				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+			}
 		}
 	}
+	int rowCounter = auxSpace.size()-1,columnCounter = auxSpace[0].size()-1;
+	stack<int> sequence;
+	while(rowCounter > 0 && columnCounter > 0){
+		if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]){
+			sequence.push(firstUserInput[rowCounter-1]);
+			rowCounter -= 1;
+			columnCounter -= 1;
+		}else if(auxSpace[rowCounter-1][columnCounter] > auxSpace[rowCounter][columnCounter-1]){
+			rowCounter -= 1;
+		}else{
+			columnCounter -= 1;
+		}
+	}
+	while(!sequence.empty()){
+		printf("%d ",sequence.top());
+		sequence.pop();
+	}
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+
+#endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

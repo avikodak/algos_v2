@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: countingsort3.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\countingsort3.h
+ *  Created on			: Feb 12, 2015 :: 8:24:47 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,36 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef COUNTINGSORT3_H_
+#define COUNTINGSORT3_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
+void countingSort2(){
+	vector<long int> buckets(100,0);
 	long int size,input;
-	vector<long int> userInput;
+	string userInput;
 	scanf("%ld",&size);
 	while(size--){
 		scanf("%ld",&input);
-		userInput.push_back(input);
+		cin >> userInput;
+		buckets[input]++;
 	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
-		}
+	long int cummulativeSum = 0;
+	for(unsigned int counter = 0;counter < buckets.size();counter++){
+		cummulativeSum += buckets[counter];
+		printf("%ld ",cummulativeSum);
+
 	}
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+#endif /* COUNTINGSORT3_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

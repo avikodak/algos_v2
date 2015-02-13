@@ -1,9 +1,9 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: pangrams.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\strings\pangrams.h
+ *  Created on			: Feb 12, 2015 :: 8:51:55 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
@@ -67,36 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef PANGRAMS_H_
+#define PANGRAMS_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
+void isStringPangram(){
+	string userInput;
+	getline(cin, userInput);
+	vector<bool> flags(26,false);
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
+			flags[userInput[counter] - 'a'] = true;
+		}else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
+			flags[userInput[counter] - 'A'] = true;
 		}
 	}
+
+	bool allAlphaUsed = true;
+	for(unsigned int counter = 0;counter < flags.size();counter++){
+		if(!flags[counter]){
+			allAlphaUsed = false;
+			break;
+		}
+
+	}
+	printf("%s",allAlphaUsed?"pangram":"not pangram");
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+#endif /* PANGRAMS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

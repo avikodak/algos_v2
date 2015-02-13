@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: longestincseq.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\longestincseq.h
+ *  Created on			: Feb 12, 2015 :: 8:52:03 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -67,36 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef LONGESTINCSEQ_H_
+#define LONGESTINCSEQ_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
+void printLengthLIS(){
+	long int input,size;
+	unsigned int counter;
+	vector<long int> auxSpace;
 	scanf("%ld",&size);
 	while(size--){
 		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
+		if(auxSpace.size() == 0 || auxSpace[0] > input){
+			if(auxSpace.size() == 0){
+				auxSpace.push_back(input);
+			}else{
+				auxSpace[0] = input;
+			}
+		}else if(auxSpace[auxSpace.size()-1] < input){
+			auxSpace.push_back(input);
+		}else{
+			counter = 0;
+			while(counter < auxSpace.size() && input > auxSpace[counter]){
+				counter++;
+			}
+			auxSpace[counter] = input;
 		}
 	}
+	printf("%u",auxSpace.size());
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+#endif /* LONGESTINCSEQ_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
- *  Created on			: Feb 12, 2015 :: 4:41:37 PM
+ *  File Name   		: findmedian.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\findmedian.h
+ *  Created on			: Feb 12, 2015 :: 8:43:51 PM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,36 +67,22 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef CLOSESTPAIRS_H_
-#define CLOSESTPAIRS_H_
+#ifndef FINDMEDIAN_H_
+#define FINDMEDIAN_H_
 
-//Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
-}
-
-//Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
-	scanf("%ld",&size);
+void findMedian(){
+	vector<int> userInput;
+	int size,input;
+	scanf("%d",&size);
 	while(size--){
-		scanf("%ld",&input);
+		scanf("%d",&input);
 		userInput.push_back(input);
 	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
-		}
-	}
+	sort(userInput.begin(),userInput.end());
+	printf("%d",userInput[userInput.size()/2]);
 }
 
-#endif /* CLOSESTPAIRS_H_ */
+#endif /* FINDMEDIAN_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
