@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name   		: prime1.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\prime1.h
- *  Created on			: Feb 3, 2015 :: 12:38:15 PM
+ *  File Name   		: fibonaccimodified.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\fibonaccimodified.h
+ *  Created on			: Feb 14, 2015 :: 10:59:03 AM
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
@@ -62,46 +62,26 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#define MAX_SIZE_PRIME 1000000002
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRIME1_H_
-#define PRIME1_H_
+#ifndef FIBONACCIMODIFIED_H_
+#define FIBONACCIMODIFIED_H_
 
-void printPrimeNumbers(){
-	vector<bool> auxSpace(MAX_SIZE_PRIME,true);
-	long long int counter = 2;
-	long long int low,high;
-	int testCases;
-	for(long long int counter = 4;counter < MAX_SIZE_PRIME;counter+=2){
-		auxSpace[counter] = false;
+void findNthTermFibonacciModified(){
+	long long int prevPrevTerm,prevTerm,nthTerm,nextTerm;
+	scanf("%lld %lld %lld",&prevPrevTerm,&prevTerm,&nthTerm);
+	while(nthTerm--){
+		nextTerm = prevTerm * prevTerm + prevPrevTerm;
+		prevPrevTerm = prevTerm;
+		prevTerm = nextTerm;
 	}
-	for(long long int outerCounter = 2;outerCounter < MAX_SIZE_PRIME;outerCounter += 2){
-		if(auxSpace[outerCounter]){
-			counter = 2;
-			while(counter * outerCounter < auxSpace.size()){
-				auxSpace[counter*outerCounter] = false;
-				counter++;
-			}
-		}
-	}
-	scanf("%d",&testCases);
-	while(testCases--){
-		cin >> low;
-		cin >> high;
-		for(long long int counter = low;counter <= high;counter++){
-			if(auxSpace[counter]){
-				cout << counter << endl;
-			}
-		}
-		printf("\n");
-	}
+	printf("%lld",nextTerm);
 }
 
-#endif /* PRIME1_H_ */
+#endif /* FIBONACCIMODIFIED_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

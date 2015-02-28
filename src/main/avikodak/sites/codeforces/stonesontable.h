@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: prime1.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\prime1.h
- *  Created on			: Feb 3, 2015 :: 12:38:15 PM
+ *  File Name   		: stonesontable.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\stonesontable.h
+ *  Created on			: Feb 28, 2015 :: 7:39:48 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/266/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,46 +62,36 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#define MAX_SIZE_PRIME 1000000002
+#define MAX_INPUT_SIZE 51
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRIME1_H_
-#define PRIME1_H_
+#ifndef STONESONTABLE_H_
+#define STONESONTABLE_H_
 
-void printPrimeNumbers(){
-	vector<bool> auxSpace(MAX_SIZE_PRIME,true);
-	long long int counter = 2;
-	long long int low,high;
-	int testCases;
-	for(long long int counter = 4;counter < MAX_SIZE_PRIME;counter+=2){
-		auxSpace[counter] = false;
-	}
-	for(long long int outerCounter = 2;outerCounter < MAX_SIZE_PRIME;outerCounter += 2){
-		if(auxSpace[outerCounter]){
-			counter = 2;
-			while(counter * outerCounter < auxSpace.size()){
-				auxSpace[counter*outerCounter] = false;
-				counter++;
-			}
+//Tested
+void stonesToBeRemoved(){
+	unsigned int size,counter = 0,stonesRemovedCounter = 0,frequency;
+	char userInput[MAX_INPUT_SIZE];
+	scanf("%d",&size);
+	scanf("%s",userInput);
+	while(counter < size){
+		frequency = 1;
+		while(counter + 1 < size && userInput[counter] == userInput[counter+1]){
+			frequency++;
+			counter++;
 		}
-	}
-	scanf("%d",&testCases);
-	while(testCases--){
-		cin >> low;
-		cin >> high;
-		for(long long int counter = low;counter <= high;counter++){
-			if(auxSpace[counter]){
-				cout << counter << endl;
-			}
+		if(frequency > 1){
+			stonesRemovedCounter += frequency-1;
 		}
-		printf("\n");
+		counter++;
 	}
+	printf("%u",stonesRemovedCounter);
 }
 
-#endif /* PRIME1_H_ */
+#endif /* STONESONTABLE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

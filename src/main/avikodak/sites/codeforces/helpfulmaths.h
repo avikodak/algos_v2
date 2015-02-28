@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: prime1.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\prime1.h
- *  Created on			: Feb 3, 2015 :: 12:38:15 PM
+ *  File Name   		: helpfulmaths.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\helpfulmaths.h
+ *  Created on			: Feb 28, 2015 :: 11:22:53 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/339/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,46 +62,34 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#define MAX_SIZE_PRIME 1000000002
+#define MAX_INPUT_SIZE 101
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRIME1_H_
-#define PRIME1_H_
+#ifndef HELPFULMATHS_H_
+#define HELPFULMATHS_H_
 
-void printPrimeNumbers(){
-	vector<bool> auxSpace(MAX_SIZE_PRIME,true);
-	long long int counter = 2;
-	long long int low,high;
-	int testCases;
-	for(long long int counter = 4;counter < MAX_SIZE_PRIME;counter+=2){
-		auxSpace[counter] = false;
+//Tested
+void printAscExpression(){
+	string userInput;
+	cin >> userInput;
+	sort(userInput.begin(),userInput.end());
+	unsigned int counter = 0;
+	while(userInput[counter] == '+'){
+		counter++;
 	}
-	for(long long int outerCounter = 2;outerCounter < MAX_SIZE_PRIME;outerCounter += 2){
-		if(auxSpace[outerCounter]){
-			counter = 2;
-			while(counter * outerCounter < auxSpace.size()){
-				auxSpace[counter*outerCounter] = false;
-				counter++;
-			}
+	for(;counter < userInput.size();counter++){
+		printf("%c",userInput[counter]);
+		if(counter+1 < userInput.size()){
+			printf("+");
 		}
-	}
-	scanf("%d",&testCases);
-	while(testCases--){
-		cin >> low;
-		cin >> high;
-		for(long long int counter = low;counter <= high;counter++){
-			if(auxSpace[counter]){
-				cout << counter << endl;
-			}
-		}
-		printf("\n");
 	}
 }
 
-#endif /* PRIME1_H_ */
+
+#endif /* HELPFULMATHS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

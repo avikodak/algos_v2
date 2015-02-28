@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: prime1.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\prime1.h
- *  Created on			: Feb 3, 2015 :: 12:38:15 PM
+ *  File Name   		: football.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\football.h
+ *  Created on			: Feb 28, 2015 :: 1:11:19 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/96/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,46 +62,41 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#define MAX_SIZE_PRIME 1000000002
+#define MAX_INPUT_SIZE 101
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRIME1_H_
-#define PRIME1_H_
+#ifndef FOOTBALL_H_
+#define FOOTBALL_H_
 
-void printPrimeNumbers(){
-	vector<bool> auxSpace(MAX_SIZE_PRIME,true);
-	long long int counter = 2;
-	long long int low,high;
-	int testCases;
-	for(long long int counter = 4;counter < MAX_SIZE_PRIME;counter+=2){
-		auxSpace[counter] = false;
-	}
-	for(long long int outerCounter = 2;outerCounter < MAX_SIZE_PRIME;outerCounter += 2){
-		if(auxSpace[outerCounter]){
-			counter = 2;
-			while(counter * outerCounter < auxSpace.size()){
-				auxSpace[counter*outerCounter] = false;
-				counter++;
+//Tested
+void isCombinationDangerous(){
+	char *ptrToUserInput,userInput[MAX_INPUT_SIZE];
+	scanf("%s",userInput);
+	unsigned int frequency;
+	bool isDangerous = false;
+	ptrToUserInput = userInput;
+	while(ptrToUserInput[0] != '\0'){
+		frequency = 1;
+		while(ptrToUserInput[1] != '\0' && ptrToUserInput[0] == ptrToUserInput[1]){
+			ptrToUserInput++;
+			frequency++;
+			if(frequency >= 7){
+				isDangerous = true;
+				break;
 			}
 		}
-	}
-	scanf("%d",&testCases);
-	while(testCases--){
-		cin >> low;
-		cin >> high;
-		for(long long int counter = low;counter <= high;counter++){
-			if(auxSpace[counter]){
-				cout << counter << endl;
-			}
+		if(isDangerous){
+			break;
 		}
-		printf("\n");
+		ptrToUserInput++;
 	}
+	printf("%s",isDangerous?"YES":"NO");
 }
 
-#endif /* PRIME1_H_ */
+#endif /* FOOTBALL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

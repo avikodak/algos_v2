@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: prime1.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\prime1.h
- *  Created on			: Feb 3, 2015 :: 12:38:15 PM
+ *  File Name   		: bitplusplus.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\bitplusplus.h
+ *  Created on			: Feb 28, 2015 :: 7:28:16 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/282/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,46 +62,30 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
-#define MAX_SIZE_PRIME 1000000002
-
+#define MAX_INPUT_SIZE 4
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PRIME1_H_
-#define PRIME1_H_
+#ifndef BITPLUSPLUS_H_
+#define BITPLUSPLUS_H_
 
-void printPrimeNumbers(){
-	vector<bool> auxSpace(MAX_SIZE_PRIME,true);
-	long long int counter = 2;
-	long long int low,high;
-	int testCases;
-	for(long long int counter = 4;counter < MAX_SIZE_PRIME;counter+=2){
-		auxSpace[counter] = false;
-	}
-	for(long long int outerCounter = 2;outerCounter < MAX_SIZE_PRIME;outerCounter += 2){
-		if(auxSpace[outerCounter]){
-			counter = 2;
-			while(counter * outerCounter < auxSpace.size()){
-				auxSpace[counter*outerCounter] = false;
-				counter++;
-			}
-		}
-	}
-	scanf("%d",&testCases);
+void printPostBitPlusPlusOperation(){
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	char userInput[MAX_INPUT_SIZE];
+	int counter = 0;
 	while(testCases--){
-		cin >> low;
-		cin >> high;
-		for(long long int counter = low;counter <= high;counter++){
-			if(auxSpace[counter]){
-				cout << counter << endl;
-			}
+		scanf("%s",userInput);
+		if(userInput[1] == '+'){
+			counter++;
+		}else{
+			counter--;
 		}
-		printf("\n");
 	}
 }
 
-#endif /* PRIME1_H_ */
+#endif /* BITPLUSPLUS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
