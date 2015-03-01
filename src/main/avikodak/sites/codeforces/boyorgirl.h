@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: boyorgirl.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\boyorgirl.h
+ *  Created on			: Mar 1, 2015 :: 9:52:09 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/236/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,41 +62,40 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define ALPHABET_SIZE 26
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef BOYORGIRL_H_
+#define BOYORGIRL_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
+void isUserBoyOrGirl(){
+	char userInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToUserInput;
+	scanf("%s",userInput);
+	bool flags[ALPHABET_SIZE] = {false};
+	unsigned int uniqueCharCount = 0;
+	ptrToUserInput = userInput;
+	while(ptrToUserInput[0] != '\0'){
+		flags[ptrToUserInput[0]-'a'] = true;
+		ptrToUserInput++;
 	}
-	printf("0");
+	for(unsigned int counter = 0;counter < ALPHABET_SIZE;counter++){
+		if(flags[counter]){
+			uniqueCharCount++;
+		}
+	}
+	if(uniqueCharCount&1){
+		printf("IGNORE HIM!");
+	}else{
+		printf("CHAT WITH HER!");
+	}
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+
+#endif /* BOYORGIRL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

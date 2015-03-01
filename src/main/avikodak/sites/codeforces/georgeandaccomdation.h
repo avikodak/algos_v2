@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: georgeandaccomdation.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\georgeandaccomdation.h
+ *  Created on			: Mar 1, 2015 :: 6:49:32 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/467/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef GEORGEANDACCOMDATION_H_
+#define GEORGEANDACCOMDATION_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
+void roomsAvailableToAccomdate(){
+	unsigned int testCases,counter = 0,filled,available;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%d %d",&filled,&available);
+		if(available-filled >= 2){
+			counter++;
 		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
 	}
-	printf("0");
+	printf("%u",counter);
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+#endif /* GEORGEANDACCOMDATION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

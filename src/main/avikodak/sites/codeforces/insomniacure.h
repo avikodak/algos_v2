@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: insomniacure.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\insomniacure.h
+ *  Created on			: Mar 1, 2015 :: 9:14:13 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/148/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef INSOMNIACURE_H_
+#define INSOMNIACURE_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
+void getNumberDamagedDragons(){
+	int k,l,m,n,d;
+	scanf("%d %d %d %d %d",&k,&l,&m,&n,&d);
+	unsigned int damagedDrangonCounter = 0;
+	for(int counter = 1;counter <= d;counter++){
+		if(counter%k == 0 || counter%l == 0 || counter%m == 0 || counter%n == 0){
+			damagedDrangonCounter++;
 		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
 	}
-	printf("0");
+	printf("%d",damagedDrangonCounter);
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+#endif /* INSOMNIACURE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

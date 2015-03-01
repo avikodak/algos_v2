@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: beautifulyear.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\beautifulyear.h
+ *  Created on			: Mar 1, 2015 :: 6:28:54 PM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/271/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef BEAUTIFULYEAR_H_
+#define BEAUTIFULYEAR_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
+bool doesNumberHasUniqueDigits(int userInput){
+	bool flags[10] = {false};
+	int lastDigit;
+	while(userInput > 0){
+		lastDigit = userInput%10;
+		if(flags[lastDigit]){
+			return false;
 		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
+		flags[lastDigit] = true;
+		userInput /= 10;
 	}
-	printf("0");
+	return true;
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+//Tested
+void getMinUniqueDigitNumber(){
+	int userInput;
+	scanf("%d",&userInput);
+	for(int counter = userInput+1;counter < 9500;counter++){
+		if(doesNumberHasUniqueDigits(counter)){
+			printf("%d",counter);
+			break;
+		}
+	}
+}
+
+#endif /* BEAUTIFULYEAR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

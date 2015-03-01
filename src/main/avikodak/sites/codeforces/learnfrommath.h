@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: learnfrommath.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
+ *  Created on			: Mar 1, 2015 :: 7:04:56 PM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,14 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef LEARNFROMMATH_H_
+#define LEARNFROMMATH_H_
 
-//Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
-	}
-	printf("0");
+bool isNumberPrime(long int userInput){
+
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+#endif /* LEARNFROMMATH_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

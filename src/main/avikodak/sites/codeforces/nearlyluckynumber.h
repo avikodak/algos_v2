@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: nearlyluckynumber.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\nearlyluckynumber.h
+ *  Created on			: Mar 1, 2015 :: 10:39:07 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/110/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,44 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef NEARLYLUCKYNUMBER_H_
+#define NEARLYLUCKYNUMBER_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
+bool isNumberLucky(long long int userInput){
+	if(userInput == 0){
+		return false;
 	}
-	printf("0");
+	long long int lastDigit;
+	while(userInput > 0){
+		lastDigit = userInput%10;
+		if(lastDigit != 4 && lastDigit != 7){
+			return false;
+		}
+		userInput /= 10;
+	}
+	return true;
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+//Tested
+void isNumberNearlyLuckyNumber(){
+	long long int userInput,lastDigit,luckyDigitCounter = 0;
+	cin >> userInput;
+	while(userInput > 0){
+		lastDigit = userInput%10;
+		if(lastDigit == 4 || lastDigit == 7){
+			luckyDigitCounter++;
+		}
+		userInput /= 10;
+	}
+	if(isNumberLucky(luckyDigitCounter)){
+		printf("YES");
+	}else{
+		printf("NO");
+	}
+}
+
+#endif /* NEARLYLUCKYNUMBER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

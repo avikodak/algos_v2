@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: wordcapitalization.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\wordcapitalization.h
+ *  Created on			: Mar 1, 2015 :: 9:35:24 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
+ *  URL 				: http://codeforces.com/problemset/problem/281/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,41 +62,26 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define MAX_INPUT_SIZE 1001
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef WORDCAPITALIZATION_H_
+#define WORDCAPITALIZATION_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
+void printWordCapitaization(){
+	char userInput[MAX_INPUT_SIZE];
+	scanf("%s",userInput);
+	if(userInput[0] >= 'a' && userInput[0] <= 'z'){
+		userInput[0] = userInput[0] - 'a' + 'A';
 	}
-	printf("0");
+	printf("%s",userInput);
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+#endif /* WORDCAPITALIZATION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

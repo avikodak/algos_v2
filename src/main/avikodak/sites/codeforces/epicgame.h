@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
- *  Created on			: Feb 28, 2015 :: 8:59:23 PM
+ *  File Name   		: epicgame.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\epicgame.h
+ *  Created on			: Mar 1, 2015 :: 9:50:01 AM
  *  Author				: AVINASH
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/112/A
-****************************************************************************************************************************************************/
+ *  URL 				: http://codeforces.com/problemset/problem/119/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,36 +67,42 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef PETYAANDSTRINGS_H_
-#define PETYAANDSTRINGS_H_
+#ifndef EPICGAME_H_
+#define EPICGAME_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
+int gcd(int firstNumber,int secondNumber){
+	if(firstNumber == 1 || secondNumber == 1){
+		return 1;
 	}
-	printf("0");
+	if(secondNumber % firstNumber == 0){
+		return firstNumber;
+	}
+	return gcd(secondNumber%firstNumber,firstNumber);
 }
 
-#endif /* PETYAANDSTRINGS_H_ */
+//Tested
+void epicGame(){
+	int a,b,n;
+	scanf("%d %d %d",&a,&b,&n);
+	bool flag = true;
+	while(n > 0){
+		if(flag){
+			n -= gcd(a,n);
+			if(n == 0){
+				printf("0");
+			}
+		}else{
+			n -= gcd(b,n);
+			if(n == 0){
+				printf("1");
+			}
+		}
+		flag = !flag;
+	}
+}
+
+#endif /* EPICGAME_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
