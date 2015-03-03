@@ -172,6 +172,7 @@ void graphTester(){
 
 int main() {
 	arrayTester();
+	cout << "Tested";
 	return 0;
 }
 
