@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: evenodds.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
+ *  Created on			: Mar 8, 2015 :: 12:57:11 PM
  *  Author				: avikodak
  *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  URL 				: http://codeforces.com/problemset/problem/318/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,21 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef EVENODDS_H_
+#define EVENODDS_H_
 
-//Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
-		}
+void printNumberInSequence(){
+	long long int size,position;
+	cin >> size;
+	cin >> position;
+	if(size%2 == 0){
+
+	}else{
+
 	}
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* EVENODDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

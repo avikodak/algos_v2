@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: iloveusername.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\iloveusername.h
+ *  Created on			: Mar 8, 2015 :: 12:12:33 PM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/155/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,33 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef ILOVEUSERNAME_H_
+#define ILOVEUSERNAME_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
+void getNumberOfAmazingPerformance(){
+	unsigned int testCases;
+	int points,maxTillNow = INT_MIN,minTillNow = INT_MAX,noOfAmazingPerformance = 0;
+	scanf("%d",&testCases);
+	for(unsigned int counter = 0;counter < testCases;counter++){
+		scanf("%d",&points);
+		if(counter != 0){
+			if(maxTillNow < points){
+				noOfAmazingPerformance++;
+				maxTillNow = points;
+			}else if(minTillNow > points){
+				noOfAmazingPerformance++;
+				minTillNow = points;
 			}
+		}else{
+			maxTillNow = points;
+			minTillNow = points;
 		}
 	}
+	printf("%d",noOfAmazingPerformance);
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* ILOVEUSERNAME_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

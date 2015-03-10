@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: gamewithsticks.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\gamewithsticks.h
+ *  Created on			: Mar 4, 2015 :: 9:06:05 PM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/451/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,17 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef GAMEWITHSTICKS_H_
+#define GAMEWITHSTICKS_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
-		}
-	}
+void getWinnerGameWithSticks(){
+	int xSticks,ySticks;
+	scanf("%d %d",&xSticks,&ySticks);
+	printf("%s",min(xSticks,ySticks)%2 == 0?"Malvika":"Akshat");
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* GAMEWITHSTICKS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

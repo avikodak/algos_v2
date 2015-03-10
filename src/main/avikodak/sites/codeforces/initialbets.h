@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: initialbets.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\initialbets.h
+ *  Created on			: Mar 4, 2015 :: 10:18:10 PM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/478/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,24 +67,20 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef INITIALBETS_H_
+#define INITIALBETS_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
-		}
+void getInitialBets(){
+	int input,sum = 0,counter = 5;
+	while(counter--){
+		scanf("%d",&input);
+		sum += input;
 	}
+	printf("%d",sum%5 == 0?(sum==0?-1:sum/5):-1);
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* INITIALBETS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

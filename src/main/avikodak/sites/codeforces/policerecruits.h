@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: policerecruits.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
+ *  Created on			: Mar 10, 2015 :: 11:06:03 AM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/427/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,30 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef POLICERECRUITS_H_
+#define POLICERECRUITS_H_
 
-//Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
+void getCrimesUntreated(){
+	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
+	scanf("%d",&totalEvents);
+	while(totalEvents--){
+		scanf("%d",&event);
+		if(event > 0){
+			totalRecruits += event;
+		}else{
+			if(totalRecruits == 0){
+				crimesUntreated += 1;
+			}else{
+				if(totalRecruits != 0){
+					totalRecruits -= 1;
+				}
 			}
 		}
 	}
+	printf("%d",crimesUntreated);
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* POLICERECRUITS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: ultrafastmultiplication.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\ultrafastmultiplication.h
+ *  Created on			: Mar 5, 2015 :: 8:12:47 AM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/61/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef ULTRAFASTMULTIPLICATION_H_
+#define ULTRAFASTMULTIPLICATION_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
+void getXORResultVeryLong(){
+	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE];
+	char secondUserInput[CODEFORCES_MAX_INPUT_SIZE];
+	scanf("%s %s",firstUserInput,secondUserInput);
+	int lengthOfInputString = strlen(firstUserInput);
+	for(int counter = 0;counter < lengthOfInputString;counter++){
+		if(firstUserInput[counter] == secondUserInput[counter]){
+			printf("0");
+		}else{
+			printf("1");
 		}
 	}
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+#endif /* ULTRAFASTMULTIPLICATION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

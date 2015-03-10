@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
- *  Created on			: Mar 3, 2015 :: 8:51:35 AM
+ *  File Name   		: keyboard.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\keyboard.h
+ *  Created on			: Mar 8, 2015 :: 12:29:58 PM
  *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
-****************************************************************************************************************************************************/
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/474/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,24 +67,54 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef BEAUTIFULMATRIX_H_
-#define BEAUTIFULMATRIX_H_
+#ifndef KEYBOARD_H_
+#define KEYBOARD_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
+struct iRowColumn{
+	int row;
+	int column;
+
+	iRowColumn(){
+
+	}
+
+	iRowColumn(int row,int column){
+		this->row = row;
+		this->column = column;
+	}
+};
+
+//Tested
+void printRightSentence(){
+	char direction;
+	char keyboard[3][11] = {"qwertyuiop","asdfghjkl;","zxcvbnm,./"};
+	map<char,iRowColumn *> charKeyboardMap;
+	map<char,iRowColumn *>::iterator itToCharKeyboardMap;
+	iRowColumn *rowColumn;
+	int size = sizeof(keyboard[0])/sizeof(char);
+	char userInput[CODEFORCES_MAX_INPUT_SIZE];
+	for(int outerCounter = 0;outerCounter < 3;outerCounter++){
+		for(int innerCounter = 0;innerCounter < 11;innerCounter++){
+			charKeyboardMap[keyboard[outerCounter][innerCounter]] = new iRowColumn(outerCounter,innerCounter);
+		}
+	}
+	scanf("%c",&direction);
+	scanf("%s",userInput);
+	size = strlen(userInput);
+	for(int counter = 0;counter < size;counter++){
+		itToCharKeyboardMap = charKeyboardMap.find(userInput[counter]);
+		rowColumn = itToCharKeyboardMap->second;
+		if(direction == 'L'){
+			printf("%c",keyboard[rowColumn->row][rowColumn->column+1]);
+		}else{
+			printf("%c",keyboard[rowColumn->row][rowColumn->column-1]);
 		}
 	}
 }
 
-#endif /* BEAUTIFULMATRIX_H_ */
+
+#endif /* KEYBOARD_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
