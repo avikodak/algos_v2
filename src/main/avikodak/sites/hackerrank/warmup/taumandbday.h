@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: policerecruits.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
- *  Created on			: Mar 10, 2015 :: 11:06:03 AM
+ *  File Name   		: taumandbday.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\taumandbday.h
+ *  Created on			: Mar 10, 2015 :: 9:39:03 PM
  *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/427/A
-****************************************************************************************************************************************************/
+ *  URL 				: https://www.hackerrank.com/challenges/taum-and-bday
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,31 +67,37 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef POLICERECRUITS_H_
-#define POLICERECRUITS_H_
+#ifndef TAUMANDBDAY_H_
+#define TAUMANDBDAY_H_
 
 //Tested
-void getCrimesUntreated(){
-	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
-	scanf("%d",&totalEvents);
-	while(totalEvents--){
-		scanf("%d",&event);
-		if(event > 0){
-			totalRecruits += event;
-		}else{
-			if(totalRecruits == 0){
-				crimesUntreated += 1;
+void getMinAmountForGifts(){
+	unsigned int testCases;
+	long long int costOfBlackGift,costOfWhiteGift,transferCost,numberOfBlackGifts,numberOfWhiteGifts,totalCost;
+	scanf("%u",&testCases);
+	while(testCases--){
+		cin >> numberOfBlackGifts >> numberOfWhiteGifts >> costOfBlackGift >> costOfWhiteGift >> transferCost;
+		totalCost = 0;
+		if(costOfBlackGift < costOfWhiteGift){
+			totalCost += (numberOfBlackGifts * costOfBlackGift);
+			if(costOfWhiteGift < costOfBlackGift + transferCost){
+				totalCost += (numberOfWhiteGifts * costOfWhiteGift);
 			}else{
-				if(totalRecruits != 0){
-					totalRecruits -= 1;
-				}
+				totalCost += (numberOfWhiteGifts * (costOfBlackGift+transferCost));
+			}
+		}else{
+			totalCost += numberOfWhiteGifts * costOfWhiteGift;
+			if(costOfBlackGift < costOfWhiteGift + transferCost){
+				totalCost += (numberOfBlackGifts * costOfBlackGift);
+			}else{
+				totalCost += (numberOfBlackGifts * (costOfWhiteGift+transferCost));
 			}
 		}
+		cout << totalCost << endl;
 	}
-	printf("%d",crimesUntreated);
 }
 
-#endif /* POLICERECRUITS_H_ */
+#endif /* TAUMANDBDAY_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

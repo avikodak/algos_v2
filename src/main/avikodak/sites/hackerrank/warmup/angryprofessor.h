@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: policerecruits.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
- *  Created on			: Mar 10, 2015 :: 11:06:03 AM
+ *  File Name   		: angryprofessor.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\angryprofessor.h
+ *  Created on			: Mar 10, 2015 :: 9:59:55 PM
  *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/427/A
+ *  URL 				: https://www.hackerrank.com/challenges/angry-professor
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,31 +67,27 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef POLICERECRUITS_H_
-#define POLICERECRUITS_H_
+#ifndef ANGRYPROFESSOR_H_
+#define ANGRYPROFESSOR_H_
 
 //Tested
-void getCrimesUntreated(){
-	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
-	scanf("%d",&totalEvents);
-	while(totalEvents--){
-		scanf("%d",&event);
-		if(event > 0){
-			totalRecruits += event;
-		}else{
-			if(totalRecruits == 0){
-				crimesUntreated += 1;
-			}else{
-				if(totalRecruits != 0){
-					totalRecruits -= 1;
-				}
+void doesClassStarts(){
+	int testCases,totalStudents,requiredStudents,timeArrival,counter;
+	scanf("%d",&testCases);
+	while(testCases--){
+		cin >> totalStudents >> requiredStudents;
+		counter = 0;
+		while(totalStudents--){
+			scanf("%d",&timeArrival);
+			if(timeArrival <= 0){
+				counter++;
 			}
 		}
+		printf("%s\n",counter >= requiredStudents?"NO":"YES");
 	}
-	printf("%d",crimesUntreated);
 }
 
-#endif /* POLICERECRUITS_H_ */
+#endif /* ANGRYPROFESSOR_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: policerecruits.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
- *  Created on			: Mar 10, 2015 :: 11:06:03 AM
+ *  File Name   		: findhackerrank.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\regex\findhackerrank.h
+ *  Created on			: Mar 12, 2015 :: 5:46:56 PM
  *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/427/A
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,36 +62,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
+#define HACKER_RANK_LOWER_CASE "hackerrank"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef POLICERECRUITS_H_
-#define POLICERECRUITS_H_
+#ifndef FINDHACKERRANK_H_
+#define FINDHACKERRANK_H_
 
-//Tested
-void getCrimesUntreated(){
-	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
-	scanf("%d",&totalEvents);
-	while(totalEvents--){
-		scanf("%d",&event);
-		if(event > 0){
-			totalRecruits += event;
-		}else{
-			if(totalRecruits == 0){
-				crimesUntreated += 1;
-			}else{
-				if(totalRecruits != 0){
-					totalRecruits -= 1;
-				}
-			}
-		}
-	}
-	printf("%d",crimesUntreated);
+void split(const string &s, char delim, vector<string> &elements) {
+    stringstream ss(s);
+    string item;
+    elements.clear();
+    while (getline(ss, item, delim)) {
+        elements.push_back(item);
+    }
 }
 
-#endif /* POLICERECRUITS_H_ */
+
+void printResultOfConversation(){
+	int numberOfTestCases;
+	scanf("%d",&numberOfTestCases);
+	string userInput;
+	vector<string> words;
+	int firstWordFlag,lastWordFlag;
+	while(numberOfTestCases--){
+		cin >> userInput;
+		split(userInput,',',words);
+		firstWordFlag = words[0].compare(HACKER_RANK_LOWER_CASE);
+		lastWordFlag = words[words.size()-1].compare(HACKER_RANK_LOWER_CASE);
+		if(firstWordFlag == 0 && lastWordFlag == 0){
+			printf("0\n");
+		}else if(firstWordFlag == 0){
+			printf("1\n");
+		}else if(lastWordFlag == 0){
+			printf("2\n");
+		}else{
+			printf("-1\n");
+		}
+	}
+}
+
+#endif /* FINDHACKERRANK_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

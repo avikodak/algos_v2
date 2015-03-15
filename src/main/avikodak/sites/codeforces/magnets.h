@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: policerecruits.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
- *  Created on			: Mar 10, 2015 :: 11:06:03 AM
+ *  File Name   		: magnets.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\magnets.h
+ *  Created on			: Mar 10, 2015 :: 2:34:50 PM
  *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/427/A
+ *  URL 				: http://codeforces.com/problemset/problem/344/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,31 +67,29 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef POLICERECRUITS_H_
-#define POLICERECRUITS_H_
+#ifndef MAGNETS_H_
+#define MAGNETS_H_
 
 //Tested
-void getCrimesUntreated(){
-	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
-	scanf("%d",&totalEvents);
-	while(totalEvents--){
-		scanf("%d",&event);
-		if(event > 0){
-			totalRecruits += event;
-		}else{
-			if(totalRecruits == 0){
-				crimesUntreated += 1;
-			}else{
-				if(totalRecruits != 0){
-					totalRecruits -= 1;
-				}
-			}
+void getGroupOfMagnets(){
+	int totalMagnets;
+	scanf("%d",&totalMagnets);
+	vector<int> magnets;
+	int poles;
+	while(totalMagnets--){
+		scanf("%d",&poles);
+		magnets.push_back(poles);
+	}
+	int totalGroups = 1;
+	for(unsigned int counter = 1;counter < magnets.size();counter++){
+		if(magnets[counter] != magnets[counter-1]){
+			totalGroups++;
 		}
 	}
-	printf("%d",crimesUntreated);
+	printf("%d",totalGroups);
 }
 
-#endif /* POLICERECRUITS_H_ */
+#endif /* MAGNETS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
