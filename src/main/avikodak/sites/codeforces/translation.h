@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: learnfrommath.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
- *  Created on			: Mar 1, 2015 :: 7:04:56 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/472/A
+ *  File Name   		: translation.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\translation.h
+ *  Created on			: Mar 22, 2015 :: 9:11:19 PM
+ *  Author				: avikodak
+ *  Testing Status 		: TODO
+ *  URL 				: http://codeforces.com/problemset/problem/41/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,34 +67,22 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LEARNFROMMATH_H_
-#define LEARNFROMMATH_H_
+#ifndef TRANSLATION_H_
+#define TRANSLATION_H_
 
-bool isNumberPrime(unsigned int userInput){
-	if(userInput < 2){
-		return false;
-	}
-	unsigned int root = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= root;counter++){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
-}
-
-void printSumUsingComposites(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	for(unsigned int counter = userInput-2;counter >= 0;counter--){
-		if(isNumberPrime(counter) && isNumberPrime(userInput-counter)){
-			printf("%u %u",counter,userInput-counter);
+void areStringReverse(){
+	string firstInput,secondInput;
+	cin >> firstInput >> secondInput;
+	for(unsigned int counter = 0;counter < firstInput.size();counter++){
+		if(firstInput[counter] != secondInput[secondInput.size()-counter]){
+			printf("NO");
 			return;
 		}
 	}
+	printf("YES");
 }
 
-#endif /* LEARNFROMMATH_H_ */
+#endif /* TRANSLATION_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

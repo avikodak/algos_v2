@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: learnfrommath.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
- *  Created on			: Mar 1, 2015 :: 7:04:56 PM
- *  Author				: AVINASH
+ *  File Name   		: twins.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\twins.h
+ *  Created on			: Mar 22, 2015 :: 7:10:09 PM
+ *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/472/A
+ *  URL 				: http://codeforces.com/problemset/problem/160/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,34 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LEARNFROMMATH_H_
-#define LEARNFROMMATH_H_
+#ifndef TWINS_H_
+#define TWINS_H_
 
-bool isNumberPrime(unsigned int userInput){
-	if(userInput < 2){
-		return false;
+//Tested
+void getMinimumNoOfCoins(){
+	unsigned int testCases;
+	unsigned int coinValue,totalAmount = 0,minCoins = 0;
+	vector<unsigned int> coins;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&coinValue);
+		coins.push_back(coinValue);
+		totalAmount += coinValue;
 	}
-	unsigned int root = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= root;counter++){
-		if(userInput%counter == 0){
-			return false;
+	sort(coins.begin(),coins.end());
+	unsigned int firstTwinAmount = 0;
+	for(int counter = coins.size()-1;counter >= 0;counter--){
+		if(firstTwinAmount > totalAmount - firstTwinAmount){
+			break;
+		}else{
+			firstTwinAmount += coins[counter];
+			minCoins++;
 		}
 	}
-	return true;
+	printf("%u",minCoins);
 }
 
-void printSumUsingComposites(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	for(unsigned int counter = userInput-2;counter >= 0;counter--){
-		if(isNumberPrime(counter) && isNumberPrime(userInput-counter)){
-			printf("%u %u",counter,userInput-counter);
-			return;
-		}
-	}
-}
-
-#endif /* LEARNFROMMATH_H_ */
+#endif /* TWINS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

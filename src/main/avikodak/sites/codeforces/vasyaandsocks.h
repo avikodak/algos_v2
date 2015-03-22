@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: learnfrommath.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
- *  Created on			: Mar 1, 2015 :: 7:04:56 PM
- *  Author				: AVINASH
+ *  File Name   		: vasyaandsocks.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\vasyaandsocks.h
+ *  Created on			: Mar 22, 2015 :: 7:45:44 PM
+ *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/472/A
+ *  URL 				: http://codeforces.com/problemset/problem/460/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,34 +67,25 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LEARNFROMMATH_H_
-#define LEARNFROMMATH_H_
+#ifndef VASYAANDSOCKS_H_
+#define VASYAANDSOCKS_H_
 
-bool isNumberPrime(unsigned int userInput){
-	if(userInput < 2){
-		return false;
+//Tested
+void printVasyaSocksDays(){
+	unsigned int initSocks,daysBought,totalDays = 0,counter,temp;
+	scanf("%u %u",&initSocks,&daysBought);
+	totalDays += initSocks;
+	counter = initSocks;
+	while(counter >= daysBought){
+		totalDays += (counter/daysBought);
+		temp = counter%daysBought;
+		counter = counter/daysBought;
+		counter += temp;
 	}
-	unsigned int root = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= root;counter++){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+	printf("%u\n",totalDays);
 }
 
-void printSumUsingComposites(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	for(unsigned int counter = userInput-2;counter >= 0;counter--){
-		if(isNumberPrime(counter) && isNumberPrime(userInput-counter)){
-			printf("%u %u",counter,userInput-counter);
-			return;
-		}
-	}
-}
-
-#endif /* LEARNFROMMATH_H_ */
+#endif /* VASYAANDSOCKS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

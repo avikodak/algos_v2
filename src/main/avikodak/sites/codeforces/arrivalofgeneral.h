@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: learnfrommath.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
- *  Created on			: Mar 1, 2015 :: 7:04:56 PM
- *  Author				: AVINASH
+ *  File Name   		: arrivalofgeneral.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\arrivalofgeneral.h
+ *  Created on			: Mar 22, 2015 :: 8:22:54 PM
+ *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/472/A
+ *  URL 				: http://codeforces.com/problemset/problem/144/A
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,34 +67,44 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef LEARNFROMMATH_H_
-#define LEARNFROMMATH_H_
+#ifndef ARRIVALOFGENERAL_H_
+#define ARRIVALOFGENERAL_H_
 
-bool isNumberPrime(unsigned int userInput){
-	if(userInput < 2){
-		return false;
+//Tested
+void noOfSwapsForLines(){
+	vector<unsigned int> userInput;
+	unsigned int testCases,heights;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%d",&heights);
+		userInput.push_back(heights);
 	}
-	unsigned int root = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= root;counter++){
-		if(userInput%counter == 0){
-			return false;
+	unsigned int maxVal = 0,minVal = UINT_MAX;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		maxVal = max(maxVal,userInput[counter]);
+		minVal = min(minVal,userInput[counter]);
+	}
+	unsigned int maxValIndex,minValueIndex;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == maxVal){
+			maxValIndex = counter;
+			break;
 		}
 	}
-	return true;
-}
-
-void printSumUsingComposites(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	for(unsigned int counter = userInput-2;counter >= 0;counter--){
-		if(isNumberPrime(counter) && isNumberPrime(userInput-counter)){
-			printf("%u %u",counter,userInput-counter);
-			return;
+	for(int counter = userInput.size()-1;counter >= 0;counter--){
+		if(userInput[counter] == minVal){
+			minValueIndex = counter;
+			break;
 		}
+	}
+	if(minValueIndex > maxValIndex){
+		printf("%d",userInput.size() - minValueIndex + maxValIndex - 1);
+	}else{
+		printf("%d",userInput.size() - minValueIndex + maxValIndex - 2);
 	}
 }
 
-#endif /* LEARNFROMMATH_H_ */
+#endif /* ARRIVALOFGENERAL_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
