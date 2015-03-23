@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: costofdancing.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\costofdancing.h
- *  Created on			: Mar 23, 2015 :: 12:50:06 PM
+ *  File Name   		: writingwords.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\writingwords.h
+ *  Created on			: Mar 23, 2015 :: 11:13:13 PM
  *  Author				: avikodak
  *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13195
- ****************************************************************************************************************************************************/
+ *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13072
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,23 +67,22 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef COSTOFDANCING_H_
-#define COSTOFDANCING_H_
+#ifndef WRITINGWORDS_H_
+#define WRITINGWORDS_H_
 
 //Tested
-class CostOfDancing{
+class WritingWords{
 public:
-	int minimum(int K, vector<int> danceCost){
-		sort(danceCost.begin(),danceCost.end());
-		int cost = 0;
-		for(int counter = 0;counter < K;counter++){
-			cost += danceCost[counter];
+	int write(string word){
+		int keyCounter = 0;
+		for(unsigned int counter = 0;counter < word.size();counter++){
+			keyCounter += word[counter] - 'A'+1;
 		}
-		return cost;
+		return keyCounter;
 	}
 };
 
-#endif /* COSTOFDANCING_H_ */
+#endif /* WRITINGWORDS_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
