@@ -1,11 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: soccer.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\soccer.h
- *  Created on			: Feb 5, 2015 :: 10:27:04 AM
- *  Author				: AVINASH
+ *  File Name   		: amusingjoke.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\amusingjoke.h
+ *  Created on			: Mar 23, 2015 :: 10:10:48 PM
+ *  Author				: avikodak
  *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=1650( Single Round Match 140 Round 1 - Division II, Level One
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	  Single Round Match 194 Round 1 - Division II, Level One )
+ *  URL 				: http://codeforces.com/problemset/problem/141/A
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,17 +67,39 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SOCCER_H_
-#define SOCCER_H_
+#ifndef AMUSINGJOKE_H_
+#define AMUSINGJOKE_H_
 
-class Soccer {
-public:
-	int maxPoints(int wins[], int ties[]){
-		return 0;
+void areStringPermutations(){
+	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE];
+	char thirdUserInput[CODEFORCES_MAX_INPUT_SIZE];
+	scanf("%s %s %s",firstUserInput,secondUserInput,thirdUserInput);
+	int frequency[26] = {0};
+	unsigned int firstStringLength = strlen(firstUserInput),secondStringLength = strlen(secondUserInput),thirdStringLength = strlen(thirdUserInput);
+	for(unsigned int counter = 0;counter < firstStringLength;counter++){
+		frequency[firstUserInput[counter] - 'A']++;
 	}
-};
+	for(unsigned int counter = 0;counter < secondStringLength;counter++){
+		frequency[secondUserInput[counter] - 'A']++;
+	}
+	for(unsigned int counter = 0;counter < thirdStringLength;counter++){
+		if(frequency[thirdUserInput[counter] - 'A'] == 0){
+			printf("NO");
+			return;
+		}
+		frequency[thirdUserInput[counter] - 'A']--;
+	}
+	for(unsigned int counter = 0;counter < 26;counter++){
+		if(frequency[counter] != 0){
+			printf("NO");
+			return;
+		}
+	}
+	printf("YES");
+}
 
-#endif /* SOCCER_H_ */
+
+#endif /* AMUSINGJOKE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

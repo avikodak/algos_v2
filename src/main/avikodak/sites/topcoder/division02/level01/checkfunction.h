@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkfunction.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\checkfunction.h
- *  Created on			: Feb 5, 2015 :: 9:10:30 AM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=4788 ( Single Round Match 271 Round 1 - Division II, Level One )
+ *  File Name   		: CheckFunction.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\CheckFunction.h
+ *  Created on			: Mar 23, 2015 :: 12:26:09 PM
+ *  Author				: avikodak
+ *  Testing Status 		: Tested
+ *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=4788
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -70,43 +70,43 @@ using namespace __gnu_cxx;
 #ifndef CHECKFUNCTION_H_
 #define CHECKFUNCTION_H_
 
-/****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
-/****************************************************************************************************************************************************/
-unsigned int checkFunction(char *userInput){
-	if(userInput[0] == '\0'){
-		return 0;
-	}
-	unsigned dashFrequency = 0;
-	while(userInput[0] != '\0'){
-		switch(userInput[0]){
-		case 0:
-		case 6:
-		case 9:
-			dashFrequency += 6;
-			break;
-		case 1:
-			dashFrequency += 2;
-			break;
-		case 2:
-		case 3:
-		case 5:
-			dashFrequency += 5;
-			break;
-		case 4:
-			dashFrequency += 4;
-			break;
-		case 7:
-			dashFrequency += 3;
-			break;
-		case 8:
-			dashFrequency += 7;
-			break;
+//Tested
+class CheckFunction {
+public:
+	int newFunction(string userInput){
+		if(userInput.size() == 0){
+			return 0;
 		}
-		userInput++;
+		unsigned dashFrequency = 0;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			switch(userInput[counter]){
+			case '0':
+			case '6':
+			case '9':
+				dashFrequency += 6;
+				break;
+			case '1':
+				dashFrequency += 2;
+				break;
+			case '2':
+			case '3':
+			case '5':
+				dashFrequency += 5;
+				break;
+			case '4':
+				dashFrequency += 4;
+				break;
+			case '7':
+				dashFrequency += 3;
+				break;
+			case '8':
+				dashFrequency += 7;
+				break;
+			}
+		}
+		return dashFrequency;
 	}
-	return dashFrequency;
-}
+};
 
 #endif /* CHECKFUNCTION_H_ */
 

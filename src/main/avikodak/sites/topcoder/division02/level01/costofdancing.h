@@ -1,11 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: soccer.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\soccer.h
- *  Created on			: Feb 5, 2015 :: 10:27:04 AM
- *  Author				: AVINASH
+ *  File Name   		: costofdancing.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\costofdancing.h
+ *  Created on			: Mar 23, 2015 :: 12:50:06 PM
+ *  Author				: avikodak
  *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=1650( Single Round Match 140 Round 1 - Division II, Level One
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	  Single Round Match 194 Round 1 - Division II, Level One )
+ *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13195
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,17 +67,17 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SOCCER_H_
-#define SOCCER_H_
+#ifndef COSTOFDANCING_H_
+#define COSTOFDANCING_H_
 
-class Soccer {
+class CostOfDancing{
 public:
-	int maxPoints(int wins[], int ties[]){
-		return 0;
+	int minimum(int K, vector<int> danceCost){
+
 	}
 };
 
-#endif /* SOCCER_H_ */
+#endif /* COSTOFDANCING_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

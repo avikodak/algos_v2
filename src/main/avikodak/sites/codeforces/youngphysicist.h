@@ -1,12 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: soccer.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\soccer.h
- *  Created on			: Feb 5, 2015 :: 10:27:04 AM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=1650( Single Round Match 140 Round 1 - Division II, Level One
- 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	  Single Round Match 194 Round 1 - Division II, Level One )
- ****************************************************************************************************************************************************/
+ *  File Name   		: youngphysicist.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\youngphysicist.h
+ *  Created on			: Mar 23, 2015 :: 9:55:24 PM
+ *  Author				: avikodak
+ *  Testing Status 		: Tested
+ *  URL 				: http://codeforces.com/problemset/problem/69/A
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -68,17 +67,28 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef SOCCER_H_
-#define SOCCER_H_
+#ifndef YOUNGPHYSICIST_H_
+#define YOUNGPHYSICIST_H_
 
-class Soccer {
-public:
-	int maxPoints(int wins[], int ties[]){
-		return 0;
+//Tested
+void isBodyInEquilibriumState(){
+	unsigned int testCases;
+	int xCoordinate,yCoordinate,zCoordinate,xCoordinateSum = 0,yCoordinateSum = 0,zCoordinateSum = 0;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%d %d %d",&xCoordinate,&yCoordinate,&zCoordinate);
+		xCoordinateSum += xCoordinate;
+		yCoordinateSum += yCoordinate;
+		zCoordinateSum += zCoordinate;
 	}
-};
+	if(xCoordinateSum == 0 && yCoordinateSum == 0 && zCoordinateSum == 0){
+		printf("YES");
+	}else{
+		printf("NO");
+	}
+}
 
-#endif /* SOCCER_H_ */
+#endif /* YOUNGPHYSICIST_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
