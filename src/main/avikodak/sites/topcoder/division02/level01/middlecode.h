@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: accountbalance.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
- *  Created on			: Mar 28, 2015 :: 12:49:39 PM
+ *  File Name   		: middlecode.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\middlecode.h
+ *  Created on			: Mar 28, 2015 :: 11:53:22 PM
  *  Author				: avikodak
  *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6036
+ *  URL 				: TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,38 +67,34 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ACCOUNTBALANCE_H_
-#define ACCOUNTBALANCE_H_
+#ifndef MIDDLECODE_H_
+#define MIDDLECODE_H_
 
-class AccountBalance{
+class MiddleCode{
 public:
-	vector<string> splitString(string userInput,char delimiter){
-			vector<string> result;
-			istringstream f(userInput);
-			string s;
-			while (getline(f, s, delimiter)) {
-				result.push_back(s);
-			}
-			f.str("");
-			for(unsigned int counter = 0;counter < result.size();counter++){
-				cout << result[counter] << endl;
-			}
-			return result;
-		}
-
-	int processTransactions(int balance, vector<string> transactions){
-		for(unsigned int counter = 0;counter < transactions.size();counter++){
-			if(transactions[counter][0] == 'C'){
-				balance += atoi(splitString(transactions[counter]," ")[1]);
+	string encode(string userInput){
+		string result;
+		int middleIndex;
+		while(userInput.size() > 0){
+			middleIndex = userInput.size()/2;
+			if(userInput.size()%2 == 1){
+				result.push_back(userInput[middleIndex]);
+				userInput.erase(middleIndex,1);
 			}else{
-				balance -= atoi(splitString(transactions[counter]," ")[1]);
+				if(userInput[middleIndex] < userInput[middleIndex-1]){
+					result.push_back(userInput[middleIndex]);
+					userInput.erase(middleIndex,1);
+				}else{
+					result.push_back(userInput[middleIndex-1]);
+					userInput.erase(middleIndex-1,1);
+				}
 			}
 		}
-		return balance;
+		return result;
 	}
 };
 
-#endif /* ACCOUNTBALANCE_H_ */
+#endif /* MIDDLECODE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

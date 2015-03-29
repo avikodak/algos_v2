@@ -1,11 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name   		: accountbalance.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
- *  Created on			: Mar 28, 2015 :: 12:49:39 PM
+ *  File Name   		: sumofpower.h 
+ *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sumofpower.h
+ *  Created on			: Mar 29, 2015 :: 12:14:20 AM
  *  Author				: avikodak
  *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6036
- ****************************************************************************************************************************************************/
+ *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13230
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -67,38 +67,23 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef ACCOUNTBALANCE_H_
-#define ACCOUNTBALANCE_H_
+#ifndef SUMOFPOWER_H_
+#define SUMOFPOWER_H_
 
-class AccountBalance{
+class SumOfPower{
 public:
-	vector<string> splitString(string userInput,char delimiter){
-			vector<string> result;
-			istringstream f(userInput);
-			string s;
-			while (getline(f, s, delimiter)) {
-				result.push_back(s);
-			}
-			f.str("");
-			for(unsigned int counter = 0;counter < result.size();counter++){
-				cout << result[counter] << endl;
-			}
-			return result;
-		}
-
-	int processTransactions(int balance, vector<string> transactions){
-		for(unsigned int counter = 0;counter < transactions.size();counter++){
-			if(transactions[counter][0] == 'C'){
-				balance += atoi(splitString(transactions[counter]," ")[1]);
-			}else{
-				balance -= atoi(splitString(transactions[counter]," ")[1]);
+	int findSum(vector<int> userInput){
+		int sum = 0;
+		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
+			for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
+				sum += userInput[outerCrawler][innerCrawler];
 			}
 		}
-		return balance;
+		return sum;
 	}
 };
 
-#endif /* ACCOUNTBALANCE_H_ */
+#endif /* SUMOFPOWER_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */
