@@ -3,7 +3,7 @@
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
  *  Created on			: Mar 28, 2015 :: 12:49:39 PM
  *  Author				: avikodak
- *  Testing Status 		: TODO
+ *  Testing Status 		: Tested
  *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6036
  ****************************************************************************************************************************************************/
 
@@ -70,33 +70,43 @@ using namespace __gnu_cxx;
 #ifndef ACCOUNTBALANCE_H_
 #define ACCOUNTBALANCE_H_
 
+//Tested
 class AccountBalance{
-public:
+private:
 	vector<string> splitString(string userInput,char delimiter){
-			vector<string> result;
-			istringstream f(userInput);
-			string s;
-			while (getline(f, s, delimiter)) {
-				result.push_back(s);
-			}
-			f.str("");
-			for(unsigned int counter = 0;counter < result.size();counter++){
-				cout << result[counter] << endl;
-			}
-			return result;
+		vector<string> result;
+		istringstream f(userInput);
+		string s;
+		while (getline(f, s, delimiter)) {
+			result.push_back(s);
 		}
+		f.str("");
+		return result;
+	}
 
+	int convertStringToInt(string userInput){
+		if(userInput.size() == 0){
+			return 0;
+		}
+		int number = 0;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			number = (number << 3) + (number << 1) + (userInput[counter] - '0');
+		}
+		return number;
+	}
+public:
 	int processTransactions(int balance, vector<string> transactions){
 		for(unsigned int counter = 0;counter < transactions.size();counter++){
 			if(transactions[counter][0] == 'C'){
-				balance += atoi(splitString(transactions[counter]," ")[1]);
+				balance += convertStringToInt(splitString(transactions[counter],' ')[1]);
 			}else{
-				balance -= atoi(splitString(transactions[counter]," ")[1]);
+				balance -= convertStringToInt(splitString(transactions[counter],' ')[1]);
 			}
 		}
 		return balance;
 	}
 };
+
 
 #endif /* ACCOUNTBALANCE_H_ */
 
