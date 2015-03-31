@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: accountbalance.h 
- *  File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
- *  Created on			: Mar 28, 2015 :: 12:49:39 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6036
+ *  File Name                   : kiwijuiceeasy.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\kiwijuiceeasy.h
+ *  Created on                  : Mar 30, 2015 :: 5:47:39 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=11020
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,48 +67,28 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ACCOUNTBALANCE_H_
-#define ACCOUNTBALANCE_H_
+#ifndef KIWIJUICEEASY_H_
+#define KIWIJUICEEASY_H_
 
-//Tested
-class AccountBalance{
-private:
-	vector<string> splitString(string userInput,char delimiter){
-		vector<string> result;
-		istringstream f(userInput);
-		string s;
-		while (getline(f, s, delimiter)) {
-			result.push_back(s);
-		}
-		f.str("");
-		return result;
-	}
-
-	int convertStringToInt(string userInput){
-		if(userInput.size() == 0){
-			return 0;
-		}
-		int number = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			number = (number << 3) + (number << 1) + (userInput[counter] - '0');
-		}
-		return number;
-	}
+class KiwiJuiceEasy{
 public:
-	int processTransactions(int balance, vector<string> transactions){
-		for(unsigned int counter = 0;counter < transactions.size();counter++){
-			if(transactions[counter][0] == 'C'){
-				balance += convertStringToInt(splitString(transactions[counter],' ')[1]);
-			}else{
-				balance -= convertStringToInt(splitString(transactions[counter],' ')[1]);
+	vector<int> thePouring(vector<int> capacities,vector<int> bottles,vector<int> fromId,vector<int> toId){
+		for(unsigned int counter = 0;counter < fromId.size();counter++){
+			if(bottles[fromId[counter]] > 0){
+				if(bottles[toId[counter]] + bottles[fromId[counter]] <= capacities[toId[counter]]){
+					bottles[toId[counter]] += bottles[fromId[counter]];
+					bottles[fromId[counter]] = 0;
+				}else{
+					bottles[fromId[counter]] -= capacities[toId[counter]] - bottles[toId[counter]];
+					bottles[toId[counter]] = capacities[toId[counter]];
+				}
 			}
 		}
-		return balance;
+		return bottles;
 	}
 };
 
-
-#endif /* ACCOUNTBALANCE_H_ */
+#endif /* KIWIJUICEEASY_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

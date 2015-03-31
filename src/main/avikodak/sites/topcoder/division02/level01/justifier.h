@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: accountbalance.h 
- *  File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
- *  Created on			: Mar 28, 2015 :: 12:49:39 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6036
+ *  File Name                   : justifier.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\justifier.h
+ *  Created on                  : Mar 30, 2015 :: 5:49:18 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=1757
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,48 +67,36 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ACCOUNTBALANCE_H_
-#define ACCOUNTBALANCE_H_
+#ifndef JUSTIFIER_H_
+#define JUSTIFIER_H_
 
-//Tested
-class AccountBalance{
-private:
-	vector<string> splitString(string userInput,char delimiter){
-		vector<string> result;
-		istringstream f(userInput);
-		string s;
-		while (getline(f, s, delimiter)) {
-			result.push_back(s);
-		}
-		f.str("");
-		return result;
-	}
-
-	int convertStringToInt(string userInput){
-		if(userInput.size() == 0){
-			return 0;
-		}
-		int number = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			number = (number << 3) + (number << 1) + (userInput[counter] - '0');
-		}
-		return number;
-	}
+class Justifier{
 public:
-	int processTransactions(int balance, vector<string> transactions){
-		for(unsigned int counter = 0;counter < transactions.size();counter++){
-			if(transactions[counter][0] == 'C'){
-				balance += convertStringToInt(splitString(transactions[counter],' ')[1]);
+	vector<string> justify(vector<string> textIn){
+		int maxSize = INT_MIN,spaceToBeFilled;
+		for(unsigned int counter = 0;counter < textIn.size();counter++){
+			maxSize = max(maxSize,textIn[counter].size());
+		}
+		vector<string> justifiedStrings;
+		for(unsigned int outerCounter = 0;outerCounter < textIn.size();outerCounter++){
+			if(textIn.size() != maxSize){
+				spaceToBeFilled = maxSize - textIn[outerCounter].size();
+				string result;
+				while(spaceToBeFilled--){
+					result.push_back(' ');
+				}
+				for(unsigned int innerCounter = 0;innerCounter < textIn[outerCounter].size();innerCounter++){
+					result.push_back(textIn[outerCounter][innerCounter]);
+				}
+				justifiedStrings.push_back(result);
 			}else{
-				balance -= convertStringToInt(splitString(transactions[counter],' ')[1]);
+				justifiedStrings.push_back(textIn[outerCounter]);
 			}
 		}
-		return balance;
 	}
 };
 
-
-#endif /* ACCOUNTBALANCE_H_ */
+#endif /* JUSTIFIER_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
