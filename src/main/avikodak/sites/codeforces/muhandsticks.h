@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: evenodds.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
- *  Created on			: Mar 8, 2015 :: 12:57:11 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/318/A
-****************************************************************************************************************************************************/
+ *  File Name                   : muhandsticks.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\muhandsticks.h
+ *  Created on                  : Apr 8, 2015 :: 1:05:32 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://codeforces.com/problemset/problem/471/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,40 +60,52 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EVENODDS_H_
-#define EVENODDS_H_
+#ifndef MUHANDSTICKS_H_
+#define MUHANDSTICKS_H_
 
 //Tested
-void printNumberInSequence(){
-	long long int size,position,half;
-	cin >> size;
-	cin >> position;
-	half = size/2;
-	if(size%2 == 0){
-		if(position <= half){
-			cout << 2*position-1;
+void identifyAnimal(){
+	int frequency[9] = {0};
+	int userInput;
+	for(unsigned int counter = 0;counter < 6;counter++){
+		scanf("%d",&userInput);
+		frequency[userInput-1]++;
+	}
+	bool fourFlag = false,fiveFlag = false,sixFlag = false,twoFlag = false;
+	for(unsigned int counter = 0;counter < 9;counter++){
+		if(frequency[counter] ==  2){
+			twoFlag = true;
+		}else if(frequency[counter] == 4){
+			fourFlag = true;
+		}else if(frequency[counter] == 5){
+			fiveFlag = true;
+		}else if(frequency[counter] == 6){
+			sixFlag = true;
+		}
+	}
+	if(fourFlag || fiveFlag || sixFlag){
+		if(fourFlag){
+			printf("%s",twoFlag?"Elephant":"Bear");
 		}else{
-			cout << 2*(position-half);
+			if(sixFlag){
+				printf("Elephant");
+			}else{
+				printf("Bear");
+			}
 		}
 	}else{
-		if(position <= half+1){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half-1);
-		}
-
+		printf("Alien");
 	}
 }
-
-#endif /* EVENODDS_H_ */
+#endif /* MUHANDSTICKS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: evenodds.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
- *  Created on			: Mar 8, 2015 :: 12:57:11 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/318/A
-****************************************************************************************************************************************************/
+ *  File Name                   : antonandletters.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\antonandletters.h
+ *  Created on                  : Apr 8, 2015 :: 12:00:51 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://codeforces.com/problemset/problem/443/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,40 +60,36 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EVENODDS_H_
-#define EVENODDS_H_
+#ifndef ANTONANDLETTERS_H_
+#define ANTONANDLETTERS_H_
 
 //Tested
-void printNumberInSequence(){
-	long long int size,position,half;
-	cin >> size;
-	cin >> position;
-	half = size/2;
-	if(size%2 == 0){
-		if(position <= half){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half);
-		}
-	}else{
-		if(position <= half+1){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half-1);
-		}
+void getDistinctLetters(){
+	string userInput;
+	getline(cin,userInput);
+	bool flags[26] = {false};
 
+	for(unsigned int counter = 1;counter < userInput.size();counter+=3){
+		flags[userInput[counter]-'a'] = true;
 	}
+	unsigned int distinctCounter = 0;
+	for(unsigned int counter = 0;counter < 26;counter++){
+		if(flags[counter]){
+			distinctCounter++;
+		}
+	}
+	printf("%u",distinctCounter);
 }
 
-#endif /* EVENODDS_H_ */
+#endif /* ANTONANDLETTERS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

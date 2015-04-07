@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: evenodds.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
- *  Created on			: Mar 8, 2015 :: 12:57:11 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/318/A
-****************************************************************************************************************************************************/
+ *  File Name                   : foxandsnake.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\foxandsnake.h
+ *  Created on                  : Apr 8, 2015 :: 12:24:53 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://codeforces.com/problemset/problem/510/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,40 +60,44 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EVENODDS_H_
-#define EVENODDS_H_
+#ifndef FOXANDSNAKE_H_
+#define FOXANDSNAKE_H_
 
 //Tested
-void printNumberInSequence(){
-	long long int size,position,half;
-	cin >> size;
-	cin >> position;
-	half = size/2;
-	if(size%2 == 0){
-		if(position <= half){
-			cout << 2*position-1;
+void printSnakePattern(){
+	unsigned int inputRow,inputColumn;
+	scanf("%u %u",&inputRow,&inputColumn);
+	bool flag = false;
+	for(unsigned int rowCounter = 0;rowCounter < inputRow;rowCounter++){
+		if(rowCounter%2 == 0){
+			for(unsigned int columnCounter = 0;columnCounter < inputColumn;columnCounter++){
+				printf("#");
+			}
 		}else{
-			cout << 2*(position-half);
+			for(unsigned int columnCounter = 0;columnCounter < inputColumn;columnCounter++){
+				if(columnCounter == 0){
+					printf("%c",flag?'#':'.');
+				}else if(columnCounter == inputColumn-1){
+					printf("%c",flag?'.':'#');
+				}else{
+					printf(".");
+				}
+			}
+			flag = !flag;
 		}
-	}else{
-		if(position <= half+1){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half-1);
-		}
-
+		printf("\n");
 	}
 }
 
-#endif /* EVENODDS_H_ */
+#endif /* FOXANDSNAKE_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

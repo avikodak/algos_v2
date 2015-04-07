@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: evenodds.h 
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
- *  Created on			: Mar 8, 2015 :: 12:57:11 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://codeforces.com/problemset/problem/318/A
-****************************************************************************************************************************************************/
+ *  File Name                   : freecash.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\freecash.h
+ *  Created on                  : Apr 8, 2015 :: 12:39:40 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://codeforces.com/problemset/problem/237/A
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,40 +60,45 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EVENODDS_H_
-#define EVENODDS_H_
+#ifndef FREECASH_H_
+#define FREECASH_H_
 
 //Tested
-void printNumberInSequence(){
-	long long int size,position,half;
-	cin >> size;
-	cin >> position;
-	half = size/2;
-	if(size%2 == 0){
-		if(position <= half){
-			cout << 2*position-1;
+void getFreeCashCountersRequired(){
+	unsigned int testCases,hour,minute;
+	scanf("%u",&testCases);
+	map<unsigned int,map<unsigned int,unsigned int> > timeCountersMap;
+	map<unsigned int,map<unsigned int,unsigned int> >::iterator itToTimeCountersMap;
+	map<unsigned int,unsigned int> existingMinuteMap;
+	map<unsigned int,unsigned int>::iterator itToExistingMinuteMap;
+	unsigned int maxFreeCash = 0;
+	while(testCases--){
+		scanf("%u %u",&hour,&minute);
+		if((itToTimeCountersMap = timeCountersMap.find(hour)) != timeCountersMap.end()){
+			existingMinuteMap = itToTimeCountersMap->second;
+			if((itToExistingMinuteMap = existingMinuteMap.find(minute)) != existingMinuteMap.end()){
+				timeCountersMap[hour][minute] = itToExistingMinuteMap->second+1;
+					maxFreeCash = max(maxFreeCash,itToExistingMinuteMap->second+1);
+			}else{
+				timeCountersMap[hour][minute] = 1;
+				maxFreeCash = max(maxFreeCash,1U);
+			}
 		}else{
-			cout << 2*(position-half);
+			timeCountersMap[hour][minute] = 1;
+			maxFreeCash = max(maxFreeCash,1U);
 		}
-	}else{
-		if(position <= half+1){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half-1);
-		}
-
 	}
+	printf("%u",maxFreeCash);
 }
-
-#endif /* EVENODDS_H_ */
+#endif /* FREECASH_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/
