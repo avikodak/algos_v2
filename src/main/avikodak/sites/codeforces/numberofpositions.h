@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : towers.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\towers.h
- *  Created on                  : Apr 13, 2015 :: 12:04:19 AM
+ *  File Name                   : numberofpositions.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\numberofpositions.h
+ *  Created on                  : Apr 13, 2015 :: 12:21:30 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://codeforces.com/problemset/problem/37/A
+ *  URL                         : http://codeforces.com/problemset/problem/124/A
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,27 +67,16 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef TOWERS_H_
-#define TOWERS_H_
+#ifndef NUMBEROFPOSITIONS_H_
+#define NUMBEROFPOSITIONS_H_
 
-//Tested
-void getTowersDetails(){
-	unsigned int testCases,maxFrequency = 0,input;
-	scanf("%u",&testCases);
-	map<unsigned int,unsigned int> frequencyMap;
-	while(testCases--){
-		scanf("%u",&input);
-		if(frequencyMap.find(input) != frequencyMap.end()){
-			frequencyMap[input]++;
-		}else{
-			frequencyMap[input] = 1;
-		}
-		maxFrequency = max(maxFrequency,frequencyMap[input]);
-	}
-	printf("%u %u",maxFrequency,frequencyMap.size());
+void numberOfPositions(){
+	unsigned int total,minNumber,maxNumber;
+	cin >> total >> minNumber >> maxNumber;
+	printf("%u",min(total - minNumber,maxNumber+1));
 }
 
-#endif /* TOWERS_H_ */
+#endif /* NUMBEROFPOSITIONS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
