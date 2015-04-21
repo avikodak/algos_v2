@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : chooseteams.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\chooseteams.h
- *  Created on                  : Apr 11, 2015 :: 9:15:47 PM
+ *  File Name                   : circleline.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\circleline.h
+ *  Created on                  : Apr 13, 2015 :: 12:50:05 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://codeforces.com/problemset/problem/432/A
+ *  URL                         : http://codeforces.com/problemset/problem/278/A
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,24 +67,32 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CHOOSETEAMS_H_
-#define CHOOSETEAMS_H_
+#ifndef CIRCLELINE_H_
+#define CIRCLELINE_H_
 
 //Tested
-void chooseTeams(){
-	unsigned int totalStudents,minGames,input,studentsAllowed = 0;
-	scanf("%u %u",&totalStudents,&minGames);
-	for(unsigned int counter = 0;counter < totalStudents;counter++){
-		scanf("%u",&input);
-		if(5-minGames >= input){
-			studentsAllowed++;
-		}
+void printMinDistance(){
+	unsigned int stationsCount,userInput,source,destination;
+	scanf("%u",&stationsCount);
+	vector<int> distances;
+	unsigned int totalDistance = 0;
+	while(stationsCount--){
+		scanf("%u",&userInput);
+		distances.push_back(userInput);
+		totalDistance += userInput;
 	}
-	printf("%u",(studentsAllowed/3));
+	scanf("%u %u",&source,&destination);
+	if(source > destination){
+		swap(source,destination);
+	}
+	unsigned int calculatedDistance = 0;
+	for(unsigned int counter = source-1;counter < destination;counter++){
+		calculatedDistance += distances[counter];
+	}
+	printf("%u",min(calculatedDistance,totalDistance-calculatedDistance));
 }
 
-
-#endif /* CHOOSETEAMS_H_ */
+#endif /* CIRCLELINE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
