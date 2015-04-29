@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : topfox.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\topfox.h
- *  Created on                  : Apr 29, 2015 :: 7:23:52 PM
+ *  File Name                   : onedimensionalroboteasy.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\onedimensionalroboteasy.h
+ *  Created on                  : Apr 29, 2015 :: 10:29:09 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12643
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13000
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,33 +67,29 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef TOPFOX_H_
-#define TOPFOX_H_
+#ifndef ONEDIMENSIONALROBOTEASY_H_
+#define ONEDIMENSIONALROBOTEASY_H_
 
-class TopFox{
+class OneDimensionalRobotEasy{
 public:
-	int possibleHandles(string familyName,string givenName){
-		set<string> handles;
-		vector<string> familyNameSubs,givenNameSubs;
-		for(unsigned int counter = 0;counter < familyName.size();counter++){
-			familyNameSubs.push_back(familyName.substr(0,counter+1));
-		}
-		for(unsigned int counter = 0;counter < givenName.size();counter++){
-			givenNameSubs.push_back(givenName.substr(0,counter+1));
-		}
-		for(unsigned int outerCounter = 0;outerCounter < familyNameSubs.size();outerCounter++){
-			for(unsigned int innerCounter = 0;innerCounter < givenNameSubs.size();innerCounter++){
-				string result;
-				result.append(familyNameSubs[outerCounter].begin(),familyNameSubs[outerCounter].end());
-				result.append(givenNameSubs[innerCounter].begin(),givenNameSubs[innerCounter].end());
-				handles.insert(result);
+	int finalPosition(string commands, int A, int B){
+		int position = 0;
+		for(unsigned int counter = 0;counter < commands.size();counter++){
+			if(commands[counter] == 'L'){
+				if(position != -1*A){
+					position--;
+				}
+			}else{
+				if(position != B){
+					position++;
+				}
 			}
 		}
-		return (int)handles.size();
+		return position;
 	}
 };
 
-#endif /* TOPFOX_H_ */
+#endif /* ONEDIMENSIONALROBOTEASY_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
