@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : deckrearranging.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\deckrearranging.h
- *  Created on                  : May 1, 2015 :: 11:59:06 AM
+ *  File Name                   : csspropertyconverter.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\csspropertyconverter.h
+ *  Created on                  : May 1, 2015 :: 2:30:36 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=9914
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7503
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,25 +67,26 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DECKREARRANGING_H_
-#define DECKREARRANGING_H_
+#ifndef CSSPROPERTYCONVERTER_H_
+#define CSSPROPERTYCONVERTER_H_
 
-class DeckRearranging {
+class CssPropertyConverter {
 public:
-	string rearrange(string deck, vector<int> above){
-		string newDeck;
-		for(unsigned int counter = 0;counter < deck.size();counter++){
-			if((unsigned int)above[counter] == newDeck.size()){
-				newDeck.push_back(deck[counter]);
+	string getCamelized(string cssPropertyName){
+		string result;
+		for(unsigned int counter = 0;counter < cssPropertyName.size();counter++){
+			if(cssPropertyName[counter] == '-'){
+				result.push_back(cssPropertyName[counter+1]-'a'+'A');
+				counter++;
 			}else{
-				newDeck.insert(newDeck.begin() + above[counter],deck[counter]);
+				result.push_back(cssPropertyName[counter]);
 			}
 		}
-		return newDeck;
+		return result;
 	}
 };
 
-#endif /* DECKREARRANGING_H_ */
+#endif /* CSSPROPERTYCONVERTER_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

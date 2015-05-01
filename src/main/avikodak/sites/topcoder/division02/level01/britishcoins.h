@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : deckrearranging.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\deckrearranging.h
- *  Created on                  : May 1, 2015 :: 11:59:06 AM
+ *  File Name                   : britishcoins.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\britishcoins.h
+ *  Created on                  : May 1, 2015 :: 3:13:47 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=9914
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=1862
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,25 +67,23 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DECKREARRANGING_H_
-#define DECKREARRANGING_H_
+#ifndef BRITISHCOINS_H_
+#define BRITISHCOINS_H_
 
-class DeckRearranging {
+class BritishCoins {
 public:
-	string rearrange(string deck, vector<int> above){
-		string newDeck;
-		for(unsigned int counter = 0;counter < deck.size();counter++){
-			if((unsigned int)above[counter] == newDeck.size()){
-				newDeck.push_back(deck[counter]);
-			}else{
-				newDeck.insert(newDeck.begin() + above[counter],deck[counter]);
-			}
-		}
-		return newDeck;
+	vector<int> coins(int pence){
+		vector<int> result;
+		result.push_back(pence/240);
+		pence %= 240;
+		result.push_back(pence/12);
+		pence %= 12;
+		result.push_back(pence);
+		return result;
 	}
 };
 
-#endif /* DECKREARRANGING_H_ */
+#endif /* BRITISHCOINS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

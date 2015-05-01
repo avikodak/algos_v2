@@ -76,7 +76,8 @@ public:
 		paragraph[0] = paragraph[0] - 'a' +'A';
 		for(unsigned int counter = 1;counter < paragraph.size()-1;counter++){
 			if(paragraph[counter] == '.'){
-				paragraph[counter+1] = paragraph[counter+1] - 'a' +'A';
+				paragraph[counter+2] = paragraph[counter+2] - 'a' +'A';
+				counter+=2;
 			}
 		}
 		return paragraph;

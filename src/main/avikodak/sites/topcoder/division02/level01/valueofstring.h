@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : deckrearranging.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\deckrearranging.h
- *  Created on                  : May 1, 2015 :: 11:59:06 AM
+ *  File Name                   : valueofstring.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\valueofstring.h
+ *  Created on                  : May 1, 2015 :: 3:29:30 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=9914
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13678
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,25 +67,35 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DECKREARRANGING_H_
-#define DECKREARRANGING_H_
+#ifndef VALUEOFSTRING_H_
+#define VALUEOFSTRING_H_
 
-class DeckRearranging {
+class ValueOfString {
 public:
-	string rearrange(string deck, vector<int> above){
-		string newDeck;
-		for(unsigned int counter = 0;counter < deck.size();counter++){
-			if((unsigned int)above[counter] == newDeck.size()){
-				newDeck.push_back(deck[counter]);
+	int findValue(string userInput){
+		map<char,int> frequency;
+		map<char,int>::iterator itToFrequency;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			if(frequency.find(userInput[counter]) == frequency.end()){
+				frequency[userInput[counter]] = 1;
 			}else{
-				newDeck.insert(newDeck.begin() + above[counter],deck[counter]);
+				frequency[userInput[counter]] += 1;
 			}
 		}
-		return newDeck;
+		int sum = 0;
+		for(itToFrequency = frequency.begin();itToFrequency != frequency.end();itToFrequency++){
+			sum += itToFrequency->second;
+			frequency[itToFrequency->first] = sum;
+		}
+		sum = 0;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			sum += (userInput[counter] -'a'+1)*(frequency[userInput[counter]]);
+		}
+		return sum;
 	}
 };
 
-#endif /* DECKREARRANGING_H_ */
+#endif /* VALUEOFSTRING_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
