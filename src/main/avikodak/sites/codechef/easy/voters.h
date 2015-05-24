@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lapin.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\lapin.h
- *  Created on			: Feb 9, 2015 :: 10:06:30 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.codechef.com/problems/LAPIN
-****************************************************************************************************************************************************/
+ *  File Name                   : voters.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\voters.h
+ *  Created on                  : May 24, 2015 :: 6:13:01 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://www.codechef.com/problems/VOTERS
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,63 +60,45 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
-/****************************************************************************************************************************************************/
-#define MAX_INPUT_SIZE 1001
-#define ALPHABET_SIZE 26
-
-/****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
-#ifndef LAPIN_H_
-#define LAPIN_H_
+/****************************************************************************************************************************************************/
+/*                                                             MAIN CODE START                                                                      */
+/****************************************************************************************************************************************************/
+
+#ifndef VOTERS_H_
+#define VOTERS_H_
 
 //Tested
-bool isStringLapindrome(char *user){
-	unsigned int length = strlen(user);
-	unsigned int secondCrawler = 0,size;
-	if(length&1){
-		secondCrawler = (length/2)+1;
-	}else{
-		secondCrawler = length/2;
-	}
-	size = (length/2);
-	unsigned frequencies[ALPHABET_SIZE] = {0};
-	for(unsigned int counter = 0;counter < size;counter++){
-		frequencies[user[counter]-'a']++;
-	}
-	for(unsigned int counter = secondCrawler;counter < length;counter++){
-		if(frequencies[user[counter]-'a'] == 0){
-			return false;
-		}
-		frequencies[user[counter]-'a']--;
-	}
-	for(unsigned int counter = 0;counter < ALPHABET_SIZE;counter++){
-		if(frequencies[counter] > 0){
-			return false;
-		}
-	}
-	return true;
-}
-
-//Tested
-void areStringLapindromes(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	char userInput[MAX_INPUT_SIZE];
-	while(testCases--){
-		scanf("%s",userInput);
-		if(isStringLapindrome(userInput)){
-			printf("YES\n");
+void printFinalList(){
+	unsigned int firstSize,secondSize,thirdSize,userInput,size;
+	scanf("%u %u %u",&firstSize,&secondSize,&thirdSize);
+	map<unsigned int ,unsigned int> frequencyMap;
+	map<unsigned int,unsigned int>::iterator itToFrequencyMap;
+	size = firstSize + secondSize + thirdSize;
+	while(size--){
+		scanf("%u",&userInput);
+		if(frequencyMap.find(userInput) == frequencyMap.end()){
+			frequencyMap[userInput] = 1;
 		}else{
-			printf("NO\n");
+			frequencyMap[userInput] += 1;
 		}
+	}
+	vector<int> finalList;
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		if(itToFrequencyMap->second > 1){
+			finalList.push_back(itToFrequencyMap->first);
+		}
+	}
+	printf("%u\n",finalList.size());
+	for(unsigned int counter = 0;counter < finalList.size();counter++){
+		printf("%d\n",finalList[counter]);
 	}
 }
 
-#endif /* LAPIN_H_ */
+#endif /* VOTERS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/
