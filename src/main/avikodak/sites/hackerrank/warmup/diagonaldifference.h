@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : songsofpi.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\songsofpi.h
- *  Created on                  : May 1, 2015 :: 4:16:05 PM
+ *  File Name                   : diagonaldifference.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\diagonaldifference.h
+ *  Created on                  : Jun 16, 2015 :: 6:17:29 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.hackerrank.com/challenges/song-of-pi
+ *  URL                         : https://www.hackerrank.com/challenges/diagonal-difference
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,55 +67,34 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SONGSOFPI_H_
-#define SONGSOFPI_H_
+#ifndef DIAGONALDIFFERENCE_H_
+#define DIAGONALDIFFERENCE_H_
 
 //Tested
-bool isChar(char userInput){
-	if((userInput >= 'a' && userInput <= 'z')||(userInput >= 'A' && userInput <= 'Z')){
-		return true;
-	}
-	return false;
-}
-
-//Tested
-void isPISong(){
-	unsigned int testCases;
-	cin >> testCases;
-	string piValue = "31415926535897932384626433833";
-	string charCount;
-	unsigned int letterCount;
-	string userInput;
-	getline(std::cin,userInput);
-	while(testCases--){
-		charCount.clear();
-		getline(std::cin,userInput);
-		letterCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(isChar(userInput[counter])){
-				letterCount++;
-			}else{
-				if(letterCount != 0){
-					charCount.push_back(letterCount+'0');
-				}
-				letterCount = 0;
+void getAbsoluteDifference(){
+	unsigned int size;
+	int input;
+	scanf("%u",&size);
+	unsigned int leftToRight = 0,rightToLeftRow = 0,rightToLeftColumn = size-1;
+	int leftToRightSum = 0,rightToLeftSum = 0;
+	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
+		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
+			scanf("%d",&input);
+			if(leftToRight == rowCounter && leftToRight == columnCounter){
+				leftToRightSum += input;
+				leftToRight++;
+			}
+			if(rowCounter == rightToLeftRow && columnCounter == rightToLeftColumn){
+				rightToLeftSum += input;
+				rightToLeftRow++;
+				rightToLeftColumn--;
 			}
 		}
-		if(letterCount != 0){
-			charCount.push_back(letterCount+'0');
-		}
-		bool flag = true;
-		for(unsigned int counter = 0;counter < charCount.size();counter++){
-			if(piValue[counter] != charCount[counter]){
-				flag = false;
-				break;
-			}
-		}
-		printf("%s\n",flag?"It's a pi song.":"It's not a pi song.");
 	}
+	printf("%d",abs(leftToRightSum - rightToLeftSum));
 }
 
-#endif /* SONGSOFPI_H_ */
+#endif /* DIAGONALDIFFERENCE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

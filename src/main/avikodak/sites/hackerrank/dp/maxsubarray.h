@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : songsofpi.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\songsofpi.h
- *  Created on                  : May 1, 2015 :: 4:16:05 PM
+ *  File Name                   : maxsubarray.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\dp\maxsubarray.h
+ *  Created on                  : Jun 13, 2015 :: 10:39:20 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.hackerrank.com/challenges/song-of-pi
+ *  URL                         : https://www.hackerrank.com/challenges/maxsubarray
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,55 +67,42 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SONGSOFPI_H_
-#define SONGSOFPI_H_
+#ifndef MAXSUBARRAY_H_
+#define MAXSUBARRAY_H_
 
 //Tested
-bool isChar(char userInput){
-	if((userInput >= 'a' && userInput <= 'z')||(userInput >= 'A' && userInput <= 'Z')){
-		return true;
+void getMaxSubArray(vector<int> userInput){
+	int currentSum = 0,maxSubArraySum=INT_MIN,maxNegVal = INT_MIN,maxNonSubArraySum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		currentSum = max(userInput[counter],currentSum+userInput[counter]);
+		maxSubArraySum = max(maxSubArraySum,currentSum);
+		if(userInput[counter] > 0){
+			maxNonSubArraySum += userInput[counter];
+		}else{
+			maxNegVal = max(maxNegVal,userInput[counter]);
+		}
 	}
-	return false;
+	printf("%d %d\n",maxSubArraySum,maxNonSubArraySum == 0?maxNegVal:maxNonSubArraySum);
 }
 
 //Tested
-void isPISong(){
-	unsigned int testCases;
-	cin >> testCases;
-	string piValue = "31415926535897932384626433833";
-	string charCount;
-	unsigned int letterCount;
-	string userInput;
-	getline(std::cin,userInput);
+void printMaxSubArray(){
+	unsigned int testCases,noOfElements;
+	int input;
+	scanf("%u",&testCases);
+	vector<int> userInput;
 	while(testCases--){
-		charCount.clear();
-		getline(std::cin,userInput);
-		letterCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(isChar(userInput[counter])){
-				letterCount++;
-			}else{
-				if(letterCount != 0){
-					charCount.push_back(letterCount+'0');
-				}
-				letterCount = 0;
-			}
+		scanf("%u",&noOfElements);
+		userInput.clear();
+		while(noOfElements--){
+			scanf("%d",&input);
+			userInput.push_back(input);
 		}
-		if(letterCount != 0){
-			charCount.push_back(letterCount+'0');
-		}
-		bool flag = true;
-		for(unsigned int counter = 0;counter < charCount.size();counter++){
-			if(piValue[counter] != charCount[counter]){
-				flag = false;
-				break;
-			}
-		}
-		printf("%s\n",flag?"It's a pi song.":"It's not a pi song.");
+		getMaxSubArray(userInput);
 	}
 }
 
-#endif /* SONGSOFPI_H_ */
+#endif /* MAXSUBARRAY_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

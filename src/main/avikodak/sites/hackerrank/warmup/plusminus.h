@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : songsofpi.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\songsofpi.h
- *  Created on                  : May 1, 2015 :: 4:16:05 PM
+ *  File Name                   : plusminus.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\plusminus.h
+ *  Created on                  : Jun 16, 2015 :: 6:29:02 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.hackerrank.com/challenges/song-of-pi
+ *  URL                         : https://www.hackerrank.com/challenges/plus-minus
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,55 +67,29 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SONGSOFPI_H_
-#define SONGSOFPI_H_
+#ifndef PLUSMINUS_H_
+#define PLUSMINUS_H_
 
 //Tested
-bool isChar(char userInput){
-	if((userInput >= 'a' && userInput <= 'z')||(userInput >= 'A' && userInput <= 'Z')){
-		return true;
+void getFractionOfNumbers(){
+	unsigned int size;
+	int input;
+	scanf("%u",&size);
+	unsigned int positiveCount=0,negativeCount=0,zeroCount=0;
+	for(unsigned int counter = 0;counter < size;counter++){
+		scanf("%d",&input);
+		if(input > 0){
+			positiveCount++;
+		}else if(input < 0){
+			negativeCount++;
+		}else{
+			zeroCount++;
+		}
 	}
-	return false;
+	printf("%.3f\n%.3f\n%.3f",((double)positiveCount/(double)(size)),((double)negativeCount/(double)(size)),((double)zeroCount/(double)(size)));
 }
 
-//Tested
-void isPISong(){
-	unsigned int testCases;
-	cin >> testCases;
-	string piValue = "31415926535897932384626433833";
-	string charCount;
-	unsigned int letterCount;
-	string userInput;
-	getline(std::cin,userInput);
-	while(testCases--){
-		charCount.clear();
-		getline(std::cin,userInput);
-		letterCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(isChar(userInput[counter])){
-				letterCount++;
-			}else{
-				if(letterCount != 0){
-					charCount.push_back(letterCount+'0');
-				}
-				letterCount = 0;
-			}
-		}
-		if(letterCount != 0){
-			charCount.push_back(letterCount+'0');
-		}
-		bool flag = true;
-		for(unsigned int counter = 0;counter < charCount.size();counter++){
-			if(piValue[counter] != charCount[counter]){
-				flag = false;
-				break;
-			}
-		}
-		printf("%s\n",flag?"It's a pi song.":"It's not a pi song.");
-	}
-}
-
-#endif /* SONGSOFPI_H_ */
+#endif /* PLUSMINUS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
