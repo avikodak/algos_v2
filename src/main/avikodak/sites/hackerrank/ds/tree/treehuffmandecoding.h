@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : lowestcommonancestor.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\ds\tree\lowestcommonancestor.h
- *  Created on                  : Jul 5, 2015 :: 6:29:20 PM
+ *  File Name                   : treehuffmandecoding.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\ds\tree\treehuffmandecoding.h
+ *  Created on                  : Jul 5, 2015 :: 11:37:51 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/challenges/binary-search-tree-lowest-common-ancestor
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/challenges/tree-huffman-decoding
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,31 +67,55 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LOWESTCOMMONANCESTOR_H_
-#define LOWESTCOMMONANCESTOR_H_
+#ifndef TREEHUFFMANDECODING_H_
+#define TREEHUFFMANDECODING_H_
 
-struct node{
-   int data;
-   node * left;
-   node * right;
-};
+/*struct node{
+    int freq;
+    char data;
+    node * left;
+    node * right;
+};*/
 
-node *lca(node * root, int v1,int v2){
-	if(root == NULL){
-		return NULL;
+//Tested
+void getCodes(node *ptr,string str,map<string,char> &codes){
+	if(ptr == null){
+		return;
 	}
-	if(root->data == v1 || root->data == v2){
-		return root;
-	}else if(root->data > v1 && root->data < v2){
-		return root;
-	}else if(root->data > v1 && root->data > v2){
-		return lca(root->left,v1,v2);
-	}else{
-		return lca(root->right,v1,v2);
+	if(ptr->left == null && ptr->right == null){
+		codes.insert(pair<string,char>(str,ptr->data));
+		return;
+	}
+	unsigned int index = str.size();
+	str.insert(index,"0");
+	getCodes(ptr->left,str,codes);
+    str.erase(index);
+	str.insert(index,"1");
+	getCodes(ptr->right,str,codes);
+}
+
+//Tested
+void decode_huff(node * root,string s){
+	string str;
+	string subString;
+	map<string,char> codes;
+	map<string,char>::iterator itToCodes;
+	getCodes(root,str,codes);
+	unsigned int outerCounter = 0,innerCounter;
+	while(outerCounter < s.size()){
+		innerCounter = outerCounter;
+		subString = s.substr(innerCounter,1);
+		while((itToCodes = codes.find(subString)) == codes.end()){
+			innerCounter++;
+			subString = s.substr(outerCounter,innerCounter-outerCounter+1);
+		}
+		printf("%c",itToCodes->second);
+		outerCounter = innerCounter+1;
+
 	}
 }
 
-#endif /* LOWESTCOMMONANCESTOR_H_ */
+#endif /* TREEHUFFMANDECODING_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
