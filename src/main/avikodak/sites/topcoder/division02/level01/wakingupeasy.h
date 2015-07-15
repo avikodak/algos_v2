@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : wakingupeasy.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\wakingupeasy.h
+ *  Created on                  : Jul 16, 2015 :: 12:42:55 AM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13125
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,36 +60,30 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef WAKINGUPEASY_H_
+#define WAKINGUPEASY_H_
 
-void printPossibilites(long int nValue,long int firstUserInput,long int secondUserInput){
-
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+class WakingUpEasy {
+public:
+	int countAlarms(vector<int> volume, int S){
+		int totalAlarms = 0;
+		while(S > 0){
+			S -= volume[totalAlarms%volume.size()];
+			totalAlarms++;
 		}
-		return;
+		return totalAlarms;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-}
+};
 
-#endif /* MANASAANDSTONES_H_ */
+#endif /* WAKINGUPEASY_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

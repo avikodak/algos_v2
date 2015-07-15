@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : sherlockandanagrams.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\strings\sherlockandanagrams.h
+ *  Created on                  : Jul 14, 2015 :: 7:18:16 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/challenges/sherlock-and-anagrams
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,36 +60,50 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
-
-void printPossibilites(long int nValue,long int firstUserInput,long int secondUserInput){
-
-}
+#ifndef SHERLOCKANDANAGRAMS_H_
+#define SHERLOCKANDANAGRAMS_H_
 
 //Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+void getTotalUnorderedAnagramicPairs(){
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	string userInput;
+	map<string,int> strFrequency;
+	map<string,int>::iterator itToStrFrequency;
+	unsigned int totalPairs;
+	while(testCases--){
+		cin >> userInput;
+		strFrequency.clear();
+		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+			for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+				string subString = userInput.substr(outerCounter,innerCounter-outerCounter+1);
+				sort(subString.begin(),subString.end());
+				if((itToStrFrequency = strFrequency.find(subString)) != strFrequency.end()){
+					strFrequency[subString] += 1;
+				}else{
+					strFrequency.insert(pair<string,int>(subString,1));
+				}
+			}
 		}
-		return;
+		totalPairs = 0;
+		for(itToStrFrequency = strFrequency.begin();itToStrFrequency != strFrequency.end();itToStrFrequency++){
+			if(itToStrFrequency->second > 1){
+				totalPairs += ((itToStrFrequency->second)*(itToStrFrequency->second-1))/2;
+			}
+		}
+		cout << totalPairs << endl;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
 }
 
-#endif /* MANASAANDSTONES_H_ */
+#endif /* SHERLOCKANDANAGRAMS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

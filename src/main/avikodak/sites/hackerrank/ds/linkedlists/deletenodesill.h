@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : deletenodesill.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\ds\linkedlists\deletenodesill.h
+ *  Created on                  : Jul 12, 2015 :: 10:41:30 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,36 +60,47 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef DELETENODESILL_H_
+#define DELETENODESILL_H_
 
-void printPossibilites(long int nValue,long int firstUserInput,long int secondUserInput){
+struct Node{
+	int data;
+	struct Node *next;
+};
 
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
-		}
-		return;
+Node* Delete(Node *head, int position){
+	if(head == null){
+		return null;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+    Node *ptrToDelete = head,*crawler;
+	if(position == 0){
+		head = head->next;
+		free(ptrToDelete);
+		return head;
+	}
+	int counter = 0;
+	crawler = head;
+	while(counter < position-1 && crawler != null){
+		crawler = crawler->next;
+		counter++;
+	}
+	if(crawler != null){
+		ptrToDelete = crawler->next;
+		crawler->next = crawler->next->next;
+		free(ptrToDelete);
+	}
+	return head;
 }
 
-#endif /* MANASAANDSTONES_H_ */
+#endif /* DELETENODESILL_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

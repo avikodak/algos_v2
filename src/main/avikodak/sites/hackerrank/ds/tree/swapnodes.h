@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : swapnodes.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\ds\tree\swapnodes.h
+ *  Created on                  : Jul 14, 2015 :: 9:13:58 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/challenges/swap-nodes-algo
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,36 +60,76 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef SWAPNODES_H_
+#define SWAPNODES_H_
 
-void printPossibilites(long int nValue,long int firstUserInput,long int secondUserInput){
-
+//Tested
+void inorderTraversal(itNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	inorderTraversal(ptr->left);
+	printf("%d ",ptr->value);
+	inorderTraversal(ptr->right);
 }
 
 //Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
-		}
+void swapAtMultipleLevels(itNode *ptr,int currentLevel,int target){
+	if(ptr == null){
 		return;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+	if(currentLevel%target == 0){
+		itNode *temp = ptr->right;
+		ptr->right = ptr->left;
+		ptr->left = temp;
+	}
+	swapAtMultipleLevels(ptr->left,currentLevel+1,target);
+	swapAtMultipleLevels(ptr->right,currentLevel+1,target);
 }
 
-#endif /* MANASAANDSTONES_H_ */
+//Tested
+void swapNodes(){
+	unsigned int noOfNodes;
+	scanf("%u",&noOfNodes);
+	itNode *root = new itNode(1);
+	itNode *node;
+	int leftChild,rightChild;
+	map<unsigned int,itNode *> indexNodeMap;
+	indexNodeMap.insert(pair<unsigned int,itNode *>(1,root));
+	map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+	for(unsigned int counter = 1;counter <= noOfNodes;counter++){
+		scanf("%d %d",&leftChild,&rightChild);
+		itToIndexNodeMap = indexNodeMap.find(counter);
+		node  = itToIndexNodeMap->second;
+		if(leftChild != -1){
+			node->left = new itNode(leftChild);
+			indexNodeMap.insert(pair<unsigned int,itNode *>(leftChild,node->left));
+		}
+		if(rightChild != -1){
+			node->right = new itNode(rightChild);
+			indexNodeMap.insert(pair<unsigned int,itNode *>(rightChild,node->right));
+		}
+	}
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	int userInput;
+	while(testCases--){
+		scanf("%d",&userInput);
+		swapAtMultipleLevels(root,1,userInput);
+		inorderTraversal(root);
+		printf("\n");
+	}
+}
+
+#endif /* SWAPNODES_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

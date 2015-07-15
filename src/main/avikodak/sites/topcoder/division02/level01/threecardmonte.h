@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : threecardmonte.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\threecardmonte.h
+ *  Created on                  : Jul 16, 2015 :: 12:04:47 AM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=6109
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,36 +60,36 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef THREECARDMONTE_H_
+#define THREECARDMONTE_H_
 
-void printPossibilites(long int nValue,long int firstUserInput,long int secondUserInput){
-
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+class ThreeCardMonte {
+public:
+	string position(string swaps){
+		bool flags[3] = {false,true,false};
+		for(unsigned int counter = 0;counter < swaps.size();counter++){
+			if(swaps[counter] == 'L'){
+				swap(flags[0],flags[1]);
+			}else if(swaps[counter] == 'R'){
+				swap(flags[1],flags[2]);
+			}else if(swaps[counter] == 'E'){
+				swap(flags[0],flags[2]);
+			}
 		}
-		return;
+		return flags[0]?"L":(flags[1]?"M":"R");
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-}
 
-#endif /* MANASAANDSTONES_H_ */
+};
+
+#endif /* THREECARDMONTE_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/
