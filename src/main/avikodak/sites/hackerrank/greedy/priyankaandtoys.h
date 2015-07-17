@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : jimandtheorders.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\jimandtheorders.h
- *  Created on                  : Jul 17, 2015 :: 11:35:09 AM
+ *  File Name                   : priyankaandtoys.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\priyankaandtoys.h
+ *  Created on                  : Jul 17, 2015 :: 1:43:32 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.hackerrank.com/challenges/jim-and-the-orders
+ *  URL                         : https://www.hackerrank.com/challenges/priyanka-and-toys
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,51 +67,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef JIMANDTHEORDERS_H_
-#define JIMANDTHEORDERS_H_
+#ifndef PRIYANKAANDTOYS_H_
+#define PRIYANKAANDTOYS_H_
 
 //Tested
-struct order{
-public:
-	unsigned int time;
-	unsigned int index;
-
-	order(){
-	}
-
-	order(unsigned int time,unsigned int index){
-		this->time = time;
-		this->index = index;
-	}
-};
-
-//Tested
-bool sortFunc(order *firstOrder,order *secondOrder){
-	if(firstOrder->time == secondOrder->time){
-		return firstOrder->index < secondOrder->index;
-	}else{
-		return firstOrder->time < secondOrder->time;
-	}
-}
-
-//Tested
-void getOrderSequence(){
-	unsigned int inputSize,arrivalTime,timeToCook;
+void getMinimumUnits(){
+	unsigned int inputSize,input;
 	scanf("%u",&inputSize);
-	vector<order *> userInput;
-    order *temp;
+	vector<unsigned int> weights;
 	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u %u",&arrivalTime,&timeToCook);
-        temp = new order(arrivalTime+timeToCook,counter);
-		userInput.push_back(temp);
+		scanf("%u",&input);
+		weights.push_back(input);
 	}
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%d ",userInput[counter]->index+1);
+	sort(weights.begin(),weights.end());
+	unsigned int minimumUnits = 0;
+	unsigned int outerCounter = 0,innerCounter;
+	while(outerCounter < weights.size()){
+		minimumUnits++;
+        innerCounter = outerCounter;
+		while(innerCounter < weights.size() && weights[outerCounter] <= weights[innerCounter] && weights[outerCounter]+4 >= weights[innerCounter]){
+			innerCounter++;
+		}
+		outerCounter = innerCounter;
 	}
+	cout << minimumUnits;
 }
 
-#endif /* JIMANDTHEORDERS_H_ */
+#endif /* PRIYANKAANDTOYS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
