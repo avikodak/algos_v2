@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : cryptography.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\cryptography.h
+ *  Created on                  : Jul 16, 2015 :: 8:29:59 PM
  *  Author                      : avikodak
- *  Testing Status              : Locally Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10814
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,25 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef CRYPTOGRAPHY_H_
+#define CRYPTOGRAPHY_H_
 
-//Locally Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+//Tested
+class Cryptography {
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
+	long long encrypt(vector<int> numbers){
+		long long maxProduct  = 0,productOfUserInput = 1;
+		for(unsigned int counter = 0;counter < numbers.size();counter++){
+			productOfUserInput *= numbers[counter];
 		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
+		for(unsigned int counter = 0;counter < numbers.size();counter++){
+			maxProduct = max(maxProduct,(productOfUserInput*(numbers[counter]+1)/numbers[counter]));
 		}
-		return groupedWordCount;
+		return maxProduct;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* CRYPTOGRAPHY_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

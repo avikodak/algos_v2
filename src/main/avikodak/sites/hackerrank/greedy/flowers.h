@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : flowers.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\flowers.h
+ *  Created on                  : Jul 17, 2015 :: 10:57:07 AM
  *  Author                      : avikodak
- *  Testing Status              : Locally Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/challenges/flowers
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,34 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef FLOWERS_H_
+#define FLOWERS_H_
 
-//Locally Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
+//Tested
+bool sortFunc(unsigned int first,unsigned int second){
+	return first > second;
+}
+
+//Tested
+void findMinimumAmountMoney(){
+	unsigned int inputSize,friendsCount,input;
+	scanf("%u %u",&inputSize,&friendsCount);
+	vector<unsigned int> userInput;
+	for(unsigned int counter = 0;counter < inputSize;counter++){
+		scanf("%u",&input);
+		userInput.push_back(input);
 	}
-public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
+	sort(userInput.begin(),userInput.end(),sortFunc);
+	unsigned int friendLoopCount = 0;
+	unsigned int minSum = 0;
+	for(unsigned int counter = 0;counter < inputSize;counter++){
+		minSum += (((friendLoopCount/friendsCount)+1)*userInput[counter]);
+        friendLoopCount++;
 	}
-};
+	cout << minSum << endl;
+}
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* FLOWERS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

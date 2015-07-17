@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : twoarrays.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\twoarrays.h
+ *  Created on                  : Jul 17, 2015 :: 5:12:34 AM
  *  Author                      : avikodak
- *  Testing Status              : Locally Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/challenges/two-arrays
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,50 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef TWOARRAYS_H_
+#define TWOARRAYS_H_
 
-//Locally Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
+//Tested
+bool sortFunc(unsigned int first,unsigned int second){
+	return first > second;
+}
+
+//Tested
+void isPermutationPresentForSum(){
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	unsigned int inputSize,sum,input;
+	vector<unsigned int> firstUserInput,secondUserInput;
+	bool flag;
+	while(testCases--){
+		scanf("%u %u",&inputSize,&sum);
+		firstUserInput.clear();
+		secondUserInput.clear();
+		for(unsigned int counter = 0;counter < inputSize;counter++){
+			scanf("%u",&input);
+			firstUserInput.push_back(input);
 		}
-		return true;
+		for(unsigned int counter = 0;counter < inputSize;counter++){
+			scanf("%u",&input);
+			secondUserInput.push_back(input);
+		}
+		sort(firstUserInput.begin(),firstUserInput.end());
+		sort(secondUserInput.begin(),secondUserInput.end(),sortFunc);
+		flag = false;
+		for(unsigned int counter = 0;counter < firstUserInput.size();counter++){
+			if(firstUserInput[counter] + secondUserInput[counter] < sum){
+				printf("NO\n");
+				flag = true;
+				break;
+			}
+		}
+		if(!flag){
+			printf("YES\n");
+		}
 	}
-public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
-	}
-};
+}
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* TWOARRAYS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

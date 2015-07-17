@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : squarescoresdiv2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\squarescoresdiv2.h
+ *  Created on                  : Jul 16, 2015 :: 8:53:35 PM
  *  Author                      : avikodak
  *  Testing Status              : Locally Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13700
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,27 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef SQUARESCORESDIV2_H_
+#define SQUARESCORESDIV2_H_
 
 //Locally Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+class SquareScoresDiv2 {
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
+	int getscore(string userInput){
+		int score = 0;
+		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+			for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+				if(userInput[outerCounter] != userInput[innerCounter]){
+					break;
+				}
+				score++;
 			}
 		}
-		return groupedWordCount;
+		return score;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* SQUARESCORESDIV2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

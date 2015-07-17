@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : jimandtheorders.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\jimandtheorders.h
+ *  Created on                  : Jul 17, 2015 :: 11:35:09 AM
  *  Author                      : avikodak
- *  Testing Status              : Locally Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : TODO
+ *  URL                         : https://www.hackerrank.com/challenges/jim-and-the-orders
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,41 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef JIMANDTHEORDERS_H_
+#define JIMANDTHEORDERS_H_
 
-//Locally Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+struct order{
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
+	unsigned int time;
+	unsigned int index;
+
+	order(){
+	}
+
+	order(unsigned int time,unsigned int index){
+		this->time = time;
+		this->index = index;
 	}
 };
 
+bool sortFunc(order *firstOrder,order *secondOrder){
+	if(firstOrder->time == secondOrder->time){
+		return firstOrder->index < secondOrder->index;
+	}else{
+		return firstOrder->time < secondOrder->time;
+	}
+}
 
+void getOrderSequence(){
+	unsigned int inputSize;
+	scanf("%u",&inputSize);
+	vector<order *> userInput;
+	while(inputSize--){
 
-#endif /* GROUPEDWORDCHECKER_H_ */
+	}
+}
+
+#endif /* JIMANDTHEORDERS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
