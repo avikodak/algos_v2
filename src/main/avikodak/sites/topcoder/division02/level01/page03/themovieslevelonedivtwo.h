@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : themovieslevelonedivtwo.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\themovieslevelonedivtwo.h
+ *  Created on                  : Jul 22, 2015 :: 11:29:05 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10899
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,29 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef THEMOVIESLEVELONEDIVTWO_H_
+#define THEMOVIESLEVELONEDIVTWO_H_
 
-//Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+class TheMoviesLevelOneDivTwo {
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
+	int find(int n, int m,vector<int> row,vector<int> seat){
+		bool flags[n][m] ={true};
+		for(unsigned counter = 0;counter < row.size();counter++){
+			flags[row[counter]-1][seat[counter]-1] = false;
 		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
+		int totalCount = 0;
+		for(unsigned int rowCounter = 0;rowCounter < row.size();rowCounter++){
+			for(unsigned int columnCounter = 0;columnCounter < seat.size()-1;columnCounter++){
+				if(flags[rowCounter][columnCounter] && flags[rowCounter][columnCounter+1]){
+					totalCount++;
+				}
 			}
 		}
-		return groupedWordCount;
+		return totalCount;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* THEMOVIESLEVELONEDIVTWO_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

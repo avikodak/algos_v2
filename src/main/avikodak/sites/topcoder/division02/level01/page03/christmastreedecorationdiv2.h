@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : christmastreedecorationdiv2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\christmastreedecorationdiv2.h
+ *  Created on                  : Jul 23, 2015 :: 12:16:01 AM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13556
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,23 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef CHRISTMASTREEDECORATIONDIV2_H_
+#define CHRISTMASTREEDECORATIONDIV2_H_
 
-//Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+class ChristmasTreeDecorationDiv2 {
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
+	int solve(vector<int> colours,vector<int> x,vector<int> y){
+		int beautifulCount = 0;
+		for(unsigned int counter = 0;counter < x.size();counter++){
+			if(colours[x[counter]] != colours[y[counter]]){
+				beautifulCount++;
 			}
 		}
-		return groupedWordCount;
+		return beautifulCount;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* CHRISTMASTREEDECORATIONDIV2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

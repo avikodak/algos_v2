@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : lisnumberdivtwo.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\lisnumberdivtwo.h
+ *  Created on                  : Jul 22, 2015 :: 11:17:17 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : Locally Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12446
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,27 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef LISNUMBERDIVTWO_H_
+#define LISNUMBERDIVTWO_H_
 
-//Tested
-class GroupedWordChecker {
-private:
-	bool isGroupedWord(string word){
+//Locally Tested
+class LISNumberDivTwo {
+public:
+	int calculate(vector<int> seq){
+		int lisCount = 0;
 		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
+		while(counter < seq.size()){
+			lisCount++;
+			while(counter+1 < seq.size() && seq[counter] < seq[counter+1]){
 				counter++;
 			}
-			flags[word[counter]-'a'] = true;
 			counter++;
 		}
-		return true;
-	}
-public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
+		return lisCount;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* LISNUMBERDIVTWO_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : digitholes.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\digitholes.h
+ *  Created on                  : Jul 22, 2015 :: 9:07:47 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=11127
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,41 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef DIGITHOLES_H_
+#define DIGITHOLES_H_
 
-//Tested
-class GroupedWordChecker {
+class DigitHoles {
 private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
+	int static getHoleCount(int value){
+		switch (key) {
+			case 1:
+			case 2:
+			case 3:
+			case 5:
+			case 7:
+				return 0;
+			case 0:
+			case 4:
+			case 6:
+			case 9:
+				return 1;
+			case 8:
+				return 2;
+			default:
 		}
-		return true;
 	}
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
+	int numHoles(int number){
+		int holes = 0;
+		while(number > 0){
+			holes += getHoleCount(number%10);
+			number /= 10;
 		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
+		return holes;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* DIGITHOLES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

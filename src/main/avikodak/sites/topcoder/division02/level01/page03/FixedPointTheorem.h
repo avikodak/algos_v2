@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : groupedwordchecker.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\groupedwordchecker.h
- *  Created on                  : Jul 16, 2015 :: 12:47:48 AM
+ *  File Name                   : FixedPointTheorem.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\FixedPointTheorem.h
+ *  Created on                  : Jul 22, 2015 :: 8:52:19 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10295
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=1765
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,36 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef GROUPEDWORDCHECKER_H_
-#define GROUPEDWORDCHECKER_H_
+#ifndef FIXEDPOINTTHEOREM_H_
+#define FIXEDPOINTTHEOREM_H_
 
 //Tested
-class GroupedWordChecker {
+class FixedPointTheorem {
 private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
+	double static minValue(double firstValue,double secondValue){
+		return firstValue < secondValue?firstValue:secondValue;
+	}
+
+	double maxValue(double firstValue,double secondValue){
+		return firstValue > secondValue?firstValue:secondValue;
 	}
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
+	double cycleRange(double R){
+		double x = 0.25;
+		for(long int counter = 0;counter <= 2000000;counter++){
+			x = R * x * (1-x);
 		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
+		double minVal = x,maxVal = x;
+		for(long int counter = 2000000;counter < 200999;counter++){
+			x = R * x * (1-x);
+			minVal = minValue(minVal,x);
+			maxVal = maxValue(maxVal,x);
+ 		}
+		return maxVal - minVal;
 	}
 };
 
-
-
-#endif /* GROUPEDWORDCHECKER_H_ */
+#endif /* FIXEDPOINTTHEOREM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
