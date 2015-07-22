@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\scoringefficiency.h
  *  Created on                  : Jul 18, 2015 :: 3:19:25 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=2341
  ****************************************************************************************************************************************************/
 
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef SCORINGEFFICIENCY_H_
 #define SCORINGEFFICIENCY_H_
 
+//Tested
 class ScoringEfficiency {
 public:
 	double getPointsPerShot(vector<string> gameLog){
@@ -90,7 +91,7 @@ public:
 				}
 			}
 		}
-		return (double)totalPoints/(double)(gameLog.size()-freeThrowsAttempted)+(double)(0.5*freeThrowsAttempted);
+		return (double)totalPoints/((double)(gameLog.size()-freeThrowsAttempted)+(double)(0.5*freeThrowsAttempted));
 	}
 };
 

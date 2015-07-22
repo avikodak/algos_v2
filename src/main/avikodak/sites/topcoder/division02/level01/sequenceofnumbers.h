@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sequenceofnumbers.h
  *  Created on                  : Jul 18, 2015 :: 1:06:21 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=4659
  ****************************************************************************************************************************************************/
 
@@ -70,10 +70,16 @@ using namespace __gnu_cxx;
 #ifndef SEQUENCEOFNUMBERS_H_
 #define SEQUENCEOFNUMBERS_H_
 
+//Tested
 class SequenceOfNumbers {
+private:
+	bool static sortFunc(string first,string second){
+		return first.length() < second.length();
+	}
 public:
 	vector<string> rearrange(vector<string> sequence){
-
+		sort(sequence.begin(),sequence.end(),sortFunc);
+		return sequence;
 	}
 };
 

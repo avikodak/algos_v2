@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\stringsegment.h
  *  Created on                  : Jul 18, 2015 :: 1:27:44 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Locally tested
  *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=6442
  ****************************************************************************************************************************************************/
 
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef STRINGSEGMENT_H_
 #define STRINGSEGMENT_H_
 
+//Locally Tested
 class StringSegment {
 public:
 	double average(string userInput){

@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\thetournamentdivtwo.h
  *  Created on                  : Jul 18, 2015 :: 1:19:45 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Locally Tested
  *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10686
  ****************************************************************************************************************************************************/
 
@@ -70,6 +70,7 @@ using namespace __gnu_cxx;
 #ifndef THETOURNAMENTDIVTWO_H_
 #define THETOURNAMENTDIVTWO_H_
 
+//Locally Tested
 class TheTournamentDivTwo {
 public:
 	int find(vector<int> points){
@@ -79,11 +80,7 @@ public:
 			totalGames += (points[counter]/2);
 			oneCount += (points[counter]%2);
 		}
-		if(oneCount%2 == 1){
-			printf("-1");
-		}else{
-			printf("%d",totalGames+(oneCount/2));
-		}
+		return oneCount%2 == 1?-1:(totalGames + (oneCount/2));
 	}
 };
 
