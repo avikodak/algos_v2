@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : tournamentsambiguitynumber.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\tournamentsambiguitynumber.h
+ *  Created on                  : Jul 23, 2015 :: 8:39:53 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : Locally Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7600
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,24 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef TOURNAMENTSAMBIGUITYNUMBER_H_
+#define TOURNAMENTSAMBIGUITYNUMBER_H_
 
-//Tested
-class Palindromize2 {
+//Locally Tested
+class TournamentsAmbiguityNumber {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
+	int scrutinizeTable(vector<string> table){
+		int totalTriplets = 0;
+		for(unsigned int counter = 0;counter < table.size()-2;counter++){
+			if(table[counter][counter+1] == '1' && table[counter+1][counter+2] == '1'&& table[counter+2][counter] == '1'){
+				totalTriplets += 3;
 			}
-			frontCrawler++;
-			rearCrawler--;
 		}
-		return userInput;
+		return totalTriplets;
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* TOURNAMENTSAMBIGUITYNUMBER_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

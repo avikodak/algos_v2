@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : trainingcamp.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\trainingcamp.h
+ *  Created on                  : Jul 23, 2015 :: 8:53:06 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=11499
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,17 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef TRAININGCAMP_H_
+#define TRAININGCAMP_H_
 
-//Tested
-class Palindromize2 {
+class TrainingCamp {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
-			}
-			frontCrawler++;
-			rearCrawler--;
-		}
-		return userInput;
+	vector<string> determineSolvers(vector<string> attendance,vector<string> problemTopics){
+
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* TRAININGCAMP_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

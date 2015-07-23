@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : yahtzee.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\yahtzee.h
+ *  Created on                  : Jul 23, 2015 :: 9:19:26 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=1692
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,23 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef YAHTZEE_H_
+#define YAHTZEE_H_
 
-//Tested
-class Palindromize2 {
+class Yahtzee {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
-			}
-			frontCrawler++;
-			rearCrawler--;
+	int maxPoints(vector<int> toss){
+		int pointCount[6];
+		int maxPoint = 0;
+		for(unsigned int counter = 0;counter < toss.size();counter++){
+			pointCount[toss[counter]--]++;
+			maxPoint = max(maxPoint,(toss[counter]+1)*pointCount[toss[counter]--]);
 		}
-		return userInput;
+		return maxPoint;
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* YAHTZEE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

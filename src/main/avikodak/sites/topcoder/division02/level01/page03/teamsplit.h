@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : teamsplit.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\teamsplit.h
+ *  Created on                  : Jul 23, 2015 :: 11:00:49 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=4564
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,24 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef TEAMSPLIT_H_
+#define TEAMSPLIT_H_
 
-//Tested
-class Palindromize2 {
+class TeamSplit {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
-			}
-			frontCrawler++;
-			rearCrawler--;
+	int difference(vector<int> strengths){
+		sort(strengths.begin(),strengths.end());
+		bool flag = true;
+		int sum = 0;
+		for(unsigned int counter = 0;counter < strengths.size();counter++){
+			sum += flag?strengths[counter]:-1*strengths[counter];
+			flag = !flag;
 		}
-		return userInput;
+		return abs(sum);
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* TEAMSPLIT_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

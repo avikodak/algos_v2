@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : chopsticks.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\chopsticks.h
+ *  Created on                  : Jul 23, 2015 :: 9:45:52 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12424
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,30 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef CHOPSTICKS_H_
+#define CHOPSTICKS_H_
 
-//Tested
-class Palindromize2 {
+class Chopsticks {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
+	int getmax(vector<int> length){
+		map<int,unsigned int> lengthCounter;
+		map<int,unsigned int>::iterator itToLengthCounter;
+		for(unsigned int counter = 0;counter < length.size();counter++){
+			if((itToLengthCounter = lengthCounter.find(length[counter])) != lengthCounter.end()){
+				lengthCounter[length[counter]]++;
+			}else{
+				lengthCounter[length[counter]] = 1;
 			}
-			frontCrawler++;
-			rearCrawler--;
 		}
-		return userInput;
+		int maxPairs = 0;
+		for(itToLengthCounter = lengthCounter.begin();itToLengthCounter != lengthCounter.end();itToLengthCounter++){
+			maxPairs += itToLengthCounter->second/2;
+		}
+		return maxPairs;
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* CHOPSTICKS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

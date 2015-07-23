@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : runningaroundpark.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\runningaroundpark.h
+ *  Created on                  : Jul 23, 2015 :: 9:09:41 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : Locally Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13391
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,26 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef RUNNINGAROUNDPARK_H_
+#define RUNNINGAROUNDPARK_H_
 
-//Tested
-class Palindromize2 {
+//Locally Tested
+class RunningAroundPark {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
+	int numberOfLap(int totalTrees, vector<int> visitedOrder){
+		int recentTree = visitedOrder[0];
+		int minLap = 1;
+		for(unsigned int counter = 1;counter < visitedOrder.size();counter++){
+			if(visitedOrder[counter] <= recentTree){
+				minLap++;
 			}
-			frontCrawler++;
-			rearCrawler--;
+			recentTree = visitedOrder[counter];
 		}
-		return userInput;
+		return minLap;
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* RUNNINGAROUNDPARK_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

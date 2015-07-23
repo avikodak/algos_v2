@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : palindromize2.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\palindromize2.h
- *  Created on                  : Jul 23, 2015 :: 12:21:22 AM
+ *  File Name                   : additioncycles.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\page03\additioncycles.h
+ *  Created on                  : Jul 23, 2015 :: 9:32:40 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7406
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=6736
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,30 +67,39 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PALINDROMIZE2_H_
-#define PALINDROMIZE2_H_
+#ifndef ADDITIONCYCLES_H_
+#define ADDITIONCYCLES_H_
 
-//Tested
-class Palindromize2 {
-public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
-			}
-			frontCrawler++;
-			rearCrawler--;
+class AdditionCycles {
+private:
+	int sumOfDigits(int userInput){
+		int sum = 0;
+		while(userInput > 0){
+			sum += (userInput%10);
+			userInput /= 10;
 		}
-		return userInput;
+		return sum;
+	}
+
+	int getNumber(int userInput,int sum){
+		int value = 0;
+		value = (userInput%10)*10 + (sum%10);
+	}
+public:
+	int cycleLength(int userInput){
+		int originalNumber = userInput;
+		int sum;
+		int counter = 0;
+		do{
+			sum = sumOfDigits(userInput);
+			userInput = getNumber(userInput,sum);
+			counter++;
+		}while(originalNumber != userInput);
+		return counter;
 	}
 };
 
-#endif /* PALINDROMIZE2_H_ */
+#endif /* ADDITIONCYCLES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
