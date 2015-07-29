@@ -59,6 +59,23 @@ using namespace __gnu_cxx;
 #ifndef MATHUTIL_H_
 #define MATHUTIL_H_
 
+void isPrimeNumber(unsigned int userInput){
+	for(unsigned int counter = 2;counter <= userInput/2;counter++){
+		if(userInput%counter == 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+void printPrimeNumbersBruteForce(unsigned int number){
+	for(unsigned int counter = 2;counter <= number;counter++){
+		if(isPrimeNumber(counter)){
+			printf("%d,",counter);
+		}
+	}
+}
+
 //Tested
 vector<unsigned int> sum(vector<vector<unsigned int> > userInputs){
 	vector<unsigned int> result;
@@ -240,6 +257,37 @@ long long int lcm(vector<long long int> userInputs){
 		lcm = (lcm * userInputs[counter])/(gcd(userInputs[counter],lcm));
 	}
 	return lcm;
+}
+
+//Tested
+long long int getSumOfDigits(vector<unsigned int> userInput){
+	long long int sum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sum += userInput[counter];
+	}
+	return sum;
+}
+
+//Tested
+vector<unsigned int> getUINTInVector(unsigned int number){
+	vector<unsigned int> userInput;
+	while(number){
+		userInput.push_back(number%10);
+		number /=10;
+	}
+	reverse(userInput.begin(),userInput.end());
+	return userInput;
+}
+
+//Tested
+long long int getDivisorsCount(unsigned int value,bool properDivisorCount){
+	map<long long int,long long int> primeFactors = primeFactorization(value);
+	long long int divisorCount = 1;
+	map<long long int,long long int>::iterator itToPrimeFactors;
+	for(itToPrimeFactors = primeFactors.begin();itToPrimeFactors != primeFactors.end();itToPrimeFactors++){
+		divisorCount *= (itToPrimeFactors->second+1);
+	}
+	return !properDivisorCount?divisorCount:divisorCount-1;
 }
 
 #endif /* MATHUTIL_H_ */
