@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : euler007.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler007.h
- *  Created on                  : Jul 28, 2015 :: 10:53:46 PM
+ *  File Name                   : degreeofdirtiness.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\competitions\countercode2015\degreeofdirtiness.h
+ *  Created on                  : Aug 2, 2015 :: 7:31:31 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler007
+ *  Testing Status              : Tested but Timeout
+ *  URL                         : https://www.hackerrank.com/contests/countercode/challenges/degree-of-dirtiness
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,64 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EULER007_H_
-#define EULER007_H_
+#ifndef DEGREEOFDIRTINESS_H_
+#define DEGREEOFDIRTINESS_H_
 
-map<unsigned int,unsigned int> generatePrime(){
-
+//Tested
+unsigned int getLeastDirtyLeftToRight(vector<unsigned int> dirtiness){
+	unsigned int minIndex = 0;
+	for(unsigned int counter = 1;counter < dirtiness.size();counter++){
+		if(dirtiness[minIndex] > dirtiness[counter]){
+			minIndex = counter;
+		}
+	}
+	return minIndex;
 }
 
-void printPrime(){
-    unsigned int testCases;
-    scanf("%u",&testCases);
-    unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
-    }
+//Tested
+int getLeastDirtyRightToLeft(vector<unsigned int> dirtiness,int minIndexLTR){
+	int minIndex = dirtiness.size()-1;
+	for(int counter = dirtiness.size()-2;counter >= 0;counter--){
+		if(counter != minIndexLTR && dirtiness[minIndex] > dirtiness[counter]){
+			minIndex = counter;
+		}
+	}
+	return minIndex;
 }
-#endif /* EULER007_H_ */
+
+//Tested
+void printIndexAndDirtiness(unsigned int total,unsigned int personIndex){
+	vector<unsigned int> dirtiness;
+	dirtiness.assign(total,0);
+	unsigned int minIndexLTR;
+	int minIndexRTL;
+	for(unsigned int counter = 1;counter <= personIndex;counter += 2){
+		minIndexLTR = getLeastDirtyLeftToRight(dirtiness);
+		if(counter == personIndex){
+			cout << minIndexLTR+1 << " " << dirtiness[minIndexLTR] << endl;
+			return;
+		}
+		dirtiness[minIndexLTR]++;
+		minIndexRTL = getLeastDirtyRightToLeft(dirtiness,minIndexLTR);
+		if(counter+1 == personIndex){
+			cout << minIndexRTL+1 << " " << dirtiness[minIndexRTL] << endl;
+			return;
+		}
+		dirtiness[minIndexRTL]++;
+	}
+}
+
+//Tested
+void getIndexAndDirtiness(){
+	unsigned int testCases,total,personIndex;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u %u",&total,&personIndex);
+		printIndexAndDirtiness(total,personIndex);
+	}
+}
+
+#endif /* DEGREEOFDIRTINESS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

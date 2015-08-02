@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : euler007.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler007.h
- *  Created on                  : Jul 28, 2015 :: 10:53:46 PM
+ *  File Name                   : poisnousplants.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\competitions\countercode2015\poisnousplants.h
+ *  Created on                  : Aug 2, 2015 :: 6:36:02 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler007
+ *  Testing Status              : Tested But TimeOut
+ *  URL                         : https://www.hackerrank.com/contests/countercode/challenges/poisonous-plants
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,51 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EULER007_H_
-#define EULER007_H_
+#ifndef POISNOUSPLANTS_H_
+#define POISNOUSPLANTS_H_
 
-map<unsigned int,unsigned int> generatePrime(){
-
+//Tested
+bool isSortedDesc(vector<unsigned int> userInput){
+	if(userInput.size() == 0){
+		return true;
+	}
+	for(unsigned int counter = 1;counter < userInput.size();counter++){
+		if(userInput[counter] > userInput[counter-1]){
+			return false;
+		}
+	}
+	return true;
 }
 
-void printPrime(){
-    unsigned int testCases;
-    scanf("%u",&testCases);
-    unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
-    }
+//Tested
+void getNoOfDays(){
+	unsigned int size,input;
+	vector<unsigned int> userInput;
+	vector<unsigned int> temp;
+	scanf("%u",&size);
+	while(size--){
+		scanf("%u",&input);
+		userInput.push_back(input);
+	}
+	unsigned int daysCount = 0;
+	do{
+		if(isSortedDesc(userInput)){
+			break;
+		}
+		temp.clear();
+		temp.push_back(userInput[0]);
+		daysCount++;
+		for(unsigned int counter = 1;counter < userInput.size();counter++){
+			if(userInput[counter] <= userInput[counter-1]){
+				temp.push_back(userInput[counter]);
+			}
+		}
+		userInput = temp;
+	}while(true);
+	cout << daysCount << endl;
 }
-#endif /* EULER007_H_ */
+
+#endif /* POISNOUSPLANTS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

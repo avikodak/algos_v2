@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : euler007.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler007.h
- *  Created on                  : Jul 28, 2015 :: 10:53:46 PM
+ *  File Name                   : campers.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\competitions\countercode2015\campers.h
+ *  Created on                  : Aug 2, 2015 :: 12:16:03 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler007
+ *  URL                         : https://www.hackerrank.com/contests/countercode/challenges/campers
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,54 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EULER007_H_
-#define EULER007_H_
+#ifndef CAMPERS_H_
+#define CAMPERS_H_
 
-map<unsigned int,unsigned int> generatePrime(){
-
+void getMaxNumberPlayers(){
+	unsigned int totalPlayers,snipersCount,sniperIndex;
+	cin >> totalPlayers >> snipersCount;
+	vector<int> flags[totalPlayers] = {0};
+	while(snipersCount--){
+		cin >> sniperIndex;
+		sniperIndex -= 1;
+		flags[sniperIndex] = 1;
+		if(sniperIndex-1 >= 0){
+			flags[sniperIndex] = -1;
+		}
+		if(sniperIndex+1 < totalPlayers){
+			flags[sniperIndex] = -1;
+		}
+	}
+	bool neighboursChosen;
+	unsigned int maxPlayerCount = 0;
+	for(unsigned int counter = 0;counter < totalPlayers;counter++){
+		if(flags[counter] == 1){
+			maxPlayerCount++;
+			continue;
+		}
+		if(counter-1 >= 0){
+			if(flags[counter-1] != 1){
+				continue;
+			}
+		}
+		if(counter+1 < totalPlayers){
+			if(flags[counter+1] !=0){
+				continue;
+			}
+		}
+		flags[counter] = 1;
+		maxPlayerCount++;
+		if(counter-1 >= 0){
+			flags[counter-1] = -1;
+		}
+		if(counter+1 < totalPlayers){
+			flags[counter+1] = -1;
+		}
+	}
+	cout << maxPlayerCount << endl;
 }
 
-void printPrime(){
-    unsigned int testCases;
-    scanf("%u",&testCases);
-    unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
-    }
-}
-#endif /* EULER007_H_ */
+#endif /* CAMPERS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

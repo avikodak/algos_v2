@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : euler007.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler007.h
- *  Created on                  : Jul 28, 2015 :: 10:53:46 PM
+ *  File Name                   : euler006.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler006.h
+ *  Created on                  : Aug 2, 2015 :: 10:59:10 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler007
+ *  Testing Status              : Tested
+ *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler006
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,37 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EULER007_H_
-#define EULER007_H_
+#ifndef EULER006_H_
+#define EULER006_H_
 
-map<unsigned int,unsigned int> generatePrime(){
-
+//Tested
+double sumOfSquareOfNumbers(double n){
+	return (n*(n+1)*((2*n)+1))/6;
 }
 
-void printPrime(){
-    unsigned int testCases;
-    scanf("%u",&testCases);
-    unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
-    }
+//Tested
+double sumOfNumbers(double n){
+	return (n*(n+1))/2;
 }
-#endif /* EULER007_H_ */
+
+//Tested
+void printDifference(double N){
+	double sum = sumOfNumbers(N);
+	cout << fixed << setprecision(0)  << (sum * sum) - sumOfSquareOfNumbers(N) << endl;
+}
+
+//Tested
+void sumSquareDifference(){
+	unsigned int testCases;
+	double N;
+	cin >> testCases;
+	while(testCases--){
+		cin >> N;
+		printDifference(N);
+	}
+}
+
+#endif /* EULER006_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

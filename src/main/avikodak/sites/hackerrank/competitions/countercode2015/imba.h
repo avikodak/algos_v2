@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : euler007.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\projecteuler\euler007.h
- *  Created on                  : Jul 28, 2015 :: 10:53:46 PM
+ *  File Name                   : imba.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\competitions\countercode2015\imba.h
+ *  Created on                  : Aug 2, 2015 :: 12:03:36 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.hackerrank.com/contests/projecteuler/challenges/euler007
+ *  URL                         : https://www.hackerrank.com/contests/countercode/challenges/imba
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,36 +67,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef EULER007_H_
-#define EULER007_H_
+#ifndef IMBA_H_
+#define IMBA_H_
 
-map<unsigned int,unsigned int> generatePrime(){
-
+void printImbaFormat(unsigned int userInput){
+	int backToFront = userInput/2,frontToBack = (userInput/2)+1;
+	if(userInput%2 == 1){
+		printf("%u ",(userInput/2)+1);
+		frontToBack = (userInput/2)+2;
+	}
+	while(backToFront > 0){
+		printf("%u %u",backToFront+1,frontToBack+1);
+		backToFront--;
+		frontToBack++;
+	}
+	printf("\n");
 }
 
-void printPrime(){
-    unsigned int testCases;
-    scanf("%u",&testCases);
-    unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
-    }
+void getImbaFormat(){
+	unsigned int testCases,userInput;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&userInput);
+		printImbaFormat(userInput);
+	}
 }
-#endif /* EULER007_H_ */
+
+#endif /* IMBA_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
