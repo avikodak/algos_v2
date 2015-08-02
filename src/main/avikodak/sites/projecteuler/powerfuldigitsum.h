@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fibonaccimodified.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\fibonaccimodified.h
- *  Created on			: Feb 14, 2015 :: 10:59:03 AM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: https://www.hackerrank.com/challenges/fibonacci-modified
-****************************************************************************************************************************************************/
+ *  File Name                   : powerfuldigitsum.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\powerfuldigitsum.h
+ *  Created on                  : Jul 31, 2015 :: 2:42:22 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://projecteuler.net/problem=56
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,16 +60,37 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FIBONACCIMODIFIED_H_
-#define FIBONACCIMODIFIED_H_
+#ifndef POWERFULDIGITSUM_H_
+#define POWERFULDIGITSUM_H_
 
+//Tested
+unsigned int getSumOfDigits(vector<unsigned int> userInput){
+	unsigned int sum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sum += userInput[counter];
+	}
+	return sum;
+}
+
+//Tested
+vector<unsigned int> getUINTInVector(unsigned int number){
+	vector<unsigned int> userInput;
+	while(number){
+		userInput.push_back(number%10);
+		number /=10;
+	}
+	reverse(userInput.begin(),userInput.end());
+	return userInput;
+}
+
+//Tested
 vector<unsigned int> sum(vector<vector<unsigned int> > userInputs){
 	vector<unsigned int> result;
 	if(userInputs.size() == 0){
@@ -107,13 +128,6 @@ vector<unsigned int> sum(vector<vector<unsigned int> > userInputs){
 	}
 	reverse(result.begin(),result.end());
 	return result;
-}
-
-vector<unsigned int> sum(vector<unsigned int> first,vector<unsigned int> second){
-	vector<vector<unsigned int> > userInput;
-	userInput.push_back(first);
-	userInput.push_back(second);
-	return sum(userInput);
 }
 
 //Tested
@@ -156,29 +170,30 @@ vector<unsigned int> multiply(vector<unsigned int> firstUserInput,vector<unsigne
 	return result;
 }
 
-void print(vector<unsigned int> userInput){
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%d",userInput[counter]);
+//Tested
+vector<unsigned int> largepow(unsigned int base,unsigned int power){
+	vector<unsigned int> number = getUINTInVector(base);
+	vector<unsigned int> result = number;
+	for(unsigned int counter = 2;counter <= power;counter++){
+		result = multiply(result,number);
 	}
+	return result;
 }
 
-void getModifiedFibonacciTerm(){
-	unsigned int firstTerm,secondTerm,nthTerm;
-	cin >> firstTerm >> secondTerm >> nthTerm;
-	vector<unsigned int> firstUserInput,secondUserInput,result;
-	firstUserInput.push_back(firstTerm);
-	secondUserInput.push_back(secondTerm);
-	nthTerm -= 2;
-	while(nthTerm--){
-		result = sum(multiply(secondUserInput,secondUserInput),firstUserInput);
-		firstUserInput = secondUserInput;
-		secondUserInput = result;
+//Tested
+//Ans : 972
+void maxSumDigits(){
+	unsigned int maxSum = 0;
+	for(unsigned int outerCounter = 2;outerCounter < 100;outerCounter++){
+		for(unsigned int innerCounter = 1;innerCounter < 100;innerCounter++){
+			maxSum = max(maxSum,getSumOfDigits(largepow(outerCounter,innerCounter)));
+		}
 	}
-	print(result);
+	cout << maxSum << endl;
 }
 
-#endif /* FIBONACCIMODIFIED_H_ */
+#endif /* POWERFULDIGITSUM_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

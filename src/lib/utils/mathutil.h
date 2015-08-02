@@ -116,6 +116,13 @@ vector<unsigned int> sum(vector<vector<unsigned int> > userInputs){
 	return result;
 }
 
+vector<unsigned int> sum(vector<unsigned int> first,vector<unsigned int> second){
+	vector<vector<unsigned int> > userInput;
+	userInput.push_back(first);
+	userInput.push_back(second);
+	return sum(userInput);
+}
+
 //Tested
 vector<unsigned int> convertToDigits(string userInput){
 	vector<unsigned int> number;
@@ -171,7 +178,7 @@ map<long long int,long long int> primeFactorization(long long int userInput){
 	map<long long int,long long int> factorsCounter;
 	map<long long int,long long int>::iterator itToFactorsCount;
 	bool flag = true;
-	while(flag){
+	while(flag && userInput > 1){
 		flag = false;
 		while(!(userInput&1)){
 			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
@@ -289,6 +296,40 @@ long long int getDivisorsCount(unsigned int value,bool properDivisorCount){
 	}
 	return !properDivisorCount?divisorCount:divisorCount-1;
 }
+
+unsigned long long int pow(long long int base,long long int power){
+	if(power == 0){
+		return 1;
+	}
+	unsigned long long int result = 1;
+	for(long long int counter = 0;counter < power;counter++){
+		result *= base;
+	}
+	return result;
+}
+
+unsigned long long int rhoFunction(long long int base,long long int power){
+ 	return ((pow(base,power+1))-1)/(base-1);
+}
+
+unsigned long long int getSumOfDivisors(unsigned int value,bool properDivisor){
+	map<long long int,long long int> primeFactors = primeFactorization(value);
+	map<long long int,long long int>::iterator itToPrimeFactors;
+	unsigned long long int sumOfDivisors = 1;
+	for(itToPrimeFactors = primeFactors.begin();itToPrimeFactors != primeFactors.end();itToPrimeFactors++){
+		sumOfDivisors *= rhoFunction(itToPrimeFactors->first,itToPrimeFactors->second);
+	}
+	if(!properDivisor){
+		sumOfDivisors -= value;
+	}
+	return sumOfDivisors;
+}
+
+bool isPerfectSquare(unsigned long long int value){
+	unsigned long long int squareRoot = sqrtl(value);
+	return squareRoot*squareRoot == value;
+}
+
 
 #endif /* MATHUTIL_H_ */
 
