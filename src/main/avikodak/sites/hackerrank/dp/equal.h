@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : largestpermutation.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\greedy\largestpermutation.h
- *  Created on                  : Jul 17, 2015 :: 2:10:36 PM
+ *  File Name                   : equal.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\dp\equal.h
+ *  Created on                  : Aug 5, 2015 :: 10:14:09 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.hackerrank.com/challenges/largest-permutation
+ *  Testing Status              : TODO
+ *  URL                         : https://www.hackerrank.com/challenges/equal
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,38 +67,53 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LARGESTPERMUTATION_H_
-#define LARGESTPERMUTATION_H_
+#ifndef EQUAL_H_
+#define EQUAL_H_
 
-//Tested
-void largestPermutation(){
-	unsigned int inputSize,noOfSwaps,input;
-	scanf("%u %u",&inputSize,&noOfSwaps);
+unsigned int getMinNumberOperations(vector<unsigned int> userInput){
+	sort(userInput.begin(),userInput.end());
+	unsigned int prevIndex = 1;
+	while(prevIndex < userInput.size() && userInput[prevIndex] == userInput[0]){
+		prevIndex++;
+	}
+	unsigned int minOperations = 0;
+	if(prevIndex >= userInput.size()){
+		return minOperations;
+	}
+	unsigned int difference,crawler = prevIndex;
+	prevIndex = 0;
+	unsigned int cummulativeIncrement = 0;
+	while(crawler < userInput.size()){
+		difference = (cummulativeIncrement + userInput[crawler]) - userInput[prevIndex];
+		cummulativeIncrement = difference;
+		minOperations += difference/5;
+		difference = difference%5;
+		minOperations += difference/2;
+		difference = difference%2;
+		minOperations += difference;
+		prevIndex = crawler;
+		crawler++;
+	}
+	return minOperations;
+}
+
+void printMinNumberOperations(){
+	unsigned int testCases,inputSize,input;
+	scanf("%u",&testCases);
 	vector<unsigned int> userInput;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	unsigned int maxElementIndex,innerCounter,swapCount = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size() && swapCount < noOfSwaps;outerCounter++){
-		innerCounter = outerCounter;
-		maxElementIndex = outerCounter;
-		for(;innerCounter < userInput.size();innerCounter++){
-			if(userInput[maxElementIndex] < userInput[innerCounter]){
-				maxElementIndex = innerCounter;
-			}
+	while(testCases--){
+		scanf("%u",&inputSize);
+		userInput.clear();
+		while(inputSize--){
+			scanf("%u",&input);
+			userInput.push_back(input);
 		}
-		if(maxElementIndex != outerCounter){
-			swap(userInput[outerCounter],userInput[maxElementIndex]);
-			swapCount++;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%u ",userInput[counter]);
+		cout << getMinNumberOperations(userInput) << endl;
 	}
 }
 
-#endif /* LARGESTPERMUTATION_H_ */
+
+#endif /* EQUAL_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
