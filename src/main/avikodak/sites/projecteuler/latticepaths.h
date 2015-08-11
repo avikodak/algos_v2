@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : longestcollatzsequence.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\longestcollatzsequence.h
- *  Created on                  : Aug 1, 2015 :: 2:31:43 PM
+ *  File Name                   : latticepaths.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\latticepaths.h
+ *  Created on                  : Aug 11, 2015 :: 9:14:32 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=14
+ *  URL                         : https://projecteuler.net/problem=15
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,32 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOLLATZSEQUENCE_H_
-#define LONGESTCOLLATZSEQUENCE_H_
+#ifndef LATTICEPATHS_H_
+#define LATTICEPATHS_H_
 
 //Tested
-unsigned long long int computeLengthCollatzSequence(map<unsigned int,unsigned long long int> &auxSpace,unsigned int value){
-	if(value == 1){
-		return 1;
+//Ans : 137846528820
+unsigned long long int getTotalLatticePaths(unsigned int size){
+	vector<vector<unsigned long long int> > matrix(size+1);
+	for(unsigned int counter = 0;counter < matrix.size();counter++){
+		matrix[counter].assign(size+1,0);
 	}
-	map<unsigned int,unsigned long long int>::iterator itToAuxSpace;
-	if((itToAuxSpace = auxSpace.find(value)) != auxSpace.end()){
-		return itToAuxSpace->second;
+	for(unsigned int rowCounter = 0;rowCounter < size+1;rowCounter++){
+		matrix[rowCounter][size] = 1;
 	}
-	unsigned long long int length;
-	if(value%2 == 0){
-		length =  1 + computeLengthCollatzSequence(auxSpace,value/2);
-	}else{
-		length = 1 + computeLengthCollatzSequence(auxSpace,3*value+1);
+	for(unsigned int columnCounter = 0;columnCounter < size+1;columnCounter++){
+		matrix[size][columnCounter] = 1;
 	}
-	auxSpace.insert(pair<unsigned int,unsigned long long int>(value,length));
-	return length;
-}
-
-//Tested
-//Ans : 837799
-void printLongestCollatzSequence(unsigned int limit){
-	map<unsigned int,unsigned long long int> auxSpace;
-	unsigned long long int maxLength = 0,result;
-	unsigned int startingNumber = 1;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		result = computeLengthCollatzSequence(auxSpace,counter);
-		if(result > maxLength){
-			maxLength = result;
-			startingNumber = counter;
+	matrix[size][size] = 0;
+	for(int rowCounter = size-1;rowCounter >= 0;rowCounter--){
+		for(int columnCounter = size-1;columnCounter >= 0;columnCounter--){
+			matrix[rowCounter][columnCounter] = matrix[rowCounter][columnCounter+1] + matrix[rowCounter+1][columnCounter];
 		}
 	}
-	cout << startingNumber << endl;
+	cout << matrix[0][0] << endl;
 }
 
-#endif /* LONGESTCOLLATZSEQUENCE_H_ */
+#endif /* LATTICEPATHS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

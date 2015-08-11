@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : longestcollatzsequence.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\longestcollatzsequence.h
- *  Created on                  : Aug 1, 2015 :: 2:31:43 PM
+ *  File Name                   : specialpythagoreantriplet.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\specialpythagoreantriplet.h
+ *  Created on                  : Aug 11, 2015 :: 8:38:07 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=14
+ *  URL                         : https://projecteuler.net/problem=9
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,29 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOLLATZSEQUENCE_H_
-#define LONGESTCOLLATZSEQUENCE_H_
+#ifndef SPECIALPYTHAGOREANTRIPLET_H_
+#define SPECIALPYTHAGOREANTRIPLET_H_
 
 //Tested
-unsigned long long int computeLengthCollatzSequence(map<unsigned int,unsigned long long int> &auxSpace,unsigned int value){
-	if(value == 1){
-		return 1;
-	}
-	map<unsigned int,unsigned long long int>::iterator itToAuxSpace;
-	if((itToAuxSpace = auxSpace.find(value)) != auxSpace.end()){
-		return itToAuxSpace->second;
-	}
-	unsigned long long int length;
-	if(value%2 == 0){
-		length =  1 + computeLengthCollatzSequence(auxSpace,value/2);
-	}else{
-		length = 1 + computeLengthCollatzSequence(auxSpace,3*value+1);
-	}
-	auxSpace.insert(pair<unsigned int,unsigned long long int>(value,length));
-	return length;
-}
-
-//Tested
-//Ans : 837799
-void printLongestCollatzSequence(unsigned int limit){
-	map<unsigned int,unsigned long long int> auxSpace;
-	unsigned long long int maxLength = 0,result;
-	unsigned int startingNumber = 1;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		result = computeLengthCollatzSequence(auxSpace,counter);
-		if(result > maxLength){
-			maxLength = result;
-			startingNumber = counter;
+//Ans : 31875000
+void printSpecialPythagoreanTriplet(){
+	unsigned int counter;
+	for(unsigned int outerCounter = 2;outerCounter < 1000;outerCounter++){
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < 1000;innerCounter++){
+			counter = 1000 - outerCounter - innerCounter;
+			if(counter > 0){
+				if(outerCounter*outerCounter + innerCounter * innerCounter == counter *counter){
+					cout << outerCounter * innerCounter * counter << endl;
+					return;
+				}
+			}else{
+				break;
+			}
 		}
 	}
-	cout << startingNumber << endl;
 }
 
-#endif /* LONGESTCOLLATZSEQUENCE_H_ */
+#endif /* SPECIALPYTHAGOREANTRIPLET_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : longestcollatzsequence.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\longestcollatzsequence.h
- *  Created on                  : Aug 1, 2015 :: 2:31:43 PM
+ *  File Name                   : namesscores.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\namesscores.h
+ *  Created on                  : Aug 11, 2015 :: 9:36:28 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=14
+ *  URL                         : https://projecteuler.net/problem=22
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,45 +67,38 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LONGESTCOLLATZSEQUENCE_H_
-#define LONGESTCOLLATZSEQUENCE_H_
+#ifndef NAMESSCORES_H_
+#define NAMESSCORES_H_
 
 //Tested
-unsigned long long int computeLengthCollatzSequence(map<unsigned int,unsigned long long int> &auxSpace,unsigned int value){
-	if(value == 1){
-		return 1;
+unsigned long long int getNameScore(string userInput){
+	unsigned long long int score = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		score += (userInput[counter] - 'A' + 1);
 	}
-	map<unsigned int,unsigned long long int>::iterator itToAuxSpace;
-	if((itToAuxSpace = auxSpace.find(value)) != auxSpace.end()){
-		return itToAuxSpace->second;
-	}
-	unsigned long long int length;
-	if(value%2 == 0){
-		length =  1 + computeLengthCollatzSequence(auxSpace,value/2);
-	}else{
-		length = 1 + computeLengthCollatzSequence(auxSpace,3*value+1);
-	}
-	auxSpace.insert(pair<unsigned int,unsigned long long int>(value,length));
-	return length;
+	return score;
 }
 
 //Tested
-//Ans : 837799
-void printLongestCollatzSequence(unsigned int limit){
-	map<unsigned int,unsigned long long int> auxSpace;
-	unsigned long long int maxLength = 0,result;
-	unsigned int startingNumber = 1;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		result = computeLengthCollatzSequence(auxSpace,counter);
-		if(result > maxLength){
-			maxLength = result;
-			startingNumber = counter;
-		}
+//Ans : 871198282
+unsigned long long int getTotalNamesScores(){
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	vector<string> userInput;
+	string input;
+	while(testCases--){
+		cin >> input;
+		userInput.push_back(input);
 	}
-	cout << startingNumber << endl;
+	sort(userInput.begin(),userInput.end());
+	unsigned long long int sum = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		sum += ((counter+1)*getNameScore(userInput[counter]));
+	}
+	return sum;
 }
 
-#endif /* LONGESTCOLLATZSEQUENCE_H_ */
+#endif /* NAMESSCORES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
