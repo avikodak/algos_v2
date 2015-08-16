@@ -297,6 +297,7 @@ long long int getDivisorsCount(unsigned int value,bool properDivisorCount){
 	return !properDivisorCount?divisorCount:divisorCount-1;
 }
 
+//Tested
 unsigned long long int pow(long long int base,long long int power){
 	if(power == 0){
 		return 1;
@@ -308,10 +309,12 @@ unsigned long long int pow(long long int base,long long int power){
 	return result;
 }
 
+//Tested
 unsigned long long int rhoFunction(long long int base,long long int power){
  	return ((pow(base,power+1))-1)/(base-1);
 }
 
+//Tested
 unsigned long long int getSumOfDivisors(unsigned int value,bool properDivisor){
 	map<long long int,long long int> primeFactors = primeFactorization(value);
 	map<long long int,long long int>::iterator itToPrimeFactors;
@@ -325,11 +328,85 @@ unsigned long long int getSumOfDivisors(unsigned int value,bool properDivisor){
 	return sumOfDivisors;
 }
 
+//Tested
 bool isPerfectSquare(unsigned long long int value){
 	unsigned long long int squareRoot = sqrtl(value);
 	return squareRoot*squareRoot == value;
 }
 
+//Tested
+void convertToBinary(unsigned int userInput,vector<bool> &binary){
+	if(userInput == 1 || userInput == 0){
+		binary.push_back(userInput == 1);
+		return;
+	}
+	convertToBinary(userInput/2,binary);
+	binary.push_back(userInput%2==1);
+}
+
+//Tested
+vector<unsigned int> generatePrimeNumber(unsigned int limit){
+	vector<bool> flags;
+	vector<unsigned int> primes;
+	flags.assign(limit+2,true);
+	for(unsigned int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			unsigned int innerCounter = 2;
+			while(counter*innerCounter <= limit){
+				flags[counter*innerCounter] = false;
+				innerCounter+=1;
+			}
+		}
+	}
+	for(unsigned int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			primes.push_back(counter);
+		}
+	}
+	return primes;
+}
+
+map<unsigned int,bool> generatePrimeNumberMap(unsigned int limit){
+	vector<bool> flags;
+	flags.assign(limit+2,true);
+	map<unsigned int,bool> primeNumberMap;
+	for(unsigned int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			unsigned int innerCounter = 2;
+			while(counter*innerCounter <= limit){
+				flags[counter*innerCounter] = false;
+				innerCounter+=1;
+			}
+		}
+	}
+	for(unsigned int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
+		}
+	}
+	return primeNumberMap;
+}
+
+map<unsigned int,bool> generatePrimeNumberMap(unsigned int start,unsigned int end){
+	vector<bool> flags;
+	flags.assign(end+2,true);
+	map<unsigned int,bool> primeNumberMap;
+	for(unsigned int counter = 2;counter <= end;counter++){
+		if(flags[counter]){
+			unsigned int innerCounter = 2;
+			while(counter*innerCounter <= end){
+				flags[counter*innerCounter] = false;
+				innerCounter+=1;
+			}
+		}
+	}
+	for(unsigned int counter = start;counter <= end;counter++){
+		if(flags[counter]){
+			primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
+		}
+	}
+	return primeNumberMap;
+}
 
 #endif /* MATHUTIL_H_ */
 
