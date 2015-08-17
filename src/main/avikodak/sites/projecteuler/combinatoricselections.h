@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : selfpowers.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\selfpowers.h
- *  Created on                  : Jul 31, 2015 :: 3:03:20 PM
+ *  File Name                   : combinatoricselections.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\combinatoricselections.h
+ *  Created on                  : Aug 17, 2015 :: 9:38:18 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=48
+ *  URL                         : https://projecteuler.net/problem=53
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,32 +62,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define MOD_CONSTANT 10000000000
+#define MILLION_MARKER 1000000
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SELFPOWERS_H_
-#define SELFPOWERS_H_
+#ifndef COMBINATORICSELECTIONS_H_
+#define COMBINATORICSELECTIONS_H_
 
 //Tested
-//Ans : 9110846700
-void getLastTenDigitsSelfPowers(){
-	unsigned long long int sum = 1,product = 1;
-	for(unsigned int outerCounter = 2;outerCounter <= 1000;outerCounter++){
-		product = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			product *= outerCounter;
-			product = product%MOD_CONSTANT;
+//Ans : 4075
+void getCombinationsUnderMillion(){
+	unsigned int total = 0,currentSum;
+	unsigned int innerCounter;
+	vector<unsigned int> prevValues;
+	vector<unsigned int> currentValues;
+	prevValues.push_back(1);
+	prevValues.push_back(2);
+	prevValues.push_back(1);
+	for(unsigned int outerCounter = 3;outerCounter <= 100;outerCounter++){
+		currentValues.clear();
+		currentValues.push_back(1);
+		for(innerCounter = 0;innerCounter < prevValues.size()-1;innerCounter++){
+			if(prevValues[innerCounter] == MILLION_MARKER || prevValues[innerCounter+1] == MILLION_MARKER){
+				total++;
+				currentValues.push_back(MILLION_MARKER);
+			}else{
+				currentSum = prevValues[innerCounter] + prevValues[innerCounter+1];
+				if(currentSum < MILLION_MARKER){
+					currentValues.push_back(currentSum);
+				}else{
+					total++;
+					currentValues.push_back(MILLION_MARKER);
+				}
+			}
 		}
- 		sum += product;
-		sum = sum%MOD_CONSTANT;
+		currentValues.push_back(1);
+		prevValues = currentValues;
 	}
-	cout << sum;
+	cout << total << endl;
 }
 
-#endif /* SELFPOWERS_H_ */
+#endif /* COMBINATORICSELECTIONS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

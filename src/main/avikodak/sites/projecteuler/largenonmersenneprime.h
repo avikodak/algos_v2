@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : selfpowers.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\selfpowers.h
- *  Created on                  : Jul 31, 2015 :: 3:03:20 PM
+ *  File Name                   : largenonmersenneprime.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\largenonmersenneprime.h
+ *  Created on                  : Aug 17, 2015 :: 11:01:29 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=48
+ *  URL                         : https://projecteuler.net/problem=97
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,32 +62,31 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define MOD_CONSTANT 10000000000
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SELFPOWERS_H_
-#define SELFPOWERS_H_
+#ifndef LARGENONMERSENNEPRIME_H_
+#define LARGENONMERSENNEPRIME_H_
 
 //Tested
-//Ans : 9110846700
-void getLastTenDigitsSelfPowers(){
-	unsigned long long int sum = 1,product = 1;
-	for(unsigned int outerCounter = 2;outerCounter <= 1000;outerCounter++){
-		product = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			product *= outerCounter;
-			product = product%MOD_CONSTANT;
-		}
- 		sum += product;
-		sum = sum%MOD_CONSTANT;
+//Ans : 8739992577
+void getLastTenDigits(){
+	unsigned long long int userInput=1;
+	unsigned long long int moduloConstant = 10000000000;
+	for(unsigned int counter = 1;counter <= 7830457;counter++){
+		userInput *= 2;
+		userInput = userInput%moduloConstant;
 	}
-	cout << sum;
+	userInput *= 28433;
+	userInput = userInput%moduloConstant;
+	userInput += 1;
+	userInput = userInput%moduloConstant;
+	cout << userInput << endl;
 }
 
-#endif /* SELFPOWERS_H_ */
+#endif /* LARGENONMERSENNEPRIME_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

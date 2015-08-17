@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : selfpowers.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\selfpowers.h
- *  Created on                  : Jul 31, 2015 :: 3:03:20 PM
+ *  File Name                   : permutedmultiples.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\permutedmultiples.h
+ *  Created on                  : Aug 17, 2015 :: 9:17:40 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=48
+ *  URL                         : https://projecteuler.net/problem=52
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,32 +62,55 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define MOD_CONSTANT 10000000000
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SELFPOWERS_H_
-#define SELFPOWERS_H_
+#ifndef PERMUTEDMULTIPLES_H_
+#define PERMUTEDMULTIPLES_H_
 
 //Tested
-//Ans : 9110846700
-void getLastTenDigitsSelfPowers(){
-	unsigned long long int sum = 1,product = 1;
-	for(unsigned int outerCounter = 2;outerCounter <= 1000;outerCounter++){
-		product = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			product *= outerCounter;
-			product = product%MOD_CONSTANT;
-		}
- 		sum += product;
-		sum = sum%MOD_CONSTANT;
-	}
-	cout << sum;
+string convertUIntToString(unsigned int value){
+	stringstream stream;
+	stream << value;
+	string result;
+	result.append(stream.str());
+	stream.clear();
+	return result;
 }
 
-#endif /* SELFPOWERS_H_ */
+//Tested
+bool isPermutedMultiple(unsigned int multiple,unsigned int originalNumber){
+	string strMultiple = convertUIntToString(multiple);
+	string strOriginal = convertUIntToString(originalNumber);
+	sort(strMultiple.begin(),strMultiple.end());
+	sort(strOriginal.begin(),strOriginal.end());
+	return strOriginal.compare(strMultiple) == 0;
+}
+
+//Tested
+//Ans : 142857
+void printPermutedMultiple(){
+	unsigned int counter = 1;
+	while(true){
+		if(isPermutedMultiple(2*counter,counter)){
+			if(isPermutedMultiple(3*counter,counter)){
+				if(isPermutedMultiple(4*counter,counter)){
+					if(isPermutedMultiple(5*counter,counter)){
+						if(isPermutedMultiple(6*counter,counter)){
+							cout << counter << endl;
+							return;
+						}
+					}
+				}
+			}
+		}
+		counter++;
+	}
+}
+
+#endif /* PERMUTEDMULTIPLES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
