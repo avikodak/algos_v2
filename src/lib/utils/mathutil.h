@@ -116,6 +116,7 @@ vector<unsigned int> sum(vector<vector<unsigned int> > userInputs){
 	return result;
 }
 
+//Tested
 vector<unsigned int> sum(vector<unsigned int> first,vector<unsigned int> second){
 	vector<vector<unsigned int> > userInput;
 	userInput.push_back(first);
