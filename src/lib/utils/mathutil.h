@@ -202,7 +202,7 @@ map<long long int,long long int> primeFactorization(long long int userInput){
 				break;
 			}
 		}
-		if(!flag){
+		if(!flag && userInput != 1){
 			if(factorsCounter.find(userInput) == factorsCounter.end()){
 				factorsCounter[userInput] = 1;
 			}else{
@@ -407,6 +407,17 @@ map<unsigned int,bool> generatePrimeNumberMap(unsigned int start,unsigned int en
 		}
 	}
 	return primeNumberMap;
+}
+
+double getTotientFuncValue(unsigned long long int userInput){
+	map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
+	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
+	double result = userInput;
+	for(itToPrimeFactorization = primeFactorization.begin();itToPrimeFactorization != primeFactorization.end();itToPrimeFactorization++){
+		result *= (double)(itToPrimeFactorization->first-1);
+		result /= (double)itToPrimeFactorization->first;
+	}
+	return result;
 }
 
 #endif /* MATHUTIL_H_ */

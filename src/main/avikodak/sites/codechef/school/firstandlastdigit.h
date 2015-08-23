@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : spiralprimes.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\spiralprimes.h
- *  Created on                  : Aug 22, 2015 :: 8:42:43 PM
+ *  File Name                   : firstandlastdigit.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\firstandlastdigit.h
+ *  Created on                  : Aug 23, 2015 :: 9:15:41 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=58
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/FLOW004
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,47 +67,24 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SPIRALPRIMES_H_
-#define SPIRALPRIMES_H_
+#ifndef FIRSTANDLASTDIGIT_H_
+#define FIRSTANDLASTDIGIT_H_
 
-//Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
+void getFirstAndLastDigit(){
+	unsigned int testCases,userInput,sum =0;
+	cin >> testCases;
+	while(testCases){
+		cin >> userInput;
+		sum = userInput%10;
+		while(userInput > 10){
+			userInput /= 10;
 		}
-	}
-	return true;
-}
-
-//Tested
-//Ans : 26241
-void getLengthOfSquare(){
-	unsigned long int totalNumbers = 1;
-	unsigned long int totalPrimesOnDiagonal = 0;
-	unsigned long int counter = 1,multiplier = 1,length=0;
-	while(true){
-		length++;
-		for(unsigned int innerCounter = 0;innerCounter < 4;innerCounter++){
-			counter = 2*multiplier+counter;
-			if(isNumberPrime(counter)){
-				totalPrimesOnDiagonal++;
-			}
-		}
-		totalNumbers+=4;
-		multiplier++;
-		if(((double(totalPrimesOnDiagonal)/double(totalNumbers))*100) < (double)10){
-			cout << 2*length+1 << endl;
-			return;
-		}
+		sum += userInput%10;
+		cout << sum << endl;
 	}
 }
 
-#endif /* SPIRALPRIMES_H_ */
+#endif /* FIRSTANDLASTDIGIT_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

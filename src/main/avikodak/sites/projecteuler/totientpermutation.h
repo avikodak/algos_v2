@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : spiralprimes.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\spiralprimes.h
- *  Created on                  : Aug 22, 2015 :: 8:42:43 PM
+ *  File Name                   : totientpermutation.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\totientpermutation.h
+ *  Created on                  : Aug 23, 2015 :: 8:00:17 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=58
+ *  URL                         : https://projecteuler.net/problem=70
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,17 +67,78 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SPIRALPRIMES_H_
-#define SPIRALPRIMES_H_
+#ifndef TOTIENTPERMUTATION_H_
+#define TOTIENTPERMUTATION_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
+map<unsigned long long int,unsigned long long int> getPrimeFactorization(unsigned long long int userInput){
+	unsigned long long int squareRoot = sqrtl(userInput);
+	map<unsigned long long int,unsigned long long int> factorsCounter;
+	map<unsigned long long int,unsigned long long int>::iterator itToFactorsCount;
+	bool flag = true;
+	while(flag && userInput > 1){
+		flag = false;
+		while(!(userInput&1)){
+			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
+				factorsCounter[2] = 1;
+			}else{
+				factorsCounter[2]++;
+			}
+			flag = true;
+			userInput /= 2;
+		}
+		for(unsigned long long int counter = 3;counter <= squareRoot;counter+=2){
+			if(userInput%counter == 0){
+				if(factorsCounter.find(counter) == factorsCounter.end()){
+					factorsCounter[counter] = 1;
+				}else{
+					factorsCounter[counter]++;
+				}
+				flag = true;
+				userInput /= counter;
+				break;
+			}
+		}
+		if(!flag && userInput != 1){
+			if(factorsCounter.find(userInput) == factorsCounter.end()){
+				factorsCounter[userInput] = 1;
+			}else{
+				factorsCounter[userInput]++;
+			}
+		}
 	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
+	return factorsCounter;
+}
+
+//Tested
+double getTotientFuncValue(unsigned long long int userInput){
+	map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
+	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
+	double result = userInput;
+	for(itToPrimeFactorization = primeFactorization.begin();itToPrimeFactorization != primeFactorization.end();itToPrimeFactorization++){
+		result *= (double)(itToPrimeFactorization->first-1);
+		result /= (double)itToPrimeFactorization->first;
+	}
+	return result;
+}
+
+//Tested
+bool arePermutations(unsigned int first,double secondD){
+	unsigned int second = secondD;
+	unsigned int flags[10] = {0};
+	while(first){
+		flags[first%10]++;
+		first /= 10;
+	}
+	while(second){
+		if(flags[second%10] == 0){
+			return false;
+		}
+		flags[second%10]--;
+		second /= 10;
+	}
+	for(unsigned int counter = 0;counter < 10;counter++){
+		if(flags[counter] > 0){
 			return false;
 		}
 	}
@@ -85,29 +146,23 @@ bool isNumberPrime(long long int userInput){
 }
 
 //Tested
-//Ans : 26241
-void getLengthOfSquare(){
-	unsigned long int totalNumbers = 1;
-	unsigned long int totalPrimesOnDiagonal = 0;
-	unsigned long int counter = 1,multiplier = 1,length=0;
-	while(true){
-		length++;
-		for(unsigned int innerCounter = 0;innerCounter < 4;innerCounter++){
-			counter = 2*multiplier+counter;
-			if(isNumberPrime(counter)){
-				totalPrimesOnDiagonal++;
-			}
-		}
-		totalNumbers+=4;
-		multiplier++;
-		if(((double(totalPrimesOnDiagonal)/double(totalNumbers))*100) < (double)10){
-			cout << 2*length+1 << endl;
-			return;
+//Ans : 8319823
+void getMinPermutationTotientFunction(){
+	double minValue = std::numeric_limits<double>::max();
+	double totientValue;
+	unsigned int minN;
+	for(unsigned long long int counter = 2;counter <= 10000000;counter++){
+		cout << counter << endl;
+		totientValue = getTotientFuncValue(counter);
+		if(arePermutations(counter,totientValue) && minValue > ((double)(counter)/(double)(totientValue))){
+			minValue = ((double)(counter)/(double)(totientValue));
+			minN = counter;
 		}
 	}
+	cout << minN << endl;
 }
 
-#endif /* SPIRALPRIMES_H_ */
+#endif /* TOTIENTPERMUTATION_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

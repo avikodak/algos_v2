@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : spiralprimes.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\spiralprimes.h
- *  Created on                  : Aug 22, 2015 :: 8:42:43 PM
+ *  File Name                   : pandigitalproducts.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\pandigitalproducts.h
+ *  Created on                  : Aug 23, 2015 :: 6:32:14 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=58
+ *  URL                         : https://projecteuler.net/problem=32
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,17 +67,43 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SPIRALPRIMES_H_
-#define SPIRALPRIMES_H_
+#ifndef PANDIGITALPRODUCTS_H_
+#define PANDIGITALPRODUCTS_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
+unsigned int getLength(unsigned long long int userInput){
+	unsigned int length = 0;
+	while(userInput){
+		length++;
+		userInput /= 10;
 	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
+	return length;
+}
+
+//Tested
+unsigned long long int concate(unsigned int first,unsigned int second){
+	while(second){
+		first *= 10;
+		first += second%10;
+		second /= 10;
+	}
+	return first;
+}
+
+//Tested
+bool isPandigital(unsigned long long int multiplicand,unsigned long long int multiplier,unsigned long long int result){
+	unsigned int userInput = concate(multiplicand,multiplier);
+	userInput = concate(userInput,result);
+	bool flags[10] = {false};
+	while(userInput){
+		if(userInput%10 == 0|| flags[userInput%10]){
+			return false;
+		}
+		flags[userInput%10] = true;
+		userInput /= 10;
+	}
+	for(unsigned int counter = 1;counter < 10;counter++){
+		if(!flags[counter]){
 			return false;
 		}
 	}
@@ -85,29 +111,33 @@ bool isNumberPrime(long long int userInput){
 }
 
 //Tested
-//Ans : 26241
-void getLengthOfSquare(){
-	unsigned long int totalNumbers = 1;
-	unsigned long int totalPrimesOnDiagonal = 0;
-	unsigned long int counter = 1,multiplier = 1,length=0;
-	while(true){
-		length++;
-		for(unsigned int innerCounter = 0;innerCounter < 4;innerCounter++){
-			counter = 2*multiplier+counter;
-			if(isNumberPrime(counter)){
-				totalPrimesOnDiagonal++;
+//Ans : 45228
+void getSumPanDigitalProducts(){
+	map<unsigned long long int,bool> visitedProducts;
+	unsigned long long int result,sum =0;
+	unsigned int length;
+	for(unsigned long long int outerCounter = 1;outerCounter <= 9876;outerCounter++){
+		for(unsigned long long int innerCounter = 1;innerCounter <= 9876;innerCounter++){
+			result = outerCounter * innerCounter;
+			length = getLength(result) + getLength(outerCounter) + getLength(innerCounter);
+			if(length < 10){
+				if(length == 9){
+					if(visitedProducts.find(result) == visitedProducts.end()){
+						if(isPandigital(outerCounter,innerCounter,result)){
+							visitedProducts.insert(pair<unsigned long long int,bool>(result,true));
+							sum +=result;
+						}
+					}
+				}
+			}else{
+				break;
 			}
 		}
-		totalNumbers+=4;
-		multiplier++;
-		if(((double(totalPrimesOnDiagonal)/double(totalNumbers))*100) < (double)10){
-			cout << 2*length+1 << endl;
-			return;
-		}
 	}
+	cout << sum << endl;
 }
 
-#endif /* SPIRALPRIMES_H_ */
+#endif /* PANDIGITALPRODUCTS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
