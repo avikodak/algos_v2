@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : digitcancellingfractions.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\digitcancellingfractions.h
- *  Created on                  : Aug 16, 2015 :: 10:42:28 PM
+ *  File Name                   : flow007.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\flow007.h
+ *  Created on                  : Aug 24, 2015 :: 9:45:45 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=33
+ *  URL                         : https://www.codechef.com/problems/FLOW007
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,95 +67,31 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DIGITCANCELLINGFRACTIONS_H_
-#define DIGITCANCELLINGFRACTIONS_H_
+#ifndef FLOW007_H_
+#define FLOW007_H_
 
 //Tested
-struct fraction{
-	unsigned int numerator;
-	unsigned int denominator;
-
-	fraction(){};
-	fraction(unsigned int numerator,unsigned int denominator){
-		this->numerator = numerator;
-		this->denominator = denominator;
-	}
-};
-
-//Tested
-unsigned int reverseNumber(unsigned int userInput){
+void printReverse(unsigned int userInput){
 	unsigned int reverse = 0;
 	while(userInput){
-		reverse = (reverse << 1)+(reverse << 3)+userInput%10;
-		userInput /= 10;
+		reverse *= 10;
+		reverse += userInput%10;
+		userInput/=10;
 	}
-	return reverse;
+	printf("%u\n",reverse);
 }
 
 //Tested
-fraction * reduceFraction(unsigned int numerator,unsigned int denominator){
-	unsigned flags[10] ={0};
-	unsigned int temp = numerator;
-	while(temp){
-		flags[temp%10]++;
-		temp /= 10;
+void printReverseInput(){
+	unsigned int testCases,input;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&input);
+		printReverse(input);
 	}
-	unsigned int reducedDenominator = 0;
-	denominator = reverseNumber(denominator);
-	while(denominator){
-		if(flags[denominator%10] > 0){
-			flags[denominator%10]--;
-		}else{
-			reducedDenominator *= 10;
-			reducedDenominator += denominator%10;
-		}
-		denominator /= 10;
-	}
-	unsigned int reducedNumerator = 0;
-	temp = reverseNumber(numerator);
-	while(temp){
-		if(flags[temp%10] > 0){
-			reducedNumerator *= 10;
-			reducedNumerator += temp%10;
-			flags[temp%10]--;
-		}
-		temp /= 10;
-	}
-	return new fraction(reducedNumerator,reducedDenominator);
 }
 
-//Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	if(a == 1 || b == 1){
-		return 1;
-	}
-	if(b%a == 0){
-		return a;
-	}
-	return gcd(a%b,a);
-}
-
-//Tested
-//Ans : 100
-void getProductDenominator(){
-	fraction *reducedResult;
-	unsigned int productOfDenominator = 1,productNumerator = 1;
-	for(unsigned int numerator = 11;numerator < 100;numerator++){
-		for(unsigned int denominator = numerator+1;denominator < 100;denominator++){
-			if(denominator %10 ==0 || (numerator%10 == numerator/10)){
-				continue;
-			}
-			reducedResult = reduceFraction(numerator,denominator);
-			if(reducedResult->numerator  != numerator && (double)reducedResult->numerator/(double)reducedResult->denominator == ((double)(numerator)/(double)(denominator))){
-				productNumerator *= reducedResult->numerator;
-				productOfDenominator *= reducedResult->denominator;
-			}
-		}
-	}
-	cout << productOfDenominator/(gcd(productNumerator,productOfDenominator)) << endl;
-}
-
-#endif /* DIGITCANCELLINGFRACTIONS_H_ */
+#endif /* FLOW007_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
