@@ -5,7 +5,7 @@
  *  Author				: AVINASH
  *  Testing Status 		: TODO
  *  URL 				: TODO
-****************************************************************************************************************************************************/
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /* 														NAMESPACE DECLARATION AND IMPORTS 														    */
@@ -215,6 +215,12 @@ map<long long int,long long int> primeFactorization(long long int userInput){
 
 //Tested
 bool isNumberPrime(long long int userInput){
+	if(userInput == 1){
+		return false;
+	}
+	if(userInput == 2){
+		return true;
+	}
 	long long int squareRoot = sqrtl(userInput);
 	if(!(userInput&1)){
 		return false;
@@ -312,7 +318,7 @@ unsigned long long int pow(long long int base,long long int power){
 
 //Tested
 unsigned long long int rhoFunction(long long int base,long long int power){
- 	return ((pow(base,power+1))-1)/(base-1);
+	return ((pow(base,power+1))-1)/(base-1);
 }
 
 //Tested

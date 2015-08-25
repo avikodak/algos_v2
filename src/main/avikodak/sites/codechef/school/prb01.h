@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : pr01.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\pr01.h
+ *  Created on                  : Aug 25, 2015 :: 9:18:46 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/PRB01
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,60 +60,48 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef PR01_H_
+#define PR01_H_
 
 //Tested
-void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput){
-	unsigned int minValue = min(firstUserInput,secondUserInput);
-	unsigned int maxValue = max(firstUserInput,secondUserInput);
-	unsigned int difference = maxValue - minValue;
-	unsigned int lowValue = minValue * (nValue-1);
-	unsigned int highValue = (nValue-1) * maxValue;
-	while(lowValue <= highValue){
-		cout << lowValue << " ";
-		lowValue += difference;
-        if(difference == 0){
-            return;
-        }
+bool isNumberPrime(long long int userInput){
+	if(userInput == 1){
+		return false;
 	}
-}
-
-//Tested
-void getPossibilitesForInput(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int nValue,firstUserInput,secondUserInput;
-	while(testCases--){
-		scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
-		printPossibilites(nValue,firstUserInput,secondUserInput);
-		printf("\n");
+	if(userInput == 2){
+		return true;
 	}
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+	long long int squareRoot = sqrtl(userInput);
+	if(!(userInput&1)){
+		return false;
+	}
+	for(long long int counter = 3;counter <= squareRoot;counter+=2){
+		if(userInput%counter == 0){
+			return false;
 		}
-		return;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+	return true;
 }
 
-#endif /* MANASAANDSTONES_H_ */
+//Tested
+void printResults(){
+	unsigned int testCases,input;
+	cin >> testCases;
+	while(testCases--){
+		cin >> input;
+		printf("%s\n",isNumberPrime(input)?"yes":"no");
+	}
+}
+
+#endif /* PR01_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

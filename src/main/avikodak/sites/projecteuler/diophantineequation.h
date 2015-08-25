@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : diophantineequation.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\diophantineequation.h
+ *  Created on                  : Aug 25, 2015 :: 7:56:36 AM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : https://projecteuler.net/problem=66
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,60 +60,48 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef DIOPHANTINEEQUATION_H_
+#define DIOPHANTINEEQUATION_H_
 
-//Tested
-void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput){
-	unsigned int minValue = min(firstUserInput,secondUserInput);
-	unsigned int maxValue = max(firstUserInput,secondUserInput);
-	unsigned int difference = maxValue - minValue;
-	unsigned int lowValue = minValue * (nValue-1);
-	unsigned int highValue = (nValue-1) * maxValue;
-	while(lowValue <= highValue){
-		cout << lowValue << " ";
-		lowValue += difference;
-        if(difference == 0){
-            return;
-        }
-	}
+bool isPerfectSquare(unsigned long long int userInput){
+	unsigned long long int sqrtVal = sqrtl(userInput);
+	return sqrtVal*sqrtVal == userInput;
 }
 
-//Tested
-void getPossibilitesForInput(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int nValue,firstUserInput,secondUserInput;
-	while(testCases--){
-		scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
-		printPossibilites(nValue,firstUserInput,secondUserInput);
-		printf("\n");
-	}
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+unsigned long long int findSolutionDiophantineEqu(unsigned long long int userInput){
+	unsigned long long int counter = 1;
+	unsigned long long int value;
+	while(true){
+		value = 1 + userInput*counter*counter;
+		if(isPerfectSquare(value)){
+			return sqrtl(value);
 		}
-		return;
+		counter++;
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
 }
 
-#endif /* MANASAANDSTONES_H_ */
+void printDValForMaxX(){
+	unsigned long long int maxX = 0,dValue,result;
+	for(unsigned long long int counter = 2;counter <= 1000;counter++){
+		cout << counter << endl;
+		result = findSolutionDiophantineEqu(counter);
+		if(maxX < result){
+			maxX = result;
+			dValue = counter;
+		}
+	}
+	cout << dValue << endl;
+}
+
+#endif /* DIOPHANTINEEQUATION_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

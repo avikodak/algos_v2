@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : flow017.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\flow017.h
+ *  Created on                  : Aug 25, 2015 :: 9:12:33 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/FLOW017
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,60 +60,39 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef FLOW017_H_
+#define FLOW017_H_
 
 //Tested
-void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput){
-	unsigned int minValue = min(firstUserInput,secondUserInput);
-	unsigned int maxValue = max(firstUserInput,secondUserInput);
-	unsigned int difference = maxValue - minValue;
-	unsigned int lowValue = minValue * (nValue-1);
-	unsigned int highValue = (nValue-1) * maxValue;
-	while(lowValue <= highValue){
-		cout << lowValue << " ";
-		lowValue += difference;
-        if(difference == 0){
-            return;
-        }
-	}
+void printSecondLargest(vector<unsigned int> userInput){
+	sort(userInput.begin(),userInput.end());
+	printf("%u\n",userInput[1]);
 }
 
 //Tested
-void getPossibilitesForInput(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int nValue,firstUserInput,secondUserInput;
+void printResults(){
+	unsigned int testCases,input;
+	cin >> testCases;
+	vector<unsigned int> userInput;
 	while(testCases--){
-		scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
-		printPossibilites(nValue,firstUserInput,secondUserInput);
-		printf("\n");
-	}
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+		userInput.clear();
+		for(unsigned int counter = 0;counter < 3;counter++){
+			cin >> input;
+			userInput.push_back(input);
 		}
-		return;
+		printSecondLargest(userInput);
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
 }
 
-#endif /* MANASAANDSTONES_H_ */
+#endif /* FLOW017_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

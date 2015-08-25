@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
- *  Created on			: Feb 6, 2015 :: 6:46:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.hackerrank.com/challenges/manasa-and-stones
+ *  File Name                   : lch15jab.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\lch15jab.h
+ *  Created on                  : Aug 25, 2015 :: 8:41:36 AM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/LCH15JAB
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,60 +60,45 @@ using namespace __gnu_cxx;
 #include <algorithm/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MANASAANDSTONES_H_
-#define MANASAANDSTONES_H_
+#ifndef LCH15JAB_H_
+#define LCH15JAB_H_
 
 //Tested
-void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput){
-	unsigned int minValue = min(firstUserInput,secondUserInput);
-	unsigned int maxValue = max(firstUserInput,secondUserInput);
-	unsigned int difference = maxValue - minValue;
-	unsigned int lowValue = minValue * (nValue-1);
-	unsigned int highValue = (nValue-1) * maxValue;
-	while(lowValue <= highValue){
-		cout << lowValue << " ";
-		lowValue += difference;
-        if(difference == 0){
-            return;
-        }
-	}
-}
-
-//Tested
-void getPossibilitesForInput(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int nValue,firstUserInput,secondUserInput;
-	while(testCases--){
-		scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
-		printPossibilites(nValue,firstUserInput,secondUserInput);
-		printf("\n");
-	}
-}
-
-//Tested
-//Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
+void areCharWithSameFrequency(string userInput){
+	sort(userInput.begin(),userInput.end());
+	unsigned int counter = 0,frequency,maxFrequency = 0;
+	while(counter < userInput.size()){
+		frequency = 1;
+		while(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]){
+			counter++;
+			frequency++;
 		}
-		return;
+		counter++;
+		maxFrequency = max(maxFrequency,frequency);
 	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+	printf("%s\n",maxFrequency == userInput.size()-maxFrequency?"YES":"NO");
 }
 
-#endif /* MANASAANDSTONES_H_ */
+//Tested
+void printResults(){
+	unsigned int testCases;
+	cin >> testCases;
+	string userInput;
+	while(testCases--){
+		cin >> userInput;
+		areCharWithSameFrequency(userInput);
+	}
+}
+
+#endif /* LCH15JAB_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/
