@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : squarerootconvergents.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\squarerootconvergents.h
- *  Created on                  : Aug 26, 2015 :: 11:09:57 PM
+ *  File Name                   : reciprocalcycles.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\projecteuler\reciprocalcycles.h
+ *  Created on                  : Aug 27, 2015 :: 12:07:10 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://projecteuler.net/problem=57
+ *  URL                         : https://projecteuler.net/problem=26
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,35 +67,45 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SQUAREROOTCONVERGENTS_H_
-#define SQUAREROOTCONVERGENTS_H_
+#ifndef RECIPROCALCYCLES_H_
+#define RECIPROCALCYCLES_H_
 
 //Tested
-unsigned int countDigits(unsigned long int userInput){
-	unsigned int counter = 0;
-	while(userInput){
-		counter++;
-		userInput/=10;
+unsigned int getReciprocalLength(unsigned int userInput){
+	map<unsigned int,bool> visitedRemainders;
+	vector<unsigned int> visitedRemaindersList;
+	unsigned int numerator = 1,remainder;
+	while((remainder = numerator%userInput) != 0){
+		if(visitedRemainders.find(remainder) != visitedRemainders.end()){
+			unsigned int counter;
+			for(counter = 0;counter < visitedRemaindersList.size();counter++){
+				if(visitedRemaindersList[counter] == remainder){
+					break;
+				}
+			}
+			return visitedRemainders.size() - counter;
+		}
+		visitedRemainders.insert(pair<unsigned int,bool>(remainder,true));
+		visitedRemaindersList.push_back(remainder);
+		numerator = remainder*10;
 	}
-	return counter;
+	return 0;
 }
 
-//Works but for smaller inputs
-//Check java version
-void getTotalFraction(){
-	unsigned long int numerator = 3,denominator = 2;
-	unsigned int total = 0;
-	for(unsigned int counter = 1;counter < 1000;counter++){
-		numerator = numerator + 2*denominator;
-		denominator = numerator + denominator;
-		if(countDigits(numerator) > countDigits(denominator)){
-			total++;
+//Tested
+void getLongestReciprocalCycle(){
+	unsigned int maxLength = 0,cycleLength,maxLengthValue;
+	for(unsigned int counter = 2;counter < 1000;counter++){
+		cycleLength = getReciprocalLength(counter);
+		if( maxLength < cycleLength){
+			maxLength =cycleLength;
+			maxLengthValue = counter;
 		}
 	}
-	cout << total << endl;
+	cout << maxLengthValue << endl;
 }
 
-#endif /* SQUAREROOTCONVERGENTS_H_ */
+#endif /* RECIPROCALCYCLES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
