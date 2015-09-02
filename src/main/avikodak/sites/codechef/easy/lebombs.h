@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : anuund.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anuund.h
- *  Created on                  : Aug 30, 2015 :: 1:18:11 PM
+ *  File Name                   : lebombs.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\lebombs.h
+ *  Created on                  : Sep 2, 2015 :: 11:07:10 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ANUUND
+ *  URL                         : https://www.codechef.com/problems/LEBOMBS
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,41 +67,43 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ANUUND_H_
-#define ANUUND_H_
+#ifndef LEBOMBS_H_
+#define LEBOMBS_H_
 
 //Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
-	}
+void getBuildingCount(string userInput){
+	string bombedBuilding = userInput;
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
+		if(userInput[counter] == '1'){
+			if(counter-1 >= 0){
+				bombedBuilding[counter-1] = '1';
+			}
+			if(counter+1 < userInput.size()){
+				bombedBuilding[counter+1] = '1';
+			}
+		}
 	}
-	cout << endl;
+	unsigned int savedBuilding = 0;
+	for(unsigned int counter = 0;counter < bombedBuilding.size();counter++){
+		if(bombedBuilding[counter] == '0'){
+			savedBuilding++;
+		}
+	}
+	cout << savedBuilding << endl;
 }
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input;
+	unsigned int testCases,size;
 	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
+	string userInput;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		waveSort(userInput);
+		cin >> size >> userInput;
+		getBuildingCount(userInput);
 	}
 }
 
-#endif /* ANUUND_H_ */
+#endif /* LEBOMBS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

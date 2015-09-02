@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : anuund.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anuund.h
- *  Created on                  : Aug 30, 2015 :: 1:18:11 PM
+ *  File Name                   : buying2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\buying2.h
+ *  Created on                  : Aug 31, 2015 :: 8:59:41 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ANUUND
+ *  URL                         : https://www.codechef.com/problems/BUYING2
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,41 +67,38 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ANUUND_H_
-#define ANUUND_H_
+#ifndef BUYING2_H_
+#define BUYING2_H_
 
 //Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
+void printNumberOfSweets(){
+	unsigned int noteCount,cost,input,total =0;
+	cin >> noteCount >> cost;
+	unsigned int firstMin = UINT_MAX;
+	while(noteCount--){
+		cin >> input;
+		if(firstMin > input){
+			firstMin = input;
+		}
+		total += input;
 	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
+	if(total/cost == (total - firstMin)/cost){
+		cout << "-1" << endl;
+	}else{
+		cout << total/cost << endl;
 	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
-	}
-	cout << endl;
 }
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
+	unsigned int testCases;
+	cin >> testCases;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		waveSort(userInput);
+		printNumberOfSweets();
 	}
 }
 
-#endif /* ANUUND_H_ */
+#endif /* BUYING2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

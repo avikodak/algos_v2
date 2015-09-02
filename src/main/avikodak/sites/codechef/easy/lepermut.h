@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : anuund.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anuund.h
- *  Created on                  : Aug 30, 2015 :: 1:18:11 PM
+ *  File Name                   : lepermut.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\lepermut.h
+ *  Created on                  : Sep 2, 2015 :: 9:01:55 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ANUUND
+ *  URL                         : https://www.codechef.com/problems/LEPERMUT
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,29 +67,31 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ANUUND_H_
-#define ANUUND_H_
+#ifndef LEPERMUT_H_
+#define LEPERMUT_H_
 
 //Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
+void isGoodPermutation(vector<unsigned int> userInput){
+	unsigned int inversionCount = 0,localInversionCount = 0;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
+		if(userInput[outerCounter] > userInput[outerCounter+1]){
+			localInversionCount++;
+		}
+		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+			if(userInput[outerCounter] > userInput[innerCounter]){
+				inversionCount++;
+			}
+		}
 	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
-	}
-	cout << endl;
+	printf("%s\n",localInversionCount == inversionCount?"YES":"NO");
 }
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
+	unsigned int testCases;
+	unsigned int input,size;
 	vector<unsigned int> userInput;
+	scanf("%u",&testCases);
 	while(testCases--){
 		scanf("%u",&size);
 		userInput.clear();
@@ -97,11 +99,11 @@ void printResults(){
 			scanf("%u",&input);
 			userInput.push_back(input);
 		}
-		waveSort(userInput);
+		isGoodPermutation(userInput);
 	}
 }
 
-#endif /* ANUUND_H_ */
+#endif /* LEPERMUT_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

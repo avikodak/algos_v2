@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\school\chrl2.h
  *  Created on                  : Aug 25, 2015 :: 9:04:52 AM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/CHRL2
  ****************************************************************************************************************************************************/
 
@@ -70,7 +70,42 @@ using namespace __gnu_cxx;
 #ifndef CHRL2_H_
 #define CHRL2_H_
 
+//Tested
+void getSubsequenceCount(string userInput){
+	unsigned int cCount = 0,hCount = 0,eCount = 0,fCount = 0;
+	for(int counter = userInput.size()-1;counter >= 0;counter--){
+		switch (userInput[counter]) {
+			case 'F':
+				fCount++;
+				break;
+			case 'E':
+				if(fCount > 0){
+					eCount++;
+					fCount--;
+				}
+				break;
+			case 'H':
+				if(eCount > 0){
+					hCount++;
+					eCount--;
+				}
+				break;
+			case 'C':
+				if(hCount > 0){
+					cCount++;
+					hCount--;
+				}
+		}
+	}
+	cout << cCount << endl;
+}
 
+//Tested
+void printResults(){
+	string input;
+	cin >> input;
+	getSubsequenceCount(input);
+}
 
 #endif /* CHRL2_H_ */
 

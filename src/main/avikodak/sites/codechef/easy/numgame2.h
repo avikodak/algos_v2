@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : anuund.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anuund.h
- *  Created on                  : Aug 30, 2015 :: 1:18:11 PM
+ *  File Name                   : numgame2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\numgame2.h
+ *  Created on                  : Sep 2, 2015 :: 8:38:10 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ANUUND
+ *  URL                         : https://www.codechef.com/problems/NUMGAME2
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,41 +67,25 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ANUUND_H_
-#define ANUUND_H_
-
-//Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
-	}
-	cout << endl;
-}
+#ifndef NUMGAME2_H_
+#define NUMGAME2_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input;
+	unsigned int testCases;
+	unsigned long long int userInput;
 	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
+		cin >> userInput;
+		if(userInput%4 == 1){
+			printf("ALICE\n");
+		}else{
+			printf("BOB\n");
 		}
-		waveSort(userInput);
 	}
 }
 
-#endif /* ANUUND_H_ */
+#endif /* NUMGAME2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

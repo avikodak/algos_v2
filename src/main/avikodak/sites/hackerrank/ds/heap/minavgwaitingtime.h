@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : anuund.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anuund.h
- *  Created on                  : Aug 30, 2015 :: 1:18:11 PM
+ *  File Name                   : minavgwaitingtime.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\ds\heap\minavgwaitingtime.h
+ *  Created on                  : Jul 14, 2015 :: 11:39:10 PM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ANUUND
+ *  Testing Status              : TODO
+ *  URL                         : https://www.hackerrank.com/challenges/minimum-average-waiting-time
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,41 +67,40 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ANUUND_H_
-#define ANUUND_H_
+#ifndef MINAVGWAITINGTIME_H_
+#define MINAVGWAITINGTIME_H_
 
-//Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
+void minHeapify(vector<int> &userInput,int index){
+	while(index > 0 && userInput[index/2] > userInput[index]){
+		swap(userInput[inde/2],userInput[index]);
+		index /= 2;
 	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
-	}
-	cout << endl;
 }
 
-//Tested
-void printResults(){
-	unsigned int testCases,size,input;
+void insertIntoMinHeap(vector<int> &userInput,int value){
+	userInput.push_back(value);
+	minHeapify(userInput,userInput.size()-1);
+}
+
+int getMin(vector<int> &userInput){
+
+}
+
+void findMinAverageWaitingTime(){
+	unsigned int testCases;
 	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
+	unsigned int arrivalTime,timeToCook;
+	unsigned int cummulativeTime = 0;
+	vector<int> heap;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
+		scanf("%u %u",&arrivalTime,&timeToCook);
+		if(cummulativeTime >= arrivalTime){
+			insertIntoMinHeap(heap,timeToCook);
 		}
-		waveSort(userInput);
 	}
 }
 
-#endif /* ANUUND_H_ */
+#endif /* MINAVGWAITINGTIME_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
