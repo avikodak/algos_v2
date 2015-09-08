@@ -124,10 +124,10 @@ public:
 			return null;
 		}
 		hash_map<unsigned int,sillNode *> indexNodeMap;
-		hash_map<uint32_t,unsigned int> nodeIndexMap;
+		hash_map<intptr_t,unsigned int> nodeIndexMap;
 		while(ptr != null){
 			indexNodeMap.insert(pair<unsigned int,sillNode *>(startIndex,ptr));
-			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,startIndex));
+			nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,startIndex));
 			startIndex += 1;
 			ptr = ptr->next;
 		}

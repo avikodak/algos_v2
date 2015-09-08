@@ -116,10 +116,10 @@ void avlTreeTester(){
 
 void twoFourTreeTester(){
 	vector<int> sequence = generateISequenceVector(30);
-	twofourtreeutils *utils = new twofourtreeutils();
+	/*twofourtreeutils *utils = new twofourtreeutils();
 	i24Node *root = utils->getTwoFourTreeFromVector(sequence);
 	//utils->insertIntoTwoFourTree(&root,12);
-	utils->inorderTraversal(root);
+	utils->inorderTraversal(root);*/
 }
 
 void sillTester(){

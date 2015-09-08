@@ -109,14 +109,14 @@ void removeLoopHashmap(sillNode *ptr){
 		return;
 	}
 	sillNode *crawler = ptr;
-	hash_map<uint32_t,bool> visitedNodeFlags;
-	hash_map<uint32_t,bool>::iterator itToVisitedNodeFlags;
+	hash_map<intptr_t,bool> visitedNodeFlags;
+	hash_map<intptr_t,bool>::iterator itToVisitedNodeFlags;
 	while(crawler != null && crawler->next != null){
-		if((itToVisitedNodeFlags = visitedNodeFlags.find((uint32_t)crawler->next)) != visitedNodeFlags.end()){
+		if((itToVisitedNodeFlags = visitedNodeFlags.find((intptr_t)crawler->next)) != visitedNodeFlags.end()){
 			crawler->next = null;
 			return;
 		}
-		visitedNodeFlags.insert(pair<uint32_t,bool>((uint32_t)crawler,true));
+		visitedNodeFlags.insert(pair<intptr_t,bool>((intptr_t)crawler,true));
 		crawler = crawler->next;
 	}
 }

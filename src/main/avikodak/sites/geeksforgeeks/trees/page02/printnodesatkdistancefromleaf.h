@@ -108,13 +108,13 @@ void printNodesAtKDistanceFromLeafAuxspace(itNode *ptr,stack<itNode *> auxSpace,
 }
 
 //Tested
-void checkAndPrintIfNodeAtKdistance(itNode *ptr,hash_map<uint32_t,int> &nodeHeightMap,int kDistance){
-	hash_map<uint32_t,int>::iterator itToLeftNodeHeightMap,itToRightNodeHeight;
+void checkAndPrintIfNodeAtKdistance(itNode *ptr,hash_map<intptr_t,int> &nodeHeightMap,int kDistance){
+	hash_map<intptr_t,int>::iterator itToLeftNodeHeightMap,itToRightNodeHeight;
 	int maxHeight = 0;
 	bool flag = false;
 	if(ptr->left != null || ptr->right != null){
 		if(ptr->left != null){
-			itToLeftNodeHeightMap = nodeHeightMap.find((uint32_t)ptr->left);
+			itToLeftNodeHeightMap = nodeHeightMap.find((intptr_t)ptr->left);
 			maxHeight = maxHeight > itToLeftNodeHeightMap->second ?maxHeight:itToLeftNodeHeightMap->second;
 			if(itToLeftNodeHeightMap->second == kDistance){
 				printf("%d\t",ptr->value);
@@ -122,15 +122,15 @@ void checkAndPrintIfNodeAtKdistance(itNode *ptr,hash_map<uint32_t,int> &nodeHeig
 			}
 		}
 		if(ptr->right != null){
-			itToRightNodeHeight = nodeHeightMap.find((uint32_t)ptr->right);
+			itToRightNodeHeight = nodeHeightMap.find((intptr_t)ptr->right);
 			maxHeight = maxHeight > itToRightNodeHeight->second ?maxHeight:itToRightNodeHeight->second;
 			if(!flag && itToRightNodeHeight->second == kDistance){
 				printf("%d\t",ptr->value);
 			}
 		}
-		nodeHeightMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1+maxHeight));
+		nodeHeightMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1+maxHeight));
 	}else{
-		nodeHeightMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+		nodeHeightMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	}
 }
 
@@ -141,7 +141,7 @@ void printNodesAtKDistancePostorderTraversalIterative(itNode *ptr,int kDistance)
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
-	hash_map<uint32_t,int> nodeHeightMap;
+	hash_map<intptr_t,int> nodeHeightMap;
 	while(!auxSpace.empty() || currentNode != null){
 		if(currentNode != null){
 			if(currentNode->right != null){
@@ -171,7 +171,7 @@ void printNodesAtKDistancePostorderTraversalIterativeV2(itNode *ptr,int kDistanc
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
-	hash_map<uint32_t,int> nodeHeightMap;
+	hash_map<intptr_t,int> nodeHeightMap;
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);

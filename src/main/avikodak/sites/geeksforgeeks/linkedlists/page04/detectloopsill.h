@@ -77,14 +77,14 @@ bool detectLoopHashMap(sillNode *ptr){
 	if(ptr == null){
 		return false;
 	}
-	hash_map<uint32_t,bool> visitedNodes;
-	hash_map<uint32_t,bool>::iterator itToVisitedNodes;
+	hash_map<intptr_t,bool> visitedNodes;
+	hash_map<intptr_t,bool>::iterator itToVisitedNodes;
 	sillNode *crawler = ptr;
 	while(crawler != null && crawler->next != null){
-		if((itToVisitedNodes = visitedNodes.find((uint32_t)crawler->next)) != visitedNodes.end()){
+		if((itToVisitedNodes = visitedNodes.find((intptr_t)crawler->next)) != visitedNodes.end()){
 			return true;
 		}
-		visitedNodes.insert(pair<uint32_t,bool>((uint32_t)crawler,true));
+		visitedNodes.insert(pair<intptr_t,bool>((intptr_t)crawler,true));
 		crawler = crawler->next;
 	}
 	return false;

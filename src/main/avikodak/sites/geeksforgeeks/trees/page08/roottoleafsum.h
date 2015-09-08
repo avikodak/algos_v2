@@ -123,30 +123,30 @@ bool eRootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 		return sum == 0;
 	}
 	stack<itNode *> auxSpace;
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 	hash_map<unsigned int,itNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
 	itNode *currentNode;
 	auxSpace.push(ptr);
-	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
-		itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+		itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 		if(currentNode->left == null && currentNode->right == null){
 			if(checkForSumRootToLeaf(indexNodeMap,itToNodeIndexMap->second,sum)){
 				return true;
 			}
 		}else{
 			if(currentNode->right != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*itToNodeIndexMap->second+1));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,2*itToNodeIndexMap->second+1));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,currentNode->right));
 				auxSpace.push(currentNode->right);
 			}
 			if(currentNode->left != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*itToNodeIndexMap->second));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
 				auxSpace.push(currentNode->left);
 			}
@@ -190,27 +190,27 @@ bool rootToLeafSumPreOrderIterative(itNode *ptr,int sum){
 	auxSpace.push(ptr);
 	itNode *currentNode;
 	hash_map<unsigned int,itNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
-	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
-		itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+		itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 		if(currentNode->left == null && currentNode->right == null){
 			if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
 				return true;
 			}
 		}else{
 			if(currentNode->right != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*itToNodeIndexMap->second+1));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,2*itToNodeIndexMap->second+1));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,currentNode->right));
 				auxSpace.push(currentNode->right);
 			}
 			if(currentNode->left != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*itToNodeIndexMap->second));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
 				auxSpace.push(currentNode->left);
 			}
@@ -227,17 +227,17 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
 	hash_map<unsigned int,itNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
-	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);
-			itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+			itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 			if(currentNode->left != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*itToNodeIndexMap->second));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
 			}
 			currentNode = currentNode->left;
@@ -245,7 +245,7 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
 			auxSpace.pop();
-			itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+			itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 			if(checkForSumHashmap(indexNodeMap,sum,itToNodeIndexMap->second)){
 				return true;
 			}
@@ -258,8 +258,8 @@ bool rootToLeafSumPostOrderIterativeV2(itNode *ptr,int sum){
 			}
 		}
 		if(!auxSpace.empty() && auxSpace.top()->right != null){
-			itToNodeIndexMap = nodeIndexMap.find((uint32_t)auxSpace.top());
-			nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)auxSpace.top()->right,2*itToNodeIndexMap->second+1));
+			itToNodeIndexMap = nodeIndexMap.find((intptr_t)auxSpace.top());
+			nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)auxSpace.top()->right,2*itToNodeIndexMap->second+1));
 			indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,auxSpace.top()->right));
 		}
 		currentNode = auxSpace.empty()?null:auxSpace.top()->right;

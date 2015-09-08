@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 #include <algorithm/constants/constants.h>
 #include <algorithm/ds/commonds.h>
 #include <algorithm/ds/linkedlistds.h>
@@ -78,27 +79,27 @@ void bottomView(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	hash_map<uint32_t,int> nodeHIndexMap;
-	hash_map<uint32_t,int>::iterator itToNodeHIndexMap;
+	hash_map<intptr_t,int> nodeHIndexMap;
+	hash_map<intptr_t,int>::iterator itToNodeHIndexMap;
 	hash_map<int,int> indexValueMap;
 	hash_map<int,int>::iterator itToIndexValueMap;
 	queue<itNode *> auxSpace;
 	itNode *currentNode;
 	auxSpace.push(ptr);
 	int currentNodeHIndex;
-	nodeHIndexMap.insert(pair<uint32_t,int>((uint32_t)ptr,0));
+	nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)ptr,0));
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.front();
 		auxSpace.pop();
-		currentNodeHIndex = nodeHIndexMap.find((uint32_t)currentNode)->second;
+		currentNodeHIndex = nodeHIndexMap.find((intptr_t)currentNode)->second;
 		indexValueMap[currentNodeHIndex] = currentNode->value;
 		if(currentNode->left != null){
 			auxSpace.push(currentNode->left);
-			nodeHIndexMap.insert(pair<uint32_t,int>((uint32_t)currentNode->left,currentNodeHIndex-1));
+			nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->left,currentNodeHIndex-1));
 		}
 		if(currentNode->right != null){
 			auxSpace.push(currentNode->right);
-			nodeHIndexMap.insert(pair<uint32_t,int>((uint32_t)currentNode->right,currentNodeHIndex+1));
+			nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->right,currentNodeHIndex+1));
 		}
 	}
 	for(itToIndexValueMap = indexValueMap.begin();itToIndexValueMap != indexValueMap.end();itToIndexValueMap++){

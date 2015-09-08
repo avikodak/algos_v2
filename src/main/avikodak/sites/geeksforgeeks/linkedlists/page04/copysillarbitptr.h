@@ -76,11 +76,11 @@ sillArbitNode *copySillArbitPtrHashmap(sillArbitNode *ptr){
 	if(ptr == null){
 		return null;
 	}
-	hash_map<uint32_t,unsigned int> nodeIndexMapOriginalSill;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMapOriginalSill;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 	hash_map<unsigned int,sillArbitNode *> indexNodeMap;
 	hash_map<unsigned int,sillArbitNode *>::iterator itToIndexNodeMap;
-	hash_map<uint32_t,sillArbitNode *> nodesArbitPtrsMap;
+	hash_map<intptr_t,sillArbitNode *> nodesArbitPtrsMap;
 	sillArbitNode *crawler = ptr,*copiedSillHead = null,*copiedSillCrawler = null;
 	unsigned int indexCounter = 0;
 	while(crawler != null){
@@ -92,13 +92,13 @@ sillArbitNode *copySillArbitPtrHashmap(sillArbitNode *ptr){
 			copiedSillCrawler = copiedSillCrawler->next;
 		}
 		indexNodeMap.insert(pair<unsigned int,sillArbitNode *>(indexCounter,copiedSillCrawler));
-		nodeIndexMapOriginalSill.insert(pair<uint32_t,unsigned int>((uint32_t)crawler,indexCounter));
+		nodeIndexMapOriginalSill.insert(pair<intptr_t,unsigned int>((intptr_t)crawler,indexCounter));
 		crawler = crawler->next;
 	}
 	crawler = ptr;
 	while(crawler != null){
 		if(crawler->arbitraryPtr != null){
-			itToNodeIndexMap = nodeIndexMapOriginalSill.find((uint32_t)crawler->arbitraryPtr);
+			itToNodeIndexMap = nodeIndexMapOriginalSill.find((intptr_t)crawler->arbitraryPtr);
 			itToIndexNodeMap = indexNodeMap.find(itToNodeIndexMap->second);
 			copiedSillCrawler->arbitraryPtr = itToIndexNodeMap->second;
 		}
@@ -112,11 +112,11 @@ sillArbitNode *copySillArbitPtr(sillArbitNode *ptr){
 	if(ptr == null){
 		return null;
 	}
-	hash_map<uint32_t,sillArbitNode *> originalArbitPtrMap;
-	hash_map<uint32_t,sillArbitNode *> itToOriginalArbitPtrMap;
+	hash_map<intptr_t,sillArbitNode *> originalArbitPtrMap;
+	hash_map<intptr_t,sillArbitNode *> itToOriginalArbitPtrMap;
 	sillArbitNode *crawler = ptr,*copiedHead,*copiedCrawler,*temp,*temp2;
 	while(crawler != null){
-		originalArbitPtrMap.insert(pair<uint32_t,sillArbitNode *>((uint32_t)crawler,crawler->arbitraryPtr));
+		originalArbitPtrMap.insert(pair<intptr_t,sillArbitNode *>((intptr_t)crawler,crawler->arbitraryPtr));
 		crawler = crawler->next;
 	}
 	crawler = ptr;
@@ -134,7 +134,7 @@ sillArbitNode *copySillArbitPtr(sillArbitNode *ptr){
 	}
 	crawler = copiedHead;
 	while(crawler != null){
-		temp = originalArbitPtrMap.find((uint32_t)crawler->arbitraryPtr);
+		temp = originalArbitPtrMap.find((intptr_t)crawler->arbitraryPtr);
 		temp2 = crawler->arbitraryPtr;
 		crawler->arbitraryPtr = temp->arbitraryPtr;
 		temp2->arbitraryPtr = temp;

@@ -102,27 +102,27 @@ int getMaxLeafToRootPreOrderIterative(itNode *ptr){
 	stack<itNode *> auxSpace;
 	itNode *currentNode;
 	auxSpace.push(ptr);
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 	hash_map<unsigned int,itNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 	hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
-	nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	indexNodeMap.insert(pair<unsigned int,itNode *>(1,ptr));
 	int maxLeafToRoot = INT_MIN;
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
-		itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+		itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 		if(currentNode->left == null && currentNode->right == null){
 			maxLeafToRoot = max(maxLeafToRoot,getLeafToRootSum(indexNodeMap,itToNodeIndexMap->second));
 		}else{
 			if(currentNode->left != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*itToNodeIndexMap->second));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*itToNodeIndexMap->second));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second,currentNode->left));
 				auxSpace.push(currentNode->left);
 			}
 			if(currentNode->right != null){
-				nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*itToNodeIndexMap->second+1));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,2*itToNodeIndexMap->second+1));
 				indexNodeMap.insert(pair<unsigned int,itNode *>(2*itToNodeIndexMap->second+1,currentNode->right));
 				auxSpace.push(currentNode->right);
 			}

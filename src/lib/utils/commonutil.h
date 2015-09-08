@@ -180,8 +180,8 @@ void printTIndexNodeMap(hash_map<unsigned int,itNode *> nodeIndexMap){
 }
 
 //Tested
-void printTNodeIndexMap(hash_map<uint32_t,unsigned int> indexNodeMap){
-	hash_map<uint32_t,unsigned int>::iterator itToIndexNodeMap;
+void printTNodeIndexMap(hash_map<intptr_t,unsigned int> indexNodeMap){
+	hash_map<intptr_t,unsigned int>::iterator itToIndexNodeMap;
 	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
 		printf("%d %d\n",((itNode *)itToIndexNodeMap->first)->value,itToIndexNodeMap->second);
 	}

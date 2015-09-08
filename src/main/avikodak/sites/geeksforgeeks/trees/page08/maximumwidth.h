@@ -105,23 +105,23 @@ unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return 0;
 	}
-	hash_map<uint32_t,unsigned int> nodeLevelMap;
-	hash_map<uint32_t,unsigned int>::iterator itToNodeLevelMap;
+	hash_map<intptr_t,unsigned int> nodeLevelMap;
+	hash_map<intptr_t,unsigned int>::iterator itToNodeLevelMap;
 	hash_map<unsigned int,unsigned int> levelFrequency;
 	hash_map<unsigned int,unsigned int>::iterator itToLevelFrequency;
 	stack<itNode *> auxSpace;
 	itNode *currentNode;
 	auxSpace.push(ptr);
-	nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,1));
+	nodeLevelMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,1));
 	levelFrequency.insert(pair<unsigned int,unsigned int>(1,1));
 	unsigned int maxWidth = 0;
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
 		auxSpace.pop();
-		itToNodeLevelMap = nodeLevelMap.find((uint32_t)currentNode);
+		itToNodeLevelMap = nodeLevelMap.find((intptr_t)currentNode);
 		if(currentNode->left != null){
 			auxSpace.push(currentNode->left);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,itToNodeLevelMap->second+1));
+			nodeLevelMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,itToNodeLevelMap->second+1));
 			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
 			if(itToLevelFrequency == levelFrequency.end()){
 				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));
@@ -133,7 +133,7 @@ unsigned int getMaxWidthPreOrderIterative(itNode *ptr){
 		}
 		if(currentNode->right != null){
 			auxSpace.push(currentNode->right);
-			nodeLevelMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,itToNodeLevelMap->second+1));
+			nodeLevelMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,itToNodeLevelMap->second+1));
 			itToLevelFrequency = levelFrequency.find(itToNodeLevelMap->second + 1);
 			if(itToLevelFrequency == levelFrequency.end()){
 				levelFrequency.insert(pair<unsigned int,unsigned int>(itToNodeLevelMap->second + 1, 1));

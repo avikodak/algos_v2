@@ -75,13 +75,13 @@ void insertIntoXORSill(xorSillNode **head,int value){
 		return;
 	}
 	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (uint32_t)prevNode){
+	while(crawler->addressesXor ^ (intptr_t)prevNode){
 		temp = crawler;
-		crawler = crawler->addressesXor ^ (uint32_t)prevNode;
+		crawler = crawler->addressesXor ^ (intptr_t)prevNode;
 		prevNode = temp;
 	}
 	temp = new xorSillNode(value);
-	crawler->addressesXor = (uint32_t)prevNode ^ (uint32_t)temp;
+	crawler->addressesXor = (intptr_t)prevNode ^ (intptr_t)temp;
 }
 
 void printXorList(xorSillNode *head){
@@ -92,7 +92,7 @@ void printXorList(xorSillNode *head){
 	while(crawler != null){
 		printf("%d",crawler->value);
 		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (uint32_t)prevNode);
+		crawler = (xorSillNode *)(crawler->addressesXor ^ (intptr_t)prevNode);
 	}
 }
 

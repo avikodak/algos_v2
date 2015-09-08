@@ -108,7 +108,7 @@ void convertTreeToSumTreePreOrder(itNode *ptr){
 }
 
 //Tested
-void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<intptr_t,int> &nodeValueMap){
 	if(ptr == null){
 		return;
 	}
@@ -118,7 +118,7 @@ void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeVal
 	}else{
 		int sum = 0;
 		if(ptr->left != null){
-			sum += ptr->left->value + nodeValueMap.find((uint32_t)ptr->left)->second;
+			sum += ptr->left->value + nodeValueMap.find((intptr_t)ptr->left)->second;
 		}
 		sum += getSumOfNodes(ptr->right);
 		ptr->value = sum;
@@ -127,11 +127,11 @@ void convertTreeToSumTreeInOrderMain(itNode *ptr,hash_map<uint32_t,int> &nodeVal
 }
 
 //Tested
-void setNodeValueIntoMap(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+void setNodeValueIntoMap(itNode *ptr,hash_map<intptr_t,int> &nodeValueMap){
 	if(ptr == null){
 		return;
 	}
-	nodeValueMap.insert(pair<uint32_t,int>((uint32_t)ptr,ptr->value));
+	nodeValueMap.insert(pair<intptr_t,int>((intptr_t)ptr,ptr->value));
 	setNodeValueIntoMap(ptr->left,nodeValueMap);
 	setNodeValueIntoMap(ptr->right,nodeValueMap);
 }
@@ -141,32 +141,32 @@ void convertTreeToSumTreeInorder(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	hash_map<uint32_t,int> nodeValueMap;
+	hash_map<intptr_t,int> nodeValueMap;
 	setNodeValueIntoMap(ptr,nodeValueMap);
 	convertTreeToSumTreeInOrderMain(ptr,nodeValueMap);
 }
 
 //Tested
-void setNodeValueMap(itNode *ptr,hash_map<uint32_t,int> &nodeValueMap){
+void setNodeValueMap(itNode *ptr,hash_map<intptr_t,int> &nodeValueMap){
 	if(ptr == null){
 		return;
 	}
-	nodeValueMap.insert(pair<uint32_t,int>((uint32_t)ptr,ptr->value));
+	nodeValueMap.insert(pair<intptr_t,int>((intptr_t)ptr,ptr->value));
 	setNodeValueMap(ptr->left,nodeValueMap);
 	setNodeValueMap(ptr->right,nodeValueMap);
 }
 
 //Tested
-void setValueInNode(itNode *currentNode, hash_map<uint32_t,int> nodeValueMap){
+void setValueInNode(itNode *currentNode, hash_map<intptr_t,int> nodeValueMap){
 	if(currentNode->left == null && currentNode->right == null){
 		currentNode->value = 0;
 	}else{
 		int sum = 0;
 		if(currentNode->left != null){
-			sum = currentNode->left->value + nodeValueMap.find((uint32_t)currentNode->left)->second;
+			sum = currentNode->left->value + nodeValueMap.find((intptr_t)currentNode->left)->second;
 		}
 		if(currentNode->right != null){
-			sum += currentNode->right->value + nodeValueMap.find((uint32_t)currentNode->right)->second;
+			sum += currentNode->right->value + nodeValueMap.find((intptr_t)currentNode->right)->second;
 		}
 		currentNode->value = sum;
 	}
@@ -177,7 +177,7 @@ void convertTreeToSumTreePostOrderTwoStacks(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	hash_map<uint32_t,int> nodeValueMap;
+	hash_map<intptr_t,int> nodeValueMap;
 	setNodeValueMap(ptr,nodeValueMap);
 	stack<itNode *> primaryAuxspace,secondaryAuxspace;
 	primaryAuxspace.push(ptr);
@@ -206,7 +206,7 @@ void convertTreeToSumTreePostOrderIterative(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	hash_map<uint32_t,int> nodeValueMap;
+	hash_map<intptr_t,int> nodeValueMap;
 	setNodeValueMap(ptr,nodeValueMap);
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
@@ -237,7 +237,7 @@ void convertTreeToSumTreePostOrderIterativeV2(itNode *ptr){
 	if(ptr == null){
 		return;
 	}
-	hash_map<uint32_t,int> nodeValueMap;
+	hash_map<intptr_t,int> nodeValueMap;
 	setNodeValueMap(ptr,nodeValueMap);
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;

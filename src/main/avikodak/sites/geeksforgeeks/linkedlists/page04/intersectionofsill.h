@@ -78,16 +78,16 @@ sillNode *getIntersectionOfSillHashmapON(sillNode *firstPtr,sillNode *secondPtr)
 	if(firstPtr == null || secondPtr == null){
 		return null;
 	}
-	hash_map<uint32_t,bool> visitFlags;
-	hash_map<uint32_t,bool>::iterator itToVisitFlags;
+	hash_map<intptr_t,bool> visitFlags;
+	hash_map<intptr_t,bool>::iterator itToVisitFlags;
 	sillNode *crawler = firstPtr;
 	while(crawler != null){
-		visitFlags.insert(pair<uint32_t,bool>((uint32_t)crawler,true));
+		visitFlags.insert(pair<intptr_t,bool>((intptr_t)crawler,true));
 		crawler = crawler->next;
 	}
 	crawler = secondPtr;
 	while(crawler != null){
-		if((itToVisitFlags = visitFlags.find((uint32_t)crawler)) != visitFlags.end()){
+		if((itToVisitFlags = visitFlags.find((intptr_t)crawler)) != visitFlags.end()){
 			return crawler;
 		}
 		crawler = crawler->next;

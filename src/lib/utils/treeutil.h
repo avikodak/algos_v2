@@ -1006,38 +1006,38 @@ public:
 			return null;
 		}
 		hash_map<unsigned int,itNode *> indexNodeMap;
-		hash_map<uint32_t,unsigned int> nodeIndexMap;
+		hash_map<intptr_t,unsigned int> nodeIndexMap;
 		hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
-		hash_map<uint32_t,unsigned int>::iterator itToNodeIndexMap;
+		hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
 		itNode *currentNode;
 		queue<itNode *> auxSpace;
 		unsigned int currentIndex;
 		auxSpace.push(ptr);
 		indexNodeMap.insert(pair<unsigned int,itNode *>(startIndex,ptr));
-		nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)ptr,startIndex));
+		nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,startIndex));
 		while(!auxSpace.empty()){
 			currentNode = auxSpace.front();
 			auxSpace.pop();
-			itToNodeIndexMap = nodeIndexMap.find((uint32_t)currentNode);
+			itToNodeIndexMap = nodeIndexMap.find((intptr_t)currentNode);
 			currentIndex = itToNodeIndexMap->second;
 			if(currentNode->left != null){
 				auxSpace.push(currentNode->left);
 				if(startIndex == 0){
 					indexNodeMap.insert(pair<unsigned int,itNode *>(2*currentIndex+1,currentNode->left));
-					nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*currentIndex+1));
+					nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*currentIndex+1));
 				}else{
 					indexNodeMap.insert(pair<unsigned int,itNode *>(2*currentIndex,currentNode->left));
-					nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->left,2*currentIndex));
+					nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,2*currentIndex));
 				}
 			}
 			if(currentNode->right != null){
 				auxSpace.push(currentNode->right);
 				if(startIndex == 0){
 					indexNodeMap.insert(pair<unsigned int,itNode *>(2*currentIndex+2,currentNode->right));
-					nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*currentIndex+2));
+					nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,2*currentIndex+2));
 				}else{
 					indexNodeMap.insert(pair<unsigned int,itNode *>(2*currentIndex+1,currentNode->right));
-					nodeIndexMap.insert(pair<uint32_t,unsigned int>((uint32_t)currentNode->right,2*currentIndex+1));
+					nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,2*currentIndex+1));
 				}
 			}
 		}

@@ -71,7 +71,7 @@ struct sillNode{
 
 struct xorSillNode{
 	int value;
-	uint32_t addressesXor;
+	intptr_t addressesXor;
 
 	xorSillNode(){
 		this->addressesXor = 0;
@@ -135,12 +135,12 @@ struct dillNode{
 
 struct iSillHashmap{
 	hash_map<unsigned int,sillNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 };
 
 struct iDillHashmap{
 	hash_map<unsigned int,dillNode *> indexNodeMap;
-	hash_map<uint32_t,unsigned int> nodeIndexMap;
+	hash_map<intptr_t,unsigned int> nodeIndexMap;
 };
 
 #endif /* LINKEDLISTDS_H_ */
