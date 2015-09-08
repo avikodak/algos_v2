@@ -40,13 +40,14 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
-#include <algorithm/constants/constants.h>
-#include <algorithm/ds/commonds.h>
-#include <algorithm/ds/linkedlistds.h>
-#include <algorithm/ds/mathds.h>
-#include <algorithm/ds/treeds.h>
-#include <algorithm/utils/arrayutil.h>
-#include <algorithm/utils/commonutil.h>
+#include <stdint.h>
+#include <lib/constants/constants.h>
+#include <lib/ds/commonds.h>
+#include <lib/ds/linkedlistds.h>
+#include <lib/ds/mathds.h>
+#include <lib/ds/treeds.h>
+#include <lib/utils/arrayutil.h>
+#include <lib/utils/commonutil.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */

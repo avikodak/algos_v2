@@ -40,11 +40,12 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
-#include <algorithm/constants/constants.h>
-#include <algorithm/ds/commonds.h>
-#include <algorithm/ds/linkedlistds.h>
-#include <algorithm/ds/mathds.h>
-#include <algorithm/ds/treeds.h>
+#include <stdint.h>
+#include <lib/constants/constants.h>
+#include <lib/ds/commonds.h>
+#include <lib/ds/linkedlistds.h>
+#include <lib/ds/mathds.h>
+#include <lib/ds/treeds.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
@@ -59,7 +60,7 @@ using namespace __gnu_cxx;
 #ifndef MATHUTIL_H_
 #define MATHUTIL_H_
 
-void isPrimeNumber(unsigned int userInput){
+bool isPrimeNumber(unsigned int userInput){
 	for(unsigned int counter = 2;counter <= userInput/2;counter++){
 		if(userInput%counter == 0){
 			return false;
@@ -415,7 +416,7 @@ map<unsigned int,bool> generatePrimeNumberMap(unsigned int start,unsigned int en
 	return primeNumberMap;
 }
 
-double getTotientFuncValue(unsigned long long int userInput){
+/*double getTotientFuncValue(unsigned long long int userInput){
 	map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
 	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
 	double result = userInput;
@@ -424,7 +425,7 @@ double getTotientFuncValue(unsigned long long int userInput){
 		result /= (double)itToPrimeFactorization->first;
 	}
 	return result;
-}
+}*/
 
 #endif /* MATHUTIL_H_ */
 

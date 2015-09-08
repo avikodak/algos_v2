@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */

@@ -40,11 +40,12 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
-#include <algorithm/constants/constants.h>
-#include <algorithm/ds/commonds.h>
-#include <algorithm/ds/linkedlistds.h>
-#include <algorithm/ds/mathds.h>
-#include <algorithm/ds/treeds.h>
+#include <stdint.h>
+#include <lib/constants/constants.h>
+#include <lib/ds/commonds.h>
+#include <lib/ds/linkedlistds.h>
+#include <lib/ds/mathds.h>
+#include <lib/ds/treeds.h>
 
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
@@ -139,14 +140,14 @@ void printIVector(vector<iPair *> userInput){
 	}
 }
 
-void printDimensionVector(vector<dimensions *> userInput){
+/*void printDimensionVector(vector<dimensions *> userInput){
 	if(userInput.size() == 0){
 		return;
 	}
 	for(unsigned int counter = 0;counter < userInput.size();counter++){
 		printf("%d %d %d\n",userInput[counter]->length,userInput[counter]->width,userInput[counter]->height);
 	}
-}
+}*/
 
 //Tested
 void printIVector(vector<iValueIndex *> userInput){

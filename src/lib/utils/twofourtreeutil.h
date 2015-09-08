@@ -40,11 +40,12 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
-#include <algorithm/constants/constants.h>
-#include <algorithm/ds/commonds.h>
-#include <algorithm/ds/linkedlistds.h>
-#include <algorithm/ds/mathds.h>
-#include <algorithm/ds/treeds.h>
+#include <stdint.h>
+#include <lib/constants/constants.h>
+#include <lib/ds/commonds.h>
+#include <lib/ds/linkedlistds.h>
+#include <lib/ds/mathds.h>
+#include <lib/ds/treeds.h>
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -58,7 +59,7 @@ using namespace __gnu_cxx;
 #ifndef TWOFOURTREEUTIL_H_
 #define TWOFOURTREEUTIL_H_
 
-class twofourtreeutils {
+/*class twofourtreeutils {
 private:
 	//Tested
 	void insertAtRightPlace(i24Node **root,i24Node *currentNode,int value){
@@ -430,7 +431,7 @@ public:
 		}
 		deleteFromTwoFourTreeMain(root,node,value);
 	}
-};
+};*/
 
 
 #endif /* TWOFOURTREEUTIL_H_ */
