@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : prgift.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\prgift.h
- *  Created on                  : Sep 7, 2015 :: 10:42:54 AM
+ *  File Name                   : anubtg.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\anubtg.h
+ *  Created on                  : Sep 8, 2015 :: 9:08:41 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/PRGIFT
+ *  URL                         : https://www.codechef.com/problems/ANUBTG
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,35 +67,44 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef PRGIFT_H_
-#define PRGIFT_H_
+#ifndef ANUBTG_H_
+#define ANUBTG_H_
+
+//Tested
+bool sortFunc(unsigned int first,unsigned int second){
+	return first > second;
+}
+
+//Tested
+void getMinAmount(vector<unsigned int> userInput){
+	sort(userInput.begin(),userInput.end(),sortFunc);
+	unsigned int totalAmount = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter+=4){
+		totalAmount += userInput[counter];
+		if(counter+1 < userInput.size()){
+			totalAmount += userInput[counter+1];
+		}
+	}
+	cout << totalAmount << endl;
+}
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,reqEvenCount,evenCount;
-	bool hasOdd;
+	unsigned int testCases,input,size;
+	vector<unsigned int> userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u %u",&size,&reqEvenCount);
-		evenCount = 0;
-		hasOdd = false;
-		for(unsigned int counter = 0;counter < size;counter++){
+		scanf("%u",&size);
+		userInput.clear();
+		while(size--){
 			scanf("%u",&input);
-			if(!(input&1)){
-				evenCount++;
-			}else{
-				hasOdd = true;
-			}
+			userInput.push_back(input);
 		}
-		if(reqEvenCount == 0){
-			printf("%s\n",hasOdd?"YES":"NO");
-		}else{
-			printf("%s\n",evenCount < reqEvenCount?"NO":"YES");
-		}
+		getMinAmount(userInput);
 	}
 }
 
-#endif /* PRGIFT_H_ */
+#endif /* ANUBTG_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
