@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : knightmv.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/knightmv.h
- *  Created on                  : 09-Sep-2015 :: 11:08:25 pm
+ *  File Name                   : cookmach.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/school/cookmach.h
+ *  Created on                  : 10-Sep-2015 :: 9:14:43 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/KNIGHTMV
+ *  URL                         : https://www.codechef.com/problems/COOKMACH
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,45 +68,53 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef KNIGHTMV_H_
-#define KNIGHTMV_H_
+#ifndef COOKMACH_H_
+#define COOKMACH_H_
 
 //Tested
-bool isRightAlpha(char ch){
-	return ch >= 'a' && ch <= 'h';
+long long int isPowerOf2(long long int userInput){
+	long long int logValue = log2(userInput);
+	if(pow(2,logValue) == userInput){
+		return logValue;
+	}else{
+		return -1;
+	}
 }
 
 //Tested
-bool isRightNumber(char ch){
-	return ch >= '1' && ch <= '8';
+void getTotalSettings(long long int userInput,long long int reqSetting){
+	if(userInput == reqSetting){
+		printf("0\n");
+		return;
+	}
+	long long int totalOperations = 0;
+	long long int logValue;
+	while(userInput != reqSetting){
+		if((logValue = isPowerOf2(userInput)) != -1 && userInput < reqSetting){
+			totalOperations += ((long long int)log2(reqSetting) - logValue);
+			break;
+		}else if(userInput%2 == 0){
+			userInput /= 2;
+		}else{
+			userInput = (userInput-1)/2;
+		}
+		totalOperations++;
+	}
+	cout << totalOperations << endl;
 }
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	cin >> testCases;
-	cin.ignore();
-	string userInput;
-	int alphaDiff,numbDiff;
+	long long int userInput,reqSettings;
+	scanf("%u",&testCases);
 	while(testCases--){
-		getline(cin,userInput);
-		if(userInput.size() == 5 && isRightAlpha(userInput[0]) && isRightAlpha(userInput[3]) && isRightNumber(userInput[1]) && isRightNumber(userInput[4]) && userInput[2] == '-'){
-			alphaDiff = abs(userInput[3]-userInput[0]);
-			numbDiff = abs(userInput[4]-userInput[1]);
-			if(alphaDiff == 2){
-				printf("%s\n",numbDiff == 1?"Yes":"No");
-			}else if(alphaDiff == 1){
-				printf("%s\n",numbDiff == 2?"Yes":"No");
-			}else{
-				printf("No\n");
-			}
-		}else{
-			cout << "Error" << endl;
-		}
+		cin >> userInput >> reqSettings;
+		getTotalSettings(userInput,reqSettings);
 	}
 }
 
-#endif /* KNIGHTMV_H_ */
+#endif /* COOKMACH_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : knightmv.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/knightmv.h
- *  Created on                  : 09-Sep-2015 :: 11:08:25 pm
+ *  File Name                   : ojumps.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/ojumps.h
+ *  Created on                  : 10-Sep-2015 :: 9:29:07 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/KNIGHTMV
+ *  URL                         : https://www.codechef.com/problems/OJUMPS
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,45 +68,22 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef KNIGHTMV_H_
-#define KNIGHTMV_H_
-
-//Tested
-bool isRightAlpha(char ch){
-	return ch >= 'a' && ch <= 'h';
-}
-
-//Tested
-bool isRightNumber(char ch){
-	return ch >= '1' && ch <= '8';
-}
+#ifndef OJUMPS_H_
+#define OJUMPS_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases;
-	cin >> testCases;
-	cin.ignore();
-	string userInput;
-	int alphaDiff,numbDiff;
-	while(testCases--){
-		getline(cin,userInput);
-		if(userInput.size() == 5 && isRightAlpha(userInput[0]) && isRightAlpha(userInput[3]) && isRightNumber(userInput[1]) && isRightNumber(userInput[4]) && userInput[2] == '-'){
-			alphaDiff = abs(userInput[3]-userInput[0]);
-			numbDiff = abs(userInput[4]-userInput[1]);
-			if(alphaDiff == 2){
-				printf("%s\n",numbDiff == 1?"Yes":"No");
-			}else if(alphaDiff == 1){
-				printf("%s\n",numbDiff == 2?"Yes":"No");
-			}else{
-				printf("No\n");
-			}
-		}else{
-			cout << "Error" << endl;
-		}
+	unsigned long long int userInput;
+	cin >> userInput;
+	unsigned int remainder = userInput%6;
+	if(remainder == 0 || remainder == 1 || remainder == 3){
+		printf("yes\n");
+	}else{
+		printf("no\n");
 	}
 }
 
-#endif /* KNIGHTMV_H_ */
+#endif /* OJUMPS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
