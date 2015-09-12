@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : statues.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/statues.h
- *  Created on                  : 12-Sep-2015 :: 1:09:43 pm
+ *  File Name                   : cmb02.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cmb02.h
+ *  Created on                  : 13-Sep-2015 :: 12:09:58 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/STATUES
+ *  URL                         : https://www.codechef.com/problems/CMB02
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,43 +68,44 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef STATUES_H_
-#define STATUES_H_
+#ifndef CMB02_H_
+#define CMB02_H_
 
 //Tested
-void printTotalMoves(vector<int> userInput,int average,int testCaseNo){
-	int totalMoves = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(average < userInput[counter]){
-			totalMoves += (userInput[counter] - average);
-		}
+unsigned int reverse(unsigned int userInput){
+	unsigned int result = 0;
+	while(userInput){
+		result = (result << 3) + (result << 1) +(userInput%10);
+		userInput/=10;
 	}
-	cout << "Set #" << testCaseNo << endl;
-	printf("The minimum number of moves is %u.\n\n",totalMoves);
+	return result;
+}
+
+//Tested
+bool isPalindrome(unsigned int userInput){
+	return reverse(userInput) == userInput;
+}
+
+//Tested
+void printSmallestPalindrome(unsigned int userInput){
+	userInput++;
+	while(!isPalindrome(userInput)){
+		userInput++;
+	}
+	cout << userInput << endl;
 }
 
 //Tested
 void printResults(){
-	int size,input,sum,testCase = 0;
-	vector<int> userInput;
-	do{
-		scanf("%u",&size);
-		testCase++;
-		if(size == 0){
-			break;
-		}
-		userInput.clear();
-		sum = 0;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-			sum += input;
-		}
-		printTotalMoves(userInput,sum/size,testCase);
-	}while(true);
+	unsigned int testCases,input;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&input);
+		printSmallestPalindrome(input);
+	}
 }
 
-#endif /* STATUES_H_ */
+#endif /* CMB02_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

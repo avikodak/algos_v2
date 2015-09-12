@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : statues.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/statues.h
- *  Created on                  : 12-Sep-2015 :: 1:09:43 pm
+ *  File Name                   : rgpvr103.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/rgpvr103.h
+ *  Created on                  : 13-Sep-2015 :: 12:39:00 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/STATUES
+ *  URL                         : https://www.codechef.com/problems/RGPVR103
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,43 +68,22 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef STATUES_H_
-#define STATUES_H_
-
-//Tested
-void printTotalMoves(vector<int> userInput,int average,int testCaseNo){
-	int totalMoves = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(average < userInput[counter]){
-			totalMoves += (userInput[counter] - average);
-		}
-	}
-	cout << "Set #" << testCaseNo << endl;
-	printf("The minimum number of moves is %u.\n\n",totalMoves);
-}
+#ifndef RGPVR103_H_
+#define RGPVR103_H_
 
 //Tested
 void printResults(){
-	int size,input,sum,testCase = 0;
-	vector<int> userInput;
-	do{
-		scanf("%u",&size);
-		testCase++;
-		if(size == 0){
-			break;
-		}
-		userInput.clear();
-		sum = 0;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-			sum += input;
-		}
-		printTotalMoves(userInput,sum/size,testCase);
-	}while(true);
+	unsigned int testCases;
+	unsigned int totalSticks,temp;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&totalSticks);
+		temp = (totalSticks/2);
+		printf("%u\n",(temp/2)*(temp - (temp/2)));
+	}
 }
 
-#endif /* STATUES_H_ */
+#endif /* RGPVR103_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

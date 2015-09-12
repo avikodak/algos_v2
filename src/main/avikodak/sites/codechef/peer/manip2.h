@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : statues.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/statues.h
- *  Created on                  : 12-Sep-2015 :: 1:09:43 pm
+ *  File Name                   : manip2.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/manip2.h
+ *  Created on                  : 13-Sep-2015 :: 12:15:45 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/STATUES
+ *  URL                         : https://www.codechef.com/problems/MANIP2
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,43 +68,41 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef STATUES_H_
-#define STATUES_H_
+#ifndef MANIP2_H_
+#define MANIP2_H_
 
 //Tested
-void printTotalMoves(vector<int> userInput,int average,int testCaseNo){
-	int totalMoves = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(average < userInput[counter]){
-			totalMoves += (userInput[counter] - average);
+vector<unsigned int> generateValues(){
+	vector<unsigned int> values;
+	unsigned int temp;
+	values.push_back(5);
+	unsigned int powVal = 5;
+	while(values.size() <= 8000){
+		powVal *= 5;
+		temp = values.size();
+		values.push_back(powVal);
+		for(unsigned int counter = 0;counter < temp;counter++){
+			values.push_back(powVal + values[counter]);
+			if(values.size() >= 8000){
+				break;
+			}
 		}
 	}
-	cout << "Set #" << testCaseNo << endl;
-	printf("The minimum number of moves is %u.\n\n",totalMoves);
+	return values;
 }
 
 //Tested
 void printResults(){
-	int size,input,sum,testCase = 0;
-	vector<int> userInput;
-	do{
-		scanf("%u",&size);
-		testCase++;
-		if(size == 0){
-			break;
-		}
-		userInput.clear();
-		sum = 0;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-			sum += input;
-		}
-		printTotalMoves(userInput,sum/size,testCase);
-	}while(true);
+	vector<unsigned int> auxSpace = generateValues();
+	unsigned int testCases,input;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&input);
+		cout << auxSpace[input-1] << endl;
+	}
 }
 
-#endif /* STATUES_H_ */
+#endif /* MANIP2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
