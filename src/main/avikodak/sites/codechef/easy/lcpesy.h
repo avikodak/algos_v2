@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: snape.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\snape.h
- *  Created on			: Feb 9, 2015 :: 9:40:43 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.codechef.com/problems/SNAPE/
-****************************************************************************************************************************************************/
+ *  File Name                   : lcpesy.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/lcpesy.h
+ *  Created on                  : 12-Sep-2015 :: 8:28:31 am
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/LCPESY
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -60,34 +61,53 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SNAPE_H_
-#define SNAPE_H_
+#ifndef LCPESY_H_
+#define LCPESY_H_
+
+//Tested
+void printLongestCommonPattern(string firstUserInput,string secondUserInput){
+	map<char,unsigned int> frequencyMap;
+	for(unsigned int counter = 0;counter < firstUserInput.length();counter++){
+		if(frequencyMap.find(firstUserInput[counter]) == frequencyMap.end()){
+			frequencyMap[firstUserInput[counter]] = 1;
+		}else{
+			frequencyMap[firstUserInput[counter]]++;
+		}
+	}
+	unsigned int commonChars = 0;
+	for(unsigned int counter = 0;counter < secondUserInput.length();counter++){
+		if(frequencyMap.find(secondUserInput[counter]) != frequencyMap.end()){
+			commonChars++;
+			if(frequencyMap[secondUserInput[counter]] == 1){
+				frequencyMap.erase(secondUserInput[counter]);
+			}else{
+				frequencyMap[secondUserInput[counter]]--;
+			}
+		}
+	}
+	cout << commonChars << endl;
+}
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	double firstSide,secondSide;
 	scanf("%u",&testCases);
+	string firstUserInput,secondUserInput;
 	while(testCases--){
-		cin >> firstSide >> secondSide;
-		if(firstSide > secondSide){
-			cout << sqrt(firstSide*firstSide - secondSide * secondSide);
-		}else{
-			cout << sqrt(secondSide*secondSide - firstSide*firstSide);
-		}
-		cout << " " << sqrt(firstSide*firstSide + secondSide*secondSide) << endl;
+		cin >> firstUserInput >> secondUserInput;
+		printLongestCommonPattern(firstUserInput,secondUserInput);
 	}
 }
 
-#endif /* SNAPE_H_ */
+#endif /* LCPESY_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

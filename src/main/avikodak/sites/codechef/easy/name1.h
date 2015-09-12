@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: snape.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\snape.h
- *  Created on			: Feb 9, 2015 :: 9:40:43 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.codechef.com/problems/SNAPE/
-****************************************************************************************************************************************************/
+ *  File Name                   : name1.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/name1.h
+ *  Created on                  : 11-Sep-2015 :: 6:58:31 pm
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/NAME1
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -60,34 +61,57 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SNAPE_H_
-#define SNAPE_H_
+#ifndef NAME1_H_
+#define NAME1_H_
+
+//Tested
+void areValidNames(){
+	string fatherName,motherName,input;
+	unsigned int children;
+	vector<string> childNames;
+	int frequency[26] = {0};
+	cin >> fatherName >> motherName >> children;
+	while(children--){
+		cin >> input;
+		childNames.push_back(input);
+	}
+	for(unsigned int counter = 0;counter < fatherName.length();counter++){
+		frequency[fatherName[counter]-'a']++;
+	}
+	for(unsigned int counter = 0;counter < motherName.length();counter++){
+		frequency[motherName[counter]-'a']++;
+	}
+	for(unsigned int outerCounter = 0;outerCounter < childNames.size();outerCounter++){
+		for(unsigned int innerCounter = 0;innerCounter < childNames[outerCounter].length();innerCounter++){
+			if(frequency[childNames[outerCounter][innerCounter]-'a'] == 0){
+				printf("NO\n");
+				return;
+			}
+			frequency[childNames[outerCounter][innerCounter]-'a']--;
+		}
+	}
+	printf("YES\n");
+}
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	double firstSide,secondSide;
 	scanf("%u",&testCases);
 	while(testCases--){
-		cin >> firstSide >> secondSide;
-		if(firstSide > secondSide){
-			cout << sqrt(firstSide*firstSide - secondSide * secondSide);
-		}else{
-			cout << sqrt(secondSide*secondSide - firstSide*firstSide);
-		}
-		cout << " " << sqrt(firstSide*firstSide + secondSide*secondSide) << endl;
+		areValidNames();
 	}
 }
 
-#endif /* SNAPE_H_ */
+
+#endif /* NAME1_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/

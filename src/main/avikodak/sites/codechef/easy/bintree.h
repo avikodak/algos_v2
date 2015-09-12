@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: snape.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\snape.h
- *  Created on			: Feb 9, 2015 :: 9:40:43 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: https://www.codechef.com/problems/SNAPE/
-****************************************************************************************************************************************************/
+ *  File Name                   : bintree.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/bintree.h
+ *  Created on                  : 11-Sep-2015 :: 7:00:16 pm
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/BINTREE
+ ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                         */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -60,34 +61,43 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SNAPE_H_
-#define SNAPE_H_
+#ifndef BINTREE_H_
+#define BINTREE_H_
+
+//Tested
+void printShortestDistance(long long int first,long long int second){
+	long long int distance = 0;
+	while(first != second){
+		if(first > second){
+			first /= 2;
+		}else{
+			second /= 2;
+		}
+		distance++;
+	}
+	cout << distance << endl;
+}
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	double firstSide,secondSide;
+	long long int first,second;
 	scanf("%u",&testCases);
 	while(testCases--){
-		cin >> firstSide >> secondSide;
-		if(firstSide > secondSide){
-			cout << sqrt(firstSide*firstSide - secondSide * secondSide);
-		}else{
-			cout << sqrt(secondSide*secondSide - firstSide*firstSide);
-		}
-		cout << " " << sqrt(firstSide*firstSide + secondSide*secondSide) << endl;
+		scanf("%lld %lld",&first,&second);
+		printShortestDistance(first,second);
 	}
 }
 
-#endif /* SNAPE_H_ */
+#endif /* BINTREE_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                               MAIN CODE END                                                                      */
 /****************************************************************************************************************************************************/
