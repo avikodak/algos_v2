@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : vitc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/vitc03.h
- *  Created on                  : 13-Sep-2015 :: 11:31:29 pm
+ *  File Name                   : vitc05.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/vitc05.h
+ *  Created on                  : 13-Sep-2015 :: 11:43:33 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/VITC03
+ *  URL                         : https://www.codechef.com/problems/VITC05
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,31 +68,32 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef VITC03_H_
-#define VITC03_H_
-
-//Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
-}
+#ifndef VITC05_H_
+#define VITC05_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases;
-	long long int first,second;
+	unsigned int testCases,size;
+	long long int input,minDifference;
 	scanf("%u",&testCases);
+	vector<long long int> userInput;
 	while(testCases--){
-		cin >> first >> second;
-		cout << reverse(reverse(first) + reverse(second)) << endl;
+		scanf("%u",&size);
+		userInput.clear();
+		while(size--){
+			scanf("%lld",&input);
+			userInput.push_back(input);
+		}
+		minDifference = LONG_LONG_MAX;
+		sort(userInput.begin(),userInput.end());
+		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+			minDifference = min(minDifference,userInput[counter+1]-userInput[counter]);
+		}
+		cout << minDifference << endl;
 	}
 }
 
-#endif /* VITC03_H_ */
+#endif /* VITC05_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

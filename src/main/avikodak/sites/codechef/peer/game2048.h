@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : vitc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/vitc03.h
- *  Created on                  : 13-Sep-2015 :: 11:31:29 pm
+ *  File Name                   : game2048.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/game2048.h
+ *  Created on                  : 14-Sep-2015 :: 12:28:53 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/VITC03
+ *  URL                         : https://www.codechef.com/problems/GAME2048
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,31 +68,21 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef VITC03_H_
-#define VITC03_H_
-
-//Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
-}
+#ifndef GAME2048_H_
+#define GAME2048_H_
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	long long int first,second;
+	long long int userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		cin >> first >> second;
-		cout << reverse(reverse(first) + reverse(second)) << endl;
+		scanf("%lld",&userInput);
+		cout << userInput-1 << endl;
 	}
 }
 
-#endif /* VITC03_H_ */
+#endif /* GAME2048_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

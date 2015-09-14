@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : vitc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/vitc03.h
- *  Created on                  : 13-Sep-2015 :: 11:31:29 pm
+ *  File Name                   : chefgr.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/chefgr.h
+ *  Created on                  : 14-Sep-2015 :: 7:29:26 pm
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/VITC03
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/CHEFGR
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,31 +68,30 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef VITC03_H_
-#define VITC03_H_
+#ifndef CHEFGR_H_
+#define CHEFGR_H_
 
-//Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
-}
-
-//Tested
 void printResults(){
-	unsigned int testCases;
-	long long int first,second;
+	unsigned int testCases,size,total,sum,input,maxVal;
 	scanf("%u",&testCases);
+	vector<unsigned int> userInput;
 	while(testCases--){
-		cin >> first >> second;
-		cout << reverse(reverse(first) + reverse(second)) << endl;
+		scanf("%u %u",&size,&total);
+		userInput.clear();
+		for(unsigned int counter = 0;counter < size;counter++){
+			scanf("%u",&input);
+			userInput.push_back(input);
+		}
+		sum = 0;
+		maxVal = *max_element(userInput.begin(),userInput.end());
+		for(unsigned int counter = 0;counter < size;counter++){
+			sum += (userInput[counter] - maxVal);
+		}
+		printf("%s\n",total >= sum?"Yes":"No");
 	}
 }
 
-#endif /* VITC03_H_ */
+#endif /* CHEFGR_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

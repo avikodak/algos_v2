@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : vitc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/vitc03.h
- *  Created on                  : 13-Sep-2015 :: 11:31:29 pm
+ *  File Name                   : chefa.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/chefa.h
+ *  Created on                  : 14-Sep-2015 :: 7:10:22 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/VITC03
+ *  URL                         : https://www.codechef.com/problems/CHEFA
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,31 +68,37 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef VITC03_H_
-#define VITC03_H_
+#ifndef CHEFA_H_
+#define CHEFA_H_
 
 //Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+bool sortFunc(long long int first,long long int second){
+	return first > second;
 }
 
 //Tested
 void printResults(){
 	unsigned int testCases;
-	long long int first,second;
 	scanf("%u",&testCases);
+	vector<long long int> userInput;
+	long long int size,input,total;
 	while(testCases--){
-		cin >> first >> second;
-		cout << reverse(reverse(first) + reverse(second)) << endl;
+		scanf("%lld",&size);
+		userInput.clear();
+		for(long long int counter = 0;counter < size;counter++){
+			scanf("%lld",&input);
+			userInput.push_back(input);
+		}
+		sort(userInput.begin(),userInput.end(),sortFunc);
+		total = 0;
+		for(long long int counter = 0;counter < size;counter+=2){
+			total += userInput[counter];
+		}
+		cout << total << endl;
 	}
 }
 
-#endif /* VITC03_H_ */
+#endif /* CHEFA_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
