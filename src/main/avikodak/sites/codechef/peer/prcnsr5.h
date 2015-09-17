@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : awsgame1.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\awsgame1.h
- *  Created on                  : Sep 5, 2015 :: 9:34:01 PM
+ *  File Name                   : prcnsr5.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/prcnsr5.h
+ *  Created on                  : 17-Sep-2015 :: 10:52:30 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/AMSGAME1
+ *  URL                         : https://www.codechef.com/problems/PRCNSR5
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,7 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,48 +68,27 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef AWSGAME1_H_
-#define AWSGAME1_H_
-
-//Tested
-long long int gcd(long long int first,long long int second){
-	if(second == 0){
-		return first;
-	}
-	return gcd(second,first%second);
-}
-
-//Tested
-void printGCD(vector<long long int> userInput){
-	if(userInput.size() == 1){
-		printf("%lld\n",userInput[0]);
-		return;
-	}
-	long long int result = gcd(userInput[0],userInput[1]);
-	for(unsigned int counter = 2;counter < userInput.size();counter++){
-		result = gcd(result,userInput[counter]);
-	}
-	cout << result << endl;
-}
+#ifndef PRCNSR5_H_
+#define PRCNSR5_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		printGCD(userInput);
+	string userInput;
+	cin >> userInput;
+	switch (userInput[userInput.size()-1]) {
+		case '0':
+		case '2':
+		case '4':
+		case '6':
+		case '8':
+			printf("YES\n");
+			break;
+		default:
+			printf("NO\n");
 	}
 }
 
-#endif /* AWSGAME1_H_ */
+#endif /* PRCNSR5_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
