@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : fastinpututil.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
- *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
+ *  File Name                   : mriu4.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/mriu4.h
+ *  Created on                  : 20-Sep-2015 :: 12:28:12 am
  *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/MRIU4
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,11 +70,12 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FASTINPUTUTIL_H_
-#define FASTINPUTUTIL_H_
+#ifndef MRIU4_H_
+#define MRIU4_H_
 
-inline long long int scan() {
-	long long int t=0,neg=0;
+//Tested
+inline unsigned int scan() {
+	unsigned int t=0,neg=0;
 	char c;
 	c=gc();
 	while((c<'0' || c>'9')&& c!='-')
@@ -87,14 +90,27 @@ inline long long int scan() {
 	return(t);
 }
 
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+//Tested
+void printResults(){
+	unsigned int testCases,input,size;
+	vector<unsigned int> userInput;
+	testCases = scan();
+	while(testCases--){
+		size = scan();
+		userInput.clear();
+		while(size--){
+			input = scan();
+			userInput.push_back(input);
+		}
+		sort(userInput.begin(),userInput.end());
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			printf("%u ",userInput[counter]);
+		}
+		printf("\n");
+	}
 }
 
-#endif /* FASTINPUTUTIL_H_ */
+#endif /* MRIU4_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

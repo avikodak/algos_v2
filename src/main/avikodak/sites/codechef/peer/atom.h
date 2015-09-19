@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : fastinpututil.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
- *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
+ *  File Name                   : atom.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/atom.h
+ *  Created on                  : 20-Sep-2015 :: 12:36:51 am
  *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/ATOM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -68,25 +70,10 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FASTINPUTUTIL_H_
-#define FASTINPUTUTIL_H_
+#ifndef ATOM_H_
+#define ATOM_H_
 
-inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
-}
-
+//Tested
 void scanllint(long long int &x){
 	register int c = gc();
 	x = 0;
@@ -94,7 +81,25 @@ void scanllint(long long int &x){
 	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
 }
 
-#endif /* FASTINPUTUTIL_H_ */
+//Tested
+void printResults(){
+	long long int testCases,result,N,K,M;
+	scanllint(testCases);
+	while(testCases--){
+		scanllint(N);
+		scanllint(K);
+		scanllint(M);
+		result = 0;
+		while(N <= M/K){
+			N *= K;
+			result++;
+		}
+		printf("%lld\n",result);
+	}
+}
+
+
+#endif /* ATOM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

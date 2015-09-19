@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : fastinpututil.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
- *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
+ *  File Name                   : insoma4.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/insoma4.h
+ *  Created on                  : 19-Sep-2015 :: 11:08:54 pm
  *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/INSOMA4
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,39 +64,41 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define gc getchar_unlocked
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FASTINPUTUTIL_H_
-#define FASTINPUTUTIL_H_
+#ifndef INSOMA4_H_
+#define INSOMA4_H_
 
-inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
+//Tested
+unsigned int getCommonAncestors(string first,string second){
+	unsigned int counter = 0;
+	while(counter < first.size() && counter < second.size() && first[counter] == second[counter]){
+		counter++;
 	}
-	if(neg) t=-t;
-	return(t);
+	return counter;
 }
 
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+//Tested
+void printResults(){
+	unsigned int size,maxAncestors = 0;
+	scanf("%u",&size);
+	vector<string> userInput;
+	string input;
+	while(size--){
+		cin >> input;
+		userInput.push_back(input);
+	}
+	sort(userInput.begin(),userInput.end());
+	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
+		maxAncestors = max(maxAncestors,getCommonAncestors(userInput[counter],userInput[counter+1]));
+	}
+	cout << maxAncestors << endl;
 }
 
-#endif /* FASTINPUTUTIL_H_ */
+#endif /* INSOMA4_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

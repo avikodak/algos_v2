@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : fastinpututil.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
- *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
+ *  File Name                   : codq2.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/codq2.h
+ *  Created on                  : 19-Sep-2015 :: 11:58:29 pm
  *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/CODQ2
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,39 +64,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define gc getchar_unlocked
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FASTINPUTUTIL_H_
-#define FASTINPUTUTIL_H_
+#ifndef CODQ2_H_
+#define CODQ2_H_
 
-inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+//Tested
+void printResults(){
+	unsigned int money;
+	scanf("%u",&money);
+	printf("%u\n",money/5);
+	money = money%5;
+	printf("%u\n",money/3);
+	money %= 3;
+	printf("%u\n",money/2);
+	money %= 2;
+	printf("%u\n",money);
 }
 
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
-}
-
-#endif /* FASTINPUTUTIL_H_ */
+#endif /* CODQ2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

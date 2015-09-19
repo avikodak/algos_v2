@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : fastinpututil.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
- *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
+ *  File Name                   : pinoch2.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/pinoch2.h
+ *  Created on                  : 20-Sep-2015 :: 12:05:20 am
  *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/PINOCH2
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -62,39 +64,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define gc getchar_unlocked
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef FASTINPUTUTIL_H_
-#define FASTINPUTUTIL_H_
+#ifndef PINOCH2_H_
+#define PINOCH2_H_
 
-inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
+//Tested
+void printResults(){
+	unsigned int testCases,size,input;
+	vector<unsigned int> userInput;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&size);
+		userInput.clear();
+		for(unsigned int counter = 0;counter < size;counter++){
+			scanf("%u",&input);
+			userInput.push_back(input);
+		}
+		unsigned int outerCrawler = 0,innerCrawler,maxSize = 0,counter;
+		while(outerCrawler < size){
+			innerCrawler = outerCrawler + 1;
+			counter = 0;
+			while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]){
+				counter++;
+				innerCrawler++;
+			}
+			maxSize = max(maxSize,counter);
+			outerCrawler = innerCrawler;
+		}
+		cout << maxSize << endl;
 	}
-	if(neg) t=-t;
-	return(t);
 }
 
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
-}
-
-#endif /* FASTINPUTUTIL_H_ */
+#endif /* PINOCH2_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
