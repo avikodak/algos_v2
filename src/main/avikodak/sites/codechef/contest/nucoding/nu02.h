@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cstrike3.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cstrike3.h
- *  Created on                  : 18-Sep-2015 :: 9:21:42 am
+ *  File Name                   : nu02.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/nucoding/nu02.h
+ *  Created on                  : 19-Sep-2015 :: 4:15:04 pm
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/CSTRIKE3
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/NUCD2015/problems/NU02
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -41,6 +41,7 @@ using namespace __gnu_cxx;
 #include <queue>
 #include <limits.h>
 #include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -63,58 +64,44 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define gc getchar_unlocked
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CSTRIKE3_H_
-#define CSTRIKE3_H_
+#ifndef NU02_H_
+#define NU02_H_
 
-//Tested
-inline unsigned int scan() {
-	unsigned int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
-}
-
-//Tested
 void printResults(){
-	ios_base::sync_with_stdio(0);
-	unsigned int testCases,sum;
-	testCases = scan();
-	char userInput[100001];
-	bool flags[26];
+	unsigned int testCases,position = 0,counter;
+	scanf("%u",&testCases);
+	string startFlag,endFlag,data;
+	std::size_t posFound;
 	while(testCases--){
-		scanf("%s",userInput);
-		memset(flags,0,sizeof(flags));
-		sum = 0;
-		for(unsigned int counter = 0;userInput[counter]!='\0';counter++){
-			if(!flags[userInput[counter]-'a']){
-				flags[userInput[counter]-'a'] = true;
-				sum++;
+		cin >> startFlag >>  endFlag  >> data;
+		counter = 0;
+		position = 0;
+		while(true){
+			if((posFound = data.find(startFlag,position)) != string::npos){
+				while(counter < posFound){
+					printf("%c",data[counter]);
+					counter++;
+				}
+				position = data.find(endFlag,posFound) + endFlag.size();
+				counter = position;
+			}else{
+				while(counter < data.size()){
+					printf("%c",data[counter]);
+					counter++;
+				}
+				break;
 			}
 		}
-		if(sum%2 == 0){
-			printf("Terrorist\n");
-		}else{
-			printf("Counter Terrorist\n");
-		}
+		printf("\n");
 	}
 }
 
-#endif /* CSTRIKE3_H_ */
+#endif /* NU02_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

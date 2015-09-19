@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cstrike3.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cstrike3.h
- *  Created on                  : 18-Sep-2015 :: 9:21:42 am
+ *  File Name                   : iitk2p01.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/iitk2p01.h
+ *  Created on                  : 19-Sep-2015 :: 11:50:56 am
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/CSTRIKE3
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/IITK2P01
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -41,6 +41,7 @@ using namespace __gnu_cxx;
 #include <queue>
 #include <limits.h>
 #include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -69,12 +70,12 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CSTRIKE3_H_
-#define CSTRIKE3_H_
+#ifndef IITK2P01_H_
+#define IITK2P01_H_
 
 //Tested
-inline unsigned int scan() {
-	unsigned int t=0,neg=0;
+inline long long int scan() {
+	long long int t=0,neg=0;
 	char c;
 	c=gc();
 	while((c<'0' || c>'9')&& c!='-')
@@ -91,30 +92,25 @@ inline unsigned int scan() {
 
 //Tested
 void printResults(){
-	ios_base::sync_with_stdio(0);
-	unsigned int testCases,sum;
+	long long int testCases,userInput,kValue;
 	testCases = scan();
-	char userInput[100001];
-	bool flags[26];
 	while(testCases--){
-		scanf("%s",userInput);
-		memset(flags,0,sizeof(flags));
-		sum = 0;
-		for(unsigned int counter = 0;userInput[counter]!='\0';counter++){
-			if(!flags[userInput[counter]-'a']){
-				flags[userInput[counter]-'a'] = true;
-				sum++;
-			}
-		}
-		if(sum%2 == 0){
-			printf("Terrorist\n");
+		userInput = scan();
+		kValue = scan();
+		if(kValue == 1){
+			cout << userInput << endl;
 		}else{
-			printf("Counter Terrorist\n");
+			long long int sum = 0;
+			while(userInput){
+				sum += (userInput%kValue);
+				userInput /= kValue;
+			}
+			cout << sum << endl;
 		}
 	}
 }
 
-#endif /* CSTRIKE3_H_ */
+#endif /* IITK2P01_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cstrike3.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cstrike3.h
- *  Created on                  : 18-Sep-2015 :: 9:21:42 am
+ *  File Name                   : ds10.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/ds10.h
+ *  Created on                  : 19-Sep-2015 :: 3:40:35 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/CSTRIKE3
+ *  URL                         : https://www.codechef.com/problems/DS10
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -41,6 +41,7 @@ using namespace __gnu_cxx;
 #include <queue>
 #include <limits.h>
 #include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -63,58 +64,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define gc getchar_unlocked
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CSTRIKE3_H_
-#define CSTRIKE3_H_
-
-//Tested
-inline unsigned int scan() {
-	unsigned int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
-}
+#ifndef DS10_H_
+#define DS10_H_
 
 //Tested
 void printResults(){
-	ios_base::sync_with_stdio(0);
-	unsigned int testCases,sum;
-	testCases = scan();
-	char userInput[100001];
-	bool flags[26];
-	while(testCases--){
-		scanf("%s",userInput);
-		memset(flags,0,sizeof(flags));
-		sum = 0;
-		for(unsigned int counter = 0;userInput[counter]!='\0';counter++){
-			if(!flags[userInput[counter]-'a']){
-				flags[userInput[counter]-'a'] = true;
-				sum++;
-			}
-		}
-		if(sum%2 == 0){
-			printf("Terrorist\n");
-		}else{
-			printf("Counter Terrorist\n");
+	unsigned int userInput,sum = 1;
+	scanf("%u",&userInput);
+	for(unsigned int counter = 2;counter < userInput;counter++){
+		if(userInput%counter == 0){
+			sum += counter;
 		}
 	}
+	cout << sum << endl;
 }
 
-#endif /* CSTRIKE3_H_ */
+#endif /* DS10_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

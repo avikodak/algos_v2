@@ -1,10 +1,8 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cstrike3.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cstrike3.h
- *  Created on                  : 18-Sep-2015 :: 9:21:42 am
+ *  File Name                   : fastinpututil.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/lib/utils/fastinpututil.h
+ *  Created on                  : 19-Sep-2015 :: 12:05:57 pm
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/CSTRIKE3
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -41,6 +39,7 @@ using namespace __gnu_cxx;
 #include <queue>
 #include <limits.h>
 #include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -69,12 +68,11 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CSTRIKE3_H_
-#define CSTRIKE3_H_
+#ifndef FASTINPUTUTIL_H_
+#define FASTINPUTUTIL_H_
 
-//Tested
-inline unsigned int scan() {
-	unsigned int t=0,neg=0;
+inline long long int scan() {
+	long long int t=0,neg=0;
 	char c;
 	c=gc();
 	while((c<'0' || c>'9')&& c!='-')
@@ -89,32 +87,7 @@ inline unsigned int scan() {
 	return(t);
 }
 
-//Tested
-void printResults(){
-	ios_base::sync_with_stdio(0);
-	unsigned int testCases,sum;
-	testCases = scan();
-	char userInput[100001];
-	bool flags[26];
-	while(testCases--){
-		scanf("%s",userInput);
-		memset(flags,0,sizeof(flags));
-		sum = 0;
-		for(unsigned int counter = 0;userInput[counter]!='\0';counter++){
-			if(!flags[userInput[counter]-'a']){
-				flags[userInput[counter]-'a'] = true;
-				sum++;
-			}
-		}
-		if(sum%2 == 0){
-			printf("Terrorist\n");
-		}else{
-			printf("Counter Terrorist\n");
-		}
-	}
-}
-
-#endif /* CSTRIKE3_H_ */
+#endif /* FASTINPUTUTIL_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
