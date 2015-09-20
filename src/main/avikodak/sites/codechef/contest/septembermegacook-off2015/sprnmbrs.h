@@ -3,7 +3,7 @@
  *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/septembermegacook-off2015/sprnmbrs.h
  *  Created on                  : 20-Sep-2015 :: 10:35:36 pm
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/COOK62/problems/SPRNMBRS
  ****************************************************************************************************************************************************/
 
@@ -88,27 +88,28 @@ void scanuint(unsigned int &x){
 }
 
 vector<long long int> init(){
-	long long int powCounter = 1,result;
-	long long int limit = pow(10,18);
-	vector<long long int> values;
-	vector<long long int> otherSet;
-	map<long long int,bool> resultMap;
-	while((result = pow(2,powCounter)) <= limit){
-		values.push_back(result);
-		resultMap[result] = true;
-		powCounter++;
+	long long int product;
+	long long int limit = 1000000000000000000;
+	vector<long long int> twoPowers;
+	vector<long long int> twoThreePowers;
+	product = 2;
+	while(product <= limit){
+		twoPowers.push_back(product);
+		product *= 2;
 	}
-	for(unsigned int counter = 0;counter < values.size() && values[counter] <= limit/3;counter++){
-		for(long long int innerCounter = 1;(result = (values[counter]*pow(3,innerCounter))) <= limit;innerCounter++){
-			resultMap[result] = true;
-			otherSet.push_back(result);
+	for(unsigned int counter = 0;counter < twoPowers.size() && twoPowers[counter] <= limit;counter++){
+		product = 3;
+		for(long long int innerCounter = 1;twoPowers[counter]*product <= limit;innerCounter++){
+			twoThreePowers.push_back(twoPowers[counter]*product);
+			product *= 3;
 		}
 	}
-	for(unsigned int counter = 0;counter < otherSet.size();counter++){
-		values.push_back(otherSet[counter]);
+	for(unsigned int counter = 0;counter < twoThreePowers.size();counter++){
+		twoPowers.push_back(twoThreePowers[counter]);
 	}
-	sort(values.begin(),values.end());
-	return values;
+	twoPowers.push_back(1);
+	sort(twoPowers.begin(),twoPowers.end());
+	return twoPowers;
 }
 
 void printResults(){
