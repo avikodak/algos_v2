@@ -416,7 +416,7 @@ map<unsigned int,bool> generatePrimeNumberMap(unsigned int start,unsigned int en
 	return primeNumberMap;
 }
 
-/*double getTotientFuncValue(unsigned long long int userInput){
+double getTotientFuncValue(unsigned long long int userInput){
 	map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
 	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
 	double result = userInput;
@@ -425,7 +425,7 @@ map<unsigned int,bool> generatePrimeNumberMap(unsigned int start,unsigned int en
 		result /= (double)itToPrimeFactorization->first;
 	}
 	return result;
-}*/
+}
 
 #endif /* MATHUTIL_H_ */
 
