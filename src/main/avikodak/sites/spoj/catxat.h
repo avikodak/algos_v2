@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : sbank.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/spoj/sbank.h
- *  Created on                  : 22-Sep-2015 :: 5:39:47 pm
+ *  File Name                   : catxat.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/spoj/catxat.h
+ *  Created on                  : 23-Sep-2015 :: 10:29:57 am
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://www.spoj.com/problems/SBANK/
+ *  Testing Status              : TODO
+ *  URL                         : http://www.spoj.com/problems/CATXAT/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,41 +69,31 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef SBANK_H_
-#define SBANK_H_
+#ifndef CATXAT_H_
+#define CATXAT_H_
 
-//Tested
+string replaceAll(string input,string original,string updated){
+	size_t position;
+	while((position = input.find(original)) != string::npos){
+		input.replace(position,original.length(),updated);
+		position += updated.length();
+	}
+	return input;
+}
+
 void printResults(){
-	int testCases,size;
-	string input;
-	vector<string> userInput;
-	map<string,unsigned int> presenceMap;
-	getline(cin,input);
-	testCases = atoi(input.c_str());
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	string replaceXAT = "UBXEQX",replaceCAT = "ZGXEQX",input;
 	while(testCases--){
-		getline(cin,input);
-		userInput.clear();
-		size = atoi(input.c_str());
-		presenceMap.clear();
-		while(size--){
-			getline(cin,input);
-			if(presenceMap.find(input) == presenceMap.end()){
-				userInput.push_back(input);
-				presenceMap[input] = 1;
-			}else{
-				presenceMap[input]++;
-			}
-		}
-		getline(cin,input);
-		sort(userInput.begin(),userInput.end());
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			cout << userInput[counter] << " " << presenceMap[userInput[counter]] << endl;
-		}
-		cout << endl;
+		cin >> input;
+		input = replaceAll(input,"XAT","UBXEQX");
+		input = replaceAll(input,"CAT","ZGXEQX");
+		cout << input << endl;
 	}
 }
 
-#endif /* SBANK_H_ */
+#endif /* CATXAT_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
