@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : axr1p2.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/axr1p2.h
- *  Created on                  : 22-Sep-2015 :: 1:38:30 pm
+ *  File Name                   : wolvxr.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/wolvxr.h
+ *  Created on                  : 24-Sep-2015 :: 1:13:01 am
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/AXR1P2
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/WOLVXR
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,29 +69,21 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef AXR1P2_H_
-#define AXR1P2_H_
+#ifndef WOLVXR_H_
+#define WOLVXR_H_
 
+//Tested
 void printResults(){
-	char userInputInStr[4];
-	unsigned int sum,userInput;
-	int remainders[]={0,1,6,1,6,5,6,1,6,1,0};
-	while(scanf("%s",userInputInStr) && userInputInStr[0] != '#'){
-		userInput = atoi(userInputInStr);
-		sum = 0;
-		for(unsigned int counter = 1;counter <= userInput;counter++){
-			if(counter > 3){
-				sum += remainders[counter%10];
-			}else{
-				sum += (counter*counter);
-			}
-			sum %= 10;
-		}
-		cout << sum << endl;
+	unsigned int testCases;
+	long int userInput;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%ld",&userInput);
+		printf("%d\n",userInput==1?1:0);
 	}
 }
 
-#endif /* AXR1P2_H_ */
+#endif /* WOLVXR_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

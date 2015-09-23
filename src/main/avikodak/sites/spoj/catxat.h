@@ -72,11 +72,21 @@ using namespace __gnu_cxx;
 #ifndef CATXAT_H_
 #define CATXAT_H_
 
-string replaceAll(string input,string original,string updated){
-	size_t position;
-	while((position = input.find(original)) != string::npos){
-		input.replace(position,original.length(),updated);
-		position += updated.length();
+string replaceAll(string input){
+	size_t position = 0,temp;
+	string cat = "CAT",xat="XAT",catReplace="ZGXEQX",xatReplace="UBXEQX";
+	while(true){
+		if((temp = input.find("CAT",position)) != string::npos){
+			input.replace(temp,3,catReplace);
+			position += catReplace.size();
+			continue;
+		}
+		if((temp = input.find("XAT",position)) != string::npos){
+			input.replace(temp,3,xatReplace);
+			position += xatReplace.size();
+			continue;
+		}
+		break;
 	}
 	return input;
 }
@@ -84,11 +94,10 @@ string replaceAll(string input,string original,string updated){
 void printResults(){
 	unsigned int testCases;
 	scanf("%u",&testCases);
-	string replaceXAT = "UBXEQX",replaceCAT = "ZGXEQX",input;
+	string input;
 	while(testCases--){
 		cin >> input;
-		input = replaceAll(input,"XAT","UBXEQX");
-		input = replaceAll(input,"CAT","ZGXEQX");
+		input = replaceAll(input);
 		cout << input << endl;
 	}
 }

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : axr1p2.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/axr1p2.h
- *  Created on                  : 22-Sep-2015 :: 1:38:30 pm
+ *  File Name                   : nbsum.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/nbsum.h
+ *  Created on                  : 23-Sep-2015 :: 11:53:43 pm
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/AXR1P2
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/NBSUM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,29 +69,27 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef AXR1P2_H_
-#define AXR1P2_H_
+#ifndef NBSUM_H_
+#define NBSUM_H_
 
+//Tested
 void printResults(){
-	char userInputInStr[4];
-	unsigned int sum,userInput;
-	int remainders[]={0,1,6,1,6,5,6,1,6,1,0};
-	while(scanf("%s",userInputInStr) && userInputInStr[0] != '#'){
-		userInput = atoi(userInputInStr);
-		sum = 0;
-		for(unsigned int counter = 1;counter <= userInput;counter++){
-			if(counter > 3){
-				sum += remainders[counter%10];
-			}else{
-				sum += (counter*counter);
-			}
-			sum %= 10;
+	unsigned int testCases;
+	long int userInput,oddNumbers,evenNumbers;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%ld",&userInput);
+		if(userInput%2 == 0){
+			oddNumbers = (userInput/2);
+		}else{
+			oddNumbers = (userInput/2) + 1;
 		}
-		cout << sum << endl;
+		evenNumbers = (userInput/2);
+		printf("%ld\n",oddNumbers*oddNumbers - ((evenNumbers)*(evenNumbers+1)));
 	}
 }
 
-#endif /* AXR1P2_H_ */
+#endif /* NBSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : axr1p2.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/axr1p2.h
- *  Created on                  : 22-Sep-2015 :: 1:38:30 pm
+ *  File Name                   : csixiepa.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/csixiepa.h
+ *  Created on                  : 23-Sep-2015 :: 11:35:31 pm
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/AXR1P2
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/CSIXIEPA
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,29 +69,39 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef AXR1P2_H_
-#define AXR1P2_H_
+#ifndef CSIXIEPA_H_
+#define CSIXIEPA_H_
 
+//Tested
 void printResults(){
-	char userInputInStr[4];
-	unsigned int sum,userInput;
-	int remainders[]={0,1,6,1,6,5,6,1,6,1,0};
-	while(scanf("%s",userInputInStr) && userInputInStr[0] != '#'){
-		userInput = atoi(userInputInStr);
-		sum = 0;
-		for(unsigned int counter = 1;counter <= userInput;counter++){
-			if(counter > 3){
-				sum += remainders[counter%10];
-			}else{
-				sum += (counter*counter);
+	vector<bool> flags;
+	flags.assign(26,false);
+	unsigned int testCases;
+	string userInput;
+	cin >> testCases;
+	cin.ignore();
+	while(testCases--){
+		getline(cin,userInput);
+		fill(flags.begin(),flags.end(),false);
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
+				flags[userInput[counter]-'a'] = true;
+			}else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
+				flags[userInput[counter]-'A'] = true;
 			}
-			sum %= 10;
 		}
-		cout << sum << endl;
+		bool isPangram = true;
+		for(unsigned int counter = 0;counter < 26;counter++){
+			if(!flags[counter]){
+				isPangram = false;
+				break;
+			}
+		}
+		printf("%s\n",isPangram?"TRUE":"FALSE");
 	}
 }
 
-#endif /* AXR1P2_H_ */
+#endif /* CSIXIEPA_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

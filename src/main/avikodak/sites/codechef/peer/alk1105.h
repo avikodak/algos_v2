@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : axr1p2.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/axr1p2.h
- *  Created on                  : 22-Sep-2015 :: 1:38:30 pm
+ *  File Name                   : alk1105.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
+ *  Created on                  : 24-Sep-2015 :: 12:02:33 am
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/AXR1P2
+ *  URL                         : https://www.codechef.com/problems/ALK1105
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,34 +64,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-
+#define LIMIT 10000000
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef AXR1P2_H_
-#define AXR1P2_H_
+#ifndef ALK1105_H_
+#define ALK1105_H_
+
+vector<unsigned int> initialize(){
+	vector<unsigned int> divisorSum;
+	divisorSum.assign(LIMIT+1,1);
+	unsigned int innerCounter;
+	for(unsigned int outerCounter = 2;outerCounter <= LIMIT/2;outerCounter++){
+		innerCounter = 1;
+		while(outerCounter*innerCounter < LIMIT){
+			divisorSum[outerCounter*innerCounter] += outerCounter;
+			innerCounter++;
+		}
+	}
+	for(unsigned int counter = 1;counter < divisorSum.size();counter++){
+		divisorSum[counter] += divisorSum[counter-1];
+	}
+	return divisorSum;
+}
 
 void printResults(){
-	char userInputInStr[4];
-	unsigned int sum,userInput;
-	int remainders[]={0,1,6,1,6,5,6,1,6,1,0};
-	while(scanf("%s",userInputInStr) && userInputInStr[0] != '#'){
-		userInput = atoi(userInputInStr);
-		sum = 0;
-		for(unsigned int counter = 1;counter <= userInput;counter++){
-			if(counter > 3){
-				sum += remainders[counter%10];
-			}else{
-				sum += (counter*counter);
-			}
-			sum %= 10;
-		}
-		cout << sum << endl;
+	vector<unsigned int> sumOfDivisors = init();
+	unsigned int testCases,input;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&input);
+		cout << sumOfDivisors[input] << endl;
 	}
 }
 
-#endif /* AXR1P2_H_ */
+#endif /* ALK1105_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
