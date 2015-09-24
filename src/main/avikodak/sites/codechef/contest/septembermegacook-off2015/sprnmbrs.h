@@ -73,6 +73,7 @@ using namespace __gnu_cxx;
 #ifndef SPRNMBRS_H_
 #define SPRNMBRS_H_
 
+//Tested
 void scanllint(long long int &x){
 	register int c = gc();
 	x = 0;
@@ -80,6 +81,7 @@ void scanllint(long long int &x){
 	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
 }
 
+//Tested
 void scanuint(unsigned int &x){
 	register int c = gc();
 	x = 0;
@@ -87,6 +89,7 @@ void scanuint(unsigned int &x){
 	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
 }
 
+//Tested
 vector<long long int> init(){
 	long long int product;
 	long long int limit = 1000000000000000000;
@@ -112,6 +115,7 @@ vector<long long int> init(){
 	return twoPowers;
 }
 
+//Tested
 void printResults(){
 	unsigned int testCases,total;
 	long long int minValue,maxValue;
