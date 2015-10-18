@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cc.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cc.h
- *  Created on                  : 14-Oct-2015 :: 6:51:41 pm
+ *  File Name                   : snowprim.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/snowprim.h
+ *  Created on                  : 18-Oct-2015 :: 2:10:27 pm
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/CC
+ *  URL                         : https://www.codechef.com/problems/SNOWPRIM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,43 +69,20 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CC_H_
-#define CC_H_
-
-void getTotalConnectedComponents(unsigned int noOfVertices){
-	vector<vector<unsigned int> > adjacencyList(noOfVertices);
-	vector<unsigned int> flags;
-	flags.assign(noOfVertices,0);
-	unsigned int noOfEdges,sourceVertex,destinationVertex;
-	scanf("%u",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%u %u",&sourceVertex,&destinationVertex);
-		adjacencyList[sourceVertex].push_back(destinationVertex);
-	}
-	unsigned int connectedComponents = 0;
-	for(unsigned int counter = 0;counter < flags.size();counter++){
-		if(flags[counter] == 0){
-			flags[counter] = ++connectedComponents;
-			for(unsigned int adjacentVertexCounter = 0;adjacentVertexCounter < adjacencyList[counter].size();adjacentVertexCounter++){
-				if(flags[adjacencyList[counter][adjacentVertexCounter]] == 0){
-					flags[adjacencyList[counter][adjacentVertexCounter]] = flags[counter];
-				}
-			}
-		}
-	}
-	printf("%u\n",connectedComponents);
-}
+#ifndef SNOWPRIM_H_
+#define SNOWPRIM_H_
 
 void printResults(){
-	unsigned int testCases,noOfVertices;
+	unsigned int testCases;
 	scanf("%u",&testCases);
+	long long int input;
 	while(testCases--){
-		scanf("%u",&noOfVertices);
-		getTotalConnectedComponents(noOfVertices);
+		scanf("%lld",&input);
+		printf("%s\n",input>1?"YES":"NO");
 	}
 }
 
-#endif /* CC_H_ */
+#endif /* SNOWPRIM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cc.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cc.h
- *  Created on                  : 14-Oct-2015 :: 6:51:41 pm
+ *  File Name                   : nocoding.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/nocoding.h
+ *  Created on                  : 18-Oct-2015 :: 2:28:33 pm
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/CC
+ *  URL                         : https://www.codechef.com/problems/NOCODING
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,43 +69,14 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CC_H_
-#define CC_H_
-
-void getTotalConnectedComponents(unsigned int noOfVertices){
-	vector<vector<unsigned int> > adjacencyList(noOfVertices);
-	vector<unsigned int> flags;
-	flags.assign(noOfVertices,0);
-	unsigned int noOfEdges,sourceVertex,destinationVertex;
-	scanf("%u",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%u %u",&sourceVertex,&destinationVertex);
-		adjacencyList[sourceVertex].push_back(destinationVertex);
-	}
-	unsigned int connectedComponents = 0;
-	for(unsigned int counter = 0;counter < flags.size();counter++){
-		if(flags[counter] == 0){
-			flags[counter] = ++connectedComponents;
-			for(unsigned int adjacentVertexCounter = 0;adjacentVertexCounter < adjacencyList[counter].size();adjacentVertexCounter++){
-				if(flags[adjacencyList[counter][adjacentVertexCounter]] == 0){
-					flags[adjacencyList[counter][adjacentVertexCounter]] = flags[counter];
-				}
-			}
-		}
-	}
-	printf("%u\n",connectedComponents);
-}
+#ifndef NOCODING_H_
+#define NOCODING_H_
 
 void printResults(){
-	unsigned int testCases,noOfVertices;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&noOfVertices);
-		getTotalConnectedComponents(noOfVertices);
-	}
+
 }
 
-#endif /* CC_H_ */
+#endif /* NOCODING_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

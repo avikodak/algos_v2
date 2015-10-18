@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cc.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cc.h
- *  Created on                  : 14-Oct-2015 :: 6:51:41 pm
+ *  File Name                   : asp.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octobercookoff2015/asp.h
+ *  Created on                  : 18-Oct-2015 :: 11:26:09 pm
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/CC
+ *  URL                         : https://www.codechef.com/COOK63/problems/ASP
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,43 +69,32 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CC_H_
-#define CC_H_
-
-void getTotalConnectedComponents(unsigned int noOfVertices){
-	vector<vector<unsigned int> > adjacencyList(noOfVertices);
-	vector<unsigned int> flags;
-	flags.assign(noOfVertices,0);
-	unsigned int noOfEdges,sourceVertex,destinationVertex;
-	scanf("%u",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%u %u",&sourceVertex,&destinationVertex);
-		adjacencyList[sourceVertex].push_back(destinationVertex);
-	}
-	unsigned int connectedComponents = 0;
-	for(unsigned int counter = 0;counter < flags.size();counter++){
-		if(flags[counter] == 0){
-			flags[counter] = ++connectedComponents;
-			for(unsigned int adjacentVertexCounter = 0;adjacentVertexCounter < adjacencyList[counter].size();adjacentVertexCounter++){
-				if(flags[adjacencyList[counter][adjacentVertexCounter]] == 0){
-					flags[adjacencyList[counter][adjacentVertexCounter]] = flags[counter];
-				}
-			}
-		}
-	}
-	printf("%u\n",connectedComponents);
-}
+#ifndef ASP_H_
+#define ASP_H_
 
 void printResults(){
-	unsigned int testCases,noOfVertices;
+	unsigned int testCases;
+	long long int size,input,prevInput;
+	bool flag;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&noOfVertices);
-		getTotalConnectedComponents(noOfVertices);
+		scanf("%lld",&size);
+		prevInput = 0;
+		flag = true;
+		while(size--){
+			scanf("%lld",&input);
+			if(prevInput != 0){
+				if(abs(input-prevInput) > 1){
+					flag = false;
+				}
+			}
+			prevInput = input;
+		}
+		printf("%s\n",flag?"YES":"NO");
 	}
 }
 
-#endif /* CC_H_ */
+#endif /* ASP_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
