@@ -3,7 +3,7 @@
  *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\hotel.h
  *  Created on                  : Sep 1, 2015 :: 1:10:02 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/HOTEL
  ****************************************************************************************************************************************************/
 
@@ -70,82 +70,33 @@ using namespace __gnu_cxx;
 #ifndef HOTEL_H_
 #define HOTEL_H_
 
-struct interval{
-	unsigned int start;
-	unsigned int end;
-
-	interval(){};
-
-	interval(unsigned int start,unsigned int end){
-		this->start = start;
-		this->end = end;
-	}
-};
-
-void printMaxOverlappingInterval(vector<interval *> userInput){
-	unsigned int overlapCount = 0;
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter]->start >= userInput[innerCounter]->start && userInput[outerCounter]->start < userInput[innerCounter]->end){
-				overlapCount++;
-			}
-		}
-	}
-	cout << overlapCount << endl;
-}
-
+//Tested
 void printResults(){
-	unsigned int testCases,size;
+	unsigned int testCases,arrival,departure,size,maxGuests;
 	scanf("%u",&testCases);
-	unsigned int start,end;
-	vector<interval *> userInput;
-	while(testCases--){
-		scnaf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&start,&end);
-			userInput.push_back(new interval(start,end));
-		}
-		printMaxOverlappingInterval(userInput);
-	}
-}
-
-
-void printMaxOverlappingInterval(vector<unsigned int> startTimes,vector<unsigned int> endTimes){
-	unsigned int overlapCount = 0,maxOverlapCount = 0;
-	for(unsigned int outerCounter = 1;outerCounter < startTimes.size();outerCounter++){
-		overlapCount = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(startTimes[outerCounter] < endTimes[innerCounter] && endTimes[outerCounter] > startTimes[innerCounter]){
-				cout << startTimes[outerCounter] << " - " << endTimes[outerCounter] <<" " <<startTimes[innerCounter] <<  "-" << endTimes[innerCounter] << endl;
-				overlapCount++;
-			}
-		}
-		cout << endl << endl;
-		maxOverlapCount = max(maxOverlapCount,overlapCount);
-	}
-	cout << maxOverlapCount << endl;
-}
-
-void printResults(){
-	unsigned int testCases,size;
-	scanf("%u",&testCases);
-	unsigned int start,end;
-	vector<unsigned int> startTimes;
-	vector<unsigned int> endTimes;
+	vector<unsigned int> guestsCount,arrivalTimes,departureTimes;
 	while(testCases--){
 		scanf("%u",&size);
-		startTimes.clear();
-		endTimes.clear();
+		arrivalTimes.clear();
+		departureTimes.clear();
 		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&start);
-			startTimes.push_back(start);
+			scanf("%u",&arrival);
+			arrivalTimes.push_back(arrival);
 		}
 		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&end);
-			endTimes.push_back(end);
+			scanf("%u",&departure);
+			departureTimes.push_back(departure);
 		}
-		printMaxOverlappingInterval(startTimes,endTimes);
+		guestsCount.clear();
+		guestsCount.assign(1001,0);
+		maxGuests = 0;
+		for(unsigned int counter = 0;counter < arrivalTimes.size();counter++){
+			for(unsigned int timeCounter = arrivalTimes[counter];timeCounter < departureTimes[counter];timeCounter++){
+				guestsCount[timeCounter]++;
+				maxGuests = max(maxGuests,guestsCount[timeCounter]);
+			}
+		}
+		printf("%u\n",maxGuests);
 	}
 }
 

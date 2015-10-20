@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : kc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/kc03.h
- *  Created on                  : 14-Oct-2015 :: 10:02:31 am
+ *  File Name                   : misnum.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/npltechnozion2015/misnum.h
+ *  Created on                  : 19-Oct-2015 :: 6:16:23 pm
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/KC03
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/NPLTZ15/problems/MISNUM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,88 +69,52 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef KC03_H_
-#define KC03_H_
+#ifndef MISNUM_H_
+#define MISNUM_H_
 
-bool isValidMatrix(vector<string> userInput){
-	unsigned int setBitCount = 0;
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		setBitCount = 0;
-		for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == '1'){
-				setBitCount++;
+//Tested
+vector<long long int> generatePrimeNumberSquarMap(long long int limit){
+	vector<bool> flags;
+	flags.assign(limit+2,true);
+	vector<long long int> primeNumberMap;
+	for(long long int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			long long int innerCounter = 2;
+			while(counter*innerCounter <= limit){
+				flags[counter*innerCounter] = false;
+				innerCounter+=1;
 			}
 		}
-		if(setBitCount&1){
-			return false;
+	}
+	for(long long int counter = 2;counter <= limit;counter++){
+		if(flags[counter]){
+			primeNumberMap.push_back(counter*counter);
 		}
 	}
-	for(unsigned int columCounter = 0;columCounter < userInput.size();columCounter++){
-		setBitCount = 0;
-		for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-			if(userInput[rowCounter][columCounter] == '1'){
-				setBitCount++;
-			}
-		}
-		if(setBitCount&1){
-			return false;
-		}
-	}
-	return true;
+	return primeNumberMap;
 }
 
-bool isValidEntry(vector<string> userInput,unsigned int row,unsigned int column){
-	return true;
-}
-
-void processMatrix(vector<string> userInput){
-	unsigned int setBitCount;
-	unsigned int updatedRow,updatedColumn;
-	bool alreadyUpdated = false;
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		setBitCount = 0;
-		for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == '1'){
-				setBitCount++;
-			}
-		}
-		if((setBitCount&1) && !alreadyUpdated){
-			if(alreadyUpdated){
-				printf("0\n");
-				return;
-			}else{
-				for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-					if(userInput[rowCounter][columnCounter] == '0'){
-
-					}
-				}
-			}
-		}
-	}
-	if(alreadyUpdated){
-		printf("(%d,%d)",updatedRow,updatedColumn);
-	}else{
-		printf("1\n");
-	}
-}
-
+//Tested
 void printResults(){
-	unsigned int testCases,size;
-	string input;
-	scanf("%u",&testCases);
-	vector<string> matrix;
+	vector<long long int> primeNumberSquareMap = generatePrimeNumberSquarMap(sqrt(1000000001));
+	vector<long long int>::iterator itToUpper,itToPrimeNumberSquareMap;
+	long long int testCases,min,max,sum;
+	scanf("%lld",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
-		matrix.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			cin >> input;
-			matrix.push_back(input);
+		scanf("%lld %lld",&min,&max);
+		sum = 0;
+		itToUpper = upper_bound(primeNumberSquareMap.begin(),primeNumberSquareMap.end(),min-1);
+		for(itToPrimeNumberSquareMap = itToUpper;itToPrimeNumberSquareMap != primeNumberSquareMap.end();itToPrimeNumberSquareMap++){
+			if(*itToPrimeNumberSquareMap > max){
+				break;
+			}
+			sum++;
 		}
-		processMatrix(matrix);
+		cout << sum << endl;
 	}
 }
 
-#endif /* KC03_H_ */
+#endif /* MISNUM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

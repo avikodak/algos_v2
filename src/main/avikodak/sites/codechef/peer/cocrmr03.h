@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : kc03.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/kc03.h
- *  Created on                  : 14-Oct-2015 :: 10:02:31 am
+ *  File Name                   : cocrmr03.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cocrmr03.h
+ *  Created on                  : 19-Oct-2015 :: 10:41:01 am
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/KC03
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/COCRMR03
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,88 +69,26 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef KC03_H_
-#define KC03_H_
-
-bool isValidMatrix(vector<string> userInput){
-	unsigned int setBitCount = 0;
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		setBitCount = 0;
-		for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == '1'){
-				setBitCount++;
-			}
-		}
-		if(setBitCount&1){
-			return false;
-		}
-	}
-	for(unsigned int columCounter = 0;columCounter < userInput.size();columCounter++){
-		setBitCount = 0;
-		for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-			if(userInput[rowCounter][columCounter] == '1'){
-				setBitCount++;
-			}
-		}
-		if(setBitCount&1){
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isValidEntry(vector<string> userInput,unsigned int row,unsigned int column){
-	return true;
-}
-
-void processMatrix(vector<string> userInput){
-	unsigned int setBitCount;
-	unsigned int updatedRow,updatedColumn;
-	bool alreadyUpdated = false;
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		setBitCount = 0;
-		for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == '1'){
-				setBitCount++;
-			}
-		}
-		if((setBitCount&1) && !alreadyUpdated){
-			if(alreadyUpdated){
-				printf("0\n");
-				return;
-			}else{
-				for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-					if(userInput[rowCounter][columnCounter] == '0'){
-
-					}
-				}
-			}
-		}
-	}
-	if(alreadyUpdated){
-		printf("(%d,%d)",updatedRow,updatedColumn);
-	}else{
-		printf("1\n");
-	}
-}
+#ifndef COCRMR03_H_
+#define COCRMR03_H_
 
 void printResults(){
-	unsigned int testCases,size;
-	string input;
+	unsigned int testCases;
+	string firstStr,secondStr;
 	scanf("%u",&testCases);
-	vector<string> matrix;
 	while(testCases--){
-		scanf("%u",&size);
-		matrix.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			cin >> input;
-			matrix.push_back(input);
+		cin >> firstStr >> secondStr;
+		if(firstStr.length() != secondStr.length()){
+			printf("NO\n");
+		}else{
+			sort(firstStr.begin(),firstStr.end());
+			sort(secondStr.begin(),secondStr.end());
+			printf("%s\n",firstStr.compare(secondStr) == 0?"YES":"NO");
 		}
-		processMatrix(matrix);
 	}
 }
 
-#endif /* KC03_H_ */
+#endif /* COCRMR03_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
