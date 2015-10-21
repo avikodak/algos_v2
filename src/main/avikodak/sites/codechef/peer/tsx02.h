@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : tsx02.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/tsx02.h
+ *  Created on                  : 20-Oct-2015 :: 9:38:41 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  URL                         : https://www.codechef.com/problems/TSX02
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +64,35 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+#define MODN 1000000007
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef TSX02_H_
+#define TSX02_H_
+
+//Tested
+long long int calculatePower(long long int base,long long int power){
+	long long int result = base;
+	for(long long int counter = 0;counter < power;counter++){
+		result = (result*result)%MODN;
+	}
+	return result;
+}
 
 //Tested
 void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
+	long long int testCases,base,year;
+	scanf("%lld",&testCases);
+	while(testCases--){
+		scanf("%lld %lld",&base,&year);
+		printf("%lld\n",calculatePower(base,year-2000));
 	}
-	printf("%lld\n",sum);
 }
 
-#endif /* ALK1105_H_ */
+#endif /* TSX02_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

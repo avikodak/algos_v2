@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : rightri.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/rightri.h
+ *  Created on                  : 20-Oct-2015 :: 9:11:27 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  URL                         : https://www.codechef.com/problems/RIGHTRI
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +64,51 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef RIGHTRI_H_
+#define RIGHTRI_H_
+
+//Tested
+struct point{
+public:
+	unsigned int x;
+	unsigned int y;
+};
+
+//Tested
+unsigned int calDistance(point first,point second){
+	return (((first.x - second.x)*(first.x - second.x)) + ((first.y - second.y)*(first.y - second.y)));
+}
+
+//Tested
+bool isRightTriangle(point vertices[]){
+	unsigned int distance[3];
+	distance[0] = calDistance(vertices[0],vertices[1]);
+	distance[1] = calDistance(vertices[1],vertices[2]);
+	distance[2] = calDistance(vertices[0],vertices[2]);
+	sort(distance,distance+3);
+	return max(max(distance[0],distance[1]),distance[2])*2 == distance[0]+distance[1]+distance[2];
+}
 
 //Tested
 void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
+	unsigned int testCases,sum = 0;
+	point vertices[3];
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u %u %u %u %u %u",&vertices[0].x,&vertices[0].y,&vertices[1].x,&vertices[1].y,&vertices[2].x,&vertices[2].y);
+		if(isRightTriangle(vertices)){
+			sum++;
+		}
 	}
-	printf("%lld\n",sum);
+	printf("%u",sum);
 }
 
-#endif /* ALK1105_H_ */
+#endif /* RIGHTRI_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

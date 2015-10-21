@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : anuarm.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/anuarm.h
+ *  Created on                  : 21-Oct-2015 :: 9:01:47 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  URL                         : https://www.codechef.com/problems/ANUARM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +64,54 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+#define gc getchar_unlocked
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef ANUARM_H_
+#define ANUARM_H_
+
+//Tested
+void scanllint(long long int &x){
+	register int c = gc();
+	x = 0;
+	for(;(c<48 || c>57);c = gc());
+	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+}
 
 //Tested
 void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
+	long long int testCases,soldiersCount,size;
+	long long int index,minIndex,maxIndex;
+	scanllint(testCases);
+	vector<long long int> indexesFlag;
+	while(testCases--){
+		scanllint(soldiersCount);
+		indexesFlag.assign(soldiersCount,0);
+		scanllint(size);
+		for(unsigned int counter = 0;counter < size;counter++){
+			scanllint(index);
+			if(counter == 0){
+				minIndex = index;
+				maxIndex = index;
+			}else{
+				minIndex = min(minIndex,index);
+				maxIndex = max(maxIndex,index);
+			}
+		}
+		for(unsigned int counter = 0;counter < soldiersCount;counter++){
+			indexesFlag[counter] = max(abs(maxIndex-counter),abs(minIndex-counter));
+		}
+		for(unsigned int counter = 0;counter < soldiersCount;counter++){
+			printf("%lld ",indexesFlag[counter]);
+		}
+		printf("\n");
 	}
-	printf("%lld\n",sum);
 }
 
-#endif /* ALK1105_H_ */
+#endif /* ANUARM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,11 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : prayas01.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/prayas01.h
+ *  Created on                  : 20-Oct-2015 :: 10:26:40 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  URL                         : https://www.codechef.com/problems/PRAYAS01
+ *  REFERENCES                  : Fermat's theorem on sums of two squares
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +65,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef PRAYAS01_H_
+#define PRAYAS01_H_
 
 //Tested
 void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
+	long long int testCases,input;
+	scanf("%lld",&testCases);
+	while(testCases--){
+		scanf("%lld",&input);
+		if(input == 2){
+			printf("YES\n");
+			continue;
+		}
+		printf("%s\n",input%4 == 1?"YES":"NO");
 	}
-	printf("%lld\n",sum);
 }
 
-#endif /* ALK1105_H_ */
+#endif /* PRAYAS01_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

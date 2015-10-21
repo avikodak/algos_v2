@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : rrcode.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/rrcode.h
+ *  Created on                  : 21-Oct-2015 :: 9:54:04 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  URL                         : https://www.codechef.com/problems/RRCODE
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +64,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef RRCODE_H_
+#define RRCODE_H_
 
 //Tested
 void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
+	long long int testCases,size,kOperation,result,input;
+	string operation;
+	scanf("%lld",&testCases);
+	vector<long long int> userInput;
+	while(testCases--){
+		scanf("%lld %lld %lld",&size,&kOperation,&result);
+		userInput.clear();
+		for(long long int counter = 0;counter < size;counter++){
+			scanf("%lld",&input);
+			userInput.push_back(input);
+		}
+		cin >> operation;
+		if(operation[0] == 'X'){
+			kOperation = kOperation%2;
+		}else{
+			kOperation = min(kOperation,1ll);
+		}
+		while(kOperation-- > 0){
+			for(long long int counter = 0;counter < size;counter++){
+				if(operation[0] == 'X'){
+					result ^= userInput[counter];
+				}else if(operation[0] == 'A'){
+					result &= userInput[counter];
+				}else{
+					result |= userInput[counter];
+				}
+			}
+		}
+		printf("%lld\n",result);
 	}
-	printf("%lld\n",sum);
 }
 
-#endif /* ALK1105_H_ */
+#endif /* RRCODE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

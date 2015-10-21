@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : alk1105.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/alk1105.h
- *  Created on                  : 24-Sep-2015 :: 12:02:33 am
+ *  File Name                   : ci3.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/ci3.h
+ *  Created on                  : 20-Oct-2015 :: 7:50:11 pm
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/ALK1105
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/CI3
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -64,27 +64,43 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 10000000
+
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef ALK1105_H_
-#define ALK1105_H_
+#ifndef CI3_H_
+#define CI3_H_
 
-//Tested
-void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
-	}
-	printf("%lld\n",sum);
+double area(double a,double b,double c){
+	double semiPerimeter = (a+b+c)/2;
+	return sqrt(semiPerimeter*(semiPerimeter-a)*(semiPerimeter-b)*(semiPerimeter-c));
 }
 
-#endif /* ALK1105_H_ */
+void printResults(){
+	unsigned int testCases;
+	scanf("%u",&testCases);
+	double a,b,c,areaOfTriangle,sum = 0;
+	vector<double> areasOfTriangles;
+	while(testCases--){
+		cin >> a >> b >> c;
+		areaOfTriangle = area(a,b,c);
+		sum +=  areaOfTriangle;
+		areasOfTriangles.push_back(areaOfTriangle);
+	}
+	sort(areasOfTriangles.begin(),areasOfTriangles.end());
+	cout << "Min : " << areasOfTriangles[0] << endl;
+	cout << "Max : " << areasOfTriangles[areasOfTriangles.size()-1] << endl;
+	cout << "Avg : " << sum/areasOfTriangles.size() << endl;
+	if(areasOfTriangles.size()%2 == 0){
+		cout << "Med : " << (areasOfTriangles[areasOfTriangles.size()/2]+areasOfTriangles[areasOfTriangles.size()/2])/2 << endl;
+	}else{
+		cout << "Med : " << areasOfTriangles[areasOfTriangles.size()/2] << endl;
+	}
+
+}
+
+#endif /* CI3_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
