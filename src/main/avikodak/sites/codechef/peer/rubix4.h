@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : nocoding.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/nocoding.h
- *  Created on                  : 18-Oct-2015 :: 2:28:33 pm
+ *  File Name                   : rubix4.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/rubix4.h
+ *  Created on                  : 21-Oct-2015 :: 10:36:46 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/NOCODING
+ *  URL                         : https://www.codechef.com/problems/RUBIX4
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,30 +69,37 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef NOCODING_H_
-#define NOCODING_H_
+#ifndef RUBIX4_H_
+#define RUBIX4_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases;
-	string userInput;
+	unsigned int testCases,size,sum,maxConsecutive;
+	int input;
+	vector<int> userInput;
 	scanf("%u",&testCases);
-	unsigned long long int totalInstructions;
 	while(testCases--){
-		cin >> userInput;
-		totalInstructions = userInput.size()+1;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] >= userInput[counter-1]){
-				totalInstructions += (userInput[counter] - userInput[counter-1]);
-			}else{
-				totalInstructions += ('z'-userInput[counter-1] + (userInput[counter]-'a')+1);
-			}
+		scanf("%u",&size);
+		userInput.clear();
+		while(size--){
+			scanf("%d",&input);
+			userInput.push_back(input);
 		}
-		printf("%s\n",totalInstructions <= 11*userInput.size()?"YES":"NO");
+		maxConsecutive = 0;
+		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+			sum = 1;
+			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
+				if(userInput[innerCounter] - userInput[outerCounter] == innerCounter-outerCounter){
+					sum++;
+				}
+			}
+			maxConsecutive = max(maxConsecutive,sum);
+		}
+		printf("%u\n",userInput.size()-maxConsecutive);
 	}
 }
 
-#endif /* NOCODING_H_ */
+#endif /* RUBIX4_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

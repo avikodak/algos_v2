@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : nocoding.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/nocoding.h
- *  Created on                  : 18-Oct-2015 :: 2:28:33 pm
+ *  File Name                   : nukes.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/nukes.h
+ *  Created on                  : 21-Oct-2015 :: 8:12:59 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/NOCODING
+ *  URL                         : https://www.codechef.com/problems/NUKES
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,30 +69,20 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef NOCODING_H_
-#define NOCODING_H_
+#ifndef NUKES_H_
+#define NUKES_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	unsigned long long int totalInstructions;
-	while(testCases--){
-		cin >> userInput;
-		totalInstructions = userInput.size()+1;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] >= userInput[counter-1]){
-				totalInstructions += (userInput[counter] - userInput[counter-1]);
-			}else{
-				totalInstructions += ('z'-userInput[counter-1] + (userInput[counter]-'a')+1);
-			}
-		}
-		printf("%s\n",totalInstructions <= 11*userInput.size()?"YES":"NO");
+	long long int chambers,limit,total;
+	scanf("%lld %lld %lld",&total,&limit,&chambers);
+	for(long long int counter = 0;counter < chambers;counter++){
+		printf("%lld ",total%(limit+1));
+		total /= (limit+1);
 	}
 }
 
-#endif /* NOCODING_H_ */
+#endif /* NUKES_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
