@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : dragnxor.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\dragnxor.h
- *  Created on                  : Sep 4, 2015 :: 10:18:46 AM
+ *  File Name                   : compiler.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/compiler.h
+ *  Created on                  : 27-Oct-2015 :: 8:37:07 am
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/DRAGNXOR
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/COMPILER
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,53 +69,35 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DRAGNXOR_H_
-#define DRAGNXOR_H_
+#ifndef COMPILER_H_
+#define COMPILER_H_
 
-//Tested
-vector<long long int> generatePowersOf2(){
-	vector<long long int> powersOf2;
-	long long int result = 1;
-	for(long long int counter = 0;counter < 30;counter++){
-		powersOf2.push_back(result);
-		result *= 2;
-	}
-	return powersOf2;
-}
-
-//Tested
-long long int countSetBits(long long int userInput){
-	long long int totalSetBits = 0;
-	while(userInput){
-		totalSetBits += userInput%2;
-		userInput /= 2;
-	}
-	return totalSetBits;
-}
-
-//Tested
-void printResults(){
-	vector<long long int> powersOf2 = generatePowersOf2();
-	long long int testCases,nValue,firstInput,secondInput,result;
-	long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
-		firstSetBitCount = countSetBits(firstInput);
-		secondSetBitCount = countSetBits(secondInput);
-		firstClearBitCount = nValue - firstSetBitCount;
-		secondClearBitCount = nValue - secondSetBitCount;
-		totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
-		result = 0;
-		while(totalSetBitCount--){
-			result += powersOf2[nValue-1];
-			nValue--;
+void getTotalValidPairs(string userInput){
+	long long int totalValidLength = 0,totalLessThanSymb = 0;
+	for(unsigned int counter = 0;counter < userInput.size();counter++){
+		if(userInput[counter] == '<'){
+			totalLessThanSymb++;
+		}else{
+			if(totalLessThanSymb > 0){
+				totalValidLength+=2;
+				totalLessThanSymb--;
+			}
 		}
-		printf("%lld\n",result);
+	}
+	printf("%lld\n",totalValidLength);
+}
+
+void printResults(){
+	unsigned int testCases;
+	string userInput;
+	scanf("%u",&testCases);
+	while(testCases--){
+		cin >> userInput;
+		getTotalValidPairs(userInput);
 	}
 }
 
-#endif /* DRAGNXOR_H_ */
+#endif /* COMPILER_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

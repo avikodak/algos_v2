@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : dragnxor.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\dragnxor.h
- *  Created on                  : Sep 4, 2015 :: 10:18:46 AM
+ *  File Name                   : subanagr.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/subanagr.h
+ *  Created on                  : 26-Oct-2015 :: 7:46:41 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/DRAGNXOR
+ *  URL                         : https://www.codechef.com/problems/SUBANAGR
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,53 +69,42 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DRAGNXOR_H_
-#define DRAGNXOR_H_
-
-//Tested
-vector<long long int> generatePowersOf2(){
-	vector<long long int> powersOf2;
-	long long int result = 1;
-	for(long long int counter = 0;counter < 30;counter++){
-		powersOf2.push_back(result);
-		result *= 2;
-	}
-	return powersOf2;
-}
-
-//Tested
-long long int countSetBits(long long int userInput){
-	long long int totalSetBits = 0;
-	while(userInput){
-		totalSetBits += userInput%2;
-		userInput /= 2;
-	}
-	return totalSetBits;
-}
+#ifndef SUBANAGR_H_
+#define SUBANAGR_H_
 
 //Tested
 void printResults(){
-	vector<long long int> powersOf2 = generatePowersOf2();
-	long long int testCases,nValue,firstInput,secondInput,result;
-	long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
-		firstSetBitCount = countSetBits(firstInput);
-		secondSetBitCount = countSetBits(secondInput);
-		firstClearBitCount = nValue - firstSetBitCount;
-		secondClearBitCount = nValue - secondSetBitCount;
-		totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
-		result = 0;
-		while(totalSetBitCount--){
-			result += powersOf2[nValue-1];
-			nValue--;
+	unsigned int overallFreq[26]={0},testCases;
+	vector<unsigned int> freq;
+	string userInput;
+	scanf("%u",&testCases);
+	for(unsigned int testCase = 0;testCase < testCases;testCase++){
+		cin >> userInput;
+		freq.clear();
+		freq.assign(26,0);
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			freq[userInput[counter]-'a']++;
 		}
-		printf("%lld\n",result);
+		for(unsigned int counter = 0;counter < 26;counter++){
+			overallFreq = testCase==0?freq[counter]:min(overallFreq[counter],freq[counter]);
+		}
 	}
+	bool anagramFound = false;
+	for(unsigned int counter = 0;counter < 26;counter++){
+		if(overallFreq[counter] > 0){
+			anagramFound = true;
+			while(overallFreq[counter]--){
+				printf("%c",counter+'a');
+			}
+		}
+	}
+	if(!anagramFound){
+		printf("no such string");
+	}
+	printf("\n");
 }
 
-#endif /* DRAGNXOR_H_ */
+#endif /* SUBANAGR_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : dragnxor.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\dragnxor.h
- *  Created on                  : Sep 4, 2015 :: 10:18:46 AM
+ *  File Name                   : decstr.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/decstr.h
+ *  Created on                  : 29-Oct-2015 :: 7:46:31 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/DRAGNXOR
+ *  URL                         : https://www.codechef.com/problems/DECSTR
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,53 +69,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DRAGNXOR_H_
-#define DRAGNXOR_H_
-
-//Tested
-vector<long long int> generatePowersOf2(){
-	vector<long long int> powersOf2;
-	long long int result = 1;
-	for(long long int counter = 0;counter < 30;counter++){
-		powersOf2.push_back(result);
-		result *= 2;
-	}
-	return powersOf2;
-}
-
-//Tested
-long long int countSetBits(long long int userInput){
-	long long int totalSetBits = 0;
-	while(userInput){
-		totalSetBits += userInput%2;
-		userInput /= 2;
-	}
-	return totalSetBits;
-}
+#ifndef DECSTR_H_
+#define DECSTR_H_
 
 //Tested
 void printResults(){
-	vector<long long int> powersOf2 = generatePowersOf2();
-	long long int testCases,nValue,firstInput,secondInput,result;
-	long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
+	string alphabets="abcdefghijklmnopqrstuvwxyz";
+	long long int testCases,userInput,quotient;
 	scanf("%lld",&testCases);
 	while(testCases--){
-		scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
-		firstSetBitCount = countSetBits(firstInput);
-		secondSetBitCount = countSetBits(secondInput);
-		firstClearBitCount = nValue - firstSetBitCount;
-		secondClearBitCount = nValue - secondSetBitCount;
-		totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
-		result = 0;
-		while(totalSetBitCount--){
-			result += powersOf2[nValue-1];
-			nValue--;
+		scanf("%lld",&userInput);
+		quotient = userInput/25;
+		userInput %= 25;
+		if(userInput > 0){
+			for(long long int counter = userInput;counter >= 0;counter--){
+				printf("%c",alphabets[counter]);
+			}
 		}
-		printf("%lld\n",result);
+		while(quotient--){
+			for(long long counter = 25;counter >= 0;counter--){
+				printf("%c",alphabets[counter]);
+			}
+		}
+		printf("\n");
 	}
 }
 
-#endif /* DRAGNXOR_H_ */
+#endif /* DECSTR_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

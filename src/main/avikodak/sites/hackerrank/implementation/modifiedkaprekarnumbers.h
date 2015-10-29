@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : dragnxor.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\dragnxor.h
- *  Created on                  : Sep 4, 2015 :: 10:18:46 AM
+ *  File Name                   : modifiedkaprekarnumbers.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/hackerrank/implementation/modifiedkaprekarnumbers.h
+ *  Created on                  : 28-Oct-2015 :: 6:44:19 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/DRAGNXOR
+ *  URL                         : https://www.hackerrank.com/challenges/kaprekar-numbers
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,53 +69,44 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef DRAGNXOR_H_
-#define DRAGNXOR_H_
+#ifndef MODIFIEDKAPREKARNUMBERS_H_
+#define MODIFIEDKAPREKARNUMBERS_H_
 
 //Tested
-vector<long long int> generatePowersOf2(){
-	vector<long long int> powersOf2;
-	long long int result = 1;
-	for(long long int counter = 0;counter < 30;counter++){
-		powersOf2.push_back(result);
-		result *= 2;
+vector<long long int> generateKaprekarNumbers(){
+	long long int leftHalf,rightHalf,noOfDigits,result;
+	vector<long long int> kaprekarNumbers;
+	long long int tenPowers[] = {1,10,100,1000,10000,100000,1000000,10000000};
+	for(long long int counter = 1;counter < 100001;counter++){
+		noOfDigits = log10(counter)+1;
+		result = counter*counter;
+		rightHalf = result%tenPowers[noOfDigits];
+		leftHalf = result/tenPowers[noOfDigits];
+		if(leftHalf + rightHalf == counter){
+			kaprekarNumbers.push_back(counter);
+		}
 	}
-	return powersOf2;
-}
-
-//Tested
-long long int countSetBits(long long int userInput){
-	long long int totalSetBits = 0;
-	while(userInput){
-		totalSetBits += userInput%2;
-		userInput /= 2;
-	}
-	return totalSetBits;
+	return kaprekarNumbers;
 }
 
 //Tested
 void printResults(){
-	vector<long long int> powersOf2 = generatePowersOf2();
-	long long int testCases,nValue,firstInput,secondInput,result;
-	long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
-		firstSetBitCount = countSetBits(firstInput);
-		secondSetBitCount = countSetBits(secondInput);
-		firstClearBitCount = nValue - firstSetBitCount;
-		secondClearBitCount = nValue - secondSetBitCount;
-		totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
-		result = 0;
-		while(totalSetBitCount--){
-			result += powersOf2[nValue-1];
-			nValue--;
+	unsigned int kaprekarNumbers[] = {1,9,45,55,99,297,703,999,2223,2728,4950,5050,7272,7777,9999,17344,22222,77778,82656,95121,99999};
+	unsigned int startNumber,endNumbers;
+	scanf("%u %u",&startNumber,&endNumbers);
+	bool isPresent = false;
+	for(unsigned int counter = 0;counter < sizeof(kaprekarNumbers)/sizeof(unsigned int);counter++){
+		if(kaprekarNumbers[counter] >= startNumber && kaprekarNumbers[counter] <= endNumbers){
+			printf("%u ",kaprekarNumbers[counter]);
+			isPresent = true;
 		}
-		printf("%lld\n",result);
+	}
+	if(!isPresent){
+		printf("INVALID RANGE");
 	}
 }
 
-#endif /* DRAGNXOR_H_ */
+#endif /* MODIFIEDKAPREKARNUMBERS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
