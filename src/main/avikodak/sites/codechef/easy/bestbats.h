@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : beatbats.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\beatbats.h
- *  Created on                  : Sep 4, 2015 :: 11:12:02 PM
+ *  File Name                   : bestbats.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/bestbats.h
+ *  Created on                  : 31-Oct-2015 :: 9:24:13 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/BESTBATS
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -62,14 +64,13 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
-#define LIMIT 101
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef BEATBATS_H_
-#define BEATBATS_H_
+#ifndef BESTBATS_H_
+#define BESTBATS_H_
 
 //Tested
 vector<vector<unsigned int> > generateCombinations(){
@@ -130,7 +131,7 @@ void printResults(){
 	}
 }
 
-#endif /* BEATBATS_H_ */
+#endif /* BESTBATS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
