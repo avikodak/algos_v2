@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : points.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\points.h
- *  Created on                  : Sep 6, 2015 :: 2:33:10 AM
+ *  File Name                   : chode.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/chode.h
+ *  Created on                  : 31-Oct-2015 :: 3:28:16 pm
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/POINTS
+ *  Testing Status              : TODO
+ *  URL                         : https://www.codechef.com/problems/CHODE
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,64 +69,37 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef POINTS_H_
-#define POINTS_H_
+#ifndef CHODE_H_
+#define CHODE_H_
 
-//Tested
-struct point{
-	int xValue;
-	int yValue;
+struct chRankFreq{
+	char ch;
+	unsigned int rank;
+	unsigned int frequency;
 
-	point(int xValue,int yValue){
-		this->xValue = xValue;
-		this->yValue = yValue;
+	chRankFreq(char ch,unsigned int rank,unsigned int frequency){
+		this->ch = ch;
+		this->rank = rank;
+		this->frequency = frequency;
 	}
 };
 
-//Tested
-double distance(point *first,point *second){
-	double firstValue = pow((first->xValue - second->xValue),2);
-	double secondValue = pow((first->yValue - second->yValue),2);
-	return sqrt(firstValue + secondValue);
-}
-
-//Tested
-bool sortFunc(point *first,point *second){
-	if(first->xValue == second->xValue){
-		return first->yValue > second->yValue;
-	}
-	return first->xValue < second->xValue;
-}
-
-//Tested
-void calTotalDistance(vector<point *> userInput){
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	double totalDistance = 0;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		totalDistance += distance(userInput[counter],userInput[counter+1]);
-	}
-	cout.precision(2);
-	cout << fixed << totalDistance << endl;
-}
-
-//Tested
 void printResults(){
-	unsigned int testCases,size;
-	int xValue,yValue;
+	unsigned int testCases;
+	string userInput,encryptedText;
 	scanf("%u",&testCases);
-	vector<point *> userInput;
+	map<char,unsigned int> charRankMap;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%d %d",&xValue,&yValue);
-			userInput.push_back(new point(xValue,yValue));
+		getline(cin,userInput);
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			charRankMap.insert(pair<char,unsigned int>(userInput[counter],counter));
 		}
-		calTotalDistance(userInput);
+		getline(cin,encryptedText);
+
 	}
 }
 
-#endif /* POINTS_H_ */
+#endif /* CHODE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

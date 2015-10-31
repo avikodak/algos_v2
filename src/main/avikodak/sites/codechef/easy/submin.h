@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : points.h
- *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\codechef\easy\points.h
- *  Created on                  : Sep 6, 2015 :: 2:33:10 AM
+ *  File Name                   : submin.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/submin.h
+ *  Created on                  : 31-Oct-2015 :: 3:38:13 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/POINTS
+ *  URL                         : https://www.codechef.com/problems/SUBMIN
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -40,6 +40,8 @@ using namespace __gnu_cxx;
 #include <stack>
 #include <queue>
 #include <limits.h>
+#include <stdint.h>
+#include <iomanip>
 #include <lib/constants/constants.h>
 #include <lib/ds/commonds.h>
 #include <lib/ds/linkedlistds.h>
@@ -67,64 +69,42 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef POINTS_H_
-#define POINTS_H_
-
-//Tested
-struct point{
-	int xValue;
-	int yValue;
-
-	point(int xValue,int yValue){
-		this->xValue = xValue;
-		this->yValue = yValue;
-	}
-};
-
-//Tested
-double distance(point *first,point *second){
-	double firstValue = pow((first->xValue - second->xValue),2);
-	double secondValue = pow((first->yValue - second->yValue),2);
-	return sqrt(firstValue + secondValue);
-}
-
-//Tested
-bool sortFunc(point *first,point *second){
-	if(first->xValue == second->xValue){
-		return first->yValue > second->yValue;
-	}
-	return first->xValue < second->xValue;
-}
-
-//Tested
-void calTotalDistance(vector<point *> userInput){
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	double totalDistance = 0;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		totalDistance += distance(userInput[counter],userInput[counter+1]);
-	}
-	cout.precision(2);
-	cout << fixed << totalDistance << endl;
-}
+#ifndef SUBMIN_H_
+#define SUBMIN_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size;
-	int xValue,yValue;
-	scanf("%u",&testCases);
-	vector<point *> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%d %d",&xValue,&yValue);
-			userInput.push_back(new point(xValue,yValue));
+	long long int size,input,minValue;
+	vector<long long int> userInput;
+	scanf("%lld",&size);
+	while(size--){
+		scanf("%lld",&input);
+		userInput.push_back(input);
+	}
+	map<long long int,long long int> minValFreqMap;
+	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
+		minValue = userInput[outerCounter];
+		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
+			minValue = min(minValue,userInput[innerCounter]);
+			if(minValFreqMap.find(minValue) == minValFreqMap.end()){
+				minValFreqMap[minValue] = 1;
+			}else{
+				minValFreqMap[minValue]++;
+			}
 		}
-		calTotalDistance(userInput);
+	}
+	scanf("%lld",&size);
+	while(size--){
+		scanf("%lld",&input);
+		if(minValFreqMap.find(input) == minValFreqMap.end()){
+			printf("0\n");
+		}else{
+			printf("%lld\n",minValFreqMap[input]);
+		}
 	}
 }
 
-#endif /* POINTS_H_ */
+#endif /* SUBMIN_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
