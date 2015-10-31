@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : arrange.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/arrange.h
+ *  Created on                  : 30-Oct-2015 :: 8:27:00 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/ARRANGE
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,39 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef ARRANGE_H_
+#define ARRANGE_H_
+
+//Tested
+unsigned int reverseBits(unsigned int num,unsigned int bitCount){
+    unsigned int result = 0, temp;
+    for (unsigned int counter = 0; counter < bitCount; counter++){
+        temp = (num & (1 << counter));
+        if(temp)
+            result |= (1 << ((bitCount - 1) - counter));
+    }
+
+    return result;
+}
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
+	unsigned int testCases,bitCount,index;
+	string userInput,result;
 	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
+		scanf("%u",&bitCount);
+		cin >> userInput;
+		result = userInput;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			index = reverseBits(counter,bitCount);
+			result[index] = userInput[counter];
 		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
-			}
-		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
-		}
-		printf("%u\n",result);
+		cout << result << endl;
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* ARRANGE_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

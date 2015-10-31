@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : trisq.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/school/trisq.h
+ *  Created on                  : 31-Oct-2015 :: 8:38:13 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/TRISQ
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,22 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef TRISQ_H_
+#define TRISQ_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
+	unsigned int testCases,baseLength;
 	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
-		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
-			}
-		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
-		}
-		printf("%u\n",result);
+		scanf("%u",&baseLength);
+		baseLength /= 2;
+		baseLength--;
+		printf("%u\n",((baseLength)*(baseLength+1))/2);
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* TRISQ_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

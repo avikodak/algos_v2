@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : granama.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/granama.h
+ *  Created on                  : 29-Oct-2015 :: 8:52:58 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/GRANAMA
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,43 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef GRANAMA_H_
+#define GRANAMA_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
+	unsigned int testCases;
+	string firstUserInput,secondUserInput;
 	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
+		cin >> firstUserInput >> secondUserInput;
+		int firstFreq[26] = {0},secondFreq[26] = {0};
+		for(unsigned int counter = 0;counter < firstUserInput.size();counter++){
+			firstFreq[firstUserInput[counter]-'a']++;
 		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
+		for(unsigned int counter = 0;counter < secondUserInput.size();counter++){
+			secondFreq[secondUserInput[counter]-'a']++;
+		}
+		bool flag=true;
+		for(unsigned int counter = 0;counter < 26;counter++){
+			if(firstFreq[counter] != secondFreq[counter]){
+				flag = false;
+				break;
 			}
 		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
+		for(unsigned int counter = 0;counter < 26;counter++){
+			if(firstFreq[counter] > 0 || secondFreq[counter] > 0){
+				if(firstFreq[counter] == 0 || secondFreq[counter] == 0){
+					flag = true;
+					break;
+				}
 			}
 		}
-		printf("%u\n",result);
+		printf("%s\n",flag?"YES":"NO");
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* GRANAMA_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

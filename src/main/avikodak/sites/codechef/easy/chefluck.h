@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : chefluck.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/chefluck.h
+ *  Created on                  : 30-Oct-2015 :: 8:10:21 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/CHEFLUCK
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,39 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef CHEFLUCK_H_
+#define CHEFLUCK_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
-	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
+	long long int testCases,digitCount;
+	scanf("%lld",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
-		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
-			}
-		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
+		scanf("%lld",&digitCount);
+		long long int fourCount = 0,sevenCount = 0;
+		bool luckyFound = false;
+		if(digitCount%7 == 0){
+			fourCount = digitCount;
 		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
+			fourCount = digitCount - digitCount%7;
+			sevenCount = digitCount%7;
 		}
-		printf("%u\n",result);
+		while(fourCount >= 0){
+			if(fourCount%7 == 0 && sevenCount%4 == 0){
+				printf("%lld\n",fourCount);
+				luckyFound = true;
+				break;
+			}
+			fourCount -= 7;
+			sevenCount += 7;
+		}
+		if(!luckyFound){
+			printf("-1\n");
+		}
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* CHEFLUCK_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

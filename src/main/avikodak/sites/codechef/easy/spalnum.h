@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : spalnum.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/spalnum.h
+ *  Created on                  : 30-Oct-2015 :: 7:10:09 pm
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/SPALNUM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,55 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef SPALNUM_H_
+#define SPALNUM_H_
+
+//Tested
+unsigned int reversedNumber(unsigned int userInput){
+	unsigned int revResults = 0;
+	while(userInput){
+		revResults = (revResults << 3) + (revResults << 1) + (userInput%10);
+		userInput /= 10;
+	}
+	return revResults;
+}
+
+//Tested
+bool isPalindrome(unsigned int userInput){
+	return userInput == reversedNumber(userInput);
+}
+
+//Tested
+vector<unsigned int> generatePalindromeNumbers(unsigned int limit){
+	vector<unsigned int> palindromeNumbers;
+	for(unsigned int counter = 1;counter <= limit;counter++){
+		if(isPalindrome(counter)){
+			palindromeNumbers.push_back(counter);
+		}
+	}
+	return palindromeNumbers;
+}
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
+	vector<unsigned int> palindromeNumbers = generatePalindromeNumbers(100000);
+	vector<unsigned int>::iterator itToLPalindromeNumbers,itToUPalindromeNumbers;
+	unsigned int testCases,lowerLimit,upperLimit,sum;
 	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
+		scanf("%u %u",&lowerLimit,&upperLimit);
+		itToLPalindromeNumbers = lower_bound(palindromeNumbers.begin(),palindromeNumbers.end(),lowerLimit);
+		itToUPalindromeNumbers = upper_bound(palindromeNumbers.begin(),palindromeNumbers.end(),upperLimit);
+		sum = 0;
+		while(itToLPalindromeNumbers != palindromeNumbers.end() && itToLPalindromeNumbers != itToUPalindromeNumbers){
+			sum += *itToLPalindromeNumbers;
+			itToLPalindromeNumbers++;
 		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
-			}
-		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
-		}
-		printf("%u\n",result);
+		printf("%u\n",sum);
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* SPALNUM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */

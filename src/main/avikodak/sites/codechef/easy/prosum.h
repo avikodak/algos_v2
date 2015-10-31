@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : wdtbam.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/contest/octoberchallenge2015/wdtbam.h
- *  Created on                  : 12-Oct-2015 :: 12:10:00 pm
+ *  File Name                   : prosum.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/prosum.h
+ *  Created on                  : 30-Oct-2015 :: 8:53:00 am
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/OCT15/problems/WDTBAM
+ *  URL                         : https://www.codechef.com/problems/PROSUM
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,44 +69,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef WDTBAM_H_
-#define WDTBAM_H_
+#ifndef PROSUM_H_
+#define PROSUM_H_
 
 //Tested
 void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
+	unsigned int testCases,size;
+	long long int input,twoCount,greater2Count,result;
 	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
 	while(testCases--){
 		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
-		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
+		twoCount = 0;
+		greater2Count = 0;
+		while(size--){
+			scanf("%lld",&input);
+			if(input == 2){
+				twoCount++;
+			}else if(input > 2){
+				greater2Count++;
 			}
 		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
-		}
-		printf("%u\n",result);
+		result = ((greater2Count)*(greater2Count-1))/2;
+		result += twoCount*greater2Count;
+		printf("%lld\n",result);
 	}
 }
 
-
-#endif /* WDTBAM_H_ */
+#endif /* PROSUM_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
