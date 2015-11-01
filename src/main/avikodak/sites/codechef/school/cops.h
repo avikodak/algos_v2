@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : chode.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/easy/chode.h
- *  Created on                  : 31-Oct-2015 :: 3:28:16 pm
+ *  File Name                   : cops.h
+ *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/school/cops.h
+ *  Created on                  : 01-Nov-2015 :: 11:54:46 am
  *  Author                      : avikodak
- *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/CHODE
+ *  Testing Status              : Tested
+ *  URL                         : https://www.codechef.com/problems/COPS
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -69,87 +69,39 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CHODE_H_
-#define CHODE_H_
+#ifndef COPS_H_
+#define COPS_H_
 
-struct chRankFreq{
-	char ch;
-	unsigned int rank;
-	unsigned int frequency;
-
-	chRankFreq(char ch,unsigned int rank,unsigned int frequency){
-		this->ch = ch;
-		this->rank = rank;
-		this->frequency = frequency;
-	}
-};
-
-bool sortFunc(chRankFreq *first,chRankFreq *second){
-	if(first->frequency == second->frequency){
-		return first->rank > second->rank;
-	}else{
-		return first->frequency > second->frequency;
-	}
-}
-
+//Tested
 void printResults(){
-	unsigned int testCases;
-	string userInput,encryptedText;
-	char ch;
-	scanf("%u",&testCases);
-	getline(cin,userInput);
+	int testCases,safeHouseCount;
+	int size,speed,houses,input,housesCovered;
+	scanf("%d",&testCases);
 	while(testCases--){
-		getline(cin,userInput);
-		map<char,unsigned int> charRankMap;
-		map<unsigned int,char> rankEncryptCharMap;
-		map<char,unsigned int> charRankInputTextMap;
-		map<char,chRankFreq *> charFrequencyMap;
-		map<char,chRankFreq *>::iterator itToCharFrequencyMap;
-		vector<chRankFreq *> charFrequencies;
-		for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-			rankEncryptCharMap[counter] = userInput[counter];
+		scanf("%d %d %d",&size,&speed,&houses);
+		housesCovered = speed*houses;
+		vector<int> copsHouses;
+		for(int counter = 0;counter < size;counter++){
+			scanf("%d",&input);
+			copsHouses.push_back(input);
 		}
-		getline(cin,encryptedText);
-		unsigned int rankCounter = 0;
-		for(unsigned long long int counter = 0;counter < encryptedText.size();counter++){
-			ch = encryptedText[counter];
-			if(ch >= 'A' && ch <= 'Z'){
-				ch = ch -'A' +'a';
+		sort(copsHouses.begin(),copsHouses.end());
+		int index = 1;
+		safeHouseCount = 0;
+		for(unsigned int counter = 0;counter < copsHouses.size();counter++){
+			if(copsHouses[counter]-housesCovered > index){
+				safeHouseCount += copsHouses[counter] - housesCovered -index;
 			}
-			if(ch >= 'a' && ch <= 'z'){
-				if(charFrequencyMap.find(ch) == charFrequencyMap.end()){
-					charRankMap[ch] = rankCounter++;
-					charFrequencyMap[ch] = new chRankFreq(ch,charRankMap.find(ch)->second,1);
-				}else{
-					charFrequencyMap[ch]->frequency++;
-				}
-			}
+			index = copsHouses[counter] + housesCovered+1;
 		}
-		for(itToCharFrequencyMap = charFrequencyMap.begin();itToCharFrequencyMap != charFrequencyMap.end();itToCharFrequencyMap++){
-			charFrequencies.push_back(itToCharFrequencyMap->second);
+		if(index <= 100){
+			safeHouseCount += 100-index+1;
 		}
-		sort(charFrequencies.begin(),charFrequencies.end(),sortFunc);
-		string decodedText;
-		for(unsigned long long int counter = 0;counter < charFrequencies.size();counter++){
-			decodedText.push_back(charFrequencies[counter]->ch);
-			charRankInputTextMap[charFrequencies[counter]->ch] = counter;
-		}
-		for(unsigned long long int counter = 0;counter < encryptedText.size();counter++){
-			ch = encryptedText[counter];
-			if(ch >= 'A' && ch <= 'Z'){
-				ch = ch - 'A' + 'a';
-				printf("%c",rankEncryptCharMap[26-1-charRankInputTextMap[ch]]-'a'+'A');
-			}else if(ch >= 'a' && ch <= 'z'){
-				printf("%c",rankEncryptCharMap[26-charRankInputTextMap[ch]-1]);
-			}else{
-				printf("%c",encryptedText[counter]);
-			}
-		}
-		printf("\n");
+		printf("%d\n",safeHouseCount);
 	}
 }
 
-#endif /* CHODE_H_ */
+#endif /* COPS_H_ */
 
 /****************************************************************************************************************************************************/
 /*                                                               MAIN CODE END                                                                      */
