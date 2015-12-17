@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: intersectionofsill.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\intersectionofsill.h
- *  Created on			: Oct 15, 2014 :: 12:24:27 PM
+ *  File Name   		: foldabletrees.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\foldabletrees.h
+ *  Created on			: Oct 20, 2014 :: 3:14:39 PM
  *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  Testing Status 		: Tested
+ *  URL 				: http://www.geeksforgeeks.org/foldable-binary-trees/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -55,10 +55,9 @@ using namespace __gnu_cxx;
 #include <lib/utils/redblacktreeutil.h>
 #include <lib/utils/sillutil.h>
 #include <lib/utils/treeutil.h>
-#include <lib/utils/trieutil.h>
 #include <lib/utils/twofourtreeutil.h>
 
-#include "reversesill.h"
+#include "../../../geeksforgeeksv1/trees/page09/mirrortree.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -67,123 +66,56 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef INTERSECTIONOFSILL_H_
-#define INTERSECTIONOFSILL_H_
+#ifndef FOLDABLETREES_H_
+#define FOLDABLETREES_H_
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getIntersectionOfSillHashmapON(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
+bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
 	}
-	hash_map<intptr_t,bool> visitFlags;
-	hash_map<intptr_t,bool>::iterator itToVisitFlags;
-	sillNode *crawler = firstPtr;
-	while(crawler != null){
-		visitFlags.insert(pair<intptr_t,bool>((intptr_t)crawler,true));
-		crawler = crawler->next;
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
 	}
-	crawler = secondPtr;
-	while(crawler != null){
-		if((itToVisitFlags = visitFlags.find((intptr_t)crawler)) != visitFlags.end()){
-			return crawler;
-		}
-		crawler = crawler->next;
-	}
-	return null;
+	return isTreeFoldableMain(firstTreePtr->left,secondTreePtr->right) &&  isTreeFoldableMain(firstTreePtr->right,secondTreePtr->left);
 }
 
 //Tested
-sillNode *getIntersectionOfSillLength(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
+bool isTreeFoldable(itNode *ptr){
+	if(ptr == null){
+		return true;
 	}
-	sillutils *utils = new sillutils();
-	unsigned int firstSillLength,secondSillLength;
-	int difference;
-	sillNode *firstSillCrawler = firstPtr,*secondSillCrawler = secondPtr;
-	firstSillLength = utils->lengthOfSill(firstPtr);
-	secondSillLength = utils->lengthOfSill(secondPtr);
-	difference = firstSillLength - secondSillLength;
-	difference = difference < 0?difference*-1:difference;
-	while(difference--){
-		if(firstSillLength > secondSillLength){
-			firstSillCrawler = firstSillCrawler->next;
-		}else{
-			secondSillCrawler = secondSillCrawler->next;
-		}
-	}
-	while(firstSillCrawler != null && secondSillCrawler != null){
-		if(firstSillCrawler == secondSillCrawler){
-			return firstSillCrawler;
-		}
-		firstSillCrawler = firstSillCrawler->next;
-		secondSillCrawler = secondSillCrawler->next;
-	}
-	return null;
+	return isTreeFoldableMain(ptr->left,ptr->right);
 }
 
 //Tested
-sillNode *getIntersectionOfSillReversing(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
+bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr){
+	if(firstTreePtr == null && secondTreePtr == null){
+		return true;
 	}
-	sillutils *utils = new sillutils();
-	unsigned int firstSillLength,secondSillLength,uncommonSillLength,commonSillLength,requiredSillLength;
-	firstSillLength = utils->lengthOfSill(firstPtr);
-	secondSillLength = utils->lengthOfSill(secondPtr);
-	reverseSill(&firstPtr);
-	reverseSill(&secondPtr);
-	uncommonSillLength = utils->lengthOfSill(firstPtr);
-	commonSillLength = (firstSillLength + secondSillLength - uncommonSillLength)/2;
-	requiredSillLength = secondSillLength - commonSillLength;
-	reverseSill(&firstPtr);
-	reverseSill(&secondPtr);
-	while(requiredSillLength--){
-		secondPtr = secondPtr->next;
+	if(firstTreePtr == null || secondTreePtr == null){
+		return false;
 	}
-	return secondPtr;
+	return areTreesIdenticalStructure(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalStructure(firstTreePtr->right,secondTreePtr->right);
 }
 
-sillNode *getIntersectionOfSillByMakingLoop(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
+//Tested
+bool isTreeFoldableV2(itNode *ptr){
+	if(ptr == null){
+		return true;
 	}
-	sillNode *firstCrawler = firstPtr;
-	while(firstCrawler->next != null){
-		firstCrawler = firstCrawler->next;
-	}
-	firstCrawler->next = firstPtr;
-	//Loop formed
-	//Find the loop starting point
-	return null;
+	getMirrorTreePreorder(ptr->right);
+	return areTreesIdenticalStructure(ptr->left,ptr->right);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-sillNode *getIntersectionOfSillON2(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
-	}
-	sillNode *outerCrawler = firstPtr,*innerCrawler = secondPtr;
-	while(outerCrawler != null){
-		innerCrawler = secondPtr;
-		while(innerCrawler != null){
-			if(innerCrawler == outerCrawler){
-				return innerCrawler;
-			}
-			innerCrawler = innerCrawler->next;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
-}
 
-#endif /* INTERSECTIONOFSILL_H_ */
+#endif /* FOLDABLETREES_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

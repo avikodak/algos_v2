@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fourelementsforsumon2logn.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsumon2logn.h
- *  Created on			: Nov 30, 2014 :: 10:11:29 PM
+ *  File Name   		: deletenodesgreatervalue.h 
+ *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\deletenodesgreatervalue.h
+ *  Created on			: Oct 30, 2014 :: 10:38:46 AM
  *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/
+ *  Testing Status 		: TODO
+ *  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -57,7 +57,8 @@ using namespace __gnu_cxx;
 #include <lib/utils/treeutil.h>
 #include <lib/utils/twofourtreeutil.h>
 
-#include "fourelementsforsum.h"
+#include "../../../geeksforgeeksv1/linkedlists/page05/deleteanodegivenptr.h"
+#include "../../../geeksforgeeksv1/linkedlists/page04/reversesill.h"
 /****************************************************************************************************************************************************/
 /* 															USER DEFINED CONSTANTS 																    */
 /****************************************************************************************************************************************************/
@@ -66,40 +67,81 @@ using namespace __gnu_cxx;
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 
-#ifndef FOURELEMENTSFORSUMON2LOGN_H_
-#define FOURELEMENTSFORSUMON2LOGN_H_
+#ifndef DELETENODESGREATERVALUE_H_
+#define DELETENODESGREATERVALUE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2*logn) Algorithm 																*/
+/* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-//Tested
-iQuadruple *findFourElementsON2LogN(vector<int> userInput,int sum){
-	if(userInput.size() < 3){
-		return null;
+int deleteNodesGreaterValueRightSide(sillNode *ptr){
+	if(ptr == null){
+		return INT_MIN;
 	}
-	vector<iValueIndex *> auxSpace;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
-		}
+	int greaterValue = deleteNodesGreaterValueRightSide(ptr->next);
+	if(greaterValue > ptr->value){
+		deleteNodeGivenPtr(ptr);
+		return greaterValue;
+	}else{
+		return ptr->value;
 	}
-	mergeSort(auxSpace,0,auxSpace.size()-1);
-	int firstCrawler = 0,secondCrawler = auxSpace.size()-1;
-	int currentSum = 0;
-	while(firstCrawler < secondCrawler){
-		currentSum = auxSpace[firstCrawler]->value + auxSpace[secondCrawler]->value;
-		if(currentSum == sum){
-			return new iQuadruple(userInput[auxSpace[firstCrawler]->firstValueIndex],userInput[auxSpace[firstCrawler]->secondvalueIndex],userInput[auxSpace[secondCrawler]->firstValueIndex],userInput[auxSpace[secondCrawler]->secondvalueIndex]);
-		}else if(currentSum < sum){
-			firstCrawler++;
-		}else{
-			secondCrawler--;
-		}
-	}
-	return null;
 }
 
-#endif /* FOURELEMENTSFORSUMON2LOGN_H_ */
+void deleteNodesGreaterValueRightSideReverse(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
+	}
+	reverseSill(&ptr);
+	sillNode *currentNode = ptr;
+	int maxTillNow = INT_MIN;
+	while(currentNode != null){
+		if(maxTillNow > currentNode->value){
+			deleteNodeGivenPtr(currentNode);
+		}else{
+			maxTillNow = currentNode->value;
+			currentNode = currentNode->next;
+		}
+	}
+	reverseSill(&ptr);
+}
+
+void deleteNodesGreaterValuesRightSideAuxspace(sillNode *ptr){
+	if(ptr == null || ptr->next == null){
+		return;
+	}
+	stack<sillNode *> primaryAuxspace,secondaryAuxspace;
+	sillNode *currentNode = ptr;
+	while(currentNode != null){
+		primaryAuxspace.push(currentNode);
+		currentNode = currentNode->next;
+	}
+}
+
+/****************************************************************************************************************************************************/
+/* 																O(N^2) Algorithm 																    */
+/****************************************************************************************************************************************************/
+void deleteNodesGreaterValueOnRightSideON2(sillNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	sillNode *outerCrawler = ptr,*innerCrawler;
+	int maxValue = INT_MIN;
+	while(outerCrawler != null){
+		innerCrawler = outerCrawler->next;
+		maxValue = INT_MIN;
+		while(innerCrawler != null){
+			maxValue = max(maxValue,innerCrawler->value);
+			innerCrawler = innerCrawler->next;
+		}
+		if(outerCrawler->value > maxValue){
+			outerCrawler = outerCrawler->next;
+		}else{
+			deleteNodeGivenPtr(outerCrawler);
+		}
+	}
+}
+
+
+#endif /* DELETENODESGREATERVALUE_H_ */
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE END 																	    */

@@ -333,9 +333,9 @@ private:
 	}
 
 	//Tested
-	inrNode *getNextRightPostConnection(inrNode *ptr){
+	void getNextRightPostConnection(inrNode *ptr){
 		if(ptr == null){
-			return null;
+			return;
 		}
 		while(ptr != null){
 			if(ptr->left != null){
@@ -661,6 +661,7 @@ public:
 				}
 			}
 		}
+		return root;
 	}
 
 	iftNode *getFBSTFromSillIterative(sillNode *ptr){
@@ -1047,6 +1048,72 @@ public:
 		hashMapOfTree->nodeIndexMap = nodeIndexMap;
 		return hashMapOfTree;
 	}
+
+	void printPreOrderIterative(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		stack<itNode *> auxSpace;
+		auxSpace.push(ptr);
+		itNode *currentNode;
+		while(!auxSpace.empty()){
+			currentNode = auxSpace.top();
+			auxSpace.pop();
+			printf("%d\t",currentNode->value);
+			if(currentNode->right != null){
+				auxSpace.push(currentNode->right);
+			}
+			if(currentNode->left != null){
+				auxSpace.push(currentNode->left);
+			}
+		}
+	}
+
+	void printPreOrderMorris(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		itNode *currentNode = ptr,*temp;
+		while(currentNode != null){
+			if(currentNode->left != null){
+				temp = currentNode->left;
+				while(temp->right != null && temp->right != currentNode){
+					temp = temp->right;
+				}
+				if(temp->right == null){
+					printf("%d\t",currentNode->value);
+					temp->right = currentNode;
+					currentNode = currentNode->left;
+				}else{
+					temp->right = null;
+					currentNode = currentNode->right;
+				}
+			}else{
+				printf("%d\t",currentNode->value);
+				currentNode = currentNode->right;
+			}
+		}
+	}
+
+	void printInorderIterative(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		stack<itNode *> auxSpace;
+		itNode *currentNode = ptr;
+		while(!auxSpace.empty() || currentNode != null){
+			if(currentNode != null){
+				auxSpace.push(currentNode);
+				currentNode = currentNode->left;
+			}else{
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				printf("%d\t",currentNode->value);
+				currentNode = currentNode->right;
+			}
+		}
+	}
+
 };
 #endif /* TREEUTIL_H_ */
 
