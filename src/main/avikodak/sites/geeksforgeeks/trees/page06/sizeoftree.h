@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : treetraversals.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/trees/page06/treetraversals.h
- *  Created on                  : Jan 16, 2016 :: 6:06:00 PM
+ *  File Name                   : sizeoftree.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/trees/page06/sizeoftree.h
+ *  Created on                  : Jan 16, 2016 :: 8:03:41 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://www.geeksforgeeks.org/618/
+ *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-calculate-size-of-a-tree/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,32 +67,31 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_TREETRAVERSALS_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_TREETRAVERSALS_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_SIZEOFTREE_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_SIZEOFTREE_H_
 
 /****************************************************************************************************************************************************/
-/* 															PRE ORDER TRAVERSAL																        */
+/*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void preOrderTraversal(itNode *ptr){
+int getSizeOfTreePreOrder(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	printf("%d\t",ptr->value);
-	preOrderTraversal(ptr->left);
-	preOrderTraversal(ptr->right);
+	return 1 + getSizeOfTreePreOrder(ptr->left) + getSizeOfTreePreOrder(ptr->right);
 }
 
-void preOrderTraversalIterative(itNode *ptr){
+int getSizeOfTreePreOrderIterative(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode;
 	auxSpace.push(ptr);
+	int totalNodes = 0;
 	while(!auxSpace.empty()){
 		currentNode = auxSpace.top();
-		printf("%d\t",currentNode->value);
 		auxSpace.pop();
+		totalNodes++;
 		if(currentNode->right != null){
 			auxSpace.push(currentNode->right);
 		}
@@ -100,22 +99,23 @@ void preOrderTraversalIterative(itNode *ptr){
 			auxSpace.push(currentNode->left);
 		}
 	}
+	return totalNodes;
 }
 
-void morrisPreOrder(itNode *ptr){
+int getSizeOfTreeMorrisPreOrder(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	itNode *currentNode = ptr;
-	itNode *temp;
-	while(!currentNode != null){
+	itNode *currentNode = ptr,*temp;
+	int totalNodes = 0;
+	while(currentNode != null){
 		if(currentNode->left != null){
 			temp = currentNode->left;
 			while(temp->right != null && temp->right != currentNode){
 				temp = temp->right;
 			}
 			if(temp->right == null){
-				printf("%d\t",currentNode->value);
+				totalNodes++;
 				temp->right = currentNode;
 				currentNode = currentNode->left;
 			}else{
@@ -123,55 +123,181 @@ void morrisPreOrder(itNode *ptr){
 				currentNode = currentNode->right;
 			}
 		}else{
+			totalNodes++;
+			currentNode = currentNode->right;
+		}
+	}
+	return totalNodes;
+}
+
+int getSizeOfTreeInOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	return getSizeOfTreeInOrder(ptr->left) + 1 + getSizeOfTreeInOrder(ptr->right);
+}
+
+int getSizeOfTreeInOrderIterative(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	stack<itNode *> auxSpace;
+	itNode *currentNode = ptr;
+	int totalNodes = 0;
+	while(!auxSpace.empty() || currentNode != null){
+		if(currentNode != null){
+			auxSpace.push(currentNode);
+			currentNode = currentNode->left;
+		}else{
+			currentNode = auxSpace.top();
+			auxSpace.pop();
 			printf("%d\t",currentNode->value);
 			currentNode = currentNode->right;
 		}
 	}
+	return totalNodes;
 }
 
-/****************************************************************************************************************************************************/
-/* 															POST ORDER TRAVERSAL 																    */
-/****************************************************************************************************************************************************/
-void postOrderTraversal(itNode *ptr){
+int getSizeOfTreeMorrisInOrder(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	postOrderTraversal(ptr->left);
-	postOrderTraversal(ptr->right);
-	printf("%d\t",ptr->value);
-}
-
-void postOrderTraversalTwoStacks(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> primaryAuxSpace,secondaryAuxSpace;
-	primaryAuxSpace.push(ptr);
-	itNode *currentNode = ptr;
-	while(!primaryAuxSpace.empty()){
-		currentNode = primaryAuxSpace.top();
-		primaryAuxSpace.pop();
-		secondaryAuxSpace.push(currentNode);
+	int totalNodes = 0;
+	itNode *currentNode = ptr,*temp;
+	while(currentNode != null){
 		if(currentNode->left != null){
-			primaryAuxSpace.push(currentNode->left);
+			temp = currentNode->left;
+			while(temp->right != null && temp->right != currentNode){
+				temp = temp->right;
+			}
+			if(temp->right == null){
+				temp->right = currentNode;
+				currentNode = currentNode->left;
+			}else{
+				totalNodes++;
+				temp->right = null;
+				currentNode = currentNode->right;
+			}
+		}else{
+			totalNodes++;
+			currentNode = currentNode->right;
+		}
+	}
+	return totalNodes;
+}
+
+void fixLeftPtrs(itNode *ptr){
+	static itNode *prevNode = null;
+	if(ptr == null){
+		return;
+	}
+	fixLeftPtrs(ptr->left);
+	ptr->left = prevNode;
+	prevNode = ptr;
+	fixLeftPtrs(ptr->right);
+}
+
+void fixRightPtrs(itNode **ptr){
+	if(*ptr == null){
+		return;
+	}
+	itNode *currentNode = *ptr,*prevNode = null;
+	while(currentNode->right != null){
+		currentNode = currentNode->right;
+	}
+	while(currentNode != null){
+		currentNode->right = prevNode;
+		prevNode = currentNode;
+		currentNode = currentNode->left;
+	}
+	(*ptr) = prevNode;
+}
+
+int getSizeByFixingPtrs(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	fixLeftPtrs(ptr);
+	fixRightPtrs(&ptr);
+	int totalNodes = 0;
+	while(ptr != null){
+		totalNodes++;
+		ptr = ptr->right;
+	}
+	return totalNodes;
+}
+
+void convertTreeToDll(itNode *ptr){
+	static itNode *prevNode = null;
+	if(ptr == null){
+		return;
+	}
+	convertTreeToDll(ptr->left);
+	if(prevNode != null){
+		prevNode->right = ptr;
+	}
+	ptr->left = prevNode;
+	prevNode = ptr;
+	convertTreeToDll(ptr->right);
+}
+
+int getSizeOfTreeInorderConversion(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	convertTreeToDll(ptr);
+	while(ptr->left != null){
+		ptr = ptr->left;
+	}
+	int totalNodes = 0;
+	while(ptr!= null){
+		totalNodes++;
+		ptr = ptr->right;
+	}
+	return totalNodes;
+}
+
+int getSizeOfTreePostOrder(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	return getSizeOfTreePostOrder(ptr->left) + getSizeOfTreePostOrder(ptr->right) + 1;
+}
+
+int getSizeOfTreePostOrderIterativeTwoStacks(itNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	stack<itNode *> primary,secondary;
+	itNode *currentNode;
+	primary.push(ptr);
+	while(!primary.empty()){
+		currentNode = primary.top();
+		primary.pop();
+		secondary.push(currentNode);
+		if(currentNode->left != null){
+			primary.push(currentNode->left);
 		}
 		if(currentNode->right != null){
-			primaryAuxSpace.push(currentNode->right);
+			primary.push(currentNode->right);
 		}
 	}
-	while(!secondaryAuxSpace.empty()){
-		currentNode = secondaryAuxSpace.top();
-		secondaryAuxSpace.pop();
-		printf("%d\t",currentNode->value);
+	int totalNodes = 0;
+	while(!secondary.empty()){
+		currentNode = secondary.top();
+		secondary.pop();
+		totalNodes++;
 	}
+	return totalNodes;
 }
 
-void postOrderIterative(itNode *ptr){
+int getSizeOfTreePostOrderIterative(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
+	int totalNodes = 0;
 	while(!auxSpace.empty() || currentNode != null){
 		if(currentNode != null){
 			if(currentNode->right != null){
@@ -187,170 +313,100 @@ void postOrderIterative(itNode *ptr){
 				auxSpace.push(currentNode);
 				currentNode = currentNode->right;
 			}else{
-				printf("%d\t",currentNode->value);
+				totalNodes++;
 				currentNode = null;
 			}
 		}
 	}
+	return totalNodes;
 }
 
-void postOrderTraversalV2(itNode *ptr){
+int getSizeOfTreePostOrderItervativeV2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	stack<itNode *> auxSpace;
 	itNode *currentNode = ptr;
+	int totalNodes = 0;
 	while(!auxSpace.empty() || currentNode != null){
 		while(currentNode != null){
 			auxSpace.push(currentNode);
 			currentNode = currentNode->left;
 		}
-		if(!auxSpace.empty() && auxSpace.top()->right != null){
+		if(!auxSpace.empty() && auxSpace.top()->right == null){
 			currentNode = auxSpace.top();
 			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-			while(!auxSpace.empty() || currentNode == auxSpace.top()){
-				currentNode = auxSpace.top();
+			totalNodes++;
+			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+				totalNodes++;
 				auxSpace.pop();
-				printf("%d\t",currentNode->value);
 			}
 		}
 		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 	}
+	return totalNodes;
 }
 
-/****************************************************************************************************************************************************/
-/* 															IN ORDER TRAVERSAL																    	*/
-/****************************************************************************************************************************************************/
-void inOrderTraversal(itNode *ptr){
+int getSizeOfTreeLevelOrder(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	inOrderTraversal(ptr->left);
-	printf("%d\t",ptr->value);
-	inOrderTraversal(ptr->right);
-}
-
-void inOrderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
-}
-
-void morrisInOrder(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
+	queue<itNode *> auxSpace;
+	itNode *currentNode;
+	auxSpace.push(ptr);
+	int totalNodes = 0;
+	while(!auxSpace.empty()){
+		currentNode = auxSpace.front();
+		auxSpace.pop();
+		totalNodes++;
 		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				currentNode = currentNode->left;
-			}else{
-				printf("%d\t",currentNode->value);
-				temp->right = null;
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
+			auxSpace.push(currentNode->left);
+		}
+		if(currentNode->right != null){
+			auxSpace.push(currentNode->right);
 		}
 	}
-
+	return totalNodes;
 }
 
-void fixLeftPtrs(itNode *ptr){
-	static itNode *prevNode = null;
+/****************************************************************************************************************************************************/
+/*                                                           O(N^2) Algorithm                                                                       */
+/****************************************************************************************************************************************************/
+int getSizeOfLevel(itNode *ptr,int level){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	fixLeftPtrs(ptr->left);
-	ptr->left = prevNode;
-	prevNode = ptr;
-	fixLeftPtrs(ptr->right);
+	if(level == 0){
+		return 1;
+	}
+	return 1 + getSizeOfLevel(ptr->left,level-1) + getSizeOfLevel(ptr->right,level-1);
 }
 
-void fixRightPtr(itNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	itNode *prevNode = null,*currentNode = ptr;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	while(currentNode != null){
-		currentNode->right = prevNode;
-		prevNode = currentNode;
-		currentNode = currentNode->left;
-	}
-	(*ptr) = prevNode;
-}
-
-void inOrderTraversalByFixingPtrs(itNode *ptr){
+int getHeightOfTree(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	fixLeftPtr(ptr);
-	fixRightPtr(&ptr);
-	while(ptr != null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->right;
-	}
+	return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
 }
 
-void fixNodeInOrderON(itNode *ptr){
+int getSizeOfTreeON2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
-	static itNode *prevNode = null;
-	fixNodeInOrderON(ptr->left);
-	if(prevNode != null){
-		prevNode->right = ptr;
-
+	int height = getHeightOfTree(ptr);
+	int totalNodes = 0;
+	for(int counter = 0;counter < height;counter++){
+		totalNodes += getSizeOfLevel(ptr,counter);
 	}
-	ptr->left  = prevNode;
-	prevNode = ptr;
-	fixNodeInOrderON(ptr->right);
+	return totalNodes;
 }
 
-void inorderByFixingPtrsON(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	fixNodeInOrderON(ptr);
-	itNode *currentNode = ptr;
-	while(currentNode->left != null){
-		currentNode = currentNode->left;
-	}
-	while(currentNode != null){
-		printf("%d\t",currentNode->value);
-		currentNode = currentNode->right;
-	}
-}
 
 itNode *convertTreeToDllON2(itNode *ptr){
 	if(ptr == null){
 		return null;
 	}
-	itNode *temp;
+	itNode *temp = null;
 	if(ptr->left != null){
 		temp = convertTreeToDllON2(ptr->left);
 		while(temp->right != null){
@@ -370,70 +426,20 @@ itNode *convertTreeToDllON2(itNode *ptr){
 	return ptr;
 }
 
-void inOrderTraversalByFixingPtrsON2(itNode *ptr){
+int getSizeDllConversionON2(itNode *ptr){
 	if(ptr == null){
-		return;
+		return 0;
 	}
 	convertTreeToDllON2(ptr);
 	while(ptr->left != null){
 		ptr = ptr->left;
 	}
+	int totalNodes = 0;
 	while(ptr != null){
-		printf("%d\t",ptr->value);
+		totalNodes++;
 		ptr = ptr->right;
 	}
+	return totalNodes;
 }
 
-/****************************************************************************************************************************************************/
-/* 															LEVEL ORDER TRAVERSAL																    */
-/****************************************************************************************************************************************************/
-void levelOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	queue<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		printf("%d\t",currentNode->value);
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
-	}
-}
-
-void printLevel(itNode *ptr,int level){
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		printf("%d\t",ptr->value);
-		return;
-	}
-	printLevel(ptr->left,level-1);
-	printLevel(ptr->right,level-1);
-}
-
-int getHeightOfTree(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
-}
-
-void levelOrderTraversalON2(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	int height = getHeightOfTree(ptr);
-	for(int counter = 0;counter < height;counter++){
-		printLevel(ptr,counter);
-	}
-}
-
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_TREETRAVERSALS_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_SIZEOFTREE_H_ */
