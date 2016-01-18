@@ -142,6 +142,82 @@ public:
 		}
 		return postOrderValues;
 	}
+
+	vector<itNode *> getPreOrderNodes(itNode *ptr){
+		vector<itNode *> preOrderNodes;
+		if(ptr == null){
+			return preOrderNodes;
+		}
+		itNode *currentNode = ptr,*temp;
+		while(currentNode != null){
+			if(currentNode->left != null){
+				temp = currentNode->left;
+				while(temp->right != null && temp->right == currentNode){
+					temp = temp->right;
+				}
+				if(temp->right == null){
+					preOrderNodes.push_back(currentNode);
+					temp->right = currentNode;
+					currentNode = currentNode->left;
+				}else{
+					temp->right = null;
+					currentNode = currentNode->right;
+				}
+			}else{
+				preOrderNodes.push_back(currentNode);
+				currentNode = currentNode->right;
+			}
+		}
+		return preOrderNodes;
+	}
+
+	vector<itNode *> getInOrderNodes(itNode *ptr){
+		vector<itNode *> inOrderNodes;
+		if(ptr == null){
+			return inOrderNodes;
+		}
+		stack<itNode *> auxSpace;
+		itNode *currentNode = ptr;
+		while(!auxSpace.empty() || currentNode != null){
+			if(currentNode != null){
+				auxSpace.push(currentNode);
+				currentNode = currentNode->left;
+			}else{
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				inOrderNodes.push_back(currentNode);
+				currentNode = currentNode->right;
+			}
+		}
+		return inOrderNodes;
+	}
+
+	vector<itNode *> getPostOrderNodes(itNode *ptr){
+		vector<itNode *> postOrderNodes;
+		if(ptr == null){
+			return postOrderNodes;
+		}
+		itNode *currentNode = ptr;
+		stack<itNode *> auxSpace;
+		while(!auxSpace.empty() || currentNode != null){
+			while(currentNode != null){
+				auxSpace.push(currentNode);
+				currentNode = currentNode->left;
+			}
+			if(!auxSpace.empty() && auxSpace.top()->right == null){
+				currentNode = auxSpace.top();
+				auxSpace.pop();
+				postOrderNodes.push_back(currentNode);
+				while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
+					currentNode = auxSpace.top();
+					postOrderNodes.push_back(currentNode);
+					auxSpace.pop();
+				}
+			}
+			currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+		}
+		return postOrderNodes;
+	}
 };
 
 #endif /* LIBV2_UTILS_TREEUTIL_H_ */
