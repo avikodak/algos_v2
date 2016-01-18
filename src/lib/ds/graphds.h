@@ -117,7 +117,7 @@ struct ncUnionfind{
 	ncUnionfind(){
 		this->vertex = INT_MIN;
 		this->nodeCounter = 0;
-		this->parentVertex = null;
+		this->parentVertex = NULL;
 	}
 
 	ncUnionfind(int vertex){

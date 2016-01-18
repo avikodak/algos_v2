@@ -1,8 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : treeutil.h
- *  File Location               : /algos_v2/src/libv2/utils/treeutil.h
- *  Created on                  : Jan 16, 2016 :: 10:59:00 PM
+ *  File Name                   : treeds.h
+ *  File Location               : /algos_v2/src/libv2/ds/treeds.h
+ *  Created on                  : Jan 18, 2016 :: 8:28:56 PM
  *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -39,12 +41,6 @@ using namespace __gnu_cxx;
 #include <queue>
 #include <limits.h>
 #include <stdint.h>
-#include <libv2/constants/constants.h>
-#include <libv2/ds/commonds.h>
-#include <libv2/ds/graphds.h>
-#include <libv2/ds/linkedlistds.h>
-#include <libv2/ds/mathds.h>
-#include <libv2/ds/treeds.h>
 
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
@@ -54,94 +50,25 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LIBV2_UTILS_TREEUTIL_H_
-#define LIBV2_UTILS_TREEUTIL_H_
+#ifndef LIBV2_DS_TREEDS_H_
+#define LIBV2_DS_TREEDS_H_
 
-class treeutils{
-private:
-public:
-	itNode *getTree(vector<int> userInput,unsigned int index = 0){
-		if(userInput.size() == 0 || index >= userInput.size()){
-			return null;
-		}
-		itNode *root = new itNode(userInput[index]);
-		root->left = getTree(userInput,2*index+1);
-		root->right = getTree(userInput,2*index+2);
-		return root;
+struct itNode{
+	int value;
+	itNode *left;
+	itNode *right;
+
+	itNode(){
+		this->value = 0;
+		this->left = null;
+		this->right = null;
 	}
 
-	vector<int> getPreOrderValues(itNode *ptr){
-		vector<int> preOrderValues;
-		if(ptr == null){
-			return preOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode;
-		auxSpace.push(ptr);
-		while(!auxSpace.empty()){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			preOrderValues.push_back(currentNode->value);
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-		}
-		return preOrderValues;
-	}
-
-	vector<int> getInOrderValues(itNode *ptr){
-		vector<int> inOrderValues;
-		if(ptr == null){
-			return inOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode = ptr;
-		while(!auxSpace.empty() || currentNode != null){
-			if(currentNode != null){
-				auxSpace.push(currentNode);
-				currentNode = currentNode->left;
-			}else{
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				inOrderValues.push_back(currentNode->value);
-				currentNode = currentNode->right;
-			}
-		}
-		return inOrderValues;
-	}
-
-	vector<int> getPostOrderValues(itNode *ptr){
-		vector<int> postOrderValues;
-		if(ptr == null){
-			return postOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode = ptr;
-		while(!auxSpace.empty() || currentNode != null){
-			if(currentNode != null){
-				if(currentNode->right != null){
-					auxSpace.push(currentNode->right);
-				}
-				auxSpace.push(currentNode);
-				currentNode = currentNode->left;
-			}else{
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				if(!auxSpace.empty() && currentNode->right == auxSpace.top()){
-					auxSpace.pop();
-					auxSpace.push(currentNode);
-					currentNode = currentNode->right;
-				}else{
-					postOrderValues.push_back(currentNode->value);
-					currentNode = null;
-				}
-			}
-		}
-		return postOrderValues;
+	itNode(int value){
+		this->value = value;
+		this->left = null;
+		this->right = null;
 	}
 };
 
-#endif /* LIBV2_UTILS_TREEUTIL_H_ */
+#endif /* LIBV2_DS_TREEDS_H_ */

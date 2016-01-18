@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : treeutil.h
- *  File Location               : /algos_v2/src/libv2/utils/treeutil.h
- *  Created on                  : Jan 16, 2016 :: 10:59:00 PM
+ *  File Name                   : trieutil.h
+ *  File Location               : /algos_v2/src/libv2/utils/trieutil.h
+ *  Created on                  : Jan 18, 2016 :: 8:31:14 PM
  *  Author                      : avikodak
  ****************************************************************************************************************************************************/
 
@@ -54,94 +54,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef LIBV2_UTILS_TREEUTIL_H_
-#define LIBV2_UTILS_TREEUTIL_H_
+#ifndef LIBV2_UTILS_TRIEUTIL_H_
+#define LIBV2_UTILS_TRIEUTIL_H_
 
-class treeutils{
-private:
-public:
-	itNode *getTree(vector<int> userInput,unsigned int index = 0){
-		if(userInput.size() == 0 || index >= userInput.size()){
-			return null;
-		}
-		itNode *root = new itNode(userInput[index]);
-		root->left = getTree(userInput,2*index+1);
-		root->right = getTree(userInput,2*index+2);
-		return root;
-	}
 
-	vector<int> getPreOrderValues(itNode *ptr){
-		vector<int> preOrderValues;
-		if(ptr == null){
-			return preOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode;
-		auxSpace.push(ptr);
-		while(!auxSpace.empty()){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			preOrderValues.push_back(currentNode->value);
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-		}
-		return preOrderValues;
-	}
-
-	vector<int> getInOrderValues(itNode *ptr){
-		vector<int> inOrderValues;
-		if(ptr == null){
-			return inOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode = ptr;
-		while(!auxSpace.empty() || currentNode != null){
-			if(currentNode != null){
-				auxSpace.push(currentNode);
-				currentNode = currentNode->left;
-			}else{
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				inOrderValues.push_back(currentNode->value);
-				currentNode = currentNode->right;
-			}
-		}
-		return inOrderValues;
-	}
-
-	vector<int> getPostOrderValues(itNode *ptr){
-		vector<int> postOrderValues;
-		if(ptr == null){
-			return postOrderValues;
-		}
-		stack<itNode *> auxSpace;
-		itNode *currentNode = ptr;
-		while(!auxSpace.empty() || currentNode != null){
-			if(currentNode != null){
-				if(currentNode->right != null){
-					auxSpace.push(currentNode->right);
-				}
-				auxSpace.push(currentNode);
-				currentNode = currentNode->left;
-			}else{
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				if(!auxSpace.empty() && currentNode->right == auxSpace.top()){
-					auxSpace.pop();
-					auxSpace.push(currentNode);
-					currentNode = currentNode->right;
-				}else{
-					postOrderValues.push_back(currentNode->value);
-					currentNode = null;
-				}
-			}
-		}
-		return postOrderValues;
-	}
-};
-
-#endif /* LIBV2_UTILS_TREEUTIL_H_ */
+#endif /* LIBV2_UTILS_TRIEUTIL_H_ */
