@@ -70,6 +70,58 @@ public:
 		return root;
 	}
 
+	void preOrderTraversal(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		printf("%d\t",ptr->value);
+		preOrderTraversal(ptr->left);
+		preOrderTraversal(ptr->right);
+	}
+
+	void inOrderTraversal(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		inOrderTraversal(ptr->left);
+		printf("%d\t",ptr->value);
+		inOrderTraversal(ptr->right);
+	}
+
+	void postOrderTraversal(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		postOrderTraversal(ptr->left);
+		postOrderTraversal(ptr->right);
+		printf("%d\t",ptr->value);
+	}
+
+	void levelOrderTraversal(itNode *ptr){
+		if(ptr == null){
+			return;
+		}
+		queue<itNode *> auxSpace;
+		itNode *currentNode;
+		auxSpace.push(ptr);
+		unsigned int levelSize;
+		while(!auxSpace.empty()){
+			levelSize = auxSpace.size();
+			while(levelSize--){
+				currentNode = auxSpace.front();
+				auxSpace.pop();
+				printf("%d\t",currentNode->value);
+				if(currentNode->left != null){
+					auxSpace.push(currentNode->left);
+				}
+				if(currentNode->right != null){
+					auxSpace.push(currentNode->right);
+				}
+			}
+			printf("\n");
+		}
+	}
+
 	vector<int> getPreOrderValues(itNode *ptr){
 		vector<int> preOrderValues;
 		if(ptr == null){
@@ -217,6 +269,20 @@ public:
 			currentNode = auxSpace.empty()?null:auxSpace.top()->right;
 		}
 		return postOrderNodes;
+	}
+
+	unsigned int getSizeOfTree(itNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + getSizeOfTree(ptr->left) + getSizeOfTree(ptr->right);
+	}
+
+	unsigned int getHeightOfTree(itNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
 	}
 };
 
