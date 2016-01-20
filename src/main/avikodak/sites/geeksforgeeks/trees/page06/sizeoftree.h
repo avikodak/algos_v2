@@ -369,6 +369,73 @@ int getSizeOfTreeLevelOrder(itNode *ptr){
 	return totalNodes;
 }
 
+itnrNode *getNextRightNode(itnrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+void connectNodesWithNextRight(itnrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNodesWithNextRight(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right->nextRight = getNextRight(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = getNextRight(ptr->nextRight);
+		}
+		connectNodesWithNextRight(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = getNextRight(ptr->nextRight);
+		connectNodesWithNextRight(ptr->right);
+	}else{
+		connectNodesWithNextRight(getNextRight(ptr->nextRight));
+	}
+}
+
+unsigned int getNodesAtLevelPostConnectingNextRight(itnrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	unsigned int totalNodes = 0;
+	while(ptr != null){
+		totalNodes++;
+		ptr = ptr->nextRight;
+	}
+	return totalNodes;
+}
+
+unsigned int getSizeOfTreeByConnectingWithNextRight(itnrNode *ptr){
+	if(ptr == null){
+		return 0;
+	}
+	connectNodesWithNextRight(ptr);
+	unsigned int totalNodes = 0;
+	while(ptr != null){
+		totalNodes += getNodesAtLevelPostConnectingNextRight(ptr);
+		if(ptr->left != null){
+			ptr = ptr->left;
+		}else if(ptr->right != null){
+			ptr = ptr->right;
+		}else{
+			ptr = getNextRight(ptr->nextRight);
+		}
+	}
+	return totalNodes;
+}
+
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/

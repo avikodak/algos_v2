@@ -51,5 +51,19 @@ using namespace __gnu_cxx;
 #ifndef LIBV2_DS_COMMONDS_H_
 #define LIBV2_DS_COMMONDS_H_
 
+struct iPair{
+	int firstValue;
+	int secondValue;
+
+	iPair(){
+		this->firstValue = 0;
+		this->secondValue = 0;
+	}
+
+	iPair(int firstValue,int secondValue){
+		this->firstValue = firstValue;
+		this->secondValue = secondValue;
+	}
+};
 
 #endif /* LIBV2_DS_COMMONDS_H_ */
