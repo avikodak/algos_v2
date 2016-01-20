@@ -70,6 +70,20 @@ public:
 		return root;
 	}
 
+	unsigned int getSizeOfTree(itNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + getSizeOfTree(ptr->left) + getSizeOfTree(ptr->right);
+	}
+
+	unsigned int getHeightOfTree(itNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
+	}
+
 	void preOrderTraversal(itNode *ptr){
 		if(ptr == null){
 			return;
@@ -271,19 +285,71 @@ public:
 		return postOrderNodes;
 	}
 
-	unsigned int getSizeOfTree(itNode *ptr){
+	itHashMap *getTreeInHashMap(itNode *ptr,bool startIndexAtZero = true){
 		if(ptr == null){
-			return 0;
+			return null;
 		}
-		return 1 + getSizeOfTree(ptr->left) + getSizeOfTree(ptr->right);
+		hash_map<unsigned int,itNode *> indexNodeMap;
+		hash_map<intptr_t,unsigned int> nodeIndexMap;
+		hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+		hash_map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
+		indexNodeMap.insert(pair<unsigned int,itNode *>(ptr,startIndexAtZero?0:1));
+		nodeIndexMap.insert(pair<intptr_t,unsigned int>(startIndexAtZero?0:1,ptr));
+		queue<itNode *> auxSpace;
+		auxSpace.push(ptr);
+		itNode *currentNode;
+		unsigned int currentNodeIndex;
+		while(!auxSpace.empty()){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			currentNodeIndex = nodeIndexMap.find((intptr_t)currentNode);
+			if(currentNode->left != null){
+				indexNodeMap.insert(pair<unsigned int,itNode *>(startIndexAtZero?2*currentNodeIndex+1:2*currentNodeIndex,currentNode->left));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,startIndexAtZero?2*currentNodeIndex+1:2*currentNodeIndex));
+				auxSpace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				indexNodeMap.insert(pair<unsigned int,itNode *>(startIndexAtZero?2*currentNodeIndex+2:2*currentNodeIndex+1,currentNode->right));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,startIndexAtZero?2*currentNodeIndex+2:2*currentNodeIndex+1));
+				auxSpace.push(currentNode->right);
+			}
+		}
+		return new itHashMap(indexNodeMap,nodeIndexMap);
 	}
 
-	unsigned int getHeightOfTree(itNode *ptr){
+	itMap *getTreeInMap(itNode *ptr,bool startIndexAtZero = 0){
 		if(ptr == null){
-			return 0;
+			return null;
 		}
-		return 1 + max(getHeightOfTree(ptr->left),getHeightOfTree(ptr->right));
+		map<unsigned int,itNode *> indexNodeMap;
+		map<intptr_t,unsigned int> nodeIndexMap;
+		map<unsigned int,itNode *>::iterator itToIndexNodeMap;
+		map<intptr_t,unsigned int>::iterator itToNodeIndexMap;
+		indexNodeMap.insert(pair<unsigned int,itNode *>(ptr,startIndexAtZero?0:1));
+		nodeIndexMap.insert(pair<intptr_t,unsigned int>(startIndexAtZero?0:1,ptr));
+		queue<itNode *> auxSpace;
+		auxSpace.push(ptr);
+		itNode *currentNode;
+		unsigned int currentNodeIndex;
+		while(!auxSpace.empty()){
+			currentNode = auxSpace.front();
+			auxSpace.pop();
+			currentNodeIndex = nodeIndexMap.find((intptr_t)currentNode);
+			if(currentNode->left != null){
+				indexNodeMap.insert(pair<unsigned int,itNode *>(startIndexAtZero?2*currentNodeIndex+1:2*currentNodeIndex,currentNode->left));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->left,startIndexAtZero?2*currentNodeIndex+1:2*currentNodeIndex));
+				auxSpace.push(currentNode->left);
+			}
+			if(currentNode->right != null){
+				indexNodeMap.insert(pair<unsigned int,itNode *>(startIndexAtZero?2*currentNodeIndex+2:2*currentNodeIndex+1,currentNode->right));
+				nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)currentNode->right,startIndexAtZero?2*currentNodeIndex+2:2*currentNodeIndex+1));
+				auxSpace.push(currentNode->right);
+			}
+		}
+		return new itMap(indexNodeMap,nodeIndexMap);
 	}
+
+
 };
 
 #endif /* LIBV2_UTILS_TREEUTIL_H_ */

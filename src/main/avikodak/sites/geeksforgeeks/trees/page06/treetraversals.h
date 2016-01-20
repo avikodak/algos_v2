@@ -436,4 +436,61 @@ void levelOrderTraversalON2(itNode *ptr){
 	}
 }
 
+itnrNode *getNextRight(itnrNode *ptr){
+	if(ptr == null){
+		return null;
+	}
+	while(ptr != null){
+		if(ptr->left != null){
+			return ptr->left;
+		}else if(ptr->right != null){
+			return ptr->right;
+		}
+		ptr = ptr->nextRight;
+	}
+	return null;
+}
+
+void connectNextRightNodes(itnrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNextRightNodes(ptr->nextRight);
+	if(ptr->left != null){
+		if(ptr->right != null){
+			ptr->left->nextRight = ptr->right;
+			ptr->right = getNextRight(ptr->nextRight);
+		}else{
+			ptr->left->nextRight = getNextRight(ptr->nextRight);
+		}
+		connectNextRightNodes(ptr->left);
+	}else if(ptr->right != null){
+		ptr->right->nextRight = getNextRight(ptr->nextRight);
+		connectNextRightNodes(ptr->right);
+	}else{
+		connectNextRightNodes(ptr->nextRight);
+	}
+}
+
+void printLevelPostConnecting(itnrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	while(ptr != null){
+		printf("%d\t",ptr->value);
+		ptr = ptr->nextRight;
+	}
+}
+
+void printLevelOrderNextRightNodes(itnrNode *ptr){
+	if(ptr == null){
+		return;
+	}
+	connectNextRightNodes(ptr);
+	while(ptr != null){
+		printLevelPostConnecting(ptr);
+		ptr = getNextRight(ptr);
+	}
+}
+
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_TREES_PAGE06_TREETRAVERSALS_H_ */
