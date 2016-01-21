@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : findmajorityelement.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/arrays/page04/findmajorityelement.h
- *  Created on                  : Jan 20, 2016 :: 11:54:42 PM
+ *  File Name                   : findoddoccuring.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/arrays/page04/findoddoccuring.h
+ *  Created on                  : Jan 21, 2016 :: 11:00:44 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : http://www.geeksforgeeks.org/majority-element/
+ *  URL                         : http://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,74 +72,57 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDMAJORITYELEMENT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDMAJORITYELEMENT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDODDOCCURING_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDODDOCCURING_H_
 
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int findMajorityElementMooreVoting(int userInput[],int size){
+int findOddOccuringVal(int userInput[],int size){
+	int xorValue = 0;
+	for(unsigned int counter = 0;counter < size;counter++){
+		xorValue ^= userInput[counter];
+	}
+	return xorValue;
+}
+
+int findOddOccuringValHashMap(int userInput[],int size){
 	if(size == 0){
 		return INT_MIN;
 	}
-	unsigned int frequency = 1;
-	int index = 0;
-	for(unsigned int counter = 1;counter < size;counter++){
-		if(userInput[index] == userInput[counter]){
-			frequency++;
-		}else{
-			if(frequency == 1){
-				index = counter;
-			}else{
-				frequency--;
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(userInput[counter] == userInput[index]){
-			frequency++;
-		}
-	}
-	return frequency > size/2?userInput[index]:INT_MIN;
-}
-
-int findMajorityElement(int userInput[],int size){
-	if(size == 0){
-		throw exception;
-	}
 	hash_map<int,unsigned int> frequencyMap;
-	unsigned int maxFrequency = 0;
-	int maxFreqVal;
+	hash_map<int,unsigned int>::iterator itToFrequencyMap;
 	for(unsigned int counter = 0;counter < size;counter++){
-		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
-			frequencyMap[userInput[counter]]++;
-		}else{
+		if(frequencyMap.find(userInput[counter]) == frequencyMap.end()){
 			frequencyMap[userInput[counter]] = 1;
-		}
-		if(maxFrequency > frequencyMap[userInput[counter]]){
-			maxFrequency = frequencyMap[userInput[counter]];
-			maxFreqVal = userInput[counter];
+		}else{
+			frequencyMap[userInput[counter]]++;
 		}
 	}
-	return maxFrequency > size/2?maxFreqVal:INT_MIN;
+	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
+		if(itToFrequencyMap->second&1){
+			return itToFrequencyMap->first;
+		}
+	}
+	return INT_MIN;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
-int findMajorityElementONLOGN(int userInput[],int size){
+int findOddOccuringValONLOGN(int userInput[],int size){
 	if(size == 0){
-		throw exception;
+		return INT_MIN;
 	}
 	sort(userInput,userInput+size);
-	unsigned int outerCrawler = 0,innerCrawler,frequency;
+	unsigned int outerCrawler = 0,innerCrawler,frequency = 0;
 	while(outerCrawler < size){
-		innerCrawler = outerCrawler;
 		frequency = 0;
+		innerCrawler = outerCrawler;
 		while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]){
 			frequency++;
 		}
-		if(frequency > size/2){
+		if(frequency&1){
 			return userInput[outerCrawler];
 		}
 		outerCrawler += frequency;
@@ -150,24 +133,27 @@ int findMajorityElementONLOGN(int userInput[],int size){
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-int findMajorityElementON2(int userInput[],int size){
+int findOddOccuringValON2(int userInput[],int size){
 	if(size == 0){
 		return INT_MIN;
 	}
+	hash_map<int,bool> valPresenceMap;
 	unsigned int frequency = 0;
 	for(unsigned int outerCrawler = 0;outerCrawler < size;outerCrawler++){
-		frequency = 0;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
-			if(userInput[innerCrawler] == userInput[outerCrawler]){
-				frequency++;
+		if(valPresenceMap.find(userInput[outerCrawler]) == valPresenceMap.end()){
+			frequency = 0;
+			for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
+				if(userInput[outerCrawler] == userInput[innerCrawler]){
+					frequency++;
+				}
 			}
+			if(frequency&2){
+				return userInput[outerCrawler];
+			}
+			valPresenceMap.insert(pair<int,bool>(userInput[outerCrawler],true));
 		}
-		if(frequency > size/2){
-			return userInput[outerCrawler];
-		}
-		outerCrawler++;
 	}
 	return INT_MIN;
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDMAJORITYELEMENT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDODDOCCURING_H_ */
