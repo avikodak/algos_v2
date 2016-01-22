@@ -45,6 +45,7 @@ using namespace __gnu_cxx;
 #include <libv2/ds/linkedlistds.h>
 #include <libv2/ds/mathds.h>
 #include <libv2/ds/treeds.h>
+#include <libv2/utils/commonutil.h>
 
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
@@ -59,6 +60,9 @@ using namespace __gnu_cxx;
 
 class treeutils{
 private:
+	vector<int> getRandomVector(unsigned int size,int lowerLimit,int upperLimit){
+		return getIRandomVector(size,lowerLimit,upperLimit);
+	}
 public:
 	itNode *getTree(vector<int> userInput,unsigned int index = 0){
 		if(userInput.size() == 0 || index >= userInput.size()){
@@ -68,6 +72,35 @@ public:
 		root->left = getTree(userInput,2*index+1);
 		root->right = getTree(userInput,2*index+2);
 		return root;
+	}
+
+	inrNode *getINRTree(vector<int> userInput,unsigned int index = 0){
+		if(userInput.size() == 0 || index >= userInput.size()){
+			return null;
+		}
+		inrNode *root = new inrNode(userInput[index]);
+		root->left = getINRTree(userInput,2*index+1);
+		root->right = getINRTree(userInput,2*index+2);
+		return root;
+	}
+
+	itNode *getTree(map<unsigned int,int> userInput,unsigned int index = 0){
+		static bool isZeroStartIndex = index?true:false;
+		if(userInput.find(index) == userInput.end()){
+			return null;
+		}
+		itNode *root = new itNode(userInput[index]);
+		root->left = getTree(userInput,isZeroStartIndex?2*index+1:2*index+2);
+		root->right = getTree(userInput,isZeroStartIndex?2*index:2*index+1);
+		return root;
+	}
+
+	itNode *getRandomITree(unsigned int size,int lowerLimit = 0,int upperLimit = INT_MAX){
+		return getTree(this->getRandomVector(size,lowerLimit,upperLimit));
+	}
+
+	itNode *getINRRandomTree(unsigned int size,int lowerLimit = 0,int upperLimit = INT_MAX){
+		return getINRTree(this->getRandomVector(size,lowerLimit,upperLimit));
 	}
 
 	unsigned int getSizeOfTree(itNode *ptr){

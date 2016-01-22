@@ -57,5 +57,16 @@ using namespace __gnu_cxx;
 #ifndef LIBV2_UTILS_COMMONUTIL_H_
 #define LIBV2_UTILS_COMMONUTIL_H_
 
+vector<int> getIRandomVector(unsigned int size,int lowerLimit = 0,int upperLimit = INT_MAX){
+	vector<int> result;
+	if(size == 0){
+		return result;
+	}
+	srand(time(NULL));
+	for(unsigned int counter = 0;counter < size;counter++){
+		result.push_back(rand() % upperLimit + lowerLimit);
+	}
+	return result;
+}
 
 #endif /* LIBV2_UTILS_COMMONUTIL_H_ */
