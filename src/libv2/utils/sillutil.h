@@ -45,6 +45,7 @@ using namespace __gnu_cxx;
 #include <libv2/ds/linkedlistds.h>
 #include <libv2/ds/mathds.h>
 #include <libv2/ds/treeds.h>
+#include <libv2/ds/linkedlistds.h>
 
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
@@ -57,5 +58,40 @@ using namespace __gnu_cxx;
 #ifndef LIBV2_UTILS_SILLUTIL_H_
 #define LIBV2_UTILS_SILLUTIL_H_
 
+class sillutil{
+private:
+public:
+	sillNode *getSill(vector<int> userInput){
+		if(userInput.size() == 0){
+			return null;
+		}
+		sillNode *head = new sillNode(userInput[0]),*crawler = head;
+		for(unsigned int counter = 1;counter < userInput.size();counter++){
+			crawler->next = new sillNode(userInput[counter]);
+			crawler = crawler->next;
+		}
+		return head;
+	}
+
+	unsigned int getLength(sillNode *ptr){
+		if(ptr == null){
+			return 0;
+		}
+		unsigned int length = 0;
+		while(ptr != null){
+			length++;
+			ptr = ptr->next;
+		}
+		return length;
+	}
+
+	void print(sillNode *ptr){
+		while(ptr != null){
+			printf("%d\t",ptr->value);
+			ptr = ptr->next;
+		}
+	}
+
+};
 
 #endif /* LIBV2_UTILS_SILLUTIL_H_ */
