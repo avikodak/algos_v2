@@ -61,26 +61,12 @@ using namespace std;
 /****************************************************************************************************************************************************/
 /* 															Testing Includes																	    */
 /****************************************************************************************************************************************************/
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/serializedeserializetree.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/bottomview.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/topview.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/diagonalsum.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/printnodesbetweenlevels.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/closestleaf.h"
-#include "main/avikodak/sites/geeksforgeeksv1/trees/page01/specificlevelorder.h"
-
-#include "main/avikodak/sites/hackerrank/warmup/loveletter.h"
-#include "main/avikodak/sites/hackerrank/warmup/alternatingchar.h"
-
-
-#include "main/avikodak/sites/codeforces/waytoolongwords.h"
-#include "main/avikodak/sites/codeforces/stringtask.h"
 
 /****************************************************************************************************************************************************/
 /* 																MAIN CODE START 																    */
 /****************************************************************************************************************************************************/
 void arrayTester() {
-	/*maxSumTriangle();*/
+
 }
 
 void p(inrNode *ptr){
@@ -171,8 +157,6 @@ void graphTester(){
 }
 
 int main() {
-	//arrayTester();
-	cout << "Tested";
 	return 0;
 }
 
