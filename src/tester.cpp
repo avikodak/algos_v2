@@ -90,7 +90,7 @@ void s(isuccesssorNode *ptr){
 void treeTester(){
 	treeutils *utils = new treeutils();
 	itNode *root = utils->getITreeFromVector(generateISequenceVector(31));
-	perfectTreeSpecificLevelOrder(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14 //10 1 1 2 2 3 3 6 4 7 5 12 6 15 7 24 8 25 9 30 10
+	//perfectTreeSpecificLevelOrder(root);//8 1 20 2 8 3 22 4 5 5 3 7 25 10 10 11 14 //10 1 1 2 2 3 3 6 4 7 5 12 6 15 7 24 8 25 9 30 10
 }
 
 void avlTreeTester(){
@@ -144,7 +144,7 @@ void stringTester(){
 	scanf("%d",&testCases);
 	while(testCases--){*/
 		scanf("%s",userInput);
-		stringTask(userInput);
+		//stringTask(userInput);
 	/*}*/
 }
 
