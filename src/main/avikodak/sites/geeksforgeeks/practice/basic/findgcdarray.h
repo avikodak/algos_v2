@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : sortstring.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/sortstring.h
- *  Created on                  : Jan 26, 2016 :: 8:25:41 PM
+ *  File Name                   : findgcdarray.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/findgcdarray.h
+ *  Created on                  : Jan 26, 2016 :: 10:26:17 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=295
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=232
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,20 +72,36 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDGCDARRAY_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDGCDARRAY_H_
+
+//Tested
+unsigned int gcd(unsigned int a,unsigned int b){
+	if(b == 0){
+		return a;
+	}
+	return gcd(b,a%b);
+}
 
 //Tested
 void solveProblem(){
 	unsigned int testCases,size;
-	string input;
+	unsigned int input,gcdResult;
+	vector<unsigned int> userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
 		scanf("%u",&size);
-		cin >> input;
-		sort(input.begin(),input.end());
-		cout << input << endl;
+		userInput.clear();
+		while(size--){
+			scanf("%u",&input);
+			userInput.push_back(input);
+		}
+		gcdResult = gcd(userInput[0],userInput[1]);
+		for(unsigned int counter = 2;counter < userInput.size();counter++){
+			gcdResult = gcd(gcdResult,userInput[counter]);
+		}
+		printf("%u\n",gcdResult);
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDGCDARRAY_H_ */

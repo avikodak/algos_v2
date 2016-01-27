@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/isnumberweird.h
  *  Created on                  : Jan 26, 2016 :: 8:30:37 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=301
  ****************************************************************************************************************************************************/
 
@@ -75,6 +75,7 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERWEIRD_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERWEIRD_H_
 
+//Tested
 void solveProblem(){
 	unsigned int testCases,input,size;
 	unsigned int weirdNumbers[] = {70, 836, 4030, 5830, 7192, 7912, 9272};
@@ -90,7 +91,7 @@ void solveProblem(){
 				break;
 			}
 		}
-		printf("%s\n",isNumberWeird?"Yes":"No");
+		printf("%s\n",isNumberWeird?"Weird":"Not Weird");
 	}
 }
 

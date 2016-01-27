@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : sortstring.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/sortstring.h
- *  Created on                  : Jan 26, 2016 :: 8:25:41 PM
+ *  File Name                   : automorphicnumber.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/automorphicnumber.h
+ *  Created on                  : Jan 26, 2016 :: 10:32:26 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=295
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=299
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,20 +72,28 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_AUTOMORPHICNUMBER_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_AUTOMORPHICNUMBER_H_
+
+//Tested
+unsigned int cPow(unsigned int base,unsigned int exponent){
+	unsigned int result = 1;
+	for(unsigned int counter = 0;counter < exponent;counter++){
+		result *= base;
+	}
+	return result;
+}
 
 //Tested
 void solveProblem(){
-	unsigned int testCases,size;
-	string input;
+	unsigned int testCases,noOfDigits,temp;
+	unsigned int input;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> input;
-		sort(input.begin(),input.end());
-		cout << input << endl;
+		scanf("%u",&input);
+		noOfDigits = log10(input)+1;
+		temp = cPow(10,noOfDigits);
+		printf("%s\n",(input*input)%(temp) == input?"Automorphic":"Not Automorphic");
 	}
 }
-
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_AUTOMORPHICNUMBER_H_ */

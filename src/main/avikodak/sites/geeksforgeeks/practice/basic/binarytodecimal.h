@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : sortstring.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/sortstring.h
- *  Created on                  : Jan 26, 2016 :: 8:25:41 PM
+ *  File Name                   : binarytodecimal.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/binarytodecimal.h
+ *  Created on                  : Jan 26, 2016 :: 10:44:27 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=295
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=279
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,20 +72,24 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_BINARYTODECIMAL_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_BINARYTODECIMAL_H_
 
 //Tested
 void solveProblem(){
-	unsigned int testCases,size;
-	string input;
+	unsigned int testCases,result,twoPowers;
+	string userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
-		cin >> input;
-		sort(input.begin(),input.end());
-		cout << input << endl;
+		cin >> userInput;
+		result = 0;
+		twoPowers = 1;
+		for(int counter = userInput.size()-1;counter >= 0;counter--){
+			result += twoPowers*(userInput[counter]-'0');
+			twoPowers = twoPowers << 1;
+		}
+		printf("%u\n",result);
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_BINARYTODECIMAL_H_ */
