@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : firstrepeatingelement.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/firstrepeatingelement.h
- *  Created on                  : Jan 28, 2016 :: 9:47:06 PM
+ *  File Name                   : wavearray.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/wavearray.h
+ *  Created on                  : Jan 31, 2016 :: 12:45:12 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=258
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=125
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,8 +72,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_WAVEARRAY_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_WAVEARRAY_H_
 
 //Tested
 void solveProblem(){
@@ -81,34 +81,22 @@ void solveProblem(){
 	long long int input;
 	vector<long long int> userInput;
 	scanf("%u",&testCases);
-	hash_map<long long int,unsigned int> frequencyMap;
-	hash_map<long long int,unsigned int>::iterator itToFrequencyMap;
-	bool isRepeatFound;
 	while(testCases--){
 		scanf("%u",&size);
 		userInput.clear();
-		frequencyMap.clear();
 		while(size--){
 			scanf("%lld",&input);
 			userInput.push_back(input);
-			if(frequencyMap.find(input) == frequencyMap.end()){
-				frequencyMap[input] = 1;
-			}else{
-				frequencyMap[input] += 1;
-			}
 		}
-		isRepeatFound = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(frequencyMap.find(userInput[counter])->second > 1){
-				printf("%lld\n",userInput[counter]);
-				isRepeatFound = true;
-				break;
-			}
+		sort(userInput.begin(),userInput.end());
+		for(unsigned int counter = 0;counter < userInput.size()-1;counter+=2){
+			swap(userInput[counter],userInput[counter+1]);
 		}
-		if(!isRepeatFound){
-			printf("-1\n");
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			printf("%lld ",userInput[counter]);
 		}
+		printf("\n");
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_WAVEARRAY_H_ */

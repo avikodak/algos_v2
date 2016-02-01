@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : firstrepeatingelement.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/firstrepeatingelement.h
- *  Created on                  : Jan 28, 2016 :: 9:47:06 PM
+ *  File Name                   : majorityelement.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/majorityelement.h
+ *  Created on                  : Jan 31, 2016 :: 10:28:23 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=258
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=305
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,8 +72,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAJORITYELEMENT_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAJORITYELEMENT_H_
 
 //Tested
 void solveProblem(){
@@ -81,34 +81,38 @@ void solveProblem(){
 	long long int input;
 	vector<long long int> userInput;
 	scanf("%u",&testCases);
-	hash_map<long long int,unsigned int> frequencyMap;
-	hash_map<long long int,unsigned int>::iterator itToFrequencyMap;
-	bool isRepeatFound;
 	while(testCases--){
 		scanf("%u",&size);
 		userInput.clear();
-		frequencyMap.clear();
 		while(size--){
 			scanf("%lld",&input);
 			userInput.push_back(input);
-			if(frequencyMap.find(input) == frequencyMap.end()){
-				frequencyMap[input] = 1;
+		}
+		int index = 0;
+		unsigned int frequency = 1;
+		for(unsigned int counter = 1;counter < userInput.size();counter++){
+			if(userInput[counter] == userInput[index]){
+				frequency++;
 			}else{
-				frequencyMap[input] += 1;
+				if(frequency == 1){
+					index = counter;
+				}else{
+					frequency--;
+				}
 			}
 		}
-		isRepeatFound = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(frequencyMap.find(userInput[counter])->second > 1){
-				printf("%lld\n",userInput[counter]);
-				isRepeatFound = true;
-				break;
+		frequency = 0;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			if(userInput[index] == userInput[counter]){
+				frequency++;
 			}
 		}
-		if(!isRepeatFound){
-			printf("-1\n");
+		if(frequency > userInput.size()/2){
+			printf("%lld\n",userInput[index]);
+		}else{
+			printf("NO Majority Element\n");
 		}
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAJORITYELEMENT_H_ */

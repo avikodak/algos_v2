@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : firstrepeatingelement.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/firstrepeatingelement.h
- *  Created on                  : Jan 28, 2016 :: 9:47:06 PM
+ *  File Name                   : twoscomplement.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/twoscomplement.h
+ *  Created on                  : Jan 31, 2016 :: 1:21:01 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=258
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=250
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,43 +72,34 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_TWOSCOMPLEMENT_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_TWOSCOMPLEMENT_H_
 
 //Tested
 void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
+	unsigned int testCases;
 	scanf("%u",&testCases);
-	hash_map<long long int,unsigned int> frequencyMap;
-	hash_map<long long int,unsigned int>::iterator itToFrequencyMap;
-	bool isRepeatFound;
+	string userInput;
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		frequencyMap.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-			if(frequencyMap.find(input) == frequencyMap.end()){
-				frequencyMap[input] = 1;
-			}else{
-				frequencyMap[input] += 1;
-			}
+		cin >> userInput;
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			userInput[counter] = userInput[counter] == '0'?'1':'0';
 		}
-		isRepeatFound = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(frequencyMap.find(userInput[counter])->second > 1){
-				printf("%lld\n",userInput[counter]);
-				isRepeatFound = true;
+		int carry = 1;
+		for(int counter = userInput.size()-1;counter >= 0;counter--){
+			if(userInput[counter] == '0'){
+				userInput[counter] = '1';
+				carry = 0;
 				break;
+			}else{
+				userInput[counter] = '0';
 			}
 		}
-		if(!isRepeatFound){
-			printf("-1\n");
+		for(unsigned int counter = 0;counter < userInput.size();counter++){
+			printf("%c",userInput[counter]);
 		}
+		printf("\n");
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_TWOSCOMPLEMENT_H_ */
