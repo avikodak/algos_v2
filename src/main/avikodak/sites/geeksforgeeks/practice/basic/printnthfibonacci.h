@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : casespecificstringsort.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/casespecificstringsort.h
- *  Created on                  : Jan 31, 2016 :: 1:19:25 PM
+ *  File Name                   : printnthfibonacci.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/printnthfibonacci.h
+ *  Created on                  : Feb 1, 2016 :: 9:05:57 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=331
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=294
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -67,47 +67,36 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
 /****************************************************************************************************************************************************/
+#define MODN 1000000007
 
 /****************************************************************************************************************************************************/
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTNTHFIBONACCI_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTNTHFIBONACCI_H_
 
 //Tested
 void solveProblem(){
-	unsigned int testCases,size;
+	unsigned int testCases;
 	long long int input;
-	vector<long long int> userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		string upperCase,lowerCase;
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				upperCase.push_back(userInput[counter]);
-			}else{
-				lowerCase.push_back(userInput[counter]);
+		scanf("%lld",&input);
+		long long int currentNumber = 1,prevNumber = 0;
+		if(input == 1){
+			printf("0\n");
+		}else if(input == 2){
+			printf("1\n");
+		}else{
+			for(unsigned int counter = 2;counter < input;counter++){
+				long long temp = (currentNumber + prevNumber)%MODN;
+				prevNumber = currentNumber;
+				currentNumber = temp;
 			}
+			printf("%lld\n",currentNumber%MODN);
 		}
-		sort(lowerCase.begin(),lowerCase.end());
-		sort(upperCase.begin(),upperCase.end());
-		unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = upperCase[upperCaseIndex++];
-			}else{
-				userInput[counter] = lowerCase[lowerCaseIndex++];
-			}
-		}
-		cout << userInput << endl;
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTNTHFIBONACCI_H_ */

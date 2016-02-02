@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : casespecificstringsort.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/casespecificstringsort.h
- *  Created on                  : Jan 31, 2016 :: 1:19:25 PM
+ *  File Name                   : pairswithdifferencek.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/pairswithdifferencek.h
+ *  Created on                  : Feb 1, 2016 :: 8:05:38 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=331
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=347
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,42 +72,32 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRSWITHDIFFERENCEK_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRSWITHDIFFERENCEK_H_
 
 //Tested
 void solveProblem(){
 	unsigned int testCases,size;
-	long long int input;
+	long long int input,difference;
 	vector<long long int> userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
+		scanf("%u %lld",&size,&difference);
 		userInput.clear();
-		string upperCase,lowerCase;
 		while(size--){
 			scanf("%lld",&input);
 			userInput.push_back(input);
 		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				upperCase.push_back(userInput[counter]);
-			}else{
-				lowerCase.push_back(userInput[counter]);
+		unsigned int pairCount = 0;
+		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
+			for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
+				if(abs(userInput[outerCrawler] - userInput[innerCrawler]) == difference){
+					pairCount++;
+				}
 			}
 		}
-		sort(lowerCase.begin(),lowerCase.end());
-		sort(upperCase.begin(),upperCase.end());
-		unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = upperCase[upperCaseIndex++];
-			}else{
-				userInput[counter] = lowerCase[lowerCaseIndex++];
-			}
-		}
-		cout << userInput << endl;
+		printf("%u\n",pairCount);
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRSWITHDIFFERENCEK_H_ */

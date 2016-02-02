@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : casespecificstringsort.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/casespecificstringsort.h
- *  Created on                  : Jan 31, 2016 :: 1:19:25 PM
+ *  File Name                   : pairwisedataswap.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/pairwisedataswap.h
+ *  Created on                  : Feb 1, 2016 :: 9:35:37 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=331
+ *  URL                         : http://www.practice.geeksforgeeks.org/probfunc-page.php?pid=700024
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,42 +72,24 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRWISEDATASWAP_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRWISEDATASWAP_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		string upperCase,lowerCase;
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				upperCase.push_back(userInput[counter]);
-			}else{
-				lowerCase.push_back(userInput[counter]);
-			}
-		}
-		sort(lowerCase.begin(),lowerCase.end());
-		sort(upperCase.begin(),upperCase.end());
-		unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = upperCase[upperCaseIndex++];
-			}else{
-				userInput[counter] = lowerCase[lowerCaseIndex++];
-			}
-		}
-		cout << userInput << endl;
+struct node{
+	int data;
+	struct node *next;
+};
+
+//Tested
+void pairWiseSwap(struct node *head){
+	int temp;
+	while(head != null && head->next != null){
+		temp = head->data;
+		head->data = head->next->data;
+		head->next->data = temp;
+		head = head->next->next;
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRWISEDATASWAP_H_ */

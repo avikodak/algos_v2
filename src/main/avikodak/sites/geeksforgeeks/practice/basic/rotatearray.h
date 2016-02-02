@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : casespecificstringsort.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/casespecificstringsort.h
- *  Created on                  : Jan 31, 2016 :: 1:19:25 PM
+ *  File Name                   : rotatearray.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/rotatearray.h
+ *  Created on                  : Feb 1, 2016 :: 9:19:06 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=331
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=360
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,42 +72,40 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROTATEARRAY_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROTATEARRAY_H_
+
+//Tested
+void reverse(vector<long long int> &userInput,unsigned int startIndex,unsigned int endIndex){
+	while(startIndex < endIndex){
+		swap(userInput[startIndex],userInput[endIndex]);
+		startIndex++;
+		endIndex--;
+	}
+}
 
 //Tested
 void solveProblem(){
-	unsigned int testCases,size;
+	unsigned int testCases,size,rotateBy;
 	long long int input;
 	vector<long long int> userInput;
 	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%u",&size);
+		scanf("%u %u",&size,&rotateBy);
 		userInput.clear();
-		string upperCase,lowerCase;
 		while(size--){
 			scanf("%lld",&input);
 			userInput.push_back(input);
 		}
+		rotateBy = rotateBy%size;
+		reverse(userInput,0,rotateBy-1);
+		reverse(userInput,rotateBy,userInput.size()-1);
+		reverse(userInput,0,userInput.size()-1);
 		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				upperCase.push_back(userInput[counter]);
-			}else{
-				lowerCase.push_back(userInput[counter]);
-			}
+			printf("%lld ",userInput[counter]);
 		}
-		sort(lowerCase.begin(),lowerCase.end());
-		sort(upperCase.begin(),upperCase.end());
-		unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = upperCase[upperCaseIndex++];
-			}else{
-				userInput[counter] = lowerCase[lowerCaseIndex++];
-			}
-		}
-		cout << userInput << endl;
+		printf("\n");
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROTATEARRAY_H_ */
