@@ -53,6 +53,7 @@ using namespace __gnu_cxx;
 #include <hash_map>
 #include <stack>
 #include <queue>
+#include <stdexcept>
 #include <limits.h>
 #include <stdint.h>
 #include <libv2/common/commonincludes.h>
@@ -199,6 +200,7 @@ using namespace std;
 #include <hash_map>
 #include <stack>
 #include <queue>
+#include <stdexcept>
 #include <limits.h>
 #include <libv2/common/commonincludes.h>
 #include <libv2/constants/constants.h>
