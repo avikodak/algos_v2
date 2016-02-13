@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : cdCD1it2.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/cdCD1it2.h
- *  Created on                  : 14-Oct-2015 :: 9:55:27 am
+ *  File Name                   : deletesill.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/linkedlists/page04/deletesill.h
+ *  Created on                  : Feb 7, 2016 :: 12:31:14 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
- *  URL                         : https://www.codechef.com/problems/CD1IT2
+ *  URL                         : http://www.geeksforgeeks.org/write-a-function-to-delete-a-linked-list/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -39,27 +39,32 @@ using namespace __gnu_cxx;
 #include <hash_map>
 #include <stack>
 #include <queue>
+#include <stdexcept>
 #include <limits.h>
 #include <stdint.h>
-#include <iomanip>
-#include <lib/constants/constants.h>
-#include <lib/ds/commonds.h>
-#include <lib/ds/linkedlistds.h>
-#include <lib/ds/graphds.h>
-#include <lib/ds/mathds.h>
-#include <lib/ds/treeds.h>
-#include <lib/utils/arrayutil.h>
-#include <lib/utils/avltreeutil.h>
-#include <lib/utils/bplustreeutil.h>
-#include <lib/utils/btreeutil.h>
-#include <lib/utils/commonutil.h>
-#include <lib/utils/dillutil.h>
-#include <lib/utils/graphutil.h>
-#include <lib/utils/mathutil.h>
-#include <lib/utils/redblacktreeutil.h>
-#include <lib/utils/sillutil.h>
-#include <lib/utils/treeutil.h>
-#include <lib/utils/twofourtreeutil.h>
+#include <libv2/common/commonincludes.h>
+#include <libv2/constants/constants.h>
+#include <libv2/ds/commonds.h>
+#include <libv2/ds/graphds.h>
+#include <libv2/ds/linkedlistds.h>
+#include <libv2/ds/mathds.h>
+#include <libv2/ds/treeds.h>
+#include <libv2/utils/abtreeutil.h>
+#include <libv2/utils/arrayutil.h>
+#include <libv2/utils/avltreeutil.h>
+#include <libv2/utils/bplustreeutil.h>
+#include <libv2/utils/bstutil.h>
+#include <libv2/utils/btreeutil.h>
+#include <libv2/utils/commonutil.h>
+#include <libv2/utils/dillutil.h>
+#include <libv2/utils/graphutil.h>
+#include <libv2/utils/ioutil.h>
+#include <libv2/utils/mathutil.h>
+#include <libv2/utils/redblacktreeutil.h>
+#include <libv2/utils/sillutil.h>
+#include <libv2/utils/treeutil.h>
+#include <libv2/utils/trieutil.h>
+#include <libv2/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
 /*                                                            USER DEFINED CONSTANTS                                                                */
@@ -69,19 +74,50 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef CDCD1IT2_H_
-#define CDCD1IT2_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_DELETESILL_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_DELETESILL_H_
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	while(testCases--){
-
+/****************************************************************************************************************************************************/
+/*                                                            O(N) Algorithm                                                                        */
+/****************************************************************************************************************************************************/
+void itDeleteSill(sillNode **head){
+	if(*head == null){
+		return;
 	}
+	sillNode *crawler = *head,*temp;
+	while(crawler != null){
+		temp = crawler;
+		crawler = crawler->next;
+		free(temp);
+	}
+	(*head) = null;
 }
 
-#endif /* CDCD1IT2_H_ */
+void deleteSill(sillNode **head){
+	if(*head == null){
+		return;
+	}
+	deleteSill(&((*head)->next));
+	free(*head);
+	(*head) = null;
+}
 
-/****************************************************************************************************************************************************/
-/*                                                               MAIN CODE END                                                                      */
-/****************************************************************************************************************************************************/
+void deleteSillAuxSpace(sillNode **head){
+	if(*head == null){
+		return;
+	}
+	stack<sillNode *> auxSpace;
+	sillNode *crawler = *head;
+	while(crawler != null){
+		auxSpace.push(crawler);
+		crawler = crawler->next;
+	}
+	while(!auxSpace.empty()){
+		crawler = auxSpace.top();
+		auxSpace.pop();
+		free(crawler);
+	}
+	(*head) = null;
+}
+
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_DELETESILL_H_ */

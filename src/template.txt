@@ -258,3 +258,18 @@ using namespace std;
 int main(){
 return 0;
 }
+
+void solveProblem(){
+	unsigned int testCases,size;
+	long long int input;
+	vector<long long int> userInput;
+	scanf("%u",&testCases);
+	while(testCases--){
+		scanf("%u",&size);
+		userInput.clear();
+		for(unsigned int counter = 0;counter < size;counter++){
+			scanf("%lld",&input);
+			userInput.push_back(input);
+		}
+	}
+}
