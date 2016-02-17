@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : chefdete.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/codechef/contest/febchallenge2016/chefdete.h
- *  Created on                  : Feb 14, 2016 :: 12:15:04 PM
+ *  File Name                   : rockpaperscissors.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/rockpaperscissors.h
+ *  Created on                  : Feb 16, 2016 :: 9:18:45 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/FEB16/problems/CHEFDETE
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=436
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,27 +72,38 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_
-#define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROCKPAPERSCISSORS_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROCKPAPERSCISSORS_H_
 
 //Tested
 void solveProblem(){
-	unsigned long long int testCases;
-	long long int input;
-	scanf("%llu",&testCases);
-	vector<bool> userInput;
-	userInput.assign(testCases,false);
+	unsigned int testCases;
+	string userInput;
+	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%lld",&input);
-		if(input > 0){
-			userInput[input-1] = true;
-		}
-	}
-	for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-		if(!userInput[counter]){
-			printf("%llu\t",counter+1);
+		cin >> userInput;
+		if(userInput[0] == userInput[1]){
+			printf("DRAW\n");
+		}else if(userInput[0] == 'R' || userInput[1] == 'R'){
+			if(userInput[0] == 'S' || userInput[1] == 'S'){
+				printf("%c\n",userInput[0] == 'R'?'A':'B');
+			}else{
+				printf("%c\n",userInput[0] == 'P'?'A':'B');
+			}
+		}else if(userInput[0] == 'S' || userInput[1] == 'S'){
+			if(userInput[0] == 'R' || userInput[1] == 'R'){
+				printf("%c\n",userInput[0] == 'R'?'A':'B');
+			}else{
+				printf("%c\n",userInput[0] == 'S'?'A':'B');
+			}
+		}else{
+			if(userInput[0] == 'R' || userInput[1] == 'R'){
+				printf("%c\n",userInput[0] == 'P'?'A':'B');
+			}else{
+				printf("%c\n",userInput[0] == 'S'?'A':'B');
+			}
 		}
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROCKPAPERSCISSORS_H_ */

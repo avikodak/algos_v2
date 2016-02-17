@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : chefdete.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/codechef/contest/febchallenge2016/chefdete.h
- *  Created on                  : Feb 14, 2016 :: 12:15:04 PM
+ *  File Name                   : icode16b.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/codechef/contest/icode16b/icode16b.h
+ *  Created on                  : Feb 16, 2016 :: 10:26:38 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/FEB16/problems/CHEFDETE
+ *  URL                         : https://www.codechef.com/ICOD2016/problems/ICODE16B
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,27 +72,36 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_
-#define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_
+#ifndef MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16B_H_
+#define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16B_H_
 
 //Tested
 void solveProblem(){
-	unsigned long long int testCases;
-	long long int input;
-	scanf("%llu",&testCases);
-	vector<bool> userInput;
-	userInput.assign(testCases,false);
+	unsigned int testCases;
+	string fUserInput,sUserInput;
+	unsigned int nikeshCount,jyotiCount;
+	scanf("%u",&testCases);
 	while(testCases--){
-		scanf("%lld",&input);
-		if(input > 0){
-			userInput[input-1] = true;
+		cin >> fUserInput >> sUserInput;
+		int frequency[26] = {0};
+		for(unsigned int counter = 0;counter < sUserInput.size();counter++){
+			frequency[sUserInput[counter]-'a']++;
 		}
-	}
-	for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-		if(!userInput[counter]){
-			printf("%llu\t",counter+1);
+		nikeshCount = 0;
+		jyotiCount = 0;
+		for(unsigned int counter = 0;counter < fUserInput.size();counter++){
+			if(counter < sUserInput.size()){
+				if(fUserInput[counter] == sUserInput[counter]){
+					nikeshCount++;
+				}
+			}
+			if(frequency[fUserInput[counter]-'a'] > 0){
+				jyotiCount++;
+				frequency[fUserInput[counter]-'a']--;
+			}
 		}
+		printf("%uN%uJ%uS\n",nikeshCount,jyotiCount-nikeshCount,fUserInput.size()-jyotiCount);
 	}
 }
 
-#endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_ */
+#endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16B_H_ */
