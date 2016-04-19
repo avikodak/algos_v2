@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: treefrompostinorder.h 
+ *  File Name   		: treefrompostinorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\treefrompostinorder.h
  *  Created on			: Nov 18, 2014 :: 12:26:56 AM
  *  Author				: AVINASH
@@ -68,57 +68,57 @@ using namespace __gnu_cxx;
 #ifndef TREEFROMPOSTINORDER_H_
 #define TREEFROMPOSTINORDER_H_
 
-int getIndexOfValueFromInorder(vector<int> inOrder,int value,int startIndex,int endIndex){
-	if(inOrder.size() == 0 || startIndex > endIndex){
-		return INT_MAX;
-	}
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		if(inOrder[counter] == value){
-			return counter;
-		}
-	}
-	return INT_MAX;
+int getIndexOfValueFromInorder(vector<int> inOrder,int value,int startIndex,int endIndex) {
+    if(inOrder.size() == 0 || startIndex > endIndex) {
+        return INT_MAX;
+    }
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        if(inOrder[counter] == value) {
+            return counter;
+        }
+    }
+    return INT_MAX;
 }
 
-itNode *constructTreeFromPostInorderMain(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int postOrderStartIndex,int postOrderEndIndex){
-	if(startIndex > endIndex || postOrder.size() == 0 || inOrder.size() == 0 || postOrderIndex < 0){
-		return null;
-	}
-	int value = postOrder[postOrderEndIndex];
-	itNode *node = new itNode(value);
-	int index = getIndexOfValueFromInorder(inOrder,value,startIndex,endIndex);
-	/*node->right = constructTreeFromPostInorderMain(postOrder,inOrder,startIndex,index-1,postOrderStartIndex,postOrderStartIndex);
-	node->left = constructTreeFromPostInorderMain(postOrder,inOrder,index+1,endIndex,postOrderIndex);*/
-	return node;
+itNode *constructTreeFromPostInorderMain(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int postOrderStartIndex,int postOrderEndIndex) {
+    if(startIndex > endIndex || postOrder.size() == 0 || inOrder.size() == 0 || postOrderIndex < 0) {
+        return null;
+    }
+    int value = postOrder[postOrderEndIndex];
+    itNode *node = new itNode(value);
+    int index = getIndexOfValueFromInorder(inOrder,value,startIndex,endIndex);
+    /*node->right = constructTreeFromPostInorderMain(postOrder,inOrder,startIndex,index-1,postOrderStartIndex,postOrderStartIndex);
+    node->left = constructTreeFromPostInorderMain(postOrder,inOrder,index+1,endIndex,postOrderIndex);*/
+    return node;
 }
 
-itNode *constructTreeFromPostInorder(vector<int> postOrder,vector<int> inOrder){
-	return constructTreeFromPostInorderMain(postOrder,inOrder,0,inOrder.size()-1,0,postOrder.size()-1);
+itNode *constructTreeFromPostInorder(vector<int> postOrder,vector<int> inOrder) {
+    return constructTreeFromPostInorderMain(postOrder,inOrder,0,inOrder.size()-1,0,postOrder.size()-1);
 }
 
-void setValueIndexMap(vector<int> inOrder,hash_map<int,unsigned int> &valueIndexMap){
-	if(inOrder.size() == 0){
-		return;
-	}
-	for(unsigned int counter = 0;counter < inOrder.size();counter++){
-		valueIndexMap.insert(pair<int,unsigned int>(inOrder[counter],counter));
-	}
+void setValueIndexMap(vector<int> inOrder,hash_map<int,unsigned int> &valueIndexMap) {
+    if(inOrder.size() == 0) {
+        return;
+    }
+    for(unsigned int counter = 0; counter < inOrder.size(); counter++) {
+        valueIndexMap.insert(pair<int,unsigned int>(inOrder[counter],counter));
+    }
 }
 
-itNode *constructTreeFromPostInOrderV2(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int &postOrderIndex){
-	if(startIndex > endIndex || postOrder.size() == 0 || inOrder.size() == 0 || postOrderIndex < 0){
-		return null;
-	}
-	static hash_map<int,unsigned int> valueIndexMap;
-	if(valueIndexMap.size() == 0){
-		setValueIndexMap(inOrder,valueIndexMap);
-	}
-	int value = postOrder[postOrderIndex--];
-	itNode *node = new itNode(value);
-	int index = valueIndexMap.find(value)->second;
-	node->left = constructTreeFromPostInOrderV2(postOrder,inOrder,startIndex,index-1,postOrderIndex);
-	node->right = constructTreeFromPostInOrderV2(postOrder,inOrder,index+1,endIndex,postOrderIndex);
-	return node;
+itNode *constructTreeFromPostInOrderV2(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex,int &postOrderIndex) {
+    if(startIndex > endIndex || postOrder.size() == 0 || inOrder.size() == 0 || postOrderIndex < 0) {
+        return null;
+    }
+    static hash_map<int,unsigned int> valueIndexMap;
+    if(valueIndexMap.size() == 0) {
+        setValueIndexMap(inOrder,valueIndexMap);
+    }
+    int value = postOrder[postOrderIndex--];
+    itNode *node = new itNode(value);
+    int index = valueIndexMap.find(value)->second;
+    node->left = constructTreeFromPostInOrderV2(postOrder,inOrder,startIndex,index-1,postOrderIndex);
+    node->right = constructTreeFromPostInOrderV2(postOrder,inOrder,index+1,endIndex,postOrderIndex);
+    return node;
 }
 
 #endif /* TREEFROMPOSTINORDER_H_ */

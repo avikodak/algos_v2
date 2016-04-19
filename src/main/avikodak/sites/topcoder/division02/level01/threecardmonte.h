@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 
 class ThreeCardMonte {
 public:
-	string position(string swaps){
-		bool flags[3] = {false,true,false};
-		for(unsigned int counter = 0;counter < swaps.size();counter++){
-			if(swaps[counter] == 'L'){
-				swap(flags[0],flags[1]);
-			}else if(swaps[counter] == 'R'){
-				swap(flags[1],flags[2]);
-			}else if(swaps[counter] == 'E'){
-				swap(flags[0],flags[2]);
-			}
-		}
-		return flags[0]?"L":(flags[1]?"M":"R");
-	}
+    string position(string swaps) {
+        bool flags[3] = {false,true,false};
+        for(unsigned int counter = 0; counter < swaps.size(); counter++) {
+            if(swaps[counter] == 'L') {
+                swap(flags[0],flags[1]);
+            } else if(swaps[counter] == 'R') {
+                swap(flags[1],flags[2]);
+            } else if(swaps[counter] == 'E') {
+                swap(flags[0],flags[2]);
+            }
+        }
+        return flags[0]?"L":(flags[1]?"M":"R");
+    }
 
 };
 

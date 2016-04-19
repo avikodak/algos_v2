@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rearragestringddistanceaway.h 
+ *  File Name   		: rearragestringddistanceaway.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\rearragestringddistanceaway.h
  *  Created on			: Jan 16, 2015 :: 12:07:25 PM
  *  Author				: AVINASH
@@ -70,21 +70,21 @@ using namespace __gnu_cxx;
 #ifndef REARRAGESTRINGDDISTANCEAWAY_H_
 #define REARRAGESTRINGDDISTANCEAWAY_H_
 
-void rearrangeStringDDistanceAway(char *userInput,int distance){
-	if(userInput[0] == '\0' && userInput == null){
-		return;
-	}
-	hash_map<char,unsigned int> frequencyMap;
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	char *crawler = userInput;
-	while(crawler != null && crawler != '\0'){
-		if((itToFrequencyMap = frequencyMap.find(crawler[0])) == frequencyMap.end()){
-			frequencyMap[crawler[0]] = 1;
-		}else{
-			frequencyMap[crawler[0]] += 1;
-		}
-		crawler++;
-	}
+void rearrangeStringDDistanceAway(char *userInput,int distance) {
+    if(userInput[0] == '\0' && userInput == null) {
+        return;
+    }
+    hash_map<char,unsigned int> frequencyMap;
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    char *crawler = userInput;
+    while(crawler != null && crawler != '\0') {
+        if((itToFrequencyMap = frequencyMap.find(crawler[0])) == frequencyMap.end()) {
+            frequencyMap[crawler[0]] = 1;
+        } else {
+            frequencyMap[crawler[0]] += 1;
+        }
+        crawler++;
+    }
 }
 
 #endif /* REARRAGESTRINGDDISTANCEAWAY_H_ */

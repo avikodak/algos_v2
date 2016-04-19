@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: finddigits.h 
+ *  File Name   		: finddigits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\finddigits.h
  *  Created on			: Feb 10, 2015 :: 9:56:52 AM
  *  Author				: AVINASH
@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define FINDDIGITS_H_
 
 //Tested
-void countDigitDivisor(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int input,temp,counter;
-	while(testCases--){
-		scanf("%ld",&input);
-		counter = 0;
-		temp = input;
-		while(input > 0){
-			if(input % 10 != 0){
-				if(temp % (input % 10) == 0){
-					counter++;
-				}
-			}
-			input /= 10;
-		}
-		printf("%ld\n",counter);
-	}
+void countDigitDivisor() {
+    int testCases;
+    scanf("%d",&testCases);
+    long int input,temp,counter;
+    while(testCases--) {
+        scanf("%ld",&input);
+        counter = 0;
+        temp = input;
+        while(input > 0) {
+            if(input % 10 != 0) {
+                if(temp % (input % 10) == 0) {
+                    counter++;
+                }
+            }
+            input /= 10;
+        }
+        printf("%ld\n",counter);
+    }
 }
 
 #endif /* FINDDIGITS_H_ */

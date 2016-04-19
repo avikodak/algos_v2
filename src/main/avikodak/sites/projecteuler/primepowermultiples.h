@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define PRIMEPOWERMULTIPLES_H_
 
 //Tested
-unsigned long long int upow(unsigned int base,unsigned int power){
-	unsigned long long int result=1;
-	while(power--){
-		result *= base;
-	}
-	return result;
+unsigned long long int upow(unsigned int base,unsigned int power) {
+    unsigned long long int result=1;
+    while(power--) {
+        result *= base;
+    }
+    return result;
 }
 
 //Tested
 //Ans : 1097343
-void getTotalPrimePowerMultiples(){
-	vector<unsigned int> primeNumbers = generatePrimeNumbers(7071);
-	set<unsigned long long int> resultingList;
-	unsigned long long int result;
-	for(unsigned int outerCounter = 0;outerCounter < primeNumbers.size();outerCounter++){
-		for(unsigned int middleCounter = 0;middleCounter < primeNumbers.size();middleCounter++){
-			for(unsigned int innerCounter = 0;innerCounter < primeNumbers.size();innerCounter++){
-				result = upow(primeNumbers[outerCounter],2) + upow(primeNumbers[middleCounter],3) + upow(primeNumbers[innerCounter],4);
-				if(result < 50000000){
-					resultingList.insert(result);
-				}else{
-					break;
-				}
-			}
-		}
-	}
-	cout << resultingList.size() << endl;
+void getTotalPrimePowerMultiples() {
+    vector<unsigned int> primeNumbers = generatePrimeNumbers(7071);
+    set<unsigned long long int> resultingList;
+    unsigned long long int result;
+    for(unsigned int outerCounter = 0; outerCounter < primeNumbers.size(); outerCounter++) {
+        for(unsigned int middleCounter = 0; middleCounter < primeNumbers.size(); middleCounter++) {
+            for(unsigned int innerCounter = 0; innerCounter < primeNumbers.size(); innerCounter++) {
+                result = upow(primeNumbers[outerCounter],2) + upow(primeNumbers[middleCounter],3) + upow(primeNumbers[innerCounter],4);
+                if(result < 50000000) {
+                    resultingList.insert(result);
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    cout << resultingList.size() << endl;
 }
 
 #endif /* PRIMEPOWERMULTIPLES_H_ */

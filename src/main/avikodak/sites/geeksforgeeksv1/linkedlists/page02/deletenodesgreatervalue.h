@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletenodesgreatervalue.h 
+ *  File Name   		: deletenodesgreatervalue.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\deletenodesgreatervalue.h
  *  Created on			: Oct 30, 2014 :: 10:38:46 AM
  *  Author				: AVINASH
@@ -73,71 +73,71 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int deleteNodesGreaterValueRightSide(sillNode *ptr){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	int greaterValue = deleteNodesGreaterValueRightSide(ptr->next);
-	if(greaterValue > ptr->value){
-		deleteNodeGivenPtr(ptr);
-		return greaterValue;
-	}else{
-		return ptr->value;
-	}
+int deleteNodesGreaterValueRightSide(sillNode *ptr) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    int greaterValue = deleteNodesGreaterValueRightSide(ptr->next);
+    if(greaterValue > ptr->value) {
+        deleteNodeGivenPtr(ptr);
+        return greaterValue;
+    } else {
+        return ptr->value;
+    }
 }
 
-void deleteNodesGreaterValueRightSideReverse(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	reverseSill(&ptr);
-	sillNode *currentNode = ptr;
-	int maxTillNow = INT_MIN;
-	while(currentNode != null){
-		if(maxTillNow > currentNode->value){
-			deleteNodeGivenPtr(currentNode);
-		}else{
-			maxTillNow = currentNode->value;
-			currentNode = currentNode->next;
-		}
-	}
-	reverseSill(&ptr);
+void deleteNodesGreaterValueRightSideReverse(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    reverseSill(&ptr);
+    sillNode *currentNode = ptr;
+    int maxTillNow = INT_MIN;
+    while(currentNode != null) {
+        if(maxTillNow > currentNode->value) {
+            deleteNodeGivenPtr(currentNode);
+        } else {
+            maxTillNow = currentNode->value;
+            currentNode = currentNode->next;
+        }
+    }
+    reverseSill(&ptr);
 }
 
-void deleteNodesGreaterValuesRightSideAuxspace(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	stack<sillNode *> primaryAuxspace,secondaryAuxspace;
-	sillNode *currentNode = ptr;
-	while(currentNode != null){
-		primaryAuxspace.push(currentNode);
-		currentNode = currentNode->next;
-	}
+void deleteNodesGreaterValuesRightSideAuxspace(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    stack<sillNode *> primaryAuxspace,secondaryAuxspace;
+    sillNode *currentNode = ptr;
+    while(currentNode != null) {
+        primaryAuxspace.push(currentNode);
+        currentNode = currentNode->next;
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void deleteNodesGreaterValueOnRightSideON2(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	int maxValue = INT_MIN;
-	while(outerCrawler != null){
-		innerCrawler = outerCrawler->next;
-		maxValue = INT_MIN;
-		while(innerCrawler != null){
-			maxValue = max(maxValue,innerCrawler->value);
-			innerCrawler = innerCrawler->next;
-		}
-		if(outerCrawler->value > maxValue){
-			outerCrawler = outerCrawler->next;
-		}else{
-			deleteNodeGivenPtr(outerCrawler);
-		}
-	}
+void deleteNodesGreaterValueOnRightSideON2(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    sillNode *outerCrawler = ptr,*innerCrawler;
+    int maxValue = INT_MIN;
+    while(outerCrawler != null) {
+        innerCrawler = outerCrawler->next;
+        maxValue = INT_MIN;
+        while(innerCrawler != null) {
+            maxValue = max(maxValue,innerCrawler->value);
+            innerCrawler = innerCrawler->next;
+        }
+        if(outerCrawler->value > maxValue) {
+            outerCrawler = outerCrawler->next;
+        } else {
+            deleteNodeGivenPtr(outerCrawler);
+        }
+    }
 }
 
 

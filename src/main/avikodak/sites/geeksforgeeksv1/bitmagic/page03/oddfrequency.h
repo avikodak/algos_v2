@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: oddfrequency.h 
+ *  File Name   		: oddfrequency.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\oddfrequency.h
  *  Created on			: Jan 9, 2015 :: 9:13:16 AM
  *  Author				: AVINASH
@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define ODDFREQUENCY_H_
 
 //Tested
-int oddFrequencyVector(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int xorResult = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		xorResult ^= userInput[counter];
-	}
-	return xorResult;
+int oddFrequencyVector(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int xorResult = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        xorResult ^= userInput[counter];
+    }
+    return xorResult;
 }
 
 #endif /* ODDFREQUENCY_H_ */

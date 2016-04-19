@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rotatebits.h 
+ *  File Name   		: rotatebits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\rotatebits.h
  *  Created on			: Jan 9, 2015 :: 12:13:54 PM
  *  Author				: AVINASH
@@ -70,12 +70,12 @@ using namespace __gnu_cxx;
 #ifndef ROTATEBITS_H_
 #define ROTATEBITS_H_
 
-int leftRotate(int userInput,int rotateBy){
-	return userInput << rotateBy | (userInput >> (sizeof(int) * sizeof(char) - rotateBy));
+int leftRotate(int userInput,int rotateBy) {
+    return userInput << rotateBy | (userInput >> (sizeof(int) * sizeof(char) - rotateBy));
 }
 
-int rightRotate(int userInput,int rotateBy){
-	return userInput >> rotateBy | (userInput << (sizeof(int) *sizeof(char) - rotateBy));
+int rightRotate(int userInput,int rotateBy) {
+    return userInput >> rotateBy | (userInput << (sizeof(int) *sizeof(char) - rotateBy));
 }
 
 #endif /* ROTATEBITS_H_ */

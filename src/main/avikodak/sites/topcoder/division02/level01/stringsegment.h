@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 //Locally Tested
 class StringSegment {
 public:
-	double average(string userInput){
-		unsigned int outerCounter = 0,segmentCount = 0;
-		while(outerCounter < userInput.size()){
-			segmentCount++;
-			while(outerCounter+1 < userInput.size() && userInput[outerCounter] == userInput[outerCounter+1]){
-				outerCounter++;
-			}
-			outerCounter++;
-		}
-		return ((double)userInput.size()/(double)segmentCount);
-	}
+    double average(string userInput) {
+        unsigned int outerCounter = 0,segmentCount = 0;
+        while(outerCounter < userInput.size()) {
+            segmentCount++;
+            while(outerCounter+1 < userInput.size() && userInput[outerCounter] == userInput[outerCounter+1]) {
+                outerCounter++;
+            }
+            outerCounter++;
+        }
+        return ((double)userInput.size()/(double)segmentCount);
+    }
 };
 
 #endif /* STRINGSEGMENT_H_ */

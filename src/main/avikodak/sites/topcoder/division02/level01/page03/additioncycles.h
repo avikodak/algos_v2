@@ -72,31 +72,31 @@ using namespace __gnu_cxx;
 
 class AdditionCycles {
 private:
-	int sumOfDigits(int userInput){
-		int sum = 0;
-		while(userInput > 0){
-			sum += (userInput%10);
-			userInput /= 10;
-		}
-		return sum;
-	}
+    int sumOfDigits(int userInput) {
+        int sum = 0;
+        while(userInput > 0) {
+            sum += (userInput%10);
+            userInput /= 10;
+        }
+        return sum;
+    }
 
-	int getNumber(int userInput,int sum){
-		int value = 0;
-		value = (userInput%10)*10 + (sum%10);
-	}
+    int getNumber(int userInput,int sum) {
+        int value = 0;
+        value = (userInput%10)*10 + (sum%10);
+    }
 public:
-	int cycleLength(int userInput){
-		int originalNumber = userInput;
-		int sum;
-		int counter = 0;
-		do{
-			sum = sumOfDigits(userInput);
-			userInput = getNumber(userInput,sum);
-			counter++;
-		}while(originalNumber != userInput);
-		return counter;
-	}
+    int cycleLength(int userInput) {
+        int originalNumber = userInput;
+        int sum;
+        int counter = 0;
+        do {
+            sum = sumOfDigits(userInput);
+            userInput = getNumber(userInput,sum);
+            counter++;
+        } while(originalNumber != userInput);
+        return counter;
+    }
 };
 
 #endif /* ADDITIONCYCLES_H_ */

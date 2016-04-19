@@ -72,35 +72,35 @@ using namespace __gnu_cxx;
 #define KINGSHIP_H_
 
 //Tested
-void getMinCost(vector<long long int> userInput){
-	long long int minValue = *min_element(userInput.begin(),userInput.end());
-	bool flag = false;
-	long long int product = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(minValue != userInput[counter] || flag){
-			product += (minValue *userInput[counter]);
-		}
-		if(minValue == userInput[counter]){
-			flag = true;
-		}
-	}
-	cout << product << endl;
+void getMinCost(vector<long long int> userInput) {
+    long long int minValue = *min_element(userInput.begin(),userInput.end());
+    bool flag = false;
+    long long int product = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(minValue != userInput[counter] || flag) {
+            product += (minValue *userInput[counter]);
+        }
+        if(minValue == userInput[counter]) {
+            flag = true;
+        }
+    }
+    cout << product << endl;
 }
 
 //Tested
-void printResults(){
-	long long int testCases,input,size;
-	scanf("%lld",&testCases);
-	vector<long long int> userInput;
-	while(testCases--){
-		scanf("%lld",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		getMinCost(userInput);
-	}
+void printResults() {
+    long long int testCases,input,size;
+    scanf("%lld",&testCases);
+    vector<long long int> userInput;
+    while(testCases--) {
+        scanf("%lld",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        getMinCost(userInput);
+    }
 }
 
 #endif /* KINGSHIP_H_ */

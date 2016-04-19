@@ -74,22 +74,22 @@ using namespace __gnu_cxx;
 #define JMI04_H_
 
 //Tested
-void printResults(){
-	long long int testCases,input;
-	cin >> testCases;
-	while(testCases--){
-		cin >> input;
-		long long int a=0,b=1,c;
-		while((c = a+b) < input){
-			a = b;
-			b = c;
-		}
-		if(c == input){
-			printf("Yes\n");
-		}else{
-			printf("No\n");
-		}
-	}
+void printResults() {
+    long long int testCases,input;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> input;
+        long long int a=0,b=1,c;
+        while((c = a+b) < input) {
+            a = b;
+            b = c;
+        }
+        if(c == input) {
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
 }
 
 #endif /* JMI04_H_ */

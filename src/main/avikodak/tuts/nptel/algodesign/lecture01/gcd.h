@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gcd.h 
+ *  File Name   		: gcd.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture01\gcd.h
  *  Created on			: Dec 11, 2014 :: 4:59:07 PM
  *  Author				: AVINASH
@@ -71,8 +71,8 @@ using namespace __gnu_cxx;
 #define GCD_H_
 
 //Tested
-unsigned int gcd(unsigned int firstNumber,unsigned int secondNumber){
-	return firstNumber%secondNumber == 0?secondNumber:gcd(secondNumber,firstNumber%secondNumber);
+unsigned int gcd(unsigned int firstNumber,unsigned int secondNumber) {
+    return firstNumber%secondNumber == 0?secondNumber:gcd(secondNumber,firstNumber%secondNumber);
 }
 
 #endif /* GCD_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxdifferenceelements.h 
+ *  File Name   		: maxdifferenceelements.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxdifferenceelements.h
  *  Created on			: Dec 30, 2014 :: 7:26:03 PM
  *  Author				: AVINASH
@@ -74,39 +74,39 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxDifferenceBetweenValues(vector<int> userInput){
-	if(userInput.size() < 2){
-		return INT_MIN;
-	}
-	int minVal = userInput[0];
-	int maxDifference = INT_MIN;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(minVal > userInput[counter]){
-			minVal = userInput[counter];
-		}else{
-			maxDifference = max(maxDifference,userInput[counter] - minVal);
-		}
-	}
-	return maxDifference;
+int maxDifferenceBetweenValues(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return INT_MIN;
+    }
+    int minVal = userInput[0];
+    int maxDifference = INT_MIN;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(minVal > userInput[counter]) {
+            minVal = userInput[counter];
+        } else {
+            maxDifference = max(maxDifference,userInput[counter] - minVal);
+        }
+    }
+    return maxDifference;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxDifferenceBetweenValuesON2(vector<int> userInput){
-	if(userInput.size() < 2){
-		return INT_MIN;
-	}
-	int maxDifference = INT_MIN;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[innerCrawler] > userInput[outerCrawler]){
-				maxDifference = max(maxDifference,userInput[innerCrawler] - userInput[outerCrawler]);
-			}
-		}
-	}
-	return maxDifference;
+int maxDifferenceBetweenValuesON2(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return INT_MIN;
+    }
+    int maxDifference = INT_MIN;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            if(userInput[innerCrawler] > userInput[outerCrawler]) {
+                maxDifference = max(maxDifference,userInput[innerCrawler] - userInput[outerCrawler]);
+            }
+        }
+    }
+    return maxDifference;
 }
 
 #endif /* MAXDIFFERENCEELEMENTS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countsetbits.h 
+ *  File Name   		: countsetbits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\countsetbits.h
  *  Created on			: Feb 11, 2015 :: 10:25:08 AM
  *  Author				: AVINASH
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef COUNTSETBITS_H_
 #define COUNTSETBITS_H_
 
-int count_bits(int userInput){
-	int counter = 0;
-	int temp = userInput;
-	if(userInput < 0){
-		temp = ~temp;
-	}
-	while(temp != 0){
-		if(temp&1){
-			counter++;
-		}
-		temp = temp >> 1;
-	}
-	return userInput > 0?counter:32-counter;
+int count_bits(int userInput) {
+    int counter = 0;
+    int temp = userInput;
+    if(userInput < 0) {
+        temp = ~temp;
+    }
+    while(temp != 0) {
+        if(temp&1) {
+            counter++;
+        }
+        temp = temp >> 1;
+    }
+    return userInput > 0?counter:32-counter;
 }
 
 #endif /* COUNTSETBITS_H_ */

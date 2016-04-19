@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: remiss.h 
+ *  File Name   		: remiss.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\remiss.h
  *  Created on			: Feb 9, 2015 :: 9:59:20 PM
  *  Author				: AVINASH
@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define REMISS_H_
 
 //Tested
-void maxMinEntryTimes(){
-	int testCases,firstCount,secondCount;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d %d",&firstCount,&secondCount);
-		printf("%d %d\n",max(firstCount,secondCount),firstCount+secondCount);
-	}
+void maxMinEntryTimes() {
+    int testCases,firstCount,secondCount;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d %d",&firstCount,&secondCount);
+        printf("%d %d\n",max(firstCount,secondCount),firstCount+secondCount);
+    }
 }
 
 #endif /* REMISS_H_ */

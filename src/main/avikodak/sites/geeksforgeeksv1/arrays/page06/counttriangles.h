@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: counttriangles.h 
+ *  File Name   		: counttriangles.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\counttriangles.h
  *  Created on			: Jan 3, 2015 :: 10:09:48 AM
  *  Author				: AVINASH
@@ -74,44 +74,44 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPossibleTrianglesON2(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int triangleCounter = 0;
-	sort(userInput.begin(),userInput.end());
-	unsigned int thirdSideCounter;
-	for(unsigned int firstSideCounter = 0;firstSideCounter < userInput.size()-2;firstSideCounter++){
-		thirdSideCounter = firstSideCounter + 2;
-		for(unsigned int secondSideCounter = firstSideCounter+1;secondSideCounter < userInput.size()-1;secondSideCounter++){
-			while(thirdSideCounter < userInput.size() && userInput[firstSideCounter] + userInput[secondSideCounter] > userInput[thirdSideCounter]){
-				thirdSideCounter++;
-			}
-			triangleCounter += thirdSideCounter - secondSideCounter - 1;
-		}
-	}
-	return triangleCounter;
+int countPossibleTrianglesON2(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int triangleCounter = 0;
+    sort(userInput.begin(),userInput.end());
+    unsigned int thirdSideCounter;
+    for(unsigned int firstSideCounter = 0; firstSideCounter < userInput.size()-2; firstSideCounter++) {
+        thirdSideCounter = firstSideCounter + 2;
+        for(unsigned int secondSideCounter = firstSideCounter+1; secondSideCounter < userInput.size()-1; secondSideCounter++) {
+            while(thirdSideCounter < userInput.size() && userInput[firstSideCounter] + userInput[secondSideCounter] > userInput[thirdSideCounter]) {
+                thirdSideCounter++;
+            }
+            triangleCounter += thirdSideCounter - secondSideCounter - 1;
+        }
+    }
+    return triangleCounter;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPossibleTrianglesON3(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int counter = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
-		for(unsigned int middleCrawler = outerCrawler+1;middleCrawler < userInput.size()-1;middleCrawler++){
-			for(unsigned int innerCrawler = middleCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-				if(userInput[innerCrawler] < userInput[outerCrawler] + userInput[middleCrawler] && userInput[middleCrawler] < userInput[outerCrawler] + userInput[innerCrawler] && userInput[outerCrawler] < userInput[middleCrawler]+userInput[innerCrawler]){
-					counter++;
-				}
-			}
-		}
-	}
-	return counter;
+int countPossibleTrianglesON3(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int counter = 0;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-2; outerCrawler++) {
+        for(unsigned int middleCrawler = outerCrawler+1; middleCrawler < userInput.size()-1; middleCrawler++) {
+            for(unsigned int innerCrawler = middleCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+                if(userInput[innerCrawler] < userInput[outerCrawler] + userInput[middleCrawler] && userInput[middleCrawler] < userInput[outerCrawler] + userInput[innerCrawler] && userInput[outerCrawler] < userInput[middleCrawler]+userInput[innerCrawler]) {
+                    counter++;
+                }
+            }
+        }
+    }
+    return counter;
 }
 
 #endif /* COUNTTRIANGLES_H_ */

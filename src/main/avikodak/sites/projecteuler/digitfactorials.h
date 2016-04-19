@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define DIGITFACTORIALS_H_
 
 //Tested
-unsigned int getDigitFactorials(unsigned int userInput,map<unsigned int,unsigned int> digitFactorialMap){
-	unsigned int sum = 0;
-	while(userInput){
-		sum += digitFactorialMap.find(userInput%10)->second;
-		userInput /= 10;
-	}
-	return sum;
+unsigned int getDigitFactorials(unsigned int userInput,map<unsigned int,unsigned int> digitFactorialMap) {
+    unsigned int sum = 0;
+    while(userInput) {
+        sum += digitFactorialMap.find(userInput%10)->second;
+        userInput /= 10;
+    }
+    return sum;
 }
 
 //Tested
 //Ans : 40730
-unsigned int getSumOfDigitFactorials(){
-	unsigned int sum = 0,product = 1;
-	map<unsigned int,unsigned int> digitFactorialMap;
-	digitFactorialMap.insert(pair<unsigned int,unsigned int>(0,0));
-	for(unsigned int counter = 1;counter < 10;counter++){
-		product *= counter;
-		digitFactorialMap.insert(pair<unsigned int,unsigned int>(counter,product));
-	}
-	for(unsigned int counter = 3;counter < 2540161;counter++){
-		if(counter == getDigitFactorials(counter,digitFactorialMap)){
-			sum += counter;
-		}
-	}
-	return sum;
+unsigned int getSumOfDigitFactorials() {
+    unsigned int sum = 0,product = 1;
+    map<unsigned int,unsigned int> digitFactorialMap;
+    digitFactorialMap.insert(pair<unsigned int,unsigned int>(0,0));
+    for(unsigned int counter = 1; counter < 10; counter++) {
+        product *= counter;
+        digitFactorialMap.insert(pair<unsigned int,unsigned int>(counter,product));
+    }
+    for(unsigned int counter = 3; counter < 2540161; counter++) {
+        if(counter == getDigitFactorials(counter,digitFactorialMap)) {
+            sum += counter;
+        }
+    }
+    return sum;
 }
 
 #endif /* DIGITFACTORIALS_H_ */

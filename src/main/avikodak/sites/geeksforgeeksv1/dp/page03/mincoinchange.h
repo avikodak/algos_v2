@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: coinchange.h 
+ *  File Name   		: coinchange.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\coinchange.h
  *  Created on			: Dec 9, 2014 :: 8:01:55 PM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define MINCOINCHANGE_H_
 
 //Tested
-int minCoinChangeMemoization(vector<int> denominations,int amount){
-	if(amount < 0){
-		return INT_MAX;
-	}
-	if(amount == 0){
-		return 0;
-	}
-	vector<int> minDenominations(amount+1,0);
-	int minChange;
-	for(unsigned int outerCralwer = 1;outerCralwer < minDenominations.size();outerCralwer++){
-		minChange = INT_MAX;
-		for(unsigned int innerCrawler = 0;innerCrawler < denominations.size();innerCrawler++){
-			if(amount >= denominations[innerCrawler]){
-				minChange = min(minChange,1+minDenominations[amount-denominations[innerCrawler]]);
-			}
-		}
-		minDenominations[outerCralwer] = minChange;
-	}
-	return minDenominations[minDenominations.size()-1];
+int minCoinChangeMemoization(vector<int> denominations,int amount) {
+    if(amount < 0) {
+        return INT_MAX;
+    }
+    if(amount == 0) {
+        return 0;
+    }
+    vector<int> minDenominations(amount+1,0);
+    int minChange;
+    for(unsigned int outerCralwer = 1; outerCralwer < minDenominations.size(); outerCralwer++) {
+        minChange = INT_MAX;
+        for(unsigned int innerCrawler = 0; innerCrawler < denominations.size(); innerCrawler++) {
+            if(amount >= denominations[innerCrawler]) {
+                minChange = min(minChange,1+minDenominations[amount-denominations[innerCrawler]]);
+            }
+        }
+        minDenominations[outerCralwer] = minChange;
+    }
+    return minDenominations[minDenominations.size()-1];
 }
 
 //Tested
-int minCoinChange(vector<int> denominations,int amount){
-	if(amount < 0){
-		return INT_MAX;
-	}
-	if(amount == 0){
-		return 0;
-	}
-	int minCoins = INT_MAX,result;;
-	for(unsigned int counter = 0;counter < denominations.size();counter++){
-		if(denominations[counter] <= amount){
-			result = minCoinChange(denominations,amount-denominations[counter]);
-			if(result != INT_MAX){
-				minCoins = min(minCoins,1+result);
-			}
-		}
-	}
-	return minCoins;
+int minCoinChange(vector<int> denominations,int amount) {
+    if(amount < 0) {
+        return INT_MAX;
+    }
+    if(amount == 0) {
+        return 0;
+    }
+    int minCoins = INT_MAX,result;;
+    for(unsigned int counter = 0; counter < denominations.size(); counter++) {
+        if(denominations[counter] <= amount) {
+            result = minCoinChange(denominations,amount-denominations[counter]);
+            if(result != INT_MAX) {
+                minCoins = min(minCoins,1+result);
+            }
+        }
+    }
+    return minCoins;
 }
 
 #endif /* MINCOINCHANGE_H_ */

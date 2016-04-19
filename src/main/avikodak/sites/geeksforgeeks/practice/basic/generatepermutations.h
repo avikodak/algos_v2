@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GENERATEPERMUTATIONS_H_
 
 //Tested
-void printPermutation(string userInput,unsigned int index){
-	if(index == userInput.size()-1){
-		cout  << userInput << " ";
-		return;
-	}
-	for(unsigned int counter = index;counter < userInput.size();counter++){
-		swap(userInput[index],userInput[counter]);
-		printPermutation(userInput,index+1);
-		swap(userInput[index],userInput[counter]);
-	}
+void printPermutation(string userInput,unsigned int index) {
+    if(index == userInput.size()-1) {
+        cout  << userInput << " ";
+        return;
+    }
+    for(unsigned int counter = index; counter < userInput.size(); counter++) {
+        swap(userInput[index],userInput[counter]);
+        printPermutation(userInput,index+1);
+        swap(userInput[index],userInput[counter]);
+    }
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input;
-		printPermutation(input,0);
-		cout << endl;
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input;
+        printPermutation(input,0);
+        cout << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GENERATEPERMUTATIONS_H_ */

@@ -1,11 +1,11 @@
-	/****************************************************************************************************************************************************
- *  File Name                   : iik1p05.h
- *  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/iitk1p05.h
- *  Created on                  : 13-Sep-2015 :: 12:55:08 am
- *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : https://www.codechef.com/problems/IITK1P05
- ****************************************************************************************************************************************************/
+/****************************************************************************************************************************************************
+*  File Name                   : iik1p05.h
+*  File Location               : /home/avikodak/Desktop/projects/algos_v2/src/main/avikodak/sites/codechef/peer/iitk1p05.h
+*  Created on                  : 13-Sep-2015 :: 12:55:08 am
+*  Author                      : avikodak
+*  Testing Status              : Tested
+*  URL                         : https://www.codechef.com/problems/IITK1P05
+****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
 /*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
@@ -72,17 +72,17 @@ using namespace __gnu_cxx;
 #define IITK1P05_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,maxVal,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",size);
-		maxVal = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			maxVal = max(maxVal,input);
-		}
-	}
+void printResults() {
+    unsigned int testCases,size,maxVal,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",size);
+        maxVal = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            maxVal = max(maxVal,input);
+        }
+    }
 }
 
 #endif /* IITK1P05_H_ */

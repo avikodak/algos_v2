@@ -71,71 +71,71 @@ using namespace __gnu_cxx;
 #define TOTIENTMAXIMUM_H_
 
 //Tested
-map<unsigned long long int,unsigned long long int> getPrimeFactorization(unsigned long long int userInput){
-	unsigned long long int squareRoot = sqrtl(userInput);
-	map<unsigned long long int,unsigned long long int> factorsCounter;
-	map<unsigned long long int,unsigned long long int>::iterator itToFactorsCount;
-	bool flag = true;
-	while(flag && userInput > 1){
-		flag = false;
-		while(!(userInput&1)){
-			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
-				factorsCounter[2] = 1;
-			}else{
-				factorsCounter[2]++;
-			}
-			flag = true;
-			userInput /= 2;
-		}
-		for(unsigned long long int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				if(factorsCounter.find(counter) == factorsCounter.end()){
-					factorsCounter[counter] = 1;
-				}else{
-					factorsCounter[counter]++;
-				}
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag && userInput != 1){
-			if(factorsCounter.find(userInput) == factorsCounter.end()){
-				factorsCounter[userInput] = 1;
-			}else{
-				factorsCounter[userInput]++;
-			}
-		}
-	}
-	return factorsCounter;
+map<unsigned long long int,unsigned long long int> getPrimeFactorization(unsigned long long int userInput) {
+    unsigned long long int squareRoot = sqrtl(userInput);
+    map<unsigned long long int,unsigned long long int> factorsCounter;
+    map<unsigned long long int,unsigned long long int>::iterator itToFactorsCount;
+    bool flag = true;
+    while(flag && userInput > 1) {
+        flag = false;
+        while(!(userInput&1)) {
+            if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()) {
+                factorsCounter[2] = 1;
+            } else {
+                factorsCounter[2]++;
+            }
+            flag = true;
+            userInput /= 2;
+        }
+        for(unsigned long long int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                if(factorsCounter.find(counter) == factorsCounter.end()) {
+                    factorsCounter[counter] = 1;
+                } else {
+                    factorsCounter[counter]++;
+                }
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag && userInput != 1) {
+            if(factorsCounter.find(userInput) == factorsCounter.end()) {
+                factorsCounter[userInput] = 1;
+            } else {
+                factorsCounter[userInput]++;
+            }
+        }
+    }
+    return factorsCounter;
 }
 
 //Tested
-double getTotientFuncValue(unsigned long long int userInput){
-	map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
-	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
-	double result = userInput;
-	for(itToPrimeFactorization = primeFactorization.begin();itToPrimeFactorization != primeFactorization.end();itToPrimeFactorization++){
-		result *= (double)(itToPrimeFactorization->first-1);
-		result /= (double)itToPrimeFactorization->first;
-	}
-	return result;
+double getTotientFuncValue(unsigned long long int userInput) {
+    map<unsigned long long int,unsigned long long int> primeFactorization = getPrimeFactorization(userInput);
+    map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactorization;
+    double result = userInput;
+    for(itToPrimeFactorization = primeFactorization.begin(); itToPrimeFactorization != primeFactorization.end(); itToPrimeFactorization++) {
+        result *= (double)(itToPrimeFactorization->first-1);
+        result /= (double)itToPrimeFactorization->first;
+    }
+    return result;
 }
 
 //Tested
 //Ans : 510510
-void getMaximumTotientFunction(){
-	double maxValue = 0;
-	double totientValue;
-	unsigned int maxN;
-	for(unsigned int counter = 2;counter <= 1000000;counter++){
-		totientValue = getTotientFuncValue(counter);
-		if(maxValue < ((double)(counter)/(double)(totientValue))){
-			maxValue = ((double)(counter)/(double)(totientValue));
-			maxN = counter;
-		}
-	}
-	cout << maxN << endl;
+void getMaximumTotientFunction() {
+    double maxValue = 0;
+    double totientValue;
+    unsigned int maxN;
+    for(unsigned int counter = 2; counter <= 1000000; counter++) {
+        totientValue = getTotientFuncValue(counter);
+        if(maxValue < ((double)(counter)/(double)(totientValue))) {
+            maxValue = ((double)(counter)/(double)(totientValue));
+            maxN = counter;
+        }
+    }
+    cout << maxN << endl;
 }
 
 #endif /* TOTIENTMAXIMUM_H_ */

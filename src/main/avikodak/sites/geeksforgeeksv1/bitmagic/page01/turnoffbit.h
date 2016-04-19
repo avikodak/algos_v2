@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffbit.h 
+ *  File Name   		: turnoffbit.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\turnoffbit.h
  *  Created on			: Jan 9, 2015 :: 1:45:20 PM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef TURNOFFBIT_H_
 #define TURNOFFBIT_H_
 
-int turnoffBit(int userInput,int position){
-	return userInput & ~(1 << (position-1));
+int turnoffBit(int userInput,int position) {
+    return userInput & ~(1 << (position-1));
 }
 
 #endif /* TURNOFFBIT_H_ */

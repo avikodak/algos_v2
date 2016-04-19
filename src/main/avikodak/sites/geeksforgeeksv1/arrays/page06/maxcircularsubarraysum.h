@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxcircularsubarraysum.h 
+ *  File Name   		: maxcircularsubarraysum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxcircularsubarraysum.h
  *  Created on			: Jan 3, 2015 :: 10:59:43 PM
  *  Author				: AVINASH
@@ -74,31 +74,31 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int kadanesAlgo(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter],currentSum+userInput[counter]);
-		maxSum = max(maxSum,currentSum);
-	}
-	return maxSum;
+int kadanesAlgo(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int currentSum = 0,maxSum = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        currentSum = max(userInput[counter],currentSum+userInput[counter]);
+        maxSum = max(maxSum,currentSum);
+    }
+    return maxSum;
 }
 
 //Tested
-int maxCircularSubArraySum(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int maxContigousSum = kadanesAlgo(userInput);
-	int sumOfArray = 0;
-	for(unsigned int counter  = 0;counter < userInput.size();counter++){
-		sumOfArray += userInput[counter];
-		userInput[counter] *= -1;
-	}
-	int maxCircularSum = sumOfArray + kadanesAlgo(userInput);
-	return max(maxCircularSum,maxContigousSum);
+int maxCircularSubArraySum(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int maxContigousSum = kadanesAlgo(userInput);
+    int sumOfArray = 0;
+    for(unsigned int counter  = 0; counter < userInput.size(); counter++) {
+        sumOfArray += userInput[counter];
+        userInput[counter] *= -1;
+    }
+    int maxCircularSum = sumOfArray + kadanesAlgo(userInput);
+    return max(maxCircularSum,maxContigousSum);
 }
 
 #endif /* MAXCIRCULARSUBARRAYSUM_H_ */

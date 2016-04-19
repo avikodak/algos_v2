@@ -70,33 +70,33 @@ using namespace __gnu_cxx;
 #ifndef LITTLEPONYANDCRYSTALMINE_H_
 #define LITTLEPONYANDCRYSTALMINE_H_
 
-void getCrystal(){
-	unsigned int size;
-	scanf("%u",size);
-	vector<vector<char> > matrix(size);
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		matrix[rowCounter].assign(size,'*');
-	}
-	int columnStart = 0;
-	for(int rowCounter = size/2;rowCounter >= 0;rowCounter--){
-		for(unsigned int columnCounter = columnStart;columnCounter <size-columnStart;columnCounter++){
-			matrix[rowCounter][columnCounter] = 'D';
-		}
-		columnStart++;
-	}
-	columnStart = 1;
-	for(unsigned int rowCounter = (size/2)+1;rowCounter < size;rowCounter++){
-		for(int columnCounter = columnStart;columnCounter <size-columnStart;columnCounter++){
-			matrix[rowCounter][columnCounter] = 'D';
-		}
-		columnStart++;
-	}
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-			printf("%c",matrix[rowCounter][columnCounter]);
-		}
-		printf("\n");
-	}
+void getCrystal() {
+    unsigned int size;
+    scanf("%u",size);
+    vector<vector<char> > matrix(size);
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        matrix[rowCounter].assign(size,'*');
+    }
+    int columnStart = 0;
+    for(int rowCounter = size/2; rowCounter >= 0; rowCounter--) {
+        for(unsigned int columnCounter = columnStart; columnCounter <size-columnStart; columnCounter++) {
+            matrix[rowCounter][columnCounter] = 'D';
+        }
+        columnStart++;
+    }
+    columnStart = 1;
+    for(unsigned int rowCounter = (size/2)+1; rowCounter < size; rowCounter++) {
+        for(int columnCounter = columnStart; columnCounter <size-columnStart; columnCounter++) {
+            matrix[rowCounter][columnCounter] = 'D';
+        }
+        columnStart++;
+    }
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+            printf("%c",matrix[rowCounter][columnCounter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* LITTLEPONYANDCRYSTALMINE_H_ */

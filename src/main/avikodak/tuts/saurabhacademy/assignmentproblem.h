@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: assignmentproblem.h 
+ *  File Name   		: assignmentproblem.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\assignmentproblem.h
  *  Created on			: Dec 18, 2014 :: 8:19:06 PM
  *  Author				: AVINASH
@@ -70,22 +70,22 @@ using namespace __gnu_cxx;
 #ifndef ASSIGNMENTPROBLEM_H_
 #define ASSIGNMENTPROBLEM_H_
 
-int assignmentProblem(vector<vector<int> > payMatrix,int jobCounter,hash_map<unsigned int,unsigned int> personJobMap){
-	if(jobCounter > payMatrix[0].size()){
-		return INT_MAX;
-	}
-	if(jobCounter == payMatrix[0].size()){
-		return 0;
-	}
-	int minAmount = INT_MAX;
-	for(unsigned int person = 0;person < payMatrix.size();person++){
-		if(personJobMap.find(person) == personJobMap.end()){
-			personJobMap.insert(pair<unsigned int,unsigned int>(person,jobCounter));
-			minAmount = min(minAmount,payMatrix[person][jobCounter] + assignmentProblem(payMatrix,jobCounter,personJobMap));
-			personJobMap.erase(person);
-		}
-	}
-	return minAmount;
+int assignmentProblem(vector<vector<int> > payMatrix,int jobCounter,hash_map<unsigned int,unsigned int> personJobMap) {
+    if(jobCounter > payMatrix[0].size()) {
+        return INT_MAX;
+    }
+    if(jobCounter == payMatrix[0].size()) {
+        return 0;
+    }
+    int minAmount = INT_MAX;
+    for(unsigned int person = 0; person < payMatrix.size(); person++) {
+        if(personJobMap.find(person) == personJobMap.end()) {
+            personJobMap.insert(pair<unsigned int,unsigned int>(person,jobCounter));
+            minAmount = min(minAmount,payMatrix[person][jobCounter] + assignmentProblem(payMatrix,jobCounter,personJobMap));
+            personJobMap.erase(person);
+        }
+    }
+    return minAmount;
 }
 
 #endif /* ASSIGNMENTPROBLEM_H_ */

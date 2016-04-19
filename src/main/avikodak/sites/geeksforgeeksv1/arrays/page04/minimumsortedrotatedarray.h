@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minimumsortedrotatedarray.h 
+ *  File Name   		: minimumsortedrotatedarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\minimumsortedrotatedarray.h
  *  Created on			: Dec 22, 2014 :: 6:05:18 PM
  *  Author				: AVINASH
@@ -73,39 +73,39 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
-int minInSortedRotateArray(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	if(endIndex - startIndex == 1){
-		return min(userInput[startIndex],userInput[endIndex]);
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] < userInput[middleIndex-1] && userInput[middleIndex] < userInput[middleIndex+1]){
-		return userInput[middleIndex];
-	}
-	if(userInput[middleIndex] < userInput[endIndex]){
-		return minInSortedRotateArray(userInput,startIndex,middleIndex-1);
-	}else{
-		return minInSortedRotateArray(userInput,middleIndex+1,endIndex);
-	}
+int minInSortedRotateArray(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    if(endIndex - startIndex == 1) {
+        return min(userInput[startIndex],userInput[endIndex]);
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] < userInput[middleIndex-1] && userInput[middleIndex] < userInput[middleIndex+1]) {
+        return userInput[middleIndex];
+    }
+    if(userInput[middleIndex] < userInput[endIndex]) {
+        return minInSortedRotateArray(userInput,startIndex,middleIndex-1);
+    } else {
+        return minInSortedRotateArray(userInput,middleIndex+1,endIndex);
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int minInSortedRotateArray(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MAX;
-	}
-	int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		minVal = min(minVal,userInput[counter]);
-	}
-	return minVal;
+int minInSortedRotateArray(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MAX;
+    }
+    int minVal = INT_MAX;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        minVal = min(minVal,userInput[counter]);
+    }
+    return minVal;
 }
 
 #endif /* MINIMUMSORTEDROTATEDARRAY_H_ */

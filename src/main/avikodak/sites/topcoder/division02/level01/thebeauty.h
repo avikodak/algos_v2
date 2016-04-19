@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: thebeauty.h 
+ *  File Name   		: thebeauty.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\thebeauty.h
  *  Created on			: Mar 27, 2015 :: 8:48:03 PM
  *  Author				: avikodak
@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define THEBEAUTY_H_
 
 //Tested
-class TheBeauty{
+class TheBeauty {
 public:
-	int find(int userInput){
-		bool flags[10] = {false};
-		while(userInput > 0){
-			flag[userInput%10] = true;
-			userInput /= 10;
-		}
-		int visitedCounter = 0;
-		for(unsigned int counter = 0;counter < 10;counter++){
-			if(flags[counter]){
-				visitedCounter += 0;
-			}
-		}
-		return visitedCounter;
-	}
+    int find(int userInput) {
+        bool flags[10] = {false};
+        while(userInput > 0) {
+            flag[userInput%10] = true;
+            userInput /= 10;
+        }
+        int visitedCounter = 0;
+        for(unsigned int counter = 0; counter < 10; counter++) {
+            if(flags[counter]) {
+                visitedCounter += 0;
+            }
+        }
+        return visitedCounter;
+    }
 };
 
 #endif /* THEBEAUTY_H_ */

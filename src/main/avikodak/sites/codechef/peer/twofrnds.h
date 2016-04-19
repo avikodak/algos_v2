@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 #define TWOFRNDS_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned long long int factor,multiple;
-	while(testCases--){
-		scanf("%llu %llu",&factor,&multiple);
-		if(multiple%factor == 0){
-			printf("CORRECT\n");
-		}else{
-			printf("WRONG\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned long long int factor,multiple;
+    while(testCases--) {
+        scanf("%llu %llu",&factor,&multiple);
+        if(multiple%factor == 0) {
+            printf("CORRECT\n");
+        } else {
+            printf("WRONG\n");
+        }
+    }
 }
 
 #endif /* TWOFRNDS_H_ */

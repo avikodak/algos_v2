@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestevenlengthsubstringleftright.h 
+ *  File Name   		: longestevenlengthsubstringleftright.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\longestevenlengthsubstringleftright.h
  *  Created on			: Jan 13, 2015 :: 9:06:42 AM
  *  Author				: AVINASH
@@ -78,27 +78,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int longestEvenLengthSubStringLeftRightSum(vector<int> userInput){
-	if(userInput.size() == 0 || userInput.size()%2 != 0){
-		return 0;
-	}
-	int currentSubstringLength,leftSum,rightSum;
-	int maxLength = INT_MIN;
-	for(int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		for(int middleCounter = outerCounter+1;middleCounter < userInput.size();middleCounter++){
-			currentSubstringLength = middleCounter - outerCounter + 1;
-			leftSum = 0;
-			rightSum = 0;
-			for(int innerCounter = 0;innerCounter < currentSubstringLength/2;innerCounter++){
-				leftSum += userInput[outerCounter + innerCounter];
-				rightSum += userInput[outerCounter + currentSubstringLength/2 + innerCounter];
-			}
-			if(leftSum == rightSum){
-				maxLength = max(maxLength,middleCounter - outerCounter + 1);
-			}
-		}
-	}
-	return maxLength;
+int longestEvenLengthSubStringLeftRightSum(vector<int> userInput) {
+    if(userInput.size() == 0 || userInput.size()%2 != 0) {
+        return 0;
+    }
+    int currentSubstringLength,leftSum,rightSum;
+    int maxLength = INT_MIN;
+    for(int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        for(int middleCounter = outerCounter+1; middleCounter < userInput.size(); middleCounter++) {
+            currentSubstringLength = middleCounter - outerCounter + 1;
+            leftSum = 0;
+            rightSum = 0;
+            for(int innerCounter = 0; innerCounter < currentSubstringLength/2; innerCounter++) {
+                leftSum += userInput[outerCounter + innerCounter];
+                rightSum += userInput[outerCounter + currentSubstringLength/2 + innerCounter];
+            }
+            if(leftSum == rightSum) {
+                maxLength = max(maxLength,middleCounter - outerCounter + 1);
+            }
+        }
+    }
+    return maxLength;
 }
 
 #endif /* LONGESTEVENLENGTHSUBSTRINGLEFTRIGHT_H_ */

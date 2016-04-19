@@ -76,13 +76,13 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_GREATESTOFTHREE_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,a,b,c;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u %u",&a,&b,&c);
-		printf("%u\n",a>b?(a>c?a:c):(b>c?b:c));
-	}
+void solveProblem() {
+    unsigned int testCases,a,b,c;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u %u",&a,&b,&c);
+        printf("%u\n",a>b?(a>c?a:c):(b>c?b:c));
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_GREATESTOFTHREE_H_ */

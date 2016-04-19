@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 #define GOOGOL05_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	map<string,unsigned int> freqMap;
-	map<string,unsigned int>::iterator itToFreqMap;
-	vector<string> userInput;
-	scanf("%u",&testCases);
-	string input;
-	while(testCases--){
-		cin >> input;
-		userInput.push_back(input);
-		if((itToFreqMap = freqMap.find(input)) == freqMap.end()){
-			freqMap[input] = 1;
-		}else{
-			freqMap[input]++;
-		}
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFreqMap = freqMap.find(userInput[counter])) != freqMap.end()){
-			cout << itToFreqMap->first << " " << itToFreqMap->second << endl;
-			freqMap.erase(itToFreqMap->first);
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    map<string,unsigned int> freqMap;
+    map<string,unsigned int>::iterator itToFreqMap;
+    vector<string> userInput;
+    scanf("%u",&testCases);
+    string input;
+    while(testCases--) {
+        cin >> input;
+        userInput.push_back(input);
+        if((itToFreqMap = freqMap.find(input)) == freqMap.end()) {
+            freqMap[input] = 1;
+        } else {
+            freqMap[input]++;
+        }
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFreqMap = freqMap.find(userInput[counter])) != freqMap.end()) {
+            cout << itToFreqMap->first << " " << itToFreqMap->second << endl;
+            freqMap.erase(itToFreqMap->first);
+        }
+    }
 }
 
 #endif /* GOOGOL05_H_ */

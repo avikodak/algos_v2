@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: doublingstrategy.h 
+ *  File Name   		: doublingstrategy.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\doublingstrategy.h
  *  Created on			: Oct 19, 2014 :: 8:39:26 PM
  *  Author				: AVINASH
@@ -73,16 +73,16 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int incrementByDoublingStrategy(int **array,unsigned int size){
-	unsigned int requiredSize = 2 * size;
-	int *temp = (int *)malloc(sizeof(int) * requiredSize);
-	if(*array != null){
-		for(unsigned int counter = 0;counter < size;counter++){
-			temp[counter] = (*array)[counter];
-		}
-	}
-	(*array) = temp;
-	return requiredSize;
+unsigned int incrementByDoublingStrategy(int **array,unsigned int size) {
+    unsigned int requiredSize = 2 * size;
+    int *temp = (int *)malloc(sizeof(int) * requiredSize);
+    if(*array != null) {
+        for(unsigned int counter = 0; counter < size; counter++) {
+            temp[counter] = (*array)[counter];
+        }
+    }
+    (*array) = temp;
+    return requiredSize;
 }
 
 #endif /* DOUBLINGSTRATEGY_H_ */

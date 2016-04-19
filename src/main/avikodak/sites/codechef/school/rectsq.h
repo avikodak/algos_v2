@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 #define RECTSQ_H_
 
 //Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	if(b == 0){
-		return a;
-	}
-	return gcd(b,a%b);
+unsigned int gcd(unsigned int a,unsigned int b) {
+    if(b == 0) {
+        return a;
+    }
+    return gcd(b,a%b);
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,width,height,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&width,&height);
-		result = gcd(width,height);
-		printf("%u\n",(width*height)/(result*result));
-	}
+void printResults() {
+    unsigned int testCases,width,height,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&width,&height);
+        result = gcd(width,height);
+        printf("%u\n",(width*height)/(result*result));
+    }
 }
 
 #endif /* RECTSQ_H_ */

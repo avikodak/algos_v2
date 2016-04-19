@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: halloweenparty.h 
+ *  File Name   		: halloweenparty.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\halloweenparty.h
  *  Created on			: Feb 6, 2015 :: 11:37:42 AM
  *  Author				: AVINASH
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef HALLOWEENPARTY_H_
 #define HALLOWEENPARTY_H_
 
-void getMaxCutsChocolateBar(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int userInput,temp;
-	while(testCases--){
-		scanf("%ld",&userInput);
-		temp = userInput/2;
-		if(userInput%2 == 0){
-			printf("%ld\n",temp * temp);
-		}else{
-			printf("%ld\n",temp * (temp+1));
-		}
-	}
+void getMaxCutsChocolateBar() {
+    int testCases;
+    scanf("%d",&testCases);
+    long int userInput,temp;
+    while(testCases--) {
+        scanf("%ld",&userInput);
+        temp = userInput/2;
+        if(userInput%2 == 0) {
+            printf("%ld\n",temp * temp);
+        } else {
+            printf("%ld\n",temp * (temp+1));
+        }
+    }
 }
 
 #endif /* HALLOWEENPARTY_H_ */

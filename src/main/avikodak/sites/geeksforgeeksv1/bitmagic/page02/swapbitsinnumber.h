@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: swapbitsinnumber.h 
+ *  File Name   		: swapbitsinnumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\swapbitsinnumber.h
  *  Created on			: Jan 9, 2015 :: 1:33:53 PM
  *  Author				: AVINASH

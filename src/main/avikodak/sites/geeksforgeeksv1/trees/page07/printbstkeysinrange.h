@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printbstkeysinrange.h 
+ *  File Name   		: printbstkeysinrange.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printbstkeysinrange.h
  *  Created on			: Oct 20, 2014 :: 8:38:37 PM
  *  Author				: AVINASH
@@ -72,157 +72,157 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printBSTKeysInRange(itNode *ptr,int minValue,int maxValue){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->value >= minValue){
-		printBSTKeysInRange(ptr->left,minValue,maxValue);
-	}
-	if(ptr->value >= minValue && ptr->value <= maxValue){
-		printf("%d\t",ptr->value);
-	}
-	if(ptr->value <= maxValue){
-		printBSTKeysInRange(ptr->right,minValue,maxValue);
-	}
+void printBSTKeysInRange(itNode *ptr,int minValue,int maxValue) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->value >= minValue) {
+        printBSTKeysInRange(ptr->left,minValue,maxValue);
+    }
+    if(ptr->value >= minValue && ptr->value <= maxValue) {
+        printf("%d\t",ptr->value);
+    }
+    if(ptr->value <= maxValue) {
+        printBSTKeysInRange(ptr->right,minValue,maxValue);
+    }
 }
 
 //Tested
-void pFixLeftPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	pFixLeftPtr(ptr->left);
-	ptr->left = prevNode;
-	prevNode = ptr;
-	pFixLeftPtr(ptr->right);
+void pFixLeftPtr(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    pFixLeftPtr(ptr->left);
+    ptr->left = prevNode;
+    prevNode = ptr;
+    pFixLeftPtr(ptr->right);
 }
 
 //Tested
-void pFixRightPtr(itNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	itNode *currentNode = *ptr,*prevNode = null;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	while(currentNode != null){
-		currentNode->right = prevNode;
-		prevNode = currentNode;
-		currentNode = currentNode->left;
-	}
-	(*ptr) = prevNode;
+void pFixRightPtr(itNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    itNode *currentNode = *ptr,*prevNode = null;
+    while(currentNode->right != null) {
+        currentNode = currentNode->right;
+    }
+    while(currentNode != null) {
+        currentNode->right = prevNode;
+        prevNode = currentNode;
+        currentNode = currentNode->left;
+    }
+    (*ptr) = prevNode;
 }
 
 //Tested
-void printBSTKeysInRangeDllConversionON(itNode *ptr,int minValue,int maxValue){
-	if(ptr == null){
-		return;
-	}
-	pFixLeftPtr(ptr);
-	pFixRightPtr(&ptr);
-	while(ptr != null){
-		if(ptr->value >= minValue && ptr->value <= maxValue){
-			printf("%d\t",ptr->value);
-		}
-		ptr = ptr->right;
-	}
+void printBSTKeysInRangeDllConversionON(itNode *ptr,int minValue,int maxValue) {
+    if(ptr == null) {
+        return;
+    }
+    pFixLeftPtr(ptr);
+    pFixRightPtr(&ptr);
+    while(ptr != null) {
+        if(ptr->value >= minValue && ptr->value <= maxValue) {
+            printf("%d\t",ptr->value);
+        }
+        ptr = ptr->right;
+    }
 }
 
 //Tested
-void pConvertTreeToDLLON(itNode *ptr,itNode **root){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	pConvertTreeToDLLON(ptr->left,root);
-	ptr->left = prevNode;
-	if(prevNode == null){
-		(*root) = ptr;
-	}else{
-		prevNode->right = ptr;
-	}
-	prevNode = ptr;
-	pConvertTreeToDLLON(ptr->right,root);
+void pConvertTreeToDLLON(itNode *ptr,itNode **root) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    pConvertTreeToDLLON(ptr->left,root);
+    ptr->left = prevNode;
+    if(prevNode == null) {
+        (*root) = ptr;
+    } else {
+        prevNode->right = ptr;
+    }
+    prevNode = ptr;
+    pConvertTreeToDLLON(ptr->right,root);
 }
 
 //Tested
-void printKeysBSTInOrderDLLConversion(itNode *ptr,int minValue,int maxValue){
-	if(ptr == null){
-		return;
-	}
-	pConvertTreeToDLLON(ptr,&ptr);
-	while(ptr != null){
-		if(ptr->value >= minValue && ptr->value <= maxValue){
-			printf("%d\t",ptr->value);
-		}
-		ptr = ptr->right;
-	}
+void printKeysBSTInOrderDLLConversion(itNode *ptr,int minValue,int maxValue) {
+    if(ptr == null) {
+        return;
+    }
+    pConvertTreeToDLLON(ptr,&ptr);
+    while(ptr != null) {
+        if(ptr->value >= minValue && ptr->value <= maxValue) {
+            printf("%d\t",ptr->value);
+        }
+        ptr = ptr->right;
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printKeysBSTBySorting(itNode *ptr,int minValue,int maxValue){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	vector<int> userInput = utils->getValuesInPreorder(ptr);
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= minValue && userInput[counter] <= maxValue){
-			printf("%d\t",userInput[counter]);
-		}
-	}
+void printKeysBSTBySorting(itNode *ptr,int minValue,int maxValue) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    vector<int> userInput = utils->getValuesInPreorder(ptr);
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= minValue && userInput[counter] <= maxValue) {
+            printf("%d\t",userInput[counter]);
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *pConvertTreeToDllON2(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *temp;
-	if(ptr->left != null){
-		temp = pConvertTreeToDllON2(ptr->left);
-		while(temp->right != null){
-			temp = temp->right;
-		}
-		temp->right = ptr;
-		ptr->left = temp;
-	}
-	if(ptr->right != null){
-		temp = pConvertTreeToDllON2(ptr->right);
-		while(temp->left != null){
-			temp = temp->left;
-		}
-		temp->left = ptr;
-		ptr->right = temp;
-	}
-	return ptr;
+itNode *pConvertTreeToDllON2(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *temp;
+    if(ptr->left != null) {
+        temp = pConvertTreeToDllON2(ptr->left);
+        while(temp->right != null) {
+            temp = temp->right;
+        }
+        temp->right = ptr;
+        ptr->left = temp;
+    }
+    if(ptr->right != null) {
+        temp = pConvertTreeToDllON2(ptr->right);
+        while(temp->left != null) {
+            temp = temp->left;
+        }
+        temp->left = ptr;
+        ptr->right = temp;
+    }
+    return ptr;
 }
 
 //Tested
-void printKeysBSTDllConversionON2(itNode *ptr,int minValue,int maxValue){
-	if(ptr == null){
-		return;
-	}
-	pConvertTreeToDllON2(ptr);
-	while(ptr->left != null){
-		ptr = ptr->left;
-	}
-	while(ptr != null){
-		if(ptr->value >= minValue && ptr->value <= maxValue){
-			printf("%d\t",ptr->value);
-		}
-		ptr = ptr->right;
-	}
+void printKeysBSTDllConversionON2(itNode *ptr,int minValue,int maxValue) {
+    if(ptr == null) {
+        return;
+    }
+    pConvertTreeToDllON2(ptr);
+    while(ptr->left != null) {
+        ptr = ptr->left;
+    }
+    while(ptr != null) {
+        if(ptr->value >= minValue && ptr->value <= maxValue) {
+            printf("%d\t",ptr->value);
+        }
+        ptr = ptr->right;
+    }
 }
 
 #endif /* PRINTBSTKEYSINRANGE_H_ */

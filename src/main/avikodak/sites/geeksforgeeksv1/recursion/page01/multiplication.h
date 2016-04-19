@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: multiplication.h 
+ *  File Name   		: multiplication.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\multiplication.h
  *  Created on			: Oct 13, 2014 :: 2:39:07 PM
  *  Author				: AVINASH
@@ -69,11 +69,11 @@ using namespace __gnu_cxx;
 #ifndef MULTIPLICATION_H_
 #define MULTIPLICATION_H_
 
-unsigned int multiplication(unsigned int a,unsigned int b){
-	if(a == 0){
-		return b;
-	}
-	return multiplication(a-1,b+b);
+unsigned int multiplication(unsigned int a,unsigned int b) {
+    if(a == 0) {
+        return b;
+    }
+    return multiplication(a-1,b+b);
 }
 
 #endif /* MULTIPLICATION_H_ */

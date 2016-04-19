@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define FLOW006_H_
 
 //Tested
-void printSumOfDigits(unsigned int userInput){
-	unsigned int sum = 0;
-	while(userInput){
-		sum += userInput%10;
-		userInput /= 10;
-	}
-	printf("%u\n",sum);
+void printSumOfDigits(unsigned int userInput) {
+    unsigned int sum = 0;
+    while(userInput) {
+        sum += userInput%10;
+        userInput /= 10;
+    }
+    printf("%u\n",sum);
 }
 
 //Tested
-void printSumOfDigitsForInput(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printSumOfDigits(input);
-	}
+void printSumOfDigitsForInput() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printSumOfDigits(input);
+    }
 }
 
 #endif /* FLOW006_H_ */

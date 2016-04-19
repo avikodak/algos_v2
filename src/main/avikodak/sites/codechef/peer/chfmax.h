@@ -73,33 +73,33 @@ using namespace __gnu_cxx;
 #define CHFMAX_H_
 
 //Tested
-void convertToReqFormat(string userInput){
-	unsigned int frequency[26] = {0},maxFreq = 0;
-	char maxOccuringChar;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		frequency[userInput[counter]-'a']++;
-		if(maxFreq == frequency[userInput[counter]-'a'] && maxOccuringChar > userInput[counter]){
-			maxOccuringChar = userInput[counter];
-		}else if(maxFreq < frequency[userInput[counter]-'a']){
-			maxFreq = frequency[userInput[counter]-'a'];
-			maxOccuringChar = userInput[counter];
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%c",maxOccuringChar==userInput[counter]?'?':userInput[counter]);
-	}
-	printf("\n");
+void convertToReqFormat(string userInput) {
+    unsigned int frequency[26] = {0},maxFreq = 0;
+    char maxOccuringChar;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        frequency[userInput[counter]-'a']++;
+        if(maxFreq == frequency[userInput[counter]-'a'] && maxOccuringChar > userInput[counter]) {
+            maxOccuringChar = userInput[counter];
+        } else if(maxFreq < frequency[userInput[counter]-'a']) {
+            maxFreq = frequency[userInput[counter]-'a'];
+            maxOccuringChar = userInput[counter];
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%c",maxOccuringChar==userInput[counter]?'?':userInput[counter]);
+    }
+    printf("\n");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		convertToReqFormat(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        convertToReqFormat(userInput);
+    }
 }
 
 #endif /* CHFMAX_H_ */

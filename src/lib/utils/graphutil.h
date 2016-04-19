@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: graphutil.h 
+ *  File Name   		: graphutil.h
  *	File Location		: D:\algos\algos_v2\src\lib\utils\graphutil.h
  *  Created on			: Dec 5, 2014 :: 9:00:12 AM
  *  Author				: AVINASH
@@ -62,70 +62,70 @@ using namespace __gnu_cxx;
 class graphutil {
 private:
 public:
-	//Tested
-	vector<vector<int> > getAdjacencyList(bool forUndirectedGraph = true){
-		int noOfVertices,noOfEdges;
-		int sourceVertex,destinationVertex;
-		scanf("%d",&noOfVertices);
-		vector<vector<int> > adjacencyList(noOfVertices);
-		scanf("%d",&noOfEdges);
-		while(noOfEdges--){
-			scanf("%d %d",&sourceVertex,&destinationVertex);
-			adjacencyList[sourceVertex].push_back(destinationVertex);
-			if(forUndirectedGraph){
-				adjacencyList[destinationVertex].push_back(sourceVertex);
-			}
-		}
-		return adjacencyList;
-	}
+    //Tested
+    vector<vector<int> > getAdjacencyList(bool forUndirectedGraph = true) {
+        int noOfVertices,noOfEdges;
+        int sourceVertex,destinationVertex;
+        scanf("%d",&noOfVertices);
+        vector<vector<int> > adjacencyList(noOfVertices);
+        scanf("%d",&noOfEdges);
+        while(noOfEdges--) {
+            scanf("%d %d",&sourceVertex,&destinationVertex);
+            adjacencyList[sourceVertex].push_back(destinationVertex);
+            if(forUndirectedGraph) {
+                adjacencyList[destinationVertex].push_back(sourceVertex);
+            }
+        }
+        return adjacencyList;
+    }
 
-	vector<vector<bool> > getAdjacencyMatrix(bool forUndirectedGraph = true){
-		int noOfVertices,noOfEdges;
-		int sourceVertex,destinationVertex;
-		scanf("%d",&noOfVertices);
-		vector<vector<bool> > adjacencyMatrix(noOfVertices);
-		for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-			adjacencyMatrix[counter].assign(noOfVertices,false);
-		}
-		for(unsigned int rowCounter = 0;rowCounter < noOfVertices;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < noOfVertices;columnCounter++){
-				adjacencyMatrix[rowCounter][columnCounter] = false;
-			}
-		}
-		scanf("%d",&noOfEdges);
-		while(noOfEdges--){
-			scanf("%d %d",&sourceVertex,&destinationVertex);
-			adjacencyMatrix[sourceVertex][destinationVertex] = true;
-			if(forUndirectedGraph){
-				adjacencyMatrix[destinationVertex][sourceVertex] = true;
-			}
-		}
-		return adjacencyMatrix;
-	}
+    vector<vector<bool> > getAdjacencyMatrix(bool forUndirectedGraph = true) {
+        int noOfVertices,noOfEdges;
+        int sourceVertex,destinationVertex;
+        scanf("%d",&noOfVertices);
+        vector<vector<bool> > adjacencyMatrix(noOfVertices);
+        for(unsigned int counter = 0; counter < adjacencyMatrix.size(); counter++) {
+            adjacencyMatrix[counter].assign(noOfVertices,false);
+        }
+        for(unsigned int rowCounter = 0; rowCounter < noOfVertices; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < noOfVertices; columnCounter++) {
+                adjacencyMatrix[rowCounter][columnCounter] = false;
+            }
+        }
+        scanf("%d",&noOfEdges);
+        while(noOfEdges--) {
+            scanf("%d %d",&sourceVertex,&destinationVertex);
+            adjacencyMatrix[sourceVertex][destinationVertex] = true;
+            if(forUndirectedGraph) {
+                adjacencyMatrix[destinationVertex][sourceVertex] = true;
+            }
+        }
+        return adjacencyMatrix;
+    }
 
-	vector<edge *> getEdgeList(bool forUndirectedGraph){
-		vector<edge *> edgeDS;
-		int noOfEdges;
-		int sourceVertex,destinationVertex;
-		scanf("%d",&noOfEdges);
-		while(noOfEdges--){
-			scanf("%d %d",&sourceVertex,&destinationVertex);
-			edgeDS.push_back(new edge(sourceVertex,destinationVertex,forUndirectedGraph));
-		}
-		return edgeDS;
-	}
+    vector<edge *> getEdgeList(bool forUndirectedGraph) {
+        vector<edge *> edgeDS;
+        int noOfEdges;
+        int sourceVertex,destinationVertex;
+        scanf("%d",&noOfEdges);
+        while(noOfEdges--) {
+            scanf("%d %d",&sourceVertex,&destinationVertex);
+            edgeDS.push_back(new edge(sourceVertex,destinationVertex,forUndirectedGraph));
+        }
+        return edgeDS;
+    }
 
-	vector<wEdge *> getWEdgeList(bool forUndirectedGraph){
-		vector<wEdge *> edgeDS;
-		int noOfEdges;
-		int sourceVertex,destinationVertex,weight;
-		scanf("%d",&noOfEdges);
-		while(noOfEdges--){
-			scanf("%d %d %d",&sourceVertex,&destinationVertex,&weight);
-			edgeDS.push_back(new wEdge(sourceVertex,destinationVertex,weight,forUndirectedGraph));
-		}
-		return edgeDS;
-	}
+    vector<wEdge *> getWEdgeList(bool forUndirectedGraph) {
+        vector<wEdge *> edgeDS;
+        int noOfEdges;
+        int sourceVertex,destinationVertex,weight;
+        scanf("%d",&noOfEdges);
+        while(noOfEdges--) {
+            scanf("%d %d %d",&sourceVertex,&destinationVertex,&weight);
+            edgeDS.push_back(new wEdge(sourceVertex,destinationVertex,weight,forUndirectedGraph));
+        }
+        return edgeDS;
+    }
 };
 
 #endif /* GRAPHUTIL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: snape.h 
+ *  File Name   		: snape.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\snape.h
  *  Created on			: Feb 9, 2015 :: 9:40:43 PM
  *  Author				: AVINASH
@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define SNAPE_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	double firstSide,secondSide;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> firstSide >> secondSide;
-		if(firstSide > secondSide){
-			cout << sqrt(firstSide*firstSide - secondSide * secondSide);
-		}else{
-			cout << sqrt(secondSide*secondSide - firstSide*firstSide);
-		}
-		cout << " " << sqrt(firstSide*firstSide + secondSide*secondSide) << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    double firstSide,secondSide;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> firstSide >> secondSide;
+        if(firstSide > secondSide) {
+            cout << sqrt(firstSide*firstSide - secondSide * secondSide);
+        } else {
+            cout << sqrt(secondSide*secondSide - firstSide*firstSide);
+        }
+        cout << " " << sqrt(firstSide*firstSide + secondSide*secondSide) << endl;
+    }
 }
 
 #endif /* SNAPE_H_ */

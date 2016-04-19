@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: parity.h 
+ *  File Name   		: parity.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\parity.h
  *  Created on			: Jan 8, 2015 :: 10:25:01 PM
  *  Author				: AVINASH
@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 #define PARITY_H_
 
 //Tested
-int parity(int userInput){
-	bool parity = true;
-	while(userInput > 0){
-		parity = !parity;
-		userInput = userInput & (userInput-1);
-	}
-	return parity;
+int parity(int userInput) {
+    bool parity = true;
+    while(userInput > 0) {
+        parity = !parity;
+        userInput = userInput & (userInput-1);
+    }
+    return parity;
 }
 
 //Tested
-int parityRightMostBit(int userInput){
-	bool parity = false;
-	while(userInput > 0){
-		parity = !parity;
-		userInput = userInput & (userInput-1);
-	}
-	return parity;
+int parityRightMostBit(int userInput) {
+    bool parity = false;
+    while(userInput > 0) {
+        parity = !parity;
+        userInput = userInput & (userInput-1);
+    }
+    return parity;
 }
 
 //Tested
-int parityBitCounter(int userInput){
-	if(userInput == 0){
-		return 0;
-	}
-	unsigned int setBitCounter = 0;
-	while(userInput > 0){
-		setBitCounter += userInput & 1;
-		userInput = userInput >> 1;
-	}
-	return setBitCounter % 2 != 0;
+int parityBitCounter(int userInput) {
+    if(userInput == 0) {
+        return 0;
+    }
+    unsigned int setBitCounter = 0;
+    while(userInput > 0) {
+        setBitCounter += userInput & 1;
+        userInput = userInput >> 1;
+    }
+    return setBitCounter % 2 != 0;
 }
 
 #endif /* PARITY_H_ */

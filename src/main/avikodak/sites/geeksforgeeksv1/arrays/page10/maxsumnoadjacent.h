@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumnoadjacent.h 
+ *  File Name   		: maxsumnoadjacent.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxsumnoadjacent.h
  *  Created on			: Dec 28, 2014 :: 11:23:15 PM
  *  Author				: AVINASH
@@ -74,17 +74,17 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxSumSuchNoElementsAreAdjacent(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int exclSum = 0,inclSum = userInput[0],temp;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		temp = max(exclSum,inclSum);
-		inclSum = exclSum + userInput[counter];
-		exclSum = temp;
-	}
-	return max(exclSum,inclSum);
+int maxSumSuchNoElementsAreAdjacent(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int exclSum = 0,inclSum = userInput[0],temp;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        temp = max(exclSum,inclSum);
+        inclSum = exclSum + userInput[counter];
+        exclSum = temp;
+    }
+    return max(exclSum,inclSum);
 }
 
 #endif /* MAXSUMNOADJACENT_H_ */

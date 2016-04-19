@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestbitonicsubsequence.h 
+ *  File Name   		: longestbitonicsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\longestbitonicsubsequence.h
  *  Created on			: Dec 9, 2014 :: 8:03:16 PM
  *  Author				: AVINASH
@@ -71,59 +71,59 @@ using namespace __gnu_cxx;
 #define LONGESTBITONICSUBSEQUENCE_H_
 
 //Tested
-vector<int> longestIncreasingSubsequence(vector<int> userInput){
-	vector<int> lengths;
-	if(userInput.size() == 0){
-		return lengths;
-	}
-	lengths.push_back(1);
-	int maxLength;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		maxLength = 1;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler] > userInput[innerCrawler]){
-				maxLength = max(maxLength,1+lengths[innerCrawler]);
-			}
-		}
-		lengths.push_back(maxLength);
-	}
-	return lengths;
+vector<int> longestIncreasingSubsequence(vector<int> userInput) {
+    vector<int> lengths;
+    if(userInput.size() == 0) {
+        return lengths;
+    }
+    lengths.push_back(1);
+    int maxLength;
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        maxLength = 1;
+        for(unsigned int innerCrawler = 0; innerCrawler < outerCrawler; innerCrawler++) {
+            if(userInput[outerCrawler] > userInput[innerCrawler]) {
+                maxLength = max(maxLength,1+lengths[innerCrawler]);
+            }
+        }
+        lengths.push_back(maxLength);
+    }
+    return lengths;
 }
 
 //Tested
-vector<int> longestDecreasingSubsequence(vector<int> userInput){
-	vector<int> lengths;
-	if(userInput.size() == 0){
-		return lengths;
-	}
-	lengths.assign(userInput.size(),0);
-	lengths[lengths.size()-1] = 1;
-	int maxLength;
-	int fillCounter = lengths.size()-1;
-	for(int outerCrawler = userInput.size()-2;outerCrawler >= 0;outerCrawler--){
-		maxLength = 0;
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[innerCrawler] < userInput[outerCrawler]){
-				maxLength = max(maxLength,lengths[innerCrawler]);
-			}
-		}
-		lengths[--fillCounter] = 1 + maxLength;
-	}
-	return lengths;
+vector<int> longestDecreasingSubsequence(vector<int> userInput) {
+    vector<int> lengths;
+    if(userInput.size() == 0) {
+        return lengths;
+    }
+    lengths.assign(userInput.size(),0);
+    lengths[lengths.size()-1] = 1;
+    int maxLength;
+    int fillCounter = lengths.size()-1;
+    for(int outerCrawler = userInput.size()-2; outerCrawler >= 0; outerCrawler--) {
+        maxLength = 0;
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            if(userInput[innerCrawler] < userInput[outerCrawler]) {
+                maxLength = max(maxLength,lengths[innerCrawler]);
+            }
+        }
+        lengths[--fillCounter] = 1 + maxLength;
+    }
+    return lengths;
 }
 
 //Tested
-int longestBitonicSubsequence(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> incLengths = longestIncreasingSubsequence(userInput);
-	vector<int> decLenghts = longestDecreasingSubsequence(userInput);
-	int maxLength = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		maxLength = max(maxLength,incLengths[counter]+decLenghts[counter]-1);
-	}
-	return maxLength;
+int longestBitonicSubsequence(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> incLengths = longestIncreasingSubsequence(userInput);
+    vector<int> decLenghts = longestDecreasingSubsequence(userInput);
+    int maxLength = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        maxLength = max(maxLength,incLengths[counter]+decLenghts[counter]-1);
+    }
+    return maxLength;
 }
 
 #endif /* LONGESTBITONICSUBSEQUENCE_H_ */

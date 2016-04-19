@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 #define TECH04_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string firstUserInput,secondUserInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		sort(firstUserInput.begin(),firstUserInput.end());
-		sort(secondUserInput.begin(),secondUserInput.end());
-		printf("%s\n",firstUserInput.compare(secondUserInput) == 0?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    string firstUserInput,secondUserInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        sort(firstUserInput.begin(),firstUserInput.end());
+        sort(secondUserInput.begin(),secondUserInput.end());
+        printf("%s\n",firstUserInput.compare(secondUserInput) == 0?"YES":"NO");
+    }
 }
 
 #endif /* TECH04_H_ */

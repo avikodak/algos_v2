@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define TIDRICE_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	string userInput;
-	char ch;
-	scanf("%u",&testCases);
-	map<string,char> userCharMap;
-	map<string,char>::iterator itToUserCharMap;
-	int score;
-	while(testCases--){
-		scanf("%u",&size);
-		userCharMap.clear();
-		while(size--){
-			cin >> userInput >> ch;
-			userCharMap[userInput] = ch;
-		}
-		score = 0;
-		for(itToUserCharMap = userCharMap.begin();itToUserCharMap != userCharMap.end();itToUserCharMap++){
-			if(itToUserCharMap->second == '+'){
-				score++;
-			}else{
-				score--;
-			}
-		}
-		cout << score << endl;
-	}
+void printResults() {
+    unsigned int testCases,size;
+    string userInput;
+    char ch;
+    scanf("%u",&testCases);
+    map<string,char> userCharMap;
+    map<string,char>::iterator itToUserCharMap;
+    int score;
+    while(testCases--) {
+        scanf("%u",&size);
+        userCharMap.clear();
+        while(size--) {
+            cin >> userInput >> ch;
+            userCharMap[userInput] = ch;
+        }
+        score = 0;
+        for(itToUserCharMap = userCharMap.begin(); itToUserCharMap != userCharMap.end(); itToUserCharMap++) {
+            if(itToUserCharMap->second == '+') {
+                score++;
+            } else {
+                score--;
+            }
+        }
+        cout << score << endl;
+    }
 }
 
 #endif /* TIDRICE_H_ */

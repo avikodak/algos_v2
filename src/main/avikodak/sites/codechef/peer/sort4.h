@@ -75,19 +75,19 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_CODECHEF_PEER_SORT4_H_
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_SORT4_H_
 
-void solveProblem(){
-	long long int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%lld\n",userInput[counter]);
-	}
+void solveProblem() {
+    long long int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%lld\n",userInput[counter]);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_SORT4_H_ */

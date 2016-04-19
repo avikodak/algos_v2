@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: adjacencymatrix.h 
+ *  File Name   		: adjacencymatrix.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\adjacencymatrix.h
  *  Created on			: Dec 5, 2014 :: 9:26:06 AM
  *  Author				: AVINASH
@@ -71,44 +71,44 @@ using namespace __gnu_cxx;
 #define ADJACENCYMATRIX_H_
 
 //Tested
-vector<vector<bool> > getAdjacencyMatrixForUndirectedGraph(){
-	int noOfVertices;
-	scanf("%d",&noOfVertices);
-	vector<vector<bool> > adjacencyMatrix(noOfVertices);
-	for(int outerCounter = 0;outerCounter < noOfVertices;outerCounter++){
-		adjacencyMatrix[outerCounter].resize(noOfVertices);
-		for(int innerCounter = 0;innerCounter < noOfVertices;innerCounter++){
-			adjacencyMatrix[outerCounter][innerCounter] = false;
-		}
-	}
-	int noOfEdges,sourceVertex,destinationVertex;
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		adjacencyMatrix[sourceVertex][destinationVertex] = true;
-		adjacencyMatrix[destinationVertex][sourceVertex] = true;
-	}
-	return adjacencyMatrix;
+vector<vector<bool> > getAdjacencyMatrixForUndirectedGraph() {
+    int noOfVertices;
+    scanf("%d",&noOfVertices);
+    vector<vector<bool> > adjacencyMatrix(noOfVertices);
+    for(int outerCounter = 0; outerCounter < noOfVertices; outerCounter++) {
+        adjacencyMatrix[outerCounter].resize(noOfVertices);
+        for(int innerCounter = 0; innerCounter < noOfVertices; innerCounter++) {
+            adjacencyMatrix[outerCounter][innerCounter] = false;
+        }
+    }
+    int noOfEdges,sourceVertex,destinationVertex;
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        adjacencyMatrix[sourceVertex][destinationVertex] = true;
+        adjacencyMatrix[destinationVertex][sourceVertex] = true;
+    }
+    return adjacencyMatrix;
 }
 
 //Tested
-vector<vector<bool> > getAdjacencyMatrixForDirectedGraph(){
-	int noOfVertices;
-	scanf("%d",&noOfVertices);
-	vector<vector<bool> > adjacencyMatrix(noOfVertices);
-	for(int outerCounter = 0;outerCounter < noOfVertices;outerCounter++){
-		adjacencyMatrix[outerCounter].resize(noOfVertices);
-		for(int innerCounter = 0;innerCounter < noOfVertices;innerCounter++){
-			adjacencyMatrix[outerCounter][innerCounter] = false;
-		}
-	}
-	int noOfEdges,sourceVertex,destinationVertex;
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		adjacencyMatrix[sourceVertex][destinationVertex] = true;
-	}
-	return adjacencyMatrix;
+vector<vector<bool> > getAdjacencyMatrixForDirectedGraph() {
+    int noOfVertices;
+    scanf("%d",&noOfVertices);
+    vector<vector<bool> > adjacencyMatrix(noOfVertices);
+    for(int outerCounter = 0; outerCounter < noOfVertices; outerCounter++) {
+        adjacencyMatrix[outerCounter].resize(noOfVertices);
+        for(int innerCounter = 0; innerCounter < noOfVertices; innerCounter++) {
+            adjacencyMatrix[outerCounter][innerCounter] = false;
+        }
+    }
+    int noOfEdges,sourceVertex,destinationVertex;
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        adjacencyMatrix[sourceVertex][destinationVertex] = true;
+    }
+    return adjacencyMatrix;
 }
 
 #endif /* ADJACENCYMATRIX_H_ */

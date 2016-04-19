@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: moveallzeros.h 
+ *  File Name   		: moveallzeros.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\moveallzeros.h
  *  Created on			: Dec 22, 2014 :: 3:39:11 PM
  *  Author				: AVINASH
@@ -74,40 +74,40 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void moveAllZerosToEnd(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	unsigned int fillCounter = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] != 0){
-			userInput[fillCounter++] = userInput[counter];
-		}
-	}
-	while(fillCounter < userInput.size()){
-		userInput[fillCounter++] = 0;
-	}
+void moveAllZerosToEnd(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    unsigned int fillCounter = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] != 0) {
+            userInput[fillCounter++] = userInput[counter];
+        }
+    }
+    while(fillCounter < userInput.size()) {
+        userInput[fillCounter++] = 0;
+    }
 }
 
 //Tested
-void moveAllZerosToEndBucketSort(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	queue<int> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] != 0){
-			auxSpace.push(userInput[counter]);
-		}
-	}
-	unsigned int fillCounter = 0;
-	while(!auxSpace.empty()){
-		userInput[fillCounter++] = auxSpace.front();
-		auxSpace.pop();
-	}
-	while(fillCounter < userInput.size()){
-		userInput[fillCounter++] = 0;
-	}
+void moveAllZerosToEndBucketSort(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    queue<int> auxSpace;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] != 0) {
+            auxSpace.push(userInput[counter]);
+        }
+    }
+    unsigned int fillCounter = 0;
+    while(!auxSpace.empty()) {
+        userInput[fillCounter++] = auxSpace.front();
+        auxSpace.pop();
+    }
+    while(fillCounter < userInput.size()) {
+        userInput[fillCounter++] = 0;
+    }
 }
 
 #endif /* MOVEALLZEROS_H_ */

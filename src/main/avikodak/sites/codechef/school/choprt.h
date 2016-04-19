@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 #define CHOPRT_H_
 
 //Tested
-void printResults(){
-	long long int testCases,A,B;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&A,&B);
-		if(A == B){
-			cout << "=" << endl;
-		}else if(A > B){
-			cout << ">" << endl;
-		}else{
-			cout << "<" << endl;
-		}
-	}
+void printResults() {
+    long long int testCases,A,B;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&A,&B);
+        if(A == B) {
+            cout << "=" << endl;
+        } else if(A > B) {
+            cout << ">" << endl;
+        } else {
+            cout << "<" << endl;
+        }
+    }
 }
 
 #endif /* CHOPRT_H_ */

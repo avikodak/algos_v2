@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bellmanfordalgo.h 
+ *  File Name   		: bellmanfordalgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\bellmanfordalgo.h
  *  Created on			: Dec 19, 2014 :: 8:12:38 AM
  *  Author				: AVINASH
@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef BELLMANFORDALGO_H_
 #define BELLMANFORDALGO_H_
 
-int shortestPathBellmanFord(vector<wEdge *> edgeList,int noOfVertices,int sourceVertex,int destinationVertex){
-	if(noOfVertices == 0 || sourceVertex >= noOfVertices || destinationVertex >= noOfVertices){
-		return INT_MAX;
-	}
-	vector<int> distanceLabels(noOfVertices,INT_MAX);
-	distanceLabels[sourceVertex] = 0;
-	for(unsigned int counter = 0;counter < noOfVertices;counter++){
-		for(unsigned int edgeCounter = 0;edgeCounter < edgeList.size();edgeCounter++){
-			distanceLabels[edgeList[edgeCounter]->destinationVertex] = min(distanceLabels[edgeList[edgeCounter]->destinationVertex],edgeList[edgeCounter]->weight + distanceLabels[edgeList[edgeCounter]->sourceVertex]);
-		}
-	}
-	return distanceLabels[destinationVertex];
+int shortestPathBellmanFord(vector<wEdge *> edgeList,int noOfVertices,int sourceVertex,int destinationVertex) {
+    if(noOfVertices == 0 || sourceVertex >= noOfVertices || destinationVertex >= noOfVertices) {
+        return INT_MAX;
+    }
+    vector<int> distanceLabels(noOfVertices,INT_MAX);
+    distanceLabels[sourceVertex] = 0;
+    for(unsigned int counter = 0; counter < noOfVertices; counter++) {
+        for(unsigned int edgeCounter = 0; edgeCounter < edgeList.size(); edgeCounter++) {
+            distanceLabels[edgeList[edgeCounter]->destinationVertex] = min(distanceLabels[edgeList[edgeCounter]->destinationVertex],edgeList[edgeCounter]->weight + distanceLabels[edgeList[edgeCounter]->sourceVertex]);
+        }
+    }
+    return distanceLabels[destinationVertex];
 }
 
 #endif /* BELLMANFORDALGO_H_ */

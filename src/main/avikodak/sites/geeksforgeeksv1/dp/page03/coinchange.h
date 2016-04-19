@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: coinchange.h 
+ *  File Name   		: coinchange.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\coinchange.h
  *  Created on			: Jan 14, 2015 :: 8:53:41 AM
  *  Author				: AVINASH
@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define COINCHANGE_H_
 
 //Tested
-int coinChange(vector<int> denominations,unsigned int currentIndex,int amount){
-	if(amount < 0){
-		return 0;
-	}
-	if(amount == 0){
-		return 1;
-	}
-	if(currentIndex == denominations.size()){
-		return amount == 0;
-	}
-	return coinChange(denominations,currentIndex+1,amount) + coinChange(denominations,currentIndex,amount - denominations[currentIndex]);
+int coinChange(vector<int> denominations,unsigned int currentIndex,int amount) {
+    if(amount < 0) {
+        return 0;
+    }
+    if(amount == 0) {
+        return 1;
+    }
+    if(currentIndex == denominations.size()) {
+        return amount == 0;
+    }
+    return coinChange(denominations,currentIndex+1,amount) + coinChange(denominations,currentIndex,amount - denominations[currentIndex]);
 }
 
 //Tested
-int coinChangeMemoization(vector<int> denominations,int amount){
-	if(amount == 0){
-		return 0;
-	}
-	vector<int> auxSpace(amount+1,0);
-	auxSpace[0] = 1;
-	for(unsigned int coinCounter = 0;coinCounter < denominations.size();coinCounter++){
-		for(int amountCounter = denominations[coinCounter];amountCounter <= amount;amountCounter++){
-			auxSpace[amountCounter] += auxSpace[amountCounter - denominations[coinCounter]];
-		}
-	}
-	return auxSpace[auxSpace.size()-1];
+int coinChangeMemoization(vector<int> denominations,int amount) {
+    if(amount == 0) {
+        return 0;
+    }
+    vector<int> auxSpace(amount+1,0);
+    auxSpace[0] = 1;
+    for(unsigned int coinCounter = 0; coinCounter < denominations.size(); coinCounter++) {
+        for(int amountCounter = denominations[coinCounter]; amountCounter <= amount; amountCounter++) {
+            auxSpace[amountCounter] += auxSpace[amountCounter - denominations[coinCounter]];
+        }
+    }
+    return auxSpace[auxSpace.size()-1];
 }
 
 #endif /* COINCHANGE_H_ */

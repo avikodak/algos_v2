@@ -72,26 +72,30 @@ using namespace __gnu_cxx;
 #define FASTINPUTUTIL_H_
 
 inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+    long long int t=0,neg=0;
+    char c;
+    c=gc();
+    while((c<'0' || c>'9')&& c!='-')
+        c=gc();
+    if(c=='-') {
+        neg=1;
+        c=gc();
+    }
+    while(c>='0' && c<='9') {
+        t=(t<<3)+(t<<1)+c-'0';
+        c=gc();
+    }
+    if(neg) t=-t;
+    return(t);
 }
 
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanllint(long long int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 #endif /* FASTINPUTUTIL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dynamicset.h 
+ *  File Name   		: dynamicset.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicset.h
  *  Created on			: Oct 18, 2014 :: 1:16:25 PM
  *  Author				: AVINASH
@@ -70,81 +70,81 @@ using namespace __gnu_cxx;
 #define DYNAMICSET_H_
 
 //Tested
-class dynamicset{
+class dynamicset {
 private:
-	sillNode *head;
+    sillNode *head;
 public:
-	dynamicset(){
-		head = null;
-	}
+    dynamicset() {
+        head = null;
+    }
 
-	//Tested
-	bool isIn(int value){
-		sillNode *crawler = head;
-		while(crawler != null){
-			if(crawler->value == value){
-				return true;
-			}
-		}
-		return false;
-	}
+    //Tested
+    bool isIn(int value) {
+        sillNode *crawler = head;
+        while(crawler != null) {
+            if(crawler->value == value) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	//Tested
-	unsigned int size(){
-		sillNode *crawler = head;
-		unsigned int counter = 0;
-		while(crawler != null){
-			counter++;
-			crawler = crawler->next;
-		}
-		return counter;
-	}
+    //Tested
+    unsigned int size() {
+        sillNode *crawler = head;
+        unsigned int counter = 0;
+        while(crawler != null) {
+            counter++;
+            crawler = crawler->next;
+        }
+        return counter;
+    }
 
-	//Tested
-	void insert(int value){
-		if(head == null){
-			head = new sillNode(value);
-		}else{
-			sillNode *crawler = head;
-			while(crawler->next != null){
-				if(crawler->value == value){
-					return;
-				}
-				crawler = crawler->next;
-			}
-			if(crawler->value == value){
-				return;
-			}
-			crawler->next = new sillNode(value);
-		}
-	}
+    //Tested
+    void insert(int value) {
+        if(head == null) {
+            head = new sillNode(value);
+        } else {
+            sillNode *crawler = head;
+            while(crawler->next != null) {
+                if(crawler->value == value) {
+                    return;
+                }
+                crawler = crawler->next;
+            }
+            if(crawler->value == value) {
+                return;
+            }
+            crawler->next = new sillNode(value);
+        }
+    }
 
-	//Tested
-	void deleteVal(int value){
-		sillNode *crawler = head,*temp;
-		if(crawler->value == value){
-			head = crawler->next;
-			free(crawler);
-			return;
-		}
-		while(crawler->next != null && crawler->next->value != value){
-			crawler = crawler->next;
-		}
-		if(crawler->next != null){
-			temp = crawler->next;
-			crawler->next = crawler->next->next;
-			free(temp);
-		}
-	}
+    //Tested
+    void deleteVal(int value) {
+        sillNode *crawler = head,*temp;
+        if(crawler->value == value) {
+            head = crawler->next;
+            free(crawler);
+            return;
+        }
+        while(crawler->next != null && crawler->next->value != value) {
+            crawler = crawler->next;
+        }
+        if(crawler->next != null) {
+            temp = crawler->next;
+            crawler->next = crawler->next->next;
+            free(temp);
+        }
+    }
 
-	//Tested
-	void printSet(){
-		sillNode *crawler = head;
-		while(crawler != null){
-			printf("%d\t",crawler->value);
-			crawler = crawler->next;
-		}
-	}
+    //Tested
+    void printSet() {
+        sillNode *crawler = head;
+        while(crawler != null) {
+            printf("%d\t",crawler->value);
+            crawler = crawler->next;
+        }
+    }
 };
 
 #endif /* DYNAMICSET_H_ */

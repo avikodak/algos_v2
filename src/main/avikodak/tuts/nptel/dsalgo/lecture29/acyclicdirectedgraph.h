@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: acyclicdirectedgraph.h 
+ *  File Name   		: acyclicdirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture29\acyclicdirectedgraph.h
  *  Created on			: Dec 5, 2014 :: 1:14:10 PM
  *  Author				: AVINASH
@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isDirectedGraphAcyclic(vector<vector<int> > adjacencyList,int sourceVertex){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN){
-			if(!isDirectedGraphAcyclic(adjacencyList,adjacencyList[sourceVertex][counter])){
-				return false;
-			}
-		}else{
-			if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes < arrivalDepartureTimes[sourceVertex]->arrivalTimes
-					&& arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->departureTimes == INT_MIN){
-				return false;
-			}
+bool isDirectedGraphAcyclic(vector<vector<int> > adjacencyList,int sourceVertex) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN) {
+            if(!isDirectedGraphAcyclic(adjacencyList,adjacencyList[sourceVertex][counter])) {
+                return false;
+            }
+        } else {
+            if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes < arrivalDepartureTimes[sourceVertex]->arrivalTimes
+                    && arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->departureTimes == INT_MIN) {
+                return false;
+            }
 
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
-	return true;
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+    return true;
 }
 
 #endif /* ACYCLICDIRECTEDGRAPH_H_ */

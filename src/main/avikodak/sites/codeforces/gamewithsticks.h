@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gamewithsticks.h 
+ *  File Name   		: gamewithsticks.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\gamewithsticks.h
  *  Created on			: Mar 4, 2015 :: 9:06:05 PM
  *  Author				: avikodak
@@ -71,10 +71,10 @@ using namespace __gnu_cxx;
 #define GAMEWITHSTICKS_H_
 
 //Tested
-void getWinnerGameWithSticks(){
-	int xSticks,ySticks;
-	scanf("%d %d",&xSticks,&ySticks);
-	printf("%s",min(xSticks,ySticks)%2 == 0?"Malvika":"Akshat");
+void getWinnerGameWithSticks() {
+    int xSticks,ySticks;
+    scanf("%d %d",&xSticks,&ySticks);
+    printf("%s",min(xSticks,ySticks)%2 == 0?"Malvika":"Akshat");
 }
 
 #endif /* GAMEWITHSTICKS_H_ */

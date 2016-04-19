@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: iterativepostordertwostacks.h 
+ *  File Name   		: iterativepostordertwostacks.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\iterativepostordertwostacks.h
  *  Created on			: Nov 2, 2014 :: 5:18:00 AM
  *  Author				: AVINASH
@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void iterativePostOrderIterativeTwoStacks(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> primaryAuxspace,secondaryAuxspace;
-	primaryAuxspace.push(ptr);
-	itNode *currentNode;
-	while(!primaryAuxspace.empty()){
-		currentNode = primaryAuxspace.top();
-		primaryAuxspace.pop();
-		secondaryAuxspace.push(currentNode);
-		if(currentNode->left != null){
-			primaryAuxspace.push(currentNode->left);
-		}
-		if(currentNode->right != null){
-			primaryAuxspace.push(currentNode->right);
-		}
-	}
-	while(!secondaryAuxspace.empty()){
-		printf("%d\t",secondaryAuxspace.top()->value);
-		secondaryAuxspace.pop();
-	}
+void iterativePostOrderIterativeTwoStacks(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> primaryAuxspace,secondaryAuxspace;
+    primaryAuxspace.push(ptr);
+    itNode *currentNode;
+    while(!primaryAuxspace.empty()) {
+        currentNode = primaryAuxspace.top();
+        primaryAuxspace.pop();
+        secondaryAuxspace.push(currentNode);
+        if(currentNode->left != null) {
+            primaryAuxspace.push(currentNode->left);
+        }
+        if(currentNode->right != null) {
+            primaryAuxspace.push(currentNode->right);
+        }
+    }
+    while(!secondaryAuxspace.empty()) {
+        printf("%d\t",secondaryAuxspace.top()->value);
+        secondaryAuxspace.pop();
+    }
 }
 
 #endif /* ITERATIVEPOSTORDERTWOSTACKS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printstringsinterleaving.h 
+ *  File Name   		: printstringsinterleaving.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\printstringsinterleaving.h
  *  Created on			: Jan 16, 2015 :: 9:45:39 AM
  *  Author				: AVINASH
@@ -70,15 +70,15 @@ using namespace __gnu_cxx;
 #ifndef PRINTSTRINGSINTERLEAVING_H_
 #define PRINTSTRINGSINTERLEAVING_H_
 
-void printStringsInterleavingMain(char *firstUserinput,char *secondUserinput,char *result,int index,int length){
-	if(index == length){
-		printf("%s",result);
-		return;
-	}
-	result[index] = firstUserinput[0];
-	printStringsInterleavingMain(firstUserinput+1,secondUserinput,result,index+1,length);
-	result[index] = secondUserinput[0];
-	printStringsInterleavingMain(firstUserinput,secondUserinput+1,result,index+1,length);
+void printStringsInterleavingMain(char *firstUserinput,char *secondUserinput,char *result,int index,int length) {
+    if(index == length) {
+        printf("%s",result);
+        return;
+    }
+    result[index] = firstUserinput[0];
+    printStringsInterleavingMain(firstUserinput+1,secondUserinput,result,index+1,length);
+    result[index] = secondUserinput[0];
+    printStringsInterleavingMain(firstUserinput,secondUserinput+1,result,index+1,length);
 }
 
 #endif /* PRINTSTRINGSINTERLEAVING_H_ */

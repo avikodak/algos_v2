@@ -74,28 +74,30 @@ using namespace __gnu_cxx;
 #define ATOM_H_
 
 //Tested
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanllint(long long int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-void printResults(){
-	long long int testCases,result,N,K,M;
-	scanllint(testCases);
-	while(testCases--){
-		scanllint(N);
-		scanllint(K);
-		scanllint(M);
-		result = 0;
-		while(N <= M/K){
-			N *= K;
-			result++;
-		}
-		printf("%lld\n",result);
-	}
+void printResults() {
+    long long int testCases,result,N,K,M;
+    scanllint(testCases);
+    while(testCases--) {
+        scanllint(N);
+        scanllint(K);
+        scanllint(M);
+        result = 0;
+        while(N <= M/K) {
+            N *= K;
+            result++;
+        }
+        printf("%lld\n",result);
+    }
 }
 
 

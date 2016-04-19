@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 #define CMB01_H_
 
 //Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+long long int reverse(long long int userInput) {
+    long long int result = 0;
+    while(userInput) {
+        result = (result << 3) + (result << 1) + (userInput%10);
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-void printResults(){
-	long long int testCases,firstUserInput,secondUserInput;
-	cin >> testCases;
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		cout << reverse(reverse(firstUserInput)+reverse(secondUserInput)) << endl;
-	}
+void printResults() {
+    long long int testCases,firstUserInput,secondUserInput;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        cout << reverse(reverse(firstUserInput)+reverse(secondUserInput)) << endl;
+    }
 }
 
 #endif /* CMB01_H_ */

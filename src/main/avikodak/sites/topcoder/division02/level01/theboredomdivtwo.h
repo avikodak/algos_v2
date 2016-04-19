@@ -73,16 +73,16 @@ using namespace __gnu_cxx;
 //Locally Tested
 class TheBoredomDivTwo {
 public:
-	int find(int n, int m, int j, int b){
-		int totalBored = n;
-		if(j > n){
-			totalBored++;
-		}
-		if(b > n){
-			totalBored++;
-		}
-		return totalBored;
-	}
+    int find(int n, int m, int j, int b) {
+        int totalBored = n;
+        if(j > n) {
+            totalBored++;
+        }
+        if(b > n) {
+            totalBored++;
+        }
+        return totalBored;
+    }
 };
 
 #endif /* THEBOREDOMDIVTWO_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: helpfulmaths.h 
+ *  File Name   		: helpfulmaths.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\helpfulmaths.h
  *  Created on			: Feb 28, 2015 :: 11:22:53 PM
  *  Author				: AVINASH
@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 #define HELPFULMATHS_H_
 
 //Tested
-void printAscExpression(){
-	string userInput;
-	cin >> userInput;
-	sort(userInput.begin(),userInput.end());
-	unsigned int counter = 0;
-	while(userInput[counter] == '+'){
-		counter++;
-	}
-	for(;counter < userInput.size();counter++){
-		printf("%c",userInput[counter]);
-		if(counter+1 < userInput.size()){
-			printf("+");
-		}
-	}
+void printAscExpression() {
+    string userInput;
+    cin >> userInput;
+    sort(userInput.begin(),userInput.end());
+    unsigned int counter = 0;
+    while(userInput[counter] == '+') {
+        counter++;
+    }
+    for(; counter < userInput.size(); counter++) {
+        printf("%c",userInput[counter]);
+        if(counter+1 < userInput.size()) {
+            printf("+");
+        }
+    }
 }
 
 

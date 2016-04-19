@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define SUMSQUAREDIFFERENCE_H_
 
 //Tested
-long long int sumOfSquareOfNumbers(unsigned int n){
-	return (n*(n+1)*((2*n)+1))/6;
+long long int sumOfSquareOfNumbers(unsigned int n) {
+    return (n*(n+1)*((2*n)+1))/6;
 }
 
 //Tested
-long long int sumOfNumbers(unsigned int n){
-	return (n*(n+1))/2;
+long long int sumOfNumbers(unsigned int n) {
+    return (n*(n+1))/2;
 }
 
 //Tested
 //Ans : 25164150
-void printDifference(){
-	long long int sum = sumOfNumbers(100);
-	cout << sum * sum - sumOfSquareOfNumbers(100);
+void printDifference() {
+    long long int sum = sumOfNumbers(100);
+    cout << sum * sum - sumOfSquareOfNumbers(100);
 }
 
 #endif /* SUMSQUAREDIFFERENCE_H_ */

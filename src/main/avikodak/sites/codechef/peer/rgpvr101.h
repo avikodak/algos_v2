@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 #define RGPVR101_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	int counter;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		counter = (userInput.size()/2)-1;
-		while(counter >= 0){
-			printf("%c",userInput[counter]);
-			counter--;
-		}
-		for(counter = userInput.size()-1;counter >= ((int)userInput.size()/2);counter--){
-			printf("%c",userInput[counter]);
-		}
-		printf("\n");
-	}
+void printResults() {
+    unsigned int testCases;
+    int counter;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        counter = (userInput.size()/2)-1;
+        while(counter >= 0) {
+            printf("%c",userInput[counter]);
+            counter--;
+        }
+        for(counter = userInput.size()-1; counter >= ((int)userInput.size()/2); counter--) {
+            printf("%c",userInput[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* RGPVR101_H_ */

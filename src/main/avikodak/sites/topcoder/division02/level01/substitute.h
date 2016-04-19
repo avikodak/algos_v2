@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 
 class Substitute {
 public:
-	int getValue(string key, string code){
-		map<char,int> charIndexMap;
-		for(unsigned int counter = 0;counter < key.size();counter++){
-			if(counter == 9){
-				charIndexMap[key[counter]] = 0;
-			}else{
-				charIndexMap[key[counter]] = counter+1;
-			}
-		}
-		int result = 0;
-		for(unsigned int counter = 0;counter < code.size();counter++){
-			if(charIndexMap.find(code[counter]) != charIndexMap.end()){
-				result *= 10;
-				result += charIndexMap[code[counter]];
-			}
-		}
-		return result;
-	}
+    int getValue(string key, string code) {
+        map<char,int> charIndexMap;
+        for(unsigned int counter = 0; counter < key.size(); counter++) {
+            if(counter == 9) {
+                charIndexMap[key[counter]] = 0;
+            } else {
+                charIndexMap[key[counter]] = counter+1;
+            }
+        }
+        int result = 0;
+        for(unsigned int counter = 0; counter < code.size(); counter++) {
+            if(charIndexMap.find(code[counter]) != charIndexMap.end()) {
+                result *= 10;
+                result += charIndexMap[code[counter]];
+            }
+        }
+        return result;
+    }
 };
 
 #endif /* SUBSTITUTE_H_ */

@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 #define LEPERMUT_H_
 
 //Tested
-void isGoodPermutation(vector<unsigned int> userInput){
-	unsigned int inversionCount = 0,localInversionCount = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		if(userInput[outerCounter] > userInput[outerCounter+1]){
-			localInversionCount++;
-		}
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[outerCounter] > userInput[innerCounter]){
-				inversionCount++;
-			}
-		}
-	}
-	printf("%s\n",localInversionCount == inversionCount?"YES":"NO");
+void isGoodPermutation(vector<unsigned int> userInput) {
+    unsigned int inversionCount = 0,localInversionCount = 0;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        if(userInput[outerCounter] > userInput[outerCounter+1]) {
+            localInversionCount++;
+        }
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[outerCounter] > userInput[innerCounter]) {
+                inversionCount++;
+            }
+        }
+    }
+    printf("%s\n",localInversionCount == inversionCount?"YES":"NO");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned int input,size;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		isGoodPermutation(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned int input,size;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        isGoodPermutation(userInput);
+    }
 }
 
 #endif /* LEPERMUT_H_ */

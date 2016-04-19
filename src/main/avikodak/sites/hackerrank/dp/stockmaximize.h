@@ -71,42 +71,42 @@ using namespace __gnu_cxx;
 #define STOCKMAXIMIZE_H_
 
 //Tested
-unsigned int getMaxStock(vector<unsigned int> userInput){
-	unsigned int maxIndex = userInput.size()-1;
-	unsigned int totalProfit = 0,cummulativeProfit = 0,shareCount = 0;
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		if(userInput[counter] > userInput[maxIndex]){
-			if(cummulativeProfit != 0){
-				totalProfit += (shareCount*userInput[maxIndex]) - cummulativeProfit;
-			}
-			maxIndex = counter;
-			cummulativeProfit = 0;
-			shareCount = 0;
-		}else{
-			cummulativeProfit += userInput[counter];
-			shareCount++;
-		}
-	}
-	if(maxIndex != 0 && cummulativeProfit != 0){
-		totalProfit += (shareCount*userInput[maxIndex]) - cummulativeProfit;
-	}
-	return totalProfit;
+unsigned int getMaxStock(vector<unsigned int> userInput) {
+    unsigned int maxIndex = userInput.size()-1;
+    unsigned int totalProfit = 0,cummulativeProfit = 0,shareCount = 0;
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        if(userInput[counter] > userInput[maxIndex]) {
+            if(cummulativeProfit != 0) {
+                totalProfit += (shareCount*userInput[maxIndex]) - cummulativeProfit;
+            }
+            maxIndex = counter;
+            cummulativeProfit = 0;
+            shareCount = 0;
+        } else {
+            cummulativeProfit += userInput[counter];
+            shareCount++;
+        }
+    }
+    if(maxIndex != 0 && cummulativeProfit != 0) {
+        totalProfit += (shareCount*userInput[maxIndex]) - cummulativeProfit;
+    }
+    return totalProfit;
 }
 
 //Tested
-void printMaximizeStocks(){
-	unsigned int testCases,inputSize,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u",&inputSize);
-		userInput.clear();
-		while(inputSize--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		cout << getMaxStock(userInput) << endl;
-	}
+void printMaximizeStocks() {
+    unsigned int testCases,inputSize,input;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u",&inputSize);
+        userInput.clear();
+        while(inputSize--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        cout << getMaxStock(userInput) << endl;
+    }
 }
 
 #endif /* STOCKMAXIMIZE_H_ */

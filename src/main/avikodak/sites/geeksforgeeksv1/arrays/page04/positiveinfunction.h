@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: positiveinfunction.h 
+ *  File Name   		: positiveinfunction.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\positiveinfunction.h
  *  Created on			: Dec 22, 2014 :: 6:07:04 PM
  *  Author				: AVINASH
@@ -74,50 +74,50 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 //Tested
-int functionalValue(int x){
-	return (x*x - 10*x - 20); ;
+int functionalValue(int x) {
+    return (x*x - 10*x - 20); ;
 }
 
 //Tested
-int getValueWhereFuncIsPositive(){
-	int counter = 1;
-	while(functionalValue(counter) <= 0){
-		counter *= 2;
-	}
-	return counter;
+int getValueWhereFuncIsPositive() {
+    int counter = 1;
+    while(functionalValue(counter) <= 0) {
+        counter *= 2;
+    }
+    return counter;
 }
 
 //Tested
-int firstValFuncIsPositiveBinarySearchMain(int startVal,int endVal){
-	if(startVal > endVal){
-		return INT_MIN;
-	}
-	int middleVal = (startVal + endVal)/2;
-	if(functionalValue(middleVal) > 0){
-		if(middleVal-1 > startVal && functionalValue(middleVal-1) > 0){
-			return firstValFuncIsPositiveBinarySearchMain(startVal,middleVal-1);
-		}else{
-			return middleVal;
-		}
-	}else{
-		return firstValFuncIsPositiveBinarySearchMain(middleVal+1,endVal);
-	}
+int firstValFuncIsPositiveBinarySearchMain(int startVal,int endVal) {
+    if(startVal > endVal) {
+        return INT_MIN;
+    }
+    int middleVal = (startVal + endVal)/2;
+    if(functionalValue(middleVal) > 0) {
+        if(middleVal-1 > startVal && functionalValue(middleVal-1) > 0) {
+            return firstValFuncIsPositiveBinarySearchMain(startVal,middleVal-1);
+        } else {
+            return middleVal;
+        }
+    } else {
+        return firstValFuncIsPositiveBinarySearchMain(middleVal+1,endVal);
+    }
 }
 
 //Tested
-int firstValFuncIsPositiveBinarySearch(){
-	int value = getValueWhereFuncIsPositive();
-	return firstValFuncIsPositiveBinarySearchMain(value/2,value);
+int firstValFuncIsPositiveBinarySearch() {
+    int value = getValueWhereFuncIsPositive();
+    return firstValFuncIsPositiveBinarySearchMain(value/2,value);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int firstPointFuncPositive(){
-	unsigned int counter;
-	for(counter = 1;functionalValue(counter) <= 0;counter++);
-	return counter;
+int firstPointFuncPositive() {
+    unsigned int counter;
+    for(counter = 1; functionalValue(counter) <= 0; counter++);
+    return counter;
 }
 
 #endif /* POSITIVEINFUNCTION_H_ */

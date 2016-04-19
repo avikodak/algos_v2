@@ -77,26 +77,26 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int testCases, size;
-	long long int redCount, blueCount, greenCount, maxPainted;
-	string userInput;
-	scanf("%u", &testCases);
-	while (testCases--) {
-		scanf("%u", &size);
-		cin >> userInput;
-		redCount = blueCount = greenCount = 0;
-		for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-			if (userInput[counter] == 'R') {
-				redCount++;
-			} else if (userInput[counter] == 'G') {
-				greenCount++;
-			} else {
-				blueCount++;
-			}
-		}
-		maxPainted = max(redCount, max(blueCount, greenCount));
-		printf("%lld\n", userInput.size() - maxPainted);
-	}
+    unsigned int testCases, size;
+    long long int redCount, blueCount, greenCount, maxPainted;
+    string userInput;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        scanf("%u", &size);
+        cin >> userInput;
+        redCount = blueCount = greenCount = 0;
+        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if (userInput[counter] == 'R') {
+                redCount++;
+            } else if (userInput[counter] == 'G') {
+                greenCount++;
+            } else {
+                blueCount++;
+            }
+        }
+        maxPainted = max(redCount, max(blueCount, greenCount));
+        printf("%lld\n", userInput.size() - maxPainted);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_COLOR_H_ */

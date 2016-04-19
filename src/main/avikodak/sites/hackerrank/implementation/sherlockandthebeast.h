@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define SHERLOCKANDTHEBEAST_H_
 
 //Tested
-void getVirusNumber(){
-	unsigned int testCases,userInput;
-	scanf("%u",&testCases);
-	int largestThreeMultiple,remainder;
-	while(testCases--){
-		scanf("%u",&userInput);
-		largestThreeMultiple = (userInput/3)*3;
-		remainder = userInput - largestThreeMultiple;
-		bool flag=false;
-		while(largestThreeMultiple >= 0){
-			if(remainder%5 == 0){
-				for(unsigned int counter = 0;counter < largestThreeMultiple;counter++){
-					printf("5");
-				}
-				for(unsigned int counter = 0;counter < remainder;counter++){
-					printf("3");
-				}
-				break;
-			}
-			largestThreeMultiple -= 3;
-			remainder += 3;
-		}
-		if(!flag){
-			printf("-1");
-		}
-		printf("\n");
-	}
+void getVirusNumber() {
+    unsigned int testCases,userInput;
+    scanf("%u",&testCases);
+    int largestThreeMultiple,remainder;
+    while(testCases--) {
+        scanf("%u",&userInput);
+        largestThreeMultiple = (userInput/3)*3;
+        remainder = userInput - largestThreeMultiple;
+        bool flag=false;
+        while(largestThreeMultiple >= 0) {
+            if(remainder%5 == 0) {
+                for(unsigned int counter = 0; counter < largestThreeMultiple; counter++) {
+                    printf("5");
+                }
+                for(unsigned int counter = 0; counter < remainder; counter++) {
+                    printf("3");
+                }
+                break;
+            }
+            largestThreeMultiple -= 3;
+            remainder += 3;
+        }
+        if(!flag) {
+            printf("-1");
+        }
+        printf("\n");
+    }
 }
 
 #endif /* SHERLOCKANDTHEBEAST_H_ */

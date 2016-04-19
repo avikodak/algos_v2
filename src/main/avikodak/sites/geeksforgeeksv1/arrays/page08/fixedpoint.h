@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fixedpoint.h 
+ *  File Name   		: fixedpoint.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\fixedpoint.h
  *  Created on			: Nov 27, 2014 :: 7:50:15 PM
  *  Author				: AVINASH
@@ -71,40 +71,40 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int findFixedPointOLOGNMain(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == middleIndex){
-		return middleIndex;
-	}else if(userInput[middleIndex] > middleIndex){
-		return findFixedPointOLOGNMain(userInput,startIndex,middleIndex-1);
-	}else{
-		return findFixedPointOLOGNMain(userInput,middleIndex+1,endIndex);
-	}
+int findFixedPointOLOGNMain(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return -1;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == middleIndex) {
+        return middleIndex;
+    } else if(userInput[middleIndex] > middleIndex) {
+        return findFixedPointOLOGNMain(userInput,startIndex,middleIndex-1);
+    } else {
+        return findFixedPointOLOGNMain(userInput,middleIndex+1,endIndex);
+    }
 }
 
-int findFixedPointOLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return -1;
-	}
-	return findFixedPointOLOGNMain(userInput,0,userInput.size()-1);
+int findFixedPointOLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return -1;
+    }
+    return findFixedPointOLOGNMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int findFixedPointON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return -1;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == (int)counter){
-			return counter;
-		}
-	}
-	return -1;
+int findFixedPointON(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return -1;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == (int)counter) {
+            return counter;
+        }
+    }
+    return -1;
 }
 
 #endif /* FIXEDPOINT_H_ */

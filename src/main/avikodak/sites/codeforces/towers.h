@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define TOWERS_H_
 
 //Tested
-void getTowersDetails(){
-	unsigned int testCases,maxFrequency = 0,input;
-	scanf("%u",&testCases);
-	map<unsigned int,unsigned int> frequencyMap;
-	while(testCases--){
-		scanf("%u",&input);
-		if(frequencyMap.find(input) != frequencyMap.end()){
-			frequencyMap[input]++;
-		}else{
-			frequencyMap[input] = 1;
-		}
-		maxFrequency = max(maxFrequency,frequencyMap[input]);
-	}
-	printf("%u %u",maxFrequency,frequencyMap.size());
+void getTowersDetails() {
+    unsigned int testCases,maxFrequency = 0,input;
+    scanf("%u",&testCases);
+    map<unsigned int,unsigned int> frequencyMap;
+    while(testCases--) {
+        scanf("%u",&input);
+        if(frequencyMap.find(input) != frequencyMap.end()) {
+            frequencyMap[input]++;
+        } else {
+            frequencyMap[input] = 1;
+        }
+        maxFrequency = max(maxFrequency,frequencyMap[input]);
+    }
+    printf("%u %u",maxFrequency,frequencyMap.size());
 }
 
 #endif /* TOWERS_H_ */

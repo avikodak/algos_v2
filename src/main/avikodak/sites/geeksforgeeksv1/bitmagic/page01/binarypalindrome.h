@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: binarypalindrome.h 
+ *  File Name   		: binarypalindrome.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binarypalindrome.h
  *  Created on			: Jan 9, 2015 :: 4:57:50 PM
  *  Author				: AVINASH
@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef BINARYPALINDROME_H_
 #define BINARYPALINDROME_H_
 
-bool getKthBit(int userInput,int kValue){
-	return userInput & (1 << kValue-1);
+bool getKthBit(int userInput,int kValue) {
+    return userInput & (1 << kValue-1);
 }
 
-bool isBinaryStringPalindrome(int userInput){
-	int rearCrawler = sizeof(int) * sizeof(char) - 1,frontCrawler = 0;
-	while(frontCrawler < rearCrawler){
-		if(getKthBit(userInput,frontCrawler) != getKthBit(userInput,rearCrawler)){
-			return false;
-		}
-		rearCrawler--;
-		frontCrawler++;
-	}
-	return true;
+bool isBinaryStringPalindrome(int userInput) {
+    int rearCrawler = sizeof(int) * sizeof(char) - 1,frontCrawler = 0;
+    while(frontCrawler < rearCrawler) {
+        if(getKthBit(userInput,frontCrawler) != getKthBit(userInput,rearCrawler)) {
+            return false;
+        }
+        rearCrawler--;
+        frontCrawler++;
+    }
+    return true;
 }
 
 #endif /* BINARYPALINDROME_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: removecharfromfirstinsecond.h 
+ *  File Name   		: removecharfromfirstinsecond.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\removecharfromfirstinsecond.h
  *  Created on			: Jan 8, 2015 :: 6:22:57 PM
  *  Author				: AVINASH

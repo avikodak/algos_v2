@@ -78,96 +78,96 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int findMajorityElementMooreVoting(int userInput[],int size){
-	if(size == 0){
-		return INT_MIN;
-	}
-	unsigned int frequency = 1;
-	int index = 0;
-	for(unsigned int counter = 1;counter < size;counter++){
-		if(userInput[index] == userInput[counter]){
-			frequency++;
-		}else{
-			if(frequency == 1){
-				index = counter;
-			}else{
-				frequency--;
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(userInput[counter] == userInput[index]){
-			frequency++;
-		}
-	}
-	return frequency > size/2?userInput[index]:INT_MIN;
+int findMajorityElementMooreVoting(int userInput[],int size) {
+    if(size == 0) {
+        return INT_MIN;
+    }
+    unsigned int frequency = 1;
+    int index = 0;
+    for(unsigned int counter = 1; counter < size; counter++) {
+        if(userInput[index] == userInput[counter]) {
+            frequency++;
+        } else {
+            if(frequency == 1) {
+                index = counter;
+            } else {
+                frequency--;
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(userInput[counter] == userInput[index]) {
+            frequency++;
+        }
+    }
+    return frequency > size/2?userInput[index]:INT_MIN;
 }
 
-int findMajorityElement(int userInput[],int size){
-	if(size == 0){
-		throw exception;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	unsigned int maxFrequency = 0;
-	int maxFreqVal;
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
-			frequencyMap[userInput[counter]]++;
-		}else{
-			frequencyMap[userInput[counter]] = 1;
-		}
-		if(maxFrequency > frequencyMap[userInput[counter]]){
-			maxFrequency = frequencyMap[userInput[counter]];
-			maxFreqVal = userInput[counter];
-		}
-	}
-	return maxFrequency > size/2?maxFreqVal:INT_MIN;
+int findMajorityElement(int userInput[],int size) {
+    if(size == 0) {
+        throw exception;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    unsigned int maxFrequency = 0;
+    int maxFreqVal;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(frequencyMap.find(userInput[counter]) != frequencyMap.end()) {
+            frequencyMap[userInput[counter]]++;
+        } else {
+            frequencyMap[userInput[counter]] = 1;
+        }
+        if(maxFrequency > frequencyMap[userInput[counter]]) {
+            maxFrequency = frequencyMap[userInput[counter]];
+            maxFreqVal = userInput[counter];
+        }
+    }
+    return maxFrequency > size/2?maxFreqVal:INT_MIN;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
-int findMajorityElementONLOGN(int userInput[],int size){
-	if(size == 0){
-		throw exception;
-	}
-	sort(userInput,userInput+size);
-	unsigned int outerCrawler = 0,innerCrawler,frequency;
-	while(outerCrawler < size){
-		innerCrawler = outerCrawler;
-		frequency = 0;
-		while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]){
-			frequency++;
-		}
-		if(frequency > size/2){
-			return userInput[outerCrawler];
-		}
-		outerCrawler += frequency;
-	}
-	return INT_MIN;
+int findMajorityElementONLOGN(int userInput[],int size) {
+    if(size == 0) {
+        throw exception;
+    }
+    sort(userInput,userInput+size);
+    unsigned int outerCrawler = 0,innerCrawler,frequency;
+    while(outerCrawler < size) {
+        innerCrawler = outerCrawler;
+        frequency = 0;
+        while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]) {
+            frequency++;
+        }
+        if(frequency > size/2) {
+            return userInput[outerCrawler];
+        }
+        outerCrawler += frequency;
+    }
+    return INT_MIN;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-int findMajorityElementON2(int userInput[],int size){
-	if(size == 0){
-		return INT_MIN;
-	}
-	unsigned int frequency = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < size;outerCrawler++){
-		frequency = 0;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
-			if(userInput[innerCrawler] == userInput[outerCrawler]){
-				frequency++;
-			}
-		}
-		if(frequency > size/2){
-			return userInput[outerCrawler];
-		}
-		outerCrawler++;
-	}
-	return INT_MIN;
+int findMajorityElementON2(int userInput[],int size) {
+    if(size == 0) {
+        return INT_MIN;
+    }
+    unsigned int frequency = 0;
+    for(unsigned int outerCrawler = 0; outerCrawler < size; outerCrawler++) {
+        frequency = 0;
+        for(unsigned int innerCrawler = outerCrawler; innerCrawler < size; innerCrawler++) {
+            if(userInput[innerCrawler] == userInput[outerCrawler]) {
+                frequency++;
+            }
+        }
+        if(frequency > size/2) {
+            return userInput[outerCrawler];
+        }
+        outerCrawler++;
+    }
+    return INT_MIN;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDMAJORITYELEMENT_H_ */

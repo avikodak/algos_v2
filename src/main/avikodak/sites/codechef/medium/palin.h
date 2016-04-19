@@ -70,39 +70,39 @@ using namespace __gnu_cxx;
 #ifndef PALIN_H_
 #define PALIN_H_
 
-bool reverseUInt(unsigned long long int userInput){
-	unsigned int reverse = 0;
-	while(userInput){
-		reverse *= 10;
-		reverse += userInput%10;
-		userInput /= 10;
-	}
-	return reverse;
+bool reverseUInt(unsigned long long int userInput) {
+    unsigned int reverse = 0;
+    while(userInput) {
+        reverse *= 10;
+        reverse += userInput%10;
+        userInput /= 10;
+    }
+    return reverse;
 }
 
-bool isPalindrome(unsigned long long int userInput){
-	return reverseUInt(userInput) == userInput;
+bool isPalindrome(unsigned long long int userInput) {
+    return reverseUInt(userInput) == userInput;
 }
 
-vector<unsigned long long int> getPalindromes(unsigned long long int limit = 1000000){
-	vector<unsigned long long int> palindromes;
-	for(unsigned int counter = 1;counter <= limit;counter++){
-		if(isPalindrome(counter)){
-			palindromes.push_back(counter);
-		}
-	}
-	return palindromes;
+vector<unsigned long long int> getPalindromes(unsigned long long int limit = 1000000) {
+    vector<unsigned long long int> palindromes;
+    for(unsigned int counter = 1; counter <= limit; counter++) {
+        if(isPalindrome(counter)) {
+            palindromes.push_back(counter);
+        }
+    }
+    return palindromes;
 }
 
-void printResults(){
-	vector<unsigned long long int> palindromes = getPalindromes(1111111);
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned long long int userInput;
-	while(testCases--){
-		cin >> userInput;
-		cout << palindromes[upper_bound(palindromes.begin(),palindromes.end(),userInput) - palindromes.begin()] << endl;
-	}
+void printResults() {
+    vector<unsigned long long int> palindromes = getPalindromes(1111111);
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned long long int userInput;
+    while(testCases--) {
+        cin >> userInput;
+        cout << palindromes[upper_bound(palindromes.begin(),palindromes.end(),userInput) - palindromes.begin()] << endl;
+    }
 }
 
 #endif /* PALIN_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pathbetweenvertices.h 
+ *  File Name   		: pathbetweenvertices.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\pathbetweenvertices.h
  *  Created on			: Dec 15, 2014 :: 6:25:11 PM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define PATHBETWEENVERTICES_H_
 
 //Tested
-bool pathBetweenTwoVertices(vector<vector<int> > adjacencyList,int firstVertex,int secondVertex){
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	queue<int> auxSpace;
-	auxSpace.push(firstVertex);
-	bfsLevels[firstVertex] = 0;
-	int currentIndex;
-	while(!auxSpace.empty()){
-		currentIndex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
-			if(adjacencyList[currentIndex][counter] == secondVertex){
-				return true;
-			}
-			if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN){
-				bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
-				auxSpace.push(adjacencyList[currentIndex][counter]);
-			}
-		}
-	}
-	return false;
+bool pathBetweenTwoVertices(vector<vector<int> > adjacencyList,int firstVertex,int secondVertex) {
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    if(adjacencyList.size() == 0) {
+        return false;
+    }
+    queue<int> auxSpace;
+    auxSpace.push(firstVertex);
+    bfsLevels[firstVertex] = 0;
+    int currentIndex;
+    while(!auxSpace.empty()) {
+        currentIndex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentIndex].size(); counter++) {
+            if(adjacencyList[currentIndex][counter] == secondVertex) {
+                return true;
+            }
+            if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN) {
+                bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
+                auxSpace.push(adjacencyList[currentIndex][counter]);
+            }
+        }
+    }
+    return false;
 }
 
-bool pathBetweenTwoVerticesDFS(vector<vector<int> > adjacencyList,int currentVertex,int destinationVertex){
-	if(currentVertex >= adjacencyList.size()){
-		return false;
-	}
-	static vector<int> flags(adjacencyList.size());
-	flags[currentVertex] = true;
-	for(unsigned int counter = 0;counter < adjacencyList[currentVertex].size();counter++){
-		if(!flags[adjacencyList[currentVertex][counter]]){
-			if(adjacencyList[currentVertex][counter] == destinationVertex || pathBetweenTwoVerticesDFS(adjacencyList,adjacencyList[currentVertex][counter],destinationVertex)){
-				return true;
-			}
-		}
-	}
-	return false;
+bool pathBetweenTwoVerticesDFS(vector<vector<int> > adjacencyList,int currentVertex,int destinationVertex) {
+    if(currentVertex >= adjacencyList.size()) {
+        return false;
+    }
+    static vector<int> flags(adjacencyList.size());
+    flags[currentVertex] = true;
+    for(unsigned int counter = 0; counter < adjacencyList[currentVertex].size(); counter++) {
+        if(!flags[adjacencyList[currentVertex][counter]]) {
+            if(adjacencyList[currentVertex][counter] == destinationVertex || pathBetweenTwoVerticesDFS(adjacencyList,adjacencyList[currentVertex][counter],destinationVertex)) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 #endif /* PATHBETWEENVERTICES_H_ */

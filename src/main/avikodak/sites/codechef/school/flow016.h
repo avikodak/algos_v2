@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define FLOW016_H_
 
 //Tested
-int gcd(int A,int B){
-	if(A == 1 || B == 1){
-		return 1;
-	}
-	if(B%A == 0){
-		return A;
-	}
-	return gcd(B%A,A);
+int gcd(int A,int B) {
+    if(A == 1 || B == 1) {
+        return 1;
+    }
+    if(B%A == 0) {
+        return A;
+    }
+    return gcd(B%A,A);
 }
 
 //Tested
-void printLCMAndGCD(){
-	int testCases,A,B,gcdR;
-	cin >> testCases;
-	while(testCases--){
-		cin >> A >> B;
-		gcdR = gcd(A,B);
-		cout << gcdR << " " << (A*B)/gcdR << endl;
-	}
+void printLCMAndGCD() {
+    int testCases,A,B,gcdR;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> A >> B;
+        gcdR = gcd(A,B);
+        cout << gcdR << " " << (A*B)/gcdR << endl;
+    }
 }
 
 #endif /* FLOW016_H_ */

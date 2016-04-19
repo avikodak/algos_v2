@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define MAKEITANAGRAM_H_
 
 //Tested
-void minCharDeletions(){
-	string firstUserInput;
-	string secondUserInput;
-	cin >> firstUserInput >> secondUserInput;
-	sort(firstUserInput.begin(),firstUserInput.end());
-	sort(secondUserInput.begin(),secondUserInput.end());
-	unsigned int firstCrawler = 0,secondCrawler = 0,deleteCount = 0;
-	while(firstCrawler < firstUserInput.size() && secondCrawler < secondUserInput.size()){
-		if(firstUserInput[firstCrawler] != secondUserInput[secondCrawler]){
-			if(firstUserInput[firstCrawler] < secondUserInput[secondCrawler]){
-				firstCrawler++;
-			}else{
-				secondCrawler++;
-			}
-			deleteCount++;
-		}else{
-			firstCrawler++;
-			secondCrawler++;
-		}
-	}
-	if(firstCrawler < firstUserInput.size()){
-		deleteCount += firstUserInput.size() - firstCrawler;
-	}else if(secondCrawler < secondUserInput.size()){
-		deleteCount += secondUserInput.size() - secondCrawler;
-	}
-	cout << deleteCount;
+void minCharDeletions() {
+    string firstUserInput;
+    string secondUserInput;
+    cin >> firstUserInput >> secondUserInput;
+    sort(firstUserInput.begin(),firstUserInput.end());
+    sort(secondUserInput.begin(),secondUserInput.end());
+    unsigned int firstCrawler = 0,secondCrawler = 0,deleteCount = 0;
+    while(firstCrawler < firstUserInput.size() && secondCrawler < secondUserInput.size()) {
+        if(firstUserInput[firstCrawler] != secondUserInput[secondCrawler]) {
+            if(firstUserInput[firstCrawler] < secondUserInput[secondCrawler]) {
+                firstCrawler++;
+            } else {
+                secondCrawler++;
+            }
+            deleteCount++;
+        } else {
+            firstCrawler++;
+            secondCrawler++;
+        }
+    }
+    if(firstCrawler < firstUserInput.size()) {
+        deleteCount += firstUserInput.size() - firstCrawler;
+    } else if(secondCrawler < secondUserInput.size()) {
+        deleteCount += secondUserInput.size() - secondCrawler;
+    }
+    cout << deleteCount;
 }
 
 #endif /* MAKEITANAGRAM_H_ */

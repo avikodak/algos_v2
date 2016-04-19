@@ -76,14 +76,14 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISPOWEROF2_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%s\n",input && (!(input&(input-1)))?"YES":"NO");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%s\n",input && (!(input&(input-1)))?"YES":"NO");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISPOWEROF2_H_ */

@@ -72,36 +72,36 @@ using namespace __gnu_cxx;
 #define KGP14A_H_
 
 //Tested
-int getSumMinDiff(vector<int> kidsHeights,vector<int> pencilHeights){
-	sort(kidsHeights.begin(),kidsHeights.end());
-	sort(pencilHeights.begin(),pencilHeights.end());
-	int sum = 0;
-	for(unsigned int counter = 0;counter < kidsHeights.size();counter++){
-		sum += abs(kidsHeights[counter] - pencilHeights[counter]);
-	}
-	return sum;
+int getSumMinDiff(vector<int> kidsHeights,vector<int> pencilHeights) {
+    sort(kidsHeights.begin(),kidsHeights.end());
+    sort(pencilHeights.begin(),pencilHeights.end());
+    int sum = 0;
+    for(unsigned int counter = 0; counter < kidsHeights.size(); counter++) {
+        sum += abs(kidsHeights[counter] - pencilHeights[counter]);
+    }
+    return sum;
 }
 
 //Tested
-void printResults(){
-	int testCases,input,size;
-	scanf("%u",&testCases);
-	vector<int> kidsHeights;
-	vector<int> pencilHeights;
-	for(int testCase = 1;testCase <= testCases;testCase++){
-		kidsHeights.clear();
-		pencilHeights.clear();
-		scanf("%u",&size);
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			kidsHeights.push_back(input);
-		}
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			pencilHeights.push_back(input);
-		}
-		cout << "Case "<< testCase << ": " << getSumMinDiff(kidsHeights,pencilHeights) << endl;
-	}
+void printResults() {
+    int testCases,input,size;
+    scanf("%u",&testCases);
+    vector<int> kidsHeights;
+    vector<int> pencilHeights;
+    for(int testCase = 1; testCase <= testCases; testCase++) {
+        kidsHeights.clear();
+        pencilHeights.clear();
+        scanf("%u",&size);
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            kidsHeights.push_back(input);
+        }
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            pencilHeights.push_back(input);
+        }
+        cout << "Case "<< testCase << ": " << getSumMinDiff(kidsHeights,pencilHeights) << endl;
+    }
 
 }
 #endif /* KGP14A_H_ */

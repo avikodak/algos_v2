@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 #define PINOCH2_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		unsigned int outerCrawler = 0,innerCrawler,maxSize = 0,counter;
-		while(outerCrawler < size){
-			innerCrawler = outerCrawler + 1;
-			counter = 0;
-			while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]){
-				counter++;
-				innerCrawler++;
-			}
-			maxSize = max(maxSize,counter);
-			outerCrawler = innerCrawler;
-		}
-		cout << maxSize << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        unsigned int outerCrawler = 0,innerCrawler,maxSize = 0,counter;
+        while(outerCrawler < size) {
+            innerCrawler = outerCrawler + 1;
+            counter = 0;
+            while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]) {
+                counter++;
+                innerCrawler++;
+            }
+            maxSize = max(maxSize,counter);
+            outerCrawler = innerCrawler;
+        }
+        cout << maxSize << endl;
+    }
 }
 
 #endif /* PINOCH2_H_ */

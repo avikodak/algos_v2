@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countingsort.h 
+ *  File Name   		: countingsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\countingsort.h
  *  Created on			: Dec 11, 2014 :: 1:00:26 PM
  *  Author				: AVINASH
@@ -74,26 +74,26 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void countingSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	map<int,unsigned int> frequencyMap;
-	map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()){
-			itToFrequencyMap->second += 1;
-		}else{
-			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
-		}
-	}
-	int fillCounter = -1,frequency;
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		frequency = itToFrequencyMap->second;
-		while(frequency--){
-			userInput[++fillCounter] = itToFrequencyMap->first;
-		}
-	}
+void countingSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    map<int,unsigned int> frequencyMap;
+    map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()) {
+            itToFrequencyMap->second += 1;
+        } else {
+            frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
+        }
+    }
+    int fillCounter = -1,frequency;
+    for(itToFrequencyMap = frequencyMap.begin(); itToFrequencyMap != frequencyMap.end(); itToFrequencyMap++) {
+        frequency = itToFrequencyMap->second;
+        while(frequency--) {
+            userInput[++fillCounter] = itToFrequencyMap->first;
+        }
+    }
 }
 
 #endif /* COUNTINGSORT_H_ */

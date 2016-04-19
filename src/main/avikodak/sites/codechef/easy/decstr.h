@@ -73,26 +73,26 @@ using namespace __gnu_cxx;
 #define DECSTR_H_
 
 //Tested
-void printResults(){
-	string alphabets="abcdefghijklmnopqrstuvwxyz";
-	long long int testCases,userInput,quotient;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		quotient = userInput/25;
-		userInput %= 25;
-		if(userInput > 0){
-			for(long long int counter = userInput;counter >= 0;counter--){
-				printf("%c",alphabets[counter]);
-			}
-		}
-		while(quotient--){
-			for(long long counter = 25;counter >= 0;counter--){
-				printf("%c",alphabets[counter]);
-			}
-		}
-		printf("\n");
-	}
+void printResults() {
+    string alphabets="abcdefghijklmnopqrstuvwxyz";
+    long long int testCases,userInput,quotient;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        quotient = userInput/25;
+        userInput %= 25;
+        if(userInput > 0) {
+            for(long long int counter = userInput; counter >= 0; counter--) {
+                printf("%c",alphabets[counter]);
+            }
+        }
+        while(quotient--) {
+            for(long long counter = 25; counter >= 0; counter--) {
+                printf("%c",alphabets[counter]);
+            }
+        }
+        printf("\n");
+    }
 }
 
 #endif /* DECSTR_H_ */

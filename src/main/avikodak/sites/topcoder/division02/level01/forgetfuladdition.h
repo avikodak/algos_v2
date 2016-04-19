@@ -72,17 +72,17 @@ using namespace __gnu_cxx;
 
 class ForgetfulAddition {
 private:
-	int convertToInt(string userInput){
-		return atoi(userInput.c_str());
-	}
+    int convertToInt(string userInput) {
+        return atoi(userInput.c_str());
+    }
 public:
-	int minNumber(string expression){
-		int minValue = INT_MAX;
-		for(unsigned int counter = 1;counter < expression.size();counter++){
-			minValue = min(minValue,convertToInt(expression.substr(0,counter)) + convertToInt(expression.substr(counter)));
-		}
-		return minValue;
-	}
+    int minNumber(string expression) {
+        int minValue = INT_MAX;
+        for(unsigned int counter = 1; counter < expression.size(); counter++) {
+            minValue = min(minValue,convertToInt(expression.substr(0,counter)) + convertToInt(expression.substr(counter)));
+        }
+        return minValue;
+    }
 };
 
 #endif /* FORGETFULADDITION_H_ */

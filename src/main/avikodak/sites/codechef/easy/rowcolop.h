@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define ROWCOLOP_H_
 
 //Tested
-void printResults(){
-	long long int size,opsCount,incrementBy,dimension;
-	long long int maxRowSum = 0,maxColSum = 0;
-	string operation;
-	cin >> size >> opsCount;
-	map<unsigned int,long long int> rowSumMap,columnSumMap;
-	while(opsCount--){
-		cin >> operation >> dimension >> incrementBy;
-		if(operation.compare("RowAdd") == 0){
-			if(rowSumMap.find(dimension) != rowSumMap.end()){
-				rowSumMap[dimension] += incrementBy;
-			}else{
-				rowSumMap[dimension] = incrementBy;
-			}
-			maxRowSum = max(maxRowSum,rowSumMap[dimension]);
-		}else{
-			if(columnSumMap.find(dimension) != columnSumMap.end()){
-				columnSumMap[dimension] += incrementBy;
-			}else{
-				columnSumMap[dimension] = incrementBy;
-			}
-			maxColSum = max(maxColSum,columnSumMap[dimension]);
-		}
-	}
-	cout << maxRowSum+maxColSum << endl;
+void printResults() {
+    long long int size,opsCount,incrementBy,dimension;
+    long long int maxRowSum = 0,maxColSum = 0;
+    string operation;
+    cin >> size >> opsCount;
+    map<unsigned int,long long int> rowSumMap,columnSumMap;
+    while(opsCount--) {
+        cin >> operation >> dimension >> incrementBy;
+        if(operation.compare("RowAdd") == 0) {
+            if(rowSumMap.find(dimension) != rowSumMap.end()) {
+                rowSumMap[dimension] += incrementBy;
+            } else {
+                rowSumMap[dimension] = incrementBy;
+            }
+            maxRowSum = max(maxRowSum,rowSumMap[dimension]);
+        } else {
+            if(columnSumMap.find(dimension) != columnSumMap.end()) {
+                columnSumMap[dimension] += incrementBy;
+            } else {
+                columnSumMap[dimension] = incrementBy;
+            }
+            maxColSum = max(maxColSum,columnSumMap[dimension]);
+        }
+    }
+    cout << maxRowSum+maxColSum << endl;
 }
 
 #endif /* ROWCOLOP_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countingsort2.h 
+ *  File Name   		: countingsort2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\countingsort2.h
  *  Created on			: Jan 30, 2015 :: 9:01:37 AM
  *  Author				: AVINASH
@@ -74,19 +74,19 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printSortedOrder(){
-	vector<long unsigned int> userInput(100,0);
-	unsigned int testSize,input;
-	scanf("%d",&testSize);
-	while(testSize--){
-		scanf("%d",&input);
-		userInput[input] += 1;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		while(userInput[counter]--){
-			printf("%d\t",counter);
-		}
-	}
+void printSortedOrder() {
+    vector<long unsigned int> userInput(100,0);
+    unsigned int testSize,input;
+    scanf("%d",&testSize);
+    while(testSize--) {
+        scanf("%d",&input);
+        userInput[input] += 1;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        while(userInput[counter]--) {
+            printf("%d\t",counter);
+        }
+    }
 }
 
 #endif /* COUNTINGSORT2_H_ */

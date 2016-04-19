@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define RESN04_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input,total;
-	scanf("%u",&testCases);
-	while(testCases--){
-		total = 0;
-		scanf("%u",&size);
-		for(unsigned int counter = 1;counter <= size;counter++){
-			scanf("%u",&input);
-			total += (input/counter);
-		}
-		printf("%s\n",total&1?"ALICE":"BOB");
-	}
+void printResults() {
+    unsigned int testCases,size,input,total;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        total = 0;
+        scanf("%u",&size);
+        for(unsigned int counter = 1; counter <= size; counter++) {
+            scanf("%u",&input);
+            total += (input/counter);
+        }
+        printf("%s\n",total&1?"ALICE":"BOB");
+    }
 }
 
 #endif /* RESN04_H_ */

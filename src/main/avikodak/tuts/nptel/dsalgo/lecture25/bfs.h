@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bfs.h 
+ *  File Name   		: bfs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\bfs.h
  *  Created on			: Dec 5, 2014 :: 9:54:53 AM
  *  Author				: AVINASH
@@ -75,77 +75,77 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<int> getBfsLevels(vector<vector<int> > adjacencyList,unsigned int sourceVertex){
-	if(sourceVertex >= adjacencyList.size()){
-		throw "Invalid vertex";
-	}
-	vector<int> bfsLevelsForVertex(adjacencyList.size(),INT_MIN);
-	vector<int> predecessor(adjacencyList.size(),INT_MIN);
-	bfsLevelsForVertex[sourceVertex] = 0;
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentVertex;
-	while(!auxSpace.empty()){
-		currentVertex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentVertex].size();counter++){
-			if(bfsLevelsForVertex[adjacencyList[currentVertex][counter]] == INT_MIN){
-				bfsLevelsForVertex[adjacencyList[currentVertex][counter]] = bfsLevelsForVertex[currentVertex] + 1;
-				auxSpace.push(adjacencyList[currentVertex][counter]);
-				predecessor[adjacencyList[currentVertex][counter]] = currentVertex;
-			}
-		}
-	}
-	return bfsLevelsForVertex;
+vector<int> getBfsLevels(vector<vector<int> > adjacencyList,unsigned int sourceVertex) {
+    if(sourceVertex >= adjacencyList.size()) {
+        throw "Invalid vertex";
+    }
+    vector<int> bfsLevelsForVertex(adjacencyList.size(),INT_MIN);
+    vector<int> predecessor(adjacencyList.size(),INT_MIN);
+    bfsLevelsForVertex[sourceVertex] = 0;
+    queue<int> auxSpace;
+    auxSpace.push(sourceVertex);
+    int currentVertex;
+    while(!auxSpace.empty()) {
+        currentVertex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentVertex].size(); counter++) {
+            if(bfsLevelsForVertex[adjacencyList[currentVertex][counter]] == INT_MIN) {
+                bfsLevelsForVertex[adjacencyList[currentVertex][counter]] = bfsLevelsForVertex[currentVertex] + 1;
+                auxSpace.push(adjacencyList[currentVertex][counter]);
+                predecessor[adjacencyList[currentVertex][counter]] = currentVertex;
+            }
+        }
+    }
+    return bfsLevelsForVertex;
 }
 
 //Tested
-vector<int> getBfsLevels(vector<vector<bool> > adjacencyMatrix,unsigned int sourceVertex){
-	if(sourceVertex >= adjacencyMatrix.size()){
-		throw "Invalid vertex";
-	}
-	vector<int> bfsLevelsForVertex(adjacencyMatrix.size(),INT_MIN);
-	vector<int> predecessor(adjacencyMatrix.size(),INT_MIN);
-	bfsLevelsForVertex[sourceVertex] = 0;
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentVertex;
-	while(!auxSpace.empty()){
-		currentVertex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-			if(adjacencyMatrix[currentVertex][counter] && bfsLevelsForVertex[counter] == INT_MIN){
-				bfsLevelsForVertex[counter] = bfsLevelsForVertex[currentVertex] + 1;
-				auxSpace.push(counter);
-				predecessor[counter] = currentVertex;
-			}
-		}
-	}
-	return bfsLevelsForVertex;
+vector<int> getBfsLevels(vector<vector<bool> > adjacencyMatrix,unsigned int sourceVertex) {
+    if(sourceVertex >= adjacencyMatrix.size()) {
+        throw "Invalid vertex";
+    }
+    vector<int> bfsLevelsForVertex(adjacencyMatrix.size(),INT_MIN);
+    vector<int> predecessor(adjacencyMatrix.size(),INT_MIN);
+    bfsLevelsForVertex[sourceVertex] = 0;
+    queue<int> auxSpace;
+    auxSpace.push(sourceVertex);
+    int currentVertex;
+    while(!auxSpace.empty()) {
+        currentVertex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyMatrix.size(); counter++) {
+            if(adjacencyMatrix[currentVertex][counter] && bfsLevelsForVertex[counter] == INT_MIN) {
+                bfsLevelsForVertex[counter] = bfsLevelsForVertex[currentVertex] + 1;
+                auxSpace.push(counter);
+                predecessor[counter] = currentVertex;
+            }
+        }
+    }
+    return bfsLevelsForVertex;
 }
 
-vector<int> getBfsLevels(vector<edge *> edgeList,int sourceVertex,int noOfVertices){
-	vector<int> bfsLevelsForVertex(noOfVertices,INT_MIN);
-	vector<int> predecessor(noOfVertices,INT_MIN);
-	bfsLevelsForVertex[sourceVertex] = 0;
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentVertex,adjacentVertex;
-	while(!auxSpace.empty()){
-		currentVertex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < edgeList.size();counter++){
-			if(edgeList[counter]->sourceVertex == currentVertex || (edgeList[counter]->isUndirectedEdge && edgeList[counter]->destinationVertex == currentVertex)){
-				adjacentVertex = currentVertex ^ edgeList[counter]->sourceVertex ^ edgeList[counter]->destinationVertex;
-				if(bfsLevelsForVertex[adjacentVertex] == INT_MIN){
-					bfsLevelsForVertex[adjacentVertex] = bfsLevelsForVertex[currentVertex];
-					predecessor[adjacentVertex] = currentVertex;
-					auxSpace.push(adjacentVertex);
-				}
-			}
-		}
-	}
-	return bfsLevelsForVertex;
+vector<int> getBfsLevels(vector<edge *> edgeList,int sourceVertex,int noOfVertices) {
+    vector<int> bfsLevelsForVertex(noOfVertices,INT_MIN);
+    vector<int> predecessor(noOfVertices,INT_MIN);
+    bfsLevelsForVertex[sourceVertex] = 0;
+    queue<int> auxSpace;
+    auxSpace.push(sourceVertex);
+    int currentVertex,adjacentVertex;
+    while(!auxSpace.empty()) {
+        currentVertex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < edgeList.size(); counter++) {
+            if(edgeList[counter]->sourceVertex == currentVertex || (edgeList[counter]->isUndirectedEdge && edgeList[counter]->destinationVertex == currentVertex)) {
+                adjacentVertex = currentVertex ^ edgeList[counter]->sourceVertex ^ edgeList[counter]->destinationVertex;
+                if(bfsLevelsForVertex[adjacentVertex] == INT_MIN) {
+                    bfsLevelsForVertex[adjacentVertex] = bfsLevelsForVertex[currentVertex];
+                    predecessor[adjacentVertex] = currentVertex;
+                    auxSpace.push(adjacentVertex);
+                }
+            }
+        }
+    }
+    return bfsLevelsForVertex;
 }
 
 #endif /* BFS_H_ */

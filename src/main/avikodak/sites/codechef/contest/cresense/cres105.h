@@ -76,38 +76,38 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CRESENSE_CRES105_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		int frequency[26] = {0};
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				frequency[userInput[counter]-'A']++;
-			}else{
-				frequency[userInput[counter]-'a']++;
-			}
-		}
-		bool isSpecialString = true;
-		for(unsigned int counter = 0;counter < 26;counter++){
-			if(frequency[counter] > 0){
-				if(counter%2 == 0){
-					if(frequency[counter]%2){
-						isSpecialString = false;
-						break;
-					}
-				}else{
-					if(frequency[counter]%2 == 0){
-						isSpecialString = false;
-						break;
-					}
-				}
-			}
-		}
-		printf("%s\n",isSpecialString?"@1":"@0");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        int frequency[26] = {0};
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                frequency[userInput[counter]-'A']++;
+            } else {
+                frequency[userInput[counter]-'a']++;
+            }
+        }
+        bool isSpecialString = true;
+        for(unsigned int counter = 0; counter < 26; counter++) {
+            if(frequency[counter] > 0) {
+                if(counter%2 == 0) {
+                    if(frequency[counter]%2) {
+                        isSpecialString = false;
+                        break;
+                    }
+                } else {
+                    if(frequency[counter]%2 == 0) {
+                        isSpecialString = false;
+                        break;
+                    }
+                }
+            }
+        }
+        printf("%s\n",isSpecialString?"@1":"@0");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CRESENSE_CRES105_H_ */

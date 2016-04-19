@@ -73,40 +73,40 @@ using namespace __gnu_cxx;
 #define REPUB_H_
 
 //Tested
-void printMaxChar(string userInput){
-	unsigned int freq[26] = {0},maxFreq = 0;
-	char maxChar;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-			freq[userInput[counter]-'A']++;
-			if(maxFreq == freq[userInput[counter]-'A'] && userInput[counter]-'A'+'a' > maxChar){
-				maxChar = userInput[counter]-'A'+'a';
-			}else if(maxFreq < freq[userInput[counter]-'A']){
-				maxChar = userInput[counter]-'A'+'a';
-				maxFreq = freq[userInput[counter]-'A'];
-			}
-		}else if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			freq[userInput[counter]-'a']++;
-			if(maxFreq == freq[userInput[counter]-'a'] && userInput[counter] > maxChar){
-				maxChar = userInput[counter];
-			}else if(maxFreq < freq[userInput[counter]-'a']){
-				maxChar = userInput[counter];
-				maxFreq = freq[userInput[counter]-'a'];
-			}
-		}
-	}
-	cout << maxChar << endl;
+void printMaxChar(string userInput) {
+    unsigned int freq[26] = {0},maxFreq = 0;
+    char maxChar;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+            freq[userInput[counter]-'A']++;
+            if(maxFreq == freq[userInput[counter]-'A'] && userInput[counter]-'A'+'a' > maxChar) {
+                maxChar = userInput[counter]-'A'+'a';
+            } else if(maxFreq < freq[userInput[counter]-'A']) {
+                maxChar = userInput[counter]-'A'+'a';
+                maxFreq = freq[userInput[counter]-'A'];
+            }
+        } else if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            freq[userInput[counter]-'a']++;
+            if(maxFreq == freq[userInput[counter]-'a'] && userInput[counter] > maxChar) {
+                maxChar = userInput[counter];
+            } else if(maxFreq < freq[userInput[counter]-'a']) {
+                maxChar = userInput[counter];
+                maxFreq = freq[userInput[counter]-'a'];
+            }
+        }
+    }
+    cout << maxChar << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		printMaxChar(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        printMaxChar(userInput);
+    }
 }
 
 

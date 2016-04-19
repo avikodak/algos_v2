@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: linkedlistds.h 
+ *  File Name   		: linkedlistds.h
  *	File Location		: D:\algos\algos_v2\src\lib\ds\linkedlistds.h
  *  Created on			: Oct 9, 2014 :: 12:36:07 PM
  *  Author				: AVINASH
@@ -55,93 +55,93 @@ using namespace __gnu_cxx;
 #ifndef LINKEDLISTDS_H_
 #define LINKEDLISTDS_H_
 
-struct sillNode{
-	int value;
-	sillNode *next;
+struct sillNode {
+    int value;
+    sillNode *next;
 
-	sillNode(){
-		this->next = null;
-	}
+    sillNode() {
+        this->next = null;
+    }
 
-	sillNode(int value){
-		this->value = value;
-		this->next = null;
-	}
+    sillNode(int value) {
+        this->value = value;
+        this->next = null;
+    }
 
 };
 
-struct xorSillNode{
-	int value;
-	intptr_t addressesXor;
+struct xorSillNode {
+    int value;
+    intptr_t addressesXor;
 
-	xorSillNode(){
-		this->addressesXor = 0;
-	}
+    xorSillNode() {
+        this->addressesXor = 0;
+    }
 
-	xorSillNode(int value){
-		this->value = value;
-		this->addressesXor = 0;
-	}
+    xorSillNode(int value) {
+        this->value = value;
+        this->addressesXor = 0;
+    }
 };
 
-struct sillArbitNode{
-	int value;
-	sillArbitNode *arbitraryPtr;
-	sillArbitNode *next;
+struct sillArbitNode {
+    int value;
+    sillArbitNode *arbitraryPtr;
+    sillArbitNode *next;
 
-	sillArbitNode(){
-		this->arbitraryPtr = null;
-		this->next = null;
-	}
+    sillArbitNode() {
+        this->arbitraryPtr = null;
+        this->next = null;
+    }
 
-	sillArbitNode(int value){
-		this->value = value;
-		this->next = null;
-		this->arbitraryPtr = null;
-	}
+    sillArbitNode(int value) {
+        this->value = value;
+        this->next = null;
+        this->arbitraryPtr = null;
+    }
 };
 
-struct svillNode{
-	int value;
-	bool isVisited;
-	svillNode *next;
+struct svillNode {
+    int value;
+    bool isVisited;
+    svillNode *next;
 
-	svillNode(){
-		this->next = null;
-	}
+    svillNode() {
+        this->next = null;
+    }
 
-	svillNode(int value,unsigned int frequency){
-		this->value = value;
-		this->isVisited = false;
-		this->next = null;
-	}
+    svillNode(int value,unsigned int frequency) {
+        this->value = value;
+        this->isVisited = false;
+        this->next = null;
+    }
 };
 
-struct dillNode{
-	int value;
-	dillNode *next;
-	dillNode *prev;
+struct dillNode {
+    int value;
+    dillNode *next;
+    dillNode *prev;
 
-	dillNode(){
-		this->next = null;
-		this->prev = null;
-	}
+    dillNode() {
+        this->next = null;
+        this->prev = null;
+    }
 
-	dillNode(int value){
-		this->value = value;
-		this->next = null;
-		this->prev = null;
-	}
+    dillNode(int value) {
+        this->value = value;
+        this->next = null;
+        this->prev = null;
+    }
 };
 
-struct iSillHashmap{
-	hash_map<unsigned int,sillNode *> indexNodeMap;
-	hash_map<intptr_t,unsigned int> nodeIndexMap;
+struct iSillHashmap {
+    hash_map<unsigned int,sillNode *> indexNodeMap;
+    hash_map<intptr_t,unsigned int> nodeIndexMap;
 };
 
-struct iDillHashmap{
-	hash_map<unsigned int,dillNode *> indexNodeMap;
-	hash_map<intptr_t,unsigned int> nodeIndexMap;
+struct iDillHashmap {
+    hash_map<unsigned int,dillNode *> indexNodeMap;
+    hash_map<intptr_t,unsigned int> nodeIndexMap;
 };
 
 #endif /* LINKEDLISTDS_H_ */

@@ -72,21 +72,21 @@ using namespace __gnu_cxx;
 
 class TheMoviesLevelOneDivTwo {
 public:
-	int find(int n, int m,vector<int> row,vector<int> seat){
-		bool flags[n][m] ={true};
-		for(unsigned counter = 0;counter < row.size();counter++){
-			flags[row[counter]-1][seat[counter]-1] = false;
-		}
-		int totalCount = 0;
-		for(unsigned int rowCounter = 0;rowCounter < row.size();rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < seat.size()-1;columnCounter++){
-				if(flags[rowCounter][columnCounter] && flags[rowCounter][columnCounter+1]){
-					totalCount++;
-				}
-			}
-		}
-		return totalCount;
-	}
+    int find(int n, int m,vector<int> row,vector<int> seat) {
+        bool flags[n][m] = {true};
+        for(unsigned counter = 0; counter < row.size(); counter++) {
+            flags[row[counter]-1][seat[counter]-1] = false;
+        }
+        int totalCount = 0;
+        for(unsigned int rowCounter = 0; rowCounter < row.size(); rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < seat.size()-1; columnCounter++) {
+                if(flags[rowCounter][columnCounter] && flags[rowCounter][columnCounter+1]) {
+                    totalCount++;
+                }
+            }
+        }
+        return totalCount;
+    }
 };
 
 #endif /* THEMOVIESLEVELONEDIVTWO_H_ */

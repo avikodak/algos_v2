@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bucketsort.h 
+ *  File Name   		: bucketsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\bucketsort.h
  *  Created on			: Dec 22, 2014 :: 3:40:42 PM
  *  Author				: AVINASH
@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define BUCKETSORTVGFG_H_
 
 //Tested
-void bucksetSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	map<int,unsigned int> frequencyMap;
-	map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()){
-			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],itToFrequencyMap->second+1));
-		}else{
-			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
-		}
-	}
-	int fillCounter = -1;
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		while(itToFrequencyMap->second--){
-			userInput[++fillCounter] = itToFrequencyMap->first;
-		}
-	}
+void bucksetSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    map<int,unsigned int> frequencyMap;
+    map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()) {
+            frequencyMap.insert(pair<int,unsigned int>(userInput[counter],itToFrequencyMap->second+1));
+        } else {
+            frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
+        }
+    }
+    int fillCounter = -1;
+    for(itToFrequencyMap = frequencyMap.begin(); itToFrequencyMap != frequencyMap.end(); itToFrequencyMap++) {
+        while(itToFrequencyMap->second--) {
+            userInput[++fillCounter] = itToFrequencyMap->first;
+        }
+    }
 }
 
 #endif /* BUCKETSORTVGFG_H_ */

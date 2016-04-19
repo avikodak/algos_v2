@@ -73,13 +73,13 @@ using namespace __gnu_cxx;
 #define SPRLNMS_H_
 
 //Tested
-void printResults(){
-	long long int testCases,userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		printf("%lld\n",(userInput)*(4*(userInput)-3));
-	}
+void printResults() {
+    long long int testCases,userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        printf("%lld\n",(userInput)*(4*(userInput)-3));
+    }
 }
 
 #endif /* SPRLNMS_H_ */

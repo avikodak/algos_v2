@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 #define INSOMA4_H_
 
 //Tested
-unsigned int getCommonAncestors(string first,string second){
-	unsigned int counter = 0;
-	while(counter < first.size() && counter < second.size() && first[counter] == second[counter]){
-		counter++;
-	}
-	return counter;
+unsigned int getCommonAncestors(string first,string second) {
+    unsigned int counter = 0;
+    while(counter < first.size() && counter < second.size() && first[counter] == second[counter]) {
+        counter++;
+    }
+    return counter;
 }
 
 //Tested
-void printResults(){
-	unsigned int size,maxAncestors = 0;
-	scanf("%u",&size);
-	vector<string> userInput;
-	string input;
-	while(size--){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		maxAncestors = max(maxAncestors,getCommonAncestors(userInput[counter],userInput[counter+1]));
-	}
-	cout << maxAncestors << endl;
+void printResults() {
+    unsigned int size,maxAncestors = 0;
+    scanf("%u",&size);
+    vector<string> userInput;
+    string input;
+    while(size--) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        maxAncestors = max(maxAncestors,getCommonAncestors(userInput[counter],userInput[counter+1]));
+    }
+    cout << maxAncestors << endl;
 }
 
 #endif /* INSOMA4_H_ */

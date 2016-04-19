@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: numberofzeros.h 
+ *  File Name   		: numberofzeros.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\numberofzeros.h
  *  Created on			: Dec 22, 2014 :: 3:40:34 PM
  *  Author				: AVINASH
@@ -74,42 +74,42 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 //Tested
-int getLowerBoundForZero(vector<int> userInput,int start,int end){
-	if(start > end){
-		return userInput.size();
-	}
-	int middleIndex = (start + end)/2;
-	if(userInput[middleIndex] == 0){
-		if(middleIndex-1 > start){
-			return getLowerBoundForZero(userInput,start,middleIndex-1);
-		}else{
-			return middleIndex;
-		}
-	}else{
-		return getLowerBoundForZero(userInput,middleIndex+1,end);
-	}
+int getLowerBoundForZero(vector<int> userInput,int start,int end) {
+    if(start > end) {
+        return userInput.size();
+    }
+    int middleIndex = (start + end)/2;
+    if(userInput[middleIndex] == 0) {
+        if(middleIndex-1 > start) {
+            return getLowerBoundForZero(userInput,start,middleIndex-1);
+        } else {
+            return middleIndex;
+        }
+    } else {
+        return getLowerBoundForZero(userInput,middleIndex+1,end);
+    }
 }
 
 //Tested
-unsigned int frequencyOfZerosBinarySearch(vector<int> userInput){
-	return userInput.size() - getLowerBoundForZero(userInput,0,userInput.size()-1);
+unsigned int frequencyOfZerosBinarySearch(vector<int> userInput) {
+    return userInput.size() - getLowerBoundForZero(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int frequencyOfZeros(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	unsigned int zeroFrequency = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == 0){
-			zeroFrequency++;
-		}
-	}
-	return zeroFrequency;
+unsigned int frequencyOfZeros(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    unsigned int zeroFrequency = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == 0) {
+            zeroFrequency++;
+        }
+    }
+    return zeroFrequency;
 }
 #endif /* NUMBEROFZEROS_H_ */
 

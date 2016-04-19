@@ -76,25 +76,25 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_VALUEEQUALTOINDEX_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	unsigned int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		bool isFound = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			if(input == counter+1){
-				printf("%u ",counter+1);
-				isFound = true;
-			}
-		}
-		if(!isFound){
-			printf("Not Found");
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    unsigned int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        bool isFound = false;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            if(input == counter+1) {
+                printf("%u ",counter+1);
+                isFound = true;
+            }
+        }
+        if(!isFound) {
+            printf("Not Found");
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_VALUEEQUALTOINDEX_H_ */

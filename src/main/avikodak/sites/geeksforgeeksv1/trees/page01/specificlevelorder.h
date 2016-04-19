@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: specificlevelorder.h 
+ *  File Name   		: specificlevelorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\specificlevelorder.h
  *  Created on			: Jan 22, 2015 :: 7:44:11 PM
  *  Author				: AVINASH
@@ -74,37 +74,37 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void perfectTreeSpecificLevelOrder(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	queue<itNode *> auxSpace;
-	itNode *firstNode,*secondNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		firstNode = auxSpace.front();
-		auxSpace.pop();
-		printf("%d\t",firstNode->value);
-		if(!auxSpace.empty()){
-			secondNode = auxSpace.front();
-			auxSpace.pop();
-			printf("%d\t",secondNode->value);
-		}else{
-			secondNode = null;
-		}
-		if(firstNode->left != null){
-			auxSpace.push(firstNode->left);
-		}
-		if(secondNode != null && secondNode->right != null){
-			auxSpace.push(secondNode->right);
-		}
-		if(firstNode->right != null){
-			auxSpace.push(firstNode->right);
-		}
-		if(secondNode != null && secondNode->left != null){
-			auxSpace.push(secondNode->left);
-		}
-	}
+void perfectTreeSpecificLevelOrder(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    queue<itNode *> auxSpace;
+    itNode *firstNode,*secondNode;
+    auxSpace.push(ptr);
+    while(!auxSpace.empty()) {
+        firstNode = auxSpace.front();
+        auxSpace.pop();
+        printf("%d\t",firstNode->value);
+        if(!auxSpace.empty()) {
+            secondNode = auxSpace.front();
+            auxSpace.pop();
+            printf("%d\t",secondNode->value);
+        } else {
+            secondNode = null;
+        }
+        if(firstNode->left != null) {
+            auxSpace.push(firstNode->left);
+        }
+        if(secondNode != null && secondNode->right != null) {
+            auxSpace.push(secondNode->right);
+        }
+        if(firstNode->right != null) {
+            auxSpace.push(firstNode->right);
+        }
+        if(secondNode != null && secondNode->left != null) {
+            auxSpace.push(secondNode->left);
+        }
+    }
 }
 
 #endif /* SPECIFICLEVELORDER_H_ */

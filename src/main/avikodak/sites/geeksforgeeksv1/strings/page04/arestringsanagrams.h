@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arestringsanagrams.h 
+ *  File Name   		: arestringsanagrams.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\arestringsanagrams.h
  *  Created on			: Jan 16, 2015 :: 10:06:56 AM
  *  Author				: AVINASH
@@ -73,52 +73,52 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool areStringsAnagramsON(char *firstUserInput,char *secondUserInput){
-	if(firstUserInput == '\0' && secondUserInput == '\0'){
-		return true;
-	}
-	int firstLength = strlen(firstUserInput),secondLength = strlen(secondUserInput);
-	if(firstLength != secondLength){
-		return false;
-	}
-	hash_map<char,unsigned int> frequencyMap;
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < firstLength;counter++){
-		if((itToFrequencyMap = frequencyMap.find(firstUserInput[counter])) == frequencyMap.end()){
-			frequencyMap[firstUserInput[counter]] = 1;
-		}else{
-			frequencyMap[firstUserInput[counter]] += 1;
-		}
-	}
-	for(unsigned int counter = 0;counter < secondLength;counter++){
-		if((itToFrequencyMap = frequencyMap.find(secondUserInput[counter])) == frequencyMap.end()){
-			return false;
-		}
-		if(itToFrequencyMap->second == 1){
-			frequencyMap.erase(secondUserInput[counter]);
-		}else{
-			itToFrequencyMap->second -= 1;
-		}
-	}
-	return frequencyMap.size() == 0;
+bool areStringsAnagramsON(char *firstUserInput,char *secondUserInput) {
+    if(firstUserInput == '\0' && secondUserInput == '\0') {
+        return true;
+    }
+    int firstLength = strlen(firstUserInput),secondLength = strlen(secondUserInput);
+    if(firstLength != secondLength) {
+        return false;
+    }
+    hash_map<char,unsigned int> frequencyMap;
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < firstLength; counter++) {
+        if((itToFrequencyMap = frequencyMap.find(firstUserInput[counter])) == frequencyMap.end()) {
+            frequencyMap[firstUserInput[counter]] = 1;
+        } else {
+            frequencyMap[firstUserInput[counter]] += 1;
+        }
+    }
+    for(unsigned int counter = 0; counter < secondLength; counter++) {
+        if((itToFrequencyMap = frequencyMap.find(secondUserInput[counter])) == frequencyMap.end()) {
+            return false;
+        }
+        if(itToFrequencyMap->second == 1) {
+            frequencyMap.erase(secondUserInput[counter]);
+        } else {
+            itToFrequencyMap->second -= 1;
+        }
+    }
+    return frequencyMap.size() == 0;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool areStringsAnagramONLOGN(char *firstUserInput,char *secondUserInput){
-	if(firstUserInput == '\0' && secondUserInput == '\0'){
-		return true;
-	}
-	char *firstCrawler = firstUserInput,*secondCrawler = secondUserInput;
-	while(firstCrawler[0] != '\0' && secondCrawler[0] != '\0'){
-		if(firstCrawler[0] != secondCrawler[0]){
-			return false;
-		}
-		firstCrawler++;
-		secondCrawler++;
-	}
-	return firstCrawler[0] == '\0' && secondCrawler[0] == '\0';
+bool areStringsAnagramONLOGN(char *firstUserInput,char *secondUserInput) {
+    if(firstUserInput == '\0' && secondUserInput == '\0') {
+        return true;
+    }
+    char *firstCrawler = firstUserInput,*secondCrawler = secondUserInput;
+    while(firstCrawler[0] != '\0' && secondCrawler[0] != '\0') {
+        if(firstCrawler[0] != secondCrawler[0]) {
+            return false;
+        }
+        firstCrawler++;
+        secondCrawler++;
+    }
+    return firstCrawler[0] == '\0' && secondCrawler[0] == '\0';
 }
 
 /****************************************************************************************************************************************************/

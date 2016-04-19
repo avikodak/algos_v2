@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minimumNumberJumps.h 
+ *  File Name   		: minimumNumberJumps.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\minimumNumberJumps.h
  *  Created on			: Nov 28, 2014 :: 2:04:27 AM
  *  Author				: AVINASH
@@ -69,20 +69,20 @@ using namespace __gnu_cxx;
 #define MINIMUMNUMBERJUMPS_H_
 
 //Tested
-int minimumNumberOfJumps(vector<unsigned int> userInput,unsigned int currentIndex = 0){
-	if(currentIndex == userInput.size()-1){
-		return 0;
-	}
-	if(currentIndex >= userInput.size()){
-		return INT_MAX;
-	}
-	int minJumps = INT_MAX,result;
-	for(unsigned int counter = 1;counter <= userInput[currentIndex];counter++){
-		if((result = minimumNumberOfJumps(userInput,currentIndex+counter)) != INT_MAX){
-			minJumps = min(minJumps,1+result);
-		}
-	}
-	return minJumps;
+int minimumNumberOfJumps(vector<unsigned int> userInput,unsigned int currentIndex = 0) {
+    if(currentIndex == userInput.size()-1) {
+        return 0;
+    }
+    if(currentIndex >= userInput.size()) {
+        return INT_MAX;
+    }
+    int minJumps = INT_MAX,result;
+    for(unsigned int counter = 1; counter <= userInput[currentIndex]; counter++) {
+        if((result = minimumNumberOfJumps(userInput,currentIndex+counter)) != INT_MAX) {
+            minJumps = min(minJumps,1+result);
+        }
+    }
+    return minJumps;
 }
 
 #endif /* MINIMUMNUMBERJUMPS_H_ */

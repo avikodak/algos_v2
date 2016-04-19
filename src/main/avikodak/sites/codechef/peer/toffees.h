@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 #define TOFFEES_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input,minValue;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	bool isGood;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-			minValue = counter == 0?input:min(input,minValue);
-		}
-		isGood = true;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(userInput[counter]-minValue > 1){
-				isGood = false;
-				break;
-			}
-		}
-		printf("%s\n",isGood?"GOOD":"BAD");
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input,minValue;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    bool isGood;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+            minValue = counter == 0?input:min(input,minValue);
+        }
+        isGood = true;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(userInput[counter]-minValue > 1) {
+                isGood = false;
+                break;
+            }
+        }
+        printf("%s\n",isGood?"GOOD":"BAD");
+    }
 }
 
 #endif /* TOFFEES_H_ */

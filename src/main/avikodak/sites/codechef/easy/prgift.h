@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #define PRGIFT_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input,reqEvenCount,evenCount;
-	bool hasOdd;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&reqEvenCount);
-		evenCount = 0;
-		hasOdd = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			if(!(input&1)){
-				evenCount++;
-			}else{
-				hasOdd = true;
-			}
-		}
-		if(reqEvenCount == 0){
-			printf("%s\n",hasOdd?"YES":"NO");
-		}else{
-			printf("%s\n",evenCount < reqEvenCount?"NO":"YES");
-		}
-	}
+void printResults() {
+    unsigned int testCases,size,input,reqEvenCount,evenCount;
+    bool hasOdd;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&reqEvenCount);
+        evenCount = 0;
+        hasOdd = false;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            if(!(input&1)) {
+                evenCount++;
+            } else {
+                hasOdd = true;
+            }
+        }
+        if(reqEvenCount == 0) {
+            printf("%s\n",hasOdd?"YES":"NO");
+        } else {
+            printf("%s\n",evenCount < reqEvenCount?"NO":"YES");
+        }
+    }
 }
 
 #endif /* PRGIFT_H_ */

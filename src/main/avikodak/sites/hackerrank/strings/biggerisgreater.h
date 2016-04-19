@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef BIGGERISGREATER_H_
 #define BIGGERISGREATER_H_
 
-void getNextPermutation(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput,copyUserInput;
-	while(testCases--){
-		cin >> userInput;
-		copyUserInput = userInput;
-		next_permutation(userInput.begin(),userInput.end());
-		if(userInput.compare(copyUserInput) != 0){
-			cout << userInput << endl;
-		}else{
-			cout << "no answer" << endl;
-		}
-	}
+void getNextPermutation() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput,copyUserInput;
+    while(testCases--) {
+        cin >> userInput;
+        copyUserInput = userInput;
+        next_permutation(userInput.begin(),userInput.end());
+        if(userInput.compare(copyUserInput) != 0) {
+            cout << userInput << endl;
+        } else {
+            cout << "no answer" << endl;
+        }
+    }
 }
 
 #endif /* BIGGERISGREATER_H_ */

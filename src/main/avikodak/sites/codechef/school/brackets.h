@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define BRACKETS_H_
 
 //Tested
-unsigned int getMaxLength(string userInput){
-	unsigned int maxLength = 0,balance =0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == '('){
-			balance++;
-		}else{
-			balance--;
-		}
-		maxLength = max(maxLength,balance);
-	}
-	return maxLength;
+unsigned int getMaxLength(string userInput) {
+    unsigned int maxLength = 0,balance =0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == '(') {
+            balance++;
+        } else {
+            balance--;
+        }
+        maxLength = max(maxLength,balance);
+    }
+    return maxLength;
 }
 
 //Tested
-void printSequence(string userInput){
-	unsigned int maxLen = getMaxLength(userInput);
-	string newSeq;
-	for(unsigned int counter = 0;counter < maxLen;counter++){
-		newSeq.append("(");
-	}
-	for(unsigned int counter = 0;counter < maxLen;counter++){
-		newSeq.append(")");
-	}
-	cout << newSeq << endl;
+void printSequence(string userInput) {
+    unsigned int maxLen = getMaxLength(userInput);
+    string newSeq;
+    for(unsigned int counter = 0; counter < maxLen; counter++) {
+        newSeq.append("(");
+    }
+    for(unsigned int counter = 0; counter < maxLen; counter++) {
+        newSeq.append(")");
+    }
+    cout << newSeq << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		printSequence(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        printSequence(userInput);
+    }
 }
 
 #endif /* BRACKETS_H_ */

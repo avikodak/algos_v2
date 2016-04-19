@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define BLACKSQUARE_H_
 
 //Tested
-void getCaloriesCount(){
-	unsigned int calories[4],totalCalories = 0;
-	string userInput;
-	for(unsigned int counter = 0;counter < 4;counter++){
-		scanf("%u",&calories[counter]);
-	}
-	cin >> userInput;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		totalCalories += calories[userInput[counter]-'0'-1];
-	}
-	printf("%u",totalCalories);
+void getCaloriesCount() {
+    unsigned int calories[4],totalCalories = 0;
+    string userInput;
+    for(unsigned int counter = 0; counter < 4; counter++) {
+        scanf("%u",&calories[counter]);
+    }
+    cin >> userInput;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        totalCalories += calories[userInput[counter]-'0'-1];
+    }
+    printf("%u",totalCalories);
 }
 
 #endif /* BLACKSQUARE_H_ */

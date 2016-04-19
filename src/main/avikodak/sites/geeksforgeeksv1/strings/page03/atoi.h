@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: atoi.h 
+ *  File Name   		: atoi.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\atoi.h
  *  Created on			: Jan 16, 2015 :: 11:47:34 AM
  *  Author				: AVINASH
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define ATOI_H_
 
 //Tested
-int atoicustom(char *userInput){
-	if(userInput == null || userInput[0] == '\0'){
-		return 0;
-	}
-	int number = 0;
-	while(userInput[0] != '\0'){
-		if(userInput[0] >= '0' && userInput[0] <= '9'){
-			number = (number << 3) + (number << 1) + (userInput[0] - '0');
-		}else{
-			throw "Invalid character";
-		}
-		userInput++;
-	}
-	return number;
+int atoicustom(char *userInput) {
+    if(userInput == null || userInput[0] == '\0') {
+        return 0;
+    }
+    int number = 0;
+    while(userInput[0] != '\0') {
+        if(userInput[0] >= '0' && userInput[0] <= '9') {
+            number = (number << 3) + (number << 1) + (userInput[0] - '0');
+        } else {
+            throw "Invalid character";
+        }
+        userInput++;
+    }
+    return number;
 }
 
 #endif /* ATOI_H_ */

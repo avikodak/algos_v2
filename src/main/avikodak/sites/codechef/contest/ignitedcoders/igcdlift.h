@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 #define IGCDLIFT_H_
 
 //Tested
-void printResults(){
-	long long int testCases,totalFloors,personFloor,liftFloor,destinationFloor,liftSpeed,personSpeed;
-	long long int liftTime,personTime;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld %lld %lld %lld",&totalFloors,&personFloor,&liftFloor,&destinationFloor,&liftSpeed,&personSpeed);
-		liftTime = (abs(liftFloor-personFloor) + abs(destinationFloor-personFloor))*liftSpeed;
-		personTime = abs(personFloor-destinationFloor)*personSpeed;
-		if(liftTime <= personTime){
-			cout << "LIFT" << endl;
-		}else{
-			cout << "STAIRS" << endl;
-		}
-	}
+void printResults() {
+    long long int testCases,totalFloors,personFloor,liftFloor,destinationFloor,liftSpeed,personSpeed;
+    long long int liftTime,personTime;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld %lld %lld %lld %lld",&totalFloors,&personFloor,&liftFloor,&destinationFloor,&liftSpeed,&personSpeed);
+        liftTime = (abs(liftFloor-personFloor) + abs(destinationFloor-personFloor))*liftSpeed;
+        personTime = abs(personFloor-destinationFloor)*personSpeed;
+        if(liftTime <= personTime) {
+            cout << "LIFT" << endl;
+        } else {
+            cout << "STAIRS" << endl;
+        }
+    }
 }
 
 #endif /* IGCDLIFT_H_ */

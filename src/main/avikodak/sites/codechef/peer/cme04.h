@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 #define CME04_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,roomX,roomY,tileX,tileY;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u %u %u",&roomX,&roomY,&tileX,&tileY);
-		if((roomX%tileX == 0 && roomY%tileY == 0)||(roomY%tileX == 0 && roomX%tileY == 0)){
-			printf("yes\n");
-		}else{
-			printf("no\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases,roomX,roomY,tileX,tileY;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u %u %u",&roomX,&roomY,&tileX,&tileY);
+        if((roomX%tileX == 0 && roomY%tileY == 0)||(roomY%tileX == 0 && roomX%tileY == 0)) {
+            printf("yes\n");
+        } else {
+            printf("no\n");
+        }
+    }
 }
 
 #endif /* CME04_H_ */

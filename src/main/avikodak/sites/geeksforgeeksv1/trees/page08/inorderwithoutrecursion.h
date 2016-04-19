@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: inorderwithoutrecursion.h 
+ *  File Name   		: inorderwithoutrecursion.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inorderwithoutrecursion.h
  *  Created on			: Oct 17, 2014 :: 10:30:00 AM
  *  Author				: AVINASH
@@ -72,50 +72,50 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void inorderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void inorderTraversalIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 //Tested
-void morrisInorderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				currentNode = currentNode->left;
-			}else{
-				temp->right = null;
-				printf("%d\t",currentNode->value);
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void morrisInorderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                temp->right = currentNode;
+                currentNode = currentNode->left;
+            } else {
+                temp->right = null;
+                printf("%d\t",currentNode->value);
+                currentNode = currentNode->right;
+            }
+        } else {
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 #endif /* INORDERWITHOUTRECURSION_H_ */

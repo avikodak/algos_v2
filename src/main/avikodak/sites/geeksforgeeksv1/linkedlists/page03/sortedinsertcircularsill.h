@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortedinsertcircularsill.h 
+ *  File Name   		: sortedinsertcircularsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\sortedinsertcircularsill.h
  *  Created on			: Oct 23, 2014 :: 5:20:22 PM
  *  Author				: AVINASH
@@ -72,26 +72,26 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void insertIntoCircularSill(sillNode **ptr,int value){
-	sillNode *newNode = new sillNode(value);
-	if(*ptr == null){
-		(*ptr) = newNode;
-		(*ptr)->next = newNode;
-		return;
-	}
-	if((*ptr)->value > value){
-		newNode->value = (*ptr)->value;
-		(*ptr)->value = value;
-		newNode->next = (*ptr)->next;
-		(*ptr)->next = newNode;
-		return;
-	}
-	sillNode *crawler = *ptr;
-	while(crawler->next != *ptr && crawler->next->value < value){
-		crawler = crawler->next;
-	}
-	newNode->next = crawler->next;
-	crawler->next = newNode;
+void insertIntoCircularSill(sillNode **ptr,int value) {
+    sillNode *newNode = new sillNode(value);
+    if(*ptr == null) {
+        (*ptr) = newNode;
+        (*ptr)->next = newNode;
+        return;
+    }
+    if((*ptr)->value > value) {
+        newNode->value = (*ptr)->value;
+        (*ptr)->value = value;
+        newNode->next = (*ptr)->next;
+        (*ptr)->next = newNode;
+        return;
+    }
+    sillNode *crawler = *ptr;
+    while(crawler->next != *ptr && crawler->next->value < value) {
+        crawler = crawler->next;
+    }
+    newNode->next = crawler->next;
+    crawler->next = newNode;
 }
 
 #endif /* SORTEDINSERTCIRCULARSILL_H_ */

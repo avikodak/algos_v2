@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: vasyaandsocks.h 
+ *  File Name   		: vasyaandsocks.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\vasyaandsocks.h
  *  Created on			: Mar 22, 2015 :: 7:45:44 PM
  *  Author				: avikodak
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define VASYAANDSOCKS_H_
 
 //Tested
-void printVasyaSocksDays(){
-	unsigned int initSocks,daysBought,totalDays = 0,counter,temp;
-	scanf("%u %u",&initSocks,&daysBought);
-	totalDays += initSocks;
-	counter = initSocks;
-	while(counter >= daysBought){
-		totalDays += (counter/daysBought);
-		temp = counter%daysBought;
-		counter = counter/daysBought;
-		counter += temp;
-	}
-	printf("%u\n",totalDays);
+void printVasyaSocksDays() {
+    unsigned int initSocks,daysBought,totalDays = 0,counter,temp;
+    scanf("%u %u",&initSocks,&daysBought);
+    totalDays += initSocks;
+    counter = initSocks;
+    while(counter >= daysBought) {
+        totalDays += (counter/daysBought);
+        temp = counter%daysBought;
+        counter = counter/daysBought;
+        counter += temp;
+    }
+    printf("%u\n",totalDays);
 }
 
 #endif /* VASYAANDSOCKS_H_ */

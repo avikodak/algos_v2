@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphtwoedgeconnected.h 
+ *  File Name   		: isgraphtwoedgeconnected.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture28\isgraphtwoedgeconnected.h
  *  Created on			: Dec 5, 2014 :: 11:32:34 AM
  *  Author				: AVINASH
@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int isGraphTwoEdgeConnectedMain(vector<vector<int> > adjacencyList,int sourceVertex,bool &flag){
-	if(adjacencyList.size() == 0){
-		return INT_MIN;
-	}
-	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	static vector<int> predecessor(adjacencyList.size(),INT_MIN);
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
-	int minTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MIN){
-			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			minTime = min(minTime,isGraphTwoEdgeConnectedMain(adjacencyList,adjacencyList[sourceVertex][counter]));
-		}else{
-			if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]){
-				minTime = min(minTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
-			}
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
-	flag = sourceVertex == 0?true:arrivalDepartureTimes[sourceVertex]->arrivalTimes > minTime;
-	return minTime;
+int isGraphTwoEdgeConnectedMain(vector<vector<int> > adjacencyList,int sourceVertex,bool &flag) {
+    if(adjacencyList.size() == 0) {
+        return INT_MIN;
+    }
+    static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    static vector<int> predecessor(adjacencyList.size(),INT_MIN);
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+    int minTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MIN) {
+            predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+            minTime = min(minTime,isGraphTwoEdgeConnectedMain(adjacencyList,adjacencyList[sourceVertex][counter]));
+        } else {
+            if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]) {
+                minTime = min(minTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
+            }
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+    flag = sourceVertex == 0?true:arrivalDepartureTimes[sourceVertex]->arrivalTimes > minTime;
+    return minTime;
 }
 
 #endif /* ISGRAPHTWOEDGECONNECTED_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: missingarithmaticnumber.h 
+ *  File Name   		: missingarithmaticnumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\missingarithmaticnumber.h
  *  Created on			: Jan 21, 2015 :: 6:09:32 PM
  *  Author				: AVINASH

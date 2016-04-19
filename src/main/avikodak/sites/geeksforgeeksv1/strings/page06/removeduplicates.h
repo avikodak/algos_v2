@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: removeduplicates.h 
+ *  File Name   		: removeduplicates.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\removeduplicates.h
  *  Created on			: Dec 3, 2014 :: 7:50:18 PM
  *  Author				: AVINASH
@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void removeDuplicatesHashmap(char *userInput){
-	if(userInput == null){
-		return;
-	}
-	hash_map<char,unsigned int> frequencyMap;
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	char *crawler = userInput;
-	while(*crawler != '\0'){
-		if(frequencyMap.find(crawler[0]) == frequencyMap.end()){
-			frequencyMap[crawler[0]] = 1;
-		}else{
-			frequencyMap[crawler[0]] += 1;
-		}
-		crawler++;
-	}
-	int fillCounter = -1;
-	crawler = userInput;
-	while(*crawler != '\0'){
-		itToFrequencyMap = frequencyMap.find(crawler[0]);
-		if(itToFrequencyMap->second > 1){
-			itToFrequencyMap->second--;
-		}else{
-			userInput[++fillCounter] = crawler[0];
-		}
-		crawler++;
-	}
-	userInput[++fillCounter] = '\0';
+void removeDuplicatesHashmap(char *userInput) {
+    if(userInput == null) {
+        return;
+    }
+    hash_map<char,unsigned int> frequencyMap;
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    char *crawler = userInput;
+    while(*crawler != '\0') {
+        if(frequencyMap.find(crawler[0]) == frequencyMap.end()) {
+            frequencyMap[crawler[0]] = 1;
+        } else {
+            frequencyMap[crawler[0]] += 1;
+        }
+        crawler++;
+    }
+    int fillCounter = -1;
+    crawler = userInput;
+    while(*crawler != '\0') {
+        itToFrequencyMap = frequencyMap.find(crawler[0]);
+        if(itToFrequencyMap->second > 1) {
+            itToFrequencyMap->second--;
+        } else {
+            userInput[++fillCounter] = crawler[0];
+        }
+        crawler++;
+    }
+    userInput[++fillCounter] = '\0';
 }
 
 /****************************************************************************************************************************************************/

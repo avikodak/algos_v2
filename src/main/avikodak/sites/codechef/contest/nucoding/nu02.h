@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 #ifndef NU02_H_
 #define NU02_H_
 
-void printResults(){
-	unsigned int testCases,position = 0,counter;
-	scanf("%u",&testCases);
-	string startFlag,endFlag,data;
-	std::size_t posFound;
-	while(testCases--){
-		cin >> startFlag >>  endFlag  >> data;
-		counter = 0;
-		position = 0;
-		while(true){
-			if((posFound = data.find(startFlag,position)) != string::npos){
-				while(counter < posFound){
-					printf("%c",data[counter]);
-					counter++;
-				}
-				position = data.find(endFlag,posFound) + endFlag.size();
-				counter = position;
-			}else{
-				while(counter < data.size()){
-					printf("%c",data[counter]);
-					counter++;
-				}
-				break;
-			}
-		}
-		printf("\n");
-	}
+void printResults() {
+    unsigned int testCases,position = 0,counter;
+    scanf("%u",&testCases);
+    string startFlag,endFlag,data;
+    std::size_t posFound;
+    while(testCases--) {
+        cin >> startFlag >>  endFlag  >> data;
+        counter = 0;
+        position = 0;
+        while(true) {
+            if((posFound = data.find(startFlag,position)) != string::npos) {
+                while(counter < posFound) {
+                    printf("%c",data[counter]);
+                    counter++;
+                }
+                position = data.find(endFlag,posFound) + endFlag.size();
+                counter = position;
+            } else {
+                while(counter < data.size()) {
+                    printf("%c",data[counter]);
+                    counter++;
+                }
+                break;
+            }
+        }
+        printf("\n");
+    }
 }
 
 #endif /* NU02_H_ */

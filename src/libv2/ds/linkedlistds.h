@@ -51,19 +51,19 @@ using namespace __gnu_cxx;
 #ifndef LIBV2_DS_LINKEDLISTDS_H_
 #define LIBV2_DS_LINKEDLISTDS_H_
 
-struct sillNode{
-	int value;
-	sillNode *next;
+struct sillNode {
+    int value;
+    sillNode *next;
 
-	sillNode(){
-		this->value = 0;
-		this->next = null;
-	}
+    sillNode() {
+        this->value = 0;
+        this->next = null;
+    }
 
-	sillNode(int value){
-		this->value = value;
-		this->next = null;
-	}
+    sillNode(int value) {
+        this->value = value;
+        this->next = null;
+    }
 };
 
 #endif /* LIBV2_DS_LINKEDLISTDS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphconnected.h 
+ *  File Name   		: isgraphconnected.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\isgraphconnected.h
  *  Created on			: Dec 5, 2014 :: 10:30:41 AM
  *  Author				: AVINASH
@@ -73,31 +73,31 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isGraphConnected(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	queue<int> auxSpace;
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	auxSpace.push(0);
-	bfsLevels[0] = 0;
-	int currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentNode].size();counter++){
-			if(bfsLevels[adjacencyList[currentNode][counter]] == INT_MIN){
-				bfsLevels[adjacencyList[currentNode][counter]] = 0;
-				auxSpace.push(adjacencyList[currentNode][counter]);
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < bfsLevels.size();counter++){
-		if(bfsLevels[counter] != 0){
-			return false;
-		}
-	}
-	return true;
+bool isGraphConnected(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    queue<int> auxSpace;
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    auxSpace.push(0);
+    bfsLevels[0] = 0;
+    int currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentNode].size(); counter++) {
+            if(bfsLevels[adjacencyList[currentNode][counter]] == INT_MIN) {
+                bfsLevels[adjacencyList[currentNode][counter]] = 0;
+                auxSpace.push(adjacencyList[currentNode][counter]);
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < bfsLevels.size(); counter++) {
+        if(bfsLevels[counter] != 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* ISGRAPHCONNECTED_H_ */

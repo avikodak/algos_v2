@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: movelastelementtofirst.h 
+ *  File Name   		: movelastelementtofirst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\movelastelementtofirst.h
  *  Created on			: Oct 19, 2014 :: 1:01:44 PM
  *  Author				: AVINASH
@@ -72,70 +72,70 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void moveLastElementToFirst(sillNode *ptr,sillNode **head){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	if(ptr->next->next == null){
-		ptr->next->next = (*head);
-		(*head) = ptr->next;
-		ptr->next = null;
-		return;
-	}
-	moveLastElementToFirst(ptr->next,head);
+void moveLastElementToFirst(sillNode *ptr,sillNode **head) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    if(ptr->next->next == null) {
+        ptr->next->next = (*head);
+        (*head) = ptr->next;
+        ptr->next = null;
+        return;
+    }
+    moveLastElementToFirst(ptr->next,head);
 }
 
-void moveLastElementToFirstIterative(sillNode **head){
-	if(*head == null || (*head)->next == null){
-		return;
-	}
-	sillNode *crawler = (*head);
-	while(crawler->next->next != null){
-		crawler = crawler->next;
-	}
-	crawler->next->next = (*head);
-	(*head) = crawler->next;
-	crawler->next = null;
+void moveLastElementToFirstIterative(sillNode **head) {
+    if(*head == null || (*head)->next == null) {
+        return;
+    }
+    sillNode *crawler = (*head);
+    while(crawler->next->next != null) {
+        crawler = crawler->next;
+    }
+    crawler->next->next = (*head);
+    (*head) = crawler->next;
+    crawler->next = null;
 }
 
-void moveLastElementToFirstAuxspace(sillNode *head){
-	if(head == null || head->next == null){
-		return;
-	}
-	queue<int> auxSpace;
-	sillNode *crawler = head;
-	while(crawler->next != null){
-		auxSpace.push(crawler->value);
-	}
-	head->value = crawler->value;
-	crawler = head->next;
-	while(!auxSpace.empty()){
-		crawler->value = auxSpace.front();
-		auxSpace.pop();
-		crawler = crawler->next;
-	}
+void moveLastElementToFirstAuxspace(sillNode *head) {
+    if(head == null || head->next == null) {
+        return;
+    }
+    queue<int> auxSpace;
+    sillNode *crawler = head;
+    while(crawler->next != null) {
+        auxSpace.push(crawler->value);
+    }
+    head->value = crawler->value;
+    crawler = head->next;
+    while(!auxSpace.empty()) {
+        crawler->value = auxSpace.front();
+        auxSpace.pop();
+        crawler = crawler->next;
+    }
 }
 
-void moveLastElementToFirstHashmap(sillNode *head){
-	if(head == null || head->next == null){
-		return;
-	}
-	hash_map<unsigned int,int> rankValueMap;
-	hash_map<unsigned int,int>::iterator itToRankValueMap;
-	unsigned int counter = 0;
-	sillNode *crawler = head;
-	while(crawler != null){
-		rankValueMap.insert(pair<unsigned int,int>(counter,crawler->value));
-		counter++;
-		crawler = crawler->next;
-	}
-	crawler = head;
-	crawler->value = rankValueMap.find(rankValueMap.size()-1)->second;
-	crawler = crawler->next;
-	for(itToRankValueMap = rankValueMap.begin();itToRankValueMap != rankValueMap.end()-1;itToRankValueMap++){
-		crawler->value = itToRankValueMap->second;
-		crawler = crawler->next;
-	}
+void moveLastElementToFirstHashmap(sillNode *head) {
+    if(head == null || head->next == null) {
+        return;
+    }
+    hash_map<unsigned int,int> rankValueMap;
+    hash_map<unsigned int,int>::iterator itToRankValueMap;
+    unsigned int counter = 0;
+    sillNode *crawler = head;
+    while(crawler != null) {
+        rankValueMap.insert(pair<unsigned int,int>(counter,crawler->value));
+        counter++;
+        crawler = crawler->next;
+    }
+    crawler = head;
+    crawler->value = rankValueMap.find(rankValueMap.size()-1)->second;
+    crawler = crawler->next;
+    for(itToRankValueMap = rankValueMap.begin(); itToRankValueMap != rankValueMap.end()-1; itToRankValueMap++) {
+        crawler->value = itToRankValueMap->second;
+        crawler = crawler->next;
+    }
 }
 
 #endif /* MOVELASTELEMENTTOFIRST_H_ */

@@ -73,8 +73,8 @@ using namespace __gnu_cxx;
 
 //Tested
 //It is accepting anything lol !!
-void isTree(){
-	printf("YES");
+void isTree() {
+    printf("YES");
 }
 
 #endif /* PD31_H_ */

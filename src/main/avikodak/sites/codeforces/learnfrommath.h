@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: learnfrommath.h 
+ *  File Name   		: learnfrommath.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\learnfrommath.h
  *  Created on			: Mar 1, 2015 :: 7:04:56 PM
  *  Author				: AVINASH
@@ -70,28 +70,28 @@ using namespace __gnu_cxx;
 #ifndef LEARNFROMMATH_H_
 #define LEARNFROMMATH_H_
 
-bool isNumberPrime(unsigned int userInput){
-	if(userInput < 2){
-		return false;
-	}
-	unsigned int root = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= root;counter++){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(unsigned int userInput) {
+    if(userInput < 2) {
+        return false;
+    }
+    unsigned int root = sqrt(userInput);
+    for(unsigned int counter = 2; counter <= root; counter++) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
-void printSumUsingComposites(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	for(unsigned int counter = userInput-2;counter >= 0;counter--){
-		if(isNumberPrime(counter) && isNumberPrime(userInput-counter)){
-			printf("%u %u",counter,userInput-counter);
-			return;
-		}
-	}
+void printSumUsingComposites() {
+    unsigned int userInput;
+    scanf("%u",&userInput);
+    for(unsigned int counter = userInput-2; counter >= 0; counter--) {
+        if(isNumberPrime(counter) && isNumberPrime(userInput-counter)) {
+            printf("%u %u",counter,userInput-counter);
+            return;
+        }
+    }
 }
 
 #endif /* LEARNFROMMATH_H_ */

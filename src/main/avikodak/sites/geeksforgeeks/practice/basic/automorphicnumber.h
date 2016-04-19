@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_AUTOMORPHICNUMBER_H_
 
 //Tested
-unsigned int cPow(unsigned int base,unsigned int exponent){
-	unsigned int result = 1;
-	for(unsigned int counter = 0;counter < exponent;counter++){
-		result *= base;
-	}
-	return result;
+unsigned int cPow(unsigned int base,unsigned int exponent) {
+    unsigned int result = 1;
+    for(unsigned int counter = 0; counter < exponent; counter++) {
+        result *= base;
+    }
+    return result;
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,noOfDigits,temp;
-	unsigned int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		noOfDigits = log10(input)+1;
-		temp = cPow(10,noOfDigits);
-		printf("%s\n",(input*input)%(temp) == input?"Automorphic":"Not Automorphic");
-	}
+void solveProblem() {
+    unsigned int testCases,noOfDigits,temp;
+    unsigned int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        noOfDigits = log10(input)+1;
+        temp = cPow(10,noOfDigits);
+        printf("%s\n",(input*input)%(temp) == input?"Automorphic":"Not Automorphic");
+    }
 }
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_AUTOMORPHICNUMBER_H_ */

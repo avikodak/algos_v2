@@ -73,35 +73,35 @@ using namespace __gnu_cxx;
 #define SUBANAGR_H_
 
 //Tested
-void printResults(){
-	unsigned int overallFreq[26]={0},testCases;
-	vector<unsigned int> freq;
-	string userInput;
-	scanf("%u",&testCases);
-	for(unsigned int testCase = 0;testCase < testCases;testCase++){
-		cin >> userInput;
-		freq.clear();
-		freq.assign(26,0);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			freq[userInput[counter]-'a']++;
-		}
-		for(unsigned int counter = 0;counter < 26;counter++){
-			overallFreq = testCase==0?freq[counter]:min(overallFreq[counter],freq[counter]);
-		}
-	}
-	bool anagramFound = false;
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(overallFreq[counter] > 0){
-			anagramFound = true;
-			while(overallFreq[counter]--){
-				printf("%c",counter+'a');
-			}
-		}
-	}
-	if(!anagramFound){
-		printf("no such string");
-	}
-	printf("\n");
+void printResults() {
+    unsigned int overallFreq[26]= {0},testCases;
+    vector<unsigned int> freq;
+    string userInput;
+    scanf("%u",&testCases);
+    for(unsigned int testCase = 0; testCase < testCases; testCase++) {
+        cin >> userInput;
+        freq.clear();
+        freq.assign(26,0);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            freq[userInput[counter]-'a']++;
+        }
+        for(unsigned int counter = 0; counter < 26; counter++) {
+            overallFreq = testCase==0?freq[counter]:min(overallFreq[counter],freq[counter]);
+        }
+    }
+    bool anagramFound = false;
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(overallFreq[counter] > 0) {
+            anagramFound = true;
+            while(overallFreq[counter]--) {
+                printf("%c",counter+'a');
+            }
+        }
+    }
+    if(!anagramFound) {
+        printf("no such string");
+    }
+    printf("\n");
 }
 
 #endif /* SUBANAGR_H_ */

@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FINDINGPOSITION_H_
 
 //Tested
-long long int iPow(long long int base,long long int exponent){
-	long long int result = 1;
-	for(long long int counter = 1;counter <= exponent;counter++){
-		result *= base;
-	}
-	return result;
+long long int iPow(long long int base,long long int exponent) {
+    long long int result = 1;
+    for(long long int counter = 1; counter <= exponent; counter++) {
+        result *= base;
+    }
+    return result;
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		cout << iPow(2,log2(input)) << endl;
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        cout << iPow(2,log2(input)) << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FINDINGPOSITION_H_ */

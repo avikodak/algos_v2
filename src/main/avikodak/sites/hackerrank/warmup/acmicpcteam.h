@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: acmicpcteam.h 
+ *  File Name   		: acmicpcteam.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\acmicpcteam.h
  *  Created on			: Feb 5, 2015 :: 9:06:42 PM
  *  Author				: AVINASH
@@ -71,34 +71,34 @@ using namespace __gnu_cxx;
 #define ACMICPCTEAM_H_
 
 //Tested
-void maxTopicsAndTeams(){
-	long int people,topics;
-	scanf("%ld %ld",&people,&topics);
-	vector<string> userInput;
-	string input;
-	for(unsigned int counter = 0;counter < people;counter++){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	hash_map<long int,long int> topicPairsCount;
-	int maxTopicsKnown = 0,topicsCount;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			topicsCount = 0;
-			for(unsigned int counter = 0;counter < topics;counter++){
-				if(userInput[outerCrawler] == '1' || userInput[innerCrawler] == '1'){
-					topicsCount++;
-				}
-			}
-			maxTopicsKnown = max(maxTopicsKnown,topicsCount);
-			if(topicPairsCount.find(topicsCount) == topicPairsCount.end()){
-				topicPairsCount[topicsCount] = 1;
-			}else{
-				topicPairsCount[topicsCount] += 1;
-			}
-		}
-	}
-	printf("%d\n%d",maxTopicsKnown,topicPairsCount.find(maxTopicsKnown)->second);
+void maxTopicsAndTeams() {
+    long int people,topics;
+    scanf("%ld %ld",&people,&topics);
+    vector<string> userInput;
+    string input;
+    for(unsigned int counter = 0; counter < people; counter++) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    hash_map<long int,long int> topicPairsCount;
+    int maxTopicsKnown = 0,topicsCount;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-1; outerCrawler++) {
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            topicsCount = 0;
+            for(unsigned int counter = 0; counter < topics; counter++) {
+                if(userInput[outerCrawler] == '1' || userInput[innerCrawler] == '1') {
+                    topicsCount++;
+                }
+            }
+            maxTopicsKnown = max(maxTopicsKnown,topicsCount);
+            if(topicPairsCount.find(topicsCount) == topicPairsCount.end()) {
+                topicPairsCount[topicsCount] = 1;
+            } else {
+                topicPairsCount[topicsCount] += 1;
+            }
+        }
+    }
+    printf("%d\n%d",maxTopicsKnown,topicPairsCount.find(maxTopicsKnown)->second);
 }
 
 #endif /* ACMICPCTEAM_H_ */

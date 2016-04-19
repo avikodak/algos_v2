@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: selectionsort.h 
+ *  File Name   		: selectionsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture22\selectionsort.h
  *  Created on			: Dec 1, 2014 :: 9:48:02 PM
  *  Author				: AVINASH
@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void selectionsortON2(vector<int> &userInput){
-	if(userInput.size() < 1){
-		return;
-	}
-	int minValIndex;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		minValIndex = outerCounter;
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[minValIndex] > userInput[innerCounter]){
-				minValIndex = innerCounter;
-			}
-		}
-		swap(userInput[outerCounter],userInput[minValIndex]);
-	}
+void selectionsortON2(vector<int> &userInput) {
+    if(userInput.size() < 1) {
+        return;
+    }
+    int minValIndex;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        minValIndex = outerCounter;
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[minValIndex] > userInput[innerCounter]) {
+                minValIndex = innerCounter;
+            }
+        }
+        swap(userInput[outerCounter],userInput[minValIndex]);
+    }
 }
 
 #endif /* SELECTIONSORT_H_ */

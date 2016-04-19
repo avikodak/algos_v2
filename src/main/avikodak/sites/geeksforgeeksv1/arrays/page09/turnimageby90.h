@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnimageby90.h 
+ *  File Name   		: turnimageby90.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\turnimageby90.h
  *  Created on			: Nov 26, 2014 :: 9:12:14 PM
  *  Author				: AVINASH
@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<vector<int> > turnImageBy90(vector<vector<int> > userInput){
-	vector<vector<int> > rotatedImage(userInput[0].size());
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return rotatedImage;
-	}
-	for(unsigned int counter = 0;counter < rotatedImage.size();counter++){
-		rotatedImage[counter].assign(userInput.size(),0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			rotatedImage[columnCounter][rotatedImage[0].size() - rowCounter - 1] = userInput[rowCounter][columnCounter];
-		}
-	}
-	return rotatedImage;
+vector<vector<int> > turnImageBy90(vector<vector<int> > userInput) {
+    vector<vector<int> > rotatedImage(userInput[0].size());
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return rotatedImage;
+    }
+    for(unsigned int counter = 0; counter < rotatedImage.size(); counter++) {
+        rotatedImage[counter].assign(userInput.size(),0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+            rotatedImage[columnCounter][rotatedImage[0].size() - rowCounter - 1] = userInput[rowCounter][columnCounter];
+        }
+    }
+    return rotatedImage;
 }
 
 #endif /* TURNIMAGEBY90_H_ */

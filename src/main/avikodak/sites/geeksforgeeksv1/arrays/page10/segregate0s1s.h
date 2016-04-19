@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregate0s1s.h 
+ *  File Name   		: segregate0s1s.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregate0s1s.h
  *  Created on			: Nov 25, 2014 :: 11:42:21 PM
  *  Author				: AVINASH
@@ -72,121 +72,121 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregate0s1sFrequency(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	unsigned int zeroFrequency = 0,oneFrequency = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(!userInput[counter]){
-			zeroFrequency += 1;
-		}else{
-			oneFrequency += 1;
-		}
-	}
-	int fillCounter = -1;
-	while(zeroFrequency--){
-		userInput[++fillCounter] = 0;
-	}
-	while(oneFrequency--){
-		userInput[++fillCounter] = 1;
-	}
+void segregate0s1sFrequency(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    unsigned int zeroFrequency = 0,oneFrequency = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(!userInput[counter]) {
+            zeroFrequency += 1;
+        } else {
+            oneFrequency += 1;
+        }
+    }
+    int fillCounter = -1;
+    while(zeroFrequency--) {
+        userInput[++fillCounter] = 0;
+    }
+    while(oneFrequency--) {
+        userInput[++fillCounter] = 1;
+    }
 }
 
 //Tested
-void segregate0s1sQuickSortDivideMethod(vector<int> &userInput){
-	int startIndex = 0,endIndex = userInput.size()-1;
-	while(startIndex < endIndex){
-		while(!userInput[startIndex]){
-			startIndex++;
-		}
-		while(userInput[endIndex]){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			userInput[startIndex] = 0;
-			userInput[endIndex] = 1;
-		}
-	}
+void segregate0s1sQuickSortDivideMethod(vector<int> &userInput) {
+    int startIndex = 0,endIndex = userInput.size()-1;
+    while(startIndex < endIndex) {
+        while(!userInput[startIndex]) {
+            startIndex++;
+        }
+        while(userInput[endIndex]) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            userInput[startIndex] = 0;
+            userInput[endIndex] = 1;
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	vector<int> temp;
-	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler > middleIndex || secondCrawler > endIndex){
-			if(firstCrawler <= middleIndex){
-				temp.push_back(userInput[firstCrawler]);
-				firstCrawler++;
-			}else{
-				temp.push_back(userInput[secondCrawler]);
-				secondCrawler++;
-			}
-		}else{
-			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				temp.push_back(userInput[firstCrawler]);
-				firstCrawler++;
-			}else{
-				temp.push_back(userInput[secondCrawler]);
-				secondCrawler++;
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < temp.size();counter++){
-		userInput[startIndex+counter] = temp[counter];
-	}
+void merge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex) {
+    int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+    vector<int> temp;
+    while(firstCrawler <= middleIndex || secondCrawler <= endIndex) {
+        if(firstCrawler > middleIndex || secondCrawler > endIndex) {
+            if(firstCrawler <= middleIndex) {
+                temp.push_back(userInput[firstCrawler]);
+                firstCrawler++;
+            } else {
+                temp.push_back(userInput[secondCrawler]);
+                secondCrawler++;
+            }
+        } else {
+            if(userInput[firstCrawler] < userInput[secondCrawler]) {
+                temp.push_back(userInput[firstCrawler]);
+                firstCrawler++;
+            } else {
+                temp.push_back(userInput[secondCrawler]);
+                secondCrawler++;
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < temp.size(); counter++) {
+        userInput[startIndex+counter] = temp[counter];
+    }
 }
 
 //Tested
-void mergeSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	if(startIndex == endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	mergeSort(userInput,startIndex,middleIndex);
-	mergeSort(userInput,middleIndex+1,endIndex);
-	merge(userInput,startIndex,middleIndex,endIndex);
+void mergeSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return;
+    }
+    if(startIndex == endIndex) {
+        return;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    mergeSort(userInput,startIndex,middleIndex);
+    mergeSort(userInput,middleIndex+1,endIndex);
+    merge(userInput,startIndex,middleIndex,endIndex);
 }
 
 //Tested
-void segregate0s1s(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	mergeSort(userInput,0,userInput.size()-1);
+void segregate0s1s(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    mergeSort(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregate0s1sON2(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		if(userInput[outerCounter]){
-			for(innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-				if(!userInput[innerCounter]){
-					break;
-				}
-			}
-			if(innerCounter < userInput.size()){
-				userInput[outerCounter] = 0;
-				userInput[innerCounter] = 1;
-			}else{
-				break;
-			}
-		}
-	}
+void segregate0s1sON2(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    unsigned int innerCounter;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        if(userInput[outerCounter]) {
+            for(innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+                if(!userInput[innerCounter]) {
+                    break;
+                }
+            }
+            if(innerCounter < userInput.size()) {
+                userInput[outerCounter] = 0;
+                userInput[innerCounter] = 1;
+            } else {
+                break;
+            }
+        }
+    }
 }
 
 #endif /* SEGREGATE0S1S_H_ */

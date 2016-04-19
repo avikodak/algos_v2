@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: topview.h 
+ *  File Name   		: topview.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\topview.h
  *  Created on			: Jan 22, 2015 :: 7:40:14 PM
  *  Author				: AVINASH
@@ -74,26 +74,26 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void topViewMain(itNode *ptr,map<int,int> &levelValueMap,int verticalLevel){
-	if(ptr == null){
-		return;
-	}
-	topViewMain(ptr->left,levelValueMap,verticalLevel-1);
-	topViewMain(ptr->right,levelValueMap,verticalLevel+1);
-	levelValueMap[verticalLevel] = ptr->value;
+void topViewMain(itNode *ptr,map<int,int> &levelValueMap,int verticalLevel) {
+    if(ptr == null) {
+        return;
+    }
+    topViewMain(ptr->left,levelValueMap,verticalLevel-1);
+    topViewMain(ptr->right,levelValueMap,verticalLevel+1);
+    levelValueMap[verticalLevel] = ptr->value;
 }
 
 //Tested
-void topView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	map<int,int> levelValueMap;
-	map<int,int>::iterator itToLevelValueMap;
-	topViewMain(ptr,levelValueMap,0);
-	for(itToLevelValueMap = levelValueMap.begin();itToLevelValueMap != levelValueMap.end();itToLevelValueMap++){
-		printf("%d\t",itToLevelValueMap->second);
-	}
+void topView(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    map<int,int> levelValueMap;
+    map<int,int>::iterator itToLevelValueMap;
+    topViewMain(ptr,levelValueMap,0);
+    for(itToLevelValueMap = levelValueMap.begin(); itToLevelValueMap != levelValueMap.end(); itToLevelValueMap++) {
+        printf("%d\t",itToLevelValueMap->second);
+    }
 }
 
 #endif /* TOPVIEW_H_ */

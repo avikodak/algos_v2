@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans 4613732
-void getSumOfEvenValuedFibonacci(long long int userInput){
-	long long int sum = 0,rearValue = 1,frontValue = 2,result;
-	while(frontValue <= userInput){
-		if(!(frontValue&1)){
-			sum += frontValue;
-		}
-		result = rearValue + frontValue;
-		rearValue  = frontValue;
-		frontValue = result;
+void getSumOfEvenValuedFibonacci(long long int userInput) {
+    long long int sum = 0,rearValue = 1,frontValue = 2,result;
+    while(frontValue <= userInput) {
+        if(!(frontValue&1)) {
+            sum += frontValue;
+        }
+        result = rearValue + frontValue;
+        rearValue  = frontValue;
+        frontValue = result;
 
-	}
-	cout << sum << endl;
+    }
+    cout << sum << endl;
 }
 
 #endif /* EVENFIBONACCINUMBERS_H_ */

@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define SUBSTRINGDIVISIBILITY_H_
 
 //Tested
-bool isSubStringDivisible(string userInput){
-	unsigned long long int divisibility[] = {2,3,5,7,11,13,17};
-	unsigned long long int value,divisibleCounter = 0;
-	for(unsigned long long int counter = 1;counter < userInput.size()-2;counter+=1){
-		value = 0;
-		for(unsigned long long int innerCounter = counter;innerCounter < counter+3;innerCounter++){
-			value *= 10;
-			value += (userInput[innerCounter]-'0');
-		}
-		if(value%divisibility[divisibleCounter++] != 0){
-			return false;
-		}
-	}
-	return true;
+bool isSubStringDivisible(string userInput) {
+    unsigned long long int divisibility[] = {2,3,5,7,11,13,17};
+    unsigned long long int value,divisibleCounter = 0;
+    for(unsigned long long int counter = 1; counter < userInput.size()-2; counter+=1) {
+        value = 0;
+        for(unsigned long long int innerCounter = counter; innerCounter < counter+3; innerCounter++) {
+            value *= 10;
+            value += (userInput[innerCounter]-'0');
+        }
+        if(value%divisibility[divisibleCounter++] != 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-unsigned long long int getUnsignedIntValue(string userInput){
-	unsigned long long int value = 0;
-	for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-		value *= 10;
-		value += userInput[counter];
-	}
-	return value;
+unsigned long long int getUnsignedIntValue(string userInput) {
+    unsigned long long int value = 0;
+    for(unsigned long long int counter = 0; counter < userInput.size(); counter++) {
+        value *= 10;
+        value += userInput[counter];
+    }
+    return value;
 }
 
 //Tested
 //Sum generating is wrong though sequence are right
 //Ans : 16695334890
-void getSumSubStringPandigital(){
-	string userInput = "0123456789";
-	unsigned long long int totalSum = 0;
-	do{
-		if(isSubStringDivisible(userInput)){
-			cout << userInput << endl;
-			totalSum += getUnsignedIntValue(userInput);
-		}
-	}while (next_permutation(userInput.begin(), userInput.end()));
-	cout << totalSum << endl;
+void getSumSubStringPandigital() {
+    string userInput = "0123456789";
+    unsigned long long int totalSum = 0;
+    do {
+        if(isSubStringDivisible(userInput)) {
+            cout << userInput << endl;
+            totalSum += getUnsignedIntValue(userInput);
+        }
+    } while (next_permutation(userInput.begin(), userInput.end()));
+    cout << totalSum << endl;
 }
 
 #endif /* SUBSTRINGDIVISIBILITY_H_ */

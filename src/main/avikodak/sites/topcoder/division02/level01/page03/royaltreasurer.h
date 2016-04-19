@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define ROYALTREASURER_H_
 
 //Tested
-bool sortFunc(int firstUserInput,int secondUserInput){
-	return firstUserInput > secondUserInput;
+bool sortFunc(int firstUserInput,int secondUserInput) {
+    return firstUserInput > secondUserInput;
 }
 
 //Tested
 class RoyalTreasurer {
 public:
-	int minimalArrangement(vector<int> firstUserInput,vector<int> secondUserInput){
-		sort(firstUserInput.begin(),firstUserInput.end());
-		sort(secondUserInput.begin(),secondUserInput.end(),sortFunc);
-		int sum = 0;
-		for(unsigned int counter = 0;counter < firstUserInput.size();counter++){
-			sum += (firstUserInput[counter] * secondUserInput[counter]);
-		}
-		return sum;
-	}
+    int minimalArrangement(vector<int> firstUserInput,vector<int> secondUserInput) {
+        sort(firstUserInput.begin(),firstUserInput.end());
+        sort(secondUserInput.begin(),secondUserInput.end(),sortFunc);
+        int sum = 0;
+        for(unsigned int counter = 0; counter < firstUserInput.size(); counter++) {
+            sum += (firstUserInput[counter] * secondUserInput[counter]);
+        }
+        return sum;
+    }
 };
 
 #endif /* ROYALTREASURER_H_ */

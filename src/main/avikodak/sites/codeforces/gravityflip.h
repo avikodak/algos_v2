@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define GRAVITYFLIP_H_
 
 //Tested
-void postGravityFlip(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	unsigned int input;
-	while(testCases--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%u",userInput[counter]);
-	}
+void postGravityFlip() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    unsigned int input;
+    while(testCases--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%u",userInput[counter]);
+    }
 }
 
 #endif /* GRAVITYFLIP_H_ */

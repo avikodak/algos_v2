@@ -80,34 +80,34 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getMaxSumSubarray(int userInput[],int size){
-	if(size == 0){
-		return 0;
-	}
-	int maxSum = userInput[0],currentSum = userInput[0];
-	for(unsigned int counter = 1;counter < size;counter++){
-		currentSum = max(userInput[counter],userInput[counter]+currentSum);
-		maxSum = max(maxSum,currentSum);
-	}
-	return maxSum;
+int getMaxSumSubarray(int userInput[],int size) {
+    if(size == 0) {
+        return 0;
+    }
+    int maxSum = userInput[0],currentSum = userInput[0];
+    for(unsigned int counter = 1; counter < size; counter++) {
+        currentSum = max(userInput[counter],userInput[counter]+currentSum);
+        maxSum = max(maxSum,currentSum);
+    }
+    return maxSum;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-int getMaxSumSubarrayON2(int userInput[],int size){
-	if(size == 0){
-		return 0;
-	}
-	int maxSum = INT_MIN,currentSum;
-	for(unsigned int outerCrawler = 0;outerCrawler < size;outerCrawler++){
-		currentSum = 0;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
-			currentSum += userInput[innerCrawler];
-			maxSum = max(maxSum,currentSum);
-		}
-	}
-	return maxSum;
+int getMaxSumSubarrayON2(int userInput[],int size) {
+    if(size == 0) {
+        return 0;
+    }
+    int maxSum = INT_MIN,currentSum;
+    for(unsigned int outerCrawler = 0; outerCrawler < size; outerCrawler++) {
+        currentSum = 0;
+        for(unsigned int innerCrawler = outerCrawler; innerCrawler < size; innerCrawler++) {
+            currentSum += userInput[innerCrawler];
+            maxSum = max(maxSum,currentSum);
+        }
+    }
+    return maxSum;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_DP_PAGE05_MAXSUMSUBARRAY_H_ */

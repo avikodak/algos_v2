@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bst.h 
+ *  File Name   		: bst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\bst.h
  *  Created on			: Nov 18, 2014 :: 11:14:07 AM
  *  Author				: AVINASH
@@ -72,57 +72,57 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void insertIntoBst(itNode **root,itNode *currentNode,int userInput){
-	if(*root == null){
-		(*root) = new itNode(userInput);
-		return;
-	}else{
-		if(currentNode->value == userInput){
-			return;
-		}else  if(currentNode->value > userInput){
-			if(currentNode->left == null){
-				currentNode->left = new itNode(userInput);
-				return;
-			}else{
-				insertIntoBst(root,currentNode->left,userInput);
-			}
-		}else{
-			if(currentNode->right == null){
-				currentNode->right = new itNode(userInput);
-				return;
-			}else{
-				insertIntoBst(root,currentNode->right,userInput);
-			}
-		}
-	}
+void insertIntoBst(itNode **root,itNode *currentNode,int userInput) {
+    if(*root == null) {
+        (*root) = new itNode(userInput);
+        return;
+    } else {
+        if(currentNode->value == userInput) {
+            return;
+        } else  if(currentNode->value > userInput) {
+            if(currentNode->left == null) {
+                currentNode->left = new itNode(userInput);
+                return;
+            } else {
+                insertIntoBst(root,currentNode->left,userInput);
+            }
+        } else {
+            if(currentNode->right == null) {
+                currentNode->right = new itNode(userInput);
+                return;
+            } else {
+                insertIntoBst(root,currentNode->right,userInput);
+            }
+        }
+    }
 }
 
 //Tested
-void insertIntoBstIterative(itNode **root,int userInput){
-	if(*root == null){
-		(*root) = new itNode(userInput);
-		return;
-	}
-	itNode *currentNode = *root;
-	while(currentNode != null){
-		if(currentNode->value == userInput){
-			return;
-		}else if(currentNode->value > userInput){
-			if(currentNode->left == null){
-				currentNode->left = new itNode(userInput);
-				return;
-			}else{
-				currentNode = currentNode->left;
-			}
-		}else{
-			if(currentNode->right == null){
-				currentNode->right = new itNode(userInput);
-				return;
-			}else{
-				currentNode = currentNode->right;
-			}
-		}
-	}
+void insertIntoBstIterative(itNode **root,int userInput) {
+    if(*root == null) {
+        (*root) = new itNode(userInput);
+        return;
+    }
+    itNode *currentNode = *root;
+    while(currentNode != null) {
+        if(currentNode->value == userInput) {
+            return;
+        } else if(currentNode->value > userInput) {
+            if(currentNode->left == null) {
+                currentNode->left = new itNode(userInput);
+                return;
+            } else {
+                currentNode = currentNode->left;
+            }
+        } else {
+            if(currentNode->right == null) {
+                currentNode->right = new itNode(userInput);
+                return;
+            } else {
+                currentNode = currentNode->right;
+            }
+        }
+    }
 }
 
 #endif /* BST_H_ */

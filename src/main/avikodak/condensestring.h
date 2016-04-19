@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: condensestring.h 
+ *  File Name   		: condensestring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\condensestring.h
  *  Created on			: Feb 4, 2015 :: 12:58:14 PM
  *  Author				: AVINASH
@@ -74,18 +74,18 @@ string condenseString(string str) {
     string result;
     int crawler = 0,frequency = 0;
     stringstream convert;
-    while(crawler < str.length()){
+    while(crawler < str.length()) {
         frequency = 1;
-        while(crawler+1 < str.length() && str[crawler] == str[crawler+1]){
+        while(crawler+1 < str.length() && str[crawler] == str[crawler+1]) {
             frequency++;
             crawler++;
         }
-        if(frequency == 1){
+        if(frequency == 1) {
             result.push_back(str[crawler]);
-        }else if(frequency == 2){
+        } else if(frequency == 2) {
             result.push_back(str[crawler]);
             result.push_back(str[crawler]);
-        }else{
+        } else {
             convert << frequency;
             result.append(convert.str());
             convert.str("");

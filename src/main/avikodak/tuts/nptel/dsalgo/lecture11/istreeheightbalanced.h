@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: istreeheightbalanced.h 
+ *  File Name   		: istreeheightbalanced.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture11\istreeheightbalanced.h
  *  Created on			: Nov 18, 2014 :: 7:10:43 PM
  *  Author				: AVINASH
@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int isTreeHeightBalancedON(itNode *ptr,bool &flag){
-	if(ptr == null){
-		return 0;
-	}
-	int leftHeight = isTreeHeightBalancedON(ptr->left,flag);
-	int rightHeight = isTreeHeightBalancedON(ptr->right,flag);
-	if(abs(leftHeight - rightHeight) > 1){
-		flag = false;
-	}
-	return 1 + max(leftHeight,rightHeight);
+int isTreeHeightBalancedON(itNode *ptr,bool &flag) {
+    if(ptr == null) {
+        return 0;
+    }
+    int leftHeight = isTreeHeightBalancedON(ptr->left,flag);
+    int rightHeight = isTreeHeightBalancedON(ptr->right,flag);
+    if(abs(leftHeight - rightHeight) > 1) {
+        flag = false;
+    }
+    return 1 + max(leftHeight,rightHeight);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isTreeHeightBalanced(itNode *ptr){
-	if(ptr == null || (ptr->left == null && ptr->right == null)){
-		return true;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
-	unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
-	return	leftHeight - rightHeight <= 1 && isTreeHeightBalanced(ptr->left) && isTreeHeightBalanced(ptr->right);
+bool isTreeHeightBalanced(itNode *ptr) {
+    if(ptr == null || (ptr->left == null && ptr->right == null)) {
+        return true;
+    }
+    treeutils *utils = new treeutils();
+    unsigned int leftHeight = utils->getHeightOfTree(ptr->left);
+    unsigned int rightHeight = utils->getHeightOfTree(ptr->right);
+    return	leftHeight - rightHeight <= 1 && isTreeHeightBalanced(ptr->left) && isTreeHeightBalanced(ptr->right);
 }
 
 #endif /* ISTREEHEIGHTBALANCED_H_ */

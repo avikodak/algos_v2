@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 
 class BritishCoins {
 public:
-	vector<int> coins(int pence){
-		vector<int> result;
-		result.push_back(pence/240);
-		pence %= 240;
-		result.push_back(pence/12);
-		pence %= 12;
-		result.push_back(pence);
-		return result;
-	}
+    vector<int> coins(int pence) {
+        vector<int> result;
+        result.push_back(pence/240);
+        pence %= 240;
+        result.push_back(pence/12);
+        pence %= 12;
+        result.push_back(pence);
+        return result;
+    }
 };
 
 #endif /* BRITISHCOINS_H_ */

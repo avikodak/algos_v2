@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: matrixmultiplication.h 
+ *  File Name   		: matrixmultiplication.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\matrixmultiplication.h
  *  Created on			: Dec 11, 2014 :: 12:32:16 AM
  *  Author				: AVINASH
@@ -74,24 +74,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<vector<int> > matrixMultiplication(vector<vector<int> > firstMatrix,vector<vector<int> >secondMatrix){
-	vector<vector<int> > result;
-	if(firstMatrix.size() == 0 || firstMatrix[0].size() == 0 || secondMatrix.size() == 0 || secondMatrix[0].size() == 0){
-		return result;
-	}
-	result.resize(firstMatrix.size());
-	for(unsigned int counter = 0;counter < result.size();counter++){
-		result[counter].resize(secondMatrix[0].size());
-	}
-	for(unsigned int rowCounter = 0;rowCounter < result.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < result[0].size();columnCounter++){
-			result[rowCounter][columnCounter] = 0;
-			for(unsigned int counter = 0;counter < result[0].size();counter++){
-				result[rowCounter][columnCounter] += firstMatrix[rowCounter][counter] * secondMatrix[counter][columnCounter];
-			}
-		}
-	}
-	return result;
+vector<vector<int> > matrixMultiplication(vector<vector<int> > firstMatrix,vector<vector<int> >secondMatrix) {
+    vector<vector<int> > result;
+    if(firstMatrix.size() == 0 || firstMatrix[0].size() == 0 || secondMatrix.size() == 0 || secondMatrix[0].size() == 0) {
+        return result;
+    }
+    result.resize(firstMatrix.size());
+    for(unsigned int counter = 0; counter < result.size(); counter++) {
+        result[counter].resize(secondMatrix[0].size());
+    }
+    for(unsigned int rowCounter = 0; rowCounter < result.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < result[0].size(); columnCounter++) {
+            result[rowCounter][columnCounter] = 0;
+            for(unsigned int counter = 0; counter < result[0].size(); counter++) {
+                result[rowCounter][columnCounter] += firstMatrix[rowCounter][counter] * secondMatrix[counter][columnCounter];
+            }
+        }
+    }
+    return result;
 }
 
 #endif /* MATRIXMULTIPLICATION_H_ */

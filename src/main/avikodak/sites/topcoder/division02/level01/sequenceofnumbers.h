@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 //Tested
 class SequenceOfNumbers {
 private:
-	bool static sortFunc(string first,string second){
-		return first.length() < second.length();
-	}
+    bool static sortFunc(string first,string second) {
+        return first.length() < second.length();
+    }
 public:
-	vector<string> rearrange(vector<string> sequence){
-		sort(sequence.begin(),sequence.end(),sortFunc);
-		return sequence;
-	}
+    vector<string> rearrange(vector<string> sequence) {
+        sort(sequence.begin(),sequence.end(),sortFunc);
+        return sequence;
+    }
 };
 
 #endif /* SEQUENCEOFNUMBERS_H_ */

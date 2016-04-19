@@ -72,13 +72,13 @@ using namespace __gnu_cxx;
 #define IIK1P11_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printf("%s\n",input==1 || input == 10 || input == 100 || input == 1000 || input == 10000 || input == 100000?"NO":"YES");
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printf("%s\n",input==1 || input == 10 || input == 100 || input == 1000 || input == 10000 || input == 100000?"NO":"YES");
+    }
 }
 
 #endif /* IIK1P11_H_ */

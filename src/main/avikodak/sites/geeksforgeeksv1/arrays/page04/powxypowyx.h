@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: powxypowyx.h 
+ *  File Name   		: powxypowyx.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\powxypowyx.h
  *  Created on			: Dec 22, 2014 :: 10:03:29 PM
  *  Author				: AVINASH
@@ -78,19 +78,19 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int numberOfPairsXYYX(vector<int> xUserInput,vector<int> yUserInput,int x,int y){
-	if(xUserInput.size() == 0 || yUserInput.size() == 0){
-		return 0;
-	}
-	int pairCounter = 0;
-	for(unsigned int xCounter = 0;xCounter < xUserInput.size();xCounter++){
-		for(unsigned int yCounter = 0;yCounter < yUserInput.size();yCounter++){
-			if(pow(xUserInput[xCounter],yUserInput[yCounter]) > pow(yUserInput[xCounter],xUserInput[yCounter])){
-				pairCounter += 1;
-			}
-		}
-	}
-	return pairCounter;
+int numberOfPairsXYYX(vector<int> xUserInput,vector<int> yUserInput,int x,int y) {
+    if(xUserInput.size() == 0 || yUserInput.size() == 0) {
+        return 0;
+    }
+    int pairCounter = 0;
+    for(unsigned int xCounter = 0; xCounter < xUserInput.size(); xCounter++) {
+        for(unsigned int yCounter = 0; yCounter < yUserInput.size(); yCounter++) {
+            if(pow(xUserInput[xCounter],yUserInput[yCounter]) > pow(yUserInput[xCounter],xUserInput[yCounter])) {
+                pairCounter += 1;
+            }
+        }
+    }
+    return pairCounter;
 }
 
 #endif /* POWXYPOWYX_H_ */

@@ -71,50 +71,50 @@ using namespace __gnu_cxx;
 #define LARGESTPRODUCTINGRID_H_
 
 //Tested
-vector<vector<unsigned int> > getMatrix(){
-	unsigned int size,input;
-	cin >> size;
-	vector<vector<unsigned int> > matrix(size);
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		matrix[rowCounter].assign(size,0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-			cin >> input;
-			matrix[rowCounter][columnCounter] = input;
-		}
-	}
-	return matrix;
+vector<vector<unsigned int> > getMatrix() {
+    unsigned int size,input;
+    cin >> size;
+    vector<vector<unsigned int> > matrix(size);
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        matrix[rowCounter].assign(size,0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+            cin >> input;
+            matrix[rowCounter][columnCounter] = input;
+        }
+    }
+    return matrix;
 }
 
 //Tested
 //Ans : 70600674
-void getMaxAdjacentProduct(){
-	vector<vector<unsigned int> > matrix = getMatrix();
-	int size = matrix.size();
-	cout << size << endl;
-	if(size < 4){
-		return;
-	}
-	unsigned int maxProduct = 0,rowProduct,columnProduct,diagonalProduct,otherDiagonalProduct;
-	for(int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(int columnCounter = 0;columnCounter < size;columnCounter++){
-			if(columnCounter+3 < size){
-				rowProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter][columnCounter+1] * matrix[rowCounter][columnCounter+2] * matrix[rowCounter][columnCounter+3];
-			}
-			if(rowCounter+3 < size){
-				columnProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter+1][columnCounter] * matrix[rowCounter+2][columnCounter] * matrix[rowCounter+3][columnCounter];
-			}
-			if(rowCounter-3 >= 0 && columnCounter+3 < size){
-				diagonalProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter-1][columnCounter+1] * matrix[rowCounter-2][columnCounter+2] * matrix[rowCounter-3][columnCounter+3];
-			}
-			if(rowCounter-3 >= 0 && columnCounter-3 >= 0){
-				otherDiagonalProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter-1][columnCounter-1] * matrix[rowCounter-2][columnCounter-2] * matrix[rowCounter-3][columnCounter-3];
-			}
-			maxProduct = max(maxProduct,max(rowProduct,max(columnProduct,max(otherDiagonalProduct,diagonalProduct))));
-		}
-	}
-	cout << maxProduct << endl;
+void getMaxAdjacentProduct() {
+    vector<vector<unsigned int> > matrix = getMatrix();
+    int size = matrix.size();
+    cout << size << endl;
+    if(size < 4) {
+        return;
+    }
+    unsigned int maxProduct = 0,rowProduct,columnProduct,diagonalProduct,otherDiagonalProduct;
+    for(int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(int columnCounter = 0; columnCounter < size; columnCounter++) {
+            if(columnCounter+3 < size) {
+                rowProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter][columnCounter+1] * matrix[rowCounter][columnCounter+2] * matrix[rowCounter][columnCounter+3];
+            }
+            if(rowCounter+3 < size) {
+                columnProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter+1][columnCounter] * matrix[rowCounter+2][columnCounter] * matrix[rowCounter+3][columnCounter];
+            }
+            if(rowCounter-3 >= 0 && columnCounter+3 < size) {
+                diagonalProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter-1][columnCounter+1] * matrix[rowCounter-2][columnCounter+2] * matrix[rowCounter-3][columnCounter+3];
+            }
+            if(rowCounter-3 >= 0 && columnCounter-3 >= 0) {
+                otherDiagonalProduct = matrix[rowCounter][columnCounter] * matrix[rowCounter-1][columnCounter-1] * matrix[rowCounter-2][columnCounter-2] * matrix[rowCounter-3][columnCounter-3];
+            }
+            maxProduct = max(maxProduct,max(rowProduct,max(columnProduct,max(otherDiagonalProduct,diagonalProduct))));
+        }
+    }
+    cout << maxProduct << endl;
 }
 
 #endif /* LARGESTPRODUCTINGRID_H_ */

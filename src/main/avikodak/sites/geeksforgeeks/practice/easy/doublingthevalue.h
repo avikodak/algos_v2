@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_DOUBLINGTHEVALUE_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %lld",&size,&result);
-		while(size--){
-			scanf("%lld",&input);
-			if(result == input){
-				result *= 2;
-			}
-		}
-		printf("%lld\n",result);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %lld",&size,&result);
+        while(size--) {
+            scanf("%lld",&input);
+            if(result == input) {
+                result *= 2;
+            }
+        }
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_DOUBLINGTHEVALUE_H_ */

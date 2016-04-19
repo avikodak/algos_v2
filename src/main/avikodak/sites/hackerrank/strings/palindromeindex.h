@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define PALINDROMEINDEX_H_
 
 //Tested
-void getPalindromeIndex(){
-	unsigned int testCases,frontCrawler,rearCrawler;
-	scanf("%u",&testCases);
-	string userInput;
-	bool indexFound;
-	while(testCases--){
-		cin >> userInput;
-		frontCrawler = 0;
-		rearCrawler = userInput.size()-1;
-		indexFound = false;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(frontCrawler+1 == rearCrawler || frontCrawler+1 == rearCrawler-1){
-					printf("%d\n",frontCrawler);
-				}else if(userInput[frontCrawler+1] == userInput[rearCrawler]){
-					printf("%d\n",frontCrawler);
-				}else{
-					printf("%d\n",rearCrawler);
-				}
-				indexFound = true;
-				break;
-			}
-			frontCrawler++;
-			rearCrawler--;
-		}
-		if(!indexFound){
-			printf("-1\n");
-		}
-	}
+void getPalindromeIndex() {
+    unsigned int testCases,frontCrawler,rearCrawler;
+    scanf("%u",&testCases);
+    string userInput;
+    bool indexFound;
+    while(testCases--) {
+        cin >> userInput;
+        frontCrawler = 0;
+        rearCrawler = userInput.size()-1;
+        indexFound = false;
+        while(frontCrawler < rearCrawler) {
+            if(userInput[frontCrawler] != userInput[rearCrawler]) {
+                if(frontCrawler+1 == rearCrawler || frontCrawler+1 == rearCrawler-1) {
+                    printf("%d\n",frontCrawler);
+                } else if(userInput[frontCrawler+1] == userInput[rearCrawler]) {
+                    printf("%d\n",frontCrawler);
+                } else {
+                    printf("%d\n",rearCrawler);
+                }
+                indexFound = true;
+                break;
+            }
+            frontCrawler++;
+            rearCrawler--;
+        }
+        if(!indexFound) {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* PALINDROMEINDEX_H_ */

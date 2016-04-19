@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: biconnectedgraph.h 
+ *  File Name   		: biconnectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\biconnectedgraph.h
  *  Created on			: Dec 26, 2014 :: 7:29:51 PM
  *  Author				: AVINASH
@@ -73,60 +73,60 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isGraphConnectedBFS(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	queue<int> auxSpace;
-	vector<int> bfsLevels(adjacencyList.size(),INT_MAX);
-	auxSpace.push(0);
-	int currentVertex;
-	while(!auxSpace.empty()){
-		currentVertex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-			if(bfsLevels[adjacencyList[currentVertex][counter]] == INT_MAX){
-				bfsLevels[adjacencyList[currentVertex][counter]] = 1 + bfsLevels[currentVertex];
-				auxSpace.push(adjacencyList[currentVertex][counter]);
-			}
-		}
-	}
-	return find(bfsLevels.begin(),bfsLevels.end(),INT_MAX) != bfsLevels.end();
+bool isGraphConnectedBFS(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return false;
+    }
+    queue<int> auxSpace;
+    vector<int> bfsLevels(adjacencyList.size(),INT_MAX);
+    auxSpace.push(0);
+    int currentVertex;
+    while(!auxSpace.empty()) {
+        currentVertex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList.size(); counter++) {
+            if(bfsLevels[adjacencyList[currentVertex][counter]] == INT_MAX) {
+                bfsLevels[adjacencyList[currentVertex][counter]] = 1 + bfsLevels[currentVertex];
+                auxSpace.push(adjacencyList[currentVertex][counter]);
+            }
+        }
+    }
+    return find(bfsLevels.begin(),bfsLevels.end(),INT_MAX) != bfsLevels.end();
 }
 
-int isGraphTwoVertexConnectedMain(vector<vector<int> > adjacencyList,vector<int> &predecessor,bool &flag,int sourceVertex){
-	if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()){
-		return INT_MAX;
-	}
-	static int timeCounter = -1;
-	static vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
-	arrivalTimes[sourceVertex] = ++timeCounter;
-	int minTime = arrivalTimes[sourceVertex];
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX){
-			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,adjacencyList[sourceVertex][counter]);
-		}
-	}
-	flag = sourceVertex == 0?flag:minTime != arrivalTimes[sourceVertex];
-	return minTime;
+int isGraphTwoVertexConnectedMain(vector<vector<int> > adjacencyList,vector<int> &predecessor,bool &flag,int sourceVertex) {
+    if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()) {
+        return INT_MAX;
+    }
+    static int timeCounter = -1;
+    static vector<int> arrivalTimes(adjacencyList.size(),INT_MAX);
+    arrivalTimes[sourceVertex] = ++timeCounter;
+    int minTime = arrivalTimes[sourceVertex];
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalTimes[adjacencyList[sourceVertex][counter]] == INT_MAX) {
+            predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+            isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,adjacencyList[sourceVertex][counter]);
+        }
+    }
+    flag = sourceVertex == 0?flag:minTime != arrivalTimes[sourceVertex];
+    return minTime;
 }
 
-bool isGraphTwoVertexConnected(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() < 2){
-		return true;
-	}
-	vector<int> predecessor;
-	bool flag = false;
-	isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,0);
-	return flag && count(predecessor.begin(),predecessor.end(),0) !=  1;
+bool isGraphTwoVertexConnected(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() < 2) {
+        return true;
+    }
+    vector<int> predecessor;
+    bool flag = false;
+    isGraphTwoVertexConnectedMain(adjacencyList,predecessor,flag,0);
+    return flag && count(predecessor.begin(),predecessor.end(),0) !=  1;
 }
 
-bool isGraphBiconnected(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() < 2){
-		return true;
-	}
-	return isGraphConnectedBFS(adjacencyList) && isGraphTwoVertexConnected(adjacencyList);
+bool isGraphBiconnected(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() < 2) {
+        return true;
+    }
+    return isGraphConnectedBFS(adjacencyList) && isGraphTwoVertexConnected(adjacencyList);
 }
 
 #endif /* BICONNECTEDGRAPH_H_ */

@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 
 class TournamentJudging {
 public:
-	int getPoints(vector<int> rawScores,vector<int> conversionFactor){
-		int totalPoints = 0,quotient;
-		double decimal;
-		for(unsigned int counter = 0;counter < rawScores.size();counter++){
-			decimal = ((double)rawScores[counter])/((double)conversionFactor[counter]);
-			quotient = rawScores[counter]/conversionFactor[counter];
-			decimal = decimal - quotient;
-			if(decimal >= 0.5){
-				quotient++;
-			}
-			totalPoints += quotient;
-		}
-		return totalPoints;
-	}
+    int getPoints(vector<int> rawScores,vector<int> conversionFactor) {
+        int totalPoints = 0,quotient;
+        double decimal;
+        for(unsigned int counter = 0; counter < rawScores.size(); counter++) {
+            decimal = ((double)rawScores[counter])/((double)conversionFactor[counter]);
+            quotient = rawScores[counter]/conversionFactor[counter];
+            decimal = decimal - quotient;
+            if(decimal >= 0.5) {
+                quotient++;
+            }
+            totalPoints += quotient;
+        }
+        return totalPoints;
+    }
 };
 
 #endif /* TOURNAMENTJUDGING_H_ */

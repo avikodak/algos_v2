@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttreetodllON2.h 
+ *  File Name   		: converttreetodllON2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\converttreetodllON2.h
  *  Created on			: Nov 13, 2014 :: 9:05:11 PM
  *  Author				: AVINASH
@@ -72,45 +72,45 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *oConvertTreeToDllON2Main(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *temp = null;
-	if(ptr->left != null){
-		temp = oConvertTreeToDllON2Main(ptr->left);
-		while(temp->right != null){
-			temp = temp->right;
-		}
-		temp->right = ptr;
-		ptr->left = temp;
-	}
-	if(ptr->right != null){
-		temp = oConvertTreeToDllON2Main(ptr->right);
-		while(temp->left != null){
-			temp = temp->left;
-		}
-		temp->left = ptr;
-		ptr->right = temp;
-	}
-	return ptr;
+itNode *oConvertTreeToDllON2Main(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *temp = null;
+    if(ptr->left != null) {
+        temp = oConvertTreeToDllON2Main(ptr->left);
+        while(temp->right != null) {
+            temp = temp->right;
+        }
+        temp->right = ptr;
+        ptr->left = temp;
+    }
+    if(ptr->right != null) {
+        temp = oConvertTreeToDllON2Main(ptr->right);
+        while(temp->left != null) {
+            temp = temp->left;
+        }
+        temp->left = ptr;
+        ptr->right = temp;
+    }
+    return ptr;
 }
 
 //Tested
-void oConvertTreeToDllON2(itNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	oConvertTreeToDllON2Main(*ptr);
-	itNode *currentNode = *ptr;
-	while(currentNode->left != null){
-		currentNode = currentNode->left;
-	}
-	(*ptr) = currentNode;
-	while(currentNode != null){
-		printf("%d\t",currentNode->value);
-		currentNode = currentNode->right;
-	}
+void oConvertTreeToDllON2(itNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    oConvertTreeToDllON2Main(*ptr);
+    itNode *currentNode = *ptr;
+    while(currentNode->left != null) {
+        currentNode = currentNode->left;
+    }
+    (*ptr) = currentNode;
+    while(currentNode != null) {
+        printf("%d\t",currentNode->value);
+        currentNode = currentNode->right;
+    }
 }
 
 #endif /* CONVERTTREETODLLON2_H_ */

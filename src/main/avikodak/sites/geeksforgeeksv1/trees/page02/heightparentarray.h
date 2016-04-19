@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: heightparentarray.h 
+ *  File Name   		: heightparentarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\heightparentarray.h
  *  Created on			: Jan 24, 2015 :: 9:40:18 AM
  *  Author				: AVINASH
@@ -73,74 +73,74 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void fillDepthHeightParent(vector<int> parent,vector<int> depth,int currentNodeIndex){
-	if(depth[currentNodeIndex] == INT_MIN){
-		return;
-	}
-	if(parent[currentNodeIndex] == -1){
-		depth[currentNodeIndex] = 1;
-		return;
-	}
-	if(depth[parent[currentNodeIndex]] == INT_MIN){
-		fillDepthHeightParent(parent,depth,parent[currentNodeIndex]);
-	}
-	depth[currentNodeIndex] = 1 + depth[parent[currentNodeIndex]];
+void fillDepthHeightParent(vector<int> parent,vector<int> depth,int currentNodeIndex) {
+    if(depth[currentNodeIndex] == INT_MIN) {
+        return;
+    }
+    if(parent[currentNodeIndex] == -1) {
+        depth[currentNodeIndex] = 1;
+        return;
+    }
+    if(depth[parent[currentNodeIndex]] == INT_MIN) {
+        fillDepthHeightParent(parent,depth,parent[currentNodeIndex]);
+    }
+    depth[currentNodeIndex] = 1 + depth[parent[currentNodeIndex]];
 }
 
-int getHeightParentArray(vector<int> parent){
-	if(parent.size() == 0){
-		return 0;
-	}
-	vector<int> depth(parent.size(),INT_MIN);
-	fillDepthHeightParent(parent,depth,0);
+int getHeightParentArray(vector<int> parent) {
+    if(parent.size() == 0) {
+        return 0;
+    }
+    vector<int> depth(parent.size(),INT_MIN);
+    fillDepthHeightParent(parent,depth,0);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *constructTreeParentArray(vector<int> parentArray,int currentIndex){
-	if(currentIndex >= parentArray.size()){
-		return null;
-	}
-	itNode *root = new itNode(currentIndex);
-	int leftChildIndex = INT_MIN,rightChildIndex = INT_MIN;
-	for(unsigned int counter = 0;counter < parentArray.size();counter++){
-		if(parentArray[counter] == currentIndex){
-			leftChildIndex = counter;
-			break;
-		}
-	}
-	if(leftChildIndex != INT_MIN){
-		root->left = constructTreeParentArray(parentArray,leftChildIndex);
-	}
-	for(unsigned int counter = 0;counter < parentArray.size() && counter != leftChildIndex;counter++){
-		if(parentArray[counter] == currentIndex){
-			rightChildIndex = counter;
-			break;
-		}
-	}
-	if(rightChildIndex != INT_MIN){
-		root->right = constructTreeParentArray(parentArray,rightChildIndex);
-	}
-	return root;
+itNode *constructTreeParentArray(vector<int> parentArray,int currentIndex) {
+    if(currentIndex >= parentArray.size()) {
+        return null;
+    }
+    itNode *root = new itNode(currentIndex);
+    int leftChildIndex = INT_MIN,rightChildIndex = INT_MIN;
+    for(unsigned int counter = 0; counter < parentArray.size(); counter++) {
+        if(parentArray[counter] == currentIndex) {
+            leftChildIndex = counter;
+            break;
+        }
+    }
+    if(leftChildIndex != INT_MIN) {
+        root->left = constructTreeParentArray(parentArray,leftChildIndex);
+    }
+    for(unsigned int counter = 0; counter < parentArray.size() && counter != leftChildIndex; counter++) {
+        if(parentArray[counter] == currentIndex) {
+            rightChildIndex = counter;
+            break;
+        }
+    }
+    if(rightChildIndex != INT_MIN) {
+        root->right = constructTreeParentArray(parentArray,rightChildIndex);
+    }
+    return root;
 }
 
-int getHeightOfTreeByConstruction(vector<int> parentArray){
-	if(parentArray.size() == 0){
-		return 0;
-	}
-	unsigned int rootIndex;
-	for(rootIndex = 0;rootIndex < parentArray.size();rootIndex++){
-		if(parentArray[rootIndex] == -1){
-			break;
-		}
-	}
-	if(rootIndex >= parentArray.size()){
-		throw "Invalid user input";
-	}
-	itNode *root = constructTreeParentArray(parentArray,rootIndex);
-	treeutils *utils = new treeutils();
-	return utils->getHeightOfTree(root);
+int getHeightOfTreeByConstruction(vector<int> parentArray) {
+    if(parentArray.size() == 0) {
+        return 0;
+    }
+    unsigned int rootIndex;
+    for(rootIndex = 0; rootIndex < parentArray.size(); rootIndex++) {
+        if(parentArray[rootIndex] == -1) {
+            break;
+        }
+    }
+    if(rootIndex >= parentArray.size()) {
+        throw "Invalid user input";
+    }
+    itNode *root = constructTreeParentArray(parentArray,rootIndex);
+    treeutils *utils = new treeutils();
+    return utils->getHeightOfTree(root);
 }
 
 #endif /* HEIGHTPARENTARRAY_H_ */

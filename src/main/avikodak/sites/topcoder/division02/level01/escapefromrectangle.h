@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 class EscapeFromRectangle {
 public:
-	int shortest(int x, int y, int w, int h){
-		int minDistance = INT_MAX;
-		minDistance = min(minDistance,y);
-		minDistance = min(minDistance,x);
-		minDistance = min(minDistance,h-y);
-		minDistance = min(minDistance,w-x);
-		return minDistance;
-	}
+    int shortest(int x, int y, int w, int h) {
+        int minDistance = INT_MAX;
+        minDistance = min(minDistance,y);
+        minDistance = min(minDistance,x);
+        minDistance = min(minDistance,h-y);
+        minDistance = min(minDistance,w-x);
+        return minDistance;
+    }
 };
 
 #endif /* ESCAPEFROMRECTANGLE_H_ */

@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define FLOW018_H_
 
 //Tested
-unsigned long long int findFactorial(unsigned long long int counter){
-	if(counter <= 1){
-		return 1;
-	}
-	return counter * findFactorial(counter-1);
+unsigned long long int findFactorial(unsigned long long int counter) {
+    if(counter <= 1) {
+        return 1;
+    }
+    return counter * findFactorial(counter-1);
 }
 
 //Tested
-void findFactorialForInputs(){
-	unsigned int testCases;
-	cin >> testCases;
-	unsigned long long int userInput;
-	while(testCases--){
-		cin >> userInput;
-		cout << findFactorial(userInput) << endl;
-	}
+void findFactorialForInputs() {
+    unsigned int testCases;
+    cin >> testCases;
+    unsigned long long int userInput;
+    while(testCases--) {
+        cin >> userInput;
+        cout << findFactorial(userInput) << endl;
+    }
 }
 
 #endif /* FLOW018_H_ */

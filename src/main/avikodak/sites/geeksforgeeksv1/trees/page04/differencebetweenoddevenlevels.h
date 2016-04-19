@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: differencebetweenoddevenlevels.h 
+ *  File Name   		: differencebetweenoddevenlevels.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\differencebetweenoddevenlevels.h
  *  Created on			: Nov 14, 2014 :: 5:26:34 PM
  *  Author				: AVINASH
@@ -72,149 +72,149 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int differenceBetweenEvenOddLevels(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	return ptr->value - differenceBetweenEvenOddLevels(ptr->left) - differenceBetweenEvenOddLevels(ptr->right);
+int differenceBetweenEvenOddLevels(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    return ptr->value - differenceBetweenEvenOddLevels(ptr->left) - differenceBetweenEvenOddLevels(ptr->right);
 }
 
 //Tested
-int differenceBetweenEvenOddLevelsIterative(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	int difference = 0;
-	queue<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	auxSpace.push(currentNode);
-	unsigned int nodeCounter = 0;
-	bool isOddLevel = true;
-	while(!auxSpace.empty()){
-		nodeCounter = auxSpace.size();
-		while(nodeCounter--){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			difference += isOddLevel?currentNode->value:-currentNode->value;
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-		}
-		isOddLevel = !isOddLevel;
-	}
-	return difference;
+int differenceBetweenEvenOddLevelsIterative(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    int difference = 0;
+    queue<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    auxSpace.push(currentNode);
+    unsigned int nodeCounter = 0;
+    bool isOddLevel = true;
+    while(!auxSpace.empty()) {
+        nodeCounter = auxSpace.size();
+        while(nodeCounter--) {
+            currentNode = auxSpace.front();
+            auxSpace.pop();
+            difference += isOddLevel?currentNode->value:-currentNode->value;
+            if(currentNode->left != null) {
+                auxSpace.push(currentNode->left);
+            }
+            if(currentNode->right != null) {
+                auxSpace.push(currentNode->right);
+            }
+        }
+        isOddLevel = !isOddLevel;
+    }
+    return difference;
 }
 
 //Tested
-inrNode *dGetNextRightPtr(inrNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	while(ptr != null){
-		if(ptr->left != null){
-			return ptr->left;
-		}else if(ptr->right != null){
-			return ptr->right;
-		}
-		ptr = ptr->nextRight;
-	}
-	return null;
+inrNode *dGetNextRightPtr(inrNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    while(ptr != null) {
+        if(ptr->left != null) {
+            return ptr->left;
+        } else if(ptr->right != null) {
+            return ptr->right;
+        }
+        ptr = ptr->nextRight;
+    }
+    return null;
 }
 
 //Tested
-void connectNodesInSameLevel(inrNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	connectNodesInSameLevel(ptr->nextRight);
-	if(ptr->left != null){
-		if(ptr->right != null){
-			ptr->left->nextRight = ptr->right;
-			ptr->right->nextRight = dGetNextRightPtr(ptr->nextRight);
-		}else{
-			ptr->left->nextRight = dGetNextRightPtr(ptr->nextRight);
-		}
-		connectNodesInSameLevel(ptr->left);
-	}else if(ptr->right != null){
-		ptr->right->nextRight = dGetNextRightPtr(ptr->nextRight);
-		connectNodesInSameLevel(ptr->right);
-	}else{
-		connectNodesInSameLevel(ptr->nextRight);
-	}
+void connectNodesInSameLevel(inrNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    connectNodesInSameLevel(ptr->nextRight);
+    if(ptr->left != null) {
+        if(ptr->right != null) {
+            ptr->left->nextRight = ptr->right;
+            ptr->right->nextRight = dGetNextRightPtr(ptr->nextRight);
+        } else {
+            ptr->left->nextRight = dGetNextRightPtr(ptr->nextRight);
+        }
+        connectNodesInSameLevel(ptr->left);
+    } else if(ptr->right != null) {
+        ptr->right->nextRight = dGetNextRightPtr(ptr->nextRight);
+        connectNodesInSameLevel(ptr->right);
+    } else {
+        connectNodesInSameLevel(ptr->nextRight);
+    }
 }
 
 //Tested
-int sumOfNodesInLevel(inrNode *ptr){
-	int sum = 0;
-	while(ptr != null){
-		sum += ptr->value;
-		ptr = ptr->nextRight;
-	}
-	return sum;
+int sumOfNodesInLevel(inrNode *ptr) {
+    int sum = 0;
+    while(ptr != null) {
+        sum += ptr->value;
+        ptr = ptr->nextRight;
+    }
+    return sum;
 }
 
 //Tested
-int differenceOfNodes(inrNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	connectNodesInSameLevel(ptr);
-	//inrNode *currentNode = ptr;
-	int difference  = 0;
-	bool isOddLevel = true;
-	while(ptr != null){
-		if(isOddLevel){
-			difference += sumOfNodesInLevel(ptr);
-		}else{
-			difference -= sumOfNodesInLevel(ptr);
-		}
-		if(ptr->left !=  null){
-			ptr = ptr->left;
-		}else if(ptr->right != null){
-			ptr = ptr->right;
-		}else{
-			ptr = getNextRight(ptr->nextRight);
-		}
-		isOddLevel = !isOddLevel;
-	}
-	return difference;
+int differenceOfNodes(inrNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    connectNodesInSameLevel(ptr);
+    //inrNode *currentNode = ptr;
+    int difference  = 0;
+    bool isOddLevel = true;
+    while(ptr != null) {
+        if(isOddLevel) {
+            difference += sumOfNodesInLevel(ptr);
+        } else {
+            difference -= sumOfNodesInLevel(ptr);
+        }
+        if(ptr->left !=  null) {
+            ptr = ptr->left;
+        } else if(ptr->right != null) {
+            ptr = ptr->right;
+        } else {
+            ptr = getNextRight(ptr->nextRight);
+        }
+        isOddLevel = !isOddLevel;
+    }
+    return difference;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int sumOfNodesInLevel(itNode *ptr,int level){
-	if(ptr == null){
-		return 0;
-	}
-	if(level == 0){
-		return ptr->value;
-	}
-	return sumOfNodesInLevel(ptr->left,level-1) + sumOfNodesInLevel(ptr->right,level-1);
+int sumOfNodesInLevel(itNode *ptr,int level) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(level == 0) {
+        return ptr->value;
+    }
+    return sumOfNodesInLevel(ptr->left,level-1) + sumOfNodesInLevel(ptr->right,level-1);
 }
 
 //Tested
-int differenceValueBetweenLevels(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	bool isOddLevel = true;
-	int difference = 0;
-	for(unsigned int counter = 0;counter < height;counter++){
-		if(isOddLevel){
-			difference += sumOfNodesInLevel(ptr,counter);
-		}else{
-			difference -= sumOfNodesInLevel(ptr,counter);
-		}
-		isOddLevel = !isOddLevel;
-	}
-	return difference;
+int differenceValueBetweenLevels(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    treeutils *utils = new treeutils();
+    unsigned int height = utils->getHeightOfTree(ptr);
+    bool isOddLevel = true;
+    int difference = 0;
+    for(unsigned int counter = 0; counter < height; counter++) {
+        if(isOddLevel) {
+            difference += sumOfNodesInLevel(ptr,counter);
+        } else {
+            difference -= sumOfNodesInLevel(ptr,counter);
+        }
+        isOddLevel = !isOddLevel;
+    }
+    return difference;
 }
 
 #endif /* DIFFERENCEBETWEENODDEVENLEVELS_H_ */

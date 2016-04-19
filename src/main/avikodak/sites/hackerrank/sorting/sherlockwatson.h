@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sherlockwatson.h 
+ *  File Name   		: sherlockwatson.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\sherlockwatson.h
  *  Created on			: Feb 12, 2015 :: 4:41:24 PM
  *  Author				: AVINASH
@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define SHERLOCKWATSON_H_
 
 //Tested
-void reverseArray(vector<long int> &userInput,int start,int end){
-	while(start < end){
-		swap(userInput[start],userInput[end]);
-		start++;
-		end--;
-	}
+void reverseArray(vector<long int> &userInput,int start,int end) {
+    while(start < end) {
+        swap(userInput[start],userInput[end]);
+        start++;
+        end--;
+    }
 }
 
 //Tested
-void rotateArray(vector<long int> &userInput,long int rotateBy){
-	if(rotateBy == 0){
-		return;
-	}
-	rotateBy = rotateBy % userInput.size();
-	reverseArray(userInput,0,userInput.size() - rotateBy-1);
-	reverseArray(userInput,userInput.size() - rotateBy,userInput.size()-1);
-	reverseArray(userInput,0,userInput.size()-1);
+void rotateArray(vector<long int> &userInput,long int rotateBy) {
+    if(rotateBy == 0) {
+        return;
+    }
+    rotateBy = rotateBy % userInput.size();
+    reverseArray(userInput,0,userInput.size() - rotateBy-1);
+    reverseArray(userInput,userInput.size() - rotateBy,userInput.size()-1);
+    reverseArray(userInput,0,userInput.size()-1);
 }
 
 //Tested
-void queriesInRotatedArray(){
-	long int size,rotateBy,queryCount,query,input;
-	scanf("%ld %ld %ld",&size,&rotateBy,&queryCount);
-	vector<long int> userInput;
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	rotateArray(userInput,rotateBy);
-	while(queryCount--){
-		scanf("%ld",&query);
-		printf("%ld\n",userInput[query]);
-	}
+void queriesInRotatedArray() {
+    long int size,rotateBy,queryCount,query,input;
+    scanf("%ld %ld %ld",&size,&rotateBy,&queryCount);
+    vector<long int> userInput;
+    while(size--) {
+        scanf("%ld",&input);
+        userInput.push_back(input);
+    }
+    rotateArray(userInput,rotateBy);
+    while(queryCount--) {
+        scanf("%ld",&query);
+        printf("%ld\n",userInput[query]);
+    }
 }
 
 #endif /* SHERLOCKWATSON_H_ */

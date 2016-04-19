@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 #define RECIPROCALCYCLES_H_
 
 //Tested
-unsigned int getReciprocalLength(unsigned int userInput){
-	map<unsigned int,bool> visitedRemainders;
-	vector<unsigned int> visitedRemaindersList;
-	unsigned int numerator = 1,remainder;
-	while((remainder = numerator%userInput) != 0){
-		if(visitedRemainders.find(remainder) != visitedRemainders.end()){
-			unsigned int counter;
-			for(counter = 0;counter < visitedRemaindersList.size();counter++){
-				if(visitedRemaindersList[counter] == remainder){
-					break;
-				}
-			}
-			return visitedRemainders.size() - counter;
-		}
-		visitedRemainders.insert(pair<unsigned int,bool>(remainder,true));
-		visitedRemaindersList.push_back(remainder);
-		numerator = remainder*10;
-	}
-	return 0;
+unsigned int getReciprocalLength(unsigned int userInput) {
+    map<unsigned int,bool> visitedRemainders;
+    vector<unsigned int> visitedRemaindersList;
+    unsigned int numerator = 1,remainder;
+    while((remainder = numerator%userInput) != 0) {
+        if(visitedRemainders.find(remainder) != visitedRemainders.end()) {
+            unsigned int counter;
+            for(counter = 0; counter < visitedRemaindersList.size(); counter++) {
+                if(visitedRemaindersList[counter] == remainder) {
+                    break;
+                }
+            }
+            return visitedRemainders.size() - counter;
+        }
+        visitedRemainders.insert(pair<unsigned int,bool>(remainder,true));
+        visitedRemaindersList.push_back(remainder);
+        numerator = remainder*10;
+    }
+    return 0;
 }
 
 //Tested
-void getLongestReciprocalCycle(){
-	unsigned int maxLength = 0,cycleLength,maxLengthValue;
-	for(unsigned int counter = 2;counter < 1000;counter++){
-		cycleLength = getReciprocalLength(counter);
-		if( maxLength < cycleLength){
-			maxLength =cycleLength;
-			maxLengthValue = counter;
-		}
-	}
-	cout << maxLengthValue << endl;
+void getLongestReciprocalCycle() {
+    unsigned int maxLength = 0,cycleLength,maxLengthValue;
+    for(unsigned int counter = 2; counter < 1000; counter++) {
+        cycleLength = getReciprocalLength(counter);
+        if( maxLength < cycleLength) {
+            maxLength =cycleLength;
+            maxLengthValue = counter;
+        }
+    }
+    cout << maxLengthValue << endl;
 }
 
 #endif /* RECIPROCALCYCLES_H_ */

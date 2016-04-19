@@ -76,32 +76,32 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDGCDARRAY_H_
 
 //Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	if(b == 0){
-		return a;
-	}
-	return gcd(b,a%b);
+unsigned int gcd(unsigned int a,unsigned int b) {
+    if(b == 0) {
+        return a;
+    }
+    return gcd(b,a%b);
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	unsigned int input,gcdResult;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		gcdResult = gcd(userInput[0],userInput[1]);
-		for(unsigned int counter = 2;counter < userInput.size();counter++){
-			gcdResult = gcd(gcdResult,userInput[counter]);
-		}
-		printf("%u\n",gcdResult);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    unsigned int input,gcdResult;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        gcdResult = gcd(userInput[0],userInput[1]);
+        for(unsigned int counter = 2; counter < userInput.size(); counter++) {
+            gcdResult = gcd(gcdResult,userInput[counter]);
+        }
+        printf("%u\n",gcdResult);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDGCDARRAY_H_ */

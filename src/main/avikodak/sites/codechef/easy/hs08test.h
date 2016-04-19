@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: hs08test.h 
+ *  File Name   		: hs08test.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\hs08test.h
  *  Created on			: Feb 3, 2015 :: 10:53:07 AM
  *  Author				: AVINASH
@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define HS08TEST_H_
 
 //Tested
-void printAccountBalance(){
-	int withdrawal;
-	double initialBalance;
-	scanf("%d %lf",&withdrawal,&initialBalance);
-	if((float)withdrawal+(float)0.5 > initialBalance || (withdrawal%5 != 0)){
-		printf("%.2f",initialBalance);
-	}else{
-		printf("%.2f",initialBalance - (float)withdrawal - (float)0.5);
-	}
+void printAccountBalance() {
+    int withdrawal;
+    double initialBalance;
+    scanf("%d %lf",&withdrawal,&initialBalance);
+    if((float)withdrawal+(float)0.5 > initialBalance || (withdrawal%5 != 0)) {
+        printf("%.2f",initialBalance);
+    } else {
+        printf("%.2f",initialBalance - (float)withdrawal - (float)0.5);
+    }
 }
 
 #endif /* HS08TEST_H_ */

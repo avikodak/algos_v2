@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 #define AMR14D_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,input,size;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	bool flag;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		flag = true;
-		sort(userInput.begin(),userInput.end());
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] <= userInput[counter-1]){
-				flag = false;
-				break;
-			}
-		}
-		printf("%s\n",flag?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases,input,size;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    bool flag;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        flag = true;
+        sort(userInput.begin(),userInput.end());
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            if(userInput[counter] <= userInput[counter-1]) {
+                flag = false;
+                break;
+            }
+        }
+        printf("%s\n",flag?"YES":"NO");
+    }
 }
 
 #endif /* AMR14D_H_ */

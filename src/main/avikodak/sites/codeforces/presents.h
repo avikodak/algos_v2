@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: presents.h 
+ *  File Name   		: presents.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\presents.h
  *  Created on			: Mar 3, 2015 :: 7:49:35 AM
  *  Author				: avikodak
@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define PRESENTS_H_
 
 //Tested
-void getPresentedBy(){
-	vector<int> userInput;
-	int testCases,input;
-	scanf("%d",&testCases);
-	userInput.assign(testCases,0);
-	for(unsigned int counter = 1;counter <= testCases;counter++){
-		userInput[counter] = counter;
-	}
-	for(unsigned int counter = 0;counter < testCases;counter++){
-		printf("%d ",userInput[counter]);
-	}
+void getPresentedBy() {
+    vector<int> userInput;
+    int testCases,input;
+    scanf("%d",&testCases);
+    userInput.assign(testCases,0);
+    for(unsigned int counter = 1; counter <= testCases; counter++) {
+        userInput[counter] = counter;
+    }
+    for(unsigned int counter = 0; counter < testCases; counter++) {
+        printf("%d ",userInput[counter]);
+    }
 }
 
 #endif /* PRESENTS_H_ */

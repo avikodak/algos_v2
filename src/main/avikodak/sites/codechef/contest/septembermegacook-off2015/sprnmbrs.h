@@ -74,65 +74,69 @@ using namespace __gnu_cxx;
 #define SPRNMBRS_H_
 
 //Tested
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanllint(long long int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-void scanuint(unsigned int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanuint(unsigned int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-vector<long long int> init(){
-	long long int product;
-	long long int limit = 1000000000000000000;
-	vector<long long int> twoPowers;
-	vector<long long int> twoThreePowers;
-	product = 2;
-	while(product <= limit){
-		twoPowers.push_back(product);
-		product *= 2;
-	}
-	for(unsigned int counter = 0;counter < twoPowers.size() && twoPowers[counter] <= limit;counter++){
-		product = 3;
-		for(long long int innerCounter = 1;twoPowers[counter]*product <= limit;innerCounter++){
-			twoThreePowers.push_back(twoPowers[counter]*product);
-			product *= 3;
-		}
-	}
-	for(unsigned int counter = 0;counter < twoThreePowers.size();counter++){
-		twoPowers.push_back(twoThreePowers[counter]);
-	}
-	twoPowers.push_back(1);
-	sort(twoPowers.begin(),twoPowers.end());
-	return twoPowers;
+vector<long long int> init() {
+    long long int product;
+    long long int limit = 1000000000000000000;
+    vector<long long int> twoPowers;
+    vector<long long int> twoThreePowers;
+    product = 2;
+    while(product <= limit) {
+        twoPowers.push_back(product);
+        product *= 2;
+    }
+    for(unsigned int counter = 0; counter < twoPowers.size() && twoPowers[counter] <= limit; counter++) {
+        product = 3;
+        for(long long int innerCounter = 1; twoPowers[counter]*product <= limit; innerCounter++) {
+            twoThreePowers.push_back(twoPowers[counter]*product);
+            product *= 3;
+        }
+    }
+    for(unsigned int counter = 0; counter < twoThreePowers.size(); counter++) {
+        twoPowers.push_back(twoThreePowers[counter]);
+    }
+    twoPowers.push_back(1);
+    sort(twoPowers.begin(),twoPowers.end());
+    return twoPowers;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,total;
-	long long int minValue,maxValue;
-	vector<long long int> totientFlagMap = init();
-	vector<long long int>::iterator itToMin,itToMax;
-	scanuint(testCases);
-	while(testCases--){
-		scanllint(minValue);
-		scanllint(maxValue);
-		total=0;
-		for(unsigned int counter = 0;counter < totientFlagMap.size();counter++){
-			if(totientFlagMap[counter]>= minValue && totientFlagMap[counter] <= maxValue){
-				total++;
-			}
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases,total;
+    long long int minValue,maxValue;
+    vector<long long int> totientFlagMap = init();
+    vector<long long int>::iterator itToMin,itToMax;
+    scanuint(testCases);
+    while(testCases--) {
+        scanllint(minValue);
+        scanllint(maxValue);
+        total=0;
+        for(unsigned int counter = 0; counter < totientFlagMap.size(); counter++) {
+            if(totientFlagMap[counter]>= minValue && totientFlagMap[counter] <= maxValue) {
+                total++;
+            }
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* SPRNMBRS_H_ */

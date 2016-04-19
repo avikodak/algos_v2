@@ -74,13 +74,13 @@ using namespace __gnu_cxx;
 
 //Tested
 //Wrong Question
-void printResults(){
-	long long int testCases,userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		printf("%lld\n",userInput/3);
-	}
+void printResults() {
+    long long int testCases,userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        printf("%lld\n",userInput/3);
+    }
 }
 
 #endif /* AD2_H_ */

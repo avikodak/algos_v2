@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_CSIXIERL_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,repeatedCount;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		int frequency[ALPHA_SIZE] = {0};
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				frequency[userInput[counter]-'A']++;
-			}else{
-				frequency[userInput[counter]-'a']++;
-			}
-		}
-		repeatedCount = 0;
-		for(unsigned int counter = 0;counter < ALPHA_SIZE;counter++){
-			if(frequency[counter] > 1){
-				repeatedCount++;
-			}
-		}
-		printf("%u\n",repeatedCount);
-	}
+void solveProblem() {
+    unsigned int testCases,repeatedCount;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        int frequency[ALPHA_SIZE] = {0};
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                frequency[userInput[counter]-'A']++;
+            } else {
+                frequency[userInput[counter]-'a']++;
+            }
+        }
+        repeatedCount = 0;
+        for(unsigned int counter = 0; counter < ALPHA_SIZE; counter++) {
+            if(frequency[counter] > 1) {
+                repeatedCount++;
+            }
+        }
+        printf("%u\n",repeatedCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_CSIXIERL_H_ */

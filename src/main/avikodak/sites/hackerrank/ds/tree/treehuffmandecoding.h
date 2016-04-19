@@ -78,41 +78,41 @@ using namespace __gnu_cxx;
 };*/
 
 //Tested
-void getCodes(node *ptr,string str,map<string,char> &codes){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->left == null && ptr->right == null){
-		codes.insert(pair<string,char>(str,ptr->data));
-		return;
-	}
-	unsigned int index = str.size();
-	str.insert(index,"0");
-	getCodes(ptr->left,str,codes);
+void getCodes(node *ptr,string str,map<string,char> &codes) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        codes.insert(pair<string,char>(str,ptr->data));
+        return;
+    }
+    unsigned int index = str.size();
+    str.insert(index,"0");
+    getCodes(ptr->left,str,codes);
     str.erase(index);
-	str.insert(index,"1");
-	getCodes(ptr->right,str,codes);
+    str.insert(index,"1");
+    getCodes(ptr->right,str,codes);
 }
 
 //Tested
-void decode_huff(node * root,string s){
-	string str;
-	string subString;
-	map<string,char> codes;
-	map<string,char>::iterator itToCodes;
-	getCodes(root,str,codes);
-	unsigned int outerCounter = 0,innerCounter;
-	while(outerCounter < s.size()){
-		innerCounter = outerCounter;
-		subString = s.substr(innerCounter,1);
-		while((itToCodes = codes.find(subString)) == codes.end()){
-			innerCounter++;
-			subString = s.substr(outerCounter,innerCounter-outerCounter+1);
-		}
-		printf("%c",itToCodes->second);
-		outerCounter = innerCounter+1;
+void decode_huff(node * root,string s) {
+    string str;
+    string subString;
+    map<string,char> codes;
+    map<string,char>::iterator itToCodes;
+    getCodes(root,str,codes);
+    unsigned int outerCounter = 0,innerCounter;
+    while(outerCounter < s.size()) {
+        innerCounter = outerCounter;
+        subString = s.substr(innerCounter,1);
+        while((itToCodes = codes.find(subString)) == codes.end()) {
+            innerCounter++;
+            subString = s.substr(outerCounter,innerCounter-outerCounter+1);
+        }
+        printf("%c",itToCodes->second);
+        outerCounter = innerCounter+1;
 
-	}
+    }
 }
 
 #endif /* TREEHUFFMANDECODING_H_ */

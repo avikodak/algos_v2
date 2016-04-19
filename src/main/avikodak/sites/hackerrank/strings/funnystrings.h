@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define FUNNYSTRINGS_H_
 
 //Tested
-void areStringsFunny(){
-	unsigned int testCases;
-	int diffFirst,diffSecond;
-	scanf("%u",&testCases);
-	string userInput,revUserInput;
-	while(testCases--){
-		cin >> userInput;
-		revUserInput.clear();
-		revUserInput.resize(userInput.size());
-		reverse_copy(userInput.begin(),userInput.end(),revUserInput.begin());
-		bool flag = true;
-		for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-			diffFirst = abs(userInput[outerCrawler] - userInput[outerCrawler-1]);
-			diffSecond = abs(revUserInput[outerCrawler] - revUserInput[outerCrawler-1]);
-			if(diffFirst != diffSecond){
-				printf("Not Funny\n");
-				flag = false;
-				break;
-			}
-		}
-		if(flag){
-			printf("Funny\n");
-		}
+void areStringsFunny() {
+    unsigned int testCases;
+    int diffFirst,diffSecond;
+    scanf("%u",&testCases);
+    string userInput,revUserInput;
+    while(testCases--) {
+        cin >> userInput;
+        revUserInput.clear();
+        revUserInput.resize(userInput.size());
+        reverse_copy(userInput.begin(),userInput.end(),revUserInput.begin());
+        bool flag = true;
+        for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+            diffFirst = abs(userInput[outerCrawler] - userInput[outerCrawler-1]);
+            diffSecond = abs(revUserInput[outerCrawler] - revUserInput[outerCrawler-1]);
+            if(diffFirst != diffSecond) {
+                printf("Not Funny\n");
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            printf("Funny\n");
+        }
 
-	}
+    }
 }
 
 #endif /* FUNNYSTRINGS_H_ */

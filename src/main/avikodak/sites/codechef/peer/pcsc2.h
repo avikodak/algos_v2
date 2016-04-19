@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 #define PCSC2_H_
 
 //Tested
-void printResults(){
-	long long int prevTerm,currentTerm,limit,temp;
-	scanf("%lld %lld %lld",&prevTerm,&currentTerm,limit);
-	if(limit < 3){
-		printf("%lld\n",limit == 1?prevTerm:currentTerm);
-	}
-	limit -= 2;
-	for(unsigned int counter = 0;counter < limit;counter++){
-		temp = prevTerm + currentTerm;
-		prevTerm = currentTerm;
-		currentTerm = temp;
-	}
-	printf("%lld\n",currentTerm);
+void printResults() {
+    long long int prevTerm,currentTerm,limit,temp;
+    scanf("%lld %lld %lld",&prevTerm,&currentTerm,limit);
+    if(limit < 3) {
+        printf("%lld\n",limit == 1?prevTerm:currentTerm);
+    }
+    limit -= 2;
+    for(unsigned int counter = 0; counter < limit; counter++) {
+        temp = prevTerm + currentTerm;
+        prevTerm = currentTerm;
+        currentTerm = temp;
+    }
+    printf("%lld\n",currentTerm);
 }
 
 #endif /* PCSC2_H_ */

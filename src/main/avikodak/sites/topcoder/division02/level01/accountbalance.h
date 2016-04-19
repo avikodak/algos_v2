@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: accountbalance.h 
+ *  File Name   		: accountbalance.h
  *  File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\accountbalance.h
  *  Created on			: Mar 28, 2015 :: 12:49:39 PM
  *  Author				: avikodak
@@ -71,40 +71,40 @@ using namespace __gnu_cxx;
 #define ACCOUNTBALANCE_H_
 
 //Tested
-class AccountBalance{
+class AccountBalance {
 private:
-	vector<string> splitString(string userInput,char delimiter){
-		vector<string> result;
-		istringstream f(userInput);
-		string s;
-		while (getline(f, s, delimiter)) {
-			result.push_back(s);
-		}
-		f.str("");
-		return result;
-	}
+    vector<string> splitString(string userInput,char delimiter) {
+        vector<string> result;
+        istringstream f(userInput);
+        string s;
+        while (getline(f, s, delimiter)) {
+            result.push_back(s);
+        }
+        f.str("");
+        return result;
+    }
 
-	int convertStringToInt(string userInput){
-		if(userInput.size() == 0){
-			return 0;
-		}
-		int number = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			number = (number << 3) + (number << 1) + (userInput[counter] - '0');
-		}
-		return number;
-	}
+    int convertStringToInt(string userInput) {
+        if(userInput.size() == 0) {
+            return 0;
+        }
+        int number = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            number = (number << 3) + (number << 1) + (userInput[counter] - '0');
+        }
+        return number;
+    }
 public:
-	int processTransactions(int balance, vector<string> transactions){
-		for(unsigned int counter = 0;counter < transactions.size();counter++){
-			if(transactions[counter][0] == 'C'){
-				balance += convertStringToInt(splitString(transactions[counter],' ')[1]);
-			}else{
-				balance -= convertStringToInt(splitString(transactions[counter],' ')[1]);
-			}
-		}
-		return balance;
-	}
+    int processTransactions(int balance, vector<string> transactions) {
+        for(unsigned int counter = 0; counter < transactions.size(); counter++) {
+            if(transactions[counter][0] == 'C') {
+                balance += convertStringToInt(splitString(transactions[counter],' ')[1]);
+            } else {
+                balance -= convertStringToInt(splitString(transactions[counter],' ')[1]);
+            }
+        }
+        return balance;
+    }
 };
 
 

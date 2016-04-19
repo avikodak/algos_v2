@@ -72,11 +72,11 @@ using namespace __gnu_cxx;
 
 class BiggestRectangleEasy {
 public:
-	int findArea(int perimeter){
-		int length = round((double)perimeter/(double)4);
-		int breadth = perimeter/4;
-		return length * breadth;
-	}
+    int findArea(int perimeter) {
+        int length = round((double)perimeter/(double)4);
+        int breadth = perimeter/4;
+        return length * breadth;
+    }
 };
 
 #endif /* BIGGESTRECTANGLEEASY_H_ */

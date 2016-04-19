@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxincreasingsubarraylength.h 
+ *  File Name   		: maxincreasingsubarraylength.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\maxincreasingsubarraylength.h
  *  Created on			: Nov 28, 2014 :: 12:35:58 PM
  *  Author				: AVINASH
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxIncreasingSubarrayLength(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> increasingSubarrayLength;
-	increasingSubarrayLength.push_back(1);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] > userInput[counter-1]){
-			increasingSubarrayLength.push_back(increasingSubarrayLength[counter-1]+1);
-		}else{
-			increasingSubarrayLength.push_back(1);
-		}
-	}
-	return max_element(increasingSubarrayLength.begin(),increasingSubarrayLength.end());
+int maxIncreasingSubarrayLength(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> increasingSubarrayLength;
+    increasingSubarrayLength.push_back(1);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] > userInput[counter-1]) {
+            increasingSubarrayLength.push_back(increasingSubarrayLength[counter-1]+1);
+        } else {
+            increasingSubarrayLength.push_back(1);
+        }
+    }
+    return max_element(increasingSubarrayLength.begin(),increasingSubarrayLength.end());
 }
 
 /****************************************************************************************************************************************************/
@@ -94,16 +94,16 @@ int maxIncreasingSubarrayLength(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isVectorSortedAscending(vector<int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] < userInput[counter-1]){
-			return false;
-		}
-	}
-	return true;
+bool isVectorSortedAscending(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return true;
+    }
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] < userInput[counter-1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 

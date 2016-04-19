@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: writingwords.h 
+ *  File Name   		: writingwords.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\writingwords.h
  *  Created on			: Mar 23, 2015 :: 11:13:13 PM
  *  Author				: avikodak
@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define WRITINGWORDS_H_
 
 //Tested
-class WritingWords{
+class WritingWords {
 public:
-	int write(string word){
-		int keyCounter = 0;
-		for(unsigned int counter = 0;counter < word.size();counter++){
-			keyCounter += word[counter] - 'A'+1;
-		}
-		return keyCounter;
-	}
+    int write(string word) {
+        int keyCounter = 0;
+        for(unsigned int counter = 0; counter < word.size(); counter++) {
+            keyCounter += word[counter] - 'A'+1;
+        }
+        return keyCounter;
+    }
 };
 
 #endif /* WRITINGWORDS_H_ */

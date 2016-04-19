@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: permut2.h 
+ *  File Name   		: permut2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\permut2.h
  *  Created on			: Feb 6, 2015 :: 6:43:56 PM
  *  Author				: AVINASH
@@ -74,38 +74,38 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void arePermutationsAmbiguous(){
-	int testCaseSize;
-	vector<int> userInput,auxSpace;
-	int number;
-	bool flag;
-	while(true){
-		scanf("%d",&testCaseSize);
-		if(testCaseSize == 0){
-			break;
-		}
-		userInput.clear();
-		auxSpace.clear();
-		while(testCaseSize--){
-			scanf("%d",&number);
-			userInput.push_back(number);
-		}
-		auxSpace.assign(userInput.size(),0);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			auxSpace[userInput[counter]-1] = counter+1;
-		}
-		flag = true;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] != auxSpace[counter]){
-				flag = false;
-			}
-		}
-		if(flag){
-			cout << "ambiguous" << endl;
-		}else{
-			cout << "not ambiguous" << endl;
-		}
-	}
+void arePermutationsAmbiguous() {
+    int testCaseSize;
+    vector<int> userInput,auxSpace;
+    int number;
+    bool flag;
+    while(true) {
+        scanf("%d",&testCaseSize);
+        if(testCaseSize == 0) {
+            break;
+        }
+        userInput.clear();
+        auxSpace.clear();
+        while(testCaseSize--) {
+            scanf("%d",&number);
+            userInput.push_back(number);
+        }
+        auxSpace.assign(userInput.size(),0);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            auxSpace[userInput[counter]-1] = counter+1;
+        }
+        flag = true;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] != auxSpace[counter]) {
+                flag = false;
+            }
+        }
+        if(flag) {
+            cout << "ambiguous" << endl;
+        } else {
+            cout << "not ambiguous" << endl;
+        }
+    }
 }
 
 #endif /* PERMUT2_H_ */

@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define FOXANDSNAKE_H_
 
 //Tested
-void printSnakePattern(){
-	unsigned int inputRow,inputColumn;
-	scanf("%u %u",&inputRow,&inputColumn);
-	bool flag = false;
-	for(unsigned int rowCounter = 0;rowCounter < inputRow;rowCounter++){
-		if(rowCounter%2 == 0){
-			for(unsigned int columnCounter = 0;columnCounter < inputColumn;columnCounter++){
-				printf("#");
-			}
-		}else{
-			for(unsigned int columnCounter = 0;columnCounter < inputColumn;columnCounter++){
-				if(columnCounter == 0){
-					printf("%c",flag?'#':'.');
-				}else if(columnCounter == inputColumn-1){
-					printf("%c",flag?'.':'#');
-				}else{
-					printf(".");
-				}
-			}
-			flag = !flag;
-		}
-		printf("\n");
-	}
+void printSnakePattern() {
+    unsigned int inputRow,inputColumn;
+    scanf("%u %u",&inputRow,&inputColumn);
+    bool flag = false;
+    for(unsigned int rowCounter = 0; rowCounter < inputRow; rowCounter++) {
+        if(rowCounter%2 == 0) {
+            for(unsigned int columnCounter = 0; columnCounter < inputColumn; columnCounter++) {
+                printf("#");
+            }
+        } else {
+            for(unsigned int columnCounter = 0; columnCounter < inputColumn; columnCounter++) {
+                if(columnCounter == 0) {
+                    printf("%c",flag?'#':'.');
+                } else if(columnCounter == inputColumn-1) {
+                    printf("%c",flag?'.':'#');
+                } else {
+                    printf(".");
+                }
+            }
+            flag = !flag;
+        }
+        printf("\n");
+    }
 }
 
 #endif /* FOXANDSNAKE_H_ */

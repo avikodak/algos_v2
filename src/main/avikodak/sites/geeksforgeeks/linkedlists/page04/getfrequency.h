@@ -80,25 +80,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-unsigned int getFrequency(sillNode *head,int key){
-	if(head == null){
-		return 0;
-	}
-	return	head->value == key?1+getFrequency(head->next,key):getFrequency(head->next,key);
+unsigned int getFrequency(sillNode *head,int key) {
+    if(head == null) {
+        return 0;
+    }
+    return	head->value == key?1+getFrequency(head->next,key):getFrequency(head->next,key);
 }
 
-unsigned int itGetFrequency(sillNode *head,int key){
-	if(head == null){
-		return 0;
-	}
-	unsigned int frequency = 0;
-	while(head != null){
-		if(head->value == key){
-			frequency++;
-		}
-		head = head->next;
-	}
-	return frequency;
+unsigned int itGetFrequency(sillNode *head,int key) {
+    if(head == null) {
+        return 0;
+    }
+    unsigned int frequency = 0;
+    while(head != null) {
+        if(head->value == key) {
+            frequency++;
+        }
+        head = head->next;
+    }
+    return frequency;
 }
 
 /****************************************************************************************************************************************************/

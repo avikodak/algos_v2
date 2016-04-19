@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 #define TRISQ_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,baseLength;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&baseLength);
-		baseLength /= 2;
-		baseLength--;
-		printf("%u\n",((baseLength)*(baseLength+1))/2);
-	}
+void printResults() {
+    unsigned int testCases,baseLength;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&baseLength);
+        baseLength /= 2;
+        baseLength--;
+        printf("%u\n",((baseLength)*(baseLength+1))/2);
+    }
 }
 
 #endif /* TRISQ_H_ */

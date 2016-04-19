@@ -72,32 +72,32 @@ using namespace __gnu_cxx;
 #define ENCODE04_H_
 
 //Tested
-void printResults(){
-	long long int testCases,totalCount;
-	string userInput;
-	scanf("%lld",&testCases);
-	bool ageConstraint;
-	while(testCases--){
-		cin >> userInput;
-		totalCount = 0;
-		ageConstraint = false;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] == 'T'){
-				totalCount++;
-			}else if(userInput[counter] == 'D'){
-				totalCount--;
-			}
-			if(totalCount < 0){
-				ageConstraint = true;
-				break;
-			}
-		}
-		if(ageConstraint){
-			printf("NO\n");
-		}else{
-			printf("%s\n",totalCount == 0?"YES":"NO");
-		}
-	}
+void printResults() {
+    long long int testCases,totalCount;
+    string userInput;
+    scanf("%lld",&testCases);
+    bool ageConstraint;
+    while(testCases--) {
+        cin >> userInput;
+        totalCount = 0;
+        ageConstraint = false;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] == 'T') {
+                totalCount++;
+            } else if(userInput[counter] == 'D') {
+                totalCount--;
+            }
+            if(totalCount < 0) {
+                ageConstraint = true;
+                break;
+            }
+        }
+        if(ageConstraint) {
+            printf("NO\n");
+        } else {
+            printf("%s\n",totalCount == 0?"YES":"NO");
+        }
+    }
 }
 #endif /* ENCODE04_H_ */
 

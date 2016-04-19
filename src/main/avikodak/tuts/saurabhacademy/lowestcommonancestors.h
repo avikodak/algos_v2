@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lowestcommonancestors.h 
+ *  File Name   		: lowestcommonancestors.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\lowestcommonancestors.h
  *  Created on			: Dec 19, 2014 :: 11:12:39 AM
  *  Author				: AVINASH
@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define LOWESTCOMMONANCESTORS_H_
 
 //Assuming all values are unique
-int lowestCommonAncestors(itNode *root,int firstValue,int secondValue){
-	if(root == null){
-		return INT_MAX;
-	}
-	treeutils *utils = new treeutils();
-	vector<int> inorder = utils->getValuesInInorder(root);
-	vector<int> postorder = utils->getValuesInPostorder(root);
-	hash_map<int,unsigned int> valueRankMap;
-	hash_map<int,unsigned int>::iterator itToValueRankMap;
-	int firstValIndex,secondValIndex;
-	for(unsigned int counter = 0;counter < postorder.size();counter++){
-		valueRankMap.insert(pair<int,unsigned int>(postorder[counter],counter));
-	}
-	for(unsigned int counter = 0;counter < inorder.size();counter++){
-		if(inorder[counter] == firstValue){
-			firstValIndex = counter;
-		}else if(inorder[counter] == secondValue){
-			secondValIndex = counter;
-		}
-	}
-	unsigned int ancestorIndex = 0;
-	for(unsigned int counter = firstValIndex < secondValIndex?firstValIndex:secondValIndex;counter <= firstValIndex > secondValIndex?firstValIndex:secondValIndex;counter++){
-		itToValueRankMap = valueRankMap.find(postorder[counter]);
-		ancestorIndex = max(ancestorIndex,itToValueRankMap->second);
-	}
-	return postorder[ancestorIndex];
+int lowestCommonAncestors(itNode *root,int firstValue,int secondValue) {
+    if(root == null) {
+        return INT_MAX;
+    }
+    treeutils *utils = new treeutils();
+    vector<int> inorder = utils->getValuesInInorder(root);
+    vector<int> postorder = utils->getValuesInPostorder(root);
+    hash_map<int,unsigned int> valueRankMap;
+    hash_map<int,unsigned int>::iterator itToValueRankMap;
+    int firstValIndex,secondValIndex;
+    for(unsigned int counter = 0; counter < postorder.size(); counter++) {
+        valueRankMap.insert(pair<int,unsigned int>(postorder[counter],counter));
+    }
+    for(unsigned int counter = 0; counter < inorder.size(); counter++) {
+        if(inorder[counter] == firstValue) {
+            firstValIndex = counter;
+        } else if(inorder[counter] == secondValue) {
+            secondValIndex = counter;
+        }
+    }
+    unsigned int ancestorIndex = 0;
+    for(unsigned int counter = firstValIndex < secondValIndex?firstValIndex:secondValIndex; counter <= firstValIndex > secondValIndex?firstValIndex:secondValIndex; counter++) {
+        itToValueRankMap = valueRankMap.find(postorder[counter]);
+        ancestorIndex = max(ancestorIndex,itToValueRankMap->second);
+    }
+    return postorder[ancestorIndex];
 }
 
 #endif /* LOWESTCOMMONANCESTORS_H_ */

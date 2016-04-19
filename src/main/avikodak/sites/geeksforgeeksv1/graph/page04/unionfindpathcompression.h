@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: unionfindpathcompression.h 
+ *  File Name   		: unionfindpathcompression.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\unionfindpathcompression.h
  *  Created on			: Jan 12, 2015 :: 10:13:57 AM
  *  Author				: AVINASH
@@ -70,50 +70,50 @@ using namespace __gnu_cxx;
 #ifndef UNIONFINDPATHCOMPRESSION_H_
 #define UNIONFINDPATHCOMPRESSION_H_
 
-void ufpcUnion(vector<ncUnionfind *> unionFindDS,ncUnionfind *firstComponent,ncUnionfind *secondComponent){
-	if(firstComponent->nodeCounter < secondComponent->nodeCounter){
-		int vertexCounter = firstComponent->parentVertex;
-		while(unionFindDS[vertexCounter]->parentVertex != vertexCounter){
-			unionFindDS[vertexCounter]->parentVertex = secondComponent->parentVertex;
-			vertexCounter = unionFindDS[vertexCounter]->parentVertex;
-		}
-		firstComponent->parentVertex = secondComponent->parentVertex;
-		secondComponent->nodeCounter += firstComponent->nodeCounter;
-	}else{
-		int vertexCounter = secondComponent->parentVertex;
-		while(unionFindDS[vertexCounter]->parentVertex != vertexCounter){
-			unionFindDS[vertexCounter]->parentVertex = firstComponent->parentVertex;
-			vertexCounter = unionFindDS[vertexCounter]->parentVertex;
-		}
-		secondComponent->parentVertex = firstComponent->parentVertex;
-		firstComponent->nodeCounter += secondComponent->nodeCounter;
-	}
+void ufpcUnion(vector<ncUnionfind *> unionFindDS,ncUnionfind *firstComponent,ncUnionfind *secondComponent) {
+    if(firstComponent->nodeCounter < secondComponent->nodeCounter) {
+        int vertexCounter = firstComponent->parentVertex;
+        while(unionFindDS[vertexCounter]->parentVertex != vertexCounter) {
+            unionFindDS[vertexCounter]->parentVertex = secondComponent->parentVertex;
+            vertexCounter = unionFindDS[vertexCounter]->parentVertex;
+        }
+        firstComponent->parentVertex = secondComponent->parentVertex;
+        secondComponent->nodeCounter += firstComponent->nodeCounter;
+    } else {
+        int vertexCounter = secondComponent->parentVertex;
+        while(unionFindDS[vertexCounter]->parentVertex != vertexCounter) {
+            unionFindDS[vertexCounter]->parentVertex = firstComponent->parentVertex;
+            vertexCounter = unionFindDS[vertexCounter]->parentVertex;
+        }
+        secondComponent->parentVertex = firstComponent->parentVertex;
+        firstComponent->nodeCounter += secondComponent->nodeCounter;
+    }
 }
 
-ncUnionfind * ufpcFind(vector<ncUnionfind *> unionFindDS,int vertexIndex){
-	if(unionFindDS.size() == 0 || vertexIndex >= unionFindDS.size()){
-		return null;
-	}
-	while(unionFindDS[vertexIndex]->parentVertex != vertexIndex){
-		vertexIndex = unionFindDS[vertexIndex]->parentVertex;
-	}
-	return vertexIndex;
+ncUnionfind * ufpcFind(vector<ncUnionfind *> unionFindDS,int vertexIndex) {
+    if(unionFindDS.size() == 0 || vertexIndex >= unionFindDS.size()) {
+        return null;
+    }
+    while(unionFindDS[vertexIndex]->parentVertex != vertexIndex) {
+        vertexIndex = unionFindDS[vertexIndex]->parentVertex;
+    }
+    return vertexIndex;
 }
 
-void unionFindPathCompression(vector<edge *> edgeList,int vertexCount){
-	if(edgeList.size() == 0){
-		return;
-	}
-	vector<ncUnionfind *> unionFindDS;
-	for(unsigned int counter = 0;counter < vertexCount;counter++){
-		unionFindDS.push_back(new ncUnionfind(counter));
-	}
-	ncUnionfind *firstComponent,*secondComponent;
-	for(unsigned int counter = 0;counter < edgeList.size();counter++){
-		firstComponent = ufpcFind(edgeList[counter]->sourceVertex);
-		secondComponent = ufpcFind(edgeList[counter]->destinationVertex);
-		ufpcUnion(unionFindDS,firstComponent,secondComponent);
-	}
+void unionFindPathCompression(vector<edge *> edgeList,int vertexCount) {
+    if(edgeList.size() == 0) {
+        return;
+    }
+    vector<ncUnionfind *> unionFindDS;
+    for(unsigned int counter = 0; counter < vertexCount; counter++) {
+        unionFindDS.push_back(new ncUnionfind(counter));
+    }
+    ncUnionfind *firstComponent,*secondComponent;
+    for(unsigned int counter = 0; counter < edgeList.size(); counter++) {
+        firstComponent = ufpcFind(edgeList[counter]->sourceVertex);
+        secondComponent = ufpcFind(edgeList[counter]->destinationVertex);
+        ufpcUnion(unionFindDS,firstComponent,secondComponent);
+    }
 }
 
 #endif /* UNIONFINDPATHCOMPRESSION_H_ */

@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define STKENC_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		if(userInput%26 == 0){
-			printf("%lld\n",userInput/26);
-		}else{
-			printf("%lld\n",(userInput/26)+1);
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        if(userInput%26 == 0) {
+            printf("%lld\n",userInput/26);
+        } else {
+            printf("%lld\n",(userInput/26)+1);
+        }
+    }
 }
 
 #endif /* STKENC_H_ */

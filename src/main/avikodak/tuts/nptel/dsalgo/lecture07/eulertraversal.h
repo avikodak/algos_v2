@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: eulertraversal.h 
+ *  File Name   		: eulertraversal.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\eulertraversal.h
  *  Created on			: Nov 17, 2014 :: 11:56:52 PM
  *  Author				: AVINASH
@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void eulerTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	printf("%d\t",ptr->value);
-	eulerTraversal(ptr->left);
-	printf("%d\t",ptr->value);
-	eulerTraversal(ptr->right);
-	printf("%d\t",ptr->value);
+void eulerTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    printf("%d\t",ptr->value);
+    eulerTraversal(ptr->left);
+    printf("%d\t",ptr->value);
+    eulerTraversal(ptr->right);
+    printf("%d\t",ptr->value);
 }
 
 #endif /* EULERTRAVERSAL_H_ */

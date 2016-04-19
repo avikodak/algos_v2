@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: boundaryoftree.h 
+ *  File Name   		: boundaryoftree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\boundaryoftree.h
  *  Created on			: Oct 31, 2014 :: 8:17:41 PM
  *  Author				: AVINASH
@@ -69,56 +69,56 @@ using namespace __gnu_cxx;
 #define BOUNDARYOFTREE_H_
 
 //Tested
-void printLeftView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->left != null && ptr->right != null){
-		printf("%d\t",ptr->value);
-	}
-	if(ptr->left != null){
-		printLeftView(ptr->left);
-	}else if(ptr->right != null){
-		printLeftView(ptr->right);
-	}
+void printLeftView(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->left != null && ptr->right != null) {
+        printf("%d\t",ptr->value);
+    }
+    if(ptr->left != null) {
+        printLeftView(ptr->left);
+    } else if(ptr->right != null) {
+        printLeftView(ptr->right);
+    }
 }
 
 //Tested
-void printRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->right != null){
-		printRightView(ptr->right);
-	}else if(ptr->left != null){
-		printRightView(ptr->left);
-	}
-	if(ptr->left != null && ptr->right != null){
-		printf("%d\t",ptr->value);
-	}
+void printRightView(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->right != null) {
+        printRightView(ptr->right);
+    } else if(ptr->left != null) {
+        printRightView(ptr->left);
+    }
+    if(ptr->left != null && ptr->right != null) {
+        printf("%d\t",ptr->value);
+    }
 }
 
 //Tested
-void printLeaves(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->left == null && ptr->right == null){
-		printf("%d\t",ptr->value);
-		return;
-	}
-	printLeaves(ptr->left);
-	printLeaves(ptr->right);
+void printLeaves(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        printf("%d\t",ptr->value);
+        return;
+    }
+    printLeaves(ptr->left);
+    printLeaves(ptr->right);
 }
 
 //Tested
-void printBoundary(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	printLeftView(ptr);
-	printLeaves(ptr);
-	printRightView(ptr);
+void printBoundary(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    printLeftView(ptr);
+    printLeaves(ptr);
+    printRightView(ptr);
 }
 
 #endif /* BOUNDARYOFTREE_H_ */

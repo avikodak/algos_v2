@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arrangebignumber.h 
+ *  File Name   		: arrangebignumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\arrangebignumber.h
  *  Created on			: Jan 3, 2015 :: 11:55:38 PM
  *  Author				: AVINASH
@@ -70,15 +70,15 @@ using namespace __gnu_cxx;
 #ifndef ARRANGEBIGNUMBER_H_
 #define ARRANGEBIGNUMBER_H_
 
-bool sortFuncBigNumber(string firstNumber,string secondNumber){
-	firstNumber.append(secondNumber).compare(secondNumber.append(firstNumber)) > 0?true:false;
+bool sortFuncBigNumber(string firstNumber,string secondNumber) {
+    firstNumber.append(secondNumber).compare(secondNumber.append(firstNumber)) > 0?true:false;
 }
 
-void printLargest(vector<string> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	sort(userInput.begin(),userInput.end());
+void printLargest(vector<string> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    sort(userInput.begin(),userInput.end());
 
 }
 

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: positionofrightmostbit.h 
+ *  File Name   		: positionofrightmostbit.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\positionofrightmostbit.h
  *  Created on			: Jan 9, 2015 :: 9:10:33 AM
  *  Author				: AVINASH
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define POSITIONOFRIGHTMOSTBIT_H_
 
 //Tested
-int positionOfRightMostBit(int userInput){
-	return log2(userInput & -userInput) + 1;
+int positionOfRightMostBit(int userInput) {
+    return log2(userInput & -userInput) + 1;
 }
 
 //Tested
-int positionOfRightMostBitIterative(int userInput){
-	int counter = 0;
-	while(!(userInput&1)){
-		counter++;
-		userInput = userInput >> 1;
-	}
-	return counter+1;
+int positionOfRightMostBitIterative(int userInput) {
+    int counter = 0;
+    while(!(userInput&1)) {
+        counter++;
+        userInput = userInput >> 1;
+    }
+    return counter+1;
 }
 
 #endif /* POSITIONOFRIGHTMOSTBIT_H_ */

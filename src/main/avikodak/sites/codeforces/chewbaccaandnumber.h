@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define CHEWBACCAANDNUMBER_H_
 
 //Tested
-void getMinimumNumberInvertDigits(){
-	long long unsigned int userInput;
-	cin >> userInput;
-	stack<unsigned int> digits;
-	long long unsigned int result = 0;
-	unsigned int lastDigit;
-	while(userInput > 0){
-		lastDigit = userInput % 10;
-		if(lastDigit > (9 - lastDigit) && userInput != 9){
-			digits.push(9-lastDigit);
-		}else{
-			digits.push(lastDigit);
-		}
-		userInput /= 10;
-	}
-	while(!digits.empty()){
-		result = (result << 3) + (result << 1) + digits.top();
-		digits.pop();
-	}
-	cout << result;
+void getMinimumNumberInvertDigits() {
+    long long unsigned int userInput;
+    cin >> userInput;
+    stack<unsigned int> digits;
+    long long unsigned int result = 0;
+    unsigned int lastDigit;
+    while(userInput > 0) {
+        lastDigit = userInput % 10;
+        if(lastDigit > (9 - lastDigit) && userInput != 9) {
+            digits.push(9-lastDigit);
+        } else {
+            digits.push(lastDigit);
+        }
+        userInput /= 10;
+    }
+    while(!digits.empty()) {
+        result = (result << 3) + (result << 1) + digits.top();
+        digits.pop();
+    }
+    cout << result;
 }
 
 #endif /* CHEWBACCAANDNUMBER_H_ */

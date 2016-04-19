@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countbitstoflippedatob.h 
+ *  File Name   		: countbitstoflippedatob.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\countbitstoflippedatob.h
  *  Created on			: Jan 9, 2015 :: 9:36:55 AM
  *  Author				: AVINASH
@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define COUNTBITSTOFLIPPEDATOB_H_
 
 //Tested
-int countBitsToFlipAToB(int firstUserInput,int secondUserInput){
-	int xorResult = firstUserInput ^ secondUserInput;
-	int counter;
-	while(xorResult > 0){
-		xorResult &= (xorResult - 1);
-		counter++;
-	}
-	return counter;
+int countBitsToFlipAToB(int firstUserInput,int secondUserInput) {
+    int xorResult = firstUserInput ^ secondUserInput;
+    int counter;
+    while(xorResult > 0) {
+        xorResult &= (xorResult - 1);
+        counter++;
+    }
+    return counter;
 }
 
 //Tested
-int countBitsToFlipAToBCounter(int firstUserInput,int secondUserInput){
-	int counter = 0;
-	while(firstUserInput > 0 && secondUserInput > 0){
-		counter += (firstUserInput & 1) ^ (secondUserInput & 1);
-		firstUserInput = firstUserInput >> 1;
-		secondUserInput = secondUserInput >> 1;
-	}
-	while(firstUserInput > 0){
-		counter += firstUserInput & 1;
-		firstUserInput = firstUserInput >> 1;
-	}
-	while(secondUserInput > 0){
-		counter += secondUserInput & 1;
-		secondUserInput = secondUserInput >> 1;
-	}
-	return counter;
+int countBitsToFlipAToBCounter(int firstUserInput,int secondUserInput) {
+    int counter = 0;
+    while(firstUserInput > 0 && secondUserInput > 0) {
+        counter += (firstUserInput & 1) ^ (secondUserInput & 1);
+        firstUserInput = firstUserInput >> 1;
+        secondUserInput = secondUserInput >> 1;
+    }
+    while(firstUserInput > 0) {
+        counter += firstUserInput & 1;
+        firstUserInput = firstUserInput >> 1;
+    }
+    while(secondUserInput > 0) {
+        counter += secondUserInput & 1;
+        secondUserInput = secondUserInput >> 1;
+    }
+    return counter;
 }
 
 #endif /* COUNTBITSTOFLIPPEDATOB_H_ */

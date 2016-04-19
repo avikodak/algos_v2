@@ -72,30 +72,30 @@ using namespace __gnu_cxx;
 
 class MorselikeCode {
 public:
-	string decrypt(vector<string> library, string message){
-		map<string,string> codes;
-		map<string,string>::iterator itToCodes;
-		char *ptrToCh,*ptrToCode;
-		string decryptedMessage;
-		for(unsigned int counter = 0;counter < library.size();counter++){
-			ptrToCh = strtok((char *)library[counter].c_str()," ");
-			ptrToCode = strtok(NULL, " ");
-			string ch(ptrToCh);
-			string code(ptrToCode);
-			codes.insert(pair<string,string>(code,ch));
-		}
-		char *ptrToMessage = strtok((char *)message.c_str()," ");
-		while(ptrToMessage != NULL){
-			string subString(ptrToMessage);
-			if((itToCodes = codes.find(subString)) != codes.end()){
-				decryptedMessage.append(itToCodes->second.begin(),itToCodes->second.end());
-			}else{
-				decryptedMessage.append("?");
-			}
-			ptrToMessage = strtok(NULL," ");
-		}
-		return decryptedMessage;
-	}
+    string decrypt(vector<string> library, string message) {
+        map<string,string> codes;
+        map<string,string>::iterator itToCodes;
+        char *ptrToCh,*ptrToCode;
+        string decryptedMessage;
+        for(unsigned int counter = 0; counter < library.size(); counter++) {
+            ptrToCh = strtok((char *)library[counter].c_str()," ");
+            ptrToCode = strtok(NULL, " ");
+            string ch(ptrToCh);
+            string code(ptrToCode);
+            codes.insert(pair<string,string>(code,ch));
+        }
+        char *ptrToMessage = strtok((char *)message.c_str()," ");
+        while(ptrToMessage != NULL) {
+            string subString(ptrToMessage);
+            if((itToCodes = codes.find(subString)) != codes.end()) {
+                decryptedMessage.append(itToCodes->second.begin(),itToCodes->second.end());
+            } else {
+                decryptedMessage.append("?");
+            }
+            ptrToMessage = strtok(NULL," ");
+        }
+        return decryptedMessage;
+    }
 };
 
 #endif /* MORSELIKECODE_H_ */

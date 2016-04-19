@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: graphcoluring.h 
+ *  File Name   		: graphcoluring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\graphcoluring.h
  *  Created on			: Jan 7, 2015 :: 8:04:09 PM
  *  Author				: AVINASH
@@ -72,44 +72,44 @@ using namespace __gnu_cxx;
 #define GRAPHCOLURING_H_
 
 //Tested
-bool gcIsSafe(vector<vector<int> > adjacencyMatrix,vector<int> colors,unsigned int vertex,int color){
-	if(vertex >= adjacencyMatrix.size()){
-		return false;
-	}
-	for(unsigned int counter = 0;counter < adjacencyMatrix[vertex].size();counter++){
-		if(colors[adjacencyMatrix[vertex][counter]] != UN_ASSIGNED_GRAPH_COLOR && colors[adjacencyMatrix[vertex][counter]] == color){
-			return false;
-		}
-	}
-	return true;
+bool gcIsSafe(vector<vector<int> > adjacencyMatrix,vector<int> colors,unsigned int vertex,int color) {
+    if(vertex >= adjacencyMatrix.size()) {
+        return false;
+    }
+    for(unsigned int counter = 0; counter < adjacencyMatrix[vertex].size(); counter++) {
+        if(colors[adjacencyMatrix[vertex][counter]] != UN_ASSIGNED_GRAPH_COLOR && colors[adjacencyMatrix[vertex][counter]] == color) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-bool graphColoring(vector<vector<int> > adjacencyMatrix,vector<int> &colors,unsigned int vertex){
-	if(vertex == adjacencyMatrix.size()){
-		return true;
-	}
-	for(unsigned int colorCounter = 0;colorCounter < adjacencyMatrix.size();colorCounter++){
-		if(gcIsSafe(adjacencyMatrix,colors,vertex,colorCounter)){
-			colors[vertex] = colorCounter;
-			if(graphColoring(adjacencyMatrix,colors,vertex+1)){
-				return true;
-			}
-			colors[vertex] = UN_ASSIGNED_GRAPH_COLOR;
-		}
-	}
-	return false;
+bool graphColoring(vector<vector<int> > adjacencyMatrix,vector<int> &colors,unsigned int vertex) {
+    if(vertex == adjacencyMatrix.size()) {
+        return true;
+    }
+    for(unsigned int colorCounter = 0; colorCounter < adjacencyMatrix.size(); colorCounter++) {
+        if(gcIsSafe(adjacencyMatrix,colors,vertex,colorCounter)) {
+            colors[vertex] = colorCounter;
+            if(graphColoring(adjacencyMatrix,colors,vertex+1)) {
+                return true;
+            }
+            colors[vertex] = UN_ASSIGNED_GRAPH_COLOR;
+        }
+    }
+    return false;
 }
 
 //Tested
-int minColorsForGraph(vector<vector<int> > adjacencyMatrix){
-	if(adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0){
-		return 0;
-	}
-	vector<int> colors(adjacencyMatrix.size(),UN_ASSIGNED_GRAPH_COLOR);
-	graphColoring(adjacencyMatrix,colors,0);
-	printIVector(colors);
-	return *max_element(colors.begin(),colors.end()) + 1;
+int minColorsForGraph(vector<vector<int> > adjacencyMatrix) {
+    if(adjacencyMatrix.size() == 0 || adjacencyMatrix[0].size() == 0) {
+        return 0;
+    }
+    vector<int> colors(adjacencyMatrix.size(),UN_ASSIGNED_GRAPH_COLOR);
+    graphColoring(adjacencyMatrix,colors,0);
+    printIVector(colors);
+    return *max_element(colors.begin(),colors.end()) + 1;
 }
 
 #endif /* GRAPHCOLURING_H_ */

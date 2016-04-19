@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 #define ACM14AM1_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,threshold,total,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&threshold);
-		total = 0;
-		while(size--){
-			scanf("%u",&input);
-			if(input >= threshold){
-				total++;
-			}
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,threshold,total,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&threshold);
+        total = 0;
+        while(size--) {
+            scanf("%u",&input);
+            if(input >= threshold) {
+                total++;
+            }
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* ACM14AM1_H_ */

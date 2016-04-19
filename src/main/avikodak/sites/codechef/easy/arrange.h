@@ -73,9 +73,9 @@ using namespace __gnu_cxx;
 #define ARRANGE_H_
 
 //Tested
-unsigned int reverseBits(unsigned int num,unsigned int bitCount){
+unsigned int reverseBits(unsigned int num,unsigned int bitCount) {
     unsigned int result = 0, temp;
-    for (unsigned int counter = 0; counter < bitCount; counter++){
+    for (unsigned int counter = 0; counter < bitCount; counter++) {
         temp = (num & (1 << counter));
         if(temp)
             result |= (1 << ((bitCount - 1) - counter));
@@ -85,20 +85,20 @@ unsigned int reverseBits(unsigned int num,unsigned int bitCount){
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,bitCount,index;
-	string userInput,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&bitCount);
-		cin >> userInput;
-		result = userInput;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			index = reverseBits(counter,bitCount);
-			result[index] = userInput[counter];
-		}
-		cout << result << endl;
-	}
+void printResults() {
+    unsigned int testCases,bitCount,index;
+    string userInput,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&bitCount);
+        cin >> userInput;
+        result = userInput;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            index = reverseBits(counter,bitCount);
+            result[index] = userInput[counter];
+        }
+        cout << result << endl;
+    }
 }
 
 #endif /* ARRANGE_H_ */

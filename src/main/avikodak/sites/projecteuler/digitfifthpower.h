@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define DIGITFIFTHPOWER_H_
 
 //Tested
-unsigned int getDigitSum(unsigned int userInput,map<unsigned int,unsigned int> digitPowerMap){
-	unsigned int sum = 0;
-	while(userInput){
-		sum += digitPowerMap.find(userInput%10)->second;
-		userInput /= 10;
-	}
-	return sum;
+unsigned int getDigitSum(unsigned int userInput,map<unsigned int,unsigned int> digitPowerMap) {
+    unsigned int sum = 0;
+    while(userInput) {
+        sum += digitPowerMap.find(userInput%10)->second;
+        userInput /= 10;
+    }
+    return sum;
 }
 
 //Tested
 //Ans : 443839
-unsigned int getSumOfDigitFifthPowers(){
-	map<unsigned int,unsigned int> digitPower;
-	for(unsigned int counter = 0;counter < 10;counter++){
-		digitPower.insert(pair<unsigned int,unsigned int>(counter,pow(counter,5)));
-	}
-	unsigned int sum = 0;
-	for(unsigned int int counter = 2;counter <= 354295;counter++){
-		if(counter == getDigitSum(counter,digitPower)){
-			sum += counter;
-		}
-	}
-	return sum;
+unsigned int getSumOfDigitFifthPowers() {
+    map<unsigned int,unsigned int> digitPower;
+    for(unsigned int counter = 0; counter < 10; counter++) {
+        digitPower.insert(pair<unsigned int,unsigned int>(counter,pow(counter,5)));
+    }
+    unsigned int sum = 0;
+    for(unsigned int int counter = 2; counter <= 354295; counter++) {
+        if(counter == getDigitSum(counter,digitPower)) {
+            sum += counter;
+        }
+    }
+    return sum;
 }
 
 #endif /* DIGITFIFTHPOWER_H_ */

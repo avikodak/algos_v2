@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: removeduplicatessortedsill.h 
+ *  File Name   		: removeduplicatessortedsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\removeduplicatessortedsill.h
  *  Created on			: Oct 17, 2014 :: 1:08:55 PM
  *  Author				: AVINASH
@@ -72,41 +72,41 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void removeDuplicatesSortedSillON(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler,*nodeToBeDeleted;
-	while(outerCrawler != null){
-		innerCrawler = outerCrawler->next;
-		while(innerCrawler != null && innerCrawler->value == outerCrawler->value){
-			nodeToBeDeleted = innerCrawler;
-			outerCrawler->next = innerCrawler->next;
-			innerCrawler = outerCrawler->next;
-			free(nodeToBeDeleted);
-		}
-		outerCrawler = outerCrawler->next;
-	}
+void removeDuplicatesSortedSillON(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    sillNode *outerCrawler = ptr,*innerCrawler,*nodeToBeDeleted;
+    while(outerCrawler != null) {
+        innerCrawler = outerCrawler->next;
+        while(innerCrawler != null && innerCrawler->value == outerCrawler->value) {
+            nodeToBeDeleted = innerCrawler;
+            outerCrawler->next = innerCrawler->next;
+            innerCrawler = outerCrawler->next;
+            free(nodeToBeDeleted);
+        }
+        outerCrawler = outerCrawler->next;
+    }
 }
 
-void removeDuplicatesSortedSillHashmap(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	sillNode *crawler = ptr;
-	while(crawler != null){
-		if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()){
-			frequencyMap[crawler->value] += 1;
-		}else{
-			frequencyMap[crawler->value] = 1;
-		}
-		crawler = crawler->next;
-	}
-	while(crawler != null){
+void removeDuplicatesSortedSillHashmap(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    sillNode *crawler = ptr;
+    while(crawler != null) {
+        if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()) {
+            frequencyMap[crawler->value] += 1;
+        } else {
+            frequencyMap[crawler->value] = 1;
+        }
+        crawler = crawler->next;
+    }
+    while(crawler != null) {
 
-	}
+    }
 }
 
 /****************************************************************************************************************************************************/

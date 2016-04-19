@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 #define IITI13_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	long int size;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%ld",&size);
-		cin >> userInput;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			swap(userInput[counter],userInput[input-1]);
-		}
-		cout << userInput << endl;
-	}
+void printResults() {
+    unsigned int testCases,input;
+    long int size;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%ld",&size);
+        cin >> userInput;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            swap(userInput[counter],userInput[input-1]);
+        }
+        cout << userInput << endl;
+    }
 }
 
 #endif /* IITI13_H_ */

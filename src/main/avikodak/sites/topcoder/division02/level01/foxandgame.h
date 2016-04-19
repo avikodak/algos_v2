@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: foxandgame.h 
+ *  File Name   		: foxandgame.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\foxandgame.h
  *  Created on			: Mar 25, 2015 :: 10:51:20 PM
  *  Author				: avikodak
@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define FOXANDGAME_H_
 
 //Tested
-class FoxAndGame{
+class FoxAndGame {
 public:
-	int countStars(vector<string> result){
-		int totalStars = 0;
-		for(unsigned int outerCounter = 0;outerCounter < result.size();outerCounter++){
-			for(unsigned int innerCounter = 0;innerCounter < 3;innerCounter++){
-				if(result[outerCounter][innerCounter] == 'o'){
-					totalStars++;
-				}
-			}
-		}
-		return totalStars;
-	}
+    int countStars(vector<string> result) {
+        int totalStars = 0;
+        for(unsigned int outerCounter = 0; outerCounter < result.size(); outerCounter++) {
+            for(unsigned int innerCounter = 0; innerCounter < 3; innerCounter++) {
+                if(result[outerCounter][innerCounter] == 'o') {
+                    totalStars++;
+                }
+            }
+        }
+        return totalStars;
+    }
 };
 
 #endif /* FOXANDGAME_H_ */

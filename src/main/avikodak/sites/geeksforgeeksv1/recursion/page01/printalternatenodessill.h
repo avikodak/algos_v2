@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printalternatenodessill.h 
+ *  File Name   		: printalternatenodessill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\printalternatenodessill.h
  *  Created on			: Oct 13, 2014 :: 11:53:56 AM
  *  Author				: AVINASH
@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printAlternateNodesSill(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	printf("%d\t",ptr->value);
-	if(ptr->next != null){
-		printAlternateNodesSill(ptr->next->next);
-	}
+void printAlternateNodesSill(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    printf("%d\t",ptr->value);
+    if(ptr->next != null) {
+        printAlternateNodesSill(ptr->next->next);
+    }
 }
 
 #endif /* PRINTALTERNATENODESSILL_H_ */

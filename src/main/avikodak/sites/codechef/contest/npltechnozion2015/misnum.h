@@ -73,45 +73,45 @@ using namespace __gnu_cxx;
 #define MISNUM_H_
 
 //Tested
-vector<long long int> generatePrimeNumberSquarMap(long long int limit){
-	vector<bool> flags;
-	flags.assign(limit+2,true);
-	vector<long long int> primeNumberMap;
-	for(long long int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			long long int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	for(long long int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			primeNumberMap.push_back(counter*counter);
-		}
-	}
-	return primeNumberMap;
+vector<long long int> generatePrimeNumberSquarMap(long long int limit) {
+    vector<bool> flags;
+    flags.assign(limit+2,true);
+    vector<long long int> primeNumberMap;
+    for(long long int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            long long int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    for(long long int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            primeNumberMap.push_back(counter*counter);
+        }
+    }
+    return primeNumberMap;
 }
 
 //Tested
-void printResults(){
-	vector<long long int> primeNumberSquareMap = generatePrimeNumberSquarMap(sqrt(1000000001));
-	vector<long long int>::iterator itToUpper,itToPrimeNumberSquareMap;
-	long long int testCases,min,max,sum;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&min,&max);
-		sum = 0;
-		itToUpper = upper_bound(primeNumberSquareMap.begin(),primeNumberSquareMap.end(),min-1);
-		for(itToPrimeNumberSquareMap = itToUpper;itToPrimeNumberSquareMap != primeNumberSquareMap.end();itToPrimeNumberSquareMap++){
-			if(*itToPrimeNumberSquareMap > max){
-				break;
-			}
-			sum++;
-		}
-		cout << sum << endl;
-	}
+void printResults() {
+    vector<long long int> primeNumberSquareMap = generatePrimeNumberSquarMap(sqrt(1000000001));
+    vector<long long int>::iterator itToUpper,itToPrimeNumberSquareMap;
+    long long int testCases,min,max,sum;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&min,&max);
+        sum = 0;
+        itToUpper = upper_bound(primeNumberSquareMap.begin(),primeNumberSquareMap.end(),min-1);
+        for(itToPrimeNumberSquareMap = itToUpper; itToPrimeNumberSquareMap != primeNumberSquareMap.end(); itToPrimeNumberSquareMap++) {
+            if(*itToPrimeNumberSquareMap > max) {
+                break;
+            }
+            sum++;
+        }
+        cout << sum << endl;
+    }
 }
 
 #endif /* MISNUM_H_ */

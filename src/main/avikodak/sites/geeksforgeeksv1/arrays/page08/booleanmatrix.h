@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: booleanmatrix.h 
+ *  File Name   		: booleanmatrix.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\booleanmatrix.h
  *  Created on			: Nov 28, 2014 :: 1:37:18 AM
  *  Author				: AVINASH
@@ -72,45 +72,45 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void booleanMatrixAuxspace(vector<vector<bool> > &userInput){
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return;
-	}
-	vector<bool> columnFlags(userInput[0].size(),false);
-	vector<bool> rowFlags(userInput.size(),false);
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			if(userInput[rowCounter][columnCounter]){
-				columnFlags[columnCounter] = true;
-				rowFlags[rowCounter] = true;
-			}
-		}
-	}
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			userInput[rowCounter][columnCounter] = rowFlags[rowCounter] || columnFlags[columnCounter];
-		}
-	}
+void booleanMatrixAuxspace(vector<vector<bool> > &userInput) {
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return;
+    }
+    vector<bool> columnFlags(userInput[0].size(),false);
+    vector<bool> rowFlags(userInput.size(),false);
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+            if(userInput[rowCounter][columnCounter]) {
+                columnFlags[columnCounter] = true;
+                rowFlags[rowCounter] = true;
+            }
+        }
+    }
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+            userInput[rowCounter][columnCounter] = rowFlags[rowCounter] || columnFlags[columnCounter];
+        }
+    }
 }
 
 //Tested
-void booleanMatrix(vector<vector<bool> > &userInput){
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return;
-	}
-	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
-			if(userInput[rowCounter][columnCounter]){
-				userInput[rowCounter][0] = true;
-				userInput[0][columnCounter] = true;
-			}
-		}
-	}
-	for(int rowCounter = userInput.size()-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = userInput[0].size()-1;columnCounter >= 0;columnCounter--){
-			userInput[rowCounter][columnCounter] = userInput[rowCounter][0] || userInput[0][columnCounter];
-		}
-	}
+void booleanMatrix(vector<vector<bool> > &userInput) {
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return;
+    }
+    for(unsigned int rowCounter = 1; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter < userInput[0].size(); columnCounter++) {
+            if(userInput[rowCounter][columnCounter]) {
+                userInput[rowCounter][0] = true;
+                userInput[0][columnCounter] = true;
+            }
+        }
+    }
+    for(int rowCounter = userInput.size()-1; rowCounter >= 0; rowCounter--) {
+        for(int columnCounter = userInput[0].size()-1; columnCounter >= 0; columnCounter--) {
+            userInput[rowCounter][columnCounter] = userInput[rowCounter][0] || userInput[0][columnCounter];
+        }
+    }
 
 }
 

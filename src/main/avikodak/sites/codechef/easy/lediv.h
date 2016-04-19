@@ -71,46 +71,46 @@ using namespace __gnu_cxx;
 #define LEDIV_H_
 
 //Tested
-int gcd(int a,int b){
-	if(b == 0){
-		return a;
-	}
-	return gcd(b,a%b);
+int gcd(int a,int b) {
+    if(b == 0) {
+        return a;
+    }
+    return gcd(b,a%b);
 }
 
 //Tested
-void printResults(){
-	int testCases,size,input,gcdResult;
-	vector<int> userInput;
-	cin >> testCases;
-	bool flag = false;
-	while(testCases--){
-		cin >> size;
-		userInput.clear();
-		while(size--){
-			cin >> input;
-			userInput.push_back(input);
-		}
-		gcdResult = userInput[0];
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			gcdResult = gcd(gcdResult,userInput[counter]);
-		}
-		if(gcdResult == 1){
-			cout << "-1" << endl;
-		}else{
-			flag = false;
-			for(int counter = 2;counter*counter <= gcdResult;counter++){
-				if(gcdResult%counter == 0){
-					cout << counter << endl;
-					flag = true;
-					break;
-				}
-			}
-			if(!flag){
-				cout << gcdResult << endl;
-			}
-		}
-	}
+void printResults() {
+    int testCases,size,input,gcdResult;
+    vector<int> userInput;
+    cin >> testCases;
+    bool flag = false;
+    while(testCases--) {
+        cin >> size;
+        userInput.clear();
+        while(size--) {
+            cin >> input;
+            userInput.push_back(input);
+        }
+        gcdResult = userInput[0];
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            gcdResult = gcd(gcdResult,userInput[counter]);
+        }
+        if(gcdResult == 1) {
+            cout << "-1" << endl;
+        } else {
+            flag = false;
+            for(int counter = 2; counter*counter <= gcdResult; counter++) {
+                if(gcdResult%counter == 0) {
+                    cout << counter << endl;
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag) {
+                cout << gcdResult << endl;
+            }
+        }
+    }
 }
 
 #endif /* LEDIV_H_ */

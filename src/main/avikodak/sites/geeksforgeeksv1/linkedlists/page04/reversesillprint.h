@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversesillprint.h 
+ *  File Name   		: reversesillprint.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversesillprint.h
  *  Created on			: Oct 16, 2014 :: 10:31:12 AM
  *  Author				: AVINASH
@@ -74,77 +74,77 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void reverseSillPrint(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	reverseSillPrint(ptr->next);
-	printf("%d\t",ptr->value);
+void reverseSillPrint(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    reverseSillPrint(ptr->next);
+    printf("%d\t",ptr->value);
 }
 
 //Tested
-void reverseSillPrintAuxspace(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<sillNode *> auxSpace;
-	while(ptr != null){
-		auxSpace.push(ptr);
-		ptr = ptr->next;
-	}
-	while(!auxSpace.empty()){
-		printf("%d\t",auxSpace.top()->value);
-		auxSpace.pop();
-	}
+void reverseSillPrintAuxspace(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<sillNode *> auxSpace;
+    while(ptr != null) {
+        auxSpace.push(ptr);
+        ptr = ptr->next;
+    }
+    while(!auxSpace.empty()) {
+        printf("%d\t",auxSpace.top()->value);
+        auxSpace.pop();
+    }
 }
 
 //Tested
-void reverseSillPrintByReversing(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	reverseSill(&ptr);
-	while(ptr != null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->next;
-	}
+void reverseSillPrintByReversing(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    reverseSill(&ptr);
+    while(ptr != null) {
+        printf("%d\t",ptr->value);
+        ptr = ptr->next;
+    }
 }
 
 //Tested
-void reverseSillHashmap(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	while(lengthOfSill > 0){
-		itToIndexNodeMap = indexNodeMap.find(lengthOfSill);
-		printf("%d\t",itToIndexNodeMap->second->value);
-		lengthOfSill -= 1;
-	}
+void reverseSillHashmap(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    unsigned int lengthOfSill = utils->lengthOfSill(ptr);
+    while(lengthOfSill > 0) {
+        itToIndexNodeMap = indexNodeMap.find(lengthOfSill);
+        printf("%d\t",itToIndexNodeMap->second->value);
+        lengthOfSill -= 1;
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void reverseSillON2(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	sillutils *utils = new sillutils();
-	unsigned int length = utils->lengthOfSill(ptr),difference;
-	sillNode *crawler;
-	for(unsigned int counter = 0;counter < length;counter++){
-		difference = length - counter - 1;
-		crawler = ptr;
-		while(difference--){
-			crawler = crawler->next;
-		}
-		printf("%d\t",crawler->value);
-	}
+void reverseSillON2(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    sillutils *utils = new sillutils();
+    unsigned int length = utils->lengthOfSill(ptr),difference;
+    sillNode *crawler;
+    for(unsigned int counter = 0; counter < length; counter++) {
+        difference = length - counter - 1;
+        crawler = ptr;
+        while(difference--) {
+            crawler = crawler->next;
+        }
+        printf("%d\t",crawler->value);
+    }
 }
 
 #endif /* REVERSESILLPRINT_H_ */

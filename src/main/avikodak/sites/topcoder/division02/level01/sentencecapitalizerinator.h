@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 
 class SentenceCapitalizerInator {
 public:
-	string fixCaps(string paragraph){
-		paragraph[0] = paragraph[0] - 'a' +'A';
-		for(unsigned int counter = 1;counter < paragraph.size()-1;counter++){
-			if(paragraph[counter] == '.'){
-				paragraph[counter+2] = paragraph[counter+2] - 'a' +'A';
-				counter+=2;
-			}
-		}
-		return paragraph;
-	}
+    string fixCaps(string paragraph) {
+        paragraph[0] = paragraph[0] - 'a' +'A';
+        for(unsigned int counter = 1; counter < paragraph.size()-1; counter++) {
+            if(paragraph[counter] == '.') {
+                paragraph[counter+2] = paragraph[counter+2] - 'a' +'A';
+                counter+=2;
+            }
+        }
+        return paragraph;
+    }
 };
 
 #endif /* SENTENCECAPITALIZERINATOR_H_ */

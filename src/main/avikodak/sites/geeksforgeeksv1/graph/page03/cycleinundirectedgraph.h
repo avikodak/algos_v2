@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cycleinundirectedgraph.h 
+ *  File Name   		: cycleinundirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\cycleinundirectedgraph.h
  *  Created on			: Dec 26, 2014 :: 9:31:13 AM
  *  Author				: AVINASH
@@ -73,52 +73,52 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool detectCycleInUndirectedGraphBFS(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	queue<int> auxSpace;
-	vector<int> levels(adjacencyList.size(),INT_MAX);
-	auxSpace.push(0);
-	levels[0] = INT_MAX;
-	int currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentNode].size();counter++){
-			if(levels[adjacencyList[currentNode][counter]] != INT_MAX && levels[adjacencyList[currentNode][counter]] != levels[currentNode]){
-				return true;
-			}
-			auxSpace.push(adjacencyList[currentNode][counter]);
-			levels[adjacencyList[currentNode][counter]] = 1 + levels[currentNode];
-		}
-	}
-	for(unsigned int counter = 0;counter < levels.size();counter++){
-		if(levels[counter] == INT_MAX){
-			return true;
-		}
-	}
-	return false;
+bool detectCycleInUndirectedGraphBFS(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return false;
+    }
+    queue<int> auxSpace;
+    vector<int> levels(adjacencyList.size(),INT_MAX);
+    auxSpace.push(0);
+    levels[0] = INT_MAX;
+    int currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentNode].size(); counter++) {
+            if(levels[adjacencyList[currentNode][counter]] != INT_MAX && levels[adjacencyList[currentNode][counter]] != levels[currentNode]) {
+                return true;
+            }
+            auxSpace.push(adjacencyList[currentNode][counter]);
+            levels[adjacencyList[currentNode][counter]] = 1 + levels[currentNode];
+        }
+    }
+    for(unsigned int counter = 0; counter < levels.size(); counter++) {
+        if(levels[counter] == INT_MAX) {
+            return true;
+        }
+    }
+    return false;
 }
 
-bool detectCycleInUndirectedGraphDFS(vector<vector<int> > adjacencyList,int sourceVertex){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	static vector<int> predecessor(adjacencyList.size(),INT_MIN);
-	predecessor[0] = 0;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MIN){
-			if(detectCycleInUndirectedGraphDFS(adjacencyList,adjacencyList[sourceVertex][counter])){
-				return true;
-			}
-		}else{
-			if(predecessor[adjacencyList[sourceVertex][counter]] != sourceVertex){
-				return true;
-			}
-		}
-	}
-	return false;
+bool detectCycleInUndirectedGraphDFS(vector<vector<int> > adjacencyList,int sourceVertex) {
+    if(adjacencyList.size() == 0) {
+        return false;
+    }
+    static vector<int> predecessor(adjacencyList.size(),INT_MIN);
+    predecessor[0] = 0;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MIN) {
+            if(detectCycleInUndirectedGraphDFS(adjacencyList,adjacencyList[sourceVertex][counter])) {
+                return true;
+            }
+        } else {
+            if(predecessor[adjacencyList[sourceVertex][counter]] != sourceVertex) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 #endif /* CYCLEINUNDIRECTEDGRAPH_H_ */

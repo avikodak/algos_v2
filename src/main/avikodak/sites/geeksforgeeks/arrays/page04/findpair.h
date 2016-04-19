@@ -78,54 +78,54 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-iPair *findPairON(int userInput[],unsigned int size,int key){
-	if(size == 0){
-		return null;
-	}
-	hash_map<unsigned int,bool> valuePresenceMap;
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(valuePresenceMap.find(key-userInput[counter]) != valuePresenceMap.end()){
-			return new iPair(userInput[counter],key-userInput[counter]);
-		}
-		valuePresenceMap.insert(pair<unsigned int,bool>(userInput[counter],true));
-	}
-	return null;
+iPair *findPairON(int userInput[],unsigned int size,int key) {
+    if(size == 0) {
+        return null;
+    }
+    hash_map<unsigned int,bool> valuePresenceMap;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(valuePresenceMap.find(key-userInput[counter]) != valuePresenceMap.end()) {
+            return new iPair(userInput[counter],key-userInput[counter]);
+        }
+        valuePresenceMap.insert(pair<unsigned int,bool>(userInput[counter],true));
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
-iPair *findPairONLOGN(int userInput[],int size,int key){
-	if(size == 0){
-		return null;
-	}
-	sort(userInput,userInput+size);
-	unsigned int frontCrawler = 0,rearCrawler = size-1;
-	while(frontCrawler < rearCrawler){
-		if(userInput[frontCrawler] + userInput[rearCrawler] == key){
-			return new iPair(userInput[frontCrawler],userInput[rearCrawler]);
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	return null;
+iPair *findPairONLOGN(int userInput[],int size,int key) {
+    if(size == 0) {
+        return null;
+    }
+    sort(userInput,userInput+size);
+    unsigned int frontCrawler = 0,rearCrawler = size-1;
+    while(frontCrawler < rearCrawler) {
+        if(userInput[frontCrawler] + userInput[rearCrawler] == key) {
+            return new iPair(userInput[frontCrawler],userInput[rearCrawler]);
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-iPair *findPairON2(int userInput[],int size,int key){
-	if(size == 0){
-		return null;
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < size-1;outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < size;innerCrawler++){
-			if(userInput[outerCrawler]+userInput[innerCrawler] == key){
-				return new iPair(userInput[outerCrawler],userInput[innerCrawler]);
-			}
-		}
-	}
-	return null;
+iPair *findPairON2(int userInput[],int size,int key) {
+    if(size == 0) {
+        return null;
+    }
+    for(unsigned int outerCrawler = 0; outerCrawler < size-1; outerCrawler++) {
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < size; innerCrawler++) {
+            if(userInput[outerCrawler]+userInput[innerCrawler] == key) {
+                return new iPair(userInput[outerCrawler],userInput[innerCrawler]);
+            }
+        }
+    }
+    return null;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDPAIR_H_ */

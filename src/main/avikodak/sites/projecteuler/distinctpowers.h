@@ -71,86 +71,86 @@ using namespace __gnu_cxx;
 #define DISTINCTPOWERS_H_
 
 //Tested
-map<unsigned int,unsigned int> primeFactorization(unsigned int userInput){
-	unsigned int squareRoot = sqrtl(userInput);
-	map<unsigned int,unsigned int> factorsCounter;
-	map<unsigned int,unsigned int>::iterator itToFactorsCount;
-	bool flag = true;
-	while(flag && userInput > 1){
-		flag = false;
-		while(!(userInput&1)){
-			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
-				factorsCounter[2] = 1;
-			}else{
-				factorsCounter[2]++;
-			}
-			flag = true;
-			userInput /= 2;
-		}
-		for(unsigned int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				if(factorsCounter.find(counter) == factorsCounter.end()){
-					factorsCounter[counter] = 1;
-				}else{
-					factorsCounter[counter]++;
-				}
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag){
-			if(factorsCounter.find(userInput) == factorsCounter.end()){
-				factorsCounter[userInput] = 1;
-			}else{
-				factorsCounter[userInput]++;
-			}
-		}
-	}
-	return factorsCounter;
+map<unsigned int,unsigned int> primeFactorization(unsigned int userInput) {
+    unsigned int squareRoot = sqrtl(userInput);
+    map<unsigned int,unsigned int> factorsCounter;
+    map<unsigned int,unsigned int>::iterator itToFactorsCount;
+    bool flag = true;
+    while(flag && userInput > 1) {
+        flag = false;
+        while(!(userInput&1)) {
+            if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()) {
+                factorsCounter[2] = 1;
+            } else {
+                factorsCounter[2]++;
+            }
+            flag = true;
+            userInput /= 2;
+        }
+        for(unsigned int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                if(factorsCounter.find(counter) == factorsCounter.end()) {
+                    factorsCounter[counter] = 1;
+                } else {
+                    factorsCounter[counter]++;
+                }
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag) {
+            if(factorsCounter.find(userInput) == factorsCounter.end()) {
+                factorsCounter[userInput] = 1;
+            } else {
+                factorsCounter[userInput]++;
+            }
+        }
+    }
+    return factorsCounter;
 }
 
 //Tested
-string convertToString(unsigned int userInput){
-	stringstream stream;
-	stream << userInput;
-	string str = stream.str();
-	stream.str("");
-	return str;
+string convertToString(unsigned int userInput) {
+    stringstream stream;
+    stream << userInput;
+    string str = stream.str();
+    stream.str("");
+    return str;
 }
 
 //Tested
-string getStringValuePrimeFactorization(map<unsigned int,unsigned int> &primeFactorization,unsigned int userInput){
-	map<unsigned int,unsigned int>::iterator itToPrimeFactorization;
-	string result;
-	for(itToPrimeFactorization = primeFactorization.begin();itToPrimeFactorization != primeFactorization.end();itToPrimeFactorization++){
-		result.append(convertToString(itToPrimeFactorization->first));
-		result.append("&&");
-		result.append(convertToString(userInput*itToPrimeFactorization->second));
-		result.append("$$");
-	}
-	return result;
+string getStringValuePrimeFactorization(map<unsigned int,unsigned int> &primeFactorization,unsigned int userInput) {
+    map<unsigned int,unsigned int>::iterator itToPrimeFactorization;
+    string result;
+    for(itToPrimeFactorization = primeFactorization.begin(); itToPrimeFactorization != primeFactorization.end(); itToPrimeFactorization++) {
+        result.append(convertToString(itToPrimeFactorization->first));
+        result.append("&&");
+        result.append(convertToString(userInput*itToPrimeFactorization->second));
+        result.append("$$");
+    }
+    return result;
 }
 
 //Tested
-void generateStringValue(map<unsigned int,unsigned int> primeFactorization,map<string,bool> &distinctPowers){
-	string result;
-	for(unsigned int counter = 2;counter <= 100;counter++){
-		result = getStringValuePrimeFactorization(primeFactorization,counter);
-		if(distinctPowers.find(result) == distinctPowers.end()){
-			distinctPowers.insert(pair<string,bool>(result,true));
-		}
-	}
+void generateStringValue(map<unsigned int,unsigned int> primeFactorization,map<string,bool> &distinctPowers) {
+    string result;
+    for(unsigned int counter = 2; counter <= 100; counter++) {
+        result = getStringValuePrimeFactorization(primeFactorization,counter);
+        if(distinctPowers.find(result) == distinctPowers.end()) {
+            distinctPowers.insert(pair<string,bool>(result,true));
+        }
+    }
 }
 
 //Tested
 //Ans : 9183
-void printDistinctPowers(){
-	map<string,bool> distinctPowers;
-	for(unsigned int counter = 2;counter <= 100;counter++){
-		generateStringValue(primeFactorization(counter),distinctPowers);
-	}
-	cout << distinctPowers.size() << endl;
+void printDistinctPowers() {
+    map<string,bool> distinctPowers;
+    for(unsigned int counter = 2; counter <= 100; counter++) {
+        generateStringValue(primeFactorization(counter),distinctPowers);
+    }
+    cout << distinctPowers.size() << endl;
 }
 
 #endif /* DISTINCTPOWERS_H_ */

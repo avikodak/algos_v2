@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 9110846700
-void getLastTenDigitsSelfPowers(){
-	unsigned long long int sum = 1,product = 1;
-	for(unsigned int outerCounter = 2;outerCounter <= 1000;outerCounter++){
-		product = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			product *= outerCounter;
-			product = product%MOD_CONSTANT;
-		}
- 		sum += product;
-		sum = sum%MOD_CONSTANT;
-	}
-	cout << sum;
+void getLastTenDigitsSelfPowers() {
+    unsigned long long int sum = 1,product = 1;
+    for(unsigned int outerCounter = 2; outerCounter <= 1000; outerCounter++) {
+        product = 1;
+        for(unsigned int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+            product *= outerCounter;
+            product = product%MOD_CONSTANT;
+        }
+        sum += product;
+        sum = sum%MOD_CONSTANT;
+    }
+    cout << sum;
 }
 
 #endif /* SELFPOWERS_H_ */

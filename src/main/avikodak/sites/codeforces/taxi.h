@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taxi.h 
+ *  File Name   		: taxi.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\taxi.h
  *  Created on			: Feb 3, 2015 :: 12:39:04 PM
  *  Author				: AVINASH
@@ -71,69 +71,69 @@ using namespace __gnu_cxx;
 #define TAXI_H_
 
 //Tested
-void getTotalNoOfTaxis(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	map<unsigned int,unsigned int> groupSizeCountMap;
-	map<unsigned int,unsigned int>::iterator itToGroupSizeCountMap;
-	unsigned int groupSize,carsRequired = 0;;
-	while(testCases--){
-		scanf("%u",&groupSize);
-		if((itToGroupSizeCountMap = groupSizeCountMap.find(groupSize)) != groupSizeCountMap.end()){
-			groupSizeCountMap[groupSize] += 1;
-		}else{
-			groupSizeCountMap[groupSize] = 1;
-		}
-	}
-	for(unsigned int counter = 4;counter > 0;counter--){
-		switch (counter) {
-		case 1:
-			if(groupSizeCountMap.find(1) != groupSizeCountMap.end() && groupSizeCountMap.find(1)->second > 0){
-				carsRequired += ((groupSizeCountMap.find(1)->second)/4);
-				carsRequired += ((groupSizeCountMap.find(1)->second)%4 > 0)?1:0;
-			}
-			break;
-		case 2:
-			if(groupSizeCountMap.find(2) != groupSizeCountMap.end()){
-				if((groupSizeCountMap.find(2)->second)%2 == 1){
-					if(groupSizeCountMap.find(1) != groupSizeCountMap.end() && groupSizeCountMap.find(1)->second > 0){
-						if(groupSizeCountMap.find(1)->second >= 2){
-							groupSizeCountMap[1] -= 2;
-						}else{
-							groupSizeCountMap[1] -= 1;
-						}
-						groupSizeCountMap[2] -= 1;
-					}
-					carsRequired += 1;
-				}
-				carsRequired += (groupSizeCountMap.find(2)->second)/2;
-			}
-			break;
-		case 3:
-			if(groupSizeCountMap.find(3) != groupSizeCountMap.end()){
-				if(groupSizeCountMap.find(1) != groupSizeCountMap.end()){
-					if(groupSizeCountMap.find(1)->second > groupSizeCountMap.find(3)->second){
-						groupSizeCountMap[1] -= groupSizeCountMap.find(3)->second;
-						if(groupSizeCountMap[1] == 0){
-							groupSizeCountMap.erase(1);
-						}
-					}else{
-						groupSizeCountMap.erase(1);
-					}
-				}
-				carsRequired += groupSizeCountMap.find(3)->second;
-				groupSizeCountMap.erase(3);
-			}
-			break;
-		case 4:
-			if(groupSizeCountMap.find(4) != groupSizeCountMap.end()){
-				carsRequired += groupSizeCountMap.find(4)->second;
-				groupSizeCountMap.erase(4);
-			}
-			break;
-		}
-	}
-	printf("%d",carsRequired);
+void getTotalNoOfTaxis() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    map<unsigned int,unsigned int> groupSizeCountMap;
+    map<unsigned int,unsigned int>::iterator itToGroupSizeCountMap;
+    unsigned int groupSize,carsRequired = 0;;
+    while(testCases--) {
+        scanf("%u",&groupSize);
+        if((itToGroupSizeCountMap = groupSizeCountMap.find(groupSize)) != groupSizeCountMap.end()) {
+            groupSizeCountMap[groupSize] += 1;
+        } else {
+            groupSizeCountMap[groupSize] = 1;
+        }
+    }
+    for(unsigned int counter = 4; counter > 0; counter--) {
+        switch (counter) {
+        case 1:
+            if(groupSizeCountMap.find(1) != groupSizeCountMap.end() && groupSizeCountMap.find(1)->second > 0) {
+                carsRequired += ((groupSizeCountMap.find(1)->second)/4);
+                carsRequired += ((groupSizeCountMap.find(1)->second)%4 > 0)?1:0;
+            }
+            break;
+        case 2:
+            if(groupSizeCountMap.find(2) != groupSizeCountMap.end()) {
+                if((groupSizeCountMap.find(2)->second)%2 == 1) {
+                    if(groupSizeCountMap.find(1) != groupSizeCountMap.end() && groupSizeCountMap.find(1)->second > 0) {
+                        if(groupSizeCountMap.find(1)->second >= 2) {
+                            groupSizeCountMap[1] -= 2;
+                        } else {
+                            groupSizeCountMap[1] -= 1;
+                        }
+                        groupSizeCountMap[2] -= 1;
+                    }
+                    carsRequired += 1;
+                }
+                carsRequired += (groupSizeCountMap.find(2)->second)/2;
+            }
+            break;
+        case 3:
+            if(groupSizeCountMap.find(3) != groupSizeCountMap.end()) {
+                if(groupSizeCountMap.find(1) != groupSizeCountMap.end()) {
+                    if(groupSizeCountMap.find(1)->second > groupSizeCountMap.find(3)->second) {
+                        groupSizeCountMap[1] -= groupSizeCountMap.find(3)->second;
+                        if(groupSizeCountMap[1] == 0) {
+                            groupSizeCountMap.erase(1);
+                        }
+                    } else {
+                        groupSizeCountMap.erase(1);
+                    }
+                }
+                carsRequired += groupSizeCountMap.find(3)->second;
+                groupSizeCountMap.erase(3);
+            }
+            break;
+        case 4:
+            if(groupSizeCountMap.find(4) != groupSizeCountMap.end()) {
+                carsRequired += groupSizeCountMap.find(4)->second;
+                groupSizeCountMap.erase(4);
+            }
+            break;
+        }
+    }
+    printf("%d",carsRequired);
 }
 
 #endif /* TAXI_H_ */

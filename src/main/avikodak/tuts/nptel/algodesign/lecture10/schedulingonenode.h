@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: schedulingonenode.h 
+ *  File Name   		: schedulingonenode.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture10\schedulingonenode.h
  *  Created on			: Dec 16, 2014 :: 6:06:21 PM
  *  Author				: AVINASH

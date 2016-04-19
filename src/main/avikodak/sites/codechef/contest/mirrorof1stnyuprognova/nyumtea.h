@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 #define NYUMTEA_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,stamp,total;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		stamp = 0;
-		total = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			stamp++;
-			if(userInput[counter] == 'M'){
-				total += 3;
-			}else if(userInput[counter] == 'L'){
-				total += 4;
-			}
-			if(stamp == 6){
-				counter++;
-				stamp = 0;
-			}
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases,stamp,total;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        stamp = 0;
+        total = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            stamp++;
+            if(userInput[counter] == 'M') {
+                total += 3;
+            } else if(userInput[counter] == 'L') {
+                total += 4;
+            }
+            if(stamp == 6) {
+                counter++;
+                stamp = 0;
+            }
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* NYUMTEA_H_ */

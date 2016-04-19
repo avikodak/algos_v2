@@ -73,37 +73,37 @@ using namespace __gnu_cxx;
 #define MODIFIEDKAPREKARNUMBERS_H_
 
 //Tested
-vector<long long int> generateKaprekarNumbers(){
-	long long int leftHalf,rightHalf,noOfDigits,result;
-	vector<long long int> kaprekarNumbers;
-	long long int tenPowers[] = {1,10,100,1000,10000,100000,1000000,10000000};
-	for(long long int counter = 1;counter < 100001;counter++){
-		noOfDigits = log10(counter)+1;
-		result = counter*counter;
-		rightHalf = result%tenPowers[noOfDigits];
-		leftHalf = result/tenPowers[noOfDigits];
-		if(leftHalf + rightHalf == counter){
-			kaprekarNumbers.push_back(counter);
-		}
-	}
-	return kaprekarNumbers;
+vector<long long int> generateKaprekarNumbers() {
+    long long int leftHalf,rightHalf,noOfDigits,result;
+    vector<long long int> kaprekarNumbers;
+    long long int tenPowers[] = {1,10,100,1000,10000,100000,1000000,10000000};
+    for(long long int counter = 1; counter < 100001; counter++) {
+        noOfDigits = log10(counter)+1;
+        result = counter*counter;
+        rightHalf = result%tenPowers[noOfDigits];
+        leftHalf = result/tenPowers[noOfDigits];
+        if(leftHalf + rightHalf == counter) {
+            kaprekarNumbers.push_back(counter);
+        }
+    }
+    return kaprekarNumbers;
 }
 
 //Tested
-void printResults(){
-	unsigned int kaprekarNumbers[] = {1,9,45,55,99,297,703,999,2223,2728,4950,5050,7272,7777,9999,17344,22222,77778,82656,95121,99999};
-	unsigned int startNumber,endNumbers;
-	scanf("%u %u",&startNumber,&endNumbers);
-	bool isPresent = false;
-	for(unsigned int counter = 0;counter < sizeof(kaprekarNumbers)/sizeof(unsigned int);counter++){
-		if(kaprekarNumbers[counter] >= startNumber && kaprekarNumbers[counter] <= endNumbers){
-			printf("%u ",kaprekarNumbers[counter]);
-			isPresent = true;
-		}
-	}
-	if(!isPresent){
-		printf("INVALID RANGE");
-	}
+void printResults() {
+    unsigned int kaprekarNumbers[] = {1,9,45,55,99,297,703,999,2223,2728,4950,5050,7272,7777,9999,17344,22222,77778,82656,95121,99999};
+    unsigned int startNumber,endNumbers;
+    scanf("%u %u",&startNumber,&endNumbers);
+    bool isPresent = false;
+    for(unsigned int counter = 0; counter < sizeof(kaprekarNumbers)/sizeof(unsigned int); counter++) {
+        if(kaprekarNumbers[counter] >= startNumber && kaprekarNumbers[counter] <= endNumbers) {
+            printf("%u ",kaprekarNumbers[counter]);
+            isPresent = true;
+        }
+    }
+    if(!isPresent) {
+        printf("INVALID RANGE");
+    }
 }
 
 #endif /* MODIFIEDKAPREKARNUMBERS_H_ */

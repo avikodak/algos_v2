@@ -70,33 +70,33 @@ using namespace __gnu_cxx;
 #ifndef DELETENODESILL_H_
 #define DELETENODESILL_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
-Node* Delete(Node *head, int position){
-	if(head == null){
-		return null;
-	}
+Node* Delete(Node *head, int position) {
+    if(head == null) {
+        return null;
+    }
     Node *ptrToDelete = head,*crawler;
-	if(position == 0){
-		head = head->next;
-		free(ptrToDelete);
-		return head;
-	}
-	int counter = 0;
-	crawler = head;
-	while(counter < position-1 && crawler != null){
-		crawler = crawler->next;
-		counter++;
-	}
-	if(crawler != null){
-		ptrToDelete = crawler->next;
-		crawler->next = crawler->next->next;
-		free(ptrToDelete);
-	}
-	return head;
+    if(position == 0) {
+        head = head->next;
+        free(ptrToDelete);
+        return head;
+    }
+    int counter = 0;
+    crawler = head;
+    while(counter < position-1 && crawler != null) {
+        crawler = crawler->next;
+        counter++;
+    }
+    if(crawler != null) {
+        ptrToDelete = crawler->next;
+        crawler->next = crawler->next->next;
+        free(ptrToDelete);
+    }
+    return head;
 }
 
 #endif /* DELETENODESILL_H_ */

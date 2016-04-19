@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define CSUB_H_
 
 //Tested
-void getSubstrings(string userInput){
-	long long int oneCount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == '1'){
-			oneCount++;
-		}
-	}
-	cout << (oneCount * (oneCount+1))/2 << endl;
+void getSubstrings(string userInput) {
+    long long int oneCount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == '1') {
+            oneCount++;
+        }
+    }
+    cout << (oneCount * (oneCount+1))/2 << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> size >> userInput;
-		getSubstrings(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> size >> userInput;
+        getSubstrings(userInput);
+    }
 }
 
 #endif /* CSUB_H_ */

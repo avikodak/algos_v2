@@ -74,44 +74,46 @@ using namespace __gnu_cxx;
 
 //Tested
 inline unsigned int scan() {
-	unsigned int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+    unsigned int t=0,neg=0;
+    char c;
+    c=gc();
+    while((c<'0' || c>'9')&& c!='-')
+        c=gc();
+    if(c=='-') {
+        neg=1;
+        c=gc();
+    }
+    while(c>='0' && c<='9') {
+        t=(t<<3)+(t<<1)+c-'0';
+        c=gc();
+    }
+    if(neg) t=-t;
+    return(t);
 }
 
 //Tested
-void printResults(){
-	ios_base::sync_with_stdio(0);
-	unsigned int testCases,sum;
-	testCases = scan();
-	char userInput[100001];
-	bool flags[26];
-	while(testCases--){
-		scanf("%s",userInput);
-		memset(flags,0,sizeof(flags));
-		sum = 0;
-		for(unsigned int counter = 0;userInput[counter]!='\0';counter++){
-			if(!flags[userInput[counter]-'a']){
-				flags[userInput[counter]-'a'] = true;
-				sum++;
-			}
-		}
-		if(sum%2 == 0){
-			printf("Terrorist\n");
-		}else{
-			printf("Counter Terrorist\n");
-		}
-	}
+void printResults() {
+    ios_base::sync_with_stdio(0);
+    unsigned int testCases,sum;
+    testCases = scan();
+    char userInput[100001];
+    bool flags[26];
+    while(testCases--) {
+        scanf("%s",userInput);
+        memset(flags,0,sizeof(flags));
+        sum = 0;
+        for(unsigned int counter = 0; userInput[counter]!='\0'; counter++) {
+            if(!flags[userInput[counter]-'a']) {
+                flags[userInput[counter]-'a'] = true;
+                sum++;
+            }
+        }
+        if(sum%2 == 0) {
+            printf("Terrorist\n");
+        } else {
+            printf("Counter Terrorist\n");
+        }
+    }
 }
 
 #endif /* CSTRIKE3_H_ */

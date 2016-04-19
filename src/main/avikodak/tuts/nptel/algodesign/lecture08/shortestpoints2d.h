@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: shortestpoints2d.h 
+ *  File Name   		: shortestpoints2d.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture08\shortestpoints2d.h
  *  Created on			: Dec 13, 2014 :: 1:18:23 PM
  *  Author				: AVINASH

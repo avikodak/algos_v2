@@ -76,39 +76,39 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	hash_map<long long int,unsigned int> frequencyMap;
-	hash_map<long long int,unsigned int>::iterator itToFrequencyMap;
-	bool isRepeatFound;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		frequencyMap.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-			if(frequencyMap.find(input) == frequencyMap.end()){
-				frequencyMap[input] = 1;
-			}else{
-				frequencyMap[input] += 1;
-			}
-		}
-		isRepeatFound = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(frequencyMap.find(userInput[counter])->second > 1){
-				printf("%lld\n",userInput[counter]);
-				isRepeatFound = true;
-				break;
-			}
-		}
-		if(!isRepeatFound){
-			printf("-1\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    hash_map<long long int,unsigned int> frequencyMap;
+    hash_map<long long int,unsigned int>::iterator itToFrequencyMap;
+    bool isRepeatFound;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        frequencyMap.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+            if(frequencyMap.find(input) == frequencyMap.end()) {
+                frequencyMap[input] = 1;
+            } else {
+                frequencyMap[input] += 1;
+            }
+        }
+        isRepeatFound = false;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(frequencyMap.find(userInput[counter])->second > 1) {
+                printf("%lld\n",userInput[counter]);
+                isRepeatFound = true;
+                break;
+            }
+        }
+        if(!isRepeatFound) {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIRSTREPEATINGELEMENT_H_ */

@@ -70,42 +70,42 @@ using namespace __gnu_cxx;
 #ifndef INSERTATNTHPLACE_H_
 #define INSERTATNTHPLACE_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-Node *createNode(int data){
-	Node *nHead = (Node *)malloc(sizeof(Node));
-	nHead->data = data;
-	nHead->next = null;
-	return nHead;
+Node *createNode(int data) {
+    Node *nHead = (Node *)malloc(sizeof(Node));
+    nHead->data = data;
+    nHead->next = null;
+    return nHead;
 }
 
 //Tested
-Node* InsertNth(Node *head, int data, int position){
-	Node *newNode = createNode(data);
-	if(position == 0){
-		if(head == null){
-			return newNode;
-		}else{
-			newNode->next = head;
-			return newNode;
-		}
-	}else{
-		int counter = 0;
-		Node *crawler = head;
-		while(counter+1 != position && crawler != null){
-			crawler = crawler->next;
-			counter++;
-		}
-		if(crawler != null){
-			newNode->next = crawler->next;
-			crawler->next = newNode;
-		}
-	}
-	return head;
+Node* InsertNth(Node *head, int data, int position) {
+    Node *newNode = createNode(data);
+    if(position == 0) {
+        if(head == null) {
+            return newNode;
+        } else {
+            newNode->next = head;
+            return newNode;
+        }
+    } else {
+        int counter = 0;
+        Node *crawler = head;
+        while(counter+1 != position && crawler != null) {
+            crawler = crawler->next;
+            counter++;
+        }
+        if(crawler != null) {
+            newNode->next = crawler->next;
+            crawler->next = newNode;
+        }
+    }
+    return head;
 }
 
 

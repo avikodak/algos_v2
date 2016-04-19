@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define ADDTWONUMBERS_H_
 
 //Tested
-void addTwoNumbers(){
-	unsigned int testCases,A,B;
-	cin >> testCases;
-	while(testCases--){
-		cin >> A >> B;
-		cout << A+B << endl;
-	}
+void addTwoNumbers() {
+    unsigned int testCases,A,B;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> A >> B;
+        cout << A+B << endl;
+    }
 }
 
 #endif /* ADDTWONUMBERS_H_ */

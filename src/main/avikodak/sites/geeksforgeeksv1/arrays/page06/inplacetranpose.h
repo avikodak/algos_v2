@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: inplacetranpose.h 
+ *  File Name   		: inplacetranpose.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\inplacetranpose.h
  *  Created on			: Jan 3, 2015 :: 10:09:36 AM
  *  Author				: AVINASH

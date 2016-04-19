@@ -72,34 +72,34 @@ using namespace __gnu_cxx;
 
 class EllysNewNickname {
 private:
-	bool isVowel(char ch){
-		switch (ch) {
-		case 'a':
-		case 'e':
-		case 'i':
-		case 'o':
-		case 'u':
-		case 'y':
-			return true;
-		}
-		return false;
-	}
+    bool isVowel(char ch) {
+        switch (ch) {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+        case 'y':
+            return true;
+        }
+        return false;
+    }
 public:
-	int getLength(string nickname){
-		int length = 0;
-		unsigned int counter = 0;
-		while(counter < nickname.size()){
-			length++;
-			if(isVowel(nickname[counter])){
-				while(counter < nickname.size() && isVowel(nickname[counter])){
-					counter++;
-				}
-			}else{
-				counter++;
-			}
-		}
-		return length;
-	}
+    int getLength(string nickname) {
+        int length = 0;
+        unsigned int counter = 0;
+        while(counter < nickname.size()) {
+            length++;
+            if(isVowel(nickname[counter])) {
+                while(counter < nickname.size() && isVowel(nickname[counter])) {
+                    counter++;
+                }
+            } else {
+                counter++;
+            }
+        }
+        return length;
+    }
 };
 
 #endif /* ELLYSNICKNAME_H_ */

@@ -70,25 +70,25 @@ using namespace __gnu_cxx;
 #ifndef LOWESTCOMMONANCESTOR_H_
 #define LOWESTCOMMONANCESTOR_H_
 
-struct node{
-   int data;
-   node * left;
-   node * right;
+struct node {
+    int data;
+    node * left;
+    node * right;
 };
 
-node *lca(node * root, int v1,int v2){
-	if(root == NULL){
-		return NULL;
-	}
-	if(root->data == v1 || root->data == v2){
-		return root;
-	}else if(root->data > v1 && root->data < v2){
-		return root;
-	}else if(root->data > v1 && root->data > v2){
-		return lca(root->left,v1,v2);
-	}else{
-		return lca(root->right,v1,v2);
-	}
+node *lca(node * root, int v1,int v2) {
+    if(root == NULL) {
+        return NULL;
+    }
+    if(root->data == v1 || root->data == v2) {
+        return root;
+    } else if(root->data > v1 && root->data < v2) {
+        return root;
+    } else if(root->data > v1 && root->data > v2) {
+        return lca(root->left,v1,v2);
+    } else {
+        return lca(root->right,v1,v2);
+    }
 }
 
 #endif /* LOWESTCOMMONANCESTOR_H_ */

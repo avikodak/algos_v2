@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define RRCOPY_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
-	map<unsigned int,bool> visitedNumbers;
-	while(testCases--){
-		scanf("%u",&size);
-		visitedNumbers.clear();
-		while(size--){
-			scanf("%u",&input);
-			if((visitedNumbers.find(input) == visitedNumbers.end())){
-				visitedNumbers.insert(pair<unsigned int,bool>(input,1));
-			}
-		}
-		cout << visitedNumbers.size() << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    scanf("%u",&testCases);
+    map<unsigned int,bool> visitedNumbers;
+    while(testCases--) {
+        scanf("%u",&size);
+        visitedNumbers.clear();
+        while(size--) {
+            scanf("%u",&input);
+            if((visitedNumbers.find(input) == visitedNumbers.end())) {
+                visitedNumbers.insert(pair<unsigned int,bool>(input,1));
+            }
+        }
+        cout << visitedNumbers.size() << endl;
+    }
 }
 
 #endif /* RRCOPY_H_ */

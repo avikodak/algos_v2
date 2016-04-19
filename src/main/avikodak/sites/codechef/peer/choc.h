@@ -72,12 +72,12 @@ using namespace __gnu_cxx;
 #ifndef CHOC_H_
 #define CHOC_H_
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	while(testCases--){
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    while(testCases--) {
 
-	}
+    }
 }
 
 #endif /* CHOC_H_ */

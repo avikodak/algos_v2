@@ -73,58 +73,58 @@ using namespace __gnu_cxx;
 #define PLGRM_H_
 
 //Tested
-bool isPalindrome(string userInput){
-	if(userInput.size() < 2){
-		return true;
-	}
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		if(userInput[frontCrawler] != userInput[rearCrawler]){
-			return false;
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	return true;
+bool isPalindrome(string userInput) {
+    if(userInput.size() < 2) {
+        return true;
+    }
+    unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+    while(frontCrawler < rearCrawler) {
+        if(userInput[frontCrawler] != userInput[rearCrawler]) {
+            return false;
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    return true;
 }
 
 //Tested
-bool isPangram(string userInput){
-	if(userInput.size() < 26){
-		return false;
-	}
-	bool flags[26] = {false};
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		flags[userInput[counter]-'a'] = true;
-	}
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(!flags[counter]){
-			return false;
-		}
-	}
-	return true;
+bool isPangram(string userInput) {
+    if(userInput.size() < 26) {
+        return false;
+    }
+    bool flags[26] = {false};
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        flags[userInput[counter]-'a'] = true;
+    }
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(!flags[counter]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	bool pangramFlag,palindromeFlag;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		palindromeFlag = isPalindrome(userInput);
-		pangramFlag = isPangram(userInput);
-		if(palindromeFlag && pangramFlag){
-			cout << "palingram" << endl;
-		}else if(palindromeFlag){
-			cout << "palindrome" << endl;
-		}else if(pangramFlag){
-			cout << "pangram" << endl;
-		}else{
-			cout << "none" << endl;
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    bool pangramFlag,palindromeFlag;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        palindromeFlag = isPalindrome(userInput);
+        pangramFlag = isPangram(userInput);
+        if(palindromeFlag && pangramFlag) {
+            cout << "palingram" << endl;
+        } else if(palindromeFlag) {
+            cout << "palindrome" << endl;
+        } else if(pangramFlag) {
+            cout << "pangram" << endl;
+        } else {
+            cout << "none" << endl;
+        }
+    }
 }
 
 #endif /* PLGRM_H_ */

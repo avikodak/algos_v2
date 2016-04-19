@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define LEVELORDERTRAVERSAL_H_
 
 //Tested
-void LevelOrder(node * root){
-	if(root == NULL){
-		return;
-	}
-	queue<node *> auxSpace;
-	auxSpace.push(root);
-	node *currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		printf("%d ",currentNode->data);
-		if(currentNode->left != NULL){
-			auxSpace.push(currentNode->left);
-		}
-		if(currentNode->right != NULL){
-			auxSpace.push(currentNode->right);
-		}
-	}
+void LevelOrder(node * root) {
+    if(root == NULL) {
+        return;
+    }
+    queue<node *> auxSpace;
+    auxSpace.push(root);
+    node *currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        printf("%d ",currentNode->data);
+        if(currentNode->left != NULL) {
+            auxSpace.push(currentNode->left);
+        }
+        if(currentNode->right != NULL) {
+            auxSpace.push(currentNode->right);
+        }
+    }
 }
 
 #endif /* LEVELORDERTRAVERSAL_H_ */

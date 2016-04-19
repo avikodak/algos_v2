@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 //Tested
 class ShoutterDiv2 {
 public:
-	int count(vector<int> entryTime,vector<int> leavingTime){
-		int pairCount = 0;
-		for(unsigned int outerCounter = 0;outerCounter < entryTime.size();outerCounter++){
-			for(unsigned int innerCounter = outerCounter;innerCounter < entryTime.size();innerCounter++){
-				if(entryTime[innerCounter] >= entryTime[outerCounter] && entryTime[innerCounter] <= leavingTime[outerCounter]){
-					pairCount++;
-				}
-			}
-		}
-		return pairCount;
-	}
+    int count(vector<int> entryTime,vector<int> leavingTime) {
+        int pairCount = 0;
+        for(unsigned int outerCounter = 0; outerCounter < entryTime.size(); outerCounter++) {
+            for(unsigned int innerCounter = outerCounter; innerCounter < entryTime.size(); innerCounter++) {
+                if(entryTime[innerCounter] >= entryTime[outerCounter] && entryTime[innerCounter] <= leavingTime[outerCounter]) {
+                    pairCount++;
+                }
+            }
+        }
+        return pairCount;
+    }
 };
 
 #endif /* SHOUTTERDIV2_H_ */

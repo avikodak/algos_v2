@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #ifndef COMMUTE_H_
 #define COMMUTE_H_
 
-void calculateTotalTime(){
-	unsigned int arrivalTime,timeToTravel,frequency,size,totalTime = 0,userAtTime = 0,time;
-	scanf("%u",&size);
-	while(size--){
-		cin >> arrivalTime >> timeToTravel >> frequency;
-		if(arrivalTime > userAtTime){
-			totalTime = (arrivalTime - userAtTime);
-		}else{
-			totalTime= (arrivalTime + userAtTime)%frequency;
-		}
-		totalTime += timeToTravel;
-		userAtTime = totalTime;
-	}
-	cout << totalTime << endl;
+void calculateTotalTime() {
+    unsigned int arrivalTime,timeToTravel,frequency,size,totalTime = 0,userAtTime = 0,time;
+    scanf("%u",&size);
+    while(size--) {
+        cin >> arrivalTime >> timeToTravel >> frequency;
+        if(arrivalTime > userAtTime) {
+            totalTime = (arrivalTime - userAtTime);
+        } else {
+            totalTime= (arrivalTime + userAtTime)%frequency;
+        }
+        totalTime += timeToTravel;
+        userAtTime = totalTime;
+    }
+    cout << totalTime << endl;
 }
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	while(testCases--){
-		calculateTotalTime();
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        calculateTotalTime();
+    }
 }
 
 #endif /* COMMUTE_H_ */

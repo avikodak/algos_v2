@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: eulerianpathundirectedgraph.h 
+ *  File Name   		: eulerianpathundirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\eulerianpathundirectedgraph.h
  *  Created on			: Dec 26, 2014 :: 7:38:49 PM
  *  Author				: AVINASH
@@ -70,30 +70,30 @@ using namespace __gnu_cxx;
 #ifndef EULERIANPATHUNDIRECTEDGRAPH_H_
 #define EULERIANPATHUNDIRECTEDGRAPH_H_
 
-bool doesGraphContainEulerianCycle(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	int oddDegreeCounter = 0;
-	for(unsigned int outerCounter = 0;outerCounter < adjacencyList.size();outerCounter++){
-		if(adjacencyList[outerCounter].size() % 2 == 1){
-			oddDegreeCounter++;
-		}
-	}
-	return oddDegreeCounter == 0;
+bool doesGraphContainEulerianCycle(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    int oddDegreeCounter = 0;
+    for(unsigned int outerCounter = 0; outerCounter < adjacencyList.size(); outerCounter++) {
+        if(adjacencyList[outerCounter].size() % 2 == 1) {
+            oddDegreeCounter++;
+        }
+    }
+    return oddDegreeCounter == 0;
 }
 
-bool doesGraphContainEulerianPath(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	int oddDegreeCounter = 0;
-	for(unsigned int outerCounter = 0;outerCounter < adjacencyList.size();outerCounter++){
-		if(adjacencyList[outerCounter].size() % 2 == 1){
-			oddDegreeCounter++;
-		}
-	}
-	return oddDegreeCounter == 0 || oddDegreeCounter == 2;
+bool doesGraphContainEulerianPath(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    int oddDegreeCounter = 0;
+    for(unsigned int outerCounter = 0; outerCounter < adjacencyList.size(); outerCounter++) {
+        if(adjacencyList[outerCounter].size() % 2 == 1) {
+            oddDegreeCounter++;
+        }
+    }
+    return oddDegreeCounter == 0 || oddDegreeCounter == 2;
 }
 
 #endif /* EULERIANPATHUNDIRECTEDGRAPH_H_ */

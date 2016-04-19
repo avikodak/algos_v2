@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 #define ABSNUM_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	int userInput;
-	while(testCases--){
-		scanf("%d",&userInput);
-		cout << abs(userInput) << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    int userInput;
+    while(testCases--) {
+        scanf("%d",&userInput);
+        cout << abs(userInput) << endl;
+    }
 }
 
 #endif /* ABSNUM_H_ */

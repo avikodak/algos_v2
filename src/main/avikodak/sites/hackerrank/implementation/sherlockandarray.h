@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sherlockandarray.h 
+ *  File Name   		: sherlockandarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\sherlockandarray.h
  *  Created on			: Feb 10, 2015 :: 6:45:22 PM
  *  Author				: AVINASH
@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define SHERLOCKANDARRAY_H_
 
 //Tested
-void doesEquilibriumElementExists(){
-	int testCases,size;
-	long int input,sumOfArray,leftSum;
-	scanf("%d",&testCases);
-	vector<int> userInput;
-	bool flag;
-	while(testCases--){
-		scanf("%d",&size);
-		sumOfArray = 0;
-		userInput.clear();
-		while(size--){
-			scanf("%ld",&input);
-			sumOfArray += input;
-			userInput.push_back(input);
-		}
-		leftSum = 0;
-		flag = false;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(leftSum == sumOfArray - leftSum - userInput[counter]){
-				flag = true;
-				break;
-			}
-			leftSum += userInput[counter];
-		}
-		printf("%s\n",flag?"YES":"NO");
-	}
+void doesEquilibriumElementExists() {
+    int testCases,size;
+    long int input,sumOfArray,leftSum;
+    scanf("%d",&testCases);
+    vector<int> userInput;
+    bool flag;
+    while(testCases--) {
+        scanf("%d",&size);
+        sumOfArray = 0;
+        userInput.clear();
+        while(size--) {
+            scanf("%ld",&input);
+            sumOfArray += input;
+            userInput.push_back(input);
+        }
+        leftSum = 0;
+        flag = false;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(leftSum == sumOfArray - leftSum - userInput[counter]) {
+                flag = true;
+                break;
+            }
+            leftSum += userInput[counter];
+        }
+        printf("%s\n",flag?"YES":"NO");
+    }
 }
 
 #endif /* SHERLOCKANDARRAY_H_ */

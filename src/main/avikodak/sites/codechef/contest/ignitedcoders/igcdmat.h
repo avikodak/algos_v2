@@ -74,63 +74,65 @@ using namespace __gnu_cxx;
 #define IGCDMAT_H_
 
 //Tested
-void scanuint(unsigned int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanuint(unsigned int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-unsigned int countTotalIdentityMatrix(unsigned int matrix[][100],unsigned int size,unsigned int row,unsigned int column){
-	unsigned int total = 0;
-	for(unsigned int counter = 2;row+counter-1 < size&& column+counter-1 < size;counter++){
-		for(unsigned int rowCounter = row;rowCounter < row+counter;rowCounter++){
-			for(unsigned int columnCounter = column;columnCounter < column+counter;columnCounter++){
-				if(rowCounter-row == columnCounter-column){
-					if(matrix[rowCounter][columnCounter] != 1){
-						return total;
-					}
-				}else if(matrix[rowCounter][columnCounter] != 0){
-					return total;
-				}
-			}
-		}
-		total++;
-	}
-	return total;
+unsigned int countTotalIdentityMatrix(unsigned int matrix[][100],unsigned int size,unsigned int row,unsigned int column) {
+    unsigned int total = 0;
+    for(unsigned int counter = 2; row+counter-1 < size&& column+counter-1 < size; counter++) {
+        for(unsigned int rowCounter = row; rowCounter < row+counter; rowCounter++) {
+            for(unsigned int columnCounter = column; columnCounter < column+counter; columnCounter++) {
+                if(rowCounter-row == columnCounter-column) {
+                    if(matrix[rowCounter][columnCounter] != 1) {
+                        return total;
+                    }
+                } else if(matrix[rowCounter][columnCounter] != 0) {
+                    return total;
+                }
+            }
+        }
+        total++;
+    }
+    return total;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	unsigned int matrix[100][100];
-	scanuint(testCases);
-	unsigned int totalOnes,totalZeros;
-	while(testCases--){
-		scanuint(size);
-		totalOnes = totalZeros = 0;
-		for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-				scanuint(matrix[rowCounter][columnCounter]);
-				if(matrix[rowCounter][columnCounter] == 1){
-					totalOnes++;
-				}else if(matrix[rowCounter][columnCounter] == 0){
-					totalZeros++;
-				}
-			}
-		}
-		if(totalZeros > 1){
-			for(unsigned int rowCounter = 0;rowCounter < size-1;rowCounter++){
-				for(unsigned int columnCounter = 0;columnCounter < size-1;columnCounter++){
-					if(matrix[rowCounter][columnCounter] == 1){
-						totalOnes += countTotalIdentityMatrix(matrix,size,rowCounter,columnCounter);
-					}
-				}
-			}
-		}
-		cout << totalOnes << endl;
-	}
+void printResults() {
+    unsigned int testCases,size;
+    unsigned int matrix[100][100];
+    scanuint(testCases);
+    unsigned int totalOnes,totalZeros;
+    while(testCases--) {
+        scanuint(size);
+        totalOnes = totalZeros = 0;
+        for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+                scanuint(matrix[rowCounter][columnCounter]);
+                if(matrix[rowCounter][columnCounter] == 1) {
+                    totalOnes++;
+                } else if(matrix[rowCounter][columnCounter] == 0) {
+                    totalZeros++;
+                }
+            }
+        }
+        if(totalZeros > 1) {
+            for(unsigned int rowCounter = 0; rowCounter < size-1; rowCounter++) {
+                for(unsigned int columnCounter = 0; columnCounter < size-1; columnCounter++) {
+                    if(matrix[rowCounter][columnCounter] == 1) {
+                        totalOnes += countTotalIdentityMatrix(matrix,size,rowCounter,columnCounter);
+                    }
+                }
+            }
+        }
+        cout << totalOnes << endl;
+    }
 }
 
 #endif /* IGCDMAT_H_ */

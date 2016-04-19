@@ -71,43 +71,43 @@ using namespace __gnu_cxx;
 #define EULER003_H_
 
 //Tested
-long long int max(long int firstInput,long long  int secondInput){
-	return firstInput > secondInput?firstInput:secondInput;
+long long int max(long int firstInput,long long  int secondInput) {
+    return firstInput > secondInput?firstInput:secondInput;
 }
 
 //Tested
-void printLargestPrimeFactor(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int userInput;
-	long long int squareRoot,largestDivisor;
-	bool flag;
-	while(testCases--){
-		cin  >> userInput;
-		squareRoot = sqrtl(userInput);
-		largestDivisor = 0;
-		flag = true;
-		while(flag){
-			flag = false;
-			while(!(userInput&1)){
-				largestDivisor = max(largestDivisor,2);
-				flag = true;
-				userInput /= 2;
-			}
-			for(long long int counter = 3;counter <= squareRoot;counter+=2){
-				if(userInput%counter == 0){
-					largestDivisor = max(counter,largestDivisor);
-					flag = true;
-					userInput /= counter;
-					break;
-				}
-			}
-			if(!flag){
-				largestDivisor = max(largestDivisor,userInput);
-			}
-		}
-		cout << largestDivisor << endl;
-	}
+void printLargestPrimeFactor() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int userInput;
+    long long int squareRoot,largestDivisor;
+    bool flag;
+    while(testCases--) {
+        cin  >> userInput;
+        squareRoot = sqrtl(userInput);
+        largestDivisor = 0;
+        flag = true;
+        while(flag) {
+            flag = false;
+            while(!(userInput&1)) {
+                largestDivisor = max(largestDivisor,2);
+                flag = true;
+                userInput /= 2;
+            }
+            for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+                if(userInput%counter == 0) {
+                    largestDivisor = max(counter,largestDivisor);
+                    flag = true;
+                    userInput /= counter;
+                    break;
+                }
+            }
+            if(!flag) {
+                largestDivisor = max(largestDivisor,userInput);
+            }
+        }
+        cout << largestDivisor << endl;
+    }
 }
 
 #endif /* EULER003_H_ */

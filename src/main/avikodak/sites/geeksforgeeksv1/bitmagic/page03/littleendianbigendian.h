@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: littleendianbigendian.h 
+ *  File Name   		: littleendianbigendian.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\littleendianbigendian.h
  *  Created on			: Jan 9, 2015 :: 10:28:04 AM
  *  Author				: AVINASH

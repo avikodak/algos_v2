@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 class FuelConsumption {
 public:
-	double maximalDistance(vector<int> velocities, vector<int> consumptions, int fuel){
-		int maxIndex;
-		double maxDistance = 0,currentMaxDistance;
-		for(unsigned int counter = 0;counter < velocities.size();counter++){
-			currentMaxDistance = (double)velocities[counter]/(double)consumptions[counter];
-			if(maxDistance < currentMaxDistance){
-				maxDistance = currentMaxDistance;
-				maxIndex = counter;
-			}
-		}
-		return ((double)fuel * (double)velocities[maxIndex])((double)consumptions[maxIndex]);
-	}
+    double maximalDistance(vector<int> velocities, vector<int> consumptions, int fuel) {
+        int maxIndex;
+        double maxDistance = 0,currentMaxDistance;
+        for(unsigned int counter = 0; counter < velocities.size(); counter++) {
+            currentMaxDistance = (double)velocities[counter]/(double)consumptions[counter];
+            if(maxDistance < currentMaxDistance) {
+                maxDistance = currentMaxDistance;
+                maxIndex = counter;
+            }
+        }
+        return ((double)fuel * (double)velocities[maxIndex])((double)consumptions[maxIndex]);
+    }
 };
 
 #endif /* FUELCONSUMPTION_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countdecodings.h 
+ *  File Name   		: countdecodings.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page02\countdecodings.h
  *  Created on			: Jan 21, 2015 :: 8:19:05 AM
  *  Author				: AVINASH
@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef COUNTDECODINGS_H_
 #define COUNTDECODINGS_H_
 
-int countDecodings(char userInput[],int index){
-	if(index < 0){
-		return 0;
-	}
-	int counter = 0;
-	if(userInput[index] != '0'){
-		counter += countDecodings(userInput,index-1);
-	}
-	if(userInput[index-2] < '2' || (userInput[index-2] == '2' && (userInput[index-1] >= '0' && user[index-1] < '7'))){
-		counter += countDecodings(userInput,index-2);
-	}
-	return counter;
+int countDecodings(char userInput[],int index) {
+    if(index < 0) {
+        return 0;
+    }
+    int counter = 0;
+    if(userInput[index] != '0') {
+        counter += countDecodings(userInput,index-1);
+    }
+    if(userInput[index-2] < '2' || (userInput[index-2] == '2' && (userInput[index-1] >= '0' && user[index-1] < '7'))) {
+        counter += countDecodings(userInput,index-2);
+    }
+    return counter;
 }
 
 #endif /* COUNTDECODINGS_H_ */

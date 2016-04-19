@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reverseingroupsofgivensize.h 
+ *  File Name   		: reverseingroupsofgivensize.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\reverseingroupsofgivensize.h
  *  Created on			: Oct 23, 2014 :: 5:24:20 PM
  *  Author				: AVINASH
@@ -72,10 +72,10 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void reverseSill(sillNode **head,sillNode *crawler,sillNode *endPoint){
-	if(crawler == endPoint){
+void reverseSill(sillNode **head,sillNode *crawler,sillNode *endPoint) {
+    if(crawler == endPoint) {
 
-	}
+    }
 
 }
 

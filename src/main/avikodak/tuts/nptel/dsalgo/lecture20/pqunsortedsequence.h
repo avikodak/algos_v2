@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pqunsortedsequence.h 
+ *  File Name   		: pqunsortedsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture20\pqunsortedsequence.h
  *  Created on			: Nov 26, 2014 :: 1:27:59 PM
  *  Author				: AVINASH

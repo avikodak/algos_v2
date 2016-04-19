@@ -70,28 +70,28 @@ using namespace __gnu_cxx;
 #ifndef STONES_H_
 #define STONES_H_
 
-void getJewelsCount(string jewel,string userInput){
-	map<char,bool> charFlag;
-	for(unsigned int counter = 0;counter < jewel.size();counter++){
-		charFlag[jewel[counter]] = true;
-	}
-	unsigned int jewelCount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(charFlag.find(userInput[counter]) != charFlag.end()){
-			jewelCount++;
-		}
-	}
-	cout << jewelCount << endl;
+void getJewelsCount(string jewel,string userInput) {
+    map<char,bool> charFlag;
+    for(unsigned int counter = 0; counter < jewel.size(); counter++) {
+        charFlag[jewel[counter]] = true;
+    }
+    unsigned int jewelCount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(charFlag.find(userInput[counter]) != charFlag.end()) {
+            jewelCount++;
+        }
+    }
+    cout << jewelCount << endl;
 }
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string jewel,userInput;
-	while(testCases--){
-		cin >> jewel >> userInput;
-		getJewelsCount(jewel,userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string jewel,userInput;
+    while(testCases--) {
+        cin >> jewel >> userInput;
+        getJewelsCount(jewel,userInput);
+    }
 }
 
 #endif /* STONES_H_ */

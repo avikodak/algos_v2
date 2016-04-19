@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: stringrotationofeachother.h 
+ *  File Name   		: stringrotationofeachother.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\stringrotationofeachother.h
  *  Created on			: Dec 3, 2014 :: 11:23:22 PM
  *  Author				: AVINASH
@@ -71,7 +71,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool areStringRotationToEachOther(char *firstUserInput,char *secondUserInput){
+bool areStringRotationToEachOther(char *firstUserInput,char *secondUserInput) {
 
 }
 

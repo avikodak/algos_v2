@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define CHOOSETEAMS_H_
 
 //Tested
-void chooseTeams(){
-	unsigned int totalStudents,minGames,input,studentsAllowed = 0;
-	scanf("%u %u",&totalStudents,&minGames);
-	for(unsigned int counter = 0;counter < totalStudents;counter++){
-		scanf("%u",&input);
-		if(5-minGames >= input){
-			studentsAllowed++;
-		}
-	}
-	printf("%u",(studentsAllowed/3));
+void chooseTeams() {
+    unsigned int totalStudents,minGames,input,studentsAllowed = 0;
+    scanf("%u %u",&totalStudents,&minGames);
+    for(unsigned int counter = 0; counter < totalStudents; counter++) {
+        scanf("%u",&input);
+        if(5-minGames >= input) {
+            studentsAllowed++;
+        }
+    }
+    printf("%u",(studentsAllowed/3));
 }
 
 

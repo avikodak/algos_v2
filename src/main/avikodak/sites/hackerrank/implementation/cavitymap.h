@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cavitymap.h 
+ *  File Name   		: cavitymap.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\cavitymap.h
  *  Created on			: Feb 11, 2015 :: 10:36:48 AM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define CAVITYMAP_H_
 
 //Tested
-void printCavities(){
-	string line;
-	getline(cin,line);
-	stringstream convert(line);
-	int size;
-	convert >> size;
-	vector<vector<int> > userInput(size),auxSpace(size);
-	for(long int counter = 0;counter < size;counter++){
-		userInput[counter].assign(size,0);
-		auxSpace[counter].assign(size,0);
-	}
-	int rowCounter = 0;
-	while(getline(cin, line) && size--){
-		for(unsigned int columnCounter = 0;columnCounter < line.size();columnCounter++){
-			userInput[rowCounter][columnCounter] = line[columnCounter]-'0';
-			auxSpace[rowCounter][columnCounter] = userInput[rowCounter][columnCounter];
-		}
-		if(size == 0){
-			break;
-		}
-		rowCounter++;
-	}
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size()-1;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < userInput.size()-1;innerCrawler++){
-			if(userInput[outerCrawler][innerCrawler] > userInput[outerCrawler-1][innerCrawler] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler+1][innerCrawler] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler][innerCrawler-1] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler][innerCrawler+1]){
-				auxSpace[outerCrawler][innerCrawler] = INT_MAX;
-			}
-		}
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < auxSpace.size();outerCrawler++){
-		for(unsigned int innerCrawler = 0;innerCrawler < auxSpace.size();innerCrawler++){
-			if(auxSpace[outerCrawler][innerCrawler] == INT_MAX){
-				printf("X");
-			}else{
-				printf("%d",auxSpace[outerCrawler][innerCrawler]);
-			}
-		}
-		printf("\n");
-	}
+void printCavities() {
+    string line;
+    getline(cin,line);
+    stringstream convert(line);
+    int size;
+    convert >> size;
+    vector<vector<int> > userInput(size),auxSpace(size);
+    for(long int counter = 0; counter < size; counter++) {
+        userInput[counter].assign(size,0);
+        auxSpace[counter].assign(size,0);
+    }
+    int rowCounter = 0;
+    while(getline(cin, line) && size--) {
+        for(unsigned int columnCounter = 0; columnCounter < line.size(); columnCounter++) {
+            userInput[rowCounter][columnCounter] = line[columnCounter]-'0';
+            auxSpace[rowCounter][columnCounter] = userInput[rowCounter][columnCounter];
+        }
+        if(size == 0) {
+            break;
+        }
+        rowCounter++;
+    }
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size()-1; outerCrawler++) {
+        for(unsigned int innerCrawler = 1; innerCrawler < userInput.size()-1; innerCrawler++) {
+            if(userInput[outerCrawler][innerCrawler] > userInput[outerCrawler-1][innerCrawler] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler+1][innerCrawler] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler][innerCrawler-1] && userInput[outerCrawler][innerCrawler] > userInput[outerCrawler][innerCrawler+1]) {
+                auxSpace[outerCrawler][innerCrawler] = INT_MAX;
+            }
+        }
+    }
+    for(unsigned int outerCrawler = 0; outerCrawler < auxSpace.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = 0; innerCrawler < auxSpace.size(); innerCrawler++) {
+            if(auxSpace[outerCrawler][innerCrawler] == INT_MAX) {
+                printf("X");
+            } else {
+                printf("%d",auxSpace[outerCrawler][innerCrawler]);
+            }
+        }
+        printf("\n");
+    }
 }
 
 #endif /* CAVITYMAP_H_ */

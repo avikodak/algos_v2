@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tlg.h 
+ *  File Name   		: tlg.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\tlg.h
  *  Created on			: Feb 3, 2015 :: 6:55:31 PM
  *  Author				: AVINASH
@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define TLG_H_
 
 //Tested
-void printWinner(){
-	int noOfRounds;
-	scanf("%d",&noOfRounds);
-	int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
-	while(noOfRounds--){
-		scanf("%d %d",&firstPersonScore,&secondPersonScore);
-		firstLead += (firstPersonScore - secondPersonScore);
-		secondLead += (secondPersonScore - firstPersonScore);
-		if(firstLead > maxLead){
-			maxLead = firstLead;
-			maxLeadPerson = 1;
-		}else if(secondLead > maxLead){
-			maxLead = secondLead;
-			maxLeadPerson = 2;
-		}
-	}
-	printf("%d %d\n",maxLeadPerson,maxLead);
+void printWinner() {
+    int noOfRounds;
+    scanf("%d",&noOfRounds);
+    int firstPersonScore,secondPersonScore,maxLead = INT_MIN,maxLeadPerson,firstLead = 0,secondLead = 0;
+    while(noOfRounds--) {
+        scanf("%d %d",&firstPersonScore,&secondPersonScore);
+        firstLead += (firstPersonScore - secondPersonScore);
+        secondLead += (secondPersonScore - firstPersonScore);
+        if(firstLead > maxLead) {
+            maxLead = firstLead;
+            maxLeadPerson = 1;
+        } else if(secondLead > maxLead) {
+            maxLead = secondLead;
+            maxLeadPerson = 2;
+        }
+    }
+    printf("%d %d\n",maxLeadPerson,maxLead);
 }
 
 #endif /* TLG_H_ */

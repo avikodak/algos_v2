@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: whitecells.h 
+ *  File Name   		: whitecells.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\whitecells.h
  *  Created on			: Mar 25, 2015 :: 11:02:56 PM
  *  Author				: avikodak
@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define WHITECELLS_H_
 
 //Tested
-class WhiteCells{
+class WhiteCells {
 public:
-	int countOccupied(vector<string> board){
-		bool flag = true;
-		int occupiedCells = 0;
-		for(unsigned int outerCounter = 0;outerCounter < board.size();outerCounter++){
-			if(flag){
-				for(unsigned int innerCounter = 0;innerCounter < board[0].size();innerCounter += 2){
-					if(board[outerCounter][innerCounter] == 'F'){
-						occupiedCells++;
-					}
-				}
-			}else{
-				for(unsigned int innerCounter = 1;innerCounter < board[0].size();innerCounter += 2){
-					if(board[outerCounter][innerCounter] == 'F'){
-						occupiedCells++;
-					}
-				}
-			}
-			flag = !flag;
-		}
-		return occupiedCells;
-	}
+    int countOccupied(vector<string> board) {
+        bool flag = true;
+        int occupiedCells = 0;
+        for(unsigned int outerCounter = 0; outerCounter < board.size(); outerCounter++) {
+            if(flag) {
+                for(unsigned int innerCounter = 0; innerCounter < board[0].size(); innerCounter += 2) {
+                    if(board[outerCounter][innerCounter] == 'F') {
+                        occupiedCells++;
+                    }
+                }
+            } else {
+                for(unsigned int innerCounter = 1; innerCounter < board[0].size(); innerCounter += 2) {
+                    if(board[outerCounter][innerCounter] == 'F') {
+                        occupiedCells++;
+                    }
+                }
+            }
+            flag = !flag;
+        }
+        return occupiedCells;
+    }
 };
 
 #endif /* WHITECELLS_H_ */

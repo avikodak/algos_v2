@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maximumsizesubmatrix.h 
+ *  File Name   		: maximumsizesubmatrix.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maximumsizesubmatrix.h
  *  Created on			: Dec 30, 2014 :: 6:07:02 PM
  *  Author				: AVINASH
@@ -74,30 +74,30 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maximumSizeSubMatrixAllOnes(vector<vector<int> > userInput){
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return 0;
-	}
-	vector<vector<int> > auxSpace(userInput.size());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace[counter].assign(userInput[0].size(),0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		auxSpace[rowCounter][0] = userInput[rowCounter][0];
-	}
-	for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-		auxSpace[0][columnCounter] = userInput[0][columnCounter];
-	}
-	int maxSize = INT_MIN;
-	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == 1){
-				auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter-1],auxSpace[rowCounter-1][columnCounter]));
-				maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
-			}
-		}
-	}
-	return maxSize;
+int maximumSizeSubMatrixAllOnes(vector<vector<int> > userInput) {
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return 0;
+    }
+    vector<vector<int> > auxSpace(userInput.size());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        auxSpace[counter].assign(userInput[0].size(),0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        auxSpace[rowCounter][0] = userInput[rowCounter][0];
+    }
+    for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+        auxSpace[0][columnCounter] = userInput[0][columnCounter];
+    }
+    int maxSize = INT_MIN;
+    for(unsigned int rowCounter = 1; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter < userInput[0].size(); columnCounter++) {
+            if(userInput[rowCounter][columnCounter] == 1) {
+                auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter-1],auxSpace[rowCounter-1][columnCounter]));
+                maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
+            }
+        }
+    }
+    return maxSize;
 }
 
 /****************************************************************************************************************************************************/

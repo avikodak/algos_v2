@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: stringtask.h 
+ *  File Name   		: stringtask.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\stringtask.h
  *  Created on			: Feb 2, 2015 :: 8:30:00 AM
  *  Author				: AVINASH
@@ -74,29 +74,29 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void stringTask(char userInput[]){
-	while(userInput != NULL && userInput[0] != '\0'){
-		switch(userInput[0]){
-		case 'a':
-		case 'A':
-		case 'e':
-		case 'E':
-		case 'i':
-		case 'I':
-		case 'o':
-		case 'O':
-		case 'u':
-		case 'U':
-		case 'y':
-		case 'Y':
-			userInput++;
-			break;
-		default:
-			printf(".%c",userInput[0] >= 'A'&&userInput[0] <= 'Z'?userInput[0] - 'A' + 'a':userInput[0]);
-			userInput++;
-			break;
-		}
-	}
+void stringTask(char userInput[]) {
+    while(userInput != NULL && userInput[0] != '\0') {
+        switch(userInput[0]) {
+        case 'a':
+        case 'A':
+        case 'e':
+        case 'E':
+        case 'i':
+        case 'I':
+        case 'o':
+        case 'O':
+        case 'u':
+        case 'U':
+        case 'y':
+        case 'Y':
+            userInput++;
+            break;
+        default:
+            printf(".%c",userInput[0] >= 'A'&&userInput[0] <= 'Z'?userInput[0] - 'A' + 'a':userInput[0]);
+            userInput++;
+            break;
+        }
+    }
 }
 
 #endif /* STRINGTASK_H_ */

@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 #define IGCDMNKY_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	int H,M,N,effectiveSteps,position;
-	double total;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d %d %d",&H,&M,&N);
-		effectiveSteps = abs(M-N);
-		position = 0;
-		total = 0;
-		while(position+effectiveSteps <= H){
-			if(position + M >= H){
-				break;
-			}
-			total++;
-			position += effectiveSteps;
-		}
-		total += (double)(H-position)/(double)M;
-		cout.precision(2);
-		cout << fixed << total << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    int H,M,N,effectiveSteps,position;
+    double total;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d %d %d",&H,&M,&N);
+        effectiveSteps = abs(M-N);
+        position = 0;
+        total = 0;
+        while(position+effectiveSteps <= H) {
+            if(position + M >= H) {
+                break;
+            }
+            total++;
+            position += effectiveSteps;
+        }
+        total += (double)(H-position)/(double)M;
+        cout.precision(2);
+        cout << fixed << total << endl;
+    }
 }
 
 #endif /* IGCDMNKY_H_ */

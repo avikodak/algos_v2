@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: initialbets.h 
+ *  File Name   		: initialbets.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\initialbets.h
  *  Created on			: Mar 4, 2015 :: 10:18:10 PM
  *  Author				: avikodak
@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define INITIALBETS_H_
 
 //Tested
-void getInitialBets(){
-	int input,sum = 0,counter = 5;
-	while(counter--){
-		scanf("%d",&input);
-		sum += input;
-	}
-	printf("%d",sum%5 == 0?(sum==0?-1:sum/5):-1);
+void getInitialBets() {
+    int input,sum = 0,counter = 5;
+    while(counter--) {
+        scanf("%d",&input);
+        sum += input;
+    }
+    printf("%d",sum%5 == 0?(sum==0?-1:sum/5):-1);
 }
 
 #endif /* INITIALBETS_H_ */

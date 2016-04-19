@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: swapnumbers.h 
+ *  File Name   		: swapnumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapnumbers.h
  *  Created on			: Jan 9, 2015 :: 1:45:02 PM
  *  Author				: AVINASH
@@ -70,10 +70,10 @@ using namespace __gnu_cxx;
 #ifndef SWAPNUMBERS_H_
 #define SWAPNUMBERS_H_
 
-int swapTwoNumbers(int &firstNumber,int &secondNumber){
-	firstNumber = firstNumber ^ secondNumber;
-	firstNumber = firstNumber ^ secondNumber;
-	secondNumber = secondNumber ^ firstNumber;
+int swapTwoNumbers(int &firstNumber,int &secondNumber) {
+    firstNumber = firstNumber ^ secondNumber;
+    firstNumber = firstNumber ^ secondNumber;
+    secondNumber = secondNumber ^ firstNumber;
 }
 
 #endif /* SWAPNUMBERS_H_ */

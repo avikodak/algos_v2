@@ -72,27 +72,27 @@ using namespace __gnu_cxx;
 #ifndef QBIT06_H_
 #define QBIT06_H_
 
-void printResults(){
-	unsigned int testCases;
-	long long int userInput[3],total;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&userInput[0],&userInput[1],&userInput[2]);
-		sort(userInput,userInput+3);
-		userInput[1] -= userInput[0];
-		userInput[2] -= userInput[0];
-		total = userInput[0];
-		if(userInput[2]/2 > userInput[1]){
-			total += userInput[1];
-		}else{
-			total += userInput[2]/2;
-			userInput[1] -= userInput[2]/2;
-			if(userInput[2]%2 == 1 && userInput[1] > 1){
-				total += 1;
-			}
-		}
-		printf("%lld\n",total);
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput[3],total;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld %lld",&userInput[0],&userInput[1],&userInput[2]);
+        sort(userInput,userInput+3);
+        userInput[1] -= userInput[0];
+        userInput[2] -= userInput[0];
+        total = userInput[0];
+        if(userInput[2]/2 > userInput[1]) {
+            total += userInput[1];
+        } else {
+            total += userInput[2]/2;
+            userInput[1] -= userInput[2]/2;
+            if(userInput[2]%2 == 1 && userInput[1] > 1) {
+                total += 1;
+            }
+        }
+        printf("%lld\n",total);
+    }
 }
 
 #endif /* QBIT06_H_ */

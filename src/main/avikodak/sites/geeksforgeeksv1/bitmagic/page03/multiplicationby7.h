@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: multiplicationby7.h 
+ *  File Name   		: multiplicationby7.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\multiplicationby7.h
  *  Created on			: Jan 8, 2015 :: 7:13:10 PM
  *  Author				: AVINASH
@@ -71,8 +71,8 @@ using namespace __gnu_cxx;
 #define MULTIPLICATIONBY7_H_
 
 //Tested
-int multiplicationBy7(int userInput){
-	return (userInput << 3) - userInput;
+int multiplicationBy7(int userInput) {
+    return (userInput << 3) - userInput;
 }
 
 

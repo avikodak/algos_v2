@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gbfs.h 
+ *  File Name   		: gbfs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\gbfs.h
  *  Created on			: Dec 15, 2014 :: 6:08:11 PM
  *  Author				: AVINASH
@@ -71,48 +71,48 @@ using namespace __gnu_cxx;
 #define GBFS_H_
 
 //Tested
-vector<int> gGetBfsLevel(vector<vector<int> > adjacencyList,int sourceVertex){
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	if(adjacencyList.size() == 0){
-		return bfsLevels;
-	}
-	queue<int> auxSpace;
-	int currentIndex;
-	auxSpace.push(sourceVertex);
-	bfsLevels[sourceVertex] = 0;
-	while(!auxSpace.empty()){
-		currentIndex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
-			if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN){
-				bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
-				auxSpace.push(adjacencyList[currentIndex][counter]);
-			}
-		}
-	}
-	return bfsLevels;
+vector<int> gGetBfsLevel(vector<vector<int> > adjacencyList,int sourceVertex) {
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    if(adjacencyList.size() == 0) {
+        return bfsLevels;
+    }
+    queue<int> auxSpace;
+    int currentIndex;
+    auxSpace.push(sourceVertex);
+    bfsLevels[sourceVertex] = 0;
+    while(!auxSpace.empty()) {
+        currentIndex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentIndex].size(); counter++) {
+            if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN) {
+                bfsLevels[adjacencyList[currentIndex][counter]] = bfsLevels[currentIndex] + 1;
+                auxSpace.push(adjacencyList[currentIndex][counter]);
+            }
+        }
+    }
+    return bfsLevels;
 }
 
-vector<int> gGetBfsLevelAdjacencyMatrix(vector<vector<bool> > adjacencyMatrix,int sourceVertex){
-	vector<int> bfsLevels(adjacencyMatrix.size(),INT_MIN);
-	if(adjacencyMatrix.size() == 0){
-		return bfsLevels;
-	}
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentVertex,currentVertexLevel;
-	bfsLevels[0] = 0;
-	while(!auxSpace.empty()){
-		currentVertex = auxSpace.front();
-		auxSpace.pop();
-		currentVertexLevel = bfsLevels[currentVertex];
-		for(unsigned int counter = 0;counter < adjacencyMatrix[currentVertex].size();counter++){
-			if(adjacencyMatrix[currentVertex][counter] == INT_MIN){
-				bfsLevels[adjacencyMatrix[currentVertex][counter]] = currentVertexLevel+1;
-			}
-		}
-	}
-	return bfsLevels;
+vector<int> gGetBfsLevelAdjacencyMatrix(vector<vector<bool> > adjacencyMatrix,int sourceVertex) {
+    vector<int> bfsLevels(adjacencyMatrix.size(),INT_MIN);
+    if(adjacencyMatrix.size() == 0) {
+        return bfsLevels;
+    }
+    queue<int> auxSpace;
+    auxSpace.push(sourceVertex);
+    int currentVertex,currentVertexLevel;
+    bfsLevels[0] = 0;
+    while(!auxSpace.empty()) {
+        currentVertex = auxSpace.front();
+        auxSpace.pop();
+        currentVertexLevel = bfsLevels[currentVertex];
+        for(unsigned int counter = 0; counter < adjacencyMatrix[currentVertex].size(); counter++) {
+            if(adjacencyMatrix[currentVertex][counter] == INT_MIN) {
+                bfsLevels[adjacencyMatrix[currentVertex][counter]] = currentVertexLevel+1;
+            }
+        }
+    }
+    return bfsLevels;
 }
 
 #endif /* GBFS_H_ */

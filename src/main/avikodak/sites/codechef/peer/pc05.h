@@ -72,30 +72,30 @@ using namespace __gnu_cxx;
 #define PC05_H_
 
 //Tested
-unsigned int sumOfDigits(unsigned int userInput){
-	unsigned int sum = 0;
-	while(userInput){
-		sum += userInput%10;
-		userInput /= 10;
-	}
-	return sum;
+unsigned int sumOfDigits(unsigned int userInput) {
+    unsigned int sum = 0;
+    while(userInput) {
+        sum += userInput%10;
+        userInput /= 10;
+    }
+    return sum;
 }
 
 //Tested
-void printResults(){
-	int primeNumbers[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
-	unsigned int testCases,lValue,hValue,total = 0;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&lValue,&hValue);
-		total = 0;
-		for(unsigned int counter = lValue;counter <= hValue;counter++){
-			if(binary_search(primeNumbers,primeNumbers+11,sumOfDigits(counter))){
-				total++;
-			}
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    int primeNumbers[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+    unsigned int testCases,lValue,hValue,total = 0;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&lValue,&hValue);
+        total = 0;
+        for(unsigned int counter = lValue; counter <= hValue; counter++) {
+            if(binary_search(primeNumbers,primeNumbers+11,sumOfDigits(counter))) {
+                total++;
+            }
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* PC05_H_ */

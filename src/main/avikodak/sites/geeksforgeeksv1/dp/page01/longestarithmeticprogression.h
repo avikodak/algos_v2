@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestarithmeticprogression.h 
+ *  File Name   		: longestarithmeticprogression.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\longestarithmeticprogression.h
  *  Created on			: Jan 12, 2015 :: 8:01:30 PM
  *  Author				: AVINASH
@@ -70,10 +70,10 @@ using namespace __gnu_cxx;
 #ifndef LONGESTARITHMETICPROGRESSION_H_
 #define LONGESTARITHMETICPROGRESSION_H_
 
-int longestArithematicProgressionON3(vector<int> userInput){
-	if(userInput.size() < 3){
-		return userInput.size();
-	}
+int longestArithematicProgressionON3(vector<int> userInput) {
+    if(userInput.size() < 3) {
+        return userInput.size();
+    }
 }
 
 

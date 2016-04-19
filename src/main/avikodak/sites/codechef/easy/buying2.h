@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define BUYING2_H_
 
 //Tested
-void printNumberOfSweets(){
-	unsigned int noteCount,cost,input,total =0;
-	cin >> noteCount >> cost;
-	unsigned int firstMin = UINT_MAX;
-	while(noteCount--){
-		cin >> input;
-		if(firstMin > input){
-			firstMin = input;
-		}
-		total += input;
-	}
-	if(total/cost == (total - firstMin)/cost){
-		cout << "-1" << endl;
-	}else{
-		cout << total/cost << endl;
-	}
+void printNumberOfSweets() {
+    unsigned int noteCount,cost,input,total =0;
+    cin >> noteCount >> cost;
+    unsigned int firstMin = UINT_MAX;
+    while(noteCount--) {
+        cin >> input;
+        if(firstMin > input) {
+            firstMin = input;
+        }
+        total += input;
+    }
+    if(total/cost == (total - firstMin)/cost) {
+        cout << "-1" << endl;
+    } else {
+        cout << total/cost << endl;
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	cin >> testCases;
-	while(testCases--){
-		printNumberOfSweets();
-	}
+void printResults() {
+    unsigned int testCases;
+    cin >> testCases;
+    while(testCases--) {
+        printNumberOfSweets();
+    }
 }
 
 #endif /* BUYING2_H_ */

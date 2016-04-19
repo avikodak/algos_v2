@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: searchinalmostsortedarray.h 
+ *  File Name   		: searchinalmostsortedarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\searchinalmostsortedarray.h
  *  Created on			: Jan 6, 2015 :: 10:20:47 AM
  *  Author				: AVINASH
@@ -74,44 +74,44 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 //Tested
-bool searchInAlmostSortedArrayONLOGN(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return false;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex] == key;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return true;
-	}
-	if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] == key){
-		return true;
-	}
-	if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key){
-		return true;
-	}
-	if(userInput[middleIndex] > key){
-		return searchInAlmostSortedArrayONLOGN(userInput,key,startIndex,middleIndex-2);
-	}else{
-		return searchInAlmostSortedArrayONLOGN(userInput,key,middleIndex+2,endIndex);
-	}
+bool searchInAlmostSortedArrayONLOGN(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return false;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex] == key;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return true;
+    }
+    if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] == key) {
+        return true;
+    }
+    if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key) {
+        return true;
+    }
+    if(userInput[middleIndex] > key) {
+        return searchInAlmostSortedArrayONLOGN(userInput,key,startIndex,middleIndex-2);
+    } else {
+        return searchInAlmostSortedArrayONLOGN(userInput,key,middleIndex+2,endIndex);
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool searchInAlmostSortedArray(vector<int> userInput,int key){
-	if(userInput.size() == 0){
-		return false;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == key){
-			return true;
-		}
-	}
-	return false;
+bool searchInAlmostSortedArray(vector<int> userInput,int key) {
+    if(userInput.size() == 0) {
+        return false;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == key) {
+            return true;
+        }
+    }
+    return false;
 }
 
 #endif /* SEARCHINALMOSTSORTEDARRAY_H_ */

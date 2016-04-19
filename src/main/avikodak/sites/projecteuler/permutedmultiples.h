@@ -71,43 +71,43 @@ using namespace __gnu_cxx;
 #define PERMUTEDMULTIPLES_H_
 
 //Tested
-string convertUIntToString(unsigned int value){
-	stringstream stream;
-	stream << value;
-	string result;
-	result.append(stream.str());
-	stream.clear();
-	return result;
+string convertUIntToString(unsigned int value) {
+    stringstream stream;
+    stream << value;
+    string result;
+    result.append(stream.str());
+    stream.clear();
+    return result;
 }
 
 //Tested
-bool isPermutedMultiple(unsigned int multiple,unsigned int originalNumber){
-	string strMultiple = convertUIntToString(multiple);
-	string strOriginal = convertUIntToString(originalNumber);
-	sort(strMultiple.begin(),strMultiple.end());
-	sort(strOriginal.begin(),strOriginal.end());
-	return strOriginal.compare(strMultiple) == 0;
+bool isPermutedMultiple(unsigned int multiple,unsigned int originalNumber) {
+    string strMultiple = convertUIntToString(multiple);
+    string strOriginal = convertUIntToString(originalNumber);
+    sort(strMultiple.begin(),strMultiple.end());
+    sort(strOriginal.begin(),strOriginal.end());
+    return strOriginal.compare(strMultiple) == 0;
 }
 
 //Tested
 //Ans : 142857
-void printPermutedMultiple(){
-	unsigned int counter = 1;
-	while(true){
-		if(isPermutedMultiple(2*counter,counter)){
-			if(isPermutedMultiple(3*counter,counter)){
-				if(isPermutedMultiple(4*counter,counter)){
-					if(isPermutedMultiple(5*counter,counter)){
-						if(isPermutedMultiple(6*counter,counter)){
-							cout << counter << endl;
-							return;
-						}
-					}
-				}
-			}
-		}
-		counter++;
-	}
+void printPermutedMultiple() {
+    unsigned int counter = 1;
+    while(true) {
+        if(isPermutedMultiple(2*counter,counter)) {
+            if(isPermutedMultiple(3*counter,counter)) {
+                if(isPermutedMultiple(4*counter,counter)) {
+                    if(isPermutedMultiple(5*counter,counter)) {
+                        if(isPermutedMultiple(6*counter,counter)) {
+                            cout << counter << endl;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        counter++;
+    }
 }
 
 #endif /* PERMUTEDMULTIPLES_H_ */

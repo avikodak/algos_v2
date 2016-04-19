@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: namingconvention.h 
+ *  File Name   		: namingconvention.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\namingconvention.h
  *  Created on			: Mar 28, 2015 :: 11:46:16 PM
  *  Author				: avikodak
@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef NAMINGCONVENTION_H_
 #define NAMINGCONVENTION_H_
 
-class NamingConvention{
+class NamingConvention {
 public:
-	string toCamelCase(string variableName){
-		string camelCase;
-		for(unsigned int counter = 0;counter < variableName.size();counter++){
-			if(variableName[counter] == '_'){
-				camelCase.push_back(variableName[counter+1] - 'a' + 'A');
-				counter++;
-			}else{
-				camelCase.push_back(variableName[counter]);
-			}
-		}
-		return camelCase;
-	}
+    string toCamelCase(string variableName) {
+        string camelCase;
+        for(unsigned int counter = 0; counter < variableName.size(); counter++) {
+            if(variableName[counter] == '_') {
+                camelCase.push_back(variableName[counter+1] - 'a' + 'A');
+                counter++;
+            } else {
+                camelCase.push_back(variableName[counter]);
+            }
+        }
+        return camelCase;
+    }
 };
 
 #endif /* NAMINGCONVENTION_H_ */

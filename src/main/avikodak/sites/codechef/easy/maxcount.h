@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxcount.h 
+ *  File Name   		: maxcount.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\maxcount.h
  *  Created on			: Feb 8, 2015 :: 7:07:41 PM
  *  Author				: AVINASH
@@ -75,28 +75,28 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void getMaxFrequencyElement(){
-	int testCases,size,number;
-	vector<int> frequencyMap;
-	scanf("%d",&testCases);
-	int maxFrequency = 0,minElement;
-	while(testCases--){
-		scanf("%d",&size);
-		frequencyMap.clear();
-		frequencyMap.assign(MAX_SIZE,0);
-		maxFrequency = 0;
-		while(size--){
-			scanf("%d",&number);
-			frequencyMap[number] += 1;
-			if(maxFrequency < frequencyMap[number]){
-				maxFrequency = frequencyMap[number];
-				minElement = number;
-			}else if(maxFrequency == frequencyMap[number]){
-				minElement = min(minElement,number);
-			}
-		}
-		printf("%d %d\n",minElement,maxFrequency);
-	}
+void getMaxFrequencyElement() {
+    int testCases,size,number;
+    vector<int> frequencyMap;
+    scanf("%d",&testCases);
+    int maxFrequency = 0,minElement;
+    while(testCases--) {
+        scanf("%d",&size);
+        frequencyMap.clear();
+        frequencyMap.assign(MAX_SIZE,0);
+        maxFrequency = 0;
+        while(size--) {
+            scanf("%d",&number);
+            frequencyMap[number] += 1;
+            if(maxFrequency < frequencyMap[number]) {
+                maxFrequency = frequencyMap[number];
+                minElement = number;
+            } else if(maxFrequency == frequencyMap[number]) {
+                minElement = min(minElement,number);
+            }
+        }
+        printf("%d %d\n",minElement,maxFrequency);
+    }
 }
 
 #endif /* MAXCOUNT_H_ */

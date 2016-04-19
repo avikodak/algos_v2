@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 #ifndef COCRMR03_H_
 #define COCRMR03_H_
 
-void printResults(){
-	unsigned int testCases;
-	string firstStr,secondStr;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> firstStr >> secondStr;
-		if(firstStr.length() != secondStr.length()){
-			printf("NO\n");
-		}else{
-			sort(firstStr.begin(),firstStr.end());
-			sort(secondStr.begin(),secondStr.end());
-			printf("%s\n",firstStr.compare(secondStr) == 0?"YES":"NO");
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    string firstStr,secondStr;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> firstStr >> secondStr;
+        if(firstStr.length() != secondStr.length()) {
+            printf("NO\n");
+        } else {
+            sort(firstStr.begin(),firstStr.end());
+            sort(secondStr.begin(),secondStr.end());
+            printf("%s\n",firstStr.compare(secondStr) == 0?"YES":"NO");
+        }
+    }
 }
 
 #endif /* COCRMR03_H_ */

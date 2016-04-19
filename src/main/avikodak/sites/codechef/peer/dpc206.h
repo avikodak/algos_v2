@@ -72,39 +72,39 @@ using namespace __gnu_cxx;
 #define DPC206_H_
 
 //Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) +(userInput%10);
-		userInput/=10;
-	}
-	return result;
+long long int reverse(long long int userInput) {
+    long long int result = 0;
+    while(userInput) {
+        result = (result << 3) + (result << 1) +(userInput%10);
+        userInput/=10;
+    }
+    return result;
 }
 
 //Tested
-bool isPalindrome(long long int userInput){
-	return reverse(userInput) == userInput;
+bool isPalindrome(long long int userInput) {
+    return reverse(userInput) == userInput;
 }
 
 //Tested
-void producePalindrome(long long int userInput){
-	unsigned int totalIterations = 0;
-	while(!isPalindrome(userInput)){
-		userInput = userInput + reverse(userInput);
-		totalIterations++;
-	}
-	cout << totalIterations << " " << userInput << endl;
+void producePalindrome(long long int userInput) {
+    unsigned int totalIterations = 0;
+    while(!isPalindrome(userInput)) {
+        userInput = userInput + reverse(userInput);
+        totalIterations++;
+    }
+    cout << totalIterations << " " << userInput << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		producePalindrome(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        producePalindrome(userInput);
+    }
 }
 
 #endif /* DPC206_H_ */

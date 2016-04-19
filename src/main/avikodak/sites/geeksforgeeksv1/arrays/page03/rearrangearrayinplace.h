@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rearrangearrayinplace.h 
+ *  File Name   		: rearrangearrayinplace.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\rearrangearrayinplace.h
  *  Created on			: Jan 4, 2015 :: 1:22:19 PM
  *  Author				: AVINASH
@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void rearrangeArray(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] += (userInput[userInput[counter]]%userInput.size())*(userInput.size());
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] /= userInput.size();
-	}
+void rearrangeArray(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        userInput[counter] += (userInput[userInput[counter]]%userInput.size())*(userInput.size());
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        userInput[counter] /= userInput.size();
+    }
 }
 
-void rearrangeArrayAuxSpace(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	vector<int> auxSpace(userInput.size());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace[counter] = userInput[userInput[counter]];
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] = auxSpace[counter];
-	}
+void rearrangeArrayAuxSpace(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    vector<int> auxSpace(userInput.size());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        auxSpace[counter] = userInput[userInput[counter]];
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        userInput[counter] = auxSpace[counter];
+    }
 }
 
 #endif /* REARRANGEARRAYINPLACE_H_ */

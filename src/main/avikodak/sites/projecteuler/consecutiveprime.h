@@ -71,56 +71,56 @@ using namespace __gnu_cxx;
 #define CONSECUTIVEPRIME_H_
 
 //Tested
-map<unsigned int,bool> generatePrimeNumberMap(unsigned int limit,vector<unsigned int> &primeNumbers){
-	vector<bool> flags;
-	flags.assign(limit+2,true);
-	map<unsigned int,bool> primeNumberMap;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			unsigned int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
-			primeNumbers.push_back(counter);
-		}
-	}
-	return primeNumberMap;
+map<unsigned int,bool> generatePrimeNumberMap(unsigned int limit,vector<unsigned int> &primeNumbers) {
+    vector<bool> flags;
+    flags.assign(limit+2,true);
+    map<unsigned int,bool> primeNumberMap;
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            unsigned int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
+            primeNumbers.push_back(counter);
+        }
+    }
+    return primeNumberMap;
 }
 
 //Tested
 //Ans : 997651
-void getLargestConsecutiveSumPrime(){
-	unsigned int limit = 1000000;
-	vector<unsigned int> primeNumbers;
-	map<unsigned int,bool> primeNumberMap = generatePrimeNumberMap(limit,primeNumbers);
-	unsigned int runningSum;
-	unsigned int maxPrimeNumber,maxTerms = 0;
-	unsigned int termsCount;
-	for(unsigned int outerCounter = 0;outerCounter < primeNumbers.size();outerCounter++){
-		runningSum = 0;
-		for(unsigned int innerCounter = outerCounter;innerCounter < primeNumbers.size();innerCounter++){
-			runningSum += primeNumbers[innerCounter];
-			if(runningSum > 1000000){
-				break;
-			}
-			if(primeNumberMap.find(runningSum) != primeNumberMap.end()){
-				termsCount = innerCounter - outerCounter +1;
-				if(termsCount > maxTerms){
-					maxTerms = termsCount;
-					maxPrimeNumber = runningSum;
-				}else if(termsCount == maxTerms){
-					maxPrimeNumber = max(maxPrimeNumber,primeNumbers[innerCounter]);
-				}
-			}
-		}
-	}
-	cout << maxPrimeNumber << endl;
+void getLargestConsecutiveSumPrime() {
+    unsigned int limit = 1000000;
+    vector<unsigned int> primeNumbers;
+    map<unsigned int,bool> primeNumberMap = generatePrimeNumberMap(limit,primeNumbers);
+    unsigned int runningSum;
+    unsigned int maxPrimeNumber,maxTerms = 0;
+    unsigned int termsCount;
+    for(unsigned int outerCounter = 0; outerCounter < primeNumbers.size(); outerCounter++) {
+        runningSum = 0;
+        for(unsigned int innerCounter = outerCounter; innerCounter < primeNumbers.size(); innerCounter++) {
+            runningSum += primeNumbers[innerCounter];
+            if(runningSum > 1000000) {
+                break;
+            }
+            if(primeNumberMap.find(runningSum) != primeNumberMap.end()) {
+                termsCount = innerCounter - outerCounter +1;
+                if(termsCount > maxTerms) {
+                    maxTerms = termsCount;
+                    maxPrimeNumber = runningSum;
+                } else if(termsCount == maxTerms) {
+                    maxPrimeNumber = max(maxPrimeNumber,primeNumbers[innerCounter]);
+                }
+            }
+        }
+    }
+    cout << maxPrimeNumber << endl;
 }
 
 #endif /* CONSECUTIVEPRIME_H_ */

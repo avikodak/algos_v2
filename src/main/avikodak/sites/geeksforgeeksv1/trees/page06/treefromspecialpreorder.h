@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: treefromspecialpreorder.h 
+ *  File Name   		: treefromspecialpreorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\treefromspecialpreorder.h
  *  Created on			: Oct 31, 2014 :: 6:42:41 PM
  *  Author				: AVINASH
@@ -68,19 +68,19 @@ using namespace __gnu_cxx;
 #ifndef TREEFROMSPECIALPREORDER_H_
 #define TREEFROMSPECIALPREORDER_H_
 //Tested
-itNode *getTreeFromSpecialPreorder(vector<int> preOrderTraversal,vector<bool> flags){
-	static unsigned int runningIndex = 0;
-	if(runningIndex >= preOrderTraversal.size()){
-		return null;
-	}
-	unsigned int index = runningIndex;
-	itNode *node = new itNode(preOrderTraversal[index]);
-	runningIndex++;
-	if(!flags[index]){
-		node->left = getTreeFromSpecialPreorder(preOrderTraversal,flags);
-		node->right = getTreeFromSpecialPreorder(preOrderTraversal,flags);
-	}
-	return node;
+itNode *getTreeFromSpecialPreorder(vector<int> preOrderTraversal,vector<bool> flags) {
+    static unsigned int runningIndex = 0;
+    if(runningIndex >= preOrderTraversal.size()) {
+        return null;
+    }
+    unsigned int index = runningIndex;
+    itNode *node = new itNode(preOrderTraversal[index]);
+    runningIndex++;
+    if(!flags[index]) {
+        node->left = getTreeFromSpecialPreorder(preOrderTraversal,flags);
+        node->right = getTreeFromSpecialPreorder(preOrderTraversal,flags);
+    }
+    return node;
 }
 
 #endif /* TREEFROMSPECIALPREORDER_H_ */

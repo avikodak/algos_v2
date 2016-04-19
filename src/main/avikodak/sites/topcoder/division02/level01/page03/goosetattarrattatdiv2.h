@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 //Tested
 class GooseTattarrattatDiv2 {
 public:
-	int getmin(string userInput){
-		int lengths[26] = {0};
-		int maxLength = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			lengths[userInput[counter]-'a'] += 1;
-			maxLength = max(maxLength,lengths[userInput[counter]-'a']);
-		}
-		return userInput.size() - maxLength;
-	}
+    int getmin(string userInput) {
+        int lengths[26] = {0};
+        int maxLength = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            lengths[userInput[counter]-'a'] += 1;
+            maxLength = max(maxLength,lengths[userInput[counter]-'a']);
+        }
+        return userInput.size() - maxLength;
+    }
 };
 
 #endif /* GOOSETATTARRATTATDIV2_H_ */

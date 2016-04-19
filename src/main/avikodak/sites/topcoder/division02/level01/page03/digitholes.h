@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 
 class DigitHoles {
 private:
-	int static getHoleCount(int value){
-		switch (key) {
-			case 1:
-			case 2:
-			case 3:
-			case 5:
-			case 7:
-				return 0;
-			case 0:
-			case 4:
-			case 6:
-			case 9:
-				return 1;
-			case 8:
-				return 2;
-			default:
-		}
-	}
+    int static getHoleCount(int value) {
+        switch (key) {
+        case 1:
+        case 2:
+        case 3:
+        case 5:
+        case 7:
+            return 0;
+        case 0:
+        case 4:
+        case 6:
+        case 9:
+            return 1;
+        case 8:
+            return 2;
+        default:
+        }
+    }
 public:
-	int numHoles(int number){
-		int holes = 0;
-		while(number > 0){
-			holes += getHoleCount(number%10);
-			number /= 10;
-		}
-		return holes;
-	}
+    int numHoles(int number) {
+        int holes = 0;
+        while(number > 0) {
+            holes += getHoleCount(number%10);
+            number /= 10;
+        }
+        return holes;
+    }
 };
 
 #endif /* DIGITHOLES_H_ */

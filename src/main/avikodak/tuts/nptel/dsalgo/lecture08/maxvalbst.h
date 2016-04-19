@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxvalbst.h 
+ *  File Name   		: maxvalbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\maxvalbst.h
  *  Created on			: Nov 18, 2014 :: 7:40:10 PM
  *  Author				: AVINASH
@@ -72,26 +72,26 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *getMaxBst(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->right == null){
-		return ptr;
-	}
-	return getMaxBst(ptr->right);
+itNode *getMaxBst(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->right == null) {
+        return ptr;
+    }
+    return getMaxBst(ptr->right);
 }
 
 //Tested
-itNode *getMaxBstIterative(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *currentNode = ptr;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	return currentNode;
+itNode *getMaxBstIterative(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *currentNode = ptr;
+    while(currentNode->right != null) {
+        currentNode = currentNode->right;
+    }
+    return currentNode;
 }
 
 #endif /* MAXVALBST_H_ */

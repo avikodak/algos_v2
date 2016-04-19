@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ispowerof2.h 
+ *  File Name   		: ispowerof2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\ispowerof2.h
  *  Created on			: Jan 9, 2015 :: 9:25:42 AM
  *  Author				: AVINASH
@@ -70,21 +70,21 @@ using namespace __gnu_cxx;
 #ifndef ISPOWEROF2_H_
 #define ISPOWEROF2_H_
 
-bool isPowerOf2(int userInput){
-	if(userInput == 0){
-		return false;
-	}
-	while(userInput > 1){
-		if(userInput & 1){
-			return false;
-		}
-		userInput = userInput >> 1;
-	}
-	return true;
+bool isPowerOf2(int userInput) {
+    if(userInput == 0) {
+        return false;
+    }
+    while(userInput > 1) {
+        if(userInput & 1) {
+            return false;
+        }
+        userInput = userInput >> 1;
+    }
+    return true;
 }
 
-bool isPowerOf2(int userInput){
-	return userInput && !(userInput & (userInput-1));
+bool isPowerOf2(int userInput) {
+    return userInput && !(userInput & (userInput-1));
 }
 
 

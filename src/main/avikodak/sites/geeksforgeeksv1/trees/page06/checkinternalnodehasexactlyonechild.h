@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkinternalnodehasexactlyonechild.h 
+ *  File Name   		: checkinternalnodehasexactlyonechild.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\checkinternalnodehasexactlyonechild.h
  *  Created on			: Nov 1, 2014 :: 6:58:16 PM
  *  Author				: AVINASH
@@ -72,60 +72,60 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool checkWhetherEachNodeHasExactlyOneChildON(vector<int> userInput){
-	if(userInput.size() <= 2){
-		return true;
-	}
-	int maxValue = max(userInput[userInput.size()-1],userInput[userInput.size()-2]);
-	int minValue = min(userInput[userInput.size()-1],userInput[userInput.size()-2]);
-	for(int counter = userInput.size()-3;counter >= 0;counter--){
-		if(userInput[counter] > maxValue){
-			maxValue = userInput[counter];
-		}else if(userInput[counter] < minValue){
-			minValue = userInput[counter];
-		}else{
-			return false;
-		}
-	}
-	return true;
+bool checkWhetherEachNodeHasExactlyOneChildON(vector<int> userInput) {
+    if(userInput.size() <= 2) {
+        return true;
+    }
+    int maxValue = max(userInput[userInput.size()-1],userInput[userInput.size()-2]);
+    int minValue = min(userInput[userInput.size()-1],userInput[userInput.size()-2]);
+    for(int counter = userInput.size()-3; counter >= 0; counter--) {
+        if(userInput[counter] > maxValue) {
+            maxValue = userInput[counter];
+        } else if(userInput[counter] < minValue) {
+            minValue = userInput[counter];
+        } else {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Investigate
 //Tested
-bool checkWhetherEachNodeHasExactlySuccessor(vector<int> userInput){
-	if(userInput.size() <= 2){
-		return true;
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if((userInput[counter] - userInput[counter+1]) * (userInput[counter] - userInput[userInput.size()-1]) < 0){
-			return false;
-		}
-	}
-	return true;
+bool checkWhetherEachNodeHasExactlySuccessor(vector<int> userInput) {
+    if(userInput.size() <= 2) {
+        return true;
+    }
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        if((userInput[counter] - userInput[counter+1]) * (userInput[counter] - userInput[userInput.size()-1]) < 0) {
+            return false;
+        }
+    }
+    return true;
 }
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool checkWhetherEachNodeHasExactlyOneChild(vector<int> userInput){
-	if(userInput.size() <= 2){
-		return true;
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
-		bool isMax = userInput[outerCrawler] > userInput[outerCrawler+1];
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(isMax){
-				if(userInput[innerCrawler] > userInput[outerCrawler]){
-					return false;
-				}
-			}else{
-				if(userInput[innerCrawler] < userInput[outerCrawler]){
-					return false;
-				}
-			}
-		}
-	}
-	return true;
+bool checkWhetherEachNodeHasExactlyOneChild(vector<int> userInput) {
+    if(userInput.size() <= 2) {
+        return true;
+    }
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-2; outerCrawler++) {
+        bool isMax = userInput[outerCrawler] > userInput[outerCrawler+1];
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            if(isMax) {
+                if(userInput[innerCrawler] > userInput[outerCrawler]) {
+                    return false;
+                }
+            } else {
+                if(userInput[innerCrawler] < userInput[outerCrawler]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
 }
 
 #endif /* CHECKINTERNALNODEHASEXACTLYONECHILD_H_ */

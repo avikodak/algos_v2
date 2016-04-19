@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 #define NXTPALIN_H_
 
 //Tested
-unsigned int reverse(unsigned int userInput){
-	unsigned int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+unsigned int reverse(unsigned int userInput) {
+    unsigned int result = 0;
+    while(userInput) {
+        result = (result << 3) + (result << 1) + (userInput%10);
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-bool isPalindrome(unsigned int userInput){
-	return userInput == reverse(userInput);
+bool isPalindrome(unsigned int userInput) {
+    return userInput == reverse(userInput);
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		for(unsigned int counter = input;;counter++){
-			if(isPalindrome(counter)){
-				cout << counter << endl;
-				break;
-			}
-		}
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        for(unsigned int counter = input;; counter++) {
+            if(isPalindrome(counter)) {
+                cout << counter << endl;
+                break;
+            }
+        }
+    }
 }
 
 #endif /* NXTPALIN_H_ */

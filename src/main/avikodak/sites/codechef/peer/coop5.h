@@ -72,29 +72,29 @@ using namespace __gnu_cxx;
 #define COOP5_H_
 
 //Tested
-bool sortFunc(long long int first,long long int second){
-	return first > second;
+bool sortFunc(long long int first,long long int second) {
+    return first > second;
 }
 
 //Tested
-void printResults(){
-	long long int testCases,input,sum,k,size;
-	vector<long long int> userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&size,&k);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end(),sortFunc);
-		sum = 0;
-		for(unsigned int counter = 0;counter < k;counter++){
-			sum += userInput[counter];
-		}
-		cout << sum << endl;
-	}
+void printResults() {
+    long long int testCases,input,sum,k,size;
+    vector<long long int> userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&size,&k);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end(),sortFunc);
+        sum = 0;
+        for(unsigned int counter = 0; counter < k; counter++) {
+            sum += userInput[counter];
+        }
+        cout << sum << endl;
+    }
 }
 
 #endif /* COOP5_H_ */

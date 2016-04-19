@@ -72,17 +72,17 @@ using namespace __gnu_cxx;
 
 class DeckRearranging {
 public:
-	string rearrange(string deck, vector<int> above){
-		string newDeck;
-		for(unsigned int counter = 0;counter < deck.size();counter++){
-			if((unsigned int)above[counter] == newDeck.size()){
-				newDeck.push_back(deck[counter]);
-			}else{
-				newDeck.insert(newDeck.begin() + above[counter],deck[counter]);
-			}
-		}
-		return newDeck;
-	}
+    string rearrange(string deck, vector<int> above) {
+        string newDeck;
+        for(unsigned int counter = 0; counter < deck.size(); counter++) {
+            if((unsigned int)above[counter] == newDeck.size()) {
+                newDeck.push_back(deck[counter]);
+            } else {
+                newDeck.insert(newDeck.begin() + above[counter],deck[counter]);
+            }
+        }
+        return newDeck;
+    }
 };
 
 #endif /* DECKREARRANGING_H_ */

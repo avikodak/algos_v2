@@ -71,40 +71,40 @@ using namespace __gnu_cxx;
 #ifndef KPRIME_H_
 #define KPRIME_H_
 
-vector<vector<unsigned int> > initialize(){
-	unsigned int factorsCount[LIMIT] = {0};
-	unsigned int innerCounter;
-	for(unsigned int outerCounter = 2;outerCounter < LIMIT;outerCounter++){
-		innerCounter = 2*outerCounter;
-		if(factorsCount[outerCounter] == 0){
-			factorsCount[outerCounter] = 1;
-			while(innerCounter < LIMIT){
-				factorsCount[innerCounter]++;
-				innerCounter += outerCounter;
-			}
-		}
-	}
-	vector<vector<unsigned int> > factorsMapCount(7);
-	for(unsigned int counter = 0;counter < 7;counter++){
-		factorsMapCount[counter].assign(LIMIT,0);
-	}
-	for(unsigned int outerCounter = 1;outerCounter < 7;outerCounter++){
-		for(unsigned int innerCounter = 2;innerCounter < LIMIT;innerCounter++){
-			factorsMapCount[outerCounter][innerCounter] = factorsMapCount[outerCounter][innerCounter-1] + (factorsCount[innerCounter]==outerCounter?1:0);
-		}
-	}
-	return factorsMapCount;
+vector<vector<unsigned int> > initialize() {
+    unsigned int factorsCount[LIMIT] = {0};
+    unsigned int innerCounter;
+    for(unsigned int outerCounter = 2; outerCounter < LIMIT; outerCounter++) {
+        innerCounter = 2*outerCounter;
+        if(factorsCount[outerCounter] == 0) {
+            factorsCount[outerCounter] = 1;
+            while(innerCounter < LIMIT) {
+                factorsCount[innerCounter]++;
+                innerCounter += outerCounter;
+            }
+        }
+    }
+    vector<vector<unsigned int> > factorsMapCount(7);
+    for(unsigned int counter = 0; counter < 7; counter++) {
+        factorsMapCount[counter].assign(LIMIT,0);
+    }
+    for(unsigned int outerCounter = 1; outerCounter < 7; outerCounter++) {
+        for(unsigned int innerCounter = 2; innerCounter < LIMIT; innerCounter++) {
+            factorsMapCount[outerCounter][innerCounter] = factorsMapCount[outerCounter][innerCounter-1] + (factorsCount[innerCounter]==outerCounter?1:0);
+        }
+    }
+    return factorsMapCount;
 }
 
-void printResults(){
-	vector<vector<unsigned int> > factorsMapCount = initialize();
-	unsigned int testCases;
-	unsigned int A,B,N;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> A >> B >> N;
-		cout << factorsMapCount[N][B] - factorsMapCount[N][A-1] << endl;
-	}
+void printResults() {
+    vector<vector<unsigned int> > factorsMapCount = initialize();
+    unsigned int testCases;
+    unsigned int A,B,N;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> A >> B >> N;
+        cout << factorsMapCount[N][B] - factorsMapCount[N][A-1] << endl;
+    }
 }
 
 #endif /* KPRIME_H_ */

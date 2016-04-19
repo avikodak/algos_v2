@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: generatesets.h 
+ *  File Name   		: generatesets.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\generatesets.h
  *  Created on			: Oct 29, 2014 :: 9:25:38 AM
  *  Author				: AVINASH
@@ -69,48 +69,48 @@ using namespace __gnu_cxx;
 #define GENERATESETS_H_
 
 //Tested
-void printSetsMain(vector<int> userInput,vector<int> setGenerated,unsigned int currentIndex){
-	if(userInput.size() == 0){
-		return;
-	}
-	if(currentIndex == userInput.size()){
-		if(setGenerated.size() == 0){
-			printf("Empty Set");
-		}else{
-			for(unsigned int counter = 0;counter < setGenerated.size();counter++){
-				printf("%d\t",setGenerated[counter]);
-			}
-		}
-		PRINT_NEW_LINE;
-		return;
-	}
-	printSetsMain(userInput,setGenerated,currentIndex+1);
-	setGenerated.push_back(userInput[currentIndex]);
-	printSetsMain(userInput,setGenerated,currentIndex+1);
+void printSetsMain(vector<int> userInput,vector<int> setGenerated,unsigned int currentIndex) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    if(currentIndex == userInput.size()) {
+        if(setGenerated.size() == 0) {
+            printf("Empty Set");
+        } else {
+            for(unsigned int counter = 0; counter < setGenerated.size(); counter++) {
+                printf("%d\t",setGenerated[counter]);
+            }
+        }
+        PRINT_NEW_LINE;
+        return;
+    }
+    printSetsMain(userInput,setGenerated,currentIndex+1);
+    setGenerated.push_back(userInput[currentIndex]);
+    printSetsMain(userInput,setGenerated,currentIndex+1);
 }
 
 //Tested
-void printSet(vector<int> userInput){
-	vector<int> generatedSet;
-	printSetsMain(userInput,generatedSet,0);
+void printSet(vector<int> userInput) {
+    vector<int> generatedSet;
+    printSetsMain(userInput,generatedSet,0);
 }
 
 //Tested
-void printSetsIterative(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int numberOfDigitsForSize = userInput.size();
-	PRINT_NEW_LINE;
-	for(unsigned int counter = 1;counter < pow(2,userInput.size());counter++){
-		bitset<32> numbInBinary(counter);
-		for(int binaryDigitCounter = numberOfDigitsForSize-1;binaryDigitCounter >= 0;binaryDigitCounter--){
-			if(numbInBinary[binaryDigitCounter]){
-				printf("%d\t",userInput[binaryDigitCounter]);
-			}
-		}
-		PRINT_NEW_LINE;
-	}
+void printSetsIterative(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    int numberOfDigitsForSize = userInput.size();
+    PRINT_NEW_LINE;
+    for(unsigned int counter = 1; counter < pow(2,userInput.size()); counter++) {
+        bitset<32> numbInBinary(counter);
+        for(int binaryDigitCounter = numberOfDigitsForSize-1; binaryDigitCounter >= 0; binaryDigitCounter--) {
+            if(numbInBinary[binaryDigitCounter]) {
+                printf("%d\t",userInput[binaryDigitCounter]);
+            }
+        }
+        PRINT_NEW_LINE;
+    }
 }
 
 #endif /* GENERATESETS_H_ */

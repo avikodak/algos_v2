@@ -72,37 +72,37 @@ using namespace __gnu_cxx;
 #define SUBGCD_H_
 
 //Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	return b == 0?a:gcd(b,a%b);
+unsigned int gcd(unsigned int a,unsigned int b) {
+    return b == 0?a:gcd(b,a%b);
 }
 
 //Tested
-void printsubgcd(vector<unsigned int> userInput){
-	unsigned int result = userInput[0];
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		result = gcd(result,userInput[counter]);
-	}
-	if(result == 1){
-		printf("%lu\n",userInput.size());
-	}else{
-		printf("-1\n");
-	}
+void printsubgcd(vector<unsigned int> userInput) {
+    unsigned int result = userInput[0];
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        result = gcd(result,userInput[counter]);
+    }
+    if(result == 1) {
+        printf("%lu\n",userInput.size());
+    } else {
+        printf("-1\n");
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		printsubgcd(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        printsubgcd(userInput);
+    }
 }
 
 

@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 #define RECMSG_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,total;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		total = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			total += (userInput[counter]+1-'a');
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases,total;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        total = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            total += (userInput[counter]+1-'a');
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* RECMSG_H_ */

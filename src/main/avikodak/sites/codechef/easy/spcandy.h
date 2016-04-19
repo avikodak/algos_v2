@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define SPCANDY_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int total,n;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> total >> n;
-		if(n == 0){
-			cout << 0 << " " << total << endl;
-		}else{
-			cout << total/n << " " << total%n << endl;
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int total,n;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> total >> n;
+        if(n == 0) {
+            cout << 0 << " " << total << endl;
+        } else {
+            cout << total/n << " " << total%n << endl;
+        }
+    }
 }
 
 #endif /* SPCANDY_H_ */

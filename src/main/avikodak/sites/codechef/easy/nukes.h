@@ -73,13 +73,13 @@ using namespace __gnu_cxx;
 #define NUKES_H_
 
 //Tested
-void printResults(){
-	long long int chambers,limit,total;
-	scanf("%lld %lld %lld",&total,&limit,&chambers);
-	for(long long int counter = 0;counter < chambers;counter++){
-		printf("%lld ",total%(limit+1));
-		total /= (limit+1);
-	}
+void printResults() {
+    long long int chambers,limit,total;
+    scanf("%lld %lld %lld",&total,&limit,&chambers);
+    for(long long int counter = 0; counter < chambers; counter++) {
+        printf("%lld ",total%(limit+1));
+        total /= (limit+1);
+    }
 }
 
 #endif /* NUKES_H_ */

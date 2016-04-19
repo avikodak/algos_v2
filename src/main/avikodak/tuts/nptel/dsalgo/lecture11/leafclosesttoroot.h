@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: leafclosesttoroot.h 
+ *  File Name   		: leafclosesttoroot.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture11\leafclosesttoroot.h
  *  Created on			: Nov 18, 2014 :: 5:28:27 PM
  *  Author				: AVINASH
@@ -68,29 +68,29 @@ using namespace __gnu_cxx;
 #ifndef LEAFCLOSESTTOROOT_H_
 #define LEAFCLOSESTTOROOT_H_
 
-void leafClosestToRootMain(itNode *ptr,itNode **ptrToLeaf,unsigned int currentLevel = 1){
-	static unsigned int minLevel = UINT_MAX;
-	if(ptr == null){
-		return;
-	}
-	if(ptr->left == null && ptr->right == null){
-		if(currentLevel < minLevel){
-			minLevel = currentLevel;
-			*ptrToLeaf = ptr;
-		}
-		return;
-	}
-	leafClosestToRootMain(ptr->left,ptrToLeaf,currentLevel+1);
-	leafClosestToRootMain(ptr->right,ptrToLeaf,currentLevel+1);
+void leafClosestToRootMain(itNode *ptr,itNode **ptrToLeaf,unsigned int currentLevel = 1) {
+    static unsigned int minLevel = UINT_MAX;
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        if(currentLevel < minLevel) {
+            minLevel = currentLevel;
+            *ptrToLeaf = ptr;
+        }
+        return;
+    }
+    leafClosestToRootMain(ptr->left,ptrToLeaf,currentLevel+1);
+    leafClosestToRootMain(ptr->right,ptrToLeaf,currentLevel+1);
 }
 
-itNode *getLeafClosestToRoot(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *leaf = null;
-	leafClosestToRootMain(ptr,&leaf);
-	return leaf;
+itNode *getLeafClosestToRoot(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *leaf = null;
+    leafClosestToRootMain(ptr,&leaf);
+    return leaf;
 }
 
 #endif /* LEAFCLOSESTTOROOT_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findrepeatingmissing.h 
+ *  File Name   		: findrepeatingmissing.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\findrepeatingmissing.h
  *  Created on			: Nov 27, 2014 :: 7:47:09 PM
  *  Author				: AVINASH
@@ -72,121 +72,121 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *findRepeatingAndMissingNumber(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			frequencyMap[userInput[counter]] += 1;
-		}
-	}
-	iPair *result = new iPair(0,0);
-	for(unsigned int counter = 1;counter <= userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(counter)) == frequencyMap.end()){
-			result->secondValue = counter;
-		}else{
-			if(itToFrequencyMap->second > 1){
-				result->firstValue = counter;
-			}
-		}
-	}
-	return result;
+iPair *findRepeatingAndMissingNumber(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()) {
+            frequencyMap[userInput[counter]] = 1;
+        } else {
+            frequencyMap[userInput[counter]] += 1;
+        }
+    }
+    iPair *result = new iPair(0,0);
+    for(unsigned int counter = 1; counter <= userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(counter)) == frequencyMap.end()) {
+            result->secondValue = counter;
+        } else {
+            if(itToFrequencyMap->second > 1) {
+                result->firstValue = counter;
+            }
+        }
+    }
+    return result;
 }
 
 //Tested
-iPair *findMissingRepeatingElementsArray(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(0,0);
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[abs(userInput[counter])-1] < 0){
-			result->firstValue = abs(userInput[counter]);
-		}else{
-			userInput[abs(userInput[counter])-1] *= -1;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] > 0){
-			result->secondValue = counter+1;
-		}
-	}
-	return result;
+iPair *findMissingRepeatingElementsArray(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(0,0);
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[abs(userInput[counter])-1] < 0) {
+            result->firstValue = abs(userInput[counter]);
+        } else {
+            userInput[abs(userInput[counter])-1] *= -1;
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] > 0) {
+            result->secondValue = counter+1;
+        }
+    }
+    return result;
 }
 
-iPair *findMissingRepeatingElementEquations(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	int arrayProduct = 1,arraySum = 0,seqSum = 0,seqProduct = 1;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		arrayProduct *= userInput[counter];
-		arraySum += userInput[counter];
-		seqSum += counter+1;
-		seqProduct *= (counter+1);
-	}
-	iPair *result = new iPair(0,0);
-	result->firstValue = (seqSum + arraySum)/3;
-	result->secondValue = (3*seqSum - result->firstValue)/3;
-	return result;
+iPair *findMissingRepeatingElementEquations(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    int arrayProduct = 1,arraySum = 0,seqSum = 0,seqProduct = 1;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        arrayProduct *= userInput[counter];
+        arraySum += userInput[counter];
+        seqSum += counter+1;
+        seqProduct *= (counter+1);
+    }
+    iPair *result = new iPair(0,0);
+    result->firstValue = (seqSum + arraySum)/3;
+    result->secondValue = (3*seqSum - result->firstValue)/3;
+    return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *findMissingRepeatingSorting(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(0,0);
-	sort(userInput.begin(),userInput.end());
-	if(userInput[0] != 1){
-		result->firstValue = 1;
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(userInput[counter] == userInput[counter+1]){
-			result->secondValue = userInput[counter];
-			counter++;
-		}else if(userInput[counter+1] - userInput[counter] > 1){
-			result->firstValue = userInput[counter] + 1;
-		}
-	}
-	if(result->secondValue == 0){
-		result->firstValue = userInput.size();
-	}
-	return result;
+iPair *findMissingRepeatingSorting(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(0,0);
+    sort(userInput.begin(),userInput.end());
+    if(userInput[0] != 1) {
+        result->firstValue = 1;
+    }
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        if(userInput[counter] == userInput[counter+1]) {
+            result->secondValue = userInput[counter];
+            counter++;
+        } else if(userInput[counter+1] - userInput[counter] > 1) {
+            result->firstValue = userInput[counter] + 1;
+        }
+    }
+    if(result->secondValue == 0) {
+        result->firstValue = userInput.size();
+    }
+    return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *findMissingRepeatingON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(0,0);
-	unsigned int frequency;
-	for(unsigned int outerCounter = 1;outerCounter <= userInput.size();outerCounter++){
-		frequency = 0;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] == (int)outerCounter){
-				frequency++;
-			}
-		}
-		if(frequency == 0){
-			result->firstValue = outerCounter;
-		}else if(frequency > 1){
-			result->secondValue = outerCounter;
-		}
-	}
-	return result;
+iPair *findMissingRepeatingON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(0,0);
+    unsigned int frequency;
+    for(unsigned int outerCounter = 1; outerCounter <= userInput.size(); outerCounter++) {
+        frequency = 0;
+        for(unsigned int innerCounter = 0; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[innerCounter] == (int)outerCounter) {
+                frequency++;
+            }
+        }
+        if(frequency == 0) {
+            result->firstValue = outerCounter;
+        } else if(frequency > 1) {
+            result->secondValue = outerCounter;
+        }
+    }
+    return result;
 }
 #endif /* FINDREPEATINGMISSING_H_ */
 

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: treefromprepostorder.h 
+ *  File Name   		: treefromprepostorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\treefromprepostorder.h
  *  Created on			: Nov 18, 2014 :: 12:39:25 AM
  *  Author				: AVINASH
@@ -68,32 +68,32 @@ using namespace __gnu_cxx;
 #ifndef TREEFROMPREPOSTORDER_H_
 #define TREEFROMPREPOSTORDER_H_
 
-int getIndexFromPostOrder(vector<int> postOrder,int startIndex,int endIndex,int value){
-	if(postOrder.size() == 0 || startIndex > endIndex){
-		return INT_MIN;
-	}
-	for(unsigned int counter = 0;counter < postOrder.size();counter++){
-		if(postOrder[counter] == value){
-			return (int)counter;
-		}
-	}
-	return INT_MIN;
+int getIndexFromPostOrder(vector<int> postOrder,int startIndex,int endIndex,int value) {
+    if(postOrder.size() == 0 || startIndex > endIndex) {
+        return INT_MIN;
+    }
+    for(unsigned int counter = 0; counter < postOrder.size(); counter++) {
+        if(postOrder[counter] == value) {
+            return (int)counter;
+        }
+    }
+    return INT_MIN;
 }
 
-itNode *constructTreeFromPrePostOrder(vector<int> preOrder,vector<int> postOrder,int startIndex,int endIndex){
-	static int preOrderIndex = 0;
-	if(preOrderIndex >= (int)preOrder.size() || startIndex > endIndex){
-		return null;
-	}
-	int value = preOrder[preOrderIndex++];
-	itNode *node = new itNode(value);
-	if(abs(startIndex - endIndex) < 1 || preOrderIndex >= (int)preOrder.size()){
-		return node;
-	}
-	int index = getIndexFromPostOrder(postOrder,startIndex,endIndex,preOrder[preOrderIndex]);
-	node->left = constructTreeFromPrePostOrder(preOrder,postOrder,startIndex,index);
-	node->right = constructTreeFromPrePostOrder(preOrder,postOrder,index+1,endIndex-1);
-	return node;
+itNode *constructTreeFromPrePostOrder(vector<int> preOrder,vector<int> postOrder,int startIndex,int endIndex) {
+    static int preOrderIndex = 0;
+    if(preOrderIndex >= (int)preOrder.size() || startIndex > endIndex) {
+        return null;
+    }
+    int value = preOrder[preOrderIndex++];
+    itNode *node = new itNode(value);
+    if(abs(startIndex - endIndex) < 1 || preOrderIndex >= (int)preOrder.size()) {
+        return node;
+    }
+    int index = getIndexFromPostOrder(postOrder,startIndex,endIndex,preOrder[preOrderIndex]);
+    node->left = constructTreeFromPrePostOrder(preOrder,postOrder,startIndex,index);
+    node->right = constructTreeFromPrePostOrder(preOrder,postOrder,index+1,endIndex-1);
+    return node;
 }
 
 #endif /* TREEFROMPREPOSTORDER_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxminarray.h 
+ *  File Name   		: maxminarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
  *  Created on			: Nov 26, 2014 :: 10:53:30 AM
  *  Author				: AVINASH
@@ -72,122 +72,122 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
-	}
-	if(startIndex == endIndex){
-		return new iMaxMin(userInput[startIndex],userInput[startIndex]);
-	}
-	if(endIndex - startIndex == 1){
-		return new iMaxMin(min(userInput[startIndex],userInput[endIndex]),max(userInput[startIndex],userInput[endIndex]));
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	iMaxMin *leftResult = getMaxMinArray3NBy2(userInput,startIndex,middleIndex);
-	iMaxMin *rightResult = getMaxMinArray3NBy2(userInput,middleIndex+1,endIndex);
-	if(leftResult == null || rightResult == null){
-		return leftResult == null?rightResult:leftResult;
-	}
-	return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
+iMaxMin *getMaxMinArray3NBy2(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return null;
+    }
+    if(startIndex == endIndex) {
+        return new iMaxMin(userInput[startIndex],userInput[startIndex]);
+    }
+    if(endIndex - startIndex == 1) {
+        return new iMaxMin(min(userInput[startIndex],userInput[endIndex]),max(userInput[startIndex],userInput[endIndex]));
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    iMaxMin *leftResult = getMaxMinArray3NBy2(userInput,startIndex,middleIndex);
+    iMaxMin *rightResult = getMaxMinArray3NBy2(userInput,middleIndex+1,endIndex);
+    if(leftResult == null || rightResult == null) {
+        return leftResult == null?rightResult:leftResult;
+    }
+    return new iMaxMin(min(leftResult->minValue,rightResult->minValue),max(leftResult->maxValue,rightResult->maxValue));
 }
 
 //Tested
-iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iMaxMin *result = new iMaxMin();
-	unsigned int counter = 0;
-	if(userInput.size() % 2 == 0){
-		result->minValue = min(userInput[0],userInput[1]);
-		result->maxValue = max(userInput[0],userInput[1]);
-		counter = 2;
-	}else{
-		result->maxValue = userInput[0];
-		result->minValue = userInput[0];
-		counter = 1;
-	}
-	for(;counter < userInput.size()-1;counter++){
-		if(userInput[counter] > userInput[counter+1]){
-			result->maxValue = max(result->maxValue,userInput[counter]);
-			result->minValue = min(result->minValue,userInput[counter+1]);
-		}else{
-			result->maxValue = max(result->maxValue,userInput[counter+1]);
-			result->minValue = min(result->minValue,userInput[counter]);
-		}
-	}
-	return result;
+iMaxMin *getMaxMinArrayPairs3By2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iMaxMin *result = new iMaxMin();
+    unsigned int counter = 0;
+    if(userInput.size() % 2 == 0) {
+        result->minValue = min(userInput[0],userInput[1]);
+        result->maxValue = max(userInput[0],userInput[1]);
+        counter = 2;
+    } else {
+        result->maxValue = userInput[0];
+        result->minValue = userInput[0];
+        counter = 1;
+    }
+    for(; counter < userInput.size()-1; counter++) {
+        if(userInput[counter] > userInput[counter+1]) {
+            result->maxValue = max(result->maxValue,userInput[counter]);
+            result->minValue = min(result->minValue,userInput[counter+1]);
+        } else {
+            result->maxValue = max(result->maxValue,userInput[counter+1]);
+            result->minValue = min(result->minValue,userInput[counter]);
+        }
+    }
+    return result;
 }
 
 //Tested
-iMaxMin *getMaxMinArrayO2N(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iMaxMin *result = new iMaxMin();
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(result->maxValue < userInput[counter]){
-			result->maxValue = userInput[counter];
-		}
-		if(result->minValue > userInput[counter]){
-			result->minValue = userInput[counter];
-		}
-	}
-	return result;
+iMaxMin *getMaxMinArrayO2N(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iMaxMin *result = new iMaxMin();
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(result->maxValue < userInput[counter]) {
+            result->maxValue = userInput[counter];
+        }
+        if(result->minValue > userInput[counter]) {
+            result->minValue = userInput[counter];
+        }
+    }
+    return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	return new iMaxMin(userInput[0],userInput[userInput.size()-1]);
+iMaxMin *getMaxMinArrayONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    sort(userInput.begin(),userInput.end());
+    return new iMaxMin(userInput[0],userInput[userInput.size()-1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iMaxMin *getMaxMinArrayON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	if(userInput.size() == 1){
-		return new iMaxMin(userInput[0],userInput[0]);
-	}
-	iMaxMin *result = new iMaxMin();
-	bool flag;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		flag = true;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(outerCounter != innerCounter){
-				if(userInput[innerCounter] < userInput[outerCounter]){
-					flag = false;
-				}
-			}
-		}
-		if(flag){
-			result->minValue = userInput[outerCounter];
-		}
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		flag = true;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(outerCounter != innerCounter){
-				if(userInput[innerCounter] > userInput[outerCounter]){
-					flag = false;
-				}
-			}
-		}
-		if(flag){
-			result->maxValue = userInput[outerCounter];
-		}
-	}
-	return result;
+iMaxMin *getMaxMinArrayON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    if(userInput.size() == 1) {
+        return new iMaxMin(userInput[0],userInput[0]);
+    }
+    iMaxMin *result = new iMaxMin();
+    bool flag;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        flag = true;
+        for(unsigned int innerCounter = 0; innerCounter < userInput.size(); innerCounter++) {
+            if(outerCounter != innerCounter) {
+                if(userInput[innerCounter] < userInput[outerCounter]) {
+                    flag = false;
+                }
+            }
+        }
+        if(flag) {
+            result->minValue = userInput[outerCounter];
+        }
+    }
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        flag = true;
+        for(unsigned int innerCounter = 0; innerCounter < userInput.size(); innerCounter++) {
+            if(outerCounter != innerCounter) {
+                if(userInput[innerCounter] > userInput[outerCounter]) {
+                    flag = false;
+                }
+            }
+        }
+        if(flag) {
+            result->maxValue = userInput[outerCounter];
+        }
+    }
+    return result;
 }
 
 #endif /* MAXMINARRAY_H_ */

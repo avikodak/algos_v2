@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: servicelane.h 
+ *  File Name   		: servicelane.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\servicelane.h
  *  Created on			: Feb 11, 2015 :: 10:25:42 AM
  *  Author				: AVINASH
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define SERVICELANE_H_
 
 //Tested
-void maxVehicleServiceLane(){
-	long int size,intervalSize,start,end,input;
-	scanf("%ld %ld",&size,&intervalSize);
-	vector<long int> userInput;
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	while(intervalSize--){
-		scanf("%ld %ld",&start,&end);
-		printf("%ld\n",*min_element(userInput.begin()+start,userInput.end()+end));
-	}
+void maxVehicleServiceLane() {
+    long int size,intervalSize,start,end,input;
+    scanf("%ld %ld",&size,&intervalSize);
+    vector<long int> userInput;
+    while(size--) {
+        scanf("%ld",&input);
+        userInput.push_back(input);
+    }
+    while(intervalSize--) {
+        scanf("%ld %ld",&start,&end);
+        printf("%ld\n",*min_element(userInput.begin()+start,userInput.end()+end));
+    }
 }
 
 #endif /* SERVICELANE_H_ */

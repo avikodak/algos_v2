@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define AMMEAT_H_
 
 //Tested
-void printMinPlates(vector<unsigned long long int> userInput,unsigned long long int reqSum){
-	sort(userInput.begin(),userInput.end());
-	unsigned long long int sum = 0,total = 0;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		sum += userInput[counter];
-		total++;
-		if(sum >= reqSum){
-			cout << total << endl;
-			return;
-		}
-	}
-	cout << "-1" << endl;
+void printMinPlates(vector<unsigned long long int> userInput,unsigned long long int reqSum) {
+    sort(userInput.begin(),userInput.end());
+    unsigned long long int sum = 0,total = 0;
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        sum += userInput[counter];
+        total++;
+        if(sum >= reqSum) {
+            cout << total << endl;
+            return;
+        }
+    }
+    cout << "-1" << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned long long int size,requiredSum,input;
-	vector<unsigned long long int> userInput;
-	cin >> testCases;
-	while(testCases--){
-		cin >> size >> requiredSum;
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			cin >> input;
-			userInput.push_back(input);
-		}
-		printMinPlates(userInput,requiredSum);
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned long long int size,requiredSum,input;
+    vector<unsigned long long int> userInput;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> size >> requiredSum;
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            cin >> input;
+            userInput.push_back(input);
+        }
+        printMinPlates(userInput,requiredSum);
+    }
 }
 
 #endif /* AMMEAT_H_ */

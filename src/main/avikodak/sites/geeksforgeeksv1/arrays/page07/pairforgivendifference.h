@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pairforgivendifference.h 
+ *  File Name   		: pairforgivendifference.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\pairforgivendifference.h
  *  Created on			: Nov 30, 2014 :: 10:39:18 PM
  *  Author				: AVINASH
@@ -72,68 +72,68 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getPairForGivenDifferenceON(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			frequencyMap[userInput[counter]] += 1;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(difference + userInput[counter])) != frequencyMap.end()){
-			return new iPair(userInput[counter],difference+userInput[counter]);
-		}
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter] - difference)) != frequencyMap.end()){
-			return new iPair(userInput[counter],userInput[counter] - difference);
-		}
-	}
-	return null;
+iPair *getPairForGivenDifferenceON(vector<int> userInput,int difference) {
+    if(userInput.size() < 2) {
+        return null;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter])) == frequencyMap.end()) {
+            frequencyMap[userInput[counter]] = 1;
+        } else {
+            frequencyMap[userInput[counter]] += 1;
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(difference + userInput[counter])) != frequencyMap.end()) {
+            return new iPair(userInput[counter],difference+userInput[counter]);
+        }
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter] - difference)) != frequencyMap.end()) {
+            return new iPair(userInput[counter],userInput[counter] - difference);
+        }
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getPairForGivenDifferenceONLOGN(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int firstCrawler = 0,secondCrawler = 1;
-	while(firstCrawler < userInput.size() && secondCrawler < userInput.size()){
-		if(firstCrawler != secondCrawler && userInput[secondCrawler] - userInput[firstCrawler] == difference){
-			return new iPair(userInput[firstCrawler],userInput[secondCrawler]);
-		}else if(userInput[secondCrawler] - userInput[firstCrawler] < difference){
-			secondCrawler++;
-		}else{
-			firstCrawler++;
-		}
-	}
-	return null;
+iPair *getPairForGivenDifferenceONLOGN(vector<int> userInput,int difference) {
+    if(userInput.size() < 2) {
+        return null;
+    }
+    sort(userInput.begin(),userInput.end());
+    unsigned int firstCrawler = 0,secondCrawler = 1;
+    while(firstCrawler < userInput.size() && secondCrawler < userInput.size()) {
+        if(firstCrawler != secondCrawler && userInput[secondCrawler] - userInput[firstCrawler] == difference) {
+            return new iPair(userInput[firstCrawler],userInput[secondCrawler]);
+        } else if(userInput[secondCrawler] - userInput[firstCrawler] < difference) {
+            secondCrawler++;
+        } else {
+            firstCrawler++;
+        }
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getPairForGivenDifferenceON2(vector<int> userInput,int difference){
-	if(userInput.size() < 2){
-		return null;
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			if(abs(userInput[outerCounter] - userInput[innerCounter]) == abs(difference)){
-				return new iPair(userInput[outerCounter],userInput[innerCounter]);
-			}
-		}
-	}
-	return null;
+iPair *getPairForGivenDifferenceON2(vector<int> userInput,int difference) {
+    if(userInput.size() < 2) {
+        return null;
+    }
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+            if(abs(userInput[outerCounter] - userInput[innerCounter]) == abs(difference)) {
+                return new iPair(userInput[outerCounter],userInput[innerCounter]);
+            }
+        }
+    }
+    return null;
 }
 
 #endif /* PAIRFORGIVENDIFFERENCE_H_ */

@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define CIRCLELINE_H_
 
 //Tested
-void printMinDistance(){
-	unsigned int stationsCount,userInput,source,destination;
-	scanf("%u",&stationsCount);
-	vector<int> distances;
-	unsigned int totalDistance = 0;
-	while(stationsCount--){
-		scanf("%u",&userInput);
-		distances.push_back(userInput);
-		totalDistance += userInput;
-	}
-	scanf("%u %u",&source,&destination);
-	if(source > destination){
-		swap(source,destination);
-	}
-	unsigned int calculatedDistance = 0;
-	for(unsigned int counter = source-1;counter < destination;counter++){
-		calculatedDistance += distances[counter];
-	}
-	printf("%u",min(calculatedDistance,totalDistance-calculatedDistance));
+void printMinDistance() {
+    unsigned int stationsCount,userInput,source,destination;
+    scanf("%u",&stationsCount);
+    vector<int> distances;
+    unsigned int totalDistance = 0;
+    while(stationsCount--) {
+        scanf("%u",&userInput);
+        distances.push_back(userInput);
+        totalDistance += userInput;
+    }
+    scanf("%u %u",&source,&destination);
+    if(source > destination) {
+        swap(source,destination);
+    }
+    unsigned int calculatedDistance = 0;
+    for(unsigned int counter = source-1; counter < destination; counter++) {
+        calculatedDistance += distances[counter];
+    }
+    printf("%u",min(calculatedDistance,totalDistance-calculatedDistance));
 }
 
 #endif /* CIRCLELINE_H_ */

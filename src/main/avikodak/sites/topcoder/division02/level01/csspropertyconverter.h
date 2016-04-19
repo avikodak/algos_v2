@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 class CssPropertyConverter {
 public:
-	string getCamelized(string cssPropertyName){
-		string result;
-		for(unsigned int counter = 0;counter < cssPropertyName.size();counter++){
-			if(cssPropertyName[counter] == '-'){
-				result.push_back(cssPropertyName[counter+1]-'a'+'A');
-				counter++;
-			}else{
-				result.push_back(cssPropertyName[counter]);
-			}
-		}
-		return result;
-	}
+    string getCamelized(string cssPropertyName) {
+        string result;
+        for(unsigned int counter = 0; counter < cssPropertyName.size(); counter++) {
+            if(cssPropertyName[counter] == '-') {
+                result.push_back(cssPropertyName[counter+1]-'a'+'A');
+                counter++;
+            } else {
+                result.push_back(cssPropertyName[counter]);
+            }
+        }
+        return result;
+    }
 };
 
 #endif /* CSSPROPERTYCONVERTER_H_ */

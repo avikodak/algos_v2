@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 //Locally Tested
 class LISNumberDivTwo {
 public:
-	int calculate(vector<int> seq){
-		int lisCount = 0;
-		unsigned int counter = 0;
-		while(counter < seq.size()){
-			lisCount++;
-			while(counter+1 < seq.size() && seq[counter] < seq[counter+1]){
-				counter++;
-			}
-			counter++;
-		}
-		return lisCount;
-	}
+    int calculate(vector<int> seq) {
+        int lisCount = 0;
+        unsigned int counter = 0;
+        while(counter < seq.size()) {
+            lisCount++;
+            while(counter+1 < seq.size() && seq[counter] < seq[counter+1]) {
+                counter++;
+            }
+            counter++;
+        }
+        return lisCount;
+    }
 };
 
 #endif /* LISNUMBERDIVTWO_H_ */

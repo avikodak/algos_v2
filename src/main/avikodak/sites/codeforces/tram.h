@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tram.h 
+ *  File Name   		: tram.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\tram.h
  *  Created on			: Mar 22, 2015 :: 7:23:28 PM
  *  Author				: avikodak
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define TRAM_H_
 
 //Tested
-void printMinCapacityTram(){
-	unsigned int testCases,maxTramCapacity = 0,peopleEntered,peopleExited,counter = 0;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&peopleExited,&peopleEntered);
-		counter += peopleEntered;
-		counter -= peopleExited;
-		maxTramCapacity = max(maxTramCapacity,counter);
-	}
-	printf("%u",maxTramCapacity);
+void printMinCapacityTram() {
+    unsigned int testCases,maxTramCapacity = 0,peopleEntered,peopleExited,counter = 0;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&peopleExited,&peopleEntered);
+        counter += peopleEntered;
+        counter -= peopleExited;
+        maxTramCapacity = max(maxTramCapacity,counter);
+    }
+    printf("%u",maxTramCapacity);
 }
 
 #endif /* TRAM_H_ */

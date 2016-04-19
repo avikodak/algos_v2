@@ -76,31 +76,31 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CRESENSE_CRES103_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,sum,totalTriplets;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		scanf("%lld",&sum);
-		totalTriplets = 0;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-2;outerCrawler++){
-			for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size()-1;innerCrawler++){
-				for(unsigned int counter = innerCrawler+1;counter < userInput.size();counter++){
-					if(userInput[outerCrawler]+userInput[innerCrawler]+userInput[counter] < sum){
-						totalTriplets++;
-					}
-				}
-			}
-		}
-		printf("%lld\n",totalTriplets);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,sum,totalTriplets;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        scanf("%lld",&sum);
+        totalTriplets = 0;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-2; outerCrawler++) {
+            for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size()-1; innerCrawler++) {
+                for(unsigned int counter = innerCrawler+1; counter < userInput.size(); counter++) {
+                    if(userInput[outerCrawler]+userInput[innerCrawler]+userInput[counter] < sum) {
+                        totalTriplets++;
+                    }
+                }
+            }
+        }
+        printf("%lld\n",totalTriplets);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CRESENSE_CRES103_H_ */

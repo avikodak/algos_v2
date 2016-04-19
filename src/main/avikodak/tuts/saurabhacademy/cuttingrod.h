@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cuttingrod.h 
+ *  File Name   		: cuttingrod.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\cuttingrod.h
  *  Created on			: Oct 24, 2014 :: 8:52:41 PM
  *  Author				: AVINASH
@@ -69,43 +69,43 @@ using namespace __gnu_cxx;
 #define CUTTINGROD_H_
 
 //Tested
-int cuttingRod(map<unsigned int,int> &lengthBenefitMap,unsigned int lengthOfRod){
-	if(lengthOfRod <= 0){
-		return 0;
-	}
-	int maxBenefit = 0;
-	map<unsigned int,int>::iterator itToLengthBenefitMap;
-	for(itToLengthBenefitMap = lengthBenefitMap.begin();itToLengthBenefitMap != lengthBenefitMap.end();itToLengthBenefitMap++){
-		if(lengthOfRod >= itToLengthBenefitMap->first){
-			maxBenefit = max(maxBenefit,itToLengthBenefitMap->second + cuttingRod(lengthBenefitMap,lengthOfRod - itToLengthBenefitMap->first));
-		}
-	}
-	return maxBenefit;
+int cuttingRod(map<unsigned int,int> &lengthBenefitMap,unsigned int lengthOfRod) {
+    if(lengthOfRod <= 0) {
+        return 0;
+    }
+    int maxBenefit = 0;
+    map<unsigned int,int>::iterator itToLengthBenefitMap;
+    for(itToLengthBenefitMap = lengthBenefitMap.begin(); itToLengthBenefitMap != lengthBenefitMap.end(); itToLengthBenefitMap++) {
+        if(lengthOfRod >= itToLengthBenefitMap->first) {
+            maxBenefit = max(maxBenefit,itToLengthBenefitMap->second + cuttingRod(lengthBenefitMap,lengthOfRod - itToLengthBenefitMap->first));
+        }
+    }
+    return maxBenefit;
 }
 
-int cuttingRodBottomUp(map<unsigned int,int> lengthBenefitMap,unsigned int lengthOfRod){
-	return 0;
+int cuttingRodBottomUp(map<unsigned int,int> lengthBenefitMap,unsigned int lengthOfRod) {
+    return 0;
 }
 
 //Tested
-int cuttingRodMemoization(map<unsigned int,int> lengthBenefitMap,unsigned int lengthOfRod){
-	if(lengthOfRod <= 0){
-		return 0;
-	}
-	int maxBenefit = 0;
-	static map<unsigned int,int> optimizedLengthBenefitMap;
-	map<unsigned int,int>::iterator itToLengthBenefitMap,itToOptimizedLengthBenefitMap;
-	for(itToLengthBenefitMap = lengthBenefitMap.begin();itToLengthBenefitMap != lengthBenefitMap.end();itToLengthBenefitMap++){
-		if(lengthOfRod >= itToLengthBenefitMap->first){
-			if((itToOptimizedLengthBenefitMap = optimizedLengthBenefitMap.find((unsigned int)(lengthOfRod - itToLengthBenefitMap->first))) == optimizedLengthBenefitMap.end()){
-				maxBenefit = max(maxBenefit,itToLengthBenefitMap->second + cuttingRodMemoization(lengthBenefitMap,lengthOfRod - itToLengthBenefitMap->first));
-			}else{
-				maxBenefit = max(maxBenefit,itToOptimizedLengthBenefitMap->second);
-			}
-		}
-	}
-	optimizedLengthBenefitMap.insert(pair<unsigned int,int>(lengthOfRod,maxBenefit));
-	return maxBenefit;
+int cuttingRodMemoization(map<unsigned int,int> lengthBenefitMap,unsigned int lengthOfRod) {
+    if(lengthOfRod <= 0) {
+        return 0;
+    }
+    int maxBenefit = 0;
+    static map<unsigned int,int> optimizedLengthBenefitMap;
+    map<unsigned int,int>::iterator itToLengthBenefitMap,itToOptimizedLengthBenefitMap;
+    for(itToLengthBenefitMap = lengthBenefitMap.begin(); itToLengthBenefitMap != lengthBenefitMap.end(); itToLengthBenefitMap++) {
+        if(lengthOfRod >= itToLengthBenefitMap->first) {
+            if((itToOptimizedLengthBenefitMap = optimizedLengthBenefitMap.find((unsigned int)(lengthOfRod - itToLengthBenefitMap->first))) == optimizedLengthBenefitMap.end()) {
+                maxBenefit = max(maxBenefit,itToLengthBenefitMap->second + cuttingRodMemoization(lengthBenefitMap,lengthOfRod - itToLengthBenefitMap->first));
+            } else {
+                maxBenefit = max(maxBenefit,itToOptimizedLengthBenefitMap->second);
+            }
+        }
+    }
+    optimizedLengthBenefitMap.insert(pair<unsigned int,int>(lengthOfRod,maxBenefit));
+    return maxBenefit;
 }
 
 #endif /* CUTTINGROD_H_ */

@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define LLYAANDBANKACCOUNT_H_
 
 //Tested
-void getMaxAccountState(){
-	long long int userInput,lastTwoDigits,temp;
-	cin >> userInput;
-	lastTwoDigits = userInput%100;
-	temp = userInput/100;
-	temp = temp*10 + (lastTwoDigits%10);
-	userInput = max(userInput,temp);
-	temp = temp/10;
-	temp = temp*10 + (lastTwoDigits/10);
-	userInput = max(userInput,temp);
-	cout << userInput;
+void getMaxAccountState() {
+    long long int userInput,lastTwoDigits,temp;
+    cin >> userInput;
+    lastTwoDigits = userInput%100;
+    temp = userInput/100;
+    temp = temp*10 + (lastTwoDigits%10);
+    userInput = max(userInput,temp);
+    temp = temp/10;
+    temp = temp*10 + (lastTwoDigits/10);
+    userInput = max(userInput,temp);
+    cout << userInput;
 }
 
 #endif /* LLYAANDBANKACCOUNT_H_ */

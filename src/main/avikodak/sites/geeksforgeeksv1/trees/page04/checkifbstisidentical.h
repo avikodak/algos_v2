@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkifbstisidentical.h 
+ *  File Name   		: checkifbstisidentical.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\checkifbstisidentical.h
  *  Created on			: Nov 14, 2014 :: 7:11:17 PM
  *  Author				: AVINASH
@@ -68,7 +68,7 @@ using namespace __gnu_cxx;
 #ifndef CHECKIFBSTISIDENTICAL_H_
 #define CHECKIFBSTISIDENTICAL_H_
 
-bool isSequenceBST(vector<int> firstUserInput,vector<int> secondUserInput,int min,int max,int startIndex,int endIndex){
+bool isSequenceBST(vector<int> firstUserInput,vector<int> secondUserInput,int min,int max,int startIndex,int endIndex) {
 
 }
 

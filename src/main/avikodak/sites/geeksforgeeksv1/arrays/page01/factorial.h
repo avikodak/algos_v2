@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: factorial.h 
+ *  File Name   		: factorial.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\factorial.h
  *  Created on			: Jan 20, 2015 :: 10:42:42 AM
  *  Author				: AVINASH
@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define FACTORIAL_H_
 
 //Tested
-void factorialLargeNumber(vector<int> &userInput,int number){
-	if(number == 1){
-		return;
-	}
-	int carry = 0,result;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		result = userInput[counter] * number + carry;
-		userInput[counter] = result % 10;
-		carry = result/10;
-	}
-	while(carry > 0){
-		userInput.push_back(carry%10);
-		carry /= 10;
-	}
-	factorialLargeNumber(userInput,number-1);
+void factorialLargeNumber(vector<int> &userInput,int number) {
+    if(number == 1) {
+        return;
+    }
+    int carry = 0,result;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        result = userInput[counter] * number + carry;
+        userInput[counter] = result % 10;
+        carry = result/10;
+    }
+    while(carry > 0) {
+        userInput.push_back(carry%10);
+        carry /= 10;
+    }
+    factorialLargeNumber(userInput,number-1);
 }
 
 #endif /* FACTORIAL_H_ */

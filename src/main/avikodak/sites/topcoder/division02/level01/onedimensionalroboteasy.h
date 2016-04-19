@@ -70,23 +70,23 @@ using namespace __gnu_cxx;
 #ifndef ONEDIMENSIONALROBOTEASY_H_
 #define ONEDIMENSIONALROBOTEASY_H_
 
-class OneDimensionalRobotEasy{
+class OneDimensionalRobotEasy {
 public:
-	int finalPosition(string commands, int A, int B){
-		int position = 0;
-		for(unsigned int counter = 0;counter < commands.size();counter++){
-			if(commands[counter] == 'L'){
-				if(position != -1*A){
-					position--;
-				}
-			}else{
-				if(position != B){
-					position++;
-				}
-			}
-		}
-		return position;
-	}
+    int finalPosition(string commands, int A, int B) {
+        int position = 0;
+        for(unsigned int counter = 0; counter < commands.size(); counter++) {
+            if(commands[counter] == 'L') {
+                if(position != -1*A) {
+                    position--;
+                }
+            } else {
+                if(position != B) {
+                    position++;
+                }
+            }
+        }
+        return position;
+    }
 };
 
 #endif /* ONEDIMENSIONALROBOTEASY_H_ */

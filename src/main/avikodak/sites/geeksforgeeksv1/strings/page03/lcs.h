@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lcs.h 
+ *  File Name   		: lcs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\lcs.h
  *  Created on			: Jan 16, 2015 :: 11:59:06 AM
  *  Author				: AVINASH
@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 #define LCS_H_
 
 //Tested
-int longestCommonSubSequence(char firstUserInput[],char secondUserInput[],int firstCurrentIndex,int secondCurrentIndex){
-	if(firstCurrentIndex < 0 || secondCurrentIndex < 0){
-		return 0;
-	}
-	if(firstUserInput[firstCurrentIndex] == secondUserInput[secondCurrentIndex]){
-		return 1 + longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex-1);
-	}else{
-		return max(longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex),longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex,secondCurrentIndex-1));
-	}
+int longestCommonSubSequence(char firstUserInput[],char secondUserInput[],int firstCurrentIndex,int secondCurrentIndex) {
+    if(firstCurrentIndex < 0 || secondCurrentIndex < 0) {
+        return 0;
+    }
+    if(firstUserInput[firstCurrentIndex] == secondUserInput[secondCurrentIndex]) {
+        return 1 + longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex-1);
+    } else {
+        return max(longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex-1,secondCurrentIndex),longestCommonSubSequence(firstUserInput,secondUserInput,firstCurrentIndex,secondCurrentIndex-1));
+    }
 }
 
 //Tested
-int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInput[],int firstStringLength,int secondStringLength){
-	if(firstStringLength == 0 || secondStringLength == 0){
-		return 0;
-	}
-	vector<vector<int> > auxSpace(firstStringLength+1);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].assign(secondStringLength+1,0);
-	}
-	for(int outerCrawler = 1;outerCrawler <= firstStringLength;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler <= secondStringLength;innerCrawler++){
-			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
-				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
-			}
-		}
-	}
-	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+int longestCommonSubSequenceMemoization(char firstUserInput[],char secondUserInput[],int firstStringLength,int secondStringLength) {
+    if(firstStringLength == 0 || secondStringLength == 0) {
+        return 0;
+    }
+    vector<vector<int> > auxSpace(firstStringLength+1);
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        auxSpace[counter].assign(secondStringLength+1,0);
+    }
+    for(int outerCrawler = 1; outerCrawler <= firstStringLength; outerCrawler++) {
+        for(int innerCrawler = 1; innerCrawler <= secondStringLength; innerCrawler++) {
+            if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]) {
+                auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
+            } else {
+                auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+            }
+        }
+    }
+    return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
 }
 
 #endif /* LCS_H_ */

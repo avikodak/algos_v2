@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef LITTLEELEPHANTANDBOOKS_H_
 #define LITTLEELEPHANTANDBOOKS_H_
 
-class LittleElephantAndBooks{
+class LittleElephantAndBooks {
 public:
-	int getNumber(vector<int> pages, int number){
-		sort(pages.begin(),pages.size());
-		int totalPages = 0;
-		for(unsigned int counter = 0;counter < number-1;counter++){
-			totalPages += pages[counter];
-		}
-		totalPages += pages[number];
-		return totalPages;
-	}
+    int getNumber(vector<int> pages, int number) {
+        sort(pages.begin(),pages.size());
+        int totalPages = 0;
+        for(unsigned int counter = 0; counter < number-1; counter++) {
+            totalPages += pages[counter];
+        }
+        totalPages += pages[number];
+        return totalPages;
+    }
 };
 
 #endif /* LITTLEELEPHANTANDBOOKS_H_ */

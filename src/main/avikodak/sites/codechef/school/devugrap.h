@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define DEVUGRAP_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input,total=0,kValue;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&kValue);
-		total = 0;
-		while(size--){
-			scanf("%u",&input);
-			if(input < kValue){
-				total += kValue - input;
-			}else{
- 				total += min(input%kValue,kValue-(input%kValue));
-			}
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input,total=0,kValue;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&kValue);
+        total = 0;
+        while(size--) {
+            scanf("%u",&input);
+            if(input < kValue) {
+                total += kValue - input;
+            } else {
+                total += min(input%kValue,kValue-(input%kValue));
+            }
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* DEVUGRAP_H_ */

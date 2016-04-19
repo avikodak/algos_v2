@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findfirstrepeatingbinarysearch.h 
+ *  File Name   		: findfirstrepeatingbinarysearch.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeatingbinarysearch.h
  *  Created on			: Jan 5, 2015 :: 11:24:23 PM
  *  Author				: AVINASH
@@ -74,61 +74,61 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex] == key?startIndex:INT_MIN;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] == key){
-			return frvLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-		}else{
-			return middleIndex;
-		}
-	}else if(userInput[middleIndex] > key){
-		return frvLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-	}else{
-	}	return frvLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex] == key?startIndex:INT_MIN;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] == key) {
+            return frvLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+        } else {
+            return middleIndex;
+        }
+    } else if(userInput[middleIndex] > key) {
+        return frvLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+    } else {
+    }	return frvLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
 //Tested
-int frvHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex] == key?startIndex:INT_MAX;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		if(middleIndex + 1 <= endIndex && userInput[middleIndex+1] == key){
-			return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
-		}else{
-			return middleIndex;
-		}
-	}else if(userInput[middleIndex] > key){
-		return frvHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-	}else{
-	}	return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+int frvHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex] == key?startIndex:INT_MAX;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        if(middleIndex + 1 <= endIndex && userInput[middleIndex+1] == key) {
+            return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+        } else {
+            return middleIndex;
+        }
+    } else if(userInput[middleIndex] > key) {
+        return frvHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+    } else {
+    }	return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
 //Tested
-int findFirstRepeatingValueBinarySearch(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	vector<int> auxSpace(userInput.size());
-	copy(userInput.begin(),userInput.end(),auxSpace.begin());
-	sort(auxSpace.begin(),auxSpace.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(frvHigherBoundBinarySearch(auxSpace,userInput[counter],0,auxSpace.size()-1) - frvLowerBoundBinarySearch(auxSpace,userInput[counter],0,auxSpace.size()-1) + 1 > 1){
-			return userInput[counter];
-		}
-	}
-	return INT_MIN;
+int findFirstRepeatingValueBinarySearch(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    vector<int> auxSpace(userInput.size());
+    copy(userInput.begin(),userInput.end(),auxSpace.begin());
+    sort(auxSpace.begin(),auxSpace.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(frvHigherBoundBinarySearch(auxSpace,userInput[counter],0,auxSpace.size()-1) - frvLowerBoundBinarySearch(auxSpace,userInput[counter],0,auxSpace.size()-1) + 1 > 1) {
+            return userInput[counter];
+        }
+    }
+    return INT_MIN;
 }
 
 #endif /* FINDFIRSTREPEATINGBINARYSEARCH_H_ */

@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define NAMESSCORES_H_
 
 //Tested
-unsigned long long int getNameScore(string userInput){
-	unsigned long long int score = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		score += (userInput[counter] - 'A' + 1);
-	}
-	return score;
+unsigned long long int getNameScore(string userInput) {
+    unsigned long long int score = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        score += (userInput[counter] - 'A' + 1);
+    }
+    return score;
 }
 
 //Tested
 //Ans : 871198282
-unsigned long long int getTotalNamesScores(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	vector<string> userInput;
-	string input;
-	while(testCases--){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned long long int sum = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		sum += ((counter+1)*getNameScore(userInput[counter]));
-	}
-	return sum;
+unsigned long long int getTotalNamesScores() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    vector<string> userInput;
+    string input;
+    while(testCases--) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    unsigned long long int sum = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        sum += ((counter+1)*getNameScore(userInput[counter]));
+    }
+    return sum;
 }
 
 #endif /* NAMESSCORES_H_ */

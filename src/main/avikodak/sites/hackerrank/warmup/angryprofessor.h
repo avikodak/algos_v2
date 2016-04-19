@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: angryprofessor.h 
+ *  File Name   		: angryprofessor.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\angryprofessor.h
  *  Created on			: Mar 10, 2015 :: 9:59:55 PM
  *  Author				: avikodak
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define ANGRYPROFESSOR_H_
 
 //Tested
-void doesClassStarts(){
-	int testCases,totalStudents,requiredStudents,timeArrival,counter;
-	scanf("%d",&testCases);
-	while(testCases--){
-		cin >> totalStudents >> requiredStudents;
-		counter = 0;
-		while(totalStudents--){
-			scanf("%d",&timeArrival);
-			if(timeArrival <= 0){
-				counter++;
-			}
-		}
-		printf("%s\n",counter >= requiredStudents?"NO":"YES");
-	}
+void doesClassStarts() {
+    int testCases,totalStudents,requiredStudents,timeArrival,counter;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        cin >> totalStudents >> requiredStudents;
+        counter = 0;
+        while(totalStudents--) {
+            scanf("%d",&timeArrival);
+            if(timeArrival <= 0) {
+                counter++;
+            }
+        }
+        printf("%s\n",counter >= requiredStudents?"NO":"YES");
+    }
 }
 
 #endif /* ANGRYPROFESSOR_H_ */

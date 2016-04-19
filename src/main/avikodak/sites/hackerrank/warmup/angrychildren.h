@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: angrychildren.h 
+ *  File Name   		: angrychildren.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\angrychildren.h
  *  Created on			: Feb 5, 2015 :: 8:32:43 PM
  *  Author				: AVINASH
@@ -74,15 +74,15 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minimizeUnfairness(int userInput[],int size,int kValue){
-	sort(userInput,userInput+size);
-	int minUnfairness = INT_MAX;
-	unsigned int counter = 0;
-	while(counter + kValue < size){
-		minUnfairness = min(minUnfairness,userInput[counter+kValue-1] - userInput[counter]);
-		counter++;
-	}
-	return minUnfairness;
+int minimizeUnfairness(int userInput[],int size,int kValue) {
+    sort(userInput,userInput+size);
+    int minUnfairness = INT_MAX;
+    unsigned int counter = 0;
+    while(counter + kValue < size) {
+        minUnfairness = min(minUnfairness,userInput[counter+kValue-1] - userInput[counter]);
+        counter++;
+    }
+    return minUnfairness;
 }
 
 #endif /* ANGRYCHILDREN_H_ */

@@ -72,34 +72,34 @@ using namespace __gnu_cxx;
 #define MANIP2_H_
 
 //Tested
-vector<unsigned int> generateValues(){
-	vector<unsigned int> values;
-	unsigned int temp;
-	values.push_back(5);
-	unsigned int powVal = 5;
-	while(values.size() <= 8000){
-		powVal *= 5;
-		temp = values.size();
-		values.push_back(powVal);
-		for(unsigned int counter = 0;counter < temp;counter++){
-			values.push_back(powVal + values[counter]);
-			if(values.size() >= 8000){
-				break;
-			}
-		}
-	}
-	return values;
+vector<unsigned int> generateValues() {
+    vector<unsigned int> values;
+    unsigned int temp;
+    values.push_back(5);
+    unsigned int powVal = 5;
+    while(values.size() <= 8000) {
+        powVal *= 5;
+        temp = values.size();
+        values.push_back(powVal);
+        for(unsigned int counter = 0; counter < temp; counter++) {
+            values.push_back(powVal + values[counter]);
+            if(values.size() >= 8000) {
+                break;
+            }
+        }
+    }
+    return values;
 }
 
 //Tested
-void printResults(){
-	vector<unsigned int> auxSpace = generateValues();
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		cout << auxSpace[input-1] << endl;
-	}
+void printResults() {
+    vector<unsigned int> auxSpace = generateValues();
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        cout << auxSpace[input-1] << endl;
+    }
 }
 
 #endif /* MANIP2_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpair.h 
+ *  File Name   		: closestpair.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\closestpair.h
  *  Created on			: Jan 5, 2015 :: 11:29:13 PM
  *  Author				: AVINASH
@@ -74,48 +74,48 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getClosestPairSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return null;
-	}
-	int frontCrawler = 0,rearCrawler = secondSortedArray.size()-1;
-	int difference,minDifference = INT_MAX,firstIndex,secondIndex;
-	while(frontCrawler < (int)firstSortedArray.size() && rearCrawler >= 0){
-		difference = abs(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] - x);
-		if(difference < minDifference){
-			minDifference = difference;
-			firstIndex = frontCrawler;
-			secondIndex = rearCrawler;
-		}
-		if(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] < x){
-			frontCrawler++;
-		}else{
-			rearCrawler--;
-		}
-	}
-	return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
+iPair *getClosestPairSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,int x) {
+    if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0) {
+        return null;
+    }
+    int frontCrawler = 0,rearCrawler = secondSortedArray.size()-1;
+    int difference,minDifference = INT_MAX,firstIndex,secondIndex;
+    while(frontCrawler < (int)firstSortedArray.size() && rearCrawler >= 0) {
+        difference = abs(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] - x);
+        if(difference < minDifference) {
+            minDifference = difference;
+            firstIndex = frontCrawler;
+            secondIndex = rearCrawler;
+        }
+        if(firstSortedArray[frontCrawler] + secondSortedArray[rearCrawler] < x) {
+            frontCrawler++;
+        } else {
+            rearCrawler--;
+        }
+    }
+    return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getClosestPairSortedArraysON2(vector<int> firstSortedArray,vector<int> secondSortedArray,int x){
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0){
-		return null;
-	}
-	int minDifference = INT_MAX,firstIndex,secondIndex,currentDifference;
-	for(unsigned int outerCrawler = 0;outerCrawler < firstSortedArray.size();outerCrawler++){
-		for(unsigned int innerCrawler = 0;innerCrawler < secondSortedArray.size();innerCrawler++){
-			currentDifference = abs(firstSortedArray[firstIndex] + secondSortedArray[secondIndex] - x);
-			if(minDifference > currentDifference){
-				minDifference = currentDifference;
-				firstIndex = outerCrawler;
-				secondIndex = innerCrawler;
-			}
-		}
-	}
-	return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
+iPair *getClosestPairSortedArraysON2(vector<int> firstSortedArray,vector<int> secondSortedArray,int x) {
+    if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0) {
+        return null;
+    }
+    int minDifference = INT_MAX,firstIndex,secondIndex,currentDifference;
+    for(unsigned int outerCrawler = 0; outerCrawler < firstSortedArray.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = 0; innerCrawler < secondSortedArray.size(); innerCrawler++) {
+            currentDifference = abs(firstSortedArray[firstIndex] + secondSortedArray[secondIndex] - x);
+            if(minDifference > currentDifference) {
+                minDifference = currentDifference;
+                firstIndex = outerCrawler;
+                secondIndex = innerCrawler;
+            }
+        }
+    }
+    return new iPair(firstSortedArray[firstIndex],secondSortedArray[secondIndex]);
 }
 
 #endif /* CLOSESTPAIR_H_ */

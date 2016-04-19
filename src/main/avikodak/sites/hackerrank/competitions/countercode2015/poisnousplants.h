@@ -71,44 +71,44 @@ using namespace __gnu_cxx;
 #define POISNOUSPLANTS_H_
 
 //Tested
-bool isSortedDesc(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] > userInput[counter-1]){
-			return false;
-		}
-	}
-	return true;
+bool isSortedDesc(vector<unsigned int> userInput) {
+    if(userInput.size() == 0) {
+        return true;
+    }
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] > userInput[counter-1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void getNoOfDays(){
-	unsigned int size,input;
-	vector<unsigned int> userInput;
-	vector<unsigned int> temp;
-	scanf("%u",&size);
-	while(size--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	unsigned int daysCount = 0;
-	do{
-		if(isSortedDesc(userInput)){
-			break;
-		}
-		temp.clear();
-		temp.push_back(userInput[0]);
-		daysCount++;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] <= userInput[counter-1]){
-				temp.push_back(userInput[counter]);
-			}
-		}
-		userInput = temp;
-	}while(true);
-	cout << daysCount << endl;
+void getNoOfDays() {
+    unsigned int size,input;
+    vector<unsigned int> userInput;
+    vector<unsigned int> temp;
+    scanf("%u",&size);
+    while(size--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    unsigned int daysCount = 0;
+    do {
+        if(isSortedDesc(userInput)) {
+            break;
+        }
+        temp.clear();
+        temp.push_back(userInput[0]);
+        daysCount++;
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            if(userInput[counter] <= userInput[counter-1]) {
+                temp.push_back(userInput[counter]);
+            }
+        }
+        userInput = temp;
+    } while(true);
+    cout << daysCount << endl;
 }
 
 #endif /* POISNOUSPLANTS_H_ */

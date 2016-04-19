@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ultrafastmultiplication.h 
+ *  File Name   		: ultrafastmultiplication.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\ultrafastmultiplication.h
  *  Created on			: Mar 5, 2015 :: 8:12:47 AM
  *  Author				: avikodak
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define ULTRAFASTMULTIPLICATION_H_
 
 //Tested
-void getXORResultVeryLong(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE];
-	char secondUserInput[CODEFORCES_MAX_INPUT_SIZE];
-	scanf("%s %s",firstUserInput,secondUserInput);
-	int lengthOfInputString = strlen(firstUserInput);
-	for(int counter = 0;counter < lengthOfInputString;counter++){
-		if(firstUserInput[counter] == secondUserInput[counter]){
-			printf("0");
-		}else{
-			printf("1");
-		}
-	}
+void getXORResultVeryLong() {
+    char firstUserInput[CODEFORCES_MAX_INPUT_SIZE];
+    char secondUserInput[CODEFORCES_MAX_INPUT_SIZE];
+    scanf("%s %s",firstUserInput,secondUserInput);
+    int lengthOfInputString = strlen(firstUserInput);
+    for(int counter = 0; counter < lengthOfInputString; counter++) {
+        if(firstUserInput[counter] == secondUserInput[counter]) {
+            printf("0");
+        } else {
+            printf("1");
+        }
+    }
 }
 
 #endif /* ULTRAFASTMULTIPLICATION_H_ */

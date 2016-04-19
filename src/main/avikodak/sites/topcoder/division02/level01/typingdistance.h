@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: typingdistance.h 
+ *  File Name   		: typingdistance.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\typingdistance.h
  *  Created on			: Mar 25, 2015 :: 11:59:18 PM
  *  Author				: avikodak
@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define TYPINGDISTANCE_H_
 
 //Tested
-class TypingDistance{
+class TypingDistance {
 public:
-	int minDistance(string keyboard, string word){
-		map<char,unsigned int> charIndexMap;
-		for(unsigned int counter = 0;counter < keyboard.size();counter++){
-			charIndexMap.insert(pair<char,unsigned int>(keyboard[counter],counter));
-		}
-		int totalMoves = 0,prevIndex,temp;
-		prevIndex = charIndexMap.find(word[0])->second;
-		for(unsigned int counter = 1;counter < word.size();counter++){
-			temp = (charIndexMap.find(word[counter]))->second;
-			totalMoves += abs(prevIndex - temp);
-			prevIndex = temp;
-		}
-		return totalMoves;
-	}
+    int minDistance(string keyboard, string word) {
+        map<char,unsigned int> charIndexMap;
+        for(unsigned int counter = 0; counter < keyboard.size(); counter++) {
+            charIndexMap.insert(pair<char,unsigned int>(keyboard[counter],counter));
+        }
+        int totalMoves = 0,prevIndex,temp;
+        prevIndex = charIndexMap.find(word[0])->second;
+        for(unsigned int counter = 1; counter < word.size(); counter++) {
+            temp = (charIndexMap.find(word[counter]))->second;
+            totalMoves += abs(prevIndex - temp);
+            prevIndex = temp;
+        }
+        return totalMoves;
+    }
 };
 
 #endif /* TYPINGDISTANCE_H_ */

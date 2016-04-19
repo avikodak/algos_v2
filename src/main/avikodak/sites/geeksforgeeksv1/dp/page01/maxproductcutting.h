@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxproductcutting.h 
+ *  File Name   		: maxproductcutting.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\maxproductcutting.h
  *  Created on			: Jan 12, 2015 :: 8:25:17 PM
  *  Author				: AVINASH
@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define MAXPRODUCTCUTTING_H_
 
 //Tested
-int maxProductCutting(int rodLength){
-	if(rodLength < 0){
-		return INT_MIN;
-	}
-	if(rodLength < 2){
-		return 0;
-	}
-	int maxProduct = INT_MIN;
-	for(int counter = 1;counter < rodLength;counter++){
-		maxProduct = max(maxProduct,max(counter * (rodLength-counter),counter * maxProductCutting(rodLength - counter)));
-	}
-	return maxProduct;
+int maxProductCutting(int rodLength) {
+    if(rodLength < 0) {
+        return INT_MIN;
+    }
+    if(rodLength < 2) {
+        return 0;
+    }
+    int maxProduct = INT_MIN;
+    for(int counter = 1; counter < rodLength; counter++) {
+        maxProduct = max(maxProduct,max(counter * (rodLength-counter),counter * maxProductCutting(rodLength - counter)));
+    }
+    return maxProduct;
 }
 
 //Tested
-int maxProductCuttingMemoization(int rodLength){
-	if(rodLength < 2){
-		return 0;
-	}
-	vector<int> auxSpace;
-	auxSpace.push_back(0);
-	auxSpace.push_back(0);
-	int maxProduct;
-	for(int outerCounter = 2;outerCounter <= rodLength;outerCounter++){
-		maxProduct = INT_MIN;
-		for(int innerCounter = 1;innerCounter <= outerCounter/2;innerCounter++){
-			maxProduct = max(maxProduct,max(innerCounter * (outerCounter-innerCounter),innerCounter * auxSpace[outerCounter - innerCounter]));
-		}
-		auxSpace.push_back(maxProduct);
-	}
-	return auxSpace[auxSpace.size()-1];
+int maxProductCuttingMemoization(int rodLength) {
+    if(rodLength < 2) {
+        return 0;
+    }
+    vector<int> auxSpace;
+    auxSpace.push_back(0);
+    auxSpace.push_back(0);
+    int maxProduct;
+    for(int outerCounter = 2; outerCounter <= rodLength; outerCounter++) {
+        maxProduct = INT_MIN;
+        for(int innerCounter = 1; innerCounter <= outerCounter/2; innerCounter++) {
+            maxProduct = max(maxProduct,max(innerCounter * (outerCounter-innerCounter),innerCounter * auxSpace[outerCounter - innerCounter]));
+        }
+        auxSpace.push_back(maxProduct);
+    }
+    return auxSpace[auxSpace.size()-1];
 }
 
 #endif /* MAXPRODUCTCUTTING_H_ */

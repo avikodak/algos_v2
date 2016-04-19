@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cooling.h 
+ *  File Name   		: cooling.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cooling.h
  *  Created on			: Feb 8, 2015 :: 8:46:05 PM
  *  Author				: AVINASH
@@ -75,38 +75,38 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void getMaxPiesCooled(){
-	int testCases,size,input;
-	int pieWeights[MAX_SIZE],maxWeights[MAX_SIZE];
-	scanf("%d",&testCases);
-	int maxPies,pieCounter,weightCounter;
-	while(testCases--){
-		scanf("%d",&size);
-		for(int counter = 0;counter < size;counter++){
-			scanf("%d",&input);
-			pieWeights[counter] = input;
-		}
-		for(int counter = 0;counter < size;counter++){
-			scanf("%d",&input);
-			maxWeights[counter] = input;
-		}
-		sort(pieWeights,pieWeights+size);
-		sort(maxWeights,maxWeights+size);
-		maxPies = 0;
-		pieCounter = 0;
-		weightCounter = 0;
-		while(pieCounter < size && weightCounter < size){
-			while(weightCounter < size && maxWeights[weightCounter] < pieWeights[pieCounter]){
-				weightCounter++;
-			}
-			if(weightCounter < size){
-				maxPies++;
-				weightCounter++;
-				pieCounter++;
-			}
-		}
-		printf("%d\n",maxPies);
-	}
+void getMaxPiesCooled() {
+    int testCases,size,input;
+    int pieWeights[MAX_SIZE],maxWeights[MAX_SIZE];
+    scanf("%d",&testCases);
+    int maxPies,pieCounter,weightCounter;
+    while(testCases--) {
+        scanf("%d",&size);
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%d",&input);
+            pieWeights[counter] = input;
+        }
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%d",&input);
+            maxWeights[counter] = input;
+        }
+        sort(pieWeights,pieWeights+size);
+        sort(maxWeights,maxWeights+size);
+        maxPies = 0;
+        pieCounter = 0;
+        weightCounter = 0;
+        while(pieCounter < size && weightCounter < size) {
+            while(weightCounter < size && maxWeights[weightCounter] < pieWeights[pieCounter]) {
+                weightCounter++;
+            }
+            if(weightCounter < size) {
+                maxPies++;
+                weightCounter++;
+                pieCounter++;
+            }
+        }
+        printf("%d\n",maxPies);
+    }
 }
 
 #endif /* COOLING_H_ */

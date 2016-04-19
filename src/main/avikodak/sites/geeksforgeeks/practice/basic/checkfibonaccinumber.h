@@ -76,16 +76,16 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_CHECKFIBONACCINUMBER_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int fibonacciNumbers[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89};
-	long long int input;
-	scanf("%u",&testCases);
-	size = sizeof(fibonacciNumbers)/sizeof(long long int);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%s\n",binary_search(fibonacciNumbers,fibonacciNumbers+size,input)?"Yes":"No");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int fibonacciNumbers[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89};
+    long long int input;
+    scanf("%u",&testCases);
+    size = sizeof(fibonacciNumbers)/sizeof(long long int);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%s\n",binary_search(fibonacciNumbers,fibonacciNumbers+size,input)?"Yes":"No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_CHECKFIBONACCINUMBER_H_ */

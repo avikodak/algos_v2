@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubstring.h 
+ *  File Name   		: longestcommonsubstring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\longestcommonsubstring.h
  *  Created on			: Jan 20, 2015 :: 7:44:24 PM
  *  Author				: AVINASH
@@ -74,24 +74,24 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int longestCommonSubstring(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength){
-	if(firstStringLength == 0 || secondStringLength == 0){
-		return 0;
-	}
-	vector<vector<int> > auxSpace(firstStringLength+1);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].assign(secondStringLength+1,0);
-	}
-	int maxLength = INT_MIN;
-	for(int outerCrawler = 1;outerCrawler <= firstStringLength;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler <= secondStringLength;innerCrawler++){
-			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
-				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-				maxLength = max(maxLength,auxSpace[outerCrawler][innerCrawler]);
-			}
-		}
-	}
-	return maxLength;
+int longestCommonSubstring(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength) {
+    if(firstStringLength == 0 || secondStringLength == 0) {
+        return 0;
+    }
+    vector<vector<int> > auxSpace(firstStringLength+1);
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        auxSpace[counter].assign(secondStringLength+1,0);
+    }
+    int maxLength = INT_MIN;
+    for(int outerCrawler = 1; outerCrawler <= firstStringLength; outerCrawler++) {
+        for(int innerCrawler = 1; innerCrawler <= secondStringLength; innerCrawler++) {
+            if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]) {
+                auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
+                maxLength = max(maxLength,auxSpace[outerCrawler][innerCrawler]);
+            }
+        }
+    }
+    return maxLength;
 }
 
 #endif /* LONGESTCOMMONSUBSTRING_H_ */

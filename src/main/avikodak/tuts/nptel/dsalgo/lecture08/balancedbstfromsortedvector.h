@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: balancedbstfromsortedvector.h 
+ *  File Name   		: balancedbstfromsortedvector.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\balancedbstfromsortedvector.h
  *  Created on			: Nov 18, 2014 :: 7:39:54 PM
  *  Author				: AVINASH
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *getBalancedBstSortedArrayMain(vector<int> userInput,int startIndex,int endIndex){
-	if(userInput.size() == 0 || startIndex > endIndex){
-		return null;
-	}
-	int middleIndex = (startIndex + endIndex) / 2;
-	itNode *node = new itNode(userInput[middleIndex]);
-	node->left = getBalancedBstSortedArrayMain(userInput,startIndex,middleIndex-1);
-	node->right = getBalancedBstSortedArrayMain(userInput,middleIndex+1,endIndex);
-	return node;
+itNode *getBalancedBstSortedArrayMain(vector<int> userInput,int startIndex,int endIndex) {
+    if(userInput.size() == 0 || startIndex > endIndex) {
+        return null;
+    }
+    int middleIndex = (startIndex + endIndex) / 2;
+    itNode *node = new itNode(userInput[middleIndex]);
+    node->left = getBalancedBstSortedArrayMain(userInput,startIndex,middleIndex-1);
+    node->right = getBalancedBstSortedArrayMain(userInput,middleIndex+1,endIndex);
+    return node;
 }
 
 //Tested
-itNode *getBalancedBstSortedArray(vector<int> userInput){
-	return getBalancedBstSortedArrayMain(userInput,0,userInput.size()-1);
+itNode *getBalancedBstSortedArray(vector<int> userInput) {
+    return getBalancedBstSortedArrayMain(userInput,0,userInput.size()-1);
 }
 
 #endif /* BALANCEDBSTFROMSORTEDVECTOR_H_ */

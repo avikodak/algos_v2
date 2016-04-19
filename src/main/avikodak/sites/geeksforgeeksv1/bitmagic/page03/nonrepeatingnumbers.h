@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nonrepeatingnumbers.h 
+ *  File Name   		: nonrepeatingnumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\nonrepeatingnumbers.h
  *  Created on			: Jan 9, 2015 :: 9:43:24 AM
  *  Author				: AVINASH
@@ -70,23 +70,23 @@ using namespace __gnu_cxx;
 #ifndef NONREPEATINGNUMBERS_H_
 #define NONREPEATINGNUMBERS_H_
 
-iPair *findNonRepeatingNumbers(vector<int> userInput){
-	if(userInput.size() < 2){
-		return null;
-	}
-	iPair *result = new iPair(0,0);
-	int xorResult = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		xorResult ^= userInput[counter];
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] &  (xorResult & -xorResult)){
-			result->firstValue ^= result->firstValue;
-		}else{
-			result->secondValue ^= result->secondValue;
-		}
-	}
-	return result;
+iPair *findNonRepeatingNumbers(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return null;
+    }
+    iPair *result = new iPair(0,0);
+    int xorResult = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        xorResult ^= userInput[counter];
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] &  (xorResult & -xorResult)) {
+            result->firstValue ^= result->firstValue;
+        } else {
+            result->secondValue ^= result->secondValue;
+        }
+    }
+    return result;
 }
 
 #endif /* NONREPEATINGNUMBERS_H_ */

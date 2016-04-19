@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define VOTERS_H_
 
 //Tested
-void printFinalList(){
-	unsigned int firstSize,secondSize,thirdSize,userInput,size;
-	scanf("%u %u %u",&firstSize,&secondSize,&thirdSize);
-	map<unsigned int ,unsigned int> frequencyMap;
-	map<unsigned int,unsigned int>::iterator itToFrequencyMap;
-	size = firstSize + secondSize + thirdSize;
-	while(size--){
-		scanf("%u",&userInput);
-		if(frequencyMap.find(userInput) == frequencyMap.end()){
-			frequencyMap[userInput] = 1;
-		}else{
-			frequencyMap[userInput] += 1;
-		}
-	}
-	vector<int> finalList;
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		if(itToFrequencyMap->second > 1){
-			finalList.push_back(itToFrequencyMap->first);
-		}
-	}
-	printf("%u\n",finalList.size());
-	for(unsigned int counter = 0;counter < finalList.size();counter++){
-		printf("%d\n",finalList[counter]);
-	}
+void printFinalList() {
+    unsigned int firstSize,secondSize,thirdSize,userInput,size;
+    scanf("%u %u %u",&firstSize,&secondSize,&thirdSize);
+    map<unsigned int ,unsigned int> frequencyMap;
+    map<unsigned int,unsigned int>::iterator itToFrequencyMap;
+    size = firstSize + secondSize + thirdSize;
+    while(size--) {
+        scanf("%u",&userInput);
+        if(frequencyMap.find(userInput) == frequencyMap.end()) {
+            frequencyMap[userInput] = 1;
+        } else {
+            frequencyMap[userInput] += 1;
+        }
+    }
+    vector<int> finalList;
+    for(itToFrequencyMap = frequencyMap.begin(); itToFrequencyMap != frequencyMap.end(); itToFrequencyMap++) {
+        if(itToFrequencyMap->second > 1) {
+            finalList.push_back(itToFrequencyMap->first);
+        }
+    }
+    printf("%u\n",finalList.size());
+    for(unsigned int counter = 0; counter < finalList.size(); counter++) {
+        printf("%d\n",finalList[counter]);
+    }
 }
 
 #endif /* VOTERS_H_ */

@@ -73,26 +73,26 @@ using namespace __gnu_cxx;
 //Tested
 class StringMult {
 public:
-	string times(string sFactor, int iFactor){
-		if(iFactor == 0){
-			return "";
-		}else if(sFactor == ""){
-			return "";
-		}else if(iFactor > 0){
-			iFactor -= 1;
-			while(iFactor--){
-				sFactor.append(sFactor.begin(),sFactor.end());
-			}
-		}else{
-			iFactor *= -1;
-			iFactor -= 1;
-			reverse(sFactor.begin(),sFactor.end());
-			while(iFactor--){
-				sFactor.append(sFactor.begin(),sFactor.end());
-			}
-		}
-		return sFactor;
-	}
+    string times(string sFactor, int iFactor) {
+        if(iFactor == 0) {
+            return "";
+        } else if(sFactor == "") {
+            return "";
+        } else if(iFactor > 0) {
+            iFactor -= 1;
+            while(iFactor--) {
+                sFactor.append(sFactor.begin(),sFactor.end());
+            }
+        } else {
+            iFactor *= -1;
+            iFactor -= 1;
+            reverse(sFactor.begin(),sFactor.end());
+            while(iFactor--) {
+                sFactor.append(sFactor.begin(),sFactor.end());
+            }
+        }
+        return sFactor;
+    }
 };
 
 #endif /* STRINGMULT_H_ */

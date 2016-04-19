@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define IITK2P06_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int even,odd,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&even,&odd);
-		if((even+odd)%5 != 0){
-			printf("-1\n");
-		}else{
-			printf("%lld\n",abs(3*even - 2*odd)/(long long int)5);
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int even,odd,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&even,&odd);
+        if((even+odd)%5 != 0) {
+            printf("-1\n");
+        } else {
+            printf("%lld\n",abs(3*even - 2*odd)/(long long int)5);
+        }
+    }
 }
 
 #endif /* IITK2P06_H_ */

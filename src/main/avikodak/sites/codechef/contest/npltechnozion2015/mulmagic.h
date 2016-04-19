@@ -73,26 +73,27 @@ using namespace __gnu_cxx;
 #define MULMAGIC_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	scanf("%u",&testCases);
-	long long int sum,maxSum;
-	long long int userInput[100001];
-	while(testCases--){
-		scanf("%u",&size);
-		for(unsigned int counter = 1;counter <= size;counter++){
-			scanf("%lld",&userInput[counter]);
-		}
-		sum = 0;maxSum = 0;
-		for(unsigned int outerCounter = 2;outerCounter <= size;outerCounter++){
-			sum = 0;
-			for(unsigned int innerCounter = 1;outerCounter*innerCounter <= size;innerCounter++){
-				sum += userInput[outerCounter*innerCounter];
-			}
-			maxSum = max(maxSum,sum);
-		}
-		printf("%lld\n",maxSum);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    scanf("%u",&testCases);
+    long long int sum,maxSum;
+    long long int userInput[100001];
+    while(testCases--) {
+        scanf("%u",&size);
+        for(unsigned int counter = 1; counter <= size; counter++) {
+            scanf("%lld",&userInput[counter]);
+        }
+        sum = 0;
+        maxSum = 0;
+        for(unsigned int outerCounter = 2; outerCounter <= size; outerCounter++) {
+            sum = 0;
+            for(unsigned int innerCounter = 1; outerCounter*innerCounter <= size; innerCounter++) {
+                sum += userInput[outerCounter*innerCounter];
+            }
+            maxSum = max(maxSum,sum);
+        }
+        printf("%lld\n",maxSum);
+    }
 }
 
 #endif /* MULMAGIC_H_ */

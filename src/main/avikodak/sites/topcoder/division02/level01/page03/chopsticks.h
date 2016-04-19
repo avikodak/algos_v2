@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 
 class Chopsticks {
 public:
-	int getmax(vector<int> length){
-		map<int,unsigned int> lengthCounter;
-		map<int,unsigned int>::iterator itToLengthCounter;
-		for(unsigned int counter = 0;counter < length.size();counter++){
-			if((itToLengthCounter = lengthCounter.find(length[counter])) != lengthCounter.end()){
-				lengthCounter[length[counter]]++;
-			}else{
-				lengthCounter[length[counter]] = 1;
-			}
-		}
-		int maxPairs = 0;
-		for(itToLengthCounter = lengthCounter.begin();itToLengthCounter != lengthCounter.end();itToLengthCounter++){
-			maxPairs += itToLengthCounter->second/2;
-		}
-		return maxPairs;
-	}
+    int getmax(vector<int> length) {
+        map<int,unsigned int> lengthCounter;
+        map<int,unsigned int>::iterator itToLengthCounter;
+        for(unsigned int counter = 0; counter < length.size(); counter++) {
+            if((itToLengthCounter = lengthCounter.find(length[counter])) != lengthCounter.end()) {
+                lengthCounter[length[counter]]++;
+            } else {
+                lengthCounter[length[counter]] = 1;
+            }
+        }
+        int maxPairs = 0;
+        for(itToLengthCounter = lengthCounter.begin(); itToLengthCounter != lengthCounter.end(); itToLengthCounter++) {
+            maxPairs += itToLengthCounter->second/2;
+        }
+        return maxPairs;
+    }
 };
 
 #endif /* CHOPSTICKS_H_ */

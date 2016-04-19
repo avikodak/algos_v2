@@ -70,30 +70,30 @@ using namespace __gnu_cxx;
 #ifndef EULER007_H_
 #define EULER007_H_
 
-map<unsigned int,unsigned int> generatePrime(){
+map<unsigned int,unsigned int> generatePrime() {
 
 }
 
-void printPrime(){
+void printPrime() {
     unsigned int testCases;
     scanf("%u",&testCases);
     unsigned int primeCount;
-    while(testCases--){
-	   scanf("%u",&primeCount);
-       if(primeCount == 1){
-           printf("2\n");
-       }else{
-           primeCount--;
-	       for(long long int counter = 3;;counter+=2){
-	          if(isNumberPrime(counter)){
-    			primeCount--;
-			     if(primeCount == 0){
-				    cout << counter << endl;
-                    break;
-			     }
-		      }
-	       }
-       }
+    while(testCases--) {
+        scanf("%u",&primeCount);
+        if(primeCount == 1) {
+            printf("2\n");
+        } else {
+            primeCount--;
+            for(long long int counter = 3;; counter+=2) {
+                if(isNumberPrime(counter)) {
+                    primeCount--;
+                    if(primeCount == 0) {
+                        cout << counter << endl;
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
 #endif /* EULER007_H_ */

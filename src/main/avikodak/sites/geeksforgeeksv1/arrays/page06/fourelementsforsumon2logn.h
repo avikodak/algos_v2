@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fourelementsforsumon2logn.h 
+ *  File Name   		: fourelementsforsumon2logn.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsumon2logn.h
  *  Created on			: Nov 30, 2014 :: 10:11:29 PM
  *  Author				: AVINASH
@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 /* 																O(N^2*logn) Algorithm 																*/
 /****************************************************************************************************************************************************/
 //Tested
-iQuadruple *findFourElementsON2LogN(vector<int> userInput,int sum){
-	if(userInput.size() < 3){
-		return null;
-	}
-	vector<iValueIndex *> auxSpace;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
-		}
-	}
-	mergeSort(auxSpace,0,auxSpace.size()-1);
-	int firstCrawler = 0,secondCrawler = auxSpace.size()-1;
-	int currentSum = 0;
-	while(firstCrawler < secondCrawler){
-		currentSum = auxSpace[firstCrawler]->value + auxSpace[secondCrawler]->value;
-		if(currentSum == sum){
-			return new iQuadruple(userInput[auxSpace[firstCrawler]->firstValueIndex],userInput[auxSpace[firstCrawler]->secondvalueIndex],userInput[auxSpace[secondCrawler]->firstValueIndex],userInput[auxSpace[secondCrawler]->secondvalueIndex]);
-		}else if(currentSum < sum){
-			firstCrawler++;
-		}else{
-			secondCrawler--;
-		}
-	}
-	return null;
+iQuadruple *findFourElementsON2LogN(vector<int> userInput,int sum) {
+    if(userInput.size() < 3) {
+        return null;
+    }
+    vector<iValueIndex *> auxSpace;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            auxSpace.push_back(new iValueIndex(userInput[outerCounter]+userInput[innerCounter],outerCounter,innerCounter));
+        }
+    }
+    mergeSort(auxSpace,0,auxSpace.size()-1);
+    int firstCrawler = 0,secondCrawler = auxSpace.size()-1;
+    int currentSum = 0;
+    while(firstCrawler < secondCrawler) {
+        currentSum = auxSpace[firstCrawler]->value + auxSpace[secondCrawler]->value;
+        if(currentSum == sum) {
+            return new iQuadruple(userInput[auxSpace[firstCrawler]->firstValueIndex],userInput[auxSpace[firstCrawler]->secondvalueIndex],userInput[auxSpace[secondCrawler]->firstValueIndex],userInput[auxSpace[secondCrawler]->secondvalueIndex]);
+        } else if(currentSum < sum) {
+            firstCrawler++;
+        } else {
+            secondCrawler--;
+        }
+    }
+    return null;
 }
 
 #endif /* FOURELEMENTSFORSUMON2LOGN_H_ */

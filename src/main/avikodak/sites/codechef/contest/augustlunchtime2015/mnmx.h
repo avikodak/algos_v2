@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define MNMX_H_
 
 //Tested
-void printMinOperationVal(vector<int> userInput){
-	int minValue = *min_element(userInput.begin(),userInput.end());
-	cout << (userInput.size()-1)*minValue << endl;
+void printMinOperationVal(vector<int> userInput) {
+    int minValue = *min_element(userInput.begin(),userInput.end());
+    cout << (userInput.size()-1)*minValue << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	int input;
-	vector<int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%d",&input);
-			userInput.push_back(input);
-		}
-		printMinOperationVal(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    int input;
+    vector<int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+        }
+        printMinOperationVal(userInput);
+    }
 }
 
 

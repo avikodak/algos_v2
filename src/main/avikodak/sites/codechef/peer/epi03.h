@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 #define EPI03_H_
 
 //Tested
-void printResults(){
-	string userInput;
-	map<char,unsigned int> frequencyMap;
-	map<char,unsigned int>::iterator itToFrequencyMap;
-	cin >> userInput;
-	char ch;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(frequencyMap.find(userInput[counter]) == frequencyMap.end()){
-			frequencyMap[userInput[counter]]= 1;
-		}else{
-			frequencyMap[userInput[counter]]++;
-		}
-	}
-	cin >> ch;
-	if(frequencyMap.find(ch) == frequencyMap.end()){
-		cout << "0" << endl;
-	}else{
-		cout << frequencyMap[ch] << endl;
-	}
+void printResults() {
+    string userInput;
+    map<char,unsigned int> frequencyMap;
+    map<char,unsigned int>::iterator itToFrequencyMap;
+    cin >> userInput;
+    char ch;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(frequencyMap.find(userInput[counter]) == frequencyMap.end()) {
+            frequencyMap[userInput[counter]]= 1;
+        } else {
+            frequencyMap[userInput[counter]]++;
+        }
+    }
+    cin >> ch;
+    if(frequencyMap.find(ch) == frequencyMap.end()) {
+        cout << "0" << endl;
+    } else {
+        cout << frequencyMap[ch] << endl;
+    }
 }
 
 #endif /* EPI03_H_ */

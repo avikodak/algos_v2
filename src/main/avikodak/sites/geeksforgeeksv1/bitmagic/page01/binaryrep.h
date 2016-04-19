@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: binaryrep.h 
+ *  File Name   		: binaryrep.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binaryrep.h
  *  Created on			: Jan 9, 2015 :: 1:44:31 PM
  *  Author				: AVINASH
@@ -70,12 +70,12 @@ using namespace __gnu_cxx;
 #ifndef BINARYREP_H_
 #define BINARYREP_H_
 
-void printBinaryRepresentation(unsigned int number){
-	if(number == 0){
-		return;
-	}
-	printBinaryRepresentation(number/2);
-	printf("%d\t",number%2);
+void printBinaryRepresentation(unsigned int number) {
+    if(number == 0) {
+        return;
+    }
+    printBinaryRepresentation(number/2);
+    printf("%d\t",number%2);
 }
 
 #endif /* BINARYREP_H_ */

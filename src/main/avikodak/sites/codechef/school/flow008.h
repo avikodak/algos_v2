@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define FLOW008_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d",&input);
-		if(input < 10){
-			printf("What an obedient servant you are!\n");
-		}else{
-			printf("-1\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d",&input);
+        if(input < 10) {
+            printf("What an obedient servant you are!\n");
+        } else {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* FLOW008_H_ */

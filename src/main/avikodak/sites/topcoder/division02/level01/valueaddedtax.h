@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 
 class ValueAddedTax {
 public:
-	double calculateFinalPrice(string product, int price, vector<string> food){
-		bool isFoodProduct = false;
-		for(unsigned int counter = 0;counter < food.size();counter++){
-			if(product.compare(food[counter]) == 0){
-				isFoodProduct = true;
-				break;
-			}
-		}
-		double total = price;
-		if(isFoodProduct){
-			total += (double)(0.1) * (double)(price);
-		}else{
-			total += (double)(0.18) * (double)(price);
-		}
-		return total;
-	}
+    double calculateFinalPrice(string product, int price, vector<string> food) {
+        bool isFoodProduct = false;
+        for(unsigned int counter = 0; counter < food.size(); counter++) {
+            if(product.compare(food[counter]) == 0) {
+                isFoodProduct = true;
+                break;
+            }
+        }
+        double total = price;
+        if(isFoodProduct) {
+            total += (double)(0.1) * (double)(price);
+        } else {
+            total += (double)(0.18) * (double)(price);
+        }
+        return total;
+    }
 };
 
 #endif /* VALUEADDEDTAX_H_ */

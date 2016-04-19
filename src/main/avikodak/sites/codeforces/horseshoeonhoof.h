@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: horseshoeonhoof.h 
+ *  File Name   		: horseshoeonhoof.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\horseshoeonhoof.h
  *  Created on			: Mar 3, 2015 :: 8:48:53 PM
  *  Author				: avikodak
@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define HORSESHOEONHOOF_H_
 
 //Tested
-void minimumHorseShoeRequired(){
-	int userInput[4];
-	scanf("%d %d %d %d",&userInput[0],&userInput[1],&userInput[2],&userInput[3]);
-	unsigned int shoesRequired = 0;
-	for(unsigned int outerCounter = 1;outerCounter < 4;outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter] == userInput[innerCounter]){
-				shoesRequired++;
-				break;
-			}
-		}
-	}
-	printf("%u",shoesRequired);
+void minimumHorseShoeRequired() {
+    int userInput[4];
+    scanf("%d %d %d %d",&userInput[0],&userInput[1],&userInput[2],&userInput[3]);
+    unsigned int shoesRequired = 0;
+    for(unsigned int outerCounter = 1; outerCounter < 4; outerCounter++) {
+        for(unsigned int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+            if(userInput[outerCounter] == userInput[innerCounter]) {
+                shoesRequired++;
+                break;
+            }
+        }
+    }
+    printf("%u",shoesRequired);
 }
 
 #endif /* HORSESHOEONHOOF_H_ */

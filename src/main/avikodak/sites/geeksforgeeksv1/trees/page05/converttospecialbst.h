@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttospecialbst.h 
+ *  File Name   		: converttospecialbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\converttospecialbst.h
  *  Created on			: Nov 13, 2014 :: 1:43:11 PM
  *  Author				: AVINASH
@@ -72,67 +72,67 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void addGreaterValuesToEachNode(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static int prevValue = 0;
-	addGreaterValuesToEachNode(ptr->right);
-	ptr->value += prevValue;
-	prevValue = ptr->value;
-	addGreaterValuesToEachNode(ptr->left);
+void addGreaterValuesToEachNode(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static int prevValue = 0;
+    addGreaterValuesToEachNode(ptr->right);
+    ptr->value += prevValue;
+    prevValue = ptr->value;
+    addGreaterValuesToEachNode(ptr->left);
 }
 
 //Tested
-void reverseInorderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	int prevValue = 0;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->right;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			currentNode->value += prevValue;
-			prevValue = currentNode->value;
-			currentNode = currentNode->left;
-		}
-	}
+void reverseInorderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    int prevValue = 0;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->right;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            currentNode->value += prevValue;
+            prevValue = currentNode->value;
+            currentNode = currentNode->left;
+        }
+    }
 }
 
 //Tested
-void morrisReverseOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	int prevValue = 0;
-	while(currentNode != null){
-		if(currentNode->right != null){
-			temp = currentNode->right;
-			while(temp->left != null && temp->left != currentNode){
-				temp = temp->left;
-			}
-			if(temp->left == null){
-				temp->left = currentNode;
-				currentNode = currentNode->right;
-			}else{
-				currentNode->value += prevValue;
-				prevValue = currentNode->value;
-				temp->left = null;
-				currentNode = currentNode->left;
-			}
-		}else{
-			currentNode->value += prevValue;
-			prevValue = currentNode->value;
-			currentNode = currentNode->left;
-		}
-	}
+void morrisReverseOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    int prevValue = 0;
+    while(currentNode != null) {
+        if(currentNode->right != null) {
+            temp = currentNode->right;
+            while(temp->left != null && temp->left != currentNode) {
+                temp = temp->left;
+            }
+            if(temp->left == null) {
+                temp->left = currentNode;
+                currentNode = currentNode->right;
+            } else {
+                currentNode->value += prevValue;
+                prevValue = currentNode->value;
+                temp->left = null;
+                currentNode = currentNode->left;
+            }
+        } else {
+            currentNode->value += prevValue;
+            prevValue = currentNode->value;
+            currentNode = currentNode->left;
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/

@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 #define RGPVR102_H_
 
 //Tested
-void printMaxScore(vector<unsigned int> wins,vector<unsigned int> ties){
-	unsigned int maxScore = 0;
-	for(unsigned int counter = 0;counter < wins.size();counter++){
-		maxScore = max(maxScore,3*wins[counter]+ties[counter]);
-	}
-	cout << maxScore << endl;
+void printMaxScore(vector<unsigned int> wins,vector<unsigned int> ties) {
+    unsigned int maxScore = 0;
+    for(unsigned int counter = 0; counter < wins.size(); counter++) {
+        maxScore = max(maxScore,3*wins[counter]+ties[counter]);
+    }
+    cout << maxScore << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	vector<unsigned int> wins,ties;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		wins.clear();
-		ties.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			wins.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			ties.push_back(input);
-		}
-		printMaxScore(wins,ties);
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    vector<unsigned int> wins,ties;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        wins.clear();
+        ties.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            wins.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            ties.push_back(input);
+        }
+        printMaxScore(wins,ties);
+    }
 }
 
 #endif /* RGPVR102_H_ */

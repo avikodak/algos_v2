@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define FLOW014_H_
 
 //Tested
-void printGradeOfSteel(double hardness,double carbonContent,double tensileStrength){
-	bool hardnessFlag = hardness > 50;
-	bool carbonFlag = carbonContent < 0.7;
-	bool tensileFlag = tensileStrength > 5600;
-	if(hardnessFlag && carbonFlag && tensileFlag){
-		printf("10\n");
-	}else if(hardnessFlag && carbonFlag){
-		printf("9\n");
-	}else if(carbonFlag && tensileFlag){
-		printf("8\n");
-	}else if(hardnessFlag && tensileFlag){
-		printf("7\n");
-	}else if(hardnessFlag || carbonFlag || tensileFlag){
-		printf("6\n");
-	}else{
-		printf("5\n");
-	}
+void printGradeOfSteel(double hardness,double carbonContent,double tensileStrength) {
+    bool hardnessFlag = hardness > 50;
+    bool carbonFlag = carbonContent < 0.7;
+    bool tensileFlag = tensileStrength > 5600;
+    if(hardnessFlag && carbonFlag && tensileFlag) {
+        printf("10\n");
+    } else if(hardnessFlag && carbonFlag) {
+        printf("9\n");
+    } else if(carbonFlag && tensileFlag) {
+        printf("8\n");
+    } else if(hardnessFlag && tensileFlag) {
+        printf("7\n");
+    } else if(hardnessFlag || carbonFlag || tensileFlag) {
+        printf("6\n");
+    } else {
+        printf("5\n");
+    }
 
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	double hardness,carbonContent,tensileStrength;
-	while(testCases--){
-		cin >> hardness >> carbonContent >> tensileStrength;
-		printGradeOfSteel(hardness,carbonContent,tensileStrength);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    double hardness,carbonContent,tensileStrength;
+    while(testCases--) {
+        cin >> hardness >> carbonContent >> tensileStrength;
+        printGradeOfSteel(hardness,carbonContent,tensileStrength);
+    }
 }
 
 #endif /* FLOW014_H_ */

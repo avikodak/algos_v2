@@ -73,39 +73,39 @@ using namespace __gnu_cxx;
 #define QBIT01_H_
 
 //Tested
-bool sortFunc(long long int first,long long int second){
-	return first > second;
+bool sortFunc(long long int first,long long int second) {
+    return first > second;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input,sum,choosenSum,minCoins;
-	scanf("%u",&testCases);
-	vector<long long int> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		sum = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			sum += input;
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end(),sortFunc);
-		choosenSum = 0;
-		minCoins = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(choosenSum <= sum){
-				sum -= userInput[counter];
-				choosenSum += userInput[counter];
-				minCoins++;
-			}else{
-				break;
-			}
-		}
-		printf("%lld\n",minCoins);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input,sum,choosenSum,minCoins;
+    scanf("%u",&testCases);
+    vector<long long int> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        sum = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            sum += input;
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end(),sortFunc);
+        choosenSum = 0;
+        minCoins = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(choosenSum <= sum) {
+                sum -= userInput[counter];
+                choosenSum += userInput[counter];
+                minCoins++;
+            } else {
+                break;
+            }
+        }
+        printf("%lld\n",minCoins);
+    }
 }
 
 #endif /* QBIT01_H_ */

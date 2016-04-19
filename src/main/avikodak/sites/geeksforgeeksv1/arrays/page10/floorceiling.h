@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: floorceiling.h 
+ *  File Name   		: floorceiling.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\floorceiling.h
  *  Created on			: Nov 26, 2014 :: 4:07:02 PM
  *  Author				: AVINASH
@@ -72,61 +72,61 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-floorceiling *floorCeilingBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
-	}
-	if(key <= userInput[startIndex]){
-		return new floorceiling(INT_MIN,userInput[startIndex]);
-	}
-	if(key >= userInput[endIndex]){
-		return new floorceiling(userInput[endIndex],INT_MAX);
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return new floorceiling(userInput[middleIndex],userInput[middleIndex]);
-	}
-	if(userInput[middleIndex] > key){
-		if(startIndex <= middleIndex-1 && userInput[middleIndex-1] < key){
-			return new floorceiling(userInput[middleIndex-1],userInput[middleIndex+1]);
-		}else{
-			return floorCeilingBinarySearch(userInput,key,startIndex,middleIndex-1);
-		}
-	}else{
-		if(endIndex >= middleIndex + 1 && userInput[middleIndex+1] > key){
-			return new floorceiling(userInput[middleIndex],userInput[middleIndex+1]);
-		}else{
-			return floorCeilingBinarySearch(userInput,key,middleIndex+1,endIndex);
-		}
-	}
+floorceiling *floorCeilingBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return null;
+    }
+    if(key <= userInput[startIndex]) {
+        return new floorceiling(INT_MIN,userInput[startIndex]);
+    }
+    if(key >= userInput[endIndex]) {
+        return new floorceiling(userInput[endIndex],INT_MAX);
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return new floorceiling(userInput[middleIndex],userInput[middleIndex]);
+    }
+    if(userInput[middleIndex] > key) {
+        if(startIndex <= middleIndex-1 && userInput[middleIndex-1] < key) {
+            return new floorceiling(userInput[middleIndex-1],userInput[middleIndex+1]);
+        } else {
+            return floorCeilingBinarySearch(userInput,key,startIndex,middleIndex-1);
+        }
+    } else {
+        if(endIndex >= middleIndex + 1 && userInput[middleIndex+1] > key) {
+            return new floorceiling(userInput[middleIndex],userInput[middleIndex+1]);
+        } else {
+            return floorCeilingBinarySearch(userInput,key,middleIndex+1,endIndex);
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-floorceiling *floorCeilingON2(vector<int> userInput,int key){
-	if(userInput.size() == 0){
-		return null;
-	}
-	unsigned int counter;
-	for(counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= key){
-			break;
-		}
-	}
-	floorceiling *result = new floorceiling();
-	if(counter == 0){
-		result->floor = INT_MIN;
-	}else{
-		result->floor = userInput[counter-1];
-	}
-	if(counter >= userInput.size()){
-		result->ceiling = INT_MAX;
-	}else{
-		result->ceiling = userInput[counter];
-	}
-	return result;
+floorceiling *floorCeilingON2(vector<int> userInput,int key) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    unsigned int counter;
+    for(counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= key) {
+            break;
+        }
+    }
+    floorceiling *result = new floorceiling();
+    if(counter == 0) {
+        result->floor = INT_MIN;
+    } else {
+        result->floor = userInput[counter-1];
+    }
+    if(counter >= userInput.size()) {
+        result->ceiling = INT_MAX;
+    } else {
+        result->ceiling = userInput[counter];
+    }
+    return result;
 }
 
 #endif /* FLOORCEILING_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sumofpower.h 
+ *  File Name   		: sumofpower.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sumofpower.h
  *  Created on			: Mar 29, 2015 :: 12:14:20 AM
  *  Author				: avikodak
@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef SUMOFPOWER_H_
 #define SUMOFPOWER_H_
 
-class SumOfPower{
+class SumOfPower {
 public:
-	int findSum(vector<int> userInput){
-		int sum = 0;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-			for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-				sum += userInput[outerCrawler][innerCrawler];
-			}
-		}
-		return sum;
-	}
+    int findSum(vector<int> userInput) {
+        int sum = 0;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+            for(unsigned int innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+                sum += userInput[outerCrawler][innerCrawler];
+            }
+        }
+        return sum;
+    }
 };
 
 #endif /* SUMOFPOWER_H_ */

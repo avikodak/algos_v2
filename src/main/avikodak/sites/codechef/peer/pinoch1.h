@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 #define PINOCH1_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int size,input,total = 0,prevInput = 0;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&size);
-		total = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			if(input != prevInput && counter > 0){
-				total++;
-			}
-			prevInput = input;
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int size,input,total = 0,prevInput = 0;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&size);
+        total = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            if(input != prevInput && counter > 0) {
+                total++;
+            }
+            prevInput = input;
+        }
+        cout << total << endl;
+    }
 }
 
 

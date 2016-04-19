@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: removeelements.h 
+ *  File Name   		: removeelements.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\removeelements.h
  *  Created on			: Jan 4, 2015 :: 8:12:58 PM
  *  Author				: AVINASH
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef REMOVEELEMENTS_H_
 #define REMOVEELEMENTS_H_
 
-int minRemovals(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex){
-		return 0;
-	}
-	int minVal = *min_element(userInput.begin() + startIndex,userInput.begin() + endIndex);
-	int maxVal = *max_element(userInput.begin() + startIndex,userInput.begin() + endIndex);
-	if(2*minVal > maxVal){
-		return 0;
-	}
-	return 1 + min(minRemovals(userInput,startIndex+1,endIndex),minRemovals(userInput,startIndex,endIndex-1));
+int minRemovals(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    if(startIndex == endIndex) {
+        return 0;
+    }
+    int minVal = *min_element(userInput.begin() + startIndex,userInput.begin() + endIndex);
+    int maxVal = *max_element(userInput.begin() + startIndex,userInput.begin() + endIndex);
+    if(2*minVal > maxVal) {
+        return 0;
+    }
+    return 1 + min(minRemovals(userInput,startIndex+1,endIndex),minRemovals(userInput,startIndex,endIndex-1));
 }
 
 #endif /* REMOVEELEMENTS_H_ */

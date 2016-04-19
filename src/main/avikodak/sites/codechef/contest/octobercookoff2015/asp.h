@@ -72,26 +72,26 @@ using namespace __gnu_cxx;
 #ifndef ASP_H_
 #define ASP_H_
 
-void printResults(){
-	unsigned int testCases;
-	long long int size,input,prevInput;
-	bool flag;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&size);
-		prevInput = 0;
-		flag = true;
-		while(size--){
-			scanf("%lld",&input);
-			if(prevInput != 0){
-				if(abs(input-prevInput) > 1){
-					flag = false;
-				}
-			}
-			prevInput = input;
-		}
-		printf("%s\n",flag?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int size,input,prevInput;
+    bool flag;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&size);
+        prevInput = 0;
+        flag = true;
+        while(size--) {
+            scanf("%lld",&input);
+            if(prevInput != 0) {
+                if(abs(input-prevInput) > 1) {
+                    flag = false;
+                }
+            }
+            prevInput = input;
+        }
+        printf("%s\n",flag?"YES":"NO");
+    }
 }
 
 #endif /* ASP_H_ */

@@ -73,36 +73,36 @@ using namespace __gnu_cxx;
 #define FRGTNLNG_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,modernSize,noOfWords;
-	string input;
-	vector<string> oldLang;
-	map<string,bool> modernLangMap;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&modernSize);
-		oldLang.clear();
-		modernLangMap.clear();
-		for(unsigned int counter = 0;counter< size;counter++){
-			cin >> input;
-			oldLang.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < modernSize;counter++){
-			scanf("%u",&noOfWords);
-			for(unsigned int wordCounter = 0;wordCounter < noOfWords;wordCounter++){
-				cin >> input;
-				modernLangMap.insert(pair<string,bool>(input,true));
-			}
-		}
-		for(unsigned int counter = 0;counter < oldLang.size();counter++){
-			if(modernLangMap.find(oldLang[counter]) != modernLangMap.end()){
-				cout << "YES ";
-			}else{
-				cout << "NO ";
-			}
-		}
-		cout << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,modernSize,noOfWords;
+    string input;
+    vector<string> oldLang;
+    map<string,bool> modernLangMap;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&modernSize);
+        oldLang.clear();
+        modernLangMap.clear();
+        for(unsigned int counter = 0; counter< size; counter++) {
+            cin >> input;
+            oldLang.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < modernSize; counter++) {
+            scanf("%u",&noOfWords);
+            for(unsigned int wordCounter = 0; wordCounter < noOfWords; wordCounter++) {
+                cin >> input;
+                modernLangMap.insert(pair<string,bool>(input,true));
+            }
+        }
+        for(unsigned int counter = 0; counter < oldLang.size(); counter++) {
+            if(modernLangMap.find(oldLang[counter]) != modernLangMap.end()) {
+                cout << "YES ";
+            } else {
+                cout << "NO ";
+            }
+        }
+        cout << endl;
+    }
 }
 
 #endif /* FRGTNLNG_H_ */

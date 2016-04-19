@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pancakesortproblem.h 
+ *  File Name   		: pancakesortproblem.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\pancakesortproblem.h
  *  Created on			: Jan 4, 2015 :: 3:54:04 PM
  *  Author				: AVINASH
@@ -70,37 +70,37 @@ using namespace __gnu_cxx;
 #ifndef PANCAKESORTPROBLEM_H_
 #define PANCAKESORTPROBLEM_H_
 
-int ceilSearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(key < userInput[startIndex]){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return userInput[middleIndex];
-	}
-	if(userInput[middleIndex] < key){
-		return ceilSearch(userInput,key,middleIndex+1,endIndex);
-	}else{
-		if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] > startIndex){
-			return ceilSearch(userInput,key,startIndex,middleIndex-1);
-		}else{
-			return middleIndex;
-		}
-	}
+int ceilSearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(key < userInput[startIndex]) {
+        return userInput[startIndex];
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return userInput[middleIndex];
+    }
+    if(userInput[middleIndex] < key) {
+        return ceilSearch(userInput,key,middleIndex+1,endIndex);
+    } else {
+        if(middleIndex - 1 >= startIndex && userInput[middleIndex-1] > startIndex) {
+            return ceilSearch(userInput,key,startIndex,middleIndex-1);
+        } else {
+            return middleIndex;
+        }
+    }
 }
 
 
 
-void pancakeSortingProblem(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
+void pancakeSortingProblem(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
 
-	}
+    }
 }
 
 #endif /* PANCAKESORTPROBLEM_H_ */

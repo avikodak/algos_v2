@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 #define LARGESTPRODUCTINSERIES_H_
 
 //Tested
-long long int max(long long int first,long long int second){
-	return first > second?first:second;
+long long int max(long long int first,long long int second) {
+    return first > second?first:second;
 }
 
 //Tested
-long long int largestProductInSeries(vector<string> userInput,unsigned int size){
-	long long int maxProduct = LONG_LONG_MIN;
-	long long int currentProduct = 1;
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size()-size+2;columnCounter++){
-			currentProduct = 1;
-			for(unsigned int counter = 0;counter < size;counter++){
-				currentProduct *= (userInput[rowCounter][columnCounter+counter] - '0');
-			}
-			maxProduct = max(currentProduct,maxProduct);
-		}
-	}
-	return maxProduct;
+long long int largestProductInSeries(vector<string> userInput,unsigned int size) {
+    long long int maxProduct = LONG_LONG_MIN;
+    long long int currentProduct = 1;
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < userInput[0].size()-size+2; columnCounter++) {
+            currentProduct = 1;
+            for(unsigned int counter = 0; counter < size; counter++) {
+                currentProduct *= (userInput[rowCounter][columnCounter+counter] - '0');
+            }
+            maxProduct = max(currentProduct,maxProduct);
+        }
+    }
+    return maxProduct;
 }
 
 //Tested
 //Ans : 23514624000
-void printLargestProduct(){
-	unsigned int testCases;
-	cin >> testCases;
-	vector<string> userInput;
-	string input;
-	while(testCases--){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	cout << largestProductInSeries(userInput,13);
+void printLargestProduct() {
+    unsigned int testCases;
+    cin >> testCases;
+    vector<string> userInput;
+    string input;
+    while(testCases--) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    cout << largestProductInSeries(userInput,13);
 }
 
 #endif /* LARGESTPRODUCTINSERIES_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: boyorgirl.h 
+ *  File Name   		: boyorgirl.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\boyorgirl.h
  *  Created on			: Mar 1, 2015 :: 9:52:09 AM
  *  Author				: AVINASH
@@ -72,26 +72,26 @@ using namespace __gnu_cxx;
 #define BOYORGIRL_H_
 
 //Tested
-void isUserBoyOrGirl(){
-	char userInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToUserInput;
-	scanf("%s",userInput);
-	bool flags[ALPHABET_SIZE] = {false};
-	unsigned int uniqueCharCount = 0;
-	ptrToUserInput = userInput;
-	while(ptrToUserInput[0] != '\0'){
-		flags[ptrToUserInput[0]-'a'] = true;
-		ptrToUserInput++;
-	}
-	for(unsigned int counter = 0;counter < ALPHABET_SIZE;counter++){
-		if(flags[counter]){
-			uniqueCharCount++;
-		}
-	}
-	if(uniqueCharCount&1){
-		printf("IGNORE HIM!");
-	}else{
-		printf("CHAT WITH HER!");
-	}
+void isUserBoyOrGirl() {
+    char userInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToUserInput;
+    scanf("%s",userInput);
+    bool flags[ALPHABET_SIZE] = {false};
+    unsigned int uniqueCharCount = 0;
+    ptrToUserInput = userInput;
+    while(ptrToUserInput[0] != '\0') {
+        flags[ptrToUserInput[0]-'a'] = true;
+        ptrToUserInput++;
+    }
+    for(unsigned int counter = 0; counter < ALPHABET_SIZE; counter++) {
+        if(flags[counter]) {
+            uniqueCharCount++;
+        }
+    }
+    if(uniqueCharCount&1) {
+        printf("IGNORE HIM!");
+    } else {
+        printf("CHAT WITH HER!");
+    }
 }
 
 

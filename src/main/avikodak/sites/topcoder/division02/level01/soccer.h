@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: soccer.h 
+ *  File Name   		: soccer.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\soccer.h
  *  Created on			: Feb 5, 2015 :: 10:27:04 AM
  *  Author				: AVINASH
@@ -74,13 +74,13 @@ using namespace __gnu_cxx;
 //Tested
 class Soccer {
 public:
-	int maxPoints(vector<int> wins,vector<int> ties){
-		int maxValue = 0;
-		for(unsigned int counter = 0;counter < wins.size();counter++){
-			maxValue = max(maxValue,((3*wins[counter]) + ties[counter]));
-		}
-		return maxValue;
-	}
+    int maxPoints(vector<int> wins,vector<int> ties) {
+        int maxValue = 0;
+        for(unsigned int counter = 0; counter < wins.size(); counter++) {
+            maxValue = max(maxValue,((3*wins[counter]) + ties[counter]));
+        }
+        return maxValue;
+    }
 };
 
 #endif /* SOCCER_H_ */

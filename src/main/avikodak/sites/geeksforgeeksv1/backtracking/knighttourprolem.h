@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: knighttourprolem.h 
+ *  File Name   		: knighttourprolem.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\knighttourprolem.h
  *  Created on			: Dec 5, 2014 :: 12:35:12 AM
  *  Author				: AVINASH
@@ -70,44 +70,44 @@ using namespace __gnu_cxx;
 #define KNIGHTTOURPROLEM_H_
 
 //Tested
-bool ktpIsSafe(vector<vector<int> > solution,int xValue,int yValue){
-	if(xValue < 0 || xValue >= (int)solution[0].size() || yValue < 0 || yValue >= (int)solution.size() || solution[xValue][yValue] != KNP_UN_ASSIGNED){
-		return false;
-	}
-	return true;
+bool ktpIsSafe(vector<vector<int> > solution,int xValue,int yValue) {
+    if(xValue < 0 || xValue >= (int)solution[0].size() || yValue < 0 || yValue >= (int)solution.size() || solution[xValue][yValue] != KNP_UN_ASSIGNED) {
+        return false;
+    }
+    return true;
 }
 
 //Tested
-bool solveKnightTourProblemMain(vector<vector<int> > solution,unsigned int moveCounter,int xValue,int yValue){
-	if(moveCounter == solution.size() * solution.size()){
-		printIVector(solution);
-		return true;
-	}
-	int validXValues[] = {2,1,-1,-2,-2,-1,1,2};
-	int validYValues[] = {1,2,2,1,-1,-2,-2,-1};
-	for(unsigned int counter = 0;counter < 8;counter++){
-		if(ktpIsSafe(solution,xValue + validXValues[counter],yValue+validYValues[counter])){
-			solution[xValue + validXValues[counter]][yValue+validYValues[counter]] = moveCounter;
-			if(solveKnightTourProblemMain(solution,moveCounter+1,xValue + validXValues[counter],yValue + validYValues[counter])){
-				return true;
-			}
-			solution[xValue + validXValues[counter]][yValue+validYValues[counter]] = KNP_UN_ASSIGNED;
-		}
-	}
-	return false;
+bool solveKnightTourProblemMain(vector<vector<int> > solution,unsigned int moveCounter,int xValue,int yValue) {
+    if(moveCounter == solution.size() * solution.size()) {
+        printIVector(solution);
+        return true;
+    }
+    int validXValues[] = {2,1,-1,-2,-2,-1,1,2};
+    int validYValues[] = {1,2,2,1,-1,-2,-2,-1};
+    for(unsigned int counter = 0; counter < 8; counter++) {
+        if(ktpIsSafe(solution,xValue + validXValues[counter],yValue+validYValues[counter])) {
+            solution[xValue + validXValues[counter]][yValue+validYValues[counter]] = moveCounter;
+            if(solveKnightTourProblemMain(solution,moveCounter+1,xValue + validXValues[counter],yValue + validYValues[counter])) {
+                return true;
+            }
+            solution[xValue + validXValues[counter]][yValue+validYValues[counter]] = KNP_UN_ASSIGNED;
+        }
+    }
+    return false;
 }
 
 //Tested
-void solveKnightTourProblem(int rows,int columns){
-	if(rows < 0 || columns < 0){
-		return;
-	}
-	vector<vector<int> > board(rows);
-	for(int rowCounter = 0;rowCounter < rows;rowCounter++){
-		board[rowCounter].assign(columns,KNP_UN_ASSIGNED);
-	}
-	board[0][0] = 1;
-	solveKnightTourProblemMain(board,1,0,0);
+void solveKnightTourProblem(int rows,int columns) {
+    if(rows < 0 || columns < 0) {
+        return;
+    }
+    vector<vector<int> > board(rows);
+    for(int rowCounter = 0; rowCounter < rows; rowCounter++) {
+        board[rowCounter].assign(columns,KNP_UN_ASSIGNED);
+    }
+    board[0][0] = 1;
+    solveKnightTourProblemMain(board,1,0,0);
 }
 
 #endif /* KNIGHTTOURPROLEM_H_ */

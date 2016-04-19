@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: replaceeveryelementwithgreatest.h 
+ *  File Name   		: replaceeveryelementwithgreatest.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
  *  Created on			: Nov 27, 2014 :: 8:00:16 PM
  *  Author				: AVINASH
@@ -72,37 +72,37 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void replaceEveryElementON(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int maxTillNow = userInput[userInput.size()-1],temp;
-	userInput[userInput.size()-1] = -1;
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		temp = userInput[counter];
-		userInput[counter] = maxTillNow;
-		maxTillNow = max(maxTillNow,temp);
-	}
+void replaceEveryElementON(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int maxTillNow = userInput[userInput.size()-1],temp;
+    userInput[userInput.size()-1] = -1;
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        temp = userInput[counter];
+        userInput[counter] = maxTillNow;
+        maxTillNow = max(maxTillNow,temp);
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void replaceEveryElementON2(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	unsigned int innerCounter;
-	int maxElement;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		maxElement = userInput[outerCounter+1];
-		for(innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			maxElement = max(maxElement,userInput[innerCounter]);
-		}
-		userInput[outerCounter] = maxElement;
-	}
-	userInput[userInput.size()-1] = -1;
+void replaceEveryElementON2(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    unsigned int innerCounter;
+    int maxElement;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        maxElement = userInput[outerCounter+1];
+        for(innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            maxElement = max(maxElement,userInput[innerCounter]);
+        }
+        userInput[outerCounter] = maxElement;
+    }
+    userInput[userInput.size()-1] = -1;
 }
 
 #endif /* REPLACEEVERYELEMENTWITHGREATEST_H_ */

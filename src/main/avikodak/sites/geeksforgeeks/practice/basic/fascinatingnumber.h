@@ -76,47 +76,47 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FASCINATINGNUMBER_H_
 
 //Tested
-string convertToString(int userInput){
-	stringstream ss;
-	ss << userInput;
-	string str = ss.str();
-	ss.str("");
-	return str;
+string convertToString(int userInput) {
+    stringstream ss;
+    ss << userInput;
+    string str = ss.str();
+    ss.str("");
+    return str;
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases = 1;
-	int input = 192;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d",&input);
-		if(input >= 100){
-			bool flags[10] = {false};
-			bool isNumberFascinating = true;
-			string result = convertToString(input);
-			result.append(convertToString(input*2));
-			result.append(convertToString(input*3));
-			for(unsigned int counter = 0;counter < result.size();counter++){
-				if(result[counter] != '0'){
-					if(flags[result[counter]-'0']){
-						isNumberFascinating = false;
-						break;
-					}
-					flags[result[counter]-'0'] = true;
-				}
-			}
-			for(unsigned int counter = 1;counter < 10;counter++){
-				if(!flags[counter]){
-					isNumberFascinating = false;
-					break;
-				}
-			}
-			printf("%s\n",isNumberFascinating?"Fascinating":"Not Fascinating");
-		}else{
-			printf("Number should be atleast three digits\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases = 1;
+    int input = 192;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d",&input);
+        if(input >= 100) {
+            bool flags[10] = {false};
+            bool isNumberFascinating = true;
+            string result = convertToString(input);
+            result.append(convertToString(input*2));
+            result.append(convertToString(input*3));
+            for(unsigned int counter = 0; counter < result.size(); counter++) {
+                if(result[counter] != '0') {
+                    if(flags[result[counter]-'0']) {
+                        isNumberFascinating = false;
+                        break;
+                    }
+                    flags[result[counter]-'0'] = true;
+                }
+            }
+            for(unsigned int counter = 1; counter < 10; counter++) {
+                if(!flags[counter]) {
+                    isNumberFascinating = false;
+                    break;
+                }
+            }
+            printf("%s\n",isNumberFascinating?"Fascinating":"Not Fascinating");
+        } else {
+            printf("Number should be atleast three digits\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FASCINATINGNUMBER_H_ */

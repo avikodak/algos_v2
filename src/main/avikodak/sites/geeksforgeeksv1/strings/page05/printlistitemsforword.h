@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printlistitemsforword.h 
+ *  File Name   		: printlistitemsforword.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printlistitemsforword.h
  *  Created on			: Dec 4, 2014 :: 9:38:25 AM
  *  Author				: AVINASH
@@ -71,79 +71,79 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-hash_map<char,unsigned int> getCharsFrequencyMap(char *userInput){
-	hash_map<char,unsigned int> frequencyMap;
-	while(*userInput != '\0'){
-		if(frequencyMap.find(userInput[0]) == frequencyMap.end()){
-			frequencyMap[userInput[0]] = 1;
-		}else{
-			frequencyMap[userInput[0]] += 1;
-		}
-		userInput++;
-	}
-	return frequencyMap;
+hash_map<char,unsigned int> getCharsFrequencyMap(char *userInput) {
+    hash_map<char,unsigned int> frequencyMap;
+    while(*userInput != '\0') {
+        if(frequencyMap.find(userInput[0]) == frequencyMap.end()) {
+            frequencyMap[userInput[0]] = 1;
+        } else {
+            frequencyMap[userInput[0]] += 1;
+        }
+        userInput++;
+    }
+    return frequencyMap;
 }
 
-bool wordContainsAllCharacters(char *word,hash_map<char,unsigned int> &frequencyMap){
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	while(*word != '\0'){
-		if((itToFrequencyMap = frequencyMap.find(word[0])) == frequencyMap.end()){
-			return false;
-		}else{
-			if(itToFrequencyMap->second == 1){
-				frequencyMap.erase(itToFrequencyMap->first);
-			}else{
-				itToFrequencyMap->second--;
-			}
-		}
-		word++;
-	}
-	return true;
+bool wordContainsAllCharacters(char *word,hash_map<char,unsigned int> &frequencyMap) {
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    while(*word != '\0') {
+        if((itToFrequencyMap = frequencyMap.find(word[0])) == frequencyMap.end()) {
+            return false;
+        } else {
+            if(itToFrequencyMap->second == 1) {
+                frequencyMap.erase(itToFrequencyMap->first);
+            } else {
+                itToFrequencyMap->second--;
+            }
+        }
+        word++;
+    }
+    return true;
 }
 
-vector<char *> printListItemsForWordON(vector<char *> wordsList,char *userInput){
-	vector<char *> resultList;
-	if(resultList.size() == 0){
-		return resultList;
-	}
-	hash_map<char,unsigned int> frequencyMap;
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < wordsList.size();counter++){
-		frequencyMap = getCharsFrequencyMap(wordsList[counter]);
-		if(wordContainsAllCharacters(wordsList[counter],frequencyMap)){
-			resultList.push_back(wordsList[counter]);
-		}
-		frequencyMap.clear();
-	}
-	return resultList;
+vector<char *> printListItemsForWordON(vector<char *> wordsList,char *userInput) {
+    vector<char *> resultList;
+    if(resultList.size() == 0) {
+        return resultList;
+    }
+    hash_map<char,unsigned int> frequencyMap;
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < wordsList.size(); counter++) {
+        frequencyMap = getCharsFrequencyMap(wordsList[counter]);
+        if(wordContainsAllCharacters(wordsList[counter],frequencyMap)) {
+            resultList.push_back(wordsList[counter]);
+        }
+        frequencyMap.clear();
+    }
+    return resultList;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<char *> printListItemsForWordON2(vector<char *> wordsList,char *userInput){
-	vector<char *> resultWordList;
-	if(resultWordList.size() == 0){
-		return resultWordList;
-	}
-	char *keyCrawler,*wordCrawler;
-	for(unsigned int counter = 0;counter < wordsList.size();counter++){
-		wordCrawler = wordsList[counter];
-		keyCrawler = userInput;
-		while(*keyCrawler != '\0'){
-			while(*wordCrawler != '\0' && *wordCrawler != keyCrawler[0]){
-				wordCrawler++;
-			}
-			if(*wordCrawler == '\0'){
-				break;
-			}
-			keyCrawler++;
-		}
-		if(keyCrawler[0] == '\0'){
-			resultWordList.push_back(wordCrawler[counter]);
-		}
-	}
-	return resultWordList;
+vector<char *> printListItemsForWordON2(vector<char *> wordsList,char *userInput) {
+    vector<char *> resultWordList;
+    if(resultWordList.size() == 0) {
+        return resultWordList;
+    }
+    char *keyCrawler,*wordCrawler;
+    for(unsigned int counter = 0; counter < wordsList.size(); counter++) {
+        wordCrawler = wordsList[counter];
+        keyCrawler = userInput;
+        while(*keyCrawler != '\0') {
+            while(*wordCrawler != '\0' && *wordCrawler != keyCrawler[0]) {
+                wordCrawler++;
+            }
+            if(*wordCrawler == '\0') {
+                break;
+            }
+            keyCrawler++;
+        }
+        if(keyCrawler[0] == '\0') {
+            resultWordList.push_back(wordCrawler[counter]);
+        }
+    }
+    return resultWordList;
 }
 
 #endif /* PRINTLISTITEMSFORWORD_H_ */

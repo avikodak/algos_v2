@@ -72,34 +72,34 @@ using namespace __gnu_cxx;
 #define RRECIPE_H_
 
 //Tested
-void totalPossibilities(string userInput){
-	int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	long long int total = 1;
-	while(frontCrawler <= rearCrawler){
-		if(userInput[frontCrawler] == '?' ||  userInput[rearCrawler] == '?'){
-			if((userInput[frontCrawler] == '?' && userInput[rearCrawler] == '?') || frontCrawler == rearCrawler){
-				total *= 26;
-				total %= MODN;
-			}
-		}else if(userInput[frontCrawler] != userInput[rearCrawler]){
-			printf("0\n");
-			return;
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	cout << total << endl;
+void totalPossibilities(string userInput) {
+    int frontCrawler = 0,rearCrawler = userInput.size()-1;
+    long long int total = 1;
+    while(frontCrawler <= rearCrawler) {
+        if(userInput[frontCrawler] == '?' ||  userInput[rearCrawler] == '?') {
+            if((userInput[frontCrawler] == '?' && userInput[rearCrawler] == '?') || frontCrawler == rearCrawler) {
+                total *= 26;
+                total %= MODN;
+            }
+        } else if(userInput[frontCrawler] != userInput[rearCrawler]) {
+            printf("0\n");
+            return;
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    cout << total << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		totalPossibilities(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        totalPossibilities(userInput);
+    }
 }
 
 #endif /* RRECIPE_H_ */

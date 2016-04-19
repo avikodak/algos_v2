@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MAXFREQCHAR_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		int freq[26] = {0};
-		int maxFreq = 0;
-		char maxCh;
-		cin >> input;
-		for(unsigned int counter = 0;counter < input.size();counter++){
-			freq[input[counter]-'a']++;
-			if(maxFreq < freq[input[counter]-'a']){
-				maxFreq = freq[input[counter]-'a'];
-				maxCh = input[counter];
-			}else if(maxFreq == freq[input[counter]-'a']){
-				if(maxCh > input[counter]){
-					maxCh = input[counter];
-				}
-			}
-		}
-		printf("%c\n",maxCh);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        int freq[26] = {0};
+        int maxFreq = 0;
+        char maxCh;
+        cin >> input;
+        for(unsigned int counter = 0; counter < input.size(); counter++) {
+            freq[input[counter]-'a']++;
+            if(maxFreq < freq[input[counter]-'a']) {
+                maxFreq = freq[input[counter]-'a'];
+                maxCh = input[counter];
+            } else if(maxFreq == freq[input[counter]-'a']) {
+                if(maxCh > input[counter]) {
+                    maxCh = input[counter];
+                }
+            }
+        }
+        printf("%c\n",maxCh);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MAXFREQCHAR_H_ */

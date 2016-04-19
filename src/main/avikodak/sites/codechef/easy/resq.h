@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 #define RESQ_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int userInput,sqrtUserInput;
-	while(testCases--){
-		cin >> userInput;
-		sqrtUserInput = sqrt(userInput);
-		for(long long int counter = sqrtUserInput;counter >= 1;counter--){
-			if(userInput%counter == 0){
-				cout << abs(counter-(userInput/counter))<< endl;
-				break;
-			}
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int userInput,sqrtUserInput;
+    while(testCases--) {
+        cin >> userInput;
+        sqrtUserInput = sqrt(userInput);
+        for(long long int counter = sqrtUserInput; counter >= 1; counter--) {
+            if(userInput%counter == 0) {
+                cout << abs(counter-(userInput/counter))<< endl;
+                break;
+            }
+        }
+    }
 }
 
 #endif /* RESQ_H_ */

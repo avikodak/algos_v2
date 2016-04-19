@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: letterstrings.h 
+ *  File Name   		: letterstrings.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\letterstrings.h
  *  Created on			: Mar 26, 2015 :: 12:36:21 AM
  *  Author				: avikodak
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef LETTERSTRINGS_H_
 #define LETTERSTRINGS_H_
 
-class LetterStrings{
+class LetterStrings {
 public:
-	int sum(vector<string> userInput){
-		int totalCount = 0;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-			for(unsigned int innerCrawler = 0;innerCrawler < userInput[outerCrawler].size();innerCrawler++){
-				if(userInput[outerCrawler][innerCrawler] != '-'){
-					totalCount++;
-				}
-			}
-		}
-		return totalCount;
-	}
+    int sum(vector<string> userInput) {
+        int totalCount = 0;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+            for(unsigned int innerCrawler = 0; innerCrawler < userInput[outerCrawler].size(); innerCrawler++) {
+                if(userInput[outerCrawler][innerCrawler] != '-') {
+                    totalCount++;
+                }
+            }
+        }
+        return totalCount;
+    }
 };
 
 #endif /* LETTERSTRINGS_H_ */

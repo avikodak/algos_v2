@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 //Tested
 class EasyHomework {
 public:
-	string determineSign(vector<int> userInput){
-		unsigned int negativeCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] == 0){
-				return "ZERO";
-			}else if(userInput[counter] < 0){
-				negativeCount++;
-			}
-		}
-		return negativeCount%2 == 0?"POSITIVE":"NEGATIVE";
-	}
+    string determineSign(vector<int> userInput) {
+        unsigned int negativeCount = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] == 0) {
+                return "ZERO";
+            } else if(userInput[counter] < 0) {
+                negativeCount++;
+            }
+        }
+        return negativeCount%2 == 0?"POSITIVE":"NEGATIVE";
+    }
 };
 
 #endif /* EASYHOMEWORK_H_ */

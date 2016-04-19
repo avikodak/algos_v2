@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: largestindependentset.h 
+ *  File Name   		: largestindependentset.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\largestindependentset.h
  *  Created on			: Jan 16, 2015 :: 9:01:42 AM
  *  Author				: AVINASH
@@ -70,13 +70,13 @@ using namespace __gnu_cxx;
 #ifndef LARGESTINDEPENDENTSET_H_
 #define LARGESTINDEPENDENTSET_H_
 
-int largestIndependentSet(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	int excl = largestIndependentSet(ptr->left) + largestIndependentSet(ptr->right);
-	int incl = 1 + ptr->left == null?0:(largestIndependentSet(ptr->left->left)+largestIndependentSet(ptr->left->right)) + ptr->right == null?0:(largestIndependentSet(ptr->right->left)+largestIndependentSet(ptr->right->right));
-	return max(excl,incl);
+int largestIndependentSet(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    int excl = largestIndependentSet(ptr->left) + largestIndependentSet(ptr->right);
+    int incl = 1 + ptr->left == null?0:(largestIndependentSet(ptr->left->left)+largestIndependentSet(ptr->left->right)) + ptr->right == null?0:(largestIndependentSet(ptr->right->left)+largestIndependentSet(ptr->right->right));
+    return max(excl,incl);
 }
 
 

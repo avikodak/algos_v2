@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
+ *  File Name   		: longestcommonsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\longestcommonsubsequence.h
  *  Created on			: Dec 9, 2014 :: 7:39:32 PM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define LONGESTCOMMONSUBSEQUENCE_H_
 
 //Tested
-int longestCommonSubSequenceMemoization(char *firstUserInput,char *secondUserInput){
-	if(firstUserInput == null || secondUserInput == null){
-		return 0;
-	}
-	int firstUserInputLength,secondUserInputLength;
-	firstUserInputLength = strlen(firstUserInput);
-	secondUserInputLength = strlen(secondUserInput);
-	vector<vector<int> > auxSpace(firstUserInputLength+1);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(secondUserInputLength+1);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < auxSpace.size();rowCounter++){
-		auxSpace[rowCounter][0] = 0;
-	}
-	for(unsigned int columnCounter = 0;columnCounter < auxSpace[0].size();columnCounter++){
-		auxSpace[0][columnCounter] = 0;
-	}
-	for(unsigned int rowCounter = 1;rowCounter < auxSpace.size();rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter < auxSpace[0].size();columnCounter++){
-			if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]){
-				auxSpace[rowCounter][columnCounter] = 1 + auxSpace[rowCounter-1][columnCounter-1];
-			}else{
-				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
-			}
-		}
-	}
-	return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
+int longestCommonSubSequenceMemoization(char *firstUserInput,char *secondUserInput) {
+    if(firstUserInput == null || secondUserInput == null) {
+        return 0;
+    }
+    int firstUserInputLength,secondUserInputLength;
+    firstUserInputLength = strlen(firstUserInput);
+    secondUserInputLength = strlen(secondUserInput);
+    vector<vector<int> > auxSpace(firstUserInputLength+1);
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        auxSpace[counter].resize(secondUserInputLength+1);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < auxSpace.size(); rowCounter++) {
+        auxSpace[rowCounter][0] = 0;
+    }
+    for(unsigned int columnCounter = 0; columnCounter < auxSpace[0].size(); columnCounter++) {
+        auxSpace[0][columnCounter] = 0;
+    }
+    for(unsigned int rowCounter = 1; rowCounter < auxSpace.size(); rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter < auxSpace[0].size(); columnCounter++) {
+            if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]) {
+                auxSpace[rowCounter][columnCounter] = 1 + auxSpace[rowCounter-1][columnCounter-1];
+            } else {
+                auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]);
+            }
+        }
+    }
+    return auxSpace[auxSpace.size()-1][auxSpace[0].size()-1];
 }
 
 //Tested
-int longestCommonSubSequence(char *firstUserInput,char *secondUserInput){
-	if(firstUserInput[0] == '\0' || secondUserInput[0] == '\0'){
-		return 0;
-	}
-	if(firstUserInput[0] == secondUserInput[0]){
-		return 1 + longestCommonSubSequence(firstUserInput+1,secondUserInput+1);
-	}else{
-		return max(longestCommonSubSequence(firstUserInput+1,secondUserInput),longestCommonSubSequence(firstUserInput,secondUserInput+1));
-	}
+int longestCommonSubSequence(char *firstUserInput,char *secondUserInput) {
+    if(firstUserInput[0] == '\0' || secondUserInput[0] == '\0') {
+        return 0;
+    }
+    if(firstUserInput[0] == secondUserInput[0]) {
+        return 1 + longestCommonSubSequence(firstUserInput+1,secondUserInput+1);
+    } else {
+        return max(longestCommonSubSequence(firstUserInput+1,secondUserInput),longestCommonSubSequence(firstUserInput,secondUserInput+1));
+    }
 }
 
 #endif /* LONGESTCOMMONSUBSEQUENCE_H_ */

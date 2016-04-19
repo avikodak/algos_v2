@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 //Tested
 class StrangeComputer {
 public:
-	int setMemory(string mem){
-		int total = 0;
-		unsigned int outerCounter = 0,innerCounter =0;
-		while(outerCounter < mem.size() && mem[outerCounter] == '0'){
-			outerCounter++;
-		}
-		while(outerCounter < mem.size()){
-			innerCounter = outerCounter;
-			total++;
-			while(innerCounter < mem.size() && mem[innerCounter] == mem[outerCounter]){
-				innerCounter++;
-			}
-		}
-		return total;
-	}
+    int setMemory(string mem) {
+        int total = 0;
+        unsigned int outerCounter = 0,innerCounter =0;
+        while(outerCounter < mem.size() && mem[outerCounter] == '0') {
+            outerCounter++;
+        }
+        while(outerCounter < mem.size()) {
+            innerCounter = outerCounter;
+            total++;
+            while(innerCounter < mem.size() && mem[innerCounter] == mem[outerCounter]) {
+                innerCounter++;
+            }
+        }
+        return total;
+    }
 };
 
 #endif /* STRANGECOMPUTER_H_ */

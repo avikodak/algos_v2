@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ratmaze.h 
+ *  File Name   		: ratmaze.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\ratmaze.h
  *  Created on			: Dec 5, 2014 :: 12:35:23 AM
  *  Author				: AVINASH
@@ -69,44 +69,44 @@ using namespace __gnu_cxx;
 #define RATMAZE_H_
 
 //Tested
-bool isSafeMoveRateMaze(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
-	if(yValue < 0 || yValue >= (int)maze.size() || xValue < 0 || xValue >= (int)maze[0].size() || !maze[xValue][yValue] || solution[xValue][yValue]){
-		return false;
-	}
-	return true;
+bool isSafeMoveRateMaze(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue) {
+    if(yValue < 0 || yValue >= (int)maze.size() || xValue < 0 || xValue >= (int)maze[0].size() || !maze[xValue][yValue] || solution[xValue][yValue]) {
+        return false;
+    }
+    return true;
 }
 
 //Tested
-bool solveRatMazeProblemMain(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue){
-	if(xValue == (int)maze[0].size()-1 && yValue ==  (int)maze.size()-1){
-		printIVector(solution);
-		return true;
-	}
-	int xCoordinates[] = {-1,0,0,1};
-	int yCoordinates[] = {0,-1,1,0};
-	for(unsigned int counter = 0;counter < 4;counter++){
-		if(isSafeMoveRateMaze(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
-			solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = true;
-			if(solveRatMazeProblemMain(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])){
-				return true;
-			}
-			solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = false;
-		}
-	}
-	return false;
+bool solveRatMazeProblemMain(vector<vector<bool> > maze,vector<vector<bool> > solution,int xValue,int yValue) {
+    if(xValue == (int)maze[0].size()-1 && yValue ==  (int)maze.size()-1) {
+        printIVector(solution);
+        return true;
+    }
+    int xCoordinates[] = {-1,0,0,1};
+    int yCoordinates[] = {0,-1,1,0};
+    for(unsigned int counter = 0; counter < 4; counter++) {
+        if(isSafeMoveRateMaze(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])) {
+            solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = true;
+            if(solveRatMazeProblemMain(maze,solution,xValue + xCoordinates[counter],yValue + yCoordinates[counter])) {
+                return true;
+            }
+            solution[xValue + xCoordinates[counter]][yValue + yCoordinates[counter]] = false;
+        }
+    }
+    return false;
 }
 
 //Tested
-void solveRatProblem(vector<vector<bool> > maze){
-	if(maze.size() == 0 || maze[0].size() == 0){
-		return;
-	}
-	vector<vector<bool> > solution(maze.size());
-	for(unsigned int counter = 0;counter < maze.size();counter++){
-		solution[counter].assign(maze[0].size(),false);
-	}
-	solution[0][0] = true;
-	solveRatMazeProblemMain(maze,solution,0,0);
+void solveRatProblem(vector<vector<bool> > maze) {
+    if(maze.size() == 0 || maze[0].size() == 0) {
+        return;
+    }
+    vector<vector<bool> > solution(maze.size());
+    for(unsigned int counter = 0; counter < maze.size(); counter++) {
+        solution[counter].assign(maze[0].size(),false);
+    }
+    solution[0][0] = true;
+    solveRatMazeProblemMain(maze,solution,0,0);
 }
 
 #endif /* RATMAZE_H_ */

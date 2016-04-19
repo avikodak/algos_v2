@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 8739992577
-void getLastTenDigits(){
-	unsigned long long int userInput=1;
-	unsigned long long int moduloConstant = 10000000000;
-	for(unsigned int counter = 1;counter <= 7830457;counter++){
-		userInput *= 2;
-		userInput = userInput%moduloConstant;
-	}
-	userInput *= 28433;
-	userInput = userInput%moduloConstant;
-	userInput += 1;
-	userInput = userInput%moduloConstant;
-	cout << userInput << endl;
+void getLastTenDigits() {
+    unsigned long long int userInput=1;
+    unsigned long long int moduloConstant = 10000000000;
+    for(unsigned int counter = 1; counter <= 7830457; counter++) {
+        userInput *= 2;
+        userInput = userInput%moduloConstant;
+    }
+    userInput *= 28433;
+    userInput = userInput%moduloConstant;
+    userInput += 1;
+    userInput = userInput%moduloConstant;
+    cout << userInput << endl;
 }
 
 #endif /* LARGENONMERSENNEPRIME_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sherlockandsquares.h 
+ *  File Name   		: sherlockandsquares.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\sherlockandsquares.h
  *  Created on			: Feb 6, 2015 :: 11:02:48 AM
  *  Author				: AVINASH
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define SHERLOCKANDSQUARES_H_
 
 //Tested
-long int countSquares(long int firstUserInput,long int secondUserInput){
-	long int squareRootFirstNumber = sqrt(firstUserInput);
-	long int counter = 0;
-	while(squareRootFirstNumber * squareRootFirstNumber <= secondUserInput){
-		if(squareRootFirstNumber * squareRootFirstNumber >= firstUserInput){
-			counter++;
-		}
-		squareRootFirstNumber++;
-	}
-	return counter;
+long int countSquares(long int firstUserInput,long int secondUserInput) {
+    long int squareRootFirstNumber = sqrt(firstUserInput);
+    long int counter = 0;
+    while(squareRootFirstNumber * squareRootFirstNumber <= secondUserInput) {
+        if(squareRootFirstNumber * squareRootFirstNumber >= firstUserInput) {
+            counter++;
+        }
+        squareRootFirstNumber++;
+    }
+    return counter;
 }
 
 #endif /* SHERLOCKANDSQUARES_H_ */

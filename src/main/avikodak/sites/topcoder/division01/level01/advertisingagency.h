@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 class AdvertisingAgency {
 public:
-	int numberOfRejections(vector<int> requests){
-		bool flags[100] = {false};
-		int rejectionCount = 0;
-		for(unsigned int counter = 0;counter < requests.size();counter++){
-			if(flags[counter-1]){
-				rejectionCount++;
-			}else{
-				flags[counter-1] = true;
-			}
-		}
-		return rejectionCount;
-	}
+    int numberOfRejections(vector<int> requests) {
+        bool flags[100] = {false};
+        int rejectionCount = 0;
+        for(unsigned int counter = 0; counter < requests.size(); counter++) {
+            if(flags[counter-1]) {
+                rejectionCount++;
+            } else {
+                flags[counter-1] = true;
+            }
+        }
+        return rejectionCount;
+    }
 };
 
 #endif /* ADVERTISINGAGENCY_H_ */

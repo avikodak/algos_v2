@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: largestbstsubtree.h 
+ *  File Name   		: largestbstsubtree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\largestbstsubtree.h
  *  Created on			: Oct 23, 2014 :: 6:12:08 PM
  *  Author				: AVINASH
@@ -75,79 +75,79 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isTreeBST(itNode *ptr,int minValue = INT_MIN,int maxValue = INT_MAX){
-	if(ptr == null){
-		return true;
-	}
-	if(ptr->value < minValue || ptr->value > maxValue){
-		return false;
-	}
-	return isTreeBST(ptr->left,minValue,ptr->value) && isTreeBST(ptr->right,ptr->value,maxValue);
+bool isTreeBST(itNode *ptr,int minValue = INT_MIN,int maxValue = INT_MAX) {
+    if(ptr == null) {
+        return true;
+    }
+    if(ptr->value < minValue || ptr->value > maxValue) {
+        return false;
+    }
+    return isTreeBST(ptr->left,minValue,ptr->value) && isTreeBST(ptr->right,ptr->value,maxValue);
 }
 
-unsigned int getLargestBSTSubtreeSize(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	if(isTreeBST(ptr)){
-		treeutils *utils = new treeutils();
-		return utils->getSizeOfTree(ptr);
-	}
-	return max(getLargestBSTSubtreeSize(ptr->left),getLargestBSTSubtreeSize(ptr->right));
+unsigned int getLargestBSTSubtreeSize(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(isTreeBST(ptr)) {
+        treeutils *utils = new treeutils();
+        return utils->getSizeOfTree(ptr);
+    }
+    return max(getLargestBSTSubtreeSize(ptr->left),getLargestBSTSubtreeSize(ptr->right));
 }
 
-int getLargestBSTSubTreeSize(itNode *ptr,int *minVal,int *maxVal,bool *isBst,int *maxSize){
-	if(ptr == null){
-		*isBst = true;
-		return 0;
-	}
-	bool isLeftSubtreeBST = false,isRightSubtreeBST = false;
-	int minLeftValue;
-	*maxVal = INT_MIN;
-	int leftSubTreeSize = getLargestBSTSubTreeSize(ptr->left,minVal,maxVal,isBst,maxSize);
-	if(isBst && ptr->value >= *maxVal){
-		isLeftSubtreeBST = true;
-	}
-	minLeftValue = *minVal;
-	*minVal = INT_MAX;
-	int rightSubTreeSize = getLargestBSTSubTreeSize(ptr->right,minVal,maxVal,isBst,maxSize);
-	if(*isBst && ptr->value <=  *minVal){
-		isRightSubtreeBST = true;
-	}
-	if(minLeftValue < *minVal){
-		*minVal = minLeftValue;
-	}
-	if(ptr->value < *minVal){
-		*minVal = ptr->value;
-	}
-	if(ptr->value > *maxVal){
-		*maxVal = ptr->value;
-	}
-	if(isLeftSubtreeBST && isRightSubtreeBST){
-		*isBst = true;
-		*maxSize = max(*maxSize,1+leftSubTreeSize+rightSubTreeSize);
-		return 1 + leftSubTreeSize + rightSubTreeSize;
-	}else{
-		isBst = false;
-		return 0;
-	}
+int getLargestBSTSubTreeSize(itNode *ptr,int *minVal,int *maxVal,bool *isBst,int *maxSize) {
+    if(ptr == null) {
+        *isBst = true;
+        return 0;
+    }
+    bool isLeftSubtreeBST = false,isRightSubtreeBST = false;
+    int minLeftValue;
+    *maxVal = INT_MIN;
+    int leftSubTreeSize = getLargestBSTSubTreeSize(ptr->left,minVal,maxVal,isBst,maxSize);
+    if(isBst && ptr->value >= *maxVal) {
+        isLeftSubtreeBST = true;
+    }
+    minLeftValue = *minVal;
+    *minVal = INT_MAX;
+    int rightSubTreeSize = getLargestBSTSubTreeSize(ptr->right,minVal,maxVal,isBst,maxSize);
+    if(*isBst && ptr->value <=  *minVal) {
+        isRightSubtreeBST = true;
+    }
+    if(minLeftValue < *minVal) {
+        *minVal = minLeftValue;
+    }
+    if(ptr->value < *minVal) {
+        *minVal = ptr->value;
+    }
+    if(ptr->value > *maxVal) {
+        *maxVal = ptr->value;
+    }
+    if(isLeftSubtreeBST && isRightSubtreeBST) {
+        *isBst = true;
+        *maxSize = max(*maxSize,1+leftSubTreeSize+rightSubTreeSize);
+        return 1 + leftSubTreeSize + rightSubTreeSize;
+    } else {
+        isBst = false;
+        return 0;
+    }
 }
 
-int *largestContinousIncreasingSequenceIndexes(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	return 0;
+int *largestContinousIncreasingSequenceIndexes(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    return 0;
 }
 
-unsigned int getLargestBSTSubtreeSizeInorder(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	//Have to check whether the inorder traversal is in the same subtree;
-	treeutils *utils = new treeutils();
- 	vector<int> inorder = utils->getValuesInInorder(ptr);
- 	return 0;
+unsigned int getLargestBSTSubtreeSizeInorder(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    //Have to check whether the inorder traversal is in the same subtree;
+    treeutils *utils = new treeutils();
+    vector<int> inorder = utils->getValuesInInorder(ptr);
+    return 0;
 }
 #endif /* LARGESTBSTSUBTREE_H_ */
 

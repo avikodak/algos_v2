@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kadanealgo.h 
+ *  File Name   		: kadanealgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\kadanealgo.h
  *  Created on			: Dec 5, 2014 :: 12:33:35 AM
  *  Author				: AVINASH
@@ -72,68 +72,68 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxContinousSubArraySumON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter]+currentSum,userInput[counter]);
-		maxSum = max(maxSum,currentSum);
-	}
-	return maxSum;
+int maxContinousSubArraySumON(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int currentSum = 0,maxSum = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        currentSum = max(userInput[counter]+currentSum,userInput[counter]);
+        maxSum = max(maxSum,currentSum);
+    }
+    return maxSum;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxContinousSubArraySumON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int currentSum = 0,maxSum = INT_MIN;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		currentSum = 0;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			currentSum += userInput[innerCounter];
-			maxSum = max(maxSum,currentSum);
-		}
-	}
-	return maxSum;
+int maxContinousSubArraySumON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int currentSum = 0,maxSum = INT_MIN;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        currentSum = 0;
+        for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+            currentSum += userInput[innerCounter];
+            maxSum = max(maxSum,currentSum);
+        }
+    }
+    return maxSum;
 }
 
 //Tested
-int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int leftSum = 0,rightSum = 0,sum = 0;
-	for(int counter = middleIndex;counter >= startIndex;counter--){
-		sum += userInput[counter];
-		leftSum = max(leftSum,sum);
-	}
-	sum = 0;
-	for(int counter = middleIndex+1;counter <= endIndex;counter++){
-		sum += userInput[counter];
-		rightSum = max(rightSum,sum);
-	}
-	return leftSum + rightSum;
+int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    int leftSum = 0,rightSum = 0,sum = 0;
+    for(int counter = middleIndex; counter >= startIndex; counter--) {
+        sum += userInput[counter];
+        leftSum = max(leftSum,sum);
+    }
+    sum = 0;
+    for(int counter = middleIndex+1; counter <= endIndex; counter++) {
+        sum += userInput[counter];
+        rightSum = max(rightSum,sum);
+    }
+    return leftSum + rightSum;
 }
 
 //Tested
-int maxContigousSubArrayDAC(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	return max(maxContigousSubArrayDAC(userInput,startIndex,middleIndex),max(maxContigousSubArrayDAC(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
+int maxContigousSubArrayDAC(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    return max(maxContigousSubArrayDAC(userInput,startIndex,middleIndex),max(maxContigousSubArrayDAC(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
 }
 
 #endif /* KADANEALGO_H_ */

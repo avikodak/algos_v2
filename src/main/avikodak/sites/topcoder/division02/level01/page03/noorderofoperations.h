@@ -72,21 +72,21 @@ using namespace __gnu_cxx;
 
 class NoOrderOfOperations {
 public:
-	int evaluate(string expr){
-		int result = expr[0];
-		for(unsigned int counter = 1;counter < expr.size();counter+=2){
-			if(expr[counter] == '+'){
-				result += expr[counter+1];
-			}else if(expr[counter] == '-'){
-				result -= expr[counter+1];
-			}else if(expr[counter] == '*'){
-				result *= expr[counter+1];
-			}else if(expr[counter] == '/'){
-				result /= expr[counter+1];
-			}
-		}
-		return result;
-	}
+    int evaluate(string expr) {
+        int result = expr[0];
+        for(unsigned int counter = 1; counter < expr.size(); counter+=2) {
+            if(expr[counter] == '+') {
+                result += expr[counter+1];
+            } else if(expr[counter] == '-') {
+                result -= expr[counter+1];
+            } else if(expr[counter] == '*') {
+                result *= expr[counter+1];
+            } else if(expr[counter] == '/') {
+                result /= expr[counter+1];
+            }
+        }
+        return result;
+    }
 };
 
 #endif /* NOORDEROFOPERATIONS_H_ */

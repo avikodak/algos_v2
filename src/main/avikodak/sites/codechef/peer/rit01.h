@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 #define RIT01_H_
 
 //Tested
-void totalCharsRemoved(string userInput){
-	unsigned int outerCounter = 0,innerCounter,total = 0;
-	while(outerCounter < userInput.size()){
-		innerCounter = outerCounter+1;
-		while(innerCounter < userInput.size() && userInput[outerCounter] == userInput[innerCounter]){
-			total++;
-		}
-		outerCounter = innerCounter+1;
-	}
+void totalCharsRemoved(string userInput) {
+    unsigned int outerCounter = 0,innerCounter,total = 0;
+    while(outerCounter < userInput.size()) {
+        innerCounter = outerCounter+1;
+        while(innerCounter < userInput.size() && userInput[outerCounter] == userInput[innerCounter]) {
+            total++;
+        }
+        outerCounter = innerCounter+1;
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+    }
 }
 
 #endif /* RIT01_H_ */

@@ -72,31 +72,31 @@ using namespace __gnu_cxx;
 #ifndef LELEMON_H_
 #define LELEMON_H_
 
-void printResults(){
-	long long int testCases,noOfRooms,noOfVisitedRooms,totalVolume,input,bottlesInRoom;
-	vector<long int> visitedRooms;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&noOfRooms,&noOfVisitedRooms);
-		vector<priority_queue<long int> > roomDrinkInfo(noOfRooms);
-		totalVolume = 0;
-		for(long long int counter = 0;counter < noOfVisitedRooms;counter++){
-			scanf("%lld",&input);
-			visitedRooms.push_back(input);
-		}
-		for(long long counter = 0;counter < noOfRooms;counter++){
-			scanf("%lld",&bottlesInRoom);
-			while(bottlesInRoom--){
-				scanf("%lld",&input);
-				roomDrinkInfo[counter].push(noOfRooms);
-			}
-		}
-		for(long long int counter = 0;counter < noOfVisitedRooms;counter++){
-			totalVolume += roomDrinkInfo[visitedRooms[counter]].top();
-			roomDrinkInfo[visitedRooms[counter]].pop();
-		}
-		printf("%lld\n",totalVolume);
-	}
+void printResults() {
+    long long int testCases,noOfRooms,noOfVisitedRooms,totalVolume,input,bottlesInRoom;
+    vector<long int> visitedRooms;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&noOfRooms,&noOfVisitedRooms);
+        vector<priority_queue<long int> > roomDrinkInfo(noOfRooms);
+        totalVolume = 0;
+        for(long long int counter = 0; counter < noOfVisitedRooms; counter++) {
+            scanf("%lld",&input);
+            visitedRooms.push_back(input);
+        }
+        for(long long counter = 0; counter < noOfRooms; counter++) {
+            scanf("%lld",&bottlesInRoom);
+            while(bottlesInRoom--) {
+                scanf("%lld",&input);
+                roomDrinkInfo[counter].push(noOfRooms);
+            }
+        }
+        for(long long int counter = 0; counter < noOfVisitedRooms; counter++) {
+            totalVolume += roomDrinkInfo[visitedRooms[counter]].top();
+            roomDrinkInfo[visitedRooms[counter]].pop();
+        }
+        printf("%lld\n",totalVolume);
+    }
 }
 
 

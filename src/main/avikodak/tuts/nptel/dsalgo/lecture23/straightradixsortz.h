@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: straightradixsortz.h 
+ *  File Name   		: straightradixsortz.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\straightradixsortz.h
  *  Created on			: Dec 2, 2014 :: 11:56:51 PM
  *  Author				: AVINASH
@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-void reorganizeNumbersForDigitPosition(vector<int> &userInput,int digitPosition){
-	map<int,queue<int> > buckets;
-	map<int,queue<int> >::iterator itToBuckets;
-	int digit;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		digit = (userInput[counter]/pow(10,digitPosition))%10;
-		if((itToBuckets = buckets.find(digit)) != buckets.end()){
-			itToBuckets->second.push(userInput[counter]);
-		}else{
-			queue<int> digitBucket;
-			digitBucket.push(userInput[counter]);
-			buckets.insert(pair<int,queue<int> >(digit,digitBucket));
-		}
+void reorganizeNumbersForDigitPosition(vector<int> &userInput,int digitPosition) {
+    map<int,queue<int> > buckets;
+    map<int,queue<int> >::iterator itToBuckets;
+    int digit;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        digit = (userInput[counter]/pow(10,digitPosition))%10;
+        if((itToBuckets = buckets.find(digit)) != buckets.end()) {
+            itToBuckets->second.push(userInput[counter]);
+        } else {
+            queue<int> digitBucket;
+            digitBucket.push(userInput[counter]);
+            buckets.insert(pair<int,queue<int> >(digit,digitBucket));
+        }
 
-	}
-	int fillCounter = -1;
-	for(itToBuckets = buckets.begin();itToBuckets != buckets.end();itToBuckets++){
-		while(!itToBuckets->second.empty()){
-			userInput[++fillCounter] = itToBuckets->second.front();
-			itToBuckets->second.pop();
-		}
-	}
+    }
+    int fillCounter = -1;
+    for(itToBuckets = buckets.begin(); itToBuckets != buckets.end(); itToBuckets++) {
+        while(!itToBuckets->second.empty()) {
+            userInput[++fillCounter] = itToBuckets->second.front();
+            itToBuckets->second.pop();
+        }
+    }
 }
 
-void straightRadixSortWholeNumbers(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int totalDigits = log(max_element(userInput.begin(),userInput.end())) + 1;
-	for(unsigned int counter = 0;counter < totalDigits;counter++){
-		reorganizeNumbersForDigitPosition(userInput,counter);
-	}
+void straightRadixSortWholeNumbers(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int totalDigits = log(max_element(userInput.begin(),userInput.end())) + 1;
+    for(unsigned int counter = 0; counter < totalDigits; counter++) {
+        reorganizeNumbersForDigitPosition(userInput,counter);
+    }
 }
 
 #endif /* STRAIGHTRADIXSORTZ_H_ */

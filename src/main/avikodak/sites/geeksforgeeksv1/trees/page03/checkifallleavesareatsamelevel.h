@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkifallleavesareatsamelevel.h 
+ *  File Name   		: checkifallleavesareatsamelevel.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\checkifallleavesareatsamelevel.h
  *  Created on			: Nov 14, 2014 :: 7:21:42 PM
  *  Author				: AVINASH
@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool checkIfAllLeavesAreAtSameLevel(itNode *ptr,int level = 0){
-	if(ptr == null){
-		return true;
-	}
-	static int leafLevel = 0;
-	if(ptr->left == null && ptr->right == null){
-		if(leafLevel == 0){
-			leafLevel = level;
-		}
-		return level == leafLevel;
-	}
-	return checkIfAllLeavesAreAtSameLevel(ptr->left,level+1) && checkIfAllLeavesAreAtSameLevel(ptr->right,level+1);
+bool checkIfAllLeavesAreAtSameLevel(itNode *ptr,int level = 0) {
+    if(ptr == null) {
+        return true;
+    }
+    static int leafLevel = 0;
+    if(ptr->left == null && ptr->right == null) {
+        if(leafLevel == 0) {
+            leafLevel = level;
+        }
+        return level == leafLevel;
+    }
+    return checkIfAllLeavesAreAtSameLevel(ptr->left,level+1) && checkIfAllLeavesAreAtSameLevel(ptr->right,level+1);
 }
 
 
@@ -91,29 +91,29 @@ bool checkIfAllLeavesAreAtSameLevel(itNode *ptr,int level = 0){
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool cIsLeafPresentInLevel(itNode *ptr,unsigned int level){
-	if(ptr == null){
-		return false;
-	}
-	if(level == 0){
-		return ptr->left == null && ptr->right == null;
-	}
-	return cIsLeafPresentInLevel(ptr->left,level-1) || cIsLeafPresentInLevel(ptr->right,level-1);
+bool cIsLeafPresentInLevel(itNode *ptr,unsigned int level) {
+    if(ptr == null) {
+        return false;
+    }
+    if(level == 0) {
+        return ptr->left == null && ptr->right == null;
+    }
+    return cIsLeafPresentInLevel(ptr->left,level-1) || cIsLeafPresentInLevel(ptr->right,level-1);
 }
 
 //Tested
-bool areLeavesPresentInSameLevel(itNode *ptr){
-	if(ptr == null){
-		return false;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height-1;counter++){
-		if(cIsLeafPresentInLevel(ptr,counter)){
-			return false;
-		}
-	}
-	return true;
+bool areLeavesPresentInSameLevel(itNode *ptr) {
+    if(ptr == null) {
+        return false;
+    }
+    treeutils *utils = new treeutils();
+    unsigned int height = utils->getHeightOfTree(ptr);
+    for(unsigned int counter = 0; counter < height-1; counter++) {
+        if(cIsLeafPresentInLevel(ptr,counter)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* CHECKIFALLLEAVESAREATSAMELEVEL_H_ */

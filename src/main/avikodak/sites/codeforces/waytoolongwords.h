@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: waytoolongwords.h 
+ *  File Name   		: waytoolongwords.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\waytoolongwords.h
  *  Created on			: Feb 2, 2015 :: 8:11:50 AM
  *  Author				: AVINASH
@@ -74,17 +74,17 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printWayTooLongWords(char userInput[]){
-	if(userInput == NULL || userInput[0] == '\0'){
-		return;
-	}
-	int length = strlen(userInput);
-	if(length > 10){
-		printf("%c%d%c",userInput[0],length-2,userInput[length-1]);
-	}else{
-		printf("%s",userInput);
-	}
-	PRINT_NEW_LINE;
+void printWayTooLongWords(char userInput[]) {
+    if(userInput == NULL || userInput[0] == '\0') {
+        return;
+    }
+    int length = strlen(userInput);
+    if(length > 10) {
+        printf("%c%d%c",userInput[0],length-2,userInput[length-1]);
+    } else {
+        printf("%s",userInput);
+    }
+    PRINT_NEW_LINE;
 }
 
 #endif /* WAYTOOLONGWORDS_H_ */

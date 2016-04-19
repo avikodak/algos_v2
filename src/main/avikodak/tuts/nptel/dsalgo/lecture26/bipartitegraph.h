@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bipartitegraph.h 
+ *  File Name   		: bipartitegraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\bipartitegraph.h
  *  Created on			: Dec 4, 2014 :: 11:50:36 PM
  *  Author				: AVINASH
@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isGraphBipartite(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return false;
-	}
-	queue<int> auxSpace;
-	int currentNode;
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	bfsLevels[0] = 0;
-	for(unsigned int counter = 0;counter < bfsLevels.size();counter++){
-		if(bfsLevels[counter] == INT_MIN){
-			auxSpace.push(counter);
-			bfsLevels[counter] = 0;
-			while(!auxSpace.empty()){
-				currentNode = auxSpace.front();
-				auxSpace.pop();
-				for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();adjacentNodeCounter++){
-					if(adjacencyList[currentNode][adjacentNodeCounter] == INT_MIN){
-						bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = 1 + bfsLevels[currentNode];
-						auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
-					}else{
-						if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == bfsLevels[currentNode]){
-							return false;
-						}
-					}
-				}
-			}
-		}
-	}
-	return true;
+bool isGraphBipartite(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return false;
+    }
+    queue<int> auxSpace;
+    int currentNode;
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    bfsLevels[0] = 0;
+    for(unsigned int counter = 0; counter < bfsLevels.size(); counter++) {
+        if(bfsLevels[counter] == INT_MIN) {
+            auxSpace.push(counter);
+            bfsLevels[counter] = 0;
+            while(!auxSpace.empty()) {
+                currentNode = auxSpace.front();
+                auxSpace.pop();
+                for(unsigned int adjacentNodeCounter = 0; adjacentNodeCounter < adjacencyList[currentNode].size(); adjacentNodeCounter++) {
+                    if(adjacencyList[currentNode][adjacentNodeCounter] == INT_MIN) {
+                        bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = 1 + bfsLevels[currentNode];
+                        auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
+                    } else {
+                        if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == bfsLevels[currentNode]) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return true;
 }
 
 #endif /* BIPARTITEGRAPH_H_ */

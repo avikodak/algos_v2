@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minmax.h 
+ *  File Name   		: minmax.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\minmax.h
  *  Created on			: Jan 9, 2015 :: 10:31:14 AM
  *  Author				: AVINASH
@@ -70,16 +70,16 @@ using namespace __gnu_cxx;
 #ifndef MINMAX_H_
 #define MINMAX_H_
 
-int getMin(int x,int y){
-	return y^((x ^ y) & -(x < y));
+int getMin(int x,int y) {
+    return y^((x ^ y) & -(x < y));
 }
 
-int getMinOnlyBitMagic(int x,int y){
-	return y + ((x-y) & ((x-y)>>(sizeof(int)*sizeof(char)-1)));
+int getMinOnlyBitMagic(int x,int y) {
+    return y + ((x-y) & ((x-y)>>(sizeof(int)*sizeof(char)-1)));
 }
 
-int getMaxOnlyBitMagic(int x,int y){
-	return x - ((x-y)&((x-y)>>(sizeof(int)*sizeof(char)-1)));
+int getMaxOnlyBitMagic(int x,int y) {
+    return x - ((x-y)&((x-y)>>(sizeof(int)*sizeof(char)-1)));
 }
 
 #endif /* MINMAX_H_ */

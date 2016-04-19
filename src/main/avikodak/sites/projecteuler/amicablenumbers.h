@@ -71,102 +71,102 @@ using namespace __gnu_cxx;
 #define AMICABLENUMBERS_H_
 
 //Tested
-map<long long int,long long int> primeFactorization(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	map<long long int,long long int> factorsCounter;
-	map<long long int,long long int>::iterator itToFactorsCount;
-	bool flag = true;
-	while(flag && userInput > 1){
-		flag = false;
-		while(!(userInput&1)){
-			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
-				factorsCounter[2] = 1;
-			}else{
-				factorsCounter[2]++;
-			}
-			flag = true;
-			userInput /= 2;
-		}
-		for(long long int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				if(factorsCounter.find(counter) == factorsCounter.end()){
-					factorsCounter[counter] = 1;
-				}else{
-					factorsCounter[counter]++;
-				}
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag){
-			if(factorsCounter.find(userInput) == factorsCounter.end()){
-				factorsCounter[userInput] = 1;
-			}else{
-				factorsCounter[userInput]++;
-			}
-		}
-	}
-	return factorsCounter;
+map<long long int,long long int> primeFactorization(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    map<long long int,long long int> factorsCounter;
+    map<long long int,long long int>::iterator itToFactorsCount;
+    bool flag = true;
+    while(flag && userInput > 1) {
+        flag = false;
+        while(!(userInput&1)) {
+            if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()) {
+                factorsCounter[2] = 1;
+            } else {
+                factorsCounter[2]++;
+            }
+            flag = true;
+            userInput /= 2;
+        }
+        for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                if(factorsCounter.find(counter) == factorsCounter.end()) {
+                    factorsCounter[counter] = 1;
+                } else {
+                    factorsCounter[counter]++;
+                }
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag) {
+            if(factorsCounter.find(userInput) == factorsCounter.end()) {
+                factorsCounter[userInput] = 1;
+            } else {
+                factorsCounter[userInput]++;
+            }
+        }
+    }
+    return factorsCounter;
 }
 
 //Tested
-unsigned long long int pow(long long int base,long long int power){
-	if(power == 0){
-		return 1;
-	}
-	unsigned long long int result = 1;
-	for(long long int counter = 0;counter < power;counter++){
-		result *= base;
-	}
-	return result;
+unsigned long long int pow(long long int base,long long int power) {
+    if(power == 0) {
+        return 1;
+    }
+    unsigned long long int result = 1;
+    for(long long int counter = 0; counter < power; counter++) {
+        result *= base;
+    }
+    return result;
 }
 
 //Tested
-unsigned long long int rhoFunction(long long int base,long long int power){
-	return ((pow(base,power+1))-1)/(base-1);
+unsigned long long int rhoFunction(long long int base,long long int power) {
+    return ((pow(base,power+1))-1)/(base-1);
 }
 
 //Tested
-unsigned long long int getSumOfDivisors(unsigned int value,bool properDivisor){
-	map<long long int,long long int> primeFactors = primeFactorization(value);
-	map<long long int,long long int>::iterator itToPrimeFactors;
-	unsigned long long int sumOfDivisors = 1;
-	for(itToPrimeFactors = primeFactors.begin();itToPrimeFactors != primeFactors.end();itToPrimeFactors++){
-		sumOfDivisors *= rhoFunction(itToPrimeFactors->first,itToPrimeFactors->second);
-	}
-	if(!properDivisor){
-		sumOfDivisors -= value;
-	}
-	return sumOfDivisors;
+unsigned long long int getSumOfDivisors(unsigned int value,bool properDivisor) {
+    map<long long int,long long int> primeFactors = primeFactorization(value);
+    map<long long int,long long int>::iterator itToPrimeFactors;
+    unsigned long long int sumOfDivisors = 1;
+    for(itToPrimeFactors = primeFactors.begin(); itToPrimeFactors != primeFactors.end(); itToPrimeFactors++) {
+        sumOfDivisors *= rhoFunction(itToPrimeFactors->first,itToPrimeFactors->second);
+    }
+    if(!properDivisor) {
+        sumOfDivisors -= value;
+    }
+    return sumOfDivisors;
 }
 
 //Tested
 //Ans : 31626
-void printSumOfAmicableNumbers(){
-	unsigned int sumOfAmicableNumbers = 0,divisorsSum,temp;
-	map<unsigned long long int,unsigned long long int> mapValueSumDivisors;
-	map<unsigned long long int,unsigned long long int>::iterator itToMapValueSumDivisors;
-	for(unsigned int counter = 2;counter < 10000;counter++){
-		if((itToMapValueSumDivisors = mapValueSumDivisors.find(counter)) == mapValueSumDivisors.end()){
-			divisorsSum = getSumOfDivisors(counter,false);
-			if(divisorsSum != counter){
-				mapValueSumDivisors.insert(pair<unsigned long long int,unsigned long long int>(counter,divisorsSum));
-				if((itToMapValueSumDivisors = mapValueSumDivisors.find(divisorsSum)) != mapValueSumDivisors.end()){
-					if(itToMapValueSumDivisors->second == counter){
-						sumOfAmicableNumbers += (counter + divisorsSum);
-					}
-				}else{
-					temp = getSumOfDivisors(divisorsSum,false);
-					mapValueSumDivisors.insert(pair<unsigned long long int,unsigned long long int>(divisorsSum,temp));
-					if(temp == counter){
-						sumOfAmicableNumbers += (counter + divisorsSum);
-					}
-				}
-			}
-		}
-	}
-	cout << sumOfAmicableNumbers << endl;
+void printSumOfAmicableNumbers() {
+    unsigned int sumOfAmicableNumbers = 0,divisorsSum,temp;
+    map<unsigned long long int,unsigned long long int> mapValueSumDivisors;
+    map<unsigned long long int,unsigned long long int>::iterator itToMapValueSumDivisors;
+    for(unsigned int counter = 2; counter < 10000; counter++) {
+        if((itToMapValueSumDivisors = mapValueSumDivisors.find(counter)) == mapValueSumDivisors.end()) {
+            divisorsSum = getSumOfDivisors(counter,false);
+            if(divisorsSum != counter) {
+                mapValueSumDivisors.insert(pair<unsigned long long int,unsigned long long int>(counter,divisorsSum));
+                if((itToMapValueSumDivisors = mapValueSumDivisors.find(divisorsSum)) != mapValueSumDivisors.end()) {
+                    if(itToMapValueSumDivisors->second == counter) {
+                        sumOfAmicableNumbers += (counter + divisorsSum);
+                    }
+                } else {
+                    temp = getSumOfDivisors(divisorsSum,false);
+                    mapValueSumDivisors.insert(pair<unsigned long long int,unsigned long long int>(divisorsSum,temp));
+                    if(temp == counter) {
+                        sumOfAmicableNumbers += (counter + divisorsSum);
+                    }
+                }
+            }
+        }
+    }
+    cout << sumOfAmicableNumbers << endl;
 }
 
 #endif /* AMICABLENUMBERS_H_ */

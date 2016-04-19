@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: iterativepreordertraversal.h 
+ *  File Name   		: iterativepreordertraversal.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\iterativepreordertraversal.h
  *  Created on			: Nov 2, 2014 :: 5:09:08 AM
  *  Author				: AVINASH
@@ -73,51 +73,51 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void tPreOrderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	auxSpace.push(ptr);
-	itNode *currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		printf("%d\t",currentNode->value);
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}
-	}
+void tPreOrderTraversalIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    auxSpace.push(ptr);
+    itNode *currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.top();
+        auxSpace.pop();
+        printf("%d\t",currentNode->value);
+        if(currentNode->right != null) {
+            auxSpace.push(currentNode->right);
+        }
+        if(currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+        }
+    }
 }
 
 //Tested
-void tMorrisPreOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				printf("%d\t",currentNode->value);
-				temp->right = currentNode;
-				currentNode = currentNode->left;
-			}else{
-				temp->right = null;
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void tMorrisPreOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                printf("%d\t",currentNode->value);
+                temp->right = currentNode;
+                currentNode = currentNode->left;
+            } else {
+                temp->right = null;
+                currentNode = currentNode->right;
+            }
+        } else {
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 #endif /* ITERATIVEPREORDERTRAVERSAL_H_ */

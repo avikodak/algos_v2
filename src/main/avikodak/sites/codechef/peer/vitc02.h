@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define VITC02_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned int size;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		if(size&1){
-			cout << size-1 << endl;
-		}else{
-			cout << size << endl;
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned int size;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        if(size&1) {
+            cout << size-1 << endl;
+        } else {
+            cout << size << endl;
+        }
+    }
 }
 
 #endif /* VITC02_H_ */

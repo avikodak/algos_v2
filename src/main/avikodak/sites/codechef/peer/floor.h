@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 #define FLOOR_H_
 
 //Tested
-void printResults(){
-	long long int testCases,nValue,sum;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		sum = 0;
-		scanf("%lld",&nValue);
-		for(long long int counter = 1;counter <= nValue;counter++){
-			sum += (counter/2);
-		}
-		printf("%lld\n",sum);
-	}
+void printResults() {
+    long long int testCases,nValue,sum;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        sum = 0;
+        scanf("%lld",&nValue);
+        for(long long int counter = 1; counter <= nValue; counter++) {
+            sum += (counter/2);
+        }
+        printf("%lld\n",sum);
+    }
 }
 
 #endif /* FLOOR_H_ */

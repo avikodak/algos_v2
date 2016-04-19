@@ -74,42 +74,44 @@ using namespace __gnu_cxx;
 #define STACKS_H_
 
 //Tested
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanllint(long long int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-void printResults(){
-	long long int testCases,input;
-	long long int size;
-	vector<long long int> userInput,stacks;
-	vector<long long int>::iterator itToStacks;
-	scanllint(testCases);
-	while(testCases--){
-		scanllint(size);
-		userInput.clear();
-		stacks.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanllint(input);
-			userInput.push_back(input);
-		}
-		for(unsigned int outerCounter = 0;outerCounter < size;outerCounter++){
-			itToStacks = upper_bound(stacks.begin(),stacks.end(),userInput[outerCounter]);
-			if(itToStacks == stacks.end()){
-				stacks.push_back(userInput[outerCounter]);
-			}else{
-				stacks[itToStacks-stacks.begin()] = userInput[outerCounter];
-			}
-		}
-		cout << stacks.size() << " ";
-		for(unsigned int counter = 0;counter < stacks.size();counter++){
-			cout << stacks[counter] << " ";
-		}
-		cout << endl;
-	}
+void printResults() {
+    long long int testCases,input;
+    long long int size;
+    vector<long long int> userInput,stacks;
+    vector<long long int>::iterator itToStacks;
+    scanllint(testCases);
+    while(testCases--) {
+        scanllint(size);
+        userInput.clear();
+        stacks.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanllint(input);
+            userInput.push_back(input);
+        }
+        for(unsigned int outerCounter = 0; outerCounter < size; outerCounter++) {
+            itToStacks = upper_bound(stacks.begin(),stacks.end(),userInput[outerCounter]);
+            if(itToStacks == stacks.end()) {
+                stacks.push_back(userInput[outerCounter]);
+            } else {
+                stacks[itToStacks-stacks.begin()] = userInput[outerCounter];
+            }
+        }
+        cout << stacks.size() << " ";
+        for(unsigned int counter = 0; counter < stacks.size(); counter++) {
+            cout << stacks[counter] << " ";
+        }
+        cout << endl;
+    }
 }
 
 #endif /* STACKS_H_ */

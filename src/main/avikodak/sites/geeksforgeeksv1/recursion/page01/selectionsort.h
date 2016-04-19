@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: selectionsort.h 
+ *  File Name   		: selectionsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\selectionsort.h
  *  Created on			: Oct 13, 2014 :: 11:59:22 AM
  *  Author				: AVINASH
@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void recursiveSelectionSort(vector<int> &userInput,unsigned int minIndex,unsigned int maxIndex){
-	if(minIndex > maxIndex){
-		return;
-	}
-	int minValue = userInput[minIndex];
-	for(unsigned int counter = minIndex;counter <= maxIndex;counter++){
-		minValue = min(minValue,userInput[counter]);
-	}
-	userInput[minIndex] = minValue;
-	recursiveSelectionSort(userInput,minIndex+1,maxIndex);
+void recursiveSelectionSort(vector<int> &userInput,unsigned int minIndex,unsigned int maxIndex) {
+    if(minIndex > maxIndex) {
+        return;
+    }
+    int minValue = userInput[minIndex];
+    for(unsigned int counter = minIndex; counter <= maxIndex; counter++) {
+        minValue = min(minValue,userInput[counter]);
+    }
+    userInput[minIndex] = minValue;
+    recursiveSelectionSort(userInput,minIndex+1,maxIndex);
 }
 
 #endif /* SELECTIONSORT_H_ */

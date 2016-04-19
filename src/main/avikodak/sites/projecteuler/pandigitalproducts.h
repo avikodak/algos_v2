@@ -71,70 +71,70 @@ using namespace __gnu_cxx;
 #define PANDIGITALPRODUCTS_H_
 
 //Tested
-unsigned int getLength(unsigned long long int userInput){
-	unsigned int length = 0;
-	while(userInput){
-		length++;
-		userInput /= 10;
-	}
-	return length;
+unsigned int getLength(unsigned long long int userInput) {
+    unsigned int length = 0;
+    while(userInput) {
+        length++;
+        userInput /= 10;
+    }
+    return length;
 }
 
 //Tested
-unsigned long long int concate(unsigned int first,unsigned int second){
-	while(second){
-		first *= 10;
-		first += second%10;
-		second /= 10;
-	}
-	return first;
+unsigned long long int concate(unsigned int first,unsigned int second) {
+    while(second) {
+        first *= 10;
+        first += second%10;
+        second /= 10;
+    }
+    return first;
 }
 
 //Tested
-bool isPandigital(unsigned long long int multiplicand,unsigned long long int multiplier,unsigned long long int result){
-	unsigned int userInput = concate(multiplicand,multiplier);
-	userInput = concate(userInput,result);
-	bool flags[10] = {false};
-	while(userInput){
-		if(userInput%10 == 0|| flags[userInput%10]){
-			return false;
-		}
-		flags[userInput%10] = true;
-		userInput /= 10;
-	}
-	for(unsigned int counter = 1;counter < 10;counter++){
-		if(!flags[counter]){
-			return false;
-		}
-	}
-	return true;
+bool isPandigital(unsigned long long int multiplicand,unsigned long long int multiplier,unsigned long long int result) {
+    unsigned int userInput = concate(multiplicand,multiplier);
+    userInput = concate(userInput,result);
+    bool flags[10] = {false};
+    while(userInput) {
+        if(userInput%10 == 0|| flags[userInput%10]) {
+            return false;
+        }
+        flags[userInput%10] = true;
+        userInput /= 10;
+    }
+    for(unsigned int counter = 1; counter < 10; counter++) {
+        if(!flags[counter]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
 //Ans : 45228
-void getSumPanDigitalProducts(){
-	map<unsigned long long int,bool> visitedProducts;
-	unsigned long long int result,sum =0;
-	unsigned int length;
-	for(unsigned long long int outerCounter = 1;outerCounter <= 9876;outerCounter++){
-		for(unsigned long long int innerCounter = 1;innerCounter <= 9876;innerCounter++){
-			result = outerCounter * innerCounter;
-			length = getLength(result) + getLength(outerCounter) + getLength(innerCounter);
-			if(length < 10){
-				if(length == 9){
-					if(visitedProducts.find(result) == visitedProducts.end()){
-						if(isPandigital(outerCounter,innerCounter,result)){
-							visitedProducts.insert(pair<unsigned long long int,bool>(result,true));
-							sum +=result;
-						}
-					}
-				}
-			}else{
-				break;
-			}
-		}
-	}
-	cout << sum << endl;
+void getSumPanDigitalProducts() {
+    map<unsigned long long int,bool> visitedProducts;
+    unsigned long long int result,sum =0;
+    unsigned int length;
+    for(unsigned long long int outerCounter = 1; outerCounter <= 9876; outerCounter++) {
+        for(unsigned long long int innerCounter = 1; innerCounter <= 9876; innerCounter++) {
+            result = outerCounter * innerCounter;
+            length = getLength(result) + getLength(outerCounter) + getLength(innerCounter);
+            if(length < 10) {
+                if(length == 9) {
+                    if(visitedProducts.find(result) == visitedProducts.end()) {
+                        if(isPandigital(outerCounter,innerCounter,result)) {
+                            visitedProducts.insert(pair<unsigned long long int,bool>(result,true));
+                            sum +=result;
+                        }
+                    }
+                }
+            } else {
+                break;
+            }
+        }
+    }
+    cout << sum << endl;
 }
 
 #endif /* PANDIGITALPRODUCTS_H_ */

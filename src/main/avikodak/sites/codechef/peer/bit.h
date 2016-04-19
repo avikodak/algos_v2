@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 #define BIT_H_
 
 //Tested
-unsigned int countSetBits(unsigned int userInput){
-	if(userInput <= 1){
-		return userInput;
-	}
-	return (userInput%2)+countSetBits(userInput/2);
+unsigned int countSetBits(unsigned int userInput) {
+    if(userInput <= 1) {
+        return userInput;
+    }
+    return (userInput%2)+countSetBits(userInput/2);
 }
 
 //Tested
-void printResults(){
-	unsigned int cummulative = 0;
-	map<unsigned int,unsigned int> valueSetBitCountMap;
-	for(unsigned int counter = 1;counter <= 1000;counter++){
-		cummulative += countSetBits(counter);
-		valueSetBitCountMap.insert(pair<unsigned int,unsigned int>(counter,cummulative));
-	}
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printf("%u\n",valueSetBitCountMap.find(input)->second);
-	}
+void printResults() {
+    unsigned int cummulative = 0;
+    map<unsigned int,unsigned int> valueSetBitCountMap;
+    for(unsigned int counter = 1; counter <= 1000; counter++) {
+        cummulative += countSetBits(counter);
+        valueSetBitCountMap.insert(pair<unsigned int,unsigned int>(counter,cummulative));
+    }
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printf("%u\n",valueSetBitCountMap.find(input)->second);
+    }
 }
 
 #endif /* BIT_H_ */

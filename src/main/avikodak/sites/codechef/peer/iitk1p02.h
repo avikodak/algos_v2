@@ -72,30 +72,30 @@ using namespace __gnu_cxx;
 #define IITK1P02_H_
 
 //Tested
-void printResults(){
-	string userInput;
-	cin >> userInput;
-	unsigned int maxFreq = 0,outerCounter = 0,innerCounter = 0,freq;
-	char maxChar;
-	while(outerCounter < userInput.size()){
-		freq = 1;
-		innerCounter = outerCounter+1;
-		while(innerCounter < userInput.size() && userInput[outerCounter] == userInput[innerCounter]){
-			freq++;
-			innerCounter++;
-		}
-		if(maxFreq == freq){
-			if(userInput[outerCounter] < maxChar){
-				maxChar = userInput[outerCounter];
-			}
-		}else if(maxFreq < freq){
-			maxFreq = freq;
-			maxChar = userInput[outerCounter];
-		}
-		outerCounter = innerCounter;
-	}
-	cout << maxChar << endl;
-	cout << maxFreq << endl;
+void printResults() {
+    string userInput;
+    cin >> userInput;
+    unsigned int maxFreq = 0,outerCounter = 0,innerCounter = 0,freq;
+    char maxChar;
+    while(outerCounter < userInput.size()) {
+        freq = 1;
+        innerCounter = outerCounter+1;
+        while(innerCounter < userInput.size() && userInput[outerCounter] == userInput[innerCounter]) {
+            freq++;
+            innerCounter++;
+        }
+        if(maxFreq == freq) {
+            if(userInput[outerCounter] < maxChar) {
+                maxChar = userInput[outerCounter];
+            }
+        } else if(maxFreq < freq) {
+            maxFreq = freq;
+            maxChar = userInput[outerCounter];
+        }
+        outerCounter = innerCounter;
+    }
+    cout << maxChar << endl;
+    cout << maxFreq << endl;
 }
 
 #endif /* IITK1P02_H_ */

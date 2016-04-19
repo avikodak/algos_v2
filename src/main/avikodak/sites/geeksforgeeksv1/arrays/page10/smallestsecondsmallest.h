@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: smallestsecondsmallest.h 
+ *  File Name   		: smallestsecondsmallest.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\smallestsecondsmallest.h
  *  Created on			: Nov 25, 2014 :: 11:12:26 PM
  *  Author				: AVINASH
@@ -72,44 +72,44 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getSmallestAndSecondSmallest(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	int smallestValue = userInput[0],secondSmallestValue = userInput[0];
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] < smallestValue){
-			secondSmallestValue = smallestValue;
-			smallestValue = userInput[counter];
-		}else if(userInput[counter] < secondSmallestValue && userInput[counter] != smallestValue){
-			secondSmallestValue = userInput[counter];
-		}
-	}
-	return new iPair(smallestValue,secondSmallestValue);
+iPair *getSmallestAndSecondSmallest(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    int smallestValue = userInput[0],secondSmallestValue = userInput[0];
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] < smallestValue) {
+            secondSmallestValue = smallestValue;
+            smallestValue = userInput[counter];
+        } else if(userInput[counter] < secondSmallestValue && userInput[counter] != smallestValue) {
+            secondSmallestValue = userInput[counter];
+        }
+    }
+    return new iPair(smallestValue,secondSmallestValue);
 }
 
 //Tested
-iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	if(userInput.size() == 1){
-		return new iPair(userInput[0],INT_MAX);
-	}
-	int smallestValue = userInput[0],secondSmallestValue = INT_MAX;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(smallestValue > userInput[counter]){
-			smallestValue = userInput[counter];
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(secondSmallestValue> userInput[counter]){
-			if(smallestValue != userInput[counter]){
-				secondSmallestValue = userInput[counter];
-			}
-		}
-	}
-	return new iPair(smallestValue,secondSmallestValue);
+iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    if(userInput.size() == 1) {
+        return new iPair(userInput[0],INT_MAX);
+    }
+    int smallestValue = userInput[0],secondSmallestValue = INT_MAX;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(smallestValue > userInput[counter]) {
+            smallestValue = userInput[counter];
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(secondSmallestValue> userInput[counter]) {
+            if(smallestValue != userInput[counter]) {
+                secondSmallestValue = userInput[counter];
+            }
+        }
+    }
+    return new iPair(smallestValue,secondSmallestValue);
 }
 
 /****************************************************************************************************************************************************/
@@ -117,64 +117,64 @@ iPair *getSmallestAndSecondSmallestO2N(vector<int> userInput){
 /****************************************************************************************************************************************************/
 //Tested
 //Distinct
-iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	if(userInput.size() == 1){
-		return new iPair(userInput[0],INT_MAX);
-	}
-	sort(userInput.begin(),userInput.end());
-	return new iPair(userInput[0],userInput[1]);
+iPair *getSmallestAndSecondSmallestONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    if(userInput.size() == 1) {
+        return new iPair(userInput[0],INT_MAX);
+    }
+    sort(userInput.begin(),userInput.end());
+    return new iPair(userInput[0],userInput[1]);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getSmallestAndSecondSmallestON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	if(userInput.size() == 1){
-		iPair *result = new iPair();
-		result->firstValue = userInput[0];
-		result->secondValue = INT_MAX;
-		return result;
-	}
-	unsigned int smallestValueIndex,secondSmallestValueIndex;
-	bool isMin;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		isMin = true;
-		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
-			if(innerCrawler != outerCrawler){
-				if(userInput[outerCrawler] > userInput[innerCrawler]){
-					isMin = false;
-					break;
-				}
-			}
-		}
-		if(isMin){
-			smallestValueIndex = outerCrawler;
-		}
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		if(outerCrawler != smallestValueIndex){
-			isMin = true;
-			for(unsigned int innerCrawler = 0;innerCrawler < userInput.size();innerCrawler++){
-				if(innerCrawler != outerCrawler && innerCrawler != smallestValueIndex){
-					if(userInput[outerCrawler] > userInput[innerCrawler]){
-						isMin = false;
-						break;
-					}
-				}
-			}
-			if(isMin){
-				secondSmallestValueIndex = outerCrawler;
-			}
-		}
-	}
-	return new iPair(userInput[smallestValueIndex],userInput[secondSmallestValueIndex]);
+iPair *getSmallestAndSecondSmallestON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    if(userInput.size() == 1) {
+        iPair *result = new iPair();
+        result->firstValue = userInput[0];
+        result->secondValue = INT_MAX;
+        return result;
+    }
+    unsigned int smallestValueIndex,secondSmallestValueIndex;
+    bool isMin;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        isMin = true;
+        for(unsigned int innerCrawler = 0; innerCrawler < userInput.size(); innerCrawler++) {
+            if(innerCrawler != outerCrawler) {
+                if(userInput[outerCrawler] > userInput[innerCrawler]) {
+                    isMin = false;
+                    break;
+                }
+            }
+        }
+        if(isMin) {
+            smallestValueIndex = outerCrawler;
+        }
+    }
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        if(outerCrawler != smallestValueIndex) {
+            isMin = true;
+            for(unsigned int innerCrawler = 0; innerCrawler < userInput.size(); innerCrawler++) {
+                if(innerCrawler != outerCrawler && innerCrawler != smallestValueIndex) {
+                    if(userInput[outerCrawler] > userInput[innerCrawler]) {
+                        isMin = false;
+                        break;
+                    }
+                }
+            }
+            if(isMin) {
+                secondSmallestValueIndex = outerCrawler;
+            }
+        }
+    }
+    return new iPair(userInput[smallestValueIndex],userInput[secondSmallestValueIndex]);
 }
 
 #endif /* SMALLESTSECONDSMALLEST_H_ */

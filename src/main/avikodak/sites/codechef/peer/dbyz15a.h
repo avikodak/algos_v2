@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 #ifndef DBYZ15A_H_
 #define DBYZ15A_H_
 
-long long int gcd(long long int a,long long int b){
-	if(b == 0){
-		return a;
-	}
-	return gcd(b,a%b);
+long long int gcd(long long int a,long long int b) {
+    if(b == 0) {
+        return a;
+    }
+    return gcd(b,a%b);
 }
 
-long long int lcm(long long int a,long long int b){
-	return (a*b)/(gcd(a,b));
+long long int lcm(long long int a,long long int b) {
+    return (a*b)/(gcd(a,b));
 }
 
-void printResults(){
-	long long int nValue,input,totalPairs = 0;
-	vector<long long int> userInput;
-	scanf("%lld",&nValue);
-	for(long long int counter = 0;counter < nValue;counter++){
-		scanf("%lld",&input);
-		userInput.push_back(input);
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(lcm(userInput[outerCounter],userInput[innerCounter]) > min(userInput[outerCounter],userInput[innerCounter])){
-				totalPairs++;
-			}
-		}
-	}
-	printf("%lld",totalPairs);
+void printResults() {
+    long long int nValue,input,totalPairs = 0;
+    vector<long long int> userInput;
+    scanf("%lld",&nValue);
+    for(long long int counter = 0; counter < nValue; counter++) {
+        scanf("%lld",&input);
+        userInput.push_back(input);
+    }
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(lcm(userInput[outerCounter],userInput[innerCounter]) > min(userInput[outerCounter],userInput[innerCounter])) {
+                totalPairs++;
+            }
+        }
+    }
+    printf("%lld",totalPairs);
 }
 
 #endif /* DBYZ15A_H_ */

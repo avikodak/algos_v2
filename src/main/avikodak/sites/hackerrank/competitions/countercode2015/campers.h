@@ -70,48 +70,48 @@ using namespace __gnu_cxx;
 #ifndef CAMPERS_H_
 #define CAMPERS_H_
 
-void getMaxNumberPlayers(){
-	unsigned int totalPlayers,snipersCount,sniperIndex;
-	cin >> totalPlayers >> snipersCount;
-	vector<int> flags[totalPlayers] = {0};
-	while(snipersCount--){
-		cin >> sniperIndex;
-		sniperIndex -= 1;
-		flags[sniperIndex] = 1;
-		if(sniperIndex-1 >= 0){
-			flags[sniperIndex] = -1;
-		}
-		if(sniperIndex+1 < totalPlayers){
-			flags[sniperIndex] = -1;
-		}
-	}
-	bool neighboursChosen;
-	unsigned int maxPlayerCount = 0;
-	for(unsigned int counter = 0;counter < totalPlayers;counter++){
-		if(flags[counter] == 1){
-			maxPlayerCount++;
-			continue;
-		}
-		if(counter-1 >= 0){
-			if(flags[counter-1] != 1){
-				continue;
-			}
-		}
-		if(counter+1 < totalPlayers){
-			if(flags[counter+1] !=0){
-				continue;
-			}
-		}
-		flags[counter] = 1;
-		maxPlayerCount++;
-		if(counter-1 >= 0){
-			flags[counter-1] = -1;
-		}
-		if(counter+1 < totalPlayers){
-			flags[counter+1] = -1;
-		}
-	}
-	cout << maxPlayerCount << endl;
+void getMaxNumberPlayers() {
+    unsigned int totalPlayers,snipersCount,sniperIndex;
+    cin >> totalPlayers >> snipersCount;
+    vector<int> flags[totalPlayers] = {0};
+    while(snipersCount--) {
+        cin >> sniperIndex;
+        sniperIndex -= 1;
+        flags[sniperIndex] = 1;
+        if(sniperIndex-1 >= 0) {
+            flags[sniperIndex] = -1;
+        }
+        if(sniperIndex+1 < totalPlayers) {
+            flags[sniperIndex] = -1;
+        }
+    }
+    bool neighboursChosen;
+    unsigned int maxPlayerCount = 0;
+    for(unsigned int counter = 0; counter < totalPlayers; counter++) {
+        if(flags[counter] == 1) {
+            maxPlayerCount++;
+            continue;
+        }
+        if(counter-1 >= 0) {
+            if(flags[counter-1] != 1) {
+                continue;
+            }
+        }
+        if(counter+1 < totalPlayers) {
+            if(flags[counter+1] !=0) {
+                continue;
+            }
+        }
+        flags[counter] = 1;
+        maxPlayerCount++;
+        if(counter-1 >= 0) {
+            flags[counter-1] = -1;
+        }
+        if(counter+1 < totalPlayers) {
+            flags[counter+1] = -1;
+        }
+    }
+    cout << maxPlayerCount << endl;
 }
 
 #endif /* CAMPERS_H_ */

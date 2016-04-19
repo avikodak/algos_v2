@@ -70,23 +70,23 @@ using namespace __gnu_cxx;
 #ifndef MAGICALSTRINGDIV2_H_
 #define MAGICALSTRINGDIV2_H_
 
-class MagicalStringDiv2{
+class MagicalStringDiv2 {
 public:
-	int minimalMoves(string userInput){
-		int middle = (userInput.size()/2);
-		int movesRequired = 0;
-		for(unsigned int counter = 0;counter < middle;counter++){
-			if(userInput[counter] == '<'){
-				movesRequired++;
-			}
-		}
-		for(unsigned int counter = middle;counter < userInput.size();counter++){
-			if(userInput[counter] == '>'){
-				movesRequired++;
-			}
-		}
-		return movesRequired;
-	}
+    int minimalMoves(string userInput) {
+        int middle = (userInput.size()/2);
+        int movesRequired = 0;
+        for(unsigned int counter = 0; counter < middle; counter++) {
+            if(userInput[counter] == '<') {
+                movesRequired++;
+            }
+        }
+        for(unsigned int counter = middle; counter < userInput.size(); counter++) {
+            if(userInput[counter] == '>') {
+                movesRequired++;
+            }
+        }
+        return movesRequired;
+    }
 };
 
 #endif /* MAGICALSTRINGDIV2_H_ */

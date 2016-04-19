@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkforpath.h 
+ *  File Name   		: checkforpath.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\checkforpath.h
  *  Created on			: Dec 4, 2014 :: 10:36:56 PM
  *  Author				: AVINASH
@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 /* 																O(N+M) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool checkForPath(vector<vector<int> > adjacencyList,int sourceVertex,int destinationVertex){
-	if(sourceVertex >= (int)adjacencyList.size()){
-		return false;
-	}
-	vector<bool> visitedFlags(adjacencyList.size(),false);
-	queue<int> auxSpace;
-	auxSpace.push(sourceVertex);
-	int currentIndex;
-	while(!auxSpace.empty()){
-		currentIndex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
-			if(!visitedFlags[adjacencyList[currentIndex][counter]]){
-				if(adjacencyList[currentIndex][counter] == destinationVertex){
-					return true;
-				}
-				visitedFlags[adjacencyList[currentIndex][counter]] = true;
-				auxSpace.push(adjacencyList[currentIndex][counter]);
-			}
-		}
-	}
-	return false;
+bool checkForPath(vector<vector<int> > adjacencyList,int sourceVertex,int destinationVertex) {
+    if(sourceVertex >= (int)adjacencyList.size()) {
+        return false;
+    }
+    vector<bool> visitedFlags(adjacencyList.size(),false);
+    queue<int> auxSpace;
+    auxSpace.push(sourceVertex);
+    int currentIndex;
+    while(!auxSpace.empty()) {
+        currentIndex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentIndex].size(); counter++) {
+            if(!visitedFlags[adjacencyList[currentIndex][counter]]) {
+                if(adjacencyList[currentIndex][counter] == destinationVertex) {
+                    return true;
+                }
+                visitedFlags[adjacencyList[currentIndex][counter]] = true;
+                auxSpace.push(adjacencyList[currentIndex][counter]);
+            }
+        }
+    }
+    return false;
 }
 
 #endif /* CHECKFORPATH_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: trieutil.h 
+ *  File Name   		: trieutil.h
  *	File Location		: D:\algos\algos_v2\src\lib\utils\trieutil.h
  *  Created on			: Oct 24, 2014 :: 11:00:25 AM
  *  Author				: AVINASH
@@ -60,113 +60,113 @@ using namespace __gnu_cxx;
 
 class trieutils {
 private:
-	void insertMain(cTrieNode *ptr,char *userInput){
-		if(ptr == null && userInput == null){
-			return;
-		}
-		if(ptr == null){
-			throw "Node is null";
-		}
-		if(userInput == null){
-			ptr->isLeafNode = true;
-			return;
-		}
-		char ch = *userInput;
-		unsigned int currentCharIndex = ch - 'a';
-		if(ptr->children[currentCharIndex] == null){
-			ptr->children[currentCharIndex] = new cTrieNode();
-		}
-		insertMain(ptr->children[currentCharIndex],userInput+1);
-	}
+    void insertMain(cTrieNode *ptr,char *userInput) {
+        if(ptr == null && userInput == null) {
+            return;
+        }
+        if(ptr == null) {
+            throw "Node is null";
+        }
+        if(userInput == null) {
+            ptr->isLeafNode = true;
+            return;
+        }
+        char ch = *userInput;
+        unsigned int currentCharIndex = ch - 'a';
+        if(ptr->children[currentCharIndex] == null) {
+            ptr->children[currentCharIndex] = new cTrieNode();
+        }
+        insertMain(ptr->children[currentCharIndex],userInput+1);
+    }
 
-	void insertMain(cpTrieNode *ptr,char *userInput){
-		if(ptr == null && userInput == null){
-			return;
-		}
-		if(ptr == null){
-			throw "Node is null";
-		}
-		if(userInput == null){
-			ptr->isLeafNode = true;
-			return;
-		}
-		char ch = *userInput;
-		char currentCharIndex = ch - 'a';
-		if(ptr->children[currentCharIndex] == null){
-			ptr->children[currentCharIndex] = new cpTrieNode(ptr);
-		}
-		insertMain(ptr->children[currentCharIndex],userInput+1);
-	}
+    void insertMain(cpTrieNode *ptr,char *userInput) {
+        if(ptr == null && userInput == null) {
+            return;
+        }
+        if(ptr == null) {
+            throw "Node is null";
+        }
+        if(userInput == null) {
+            ptr->isLeafNode = true;
+            return;
+        }
+        char ch = *userInput;
+        char currentCharIndex = ch - 'a';
+        if(ptr->children[currentCharIndex] == null) {
+            ptr->children[currentCharIndex] = new cpTrieNode(ptr);
+        }
+        insertMain(ptr->children[currentCharIndex],userInput+1);
+    }
 
 public:
-	void insert(cTrieNode **root,char *userInput){
-		if(*root == null){
-			*root = new cTrieNode();
-		}
-		insertMain(*root,userInput);
-	}
+    void insert(cTrieNode **root,char *userInput) {
+        if(*root == null) {
+            *root = new cTrieNode();
+        }
+        insertMain(*root,userInput);
+    }
 
-	void insert(cpTrieNode **root,char *userInput){
-		if(*root == null){
-			*root = new cpTrieNode();
-		}
-		insert(root,userInput);
-	}
+    void insert(cpTrieNode **root,char *userInput) {
+        if(*root == null) {
+            *root = new cpTrieNode();
+        }
+        insert(root,userInput);
+    }
 
-	void insertIterative(cTrieNode **root,char *userInput){
-		if(*root == null){
-			*root = new cTrieNode();
-		}
-		char ch = *userInput;
-		unsigned int currentCharIndex;
-		cTrieNode *crawler = *root;
-		while((ch = *userInput) != '\0'){
-			currentCharIndex = ch - 'a';
-			if(crawler->children[currentCharIndex] == null){
-				crawler->children[currentCharIndex] = new cTrieNode();
-			}
-			crawler = crawler->children[currentCharIndex];
-			userInput++;
-		}
-		crawler->isLeafNode = true;
-	}
+    void insertIterative(cTrieNode **root,char *userInput) {
+        if(*root == null) {
+            *root = new cTrieNode();
+        }
+        char ch = *userInput;
+        unsigned int currentCharIndex;
+        cTrieNode *crawler = *root;
+        while((ch = *userInput) != '\0') {
+            currentCharIndex = ch - 'a';
+            if(crawler->children[currentCharIndex] == null) {
+                crawler->children[currentCharIndex] = new cTrieNode();
+            }
+            crawler = crawler->children[currentCharIndex];
+            userInput++;
+        }
+        crawler->isLeafNode = true;
+    }
 
-	void insertIterative(cpTrieNode **root,char *userInput){
-		if(*root == null){
-			*root = new cpTrieNode();
-		}
-		char ch;
-		unsigned int currentCharIndex;
-		cpTrieNode *crawler = *root;
-		while((ch = *userInput) != '\0'){
-			currentCharIndex = ch - 'a';
-			if(crawler->children[currentCharIndex] == null){
-				crawler->children[currentCharIndex] = new cpTrieNode(crawler);
-			}
-			crawler = crawler->children[currentCharIndex];
-			userInput++;
-		}
-		crawler->isLeafNode = true;
-	}
+    void insertIterative(cpTrieNode **root,char *userInput) {
+        if(*root == null) {
+            *root = new cpTrieNode();
+        }
+        char ch;
+        unsigned int currentCharIndex;
+        cpTrieNode *crawler = *root;
+        while((ch = *userInput) != '\0') {
+            currentCharIndex = ch - 'a';
+            if(crawler->children[currentCharIndex] == null) {
+                crawler->children[currentCharIndex] = new cpTrieNode(crawler);
+            }
+            crawler = crawler->children[currentCharIndex];
+            userInput++;
+        }
+        crawler->isLeafNode = true;
+    }
 
-	bool searchIterative(cTrieNode *root,char *userInput){
-		if(root == null && userInput == null){
-			return true;
-		}
-		cTrieNode *crawler = root;
-		char ch = *userInput;
-		unsigned int currentCharIndex;
-		while(userInput != null){
-			ch = *userInput;
-			currentCharIndex = ch - 'a';
-			if(crawler->children[currentCharIndex] == null){
-				return false;
-			}
-			crawler = crawler->children[currentCharIndex];
-			userInput++;
-		}
-		return crawler->isLeafNode;
-	}
+    bool searchIterative(cTrieNode *root,char *userInput) {
+        if(root == null && userInput == null) {
+            return true;
+        }
+        cTrieNode *crawler = root;
+        char ch = *userInput;
+        unsigned int currentCharIndex;
+        while(userInput != null) {
+            ch = *userInput;
+            currentCharIndex = ch - 'a';
+            if(crawler->children[currentCharIndex] == null) {
+                return false;
+            }
+            crawler = crawler->children[currentCharIndex];
+            userInput++;
+        }
+        return crawler->isLeafNode;
+    }
 };
 
 #endif /* TRIEUTIL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rearrangepositvenegativeon.h 
+ *  File Name   		: rearrangepositvenegativeon.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\rearrangepositvenegativeon.h
  *  Created on			: Dec 22, 2014 :: 9:02:08 AM
  *  Author				: AVINASH
@@ -74,25 +74,25 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rearrangePositiveNegative(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	unsigned int startCrawler = 0,endCrawler = userInput.size()-1;
-	while(startCrawler < endCrawler){
-		while(userInput[startCrawler] < 0){
-			startCrawler++;
-		}
-		while(userInput[endCrawler] > 0){
-			endCrawler--;
-		}
-		if(startCrawler < endCrawler){
-			swap(userInput[startCrawler],userInput[endCrawler]);
-		}
-	}
-	for(unsigned int counter = 0;counter <= startCrawler && startCrawler < userInput.size()-1 && userInput[counter] < 0;counter+=2){
-		swap(userInput[counter],userInput[startCrawler++]);
-	}
+void rearrangePositiveNegative(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    unsigned int startCrawler = 0,endCrawler = userInput.size()-1;
+    while(startCrawler < endCrawler) {
+        while(userInput[startCrawler] < 0) {
+            startCrawler++;
+        }
+        while(userInput[endCrawler] > 0) {
+            endCrawler--;
+        }
+        if(startCrawler < endCrawler) {
+            swap(userInput[startCrawler],userInput[endCrawler]);
+        }
+    }
+    for(unsigned int counter = 0; counter <= startCrawler && startCrawler < userInput.size()-1 && userInput[counter] < 0; counter+=2) {
+        swap(userInput[counter],userInput[startCrawler++]);
+    }
 }
 
 #endif /* REARRANGEPOSITVENEGATIVEON_H_ */

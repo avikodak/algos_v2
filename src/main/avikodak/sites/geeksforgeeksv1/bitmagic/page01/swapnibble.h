@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: swapnibble.h 
+ *  File Name   		: swapnibble.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapnibble.h
  *  Created on			: Jan 9, 2015 :: 5:14:44 PM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef SWAPNIBBLE_H_
 #define SWAPNIBBLE_H_
 
-int swapNibble(int userInput){
-	return ((userInput & 0x0F) << 4| (userInput & 0xF0) >> 4);
+int swapNibble(int userInput) {
+    return ((userInput & 0x0F) << 4| (userInput & 0xF0) >> 4);
 }
 
 #endif /* SWAPNIBBLE_H_ */

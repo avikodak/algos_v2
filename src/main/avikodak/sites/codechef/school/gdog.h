@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define GDOG_H_
 
 //Tested
-void getMaxValue(unsigned int N,unsigned int K){
-	unsigned int maxValue = 0;
-	for(unsigned int counter = 1;counter <= K;counter++){
-		maxValue = max(maxValue,N%counter);
-	}
-	printf("%d\n",maxValue);
+void getMaxValue(unsigned int N,unsigned int K) {
+    unsigned int maxValue = 0;
+    for(unsigned int counter = 1; counter <= K; counter++) {
+        maxValue = max(maxValue,N%counter);
+    }
+    printf("%d\n",maxValue);
 }
 
 //Tested
-void getMaxValueForInput(){
-	unsigned int testCases,N,K;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d %d",&N,&K);
-		getMaxValue(N,K);
-	}
+void getMaxValueForInput() {
+    unsigned int testCases,N,K;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d %d",&N,&K);
+        getMaxValue(N,K);
+    }
 }
 
 #endif /* GDOG_H_ */

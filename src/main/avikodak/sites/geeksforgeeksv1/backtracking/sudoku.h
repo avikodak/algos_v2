@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sudoku.h 
+ *  File Name   		: sudoku.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\sudoku.h
  *  Created on			: Jan 7, 2015 :: 8:03:55 PM
  *  Author				: AVINASH
@@ -71,71 +71,71 @@ using namespace __gnu_cxx;
 #ifndef SUDOKU_H_
 #define SUDOKU_H_
 
-bool findGetUnassignedCell(vector<vector<int> > currentConfiguration,int &row,int &column){
-	if(currentConfiguration.size() == 0 || currentConfiguration[0].size() == 0){
-		return false;
-	}
-	for(unsigned int rowCounter = 0;rowCounter < currentConfiguration.size();rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < currentConfiguration[0].size();columnCounter++){
-			if(currentConfiguration[rowCounter][columnCounter] == SUDOKU_UNASSIGNED){
-				row = rowCounter;
-				column = columnCounter;
-				return true;
-			}
-		}
-	}
-	return false;
+bool findGetUnassignedCell(vector<vector<int> > currentConfiguration,int &row,int &column) {
+    if(currentConfiguration.size() == 0 || currentConfiguration[0].size() == 0) {
+        return false;
+    }
+    for(unsigned int rowCounter = 0; rowCounter < currentConfiguration.size(); rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < currentConfiguration[0].size(); columnCounter++) {
+            if(currentConfiguration[rowCounter][columnCounter] == SUDOKU_UNASSIGNED) {
+                row = rowCounter;
+                column = columnCounter;
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
-bool sudokuIsRowSafe(vector<vector<int> > currentConfiguration,int key,int row){
-	for(unsigned int columnCounter = 0;columnCounter < currentConfiguration[0].size();columnCounter++){
-		if(currentConfiguration[row][columnCounter] == key){
-			return false;
-		}
-	}
-	return true;
+bool sudokuIsRowSafe(vector<vector<int> > currentConfiguration,int key,int row) {
+    for(unsigned int columnCounter = 0; columnCounter < currentConfiguration[0].size(); columnCounter++) {
+        if(currentConfiguration[row][columnCounter] == key) {
+            return false;
+        }
+    }
+    return true;
 }
 
-bool sudokuIsColumnSafe(vector<vector<int> > currentConfiguration,int key,int column){
-	for(unsigned int rowCounter = 0;rowCounter < currentConfiguration.size();rowCounter++){
-		if(currentConfiguration[rowCounter][column] == key){
-			return false;
-		}
-	}
-	return true;
+bool sudokuIsColumnSafe(vector<vector<int> > currentConfiguration,int key,int column) {
+    for(unsigned int rowCounter = 0; rowCounter < currentConfiguration.size(); rowCounter++) {
+        if(currentConfiguration[rowCounter][column] == key) {
+            return false;
+        }
+    }
+    return true;
 }
 
-bool sudokuIsSubBoxSafe(vector<vector<int> > currentConfiguration,int key,int row,int column){
-	int boxStartRow = row - row%3;
-	int boxStartColumn = column - column%3;
-	for(unsigned int rowCounter = 0;rowCounter < 3;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < 3;columnCounter++){
-			if(currentConfiguration[boxStartRow + rowCounter][boxStartColumn + columnCounter] == key){
-				return false;
-			}
-		}
-	}
-	return true;
+bool sudokuIsSubBoxSafe(vector<vector<int> > currentConfiguration,int key,int row,int column) {
+    int boxStartRow = row - row%3;
+    int boxStartColumn = column - column%3;
+    for(unsigned int rowCounter = 0; rowCounter < 3; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < 3; columnCounter++) {
+            if(currentConfiguration[boxStartRow + rowCounter][boxStartColumn + columnCounter] == key) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-bool sudokuIsSafe(vector<vector<int> > currentConfiguration,int key,int row,int column){
-	return sudokuIsRowSafe(currentConfiguration,key,row) && sudokuIsColumnSafe(currentConfiguration,key,column) && sudokuIsSubBoxSafe(currentConfiguration,key,row,column);
+bool sudokuIsSafe(vector<vector<int> > currentConfiguration,int key,int row,int column) {
+    return sudokuIsRowSafe(currentConfiguration,key,row) && sudokuIsColumnSafe(currentConfiguration,key,column) && sudokuIsSubBoxSafe(currentConfiguration,key,row,column);
 }
 
-bool solveSudokuBacktracking(vector<vector<int> > currentConfiguration){
-	int row,column;
-	if(!findGetUnassignedCell(currentConfiguration,row,column)){
-		printIVector(currentConfiguration);
-		return false;
-	}
-	for(int counter = 1;counter < 10;counter++){
-		currentConfiguration[row][column] = counter;
-		if(solveSudokuBacktracking(currentConfiguration)){
-			return true;
-		}
-		currentConfiguration[row][column] = SUDOKU_UNASSIGNED;
-	}
-	return false;
+bool solveSudokuBacktracking(vector<vector<int> > currentConfiguration) {
+    int row,column;
+    if(!findGetUnassignedCell(currentConfiguration,row,column)) {
+        printIVector(currentConfiguration);
+        return false;
+    }
+    for(int counter = 1; counter < 10; counter++) {
+        currentConfiguration[row][column] = counter;
+        if(solveSudokuBacktracking(currentConfiguration)) {
+            return true;
+        }
+        currentConfiguration[row][column] = SUDOKU_UNASSIGNED;
+    }
+    return false;
 }
 
 #endif /* SUDOKU_H_ */

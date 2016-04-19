@@ -73,35 +73,35 @@ using namespace __gnu_cxx;
 #define SUBMIN_H_
 
 //Tested
-void printResults(){
-	long long int size,input,minValue;
-	vector<long long int> userInput;
-	scanf("%lld",&size);
-	while(size--){
-		scanf("%lld",&input);
-		userInput.push_back(input);
-	}
-	map<long long int,long long int> minValFreqMap;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		minValue = userInput[outerCounter];
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			minValue = min(minValue,userInput[innerCounter]);
-			if(minValFreqMap.find(minValue) == minValFreqMap.end()){
-				minValFreqMap[minValue] = 1;
-			}else{
-				minValFreqMap[minValue]++;
-			}
-		}
-	}
-	scanf("%lld",&size);
-	while(size--){
-		scanf("%lld",&input);
-		if(minValFreqMap.find(input) == minValFreqMap.end()){
-			printf("0\n");
-		}else{
-			printf("%lld\n",minValFreqMap[input]);
-		}
-	}
+void printResults() {
+    long long int size,input,minValue;
+    vector<long long int> userInput;
+    scanf("%lld",&size);
+    while(size--) {
+        scanf("%lld",&input);
+        userInput.push_back(input);
+    }
+    map<long long int,long long int> minValFreqMap;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        minValue = userInput[outerCounter];
+        for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+            minValue = min(minValue,userInput[innerCounter]);
+            if(minValFreqMap.find(minValue) == minValFreqMap.end()) {
+                minValFreqMap[minValue] = 1;
+            } else {
+                minValFreqMap[minValue]++;
+            }
+        }
+    }
+    scanf("%lld",&size);
+    while(size--) {
+        scanf("%lld",&input);
+        if(minValFreqMap.find(input) == minValFreqMap.end()) {
+            printf("0\n");
+        } else {
+            printf("%lld\n",minValFreqMap[input]);
+        }
+    }
 }
 
 #endif /* SUBMIN_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: treefromlevelinorder.h 
+ *  File Name   		: treefromlevelinorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\treefromlevelinorder.h
  *  Created on			: Nov 16, 2014 :: 10:37:08 AM
  *  Author				: AVINASH
@@ -72,51 +72,51 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getIndexFromInorder(vector<int> inorder,int value,int startIndex,int endIndex){
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		if(inorder[counter] == value){
-			return counter;
-		}
-	}
-	return -1;
+int getIndexFromInorder(vector<int> inorder,int value,int startIndex,int endIndex) {
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        if(inorder[counter] == value) {
+            return counter;
+        }
+    }
+    return -1;
 }
 
 //Tested
-void setLevelOrderNodes(vector<int> inorder,vector<int> levelOrder,int leftStartIndex,int leftEndIndex,vector<int> &leftLevelOrder,vector<int> &rightLevelOrder){
-	if(inorder.size() == 0 || levelOrder.size() == 0){
-		return;
-	}
-	bool flag;
-	for(unsigned int outerCounter = 1;outerCounter < levelOrder.size();outerCounter++){
-		flag = false;
-		for(int index = leftStartIndex;index <= leftEndIndex;index++){
-			if(levelOrder[outerCounter] == inorder[index]){
-				leftLevelOrder.push_back(levelOrder[outerCounter]);
-				flag = true;
-				break;
-			}
-		}
-		if(!flag){
-			rightLevelOrder.push_back(levelOrder[outerCounter]);
-		}
-	}
+void setLevelOrderNodes(vector<int> inorder,vector<int> levelOrder,int leftStartIndex,int leftEndIndex,vector<int> &leftLevelOrder,vector<int> &rightLevelOrder) {
+    if(inorder.size() == 0 || levelOrder.size() == 0) {
+        return;
+    }
+    bool flag;
+    for(unsigned int outerCounter = 1; outerCounter < levelOrder.size(); outerCounter++) {
+        flag = false;
+        for(int index = leftStartIndex; index <= leftEndIndex; index++) {
+            if(levelOrder[outerCounter] == inorder[index]) {
+                leftLevelOrder.push_back(levelOrder[outerCounter]);
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            rightLevelOrder.push_back(levelOrder[outerCounter]);
+        }
+    }
 }
 
 //Tested
-itNode *treeFromLevelInOrder(vector<int> inorder,vector<int> levelOrder,int startInorderIndex,int endInorderIndex){
-	if(levelOrder.size() == 0 || inorder.size() == 0 || startInorderIndex > endInorderIndex){
-		return null;
-	}
-	itNode *root = new itNode(levelOrder[0]);
-	if(levelOrder.size() == 1){
-		return root;
-	}
-	int index = getIndexFromInorder(inorder,levelOrder[0],startInorderIndex,endInorderIndex);
-	vector<int> leftLevelOrder,rightLevelOrder;
-	setLevelOrderNodes(inorder,levelOrder,startInorderIndex,index,leftLevelOrder,rightLevelOrder);
-	root->left = treeFromLevelInOrder(inorder,leftLevelOrder,startInorderIndex,index-1);
-	root->right = treeFromLevelInOrder(inorder,rightLevelOrder,index+1,endInorderIndex);
-	return root;
+itNode *treeFromLevelInOrder(vector<int> inorder,vector<int> levelOrder,int startInorderIndex,int endInorderIndex) {
+    if(levelOrder.size() == 0 || inorder.size() == 0 || startInorderIndex > endInorderIndex) {
+        return null;
+    }
+    itNode *root = new itNode(levelOrder[0]);
+    if(levelOrder.size() == 1) {
+        return root;
+    }
+    int index = getIndexFromInorder(inorder,levelOrder[0],startInorderIndex,endInorderIndex);
+    vector<int> leftLevelOrder,rightLevelOrder;
+    setLevelOrderNodes(inorder,levelOrder,startInorderIndex,index,leftLevelOrder,rightLevelOrder);
+    root->left = treeFromLevelInOrder(inorder,leftLevelOrder,startInorderIndex,index-1);
+    root->right = treeFromLevelInOrder(inorder,rightLevelOrder,index+1,endInorderIndex);
+    return root;
 }
 
 #endif /* TREEFROMLEVELINORDER_H_ */

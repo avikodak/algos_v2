@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dicethrow.h 
+ *  File Name   		: dicethrow.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\dicethrow.h
  *  Created on			: Dec 15, 2014 :: 11:44:40 AM
  *  Author				: AVINASH
@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef SINGLEDICETHROW_H_
 #define SINGLEDICETHROW_H_
 
-int countNoOfWaysForSum(int noOfFaces,int sum){
-	if(sum < 0){
-		return 0;
-	}
-	if(sum == 0){
-		return 1;
-	}
-	int counter = 0;
-	for(unsigned int counter = 1;counter <= noOfFaces;counter++){
-		counter = countNoOfWaysForSum(noOfFaces,sum - counter);
-	}
-	return counter;
+int countNoOfWaysForSum(int noOfFaces,int sum) {
+    if(sum < 0) {
+        return 0;
+    }
+    if(sum == 0) {
+        return 1;
+    }
+    int counter = 0;
+    for(unsigned int counter = 1; counter <= noOfFaces; counter++) {
+        counter = countNoOfWaysForSum(noOfFaces,sum - counter);
+    }
+    return counter;
 }
 
 #endif /* SINGLEDICETHROW_H_ */

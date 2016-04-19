@@ -76,27 +76,27 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_BYTECODE2016_BYCD1602_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,minAmount;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		minAmount = 0;
-		for(unsigned int counter = 1;counter < size;counter++){
-			if(userInput[counter] > userInput[counter-1]){
-				minAmount += userInput[counter] - userInput[counter-1];
-				userInput[counter] = userInput[counter-1];
-			}
-		}
-		printf("%lld\n",minAmount);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,minAmount;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        minAmount = 0;
+        for(unsigned int counter = 1; counter < size; counter++) {
+            if(userInput[counter] > userInput[counter-1]) {
+                minAmount += userInput[counter] - userInput[counter-1];
+                userInput[counter] = userInput[counter-1];
+            }
+        }
+        printf("%lld\n",minAmount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_BYTECODE2016_BYCD1602_H_ */

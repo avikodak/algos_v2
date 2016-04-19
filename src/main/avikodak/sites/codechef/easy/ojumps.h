@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 #define OJUMPS_H_
 
 //Tested
-void printResults(){
-	unsigned long long int userInput;
-	cin >> userInput;
-	unsigned int remainder = userInput%6;
-	if(remainder == 0 || remainder == 1 || remainder == 3){
-		printf("yes\n");
-	}else{
-		printf("no\n");
-	}
+void printResults() {
+    unsigned long long int userInput;
+    cin >> userInput;
+    unsigned int remainder = userInput%6;
+    if(remainder == 0 || remainder == 1 || remainder == 3) {
+        printf("yes\n");
+    } else {
+        printf("no\n");
+    }
 }
 
 #endif /* OJUMPS_H_ */

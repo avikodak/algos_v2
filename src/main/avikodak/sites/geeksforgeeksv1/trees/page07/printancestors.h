@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printancestors.h 
+ *  File Name   		: printancestors.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printancestors.h
  *  Created on			: Oct 20, 2014 :: 8:38:49 PM
  *  Author				: AVINASH
@@ -72,103 +72,103 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printAncestorsForValue(itNode *ptr,int value,stack<itNode *> auxSpace){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->value == value){
-		itNode *currentNode;
-		while(!auxSpace.empty()){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-		}
-		return;
-	}
-	auxSpace.push(ptr);
-	printAncestorsForValue(ptr->left,value,auxSpace);
-	printAncestorsForValue(ptr->right,value,auxSpace);
+void printAncestorsForValue(itNode *ptr,int value,stack<itNode *> auxSpace) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->value == value) {
+        itNode *currentNode;
+        while(!auxSpace.empty()) {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            printf("%d\t",currentNode->value);
+        }
+        return;
+    }
+    auxSpace.push(ptr);
+    printAncestorsForValue(ptr->left,value,auxSpace);
+    printAncestorsForValue(ptr->right,value,auxSpace);
 }
 
 //Tested
-bool printAncestors(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->value == value){
-		return true;
-	}
-	if(printAncestors(ptr->left,value) || printAncestors(ptr->right,value)){
-		printf("%d\t",ptr->value);
-		return true;
-	}
-	return false;
+bool printAncestors(itNode *ptr,int value) {
+    if(ptr == null) {
+        return false;
+    }
+    if(ptr->value == value) {
+        return true;
+    }
+    if(printAncestors(ptr->left,value) || printAncestors(ptr->right,value)) {
+        printf("%d\t",ptr->value);
+        return true;
+    }
+    return false;
 }
 
 //Tested
-void printStack(stack<itNode *> auxSpace){
-	itNode *currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		printf("%d\t",currentNode->value);
-	}
+void printStack(stack<itNode *> auxSpace) {
+    itNode *currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.top();
+        auxSpace.pop();
+        printf("%d\t",currentNode->value);
+    }
 }
 
 //Tested
-void printAncestorsPostOrderTraversalV2(itNode *ptr,int value){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		while(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->right == null){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			if(currentNode->value == value){
-				printStack(auxSpace);
-			}
-			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
-				currentNode = auxSpace.top();
-				auxSpace.pop();
-				if(currentNode->value == value){
-					printStack(auxSpace);
-				}
-			}
-		}
-		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
-	}
+void printAncestorsPostOrderTraversalV2(itNode *ptr,int value) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(!auxSpace.empty() || currentNode != null) {
+        while(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        }
+        if(!auxSpace.empty() && auxSpace.top()->right == null) {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            if(currentNode->value == value) {
+                printStack(auxSpace);
+            }
+            while(!auxSpace.empty() && auxSpace.top()->right == currentNode) {
+                currentNode = auxSpace.top();
+                auxSpace.pop();
+                if(currentNode->value == value) {
+                    printStack(auxSpace);
+                }
+            }
+        }
+        currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isValuePresentInTree(itNode *ptr,int value){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->value == value){
-		return true;
-	}
-	return isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value);
+bool isValuePresentInTree(itNode *ptr,int value) {
+    if(ptr == null) {
+        return false;
+    }
+    if(ptr->value == value) {
+        return true;
+    }
+    return isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value);
 }
 
 //Tested
-void printAncestorsInTree(itNode *ptr,int value){
-	if(ptr == null){
-		return;
-	}
-	if(isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value)){
-		printf("%d\t",ptr->value);
-	}
-	printAncestorsInTree(ptr->left,value);
-	printAncestorsInTree(ptr->right,value);
+void printAncestorsInTree(itNode *ptr,int value) {
+    if(ptr == null) {
+        return;
+    }
+    if(isValuePresentInTree(ptr->left,value) || isValuePresentInTree(ptr->right,value)) {
+        printf("%d\t",ptr->value);
+    }
+    printAncestorsInTree(ptr->left,value);
+    printAncestorsInTree(ptr->right,value);
 }
 
 #endif /* PRINTANCESTORS_H_ */

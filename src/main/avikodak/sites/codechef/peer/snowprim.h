@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 #ifndef SNOWPRIM_H_
 #define SNOWPRIM_H_
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int input;
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%s\n",input>1?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int input;
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%s\n",input>1?"YES":"NO");
+    }
 }
 
 #endif /* SNOWPRIM_H_ */

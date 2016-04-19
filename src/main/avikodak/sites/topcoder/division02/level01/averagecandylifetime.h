@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef AVERAGECANDYLIFETIME_H_
 #define AVERAGECANDYLIFETIME_H_
 
-class AverageCandyLifetime{
+class AverageCandyLifetime {
 public:
-	double getAverage(vector<int> eatenCandies){
-		int cummulativeDays[] = {31,59,90,120,151,181,212,243,273,304,334,365};
-		int totalSum = 0,totalCandies=0;
-		for(unsigned int counter = 0;counter < eatenCandies.size();counter++){
-			totalSum += (eatenCandies[counter] * cummulativeDays[counter]);
-			totalCandies += eatenCandies[counter];
-		}
-		return (double)(totalSum)/(double)(totalCandies);
-	}
+    double getAverage(vector<int> eatenCandies) {
+        int cummulativeDays[] = {31,59,90,120,151,181,212,243,273,304,334,365};
+        int totalSum = 0,totalCandies=0;
+        for(unsigned int counter = 0; counter < eatenCandies.size(); counter++) {
+            totalSum += (eatenCandies[counter] * cummulativeDays[counter]);
+            totalCandies += eatenCandies[counter];
+        }
+        return (double)(totalSum)/(double)(totalCandies);
+    }
 };
 
 #endif /* AVERAGECANDYLIFETIME_H_ */

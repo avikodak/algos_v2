@@ -76,18 +76,18 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FACTORIAL_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FACTORIAL_H_ */

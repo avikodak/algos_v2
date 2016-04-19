@@ -71,10 +71,10 @@ using namespace __gnu_cxx;
 #define DOMINOPILLING_H_
 
 //Tested
-void getMaxNumberOfDominoes(){
-	unsigned int length,breadth;
-	scanf("%u %u",&length,&breadth);
-	printf("%u",(length*breadth)/2);
+void getMaxNumberOfDominoes() {
+    unsigned int length,breadth;
+    scanf("%u %u",&length,&breadth);
+    printf("%u",(length*breadth)/2);
 }
 
 #endif /* DOMINOPILLING_H_ */

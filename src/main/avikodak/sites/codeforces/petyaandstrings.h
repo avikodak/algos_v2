@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petyaandstrings.h 
+ *  File Name   		: petyaandstrings.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
  *  Created on			: Feb 28, 2015 :: 8:59:23 PM
  *  Author				: AVINASH
@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define PETYAANDSTRINGS_H_
 
 //Tested
-void petyaStringComparison(){
-	char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
-	scanf("%s %s",firstUserInput,secondUserInput);
-	ptrToFirstUserInput = firstUserInput;
-	ptrToSecondUserInput = secondUserInput;
-	while(ptrToFirstUserInput[0] != '\0'){
-		if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z'){
-			ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z'){
-			ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
-		}
-		if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]){
-			printf("1");
-			return;
-		}else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]){
-			printf("-1");
-			return;
-		}
-		ptrToFirstUserInput++;
-		ptrToSecondUserInput++;
-	}
-	printf("0");
+void petyaStringComparison() {
+    char firstUserInput[CODEFORCES_MAX_INPUT_SIZE],secondUserInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToFirstUserInput,*ptrToSecondUserInput;
+    scanf("%s %s",firstUserInput,secondUserInput);
+    ptrToFirstUserInput = firstUserInput;
+    ptrToSecondUserInput = secondUserInput;
+    while(ptrToFirstUserInput[0] != '\0') {
+        if(ptrToFirstUserInput[0] >= 'A' && ptrToFirstUserInput[0] <= 'Z') {
+            ptrToFirstUserInput[0] = ptrToFirstUserInput[0] - 'A' + 'a';
+        }
+        if(ptrToSecondUserInput[0] >= 'A' && ptrToSecondUserInput[0] <= 'Z') {
+            ptrToSecondUserInput[0] = ptrToSecondUserInput[0] - 'A' + 'a';
+        }
+        if(ptrToFirstUserInput[0] > ptrToSecondUserInput[0]) {
+            printf("1");
+            return;
+        } else if(ptrToFirstUserInput[0] < ptrToSecondUserInput[0]) {
+            printf("-1");
+            return;
+        }
+        ptrToFirstUserInput++;
+        ptrToSecondUserInput++;
+    }
+    printf("0");
 }
 
 #endif /* PETYAANDSTRINGS_H_ */

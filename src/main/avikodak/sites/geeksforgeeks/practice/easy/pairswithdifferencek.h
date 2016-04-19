@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRSWITHDIFFERENCEK_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,difference;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %lld",&size,&difference);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		unsigned int pairCount = 0;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
-			for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-				if(abs(userInput[outerCrawler] - userInput[innerCrawler]) == difference){
-					pairCount++;
-				}
-			}
-		}
-		printf("%u\n",pairCount);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,difference;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %lld",&size,&difference);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        unsigned int pairCount = 0;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-1; outerCrawler++) {
+            for(unsigned int innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+                if(abs(userInput[outerCrawler] - userInput[innerCrawler]) == difference) {
+                    pairCount++;
+                }
+            }
+        }
+        printf("%u\n",pairCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRSWITHDIFFERENCEK_H_ */

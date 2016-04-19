@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumtwoleaves.h 
+ *  File Name   		: maxsumtwoleaves.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\maxsumtwoleaves.h
  *  Created on			: Jan 24, 2015 :: 10:30:04 AM
  *  Author				: AVINASH
@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxPathSumUtilTwoLeaves(itNode *ptr,int &maxSum){
-	if(ptr == null){
-		return 0;
-	}
-	int leftValue = maxPathSumUtilTwoLeaves(ptr->left,maxSum);
-	int rightValue = maxPathSumUtilTwoLeaves(ptr->right,maxSum);
-	maxSum = max(maxSum,max(max(leftValue,rightValue),ptr->value + leftValue + rightValue));
-	return max(leftValue,rightValue) + ptr->value;
+int maxPathSumUtilTwoLeaves(itNode *ptr,int &maxSum) {
+    if(ptr == null) {
+        return 0;
+    }
+    int leftValue = maxPathSumUtilTwoLeaves(ptr->left,maxSum);
+    int rightValue = maxPathSumUtilTwoLeaves(ptr->right,maxSum);
+    maxSum = max(maxSum,max(max(leftValue,rightValue),ptr->value + leftValue + rightValue));
+    return max(leftValue,rightValue) + ptr->value;
 }
 
 #endif /* MAXSUMTWOLEAVES_H_ */

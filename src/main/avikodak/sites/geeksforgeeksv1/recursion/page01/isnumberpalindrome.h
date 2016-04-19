@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isnumberpalindrome.h 
+ *  File Name   		: isnumberpalindrome.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\isnumberpalindrome.h
  *  Created on			: Dec 3, 2014 :: 11:08:37 AM
  *  Author				: AVINASH
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isNumberPalindrome(int crawler,int *origNumb){
-	if(crawler >=0 && crawler <= 9){
-		return true;
-	}
-	bool truthValue = isNumberPalindrome(crawler/10,origNumb);
-	if(!truthValue){
-		return false;
-	}
-	*origNumb /= 10;
-	return crawler%1 == (*origNumb)%10;
+bool isNumberPalindrome(int crawler,int *origNumb) {
+    if(crawler >=0 && crawler <= 9) {
+        return true;
+    }
+    bool truthValue = isNumberPalindrome(crawler/10,origNumb);
+    if(!truthValue) {
+        return false;
+    }
+    *origNumb /= 10;
+    return crawler%1 == (*origNumb)%10;
 }
 
 #endif /* ISNUMBERPALINDROME_H_ */

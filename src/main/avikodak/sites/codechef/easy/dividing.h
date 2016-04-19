@@ -70,15 +70,15 @@ using namespace __gnu_cxx;
 #ifndef DIVIDING_H_
 #define DIVIDING_H_
 
-void printResult(){
-	unsigned int size,sum =0,input;
-	scanf("%u",&size);
-	long long int reqVal = ((size)*(size-1))/2;
-	while(size--){
-		scanf("%u",&input);
-		sum += input;
-	}
-	printf("%s\n",sum == reqVal?"YES":"NO");
+void printResult() {
+    unsigned int size,sum =0,input;
+    scanf("%u",&size);
+    long long int reqVal = ((size)*(size-1))/2;
+    while(size--) {
+        scanf("%u",&input);
+        sum += input;
+    }
+    printf("%s\n",sum == reqVal?"YES":"NO");
 }
 
 #endif /* DIVIDING_H_ */

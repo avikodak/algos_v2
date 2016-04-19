@@ -72,9 +72,9 @@ using namespace __gnu_cxx;
 
 class TrainingCamp {
 public:
-	vector<string> determineSolvers(vector<string> attendance,vector<string> problemTopics){
+    vector<string> determineSolvers(vector<string> attendance,vector<string> problemTopics) {
 
-	}
+    }
 };
 
 #endif /* TRAININGCAMP_H_ */

@@ -73,24 +73,24 @@ using namespace __gnu_cxx;
 #define CN01_H_
 
 //Tested
-void printResults(){
-	long long int userInput;
-	string gameResults;
-	scanf("%lld",&userInput);
-	cin >> gameResults;
-	for(unsigned int counter = 0;counter < gameResults.size();counter++){
-		if(gameResults[counter] == 'W'){
-			userInput *= 2;
-			userInput += 11;
-		}else{
-			if(userInput%2 == 0){
-				userInput /= 2;
-			}else{
-				userInput = userInput/2+1;
-			}
-		}
-	}
-	printf("%lld",userInput);
+void printResults() {
+    long long int userInput;
+    string gameResults;
+    scanf("%lld",&userInput);
+    cin >> gameResults;
+    for(unsigned int counter = 0; counter < gameResults.size(); counter++) {
+        if(gameResults[counter] == 'W') {
+            userInput *= 2;
+            userInput += 11;
+        } else {
+            if(userInput%2 == 0) {
+                userInput /= 2;
+            } else {
+                userInput = userInput/2+1;
+            }
+        }
+    }
+    printf("%lld",userInput);
 }
 
 #endif /* CN01_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fillingjars.h 
+ *  File Name   		: fillingjars.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\fillingjars.h
  *  Created on			: Feb 6, 2015 :: 8:52:09 AM
  *  Author				: AVINASH
@@ -74,15 +74,15 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-long int getAverageCandies(){
-	long int numbersCount,operationCount,firstUserInput,secondUserInput,incrementBy;
-	scanf("%ld %ld",&numbersCount,&operationCount);
-	long int sum = 0;
-	while(operationCount--){
-		scanf("%ld %ld %ld",&firstUserInput,&secondUserInput,&incrementBy);
-		sum += incrementBy * (secondUserInput - firstUserInput + 1);
-	}
-	return sum/numbersCount;
+long int getAverageCandies() {
+    long int numbersCount,operationCount,firstUserInput,secondUserInput,incrementBy;
+    scanf("%ld %ld",&numbersCount,&operationCount);
+    long int sum = 0;
+    while(operationCount--) {
+        scanf("%ld %ld %ld",&firstUserInput,&secondUserInput,&incrementBy);
+        sum += incrementBy * (secondUserInput - firstUserInput + 1);
+    }
+    return sum/numbersCount;
 }
 
 

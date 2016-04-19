@@ -71,14 +71,14 @@ using namespace __gnu_cxx;
 #define ANUWTA_H_
 
 //Tested
-void printResults(){
-	long long int testCases;
-	long long int nValue;
-	cin >> testCases;
-	while(testCases--){
-		cin >> nValue;
-		cout << (nValue + ((nValue*(nValue+1))/2)) << endl;
-	}
+void printResults() {
+    long long int testCases;
+    long long int nValue;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> nValue;
+        cout << (nValue + ((nValue*(nValue+1))/2)) << endl;
+    }
 }
 
 #endif /* ANUWTA_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: foldabletrees.h 
+ *  File Name   		: foldabletrees.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\foldabletrees.h
  *  Created on			: Oct 20, 2014 :: 3:14:39 PM
  *  Author				: AVINASH
@@ -73,42 +73,42 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	return isTreeFoldableMain(firstTreePtr->left,secondTreePtr->right) &&  isTreeFoldableMain(firstTreePtr->right,secondTreePtr->left);
+bool isTreeFoldableMain(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    return isTreeFoldableMain(firstTreePtr->left,secondTreePtr->right) &&  isTreeFoldableMain(firstTreePtr->right,secondTreePtr->left);
 }
 
 //Tested
-bool isTreeFoldable(itNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	return isTreeFoldableMain(ptr->left,ptr->right);
+bool isTreeFoldable(itNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    return isTreeFoldableMain(ptr->left,ptr->right);
 }
 
 //Tested
-bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	return areTreesIdenticalStructure(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalStructure(firstTreePtr->right,secondTreePtr->right);
+bool areTreesIdenticalStructure(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    return areTreesIdenticalStructure(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalStructure(firstTreePtr->right,secondTreePtr->right);
 }
 
 //Tested
-bool isTreeFoldableV2(itNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	getMirrorTreePreorder(ptr->right);
-	return areTreesIdenticalStructure(ptr->left,ptr->right);
+bool isTreeFoldableV2(itNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    getMirrorTreePreorder(ptr->right);
+    return areTreesIdenticalStructure(ptr->left,ptr->right);
 }
 
 /****************************************************************************************************************************************************/

@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 //Tested
 class FixedPointTheorem {
 private:
-	double static minValue(double firstValue,double secondValue){
-		return firstValue < secondValue?firstValue:secondValue;
-	}
+    double static minValue(double firstValue,double secondValue) {
+        return firstValue < secondValue?firstValue:secondValue;
+    }
 
-	double maxValue(double firstValue,double secondValue){
-		return firstValue > secondValue?firstValue:secondValue;
-	}
+    double maxValue(double firstValue,double secondValue) {
+        return firstValue > secondValue?firstValue:secondValue;
+    }
 public:
-	double cycleRange(double R){
-		double x = 0.25;
-		for(long int counter = 0;counter <= 2000000;counter++){
-			x = R * x * (1-x);
-		}
-		double minVal = x,maxVal = x;
-		for(long int counter = 2000000;counter < 200999;counter++){
-			x = R * x * (1-x);
-			minVal = minValue(minVal,x);
-			maxVal = maxValue(maxVal,x);
- 		}
-		return maxVal - minVal;
-	}
+    double cycleRange(double R) {
+        double x = 0.25;
+        for(long int counter = 0; counter <= 2000000; counter++) {
+            x = R * x * (1-x);
+        }
+        double minVal = x,maxVal = x;
+        for(long int counter = 2000000; counter < 200999; counter++) {
+            x = R * x * (1-x);
+            minVal = minValue(minVal,x);
+            maxVal = maxValue(maxVal,x);
+        }
+        return maxVal - minVal;
+    }
 };
 
 #endif /* FIXEDPOINTTHEOREM_H_ */

@@ -73,37 +73,37 @@ using namespace __gnu_cxx;
 #define RRCODE_H_
 
 //Tested
-void printResults(){
-	long long int testCases,size,kOperation,result,input;
-	string operation;
-	scanf("%lld",&testCases);
-	vector<long long int> userInput;
-	while(testCases--){
-		scanf("%lld %lld %lld",&size,&kOperation,&result);
-		userInput.clear();
-		for(long long int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		cin >> operation;
-		if(operation[0] == 'X'){
-			kOperation = kOperation%2;
-		}else{
-			kOperation = min(kOperation,1ll);
-		}
-		while(kOperation-- > 0){
-			for(long long int counter = 0;counter < size;counter++){
-				if(operation[0] == 'X'){
-					result ^= userInput[counter];
-				}else if(operation[0] == 'A'){
-					result &= userInput[counter];
-				}else{
-					result |= userInput[counter];
-				}
-			}
-		}
-		printf("%lld\n",result);
-	}
+void printResults() {
+    long long int testCases,size,kOperation,result,input;
+    string operation;
+    scanf("%lld",&testCases);
+    vector<long long int> userInput;
+    while(testCases--) {
+        scanf("%lld %lld %lld",&size,&kOperation,&result);
+        userInput.clear();
+        for(long long int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        cin >> operation;
+        if(operation[0] == 'X') {
+            kOperation = kOperation%2;
+        } else {
+            kOperation = min(kOperation,1ll);
+        }
+        while(kOperation-- > 0) {
+            for(long long int counter = 0; counter < size; counter++) {
+                if(operation[0] == 'X') {
+                    result ^= userInput[counter];
+                } else if(operation[0] == 'A') {
+                    result &= userInput[counter];
+                } else {
+                    result |= userInput[counter];
+                }
+            }
+        }
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* RRCODE_H_ */

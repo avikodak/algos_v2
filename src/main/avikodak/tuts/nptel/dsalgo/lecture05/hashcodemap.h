@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: hashcodemap.h 
+ *  File Name   		: hashcodemap.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture05\hashcodemap.h
  *  Created on			: Nov 17, 2014 :: 7:34:44 PM
  *  Author				: AVINASH
@@ -69,26 +69,26 @@ using namespace __gnu_cxx;
 #ifndef HASHCODEMAP_H_
 #define HASHCODEMAP_H_
 
-unsigned int getHashCodeValue(char *userInput){
-	unsigned int hashValue = 0;
-	while(userInput != null){
-		hashValue += (char)*userInput;
-		userInput++;
-	}
-	return hashValue;
+unsigned int getHashCodeValue(char *userInput) {
+    unsigned int hashValue = 0;
+    while(userInput != null) {
+        hashValue += (char)*userInput;
+        userInput++;
+    }
+    return hashValue;
 }
 
-unsigned int getHashCodeValuePolynomialAccumulation(char *userInput){
-	unsigned int hashValue;
-	unsigned int xValue = 1;
-	char ch;
-	while(*userInput != '\0'){
-		ch = *userInput;
-		hashValue += xValue*ch;
-		xValue *= POLYNOMIAL_ACCUMULATION_CONSTANT;
+unsigned int getHashCodeValuePolynomialAccumulation(char *userInput) {
+    unsigned int hashValue;
+    unsigned int xValue = 1;
+    char ch;
+    while(*userInput != '\0') {
+        ch = *userInput;
+        hashValue += xValue*ch;
+        xValue *= POLYNOMIAL_ACCUMULATION_CONSTANT;
 
-	}
-	return hashValue;
+    }
+    return hashValue;
 }
 
 #endif /* HASHCODEMAP_H_ */

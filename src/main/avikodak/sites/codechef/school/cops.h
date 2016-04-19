@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define COPS_H_
 
 //Tested
-void printResults(){
-	int testCases,safeHouseCount;
-	int size,speed,houses,input,housesCovered;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d %d %d",&size,&speed,&houses);
-		housesCovered = speed*houses;
-		vector<int> copsHouses;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%d",&input);
-			copsHouses.push_back(input);
-		}
-		sort(copsHouses.begin(),copsHouses.end());
-		int index = 1;
-		safeHouseCount = 0;
-		for(unsigned int counter = 0;counter < copsHouses.size();counter++){
-			if(copsHouses[counter]-housesCovered > index){
-				safeHouseCount += copsHouses[counter] - housesCovered -index;
-			}
-			index = copsHouses[counter] + housesCovered+1;
-		}
-		if(index <= 100){
-			safeHouseCount += 100-index+1;
-		}
-		printf("%d\n",safeHouseCount);
-	}
+void printResults() {
+    int testCases,safeHouseCount;
+    int size,speed,houses,input,housesCovered;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d %d %d",&size,&speed,&houses);
+        housesCovered = speed*houses;
+        vector<int> copsHouses;
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%d",&input);
+            copsHouses.push_back(input);
+        }
+        sort(copsHouses.begin(),copsHouses.end());
+        int index = 1;
+        safeHouseCount = 0;
+        for(unsigned int counter = 0; counter < copsHouses.size(); counter++) {
+            if(copsHouses[counter]-housesCovered > index) {
+                safeHouseCount += copsHouses[counter] - housesCovered -index;
+            }
+            index = copsHouses[counter] + housesCovered+1;
+        }
+        if(index <= 100) {
+            safeHouseCount += 100-index+1;
+        }
+        printf("%d\n",safeHouseCount);
+    }
 }
 
 #endif /* COPS_H_ */

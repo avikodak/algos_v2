@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: implementtwostacksarray.h 
+ *  File Name   		: implementtwostacksarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\implementtwostacksarray.h
  *  Created on			: Nov 27, 2014 :: 7:51:34 PM
  *  Author				: AVINASH
@@ -74,63 +74,63 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 class twostacksv2 {
 private:
-	int *userInput;
-	int sizeOfArray;
-	int firstStackTop,secondStackTop;
+    int *userInput;
+    int sizeOfArray;
+    int firstStackTop,secondStackTop;
 public:
-	twostacksv2(){
-		userInput = (int *)malloc(sizeof(int) * SIZE_OF_STACK_ARRAY);
-		firstStackTop = -1;
-		secondStackTop = SIZE_OF_STACK_ARRAY;
-	}
+    twostacksv2() {
+        userInput = (int *)malloc(sizeof(int) * SIZE_OF_STACK_ARRAY);
+        firstStackTop = -1;
+        secondStackTop = SIZE_OF_STACK_ARRAY;
+    }
 
-	twostacksv2(int size){
-		this->sizeOfArray = size;
-		userInput = (int *)malloc(sizeof(int)*this->sizeOfArray);
-		firstStackTop = -1;
-		secondStackTop = size - 1;
-	}
+    twostacksv2(int size) {
+        this->sizeOfArray = size;
+        userInput = (int *)malloc(sizeof(int)*this->sizeOfArray);
+        firstStackTop = -1;
+        secondStackTop = size - 1;
+    }
 
-	void push(int value,bool firstStack = true){
-		if(firstStackTop+1 == secondStackTop){
-			throw "Stack full";
-		}
-		if(firstStack){
-			userInput[++firstStackTop] = value;
-		}else{
-			userInput[--secondStackTop] = value;
-		}
-	}
+    void push(int value,bool firstStack = true) {
+        if(firstStackTop+1 == secondStackTop) {
+            throw "Stack full";
+        }
+        if(firstStack) {
+            userInput[++firstStackTop] = value;
+        } else {
+            userInput[--secondStackTop] = value;
+        }
+    }
 
-	bool empty(bool firstStack = true){
-		if(firstStack){
-			return firstStackTop == -1;
-		}else{
-			return secondStackTop == sizeOfArray;
-		}
-	}
+    bool empty(bool firstStack = true) {
+        if(firstStack) {
+            return firstStackTop == -1;
+        } else {
+            return secondStackTop == sizeOfArray;
+        }
+    }
 
-	void pop(bool firstStack = true){
-		if(firstStack){
-			if(this->empty()){
-				throw "Stack empty";
-			}
-			firstStackTop--;
-		}else{
-			if(this->empty(false)){
-				throw "Stack empty";
-			}
-			secondStackTop++;
-		}
-	}
+    void pop(bool firstStack = true) {
+        if(firstStack) {
+            if(this->empty()) {
+                throw "Stack empty";
+            }
+            firstStackTop--;
+        } else {
+            if(this->empty(false)) {
+                throw "Stack empty";
+            }
+            secondStackTop++;
+        }
+    }
 
-	int size(bool firstStack){
-		if(firstStack){
-			return firstStackTop == -1?0:firstStackTop+1;
-		}else{
-			return sizeOfArray - secondStackTop;
-		}
-	}
+    int size(bool firstStack) {
+        if(firstStack) {
+            return firstStackTop == -1?0:firstStackTop+1;
+        } else {
+            return sizeOfArray - secondStackTop;
+        }
+    }
 };
 
 #endif /* IMPLEMENTTWOSTACKSARRAY_H_ */

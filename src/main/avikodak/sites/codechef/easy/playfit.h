@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define PLAYFIT_H_
 
 //Tested
-unsigned int max(unsigned int first,unsigned int second){
-	return first > second?first:second;
+unsigned int max(unsigned int first,unsigned int second) {
+    return first > second?first:second;
 }
 
 //Tested
-void getMaxDifference(vector<unsigned int> userInput){
-	if(userInput.size() < 2){
-		printf("UNFIT\n");
-		return;
-	}
-	unsigned int maxValue = userInput[userInput.size()-1],maxDifference = 0;
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		if(userInput[counter] > maxValue){
-			maxValue = userInput[counter];
-		}else{
-			maxDifference = max(maxDifference,maxValue - userInput[counter]);
-		}
-	}
-	if(maxDifference > 0){
-		printf("%u\n",maxDifference);
-	}else{
-		printf("UNFIT\n");
-	}
+void getMaxDifference(vector<unsigned int> userInput) {
+    if(userInput.size() < 2) {
+        printf("UNFIT\n");
+        return;
+    }
+    unsigned int maxValue = userInput[userInput.size()-1],maxDifference = 0;
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        if(userInput[counter] > maxValue) {
+            maxValue = userInput[counter];
+        } else {
+            maxDifference = max(maxDifference,maxValue - userInput[counter]);
+        }
+    }
+    if(maxDifference > 0) {
+        printf("%u\n",maxDifference);
+    } else {
+        printf("UNFIT\n");
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		getMaxDifference(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        getMaxDifference(userInput);
+    }
 }
 
 #endif /* PLAYFIT_H_ */

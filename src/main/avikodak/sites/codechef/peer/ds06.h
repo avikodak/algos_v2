@@ -71,10 +71,10 @@ using namespace __gnu_cxx;
 #ifndef DS06_H_
 #define DS06_H_
 
-void printResults(){
-	unsigned long long int wins,losses,ties;
-	cin >> wins >> losses >> ties;
-	cout << 3*wins + ties << endl;
+void printResults() {
+    unsigned long long int wins,losses,ties;
+    cin >> wins >> losses >> ties;
+    cout << 3*wins + ties << endl;
 }
 
 #endif /* DS06_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: shortestpathdirectedkedges.h 
+ *  File Name   		: shortestpathdirectedkedges.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\shortestpathdirectedkedges.h
  *  Created on			: Jan 12, 2015 :: 10:46:37 PM
  *  Author				: AVINASH
@@ -70,26 +70,26 @@ using namespace __gnu_cxx;
 #ifndef SHORTESTPATHDIRECTEDKEDGES_H_
 #define SHORTESTPATHDIRECTEDKEDGES_H_
 
-int shortestPathDirectedKEdges(vector<vector<int> > adjacencyMatrix,int kValue,int sourceVertex,int destinationVertex){
-	if(kValue == 0 && sourceVertex == destinationVertex){
-		return adjacencyMatrix[sourceVertex][sourceVertex];
-	}
-	if(kValue <= 0){
-		return INT_MAX;
-	}
-	if(kValue == 1){
-		return adjacencyMatrix[sourceVertex][destinationVertex];
-	}
-	int minCost = INT_MAX,result;
-	for(unsigned int counter = 0;counter < adjacencyMatrix.size(); counter++){
-		if(adjacencyMatrix[sourceVertex][counter] != INT_MAX){
-			result = shortestPathDirectedKEdges(adjacencyMatrix,kValue-1,counter,destinationVertex);
-			if(result != INT_MAX){
-				minCost = min(minCost,result + adjacencyMatrix[sourceVertex][counter]);
-			}
-		}
-	}
-	return minCost;
+int shortestPathDirectedKEdges(vector<vector<int> > adjacencyMatrix,int kValue,int sourceVertex,int destinationVertex) {
+    if(kValue == 0 && sourceVertex == destinationVertex) {
+        return adjacencyMatrix[sourceVertex][sourceVertex];
+    }
+    if(kValue <= 0) {
+        return INT_MAX;
+    }
+    if(kValue == 1) {
+        return adjacencyMatrix[sourceVertex][destinationVertex];
+    }
+    int minCost = INT_MAX,result;
+    for(unsigned int counter = 0; counter < adjacencyMatrix.size(); counter++) {
+        if(adjacencyMatrix[sourceVertex][counter] != INT_MAX) {
+            result = shortestPathDirectedKEdges(adjacencyMatrix,kValue-1,counter,destinationVertex);
+            if(result != INT_MAX) {
+                minCost = min(minCost,result + adjacencyMatrix[sourceVertex][counter]);
+            }
+        }
+    }
+    return minCost;
 }
 
 #endif /* SHORTESTPATHDIRECTEDKEDGES_H_ */

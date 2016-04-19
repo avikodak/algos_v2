@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 #define VITC03_H_
 
 //Tested
-long long int reverse(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+long long int reverse(long long int userInput) {
+    long long int result = 0;
+    while(userInput) {
+        result = (result << 3) + (result << 1) + (userInput%10);
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int first,second;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> first >> second;
-		cout << reverse(reverse(first) + reverse(second)) << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int first,second;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> first >> second;
+        cout << reverse(reverse(first) + reverse(second)) << endl;
+    }
 }
 
 #endif /* VITC03_H_ */

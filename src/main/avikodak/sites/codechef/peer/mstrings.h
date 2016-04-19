@@ -72,27 +72,27 @@ using namespace __gnu_cxx;
 #define MSTRINGS_H_
 
 //Tested
-bool isPalindrome(string userInput){
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		if(userInput[frontCrawler] != userInput[rearCrawler]){
-			return false;
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	return true;
+bool isPalindrome(string userInput) {
+    unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+    while(frontCrawler < rearCrawler) {
+        if(userInput[frontCrawler] != userInput[rearCrawler]) {
+            return false;
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    return true;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		printf("%s\n",isPalindrome(userInput)?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        printf("%s\n",isPalindrome(userInput)?"YES":"NO");
+    }
 }
 
 #endif /* MSTRINGS_H_ */

@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define TWOSTR_H_
 
 //Tested
-bool isMatching(string firstUserInput,string secondUserInput){
-	unsigned int firstCounter = 0,secondCounter = 0;
-	while(firstCounter < firstUserInput.size() && secondCounter < secondUserInput.size()){
-		if(firstUserInput[firstCounter] != secondUserInput[secondCounter]){
-			if(firstUserInput[firstCounter] != '?' && secondUserInput[secondCounter] != '?'){
-				return false;
-			}
-		}
-		firstCounter++;
-		secondCounter++;
-	}
-	return firstCounter >= firstUserInput.size() && secondCounter >= secondUserInput.size();
+bool isMatching(string firstUserInput,string secondUserInput) {
+    unsigned int firstCounter = 0,secondCounter = 0;
+    while(firstCounter < firstUserInput.size() && secondCounter < secondUserInput.size()) {
+        if(firstUserInput[firstCounter] != secondUserInput[secondCounter]) {
+            if(firstUserInput[firstCounter] != '?' && secondUserInput[secondCounter] != '?') {
+                return false;
+            }
+        }
+        firstCounter++;
+        secondCounter++;
+    }
+    return firstCounter >= firstUserInput.size() && secondCounter >= secondUserInput.size();
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string first,second;
-	while(testCases--){
-		cin >> first >> second;
-		printf("%s\n",isMatching(first,second)?"Yes":"No");
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string first,second;
+    while(testCases--) {
+        cin >> first >> second;
+        printf("%s\n",isMatching(first,second)?"Yes":"No");
+    }
 }
 
 #endif /* TWOSTR_H_ */

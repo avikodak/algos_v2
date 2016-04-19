@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dostringsinterleave.h 
+ *  File Name   		: dostringsinterleave.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\dostringsinterleave.h
  *  Created on			: Jan 16, 2015 :: 9:31:38 AM
  *  Author				: AVINASH
@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef DOSTRINGSINTERLEAVE_H_
 #define DOSTRINGSINTERLEAVE_H_
 
-bool doStringsInterleave(char *firstUserinput,char *secondUserinput,char *thirdUserinput){
-	if(firstUserinput[0] == '\0' && secondUserinput == '\0' && thirdUserinput == '\0'){
-		return true;
-	}
-	if(thirdUserinput[0] == '\0'){
-		return false;
-	}
-	bool truthValue = false;
-	if(firstUserinput[0] != '\0'){
-		truthValue = truthValue || (firstUserinput[0] == thirdUserinput[0] && doStringsInterleave(firstUserinput+1,secondUserinput,thirdUserinput+1));
-	}else{
-		truthValue = truthValue || (secondUserinput[0] == thirdUserinput[0] && doStringsInterleave(firstUserinput,secondUserinput+1,thirdUserinput+1));
-	}
-	return truthValue;
+bool doStringsInterleave(char *firstUserinput,char *secondUserinput,char *thirdUserinput) {
+    if(firstUserinput[0] == '\0' && secondUserinput == '\0' && thirdUserinput == '\0') {
+        return true;
+    }
+    if(thirdUserinput[0] == '\0') {
+        return false;
+    }
+    bool truthValue = false;
+    if(firstUserinput[0] != '\0') {
+        truthValue = truthValue || (firstUserinput[0] == thirdUserinput[0] && doStringsInterleave(firstUserinput+1,secondUserinput,thirdUserinput+1));
+    } else {
+        truthValue = truthValue || (secondUserinput[0] == thirdUserinput[0] && doStringsInterleave(firstUserinput,secondUserinput+1,thirdUserinput+1));
+    }
+    return truthValue;
 }
 
 #endif /* DOSTRINGSINTERLEAVE_H_ */

@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define MAXSUBARRAY_H_
 
 //Tested
-void getMaxSubArray(vector<int> userInput){
-	int currentSum = 0,maxSubArraySum=INT_MIN,maxNegVal = INT_MIN,maxNonSubArraySum = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		currentSum = max(userInput[counter],currentSum+userInput[counter]);
-		maxSubArraySum = max(maxSubArraySum,currentSum);
-		if(userInput[counter] > 0){
-			maxNonSubArraySum += userInput[counter];
-		}else{
-			maxNegVal = max(maxNegVal,userInput[counter]);
-		}
-	}
-	printf("%d %d\n",maxSubArraySum,maxNonSubArraySum == 0?maxNegVal:maxNonSubArraySum);
+void getMaxSubArray(vector<int> userInput) {
+    int currentSum = 0,maxSubArraySum=INT_MIN,maxNegVal = INT_MIN,maxNonSubArraySum = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        currentSum = max(userInput[counter],currentSum+userInput[counter]);
+        maxSubArraySum = max(maxSubArraySum,currentSum);
+        if(userInput[counter] > 0) {
+            maxNonSubArraySum += userInput[counter];
+        } else {
+            maxNegVal = max(maxNegVal,userInput[counter]);
+        }
+    }
+    printf("%d %d\n",maxSubArraySum,maxNonSubArraySum == 0?maxNegVal:maxNonSubArraySum);
 }
 
 //Tested
-void printMaxSubArray(){
-	unsigned int testCases,noOfElements;
-	int input;
-	scanf("%u",&testCases);
-	vector<int> userInput;
-	while(testCases--){
-		scanf("%u",&noOfElements);
-		userInput.clear();
-		while(noOfElements--){
-			scanf("%d",&input);
-			userInput.push_back(input);
-		}
-		getMaxSubArray(userInput);
-	}
+void printMaxSubArray() {
+    unsigned int testCases,noOfElements;
+    int input;
+    scanf("%u",&testCases);
+    vector<int> userInput;
+    while(testCases--) {
+        scanf("%u",&noOfElements);
+        userInput.clear();
+        while(noOfElements--) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+        }
+        getMaxSubArray(userInput);
+    }
 }
 
 #endif /* MAXSUBARRAY_H_ */

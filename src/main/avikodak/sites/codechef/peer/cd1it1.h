@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 #define CD1IT1_H_
 
 //Tested
-void printResults(){
-	unsigned int size;
-	long int input;
-	vector<long int> userInput;
-	scanf("%u",&size);
-	for(unsigned int counter = 0;counter < size;counter++){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	};
-	sort(userInput.begin(),userInput.end());
-	if(size%2 == 0){
-		printf("%ld\n",userInput[size/2-1]);
-	}else{
-		printf("%ld\n",userInput[userInput.size()/2]);
-	}
+void printResults() {
+    unsigned int size;
+    long int input;
+    vector<long int> userInput;
+    scanf("%u",&size);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        scanf("%ld",&input);
+        userInput.push_back(input);
+    };
+    sort(userInput.begin(),userInput.end());
+    if(size%2 == 0) {
+        printf("%ld\n",userInput[size/2-1]);
+    } else {
+        printf("%ld\n",userInput[userInput.size()/2]);
+    }
 }
 
 #endif /* CD1IT1_H_ */

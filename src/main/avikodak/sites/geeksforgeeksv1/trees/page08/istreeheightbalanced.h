@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: istreeheightbalanced.h 
+ *  File Name   		: istreeheightbalanced.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\istreeheightbalanced.h
  *  Created on			: Oct 17, 2014 :: 10:29:44 AM
  *  Author				: AVINASH
@@ -72,41 +72,41 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int isTreeHeightBalancedV2(itNode *ptr,bool &isHeightBalanced){
-	if(ptr == null){
-		return 0;
-	}
-	int leftSubTreeHeight = isTreeHeightBalancedV2(ptr->left,isHeightBalanced);
-	if(leftSubTreeHeight == INT_MIN){
-		return INT_MIN;
-	}
-	int rightSubTreeHeight = isTreeHeightBalancedV2(ptr->right,isHeightBalanced);
-	if(rightSubTreeHeight == INT_MIN){
-		return INT_MIN;
-	}
-	if(abs(leftSubTreeHeight - rightSubTreeHeight) > 1){
-		isHeightBalanced = false;
-		return INT_MIN;
-	}
-	isHeightBalanced = true;
-	return 1+max(leftSubTreeHeight,rightSubTreeHeight);
+int isTreeHeightBalancedV2(itNode *ptr,bool &isHeightBalanced) {
+    if(ptr == null) {
+        return 0;
+    }
+    int leftSubTreeHeight = isTreeHeightBalancedV2(ptr->left,isHeightBalanced);
+    if(leftSubTreeHeight == INT_MIN) {
+        return INT_MIN;
+    }
+    int rightSubTreeHeight = isTreeHeightBalancedV2(ptr->right,isHeightBalanced);
+    if(rightSubTreeHeight == INT_MIN) {
+        return INT_MIN;
+    }
+    if(abs(leftSubTreeHeight - rightSubTreeHeight) > 1) {
+        isHeightBalanced = false;
+        return INT_MIN;
+    }
+    isHeightBalanced = true;
+    return 1+max(leftSubTreeHeight,rightSubTreeHeight);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isTreeHeightBalanced(itNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	treeutils *utils = new treeutils();
-	int leftSubtreeHeight = utils->getHeightOfTree(ptr->left);
-	int rightSubtreeHeight = utils->getHeightOfTree(ptr->right);
-	if(abs(leftSubtreeHeight - rightSubtreeHeight) > 1){
-		return false;
-	}
-	return isTreeHeightBalanced(ptr->left) && isTreeHeightBalanced(ptr->right);
+bool isTreeHeightBalanced(itNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    treeutils *utils = new treeutils();
+    int leftSubtreeHeight = utils->getHeightOfTree(ptr->left);
+    int rightSubtreeHeight = utils->getHeightOfTree(ptr->right);
+    if(abs(leftSubtreeHeight - rightSubtreeHeight) > 1) {
+        return false;
+    }
+    return isTreeHeightBalanced(ptr->left) && isTreeHeightBalanced(ptr->right);
 }
 
 #endif /* ISTREEHEIGHTBALANCED_H_ */

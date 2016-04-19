@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reverselevelordertraversal.h 
+ *  File Name   		: reverselevelordertraversal.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\reverselevelordertraversal.h
  *  Created on			: Nov 21, 2014 :: 9:23:44 PM
  *  Author				: AVINASH
@@ -72,57 +72,57 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rPrintReverseLevelOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	queue<itNode *> auxSpace;
-	auxSpace.push(ptr);
-	itNode *currentNode;
-	stack<itNode *> reverseAuxspace;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		reverseAuxspace.push(currentNode);
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
-	}
-	while(!reverseAuxspace.empty()){
-		printf("%d\t",reverseAuxspace.top()->value);
-		reverseAuxspace.pop();
-	}
+void rPrintReverseLevelOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    queue<itNode *> auxSpace;
+    auxSpace.push(ptr);
+    itNode *currentNode;
+    stack<itNode *> reverseAuxspace;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        reverseAuxspace.push(currentNode);
+        if(currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+        }
+        if(currentNode->right != null) {
+            auxSpace.push(currentNode->right);
+        }
+    }
+    while(!reverseAuxspace.empty()) {
+        printf("%d\t",reverseAuxspace.top()->value);
+        reverseAuxspace.pop();
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printReverseLevel(itNode *ptr,unsigned int level){
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		printf("%d\t",ptr->value);
-		return;
-	}
-	printReverseLevel(ptr->right,level-1);
-	printReverseLevel(ptr->left,level-1);
+void printReverseLevel(itNode *ptr,unsigned int level) {
+    if(ptr == null) {
+        return;
+    }
+    if(level == 0) {
+        printf("%d\t",ptr->value);
+        return;
+    }
+    printReverseLevel(ptr->right,level-1);
+    printReverseLevel(ptr->left,level-1);
 }
 
 //Tested
-void printReverseLevelOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	int height = utils->getHeightOfTree(ptr);
-	for(int counter = height-1;counter >= 0;counter--){
-		printReverseLevel(ptr,counter);
-	}
+void printReverseLevelOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    int height = utils->getHeightOfTree(ptr);
+    for(int counter = height-1; counter >= 0; counter--) {
+        printReverseLevel(ptr,counter);
+    }
 }
 
 #endif /* REVERSELEVELORDERTRAVERSAL_H_ */

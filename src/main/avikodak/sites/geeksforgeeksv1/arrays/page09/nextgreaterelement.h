@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nextgreaterelement.h 
+ *  File Name   		: nextgreaterelement.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\nextgreaterelement.h
  *  Created on			: Nov 26, 2014 :: 6:27:12 PM
  *  Author				: AVINASH
@@ -72,46 +72,46 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printNextGreatestElementStack(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	stack<int> auxSpace;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		while(!auxSpace.empty() && auxSpace.top() < userInput[counter]){
-			auxSpace.pop();
-		}
-		if(auxSpace.empty()){
-			printf("%d\t",INT_MAX);
-		}else{
-			printf("%d\t",auxSpace.top());
-		}
-		auxSpace.push(userInput[counter]);
-	}
+void printNextGreatestElementStack(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    stack<int> auxSpace;
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        while(!auxSpace.empty() && auxSpace.top() < userInput[counter]) {
+            auxSpace.pop();
+        }
+        if(auxSpace.empty()) {
+            printf("%d\t",INT_MAX);
+        } else {
+            printf("%d\t",auxSpace.top());
+        }
+        auxSpace.push(userInput[counter]);
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printNextGreatestElement(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	bool nextGreatestFound;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		nextGreatestFound = false;
-		for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				printf("%d\t",userInput[innerCounter]);
-				nextGreatestFound = true;
-				break;
-			}
-		}
-		if(!nextGreatestFound){
-			printf("%d",INT_MAX);
-		}
-	}
+void printNextGreatestElement(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    bool nextGreatestFound;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        nextGreatestFound = false;
+        for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[innerCounter] > userInput[outerCounter]) {
+                printf("%d\t",userInput[innerCounter]);
+                nextGreatestFound = true;
+                break;
+            }
+        }
+        if(!nextGreatestFound) {
+            printf("%d",INT_MAX);
+        }
+    }
 }
 
 #endif /* NEXTGREATERELEMENT_H_ */

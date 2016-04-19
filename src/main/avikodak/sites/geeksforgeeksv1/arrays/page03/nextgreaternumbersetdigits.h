@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nextgreaternumbersetdigits.h 
+ *  File Name   		: nextgreaternumbersetdigits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\nextgreaternumbersetdigits.h
  *  Created on			: Jan 18, 2015 :: 9:53:02 PM
  *  Author				: AVINASH
@@ -71,34 +71,34 @@ using namespace __gnu_cxx;
 #define NEXTGREATERNUMBERSETDIGITS_H_
 
 //Tested
-vector<char> nextGreaterNumberSetDigits(vector<char> userInput){
-	if(userInput.size() < 2){
-		return userInput;
-	}
-	int outerCounter,innerCounter;
-	for(outerCounter = userInput.size() - 2;outerCounter >= 0;outerCounter--){
-		if(userInput[outerCounter] < userInput[outerCounter+1]){
-			break;
-		}
-	}
-	if(outerCounter < 0){
-		return userInput;
-	}
-	int minDigit = INT_MIN;
-	for(innerCounter = userInput.size()-1;innerCounter > outerCounter;innerCounter--){
-		if(userInput[innerCounter] > userInput[outerCounter]){
-			if(minDigit == INT_MIN){
-				minDigit = innerCounter;
-			}else{
-				if(userInput[minDigit] > userInput[innerCounter]){
-					minDigit = innerCounter;
-				}
-			}
-		}
-	}
-	swap(userInput[outerCounter],userInput[minDigit]);
-	sort(userInput.begin()+outerCounter+1,userInput.end());
-	return userInput;
+vector<char> nextGreaterNumberSetDigits(vector<char> userInput) {
+    if(userInput.size() < 2) {
+        return userInput;
+    }
+    int outerCounter,innerCounter;
+    for(outerCounter = userInput.size() - 2; outerCounter >= 0; outerCounter--) {
+        if(userInput[outerCounter] < userInput[outerCounter+1]) {
+            break;
+        }
+    }
+    if(outerCounter < 0) {
+        return userInput;
+    }
+    int minDigit = INT_MIN;
+    for(innerCounter = userInput.size()-1; innerCounter > outerCounter; innerCounter--) {
+        if(userInput[innerCounter] > userInput[outerCounter]) {
+            if(minDigit == INT_MIN) {
+                minDigit = innerCounter;
+            } else {
+                if(userInput[minDigit] > userInput[innerCounter]) {
+                    minDigit = innerCounter;
+                }
+            }
+        }
+    }
+    swap(userInput[outerCounter],userInput[minDigit]);
+    sort(userInput.begin()+outerCounter+1,userInput.end());
+    return userInput;
 }
 
 #endif /* NEXTGREATERNUMBERSETDIGITS_H_ */

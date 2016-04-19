@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: utopiantree.h 
+ *  File Name   		: utopiantree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\utopiantree.h
  *  Created on			: Jan 30, 2015 :: 8:58:10 AM
  *  Author				: AVINASH
@@ -76,10 +76,10 @@ using namespace __gnu_cxx;
 //Tested
 int heightOfUtopianTree(int n) {
     int result = 1;
-    for(unsigned int counter = 1;counter <= n;counter++){
-        if(counter&1){
+    for(unsigned int counter = 1; counter <= n; counter++) {
+        if(counter&1) {
             result *= 2;
-        }else{
+        } else {
             result += 1;
         }
     }

@@ -72,41 +72,41 @@ using namespace __gnu_cxx;
 #define NAME1_H_
 
 //Tested
-void areValidNames(){
-	string fatherName,motherName,input;
-	unsigned int children;
-	vector<string> childNames;
-	int frequency[26] = {0};
-	cin >> fatherName >> motherName >> children;
-	while(children--){
-		cin >> input;
-		childNames.push_back(input);
-	}
-	for(unsigned int counter = 0;counter < fatherName.length();counter++){
-		frequency[fatherName[counter]-'a']++;
-	}
-	for(unsigned int counter = 0;counter < motherName.length();counter++){
-		frequency[motherName[counter]-'a']++;
-	}
-	for(unsigned int outerCounter = 0;outerCounter < childNames.size();outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < childNames[outerCounter].length();innerCounter++){
-			if(frequency[childNames[outerCounter][innerCounter]-'a'] == 0){
-				printf("NO\n");
-				return;
-			}
-			frequency[childNames[outerCounter][innerCounter]-'a']--;
-		}
-	}
-	printf("YES\n");
+void areValidNames() {
+    string fatherName,motherName,input;
+    unsigned int children;
+    vector<string> childNames;
+    int frequency[26] = {0};
+    cin >> fatherName >> motherName >> children;
+    while(children--) {
+        cin >> input;
+        childNames.push_back(input);
+    }
+    for(unsigned int counter = 0; counter < fatherName.length(); counter++) {
+        frequency[fatherName[counter]-'a']++;
+    }
+    for(unsigned int counter = 0; counter < motherName.length(); counter++) {
+        frequency[motherName[counter]-'a']++;
+    }
+    for(unsigned int outerCounter = 0; outerCounter < childNames.size(); outerCounter++) {
+        for(unsigned int innerCounter = 0; innerCounter < childNames[outerCounter].length(); innerCounter++) {
+            if(frequency[childNames[outerCounter][innerCounter]-'a'] == 0) {
+                printf("NO\n");
+                return;
+            }
+            frequency[childNames[outerCounter][innerCounter]-'a']--;
+        }
+    }
+    printf("YES\n");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	while(testCases--){
-		areValidNames();
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        areValidNames();
+    }
 }
 
 

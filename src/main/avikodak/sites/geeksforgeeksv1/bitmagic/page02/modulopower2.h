@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: modulopower2.h 
+ *  File Name   		: modulopower2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\modulopower2.h
  *  Created on			: Jan 9, 2015 :: 10:43:50 AM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef MODULOPOWER2_H_
 #define MODULOPOWER2_H_
 
-int getModuloPowerOf2(unsigned int counter,unsigned int power2){
-	return counter & power2 - 1;
+int getModuloPowerOf2(unsigned int counter,unsigned int power2) {
+    return counter & power2 - 1;
 }
 
 

@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #define SQUAREROOTCONVERGENTS_H_
 
 //Tested
-unsigned int countDigits(unsigned long int userInput){
-	unsigned int counter = 0;
-	while(userInput){
-		counter++;
-		userInput/=10;
-	}
-	return counter;
+unsigned int countDigits(unsigned long int userInput) {
+    unsigned int counter = 0;
+    while(userInput) {
+        counter++;
+        userInput/=10;
+    }
+    return counter;
 }
 
 //Works but for smaller inputs
 //Check java version
-void getTotalFraction(){
-	unsigned long int numerator = 3,denominator = 2;
-	unsigned int total = 0;
-	for(unsigned int counter = 1;counter < 1000;counter++){
-		numerator = numerator + 2*denominator;
-		denominator = numerator + denominator;
-		if(countDigits(numerator) > countDigits(denominator)){
-			total++;
-		}
-	}
-	cout << total << endl;
+void getTotalFraction() {
+    unsigned long int numerator = 3,denominator = 2;
+    unsigned int total = 0;
+    for(unsigned int counter = 1; counter < 1000; counter++) {
+        numerator = numerator + 2*denominator;
+        denominator = numerator + denominator;
+        if(countDigits(numerator) > countDigits(denominator)) {
+            total++;
+        }
+    }
+    cout << total << endl;
 }
 
 #endif /* SQUAREROOTCONVERGENTS_H_ */

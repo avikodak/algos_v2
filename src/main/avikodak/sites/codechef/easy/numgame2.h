@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define NUMGAME2_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		if(userInput%4 == 1){
-			printf("ALICE\n");
-		}else{
-			printf("BOB\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        if(userInput%4 == 1) {
+            printf("ALICE\n");
+        } else {
+            printf("BOB\n");
+        }
+    }
 }
 
 #endif /* NUMGAME2_H_ */

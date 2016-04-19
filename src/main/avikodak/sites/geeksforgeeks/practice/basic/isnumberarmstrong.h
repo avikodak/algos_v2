@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERARMSTRONG_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	unsigned int input,result,dupInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		dupInput = input;
-		result = 0;
-		while(dupInput){
-			result += (dupInput%10)*(dupInput%10)*(dupInput%10);
-			dupInput /= 10;
-		}
-		printf("%s\n",result == input?"Yes":"No");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    unsigned int input,result,dupInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        dupInput = input;
+        result = 0;
+        while(dupInput) {
+            result += (dupInput%10)*(dupInput%10)*(dupInput%10);
+            dupInput /= 10;
+        }
+        printf("%s\n",result == input?"Yes":"No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERARMSTRONG_H_ */

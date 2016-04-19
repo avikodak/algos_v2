@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: skiresortseasy.h 
+ *  File Name   		: skiresortseasy.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\skiresortseasy.h
  *  Created on			: Mar 26, 2015 :: 10:39:20 PM
  *  Author				: avikodak
@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define SKIRESORTSEASY_H_
 
 //Tested
-class SkiResortsEasy{
+class SkiResortsEasy {
 public:
-	int minCost(vector<int> altitude){
-		int cost = 0;
-		for(unsigned int counter = 1;counter < altitude.size();counter++){
-			if(altitude[counter] > altitude[counter-1]){
-				cost += (altitude[counter-1] - altitude[counter]);
-			}
-		}
-		return cost;
-	}
+    int minCost(vector<int> altitude) {
+        int cost = 0;
+        for(unsigned int counter = 1; counter < altitude.size(); counter++) {
+            if(altitude[counter] > altitude[counter-1]) {
+                cost += (altitude[counter-1] - altitude[counter]);
+            }
+        }
+        return cost;
+    }
 };
 
 #endif /* SKIRESORTSEASY_H_ */

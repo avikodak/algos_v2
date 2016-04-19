@@ -70,40 +70,40 @@ using namespace __gnu_cxx;
 #ifndef MERGEPOINTLIST_H_
 #define MERGEPOINTLIST_H_
 
-struct Node{
-	int data;
-	Node* next;
+struct Node {
+    int data;
+    Node* next;
 };
 
 //Tested
-int lengthOfSill(Node *head){
-	if(head == null){
-		return 0;
-	}
-	if(head->next == null){
-		return 1;
-	}
-	return 1 + lengthOfSill(head->next);
+int lengthOfSill(Node *head) {
+    if(head == null) {
+        return 0;
+    }
+    if(head->next == null) {
+        return 1;
+    }
+    return 1 + lengthOfSill(head->next);
 }
 
 //Tested
-int FindMergeNode(Node *headA, Node *headB){
+int FindMergeNode(Node *headA, Node *headB) {
     int firstLength = lengthOfSill(headA);
     int secondLength = lengthOfSill(headB);
-    if(firstLength > secondLength){
-    	while(firstLength != secondLength){
-    		headA = headA->next;
-    		firstLength--;
-    	}
-    }else if(secondLength > firstLength){
-    	while(secondLength != firstLength){
-    		headB = headB->next;
-    		secondLength--;
-    	}
+    if(firstLength > secondLength) {
+        while(firstLength != secondLength) {
+            headA = headA->next;
+            firstLength--;
+        }
+    } else if(secondLength > firstLength) {
+        while(secondLength != firstLength) {
+            headB = headB->next;
+            secondLength--;
+        }
     }
-    while(headA != headB){
-    	headA = headA->next;
-    	headB = headB->next;
+    while(headA != headB) {
+        headA = headA->next;
+        headB = headB->next;
     }
     return headA != null?headA->data:0;
 }

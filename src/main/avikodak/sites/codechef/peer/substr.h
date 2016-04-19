@@ -73,37 +73,37 @@ using namespace __gnu_cxx;
 #define SUBSTR_H_
 
 //Tested
-string convert(unsigned int userInput){
-	stringstream stream;
-	stream << userInput;
-	return stream.str();
+string convert(unsigned int userInput) {
+    stringstream stream;
+    stream << userInput;
+    return stream.str();
 }
 
 //Tested
-void countOccurence(unsigned int N,unsigned int K){
-	string needle = convert(K);
-	string hayStack;
-	for(unsigned int counter = 1;counter <= N;counter++){
-		hayStack.append(convert(counter));
-	}
-	size_t position = hayStack.find(needle);
-	unsigned int occurences = 0;
-	while(position != string::npos){
-		occurences++;
-		position = hayStack.find(needle,position+1);
-	}
-	cout << occurences << endl;
+void countOccurence(unsigned int N,unsigned int K) {
+    string needle = convert(K);
+    string hayStack;
+    for(unsigned int counter = 1; counter <= N; counter++) {
+        hayStack.append(convert(counter));
+    }
+    size_t position = hayStack.find(needle);
+    unsigned int occurences = 0;
+    while(position != string::npos) {
+        occurences++;
+        position = hayStack.find(needle,position+1);
+    }
+    cout << occurences << endl;
 }
 
 //Tested
 //Slow check java version
-void printResults(){
-	unsigned int testCases,N,K;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&N,&K);
-		countOccurence(N,K);
-	}
+void printResults() {
+    unsigned int testCases,N,K;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&N,&K);
+        countOccurence(N,K);
+    }
 }
 
 #endif /* SUBSTR_H_ */

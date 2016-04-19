@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define FLOW005_H_
 
 //Tested
-unsigned int getMinNotes(unsigned int userInput){
-	unsigned int total = 0;
-	total += userInput/100;
-	userInput %= 100;
-	total += userInput/50;
-	userInput %= 50;
-	total += userInput/10;
-	userInput %= 10;
-	total += userInput/5;
-	userInput %= 5;
-	total += userInput/2;
-	userInput %= 2;
-	total += userInput;
-	return total;
+unsigned int getMinNotes(unsigned int userInput) {
+    unsigned int total = 0;
+    total += userInput/100;
+    userInput %= 100;
+    total += userInput/50;
+    userInput %= 50;
+    total += userInput/10;
+    userInput %= 10;
+    total += userInput/5;
+    userInput %= 5;
+    total += userInput/2;
+    userInput %= 2;
+    total += userInput;
+    return total;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		cout << getMinNotes(input) << endl;
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        cout << getMinNotes(input) << endl;
+    }
 }
 
 #endif /* FLOW005_H_ */

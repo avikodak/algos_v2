@@ -72,42 +72,42 @@ using namespace __gnu_cxx;
 #define MIME2_H_
 
 //Tested
-vector<string> explode(string userInput,char delimiter = '.'){
-	vector<string> result;
-	std::stringstream  data(userInput);
-	std::string line;
-	while(std::getline(data,line,delimiter)){
-		result.push_back(line);
-	}
-	data.clear();
-	return result;
+vector<string> explode(string userInput,char delimiter = '.') {
+    vector<string> result;
+    std::stringstream  data(userInput);
+    std::string line;
+    while(std::getline(data,line,delimiter)) {
+        result.push_back(line);
+    }
+    data.clear();
+    return result;
 }
 
 //Tested
-void printResults(){
-	unsigned int typesSize,testCases;
-	cin >> typesSize >> testCases;
-	string extension,name,input;
-	map<string,string> extNameMap;
-	map<string,string>::iterator itToExtNameMap;
-	while(typesSize--){
-		cin >> extension >> name;
-		extNameMap[extension] = name;
-	}
-	while(testCases--){
-		cin >> input;
-		vector<string> tokens = explode(input);
-		if(tokens.size() > 1){
-			itToExtNameMap = extNameMap.find(tokens[tokens.size()-1]);
-			if(itToExtNameMap != extNameMap.end()){
-				cout << itToExtNameMap->second <<  endl;
-			}else{
-				cout << "unknown" << endl;
-			}
-		}else{
-			cout << "unknown" << endl;
-		}
-	}
+void printResults() {
+    unsigned int typesSize,testCases;
+    cin >> typesSize >> testCases;
+    string extension,name,input;
+    map<string,string> extNameMap;
+    map<string,string>::iterator itToExtNameMap;
+    while(typesSize--) {
+        cin >> extension >> name;
+        extNameMap[extension] = name;
+    }
+    while(testCases--) {
+        cin >> input;
+        vector<string> tokens = explode(input);
+        if(tokens.size() > 1) {
+            itToExtNameMap = extNameMap.find(tokens[tokens.size()-1]);
+            if(itToExtNameMap != extNameMap.end()) {
+                cout << itToExtNameMap->second <<  endl;
+            } else {
+                cout << "unknown" << endl;
+            }
+        } else {
+            cout << "unknown" << endl;
+        }
+    }
 }
 
 #endif /* MIME2_H_ */

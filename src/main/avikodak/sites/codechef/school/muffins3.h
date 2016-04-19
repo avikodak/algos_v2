@@ -70,21 +70,21 @@ using namespace __gnu_cxx;
 #ifndef MUFFINS3_H_
 #define MUFFINS3_H_
 
-void printCupCakes(unsigned int userInput){
-	unsigned int maxRemainder = 0;
-	for(unsigned int counter = 2;counter < userInput;counter++){
-		maxRemainder = max(maxRemainder,userInput%counter);
-	}
-	cout << userInput - maxRemainder << endl;
+void printCupCakes(unsigned int userInput) {
+    unsigned int maxRemainder = 0;
+    for(unsigned int counter = 2; counter < userInput; counter++) {
+        maxRemainder = max(maxRemainder,userInput%counter);
+    }
+    cout << userInput - maxRemainder << endl;
 }
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int input;
-	while(testCases--){
-		scanf("%u",&input);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned int input;
+    while(testCases--) {
+        scanf("%u",&input);
+    }
 }
 
 #endif /* MUFFINS3_H_ */

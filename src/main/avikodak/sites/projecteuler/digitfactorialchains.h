@@ -71,59 +71,59 @@ using namespace __gnu_cxx;
 #define DIGITFACTORIALCHAINS_H_
 
 //Tested
-unsigned long long int factorial(unsigned long long int userInput){
-	return userInput <= 1?1:userInput*factorial(userInput-1);
+unsigned long long int factorial(unsigned long long int userInput) {
+    return userInput <= 1?1:userInput*factorial(userInput-1);
 }
 
 //Tested
-map<unsigned long long int,unsigned long long int> getDigitFactorialMap(){
-	map<unsigned long long int,unsigned long long int> digitFactorialMap;
-	for(unsigned long long int counter = 0;counter < 10;counter++){
-		digitFactorialMap.insert(pair<unsigned long long int,unsigned long long int>(counter,factorial(counter)));
-	}
+map<unsigned long long int,unsigned long long int> getDigitFactorialMap() {
+    map<unsigned long long int,unsigned long long int> digitFactorialMap;
+    for(unsigned long long int counter = 0; counter < 10; counter++) {
+        digitFactorialMap.insert(pair<unsigned long long int,unsigned long long int>(counter,factorial(counter)));
+    }
 
-	return digitFactorialMap;
+    return digitFactorialMap;
 }
 
 //Tested
-unsigned long long int getNumberValue(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitFactorialMap){
-	unsigned long long int result = 0;
-	while(userInput){
-		result += digitFactorialMap.find(userInput%10)->second;
-		userInput /= 10;
-	}
-	return result;
+unsigned long long int getNumberValue(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitFactorialMap) {
+    unsigned long long int result = 0;
+    while(userInput) {
+        result += digitFactorialMap.find(userInput%10)->second;
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-bool hasReachedTargestLength(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitFactorialMap){
-	map<unsigned long long int,bool> visitedNumbers;
-	visitedNumbers.insert(pair<unsigned long long int,bool>(userInput,true));
-	unsigned long long int chainLength = 1,result;
-	while(chainLength <= 60){
-		result = getNumberValue(userInput,digitFactorialMap);
-		if(visitedNumbers.find(result) != visitedNumbers.end()){
-			break;
-		}else{
-			visitedNumbers.insert(pair<unsigned long long int,bool>(result,true));
-		}
-		chainLength++;
-		userInput = result;
-	}
-	return chainLength == 60;
+bool hasReachedTargestLength(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitFactorialMap) {
+    map<unsigned long long int,bool> visitedNumbers;
+    visitedNumbers.insert(pair<unsigned long long int,bool>(userInput,true));
+    unsigned long long int chainLength = 1,result;
+    while(chainLength <= 60) {
+        result = getNumberValue(userInput,digitFactorialMap);
+        if(visitedNumbers.find(result) != visitedNumbers.end()) {
+            break;
+        } else {
+            visitedNumbers.insert(pair<unsigned long long int,bool>(result,true));
+        }
+        chainLength++;
+        userInput = result;
+    }
+    return chainLength == 60;
 }
 
 //Tested
 //Ans : 402
-void getChainLength60(){
-	unsigned long long int total = 0;
-	map<unsigned long long int,unsigned long long int> digitFactorialMap = getDigitFactorialMap();
-	for(unsigned long long int counter = 2;counter < 1000000;counter++){
-		if(hasReachedTargestLength(counter,digitFactorialMap)){
-			total++;
-		}
-	}
-	cout << total << endl;
+void getChainLength60() {
+    unsigned long long int total = 0;
+    map<unsigned long long int,unsigned long long int> digitFactorialMap = getDigitFactorialMap();
+    for(unsigned long long int counter = 2; counter < 1000000; counter++) {
+        if(hasReachedTargestLength(counter,digitFactorialMap)) {
+            total++;
+        }
+    }
+    cout << total << endl;
 }
 
 #endif /* DIGITFACTORIALCHAINS_H_ */

@@ -72,21 +72,21 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 31875000
-void printSpecialPythagoreanTriplet(){
-	unsigned int counter;
-	for(unsigned int outerCounter = 2;outerCounter < 1000;outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < 1000;innerCounter++){
-			counter = 1000 - outerCounter - innerCounter;
-			if(counter > 0){
-				if(outerCounter*outerCounter + innerCounter * innerCounter == counter *counter){
-					cout << outerCounter * innerCounter * counter << endl;
-					return;
-				}
-			}else{
-				break;
-			}
-		}
-	}
+void printSpecialPythagoreanTriplet() {
+    unsigned int counter;
+    for(unsigned int outerCounter = 2; outerCounter < 1000; outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < 1000; innerCounter++) {
+            counter = 1000 - outerCounter - innerCounter;
+            if(counter > 0) {
+                if(outerCounter*outerCounter + innerCounter * innerCounter == counter *counter) {
+                    cout << outerCounter * innerCounter * counter << endl;
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+    }
 }
 
 #endif /* SPECIALPYTHAGOREANTRIPLET_H_ */

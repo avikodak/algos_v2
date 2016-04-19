@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: insertionsort.h 
+ *  File Name   		: insertionsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\insertionsort.h
  *  Created on			: Dec 11, 2014 :: 1:00:20 PM
  *  Author				: AVINASH
@@ -74,20 +74,20 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void insertionSortV2(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int innerCrawler,key;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		innerCrawler = outerCrawler-1;
-		key = userInput[outerCrawler];
-		while(innerCrawler >= 0 && userInput[innerCrawler] > key){
-			userInput[innerCrawler+1] = userInput[innerCrawler];
-			innerCrawler--;
-		}
-		userInput[innerCrawler+1] = key;
-	}
+void insertionSortV2(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int innerCrawler,key;
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        innerCrawler = outerCrawler-1;
+        key = userInput[outerCrawler];
+        while(innerCrawler >= 0 && userInput[innerCrawler] > key) {
+            userInput[innerCrawler+1] = userInput[innerCrawler];
+            innerCrawler--;
+        }
+        userInput[innerCrawler+1] = key;
+    }
 }
 #endif /* INSERTIONSORTV2_H_ */
 

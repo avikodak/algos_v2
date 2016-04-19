@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversebits.h 
+ *  File Name   		: reversebits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\reversebits.h
  *  Created on			: Jan 9, 2015 :: 10:13:15 AM
  *  Author				: AVINASH
@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define REVERSEBITS_H_
 
 //Tested
-unsigned int reverseBits(unsigned int userInput){
-	unsigned int reversedNumber = 0;
-	while(userInput > 0){
-		reversedNumber = (reversedNumber << 1) | (userInput & 1);
-		userInput = userInput >> 1;
-	}
-	return reversedNumber;
+unsigned int reverseBits(unsigned int userInput) {
+    unsigned int reversedNumber = 0;
+    while(userInput > 0) {
+        reversedNumber = (reversedNumber << 1) | (userInput & 1);
+        userInput = userInput >> 1;
+    }
+    return reversedNumber;
 }
 
 #endif /* REVERSEBITS_H_ */

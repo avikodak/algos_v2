@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestpairs.h 
+ *  File Name   		: closestpairs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
  *  Created on			: Feb 12, 2015 :: 4:41:37 PM
  *  Author				: AVINASH
@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define CLOSESTPAIRS_H_
 
 //Tested
-long int min(long int firstVal,long int secondVal){
-	return firstVal < secondVal?firstVal:secondVal;
+long int min(long int firstVal,long int secondVal) {
+    return firstVal < secondVal?firstVal:secondVal;
 }
 
 //Tested
-void printClosestPairs(){
-	long int size,input;
-	vector<long int> userInput;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		userInput.push_back(input);
-	}
-	stable_sort(userInput.begin(),userInput.end());
-	long int minVal = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
-	}
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		if(abs(userInput[counter+1] - userInput[counter]) == minVal){
-			printf("%ld %ld ",userInput[counter],userInput[counter+1]);
-		}
-	}
+void printClosestPairs() {
+    long int size,input;
+    vector<long int> userInput;
+    scanf("%ld",&size);
+    while(size--) {
+        scanf("%ld",&input);
+        userInput.push_back(input);
+    }
+    stable_sort(userInput.begin(),userInput.end());
+    long int minVal = INT_MAX;
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        minVal = min(minVal,abs(userInput[counter+1] - userInput[counter]));
+    }
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        if(abs(userInput[counter+1] - userInput[counter]) == minVal) {
+            printf("%ld %ld ",userInput[counter],userInput[counter+1]);
+        }
+    }
 }
 
 #endif /* CLOSESTPAIRS_H_ */

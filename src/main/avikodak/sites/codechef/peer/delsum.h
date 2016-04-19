@@ -75,25 +75,25 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_CODECHEF_PEER_DELSUM_H_
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_DELSUM_H_
 
-void solveProblem(){
-	unsigned int testCases,size,sizeToDelete;
-	long long int input,minSum;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&sizeToDelete);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end());
-		minSum = 0;
-		for(unsigned int counter = 0;counter < size-sizeToDelete;counter++){
-			minSum += userInput[counter];
-		}
-		printf("%lld\n",minSum);
-	}
+void solveProblem() {
+    unsigned int testCases,size,sizeToDelete;
+    long long int input,minSum;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&sizeToDelete);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end());
+        minSum = 0;
+        for(unsigned int counter = 0; counter < size-sizeToDelete; counter++) {
+            minSum += userInput[counter];
+        }
+        printf("%lld\n",minSum);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_DELSUM_H_ */

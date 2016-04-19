@@ -72,59 +72,59 @@ using namespace __gnu_cxx;
 #define TAPALIN_H_
 
 //Tested
-long long int getPossibilitiesForLength(long long int userInput,map<long long int,long long int> &auxSpace){
-	if(userInput <= 0){
-		return 0;
-	}
-	if(auxSpace.find(userInput) != auxSpace.end()){
-		return auxSpace.find(userInput)->second;
-	}
-	long long int result;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		if(auxSpace.find(counter) == auxSpace.end()){
-			result =  (26*auxSpace[counter-2])%MODN;
-			auxSpace.insert(pair<long long int,long long int>(counter,result));
-		}
-	}
+long long int getPossibilitiesForLength(long long int userInput,map<long long int,long long int> &auxSpace) {
+    if(userInput <= 0) {
+        return 0;
+    }
+    if(auxSpace.find(userInput) != auxSpace.end()) {
+        return auxSpace.find(userInput)->second;
+    }
+    long long int result;
+    for(long long int counter = 1; counter <= userInput; counter++) {
+        if(auxSpace.find(counter) == auxSpace.end()) {
+            result =  (26*auxSpace[counter-2])%MODN;
+            auxSpace.insert(pair<long long int,long long int>(counter,result));
+        }
+    }
 
-	return result;
+    return result;
 }
 
 //Tested
-long long int getTotalPalindromes(long long int userInput,map<long long int,long long int> &totalPalindromes,map<long long int,long long int> &auxSpace){
-	if(userInput <= 0){
-		return 0;
-	}
-	if(totalPalindromes.find(userInput) != totalPalindromes.end()){
-		return totalPalindromes.find(userInput)->second;
-	}
-	long long result;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		if(auxSpace.find(counter) == auxSpace.end()){
-			result = (getPossibilitiesForLength(counter,auxSpace) + totalPalindromes[counter-1])%MODN;
-			totalPalindromes.insert(pair<long long int,long long int>(counter,result));
-		}
-	}
-	return result;
+long long int getTotalPalindromes(long long int userInput,map<long long int,long long int> &totalPalindromes,map<long long int,long long int> &auxSpace) {
+    if(userInput <= 0) {
+        return 0;
+    }
+    if(totalPalindromes.find(userInput) != totalPalindromes.end()) {
+        return totalPalindromes.find(userInput)->second;
+    }
+    long long result;
+    for(long long int counter = 1; counter <= userInput; counter++) {
+        if(auxSpace.find(counter) == auxSpace.end()) {
+            result = (getPossibilitiesForLength(counter,auxSpace) + totalPalindromes[counter-1])%MODN;
+            totalPalindromes.insert(pair<long long int,long long int>(counter,result));
+        }
+    }
+    return result;
 }
 
 //Tested
 //Takes more time
-void printResults2(){
-	map<long long int,long long int> auxSpace,totalPalindromes;
-	auxSpace.insert(pair<long long int,long long int>(0,0));
-	auxSpace.insert(pair<long long int,long long int>(1,26));
-	auxSpace.insert(pair<long long int,long long int>(2,26));
-	totalPalindromes.insert(pair<long long int,long long int>(0,0));
-	totalPalindromes.insert(pair<long long int,long long int>(1,26));
-	totalPalindromes.insert(pair<long long int,long long int>(2,52));
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int userInput;
-	while(testCases--){
-		scanf("%lld",&userInput);
-		cout << getTotalPalindromes(userInput,totalPalindromes,auxSpace) << endl;
-	}
+void printResults2() {
+    map<long long int,long long int> auxSpace,totalPalindromes;
+    auxSpace.insert(pair<long long int,long long int>(0,0));
+    auxSpace.insert(pair<long long int,long long int>(1,26));
+    auxSpace.insert(pair<long long int,long long int>(2,26));
+    totalPalindromes.insert(pair<long long int,long long int>(0,0));
+    totalPalindromes.insert(pair<long long int,long long int>(1,26));
+    totalPalindromes.insert(pair<long long int,long long int>(2,52));
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int userInput;
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        cout << getTotalPalindromes(userInput,totalPalindromes,auxSpace) << endl;
+    }
 }
 
 

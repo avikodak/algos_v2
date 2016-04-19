@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define PATHSUMSFOURWAYS_H_
 
 //Tested
-vector<vector<unsigned int> > getMatrix(){
-	unsigned int size,input;
-	cin >> size;
-	vector<vector<unsigned int> > userInput(size);
-	for(unsigned int counter = 0;counter < size;counter++){
-		userInput[counter].assign(size,0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-			cin >> input;
-			userInput[rowCounter][columnCounter] = input;
-		}
-	}
-	return userInput;
+vector<vector<unsigned int> > getMatrix() {
+    unsigned int size,input;
+    cin >> size;
+    vector<vector<unsigned int> > userInput(size);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        userInput[counter].assign(size,0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+            cin >> input;
+            userInput[rowCounter][columnCounter] = input;
+        }
+    }
+    return userInput;
 }
 
-void getPathSumFourWays(){
-	vector<vector<unsigned int> > matrix = getMatrix();
-	int size = matrix.size();
-	for(int rowCounter = size-2;rowCounter >= 0;rowCounter--){
-		matrix[rowCounter][size-1] += matrix[rowCounter+1][size-1];
-	}
-	for(int columnCounter = size-2;columnCounter >= 0;columnCounter--){
-		matrix[size-1][columnCounter] += matrix[size-1][columnCounter+1];
-	}
-	for(int rowCounter =size-2;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = size-2;columnCounter >= 0;columnCounter--){
-			matrix[rowCounter][columnCounter] += max(matrix[rowCounter+1][columnCounter],matrix[rowCounter][columnCounter+1]);
-		}
-	}
-	cout << matrix[0][0] << endl;
+void getPathSumFourWays() {
+    vector<vector<unsigned int> > matrix = getMatrix();
+    int size = matrix.size();
+    for(int rowCounter = size-2; rowCounter >= 0; rowCounter--) {
+        matrix[rowCounter][size-1] += matrix[rowCounter+1][size-1];
+    }
+    for(int columnCounter = size-2; columnCounter >= 0; columnCounter--) {
+        matrix[size-1][columnCounter] += matrix[size-1][columnCounter+1];
+    }
+    for(int rowCounter =size-2; rowCounter >= 0; rowCounter--) {
+        for(int columnCounter = size-2; columnCounter >= 0; columnCounter--) {
+            matrix[rowCounter][columnCounter] += max(matrix[rowCounter+1][columnCounter],matrix[rowCounter][columnCounter+1]);
+        }
+    }
+    cout << matrix[0][0] << endl;
 }
 
 #endif /* PATHSUMSFOURWAYS_H_ */

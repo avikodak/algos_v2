@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define NAME2_H_
 
 //Tested
-bool isSubsequence(string x,string y){
-	unsigned int xCounter = 0,yCounter = 0;
-	while(xCounter < x.size() && yCounter < y.size()){
-		if(x[xCounter] == y[yCounter]){
-			xCounter++;
-			yCounter++;
-		}else{
-			yCounter++;
-		}
-	}
-	return xCounter >= x.size();
+bool isSubsequence(string x,string y) {
+    unsigned int xCounter = 0,yCounter = 0;
+    while(xCounter < x.size() && yCounter < y.size()) {
+        if(x[xCounter] == y[yCounter]) {
+            xCounter++;
+            yCounter++;
+        } else {
+            yCounter++;
+        }
+    }
+    return xCounter >= x.size();
 }
 
 //Tested
-void isAllowedToMarry(string x,string y){
-	printf("%s\n",isSubsequence(x,y) || isSubsequence(y,x)?"YES":"NO");
+void isAllowedToMarry(string x,string y) {
+    printf("%s\n",isSubsequence(x,y) || isSubsequence(y,x)?"YES":"NO");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string x,y;
-	while(testCases--){
-		cin >> x >> y;
-		isAllowedToMarry(x,y);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string x,y;
+    while(testCases--) {
+        cin >> x >> y;
+        isAllowedToMarry(x,y);
+    }
 }
 
 #endif /* NAME2_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: double.h 
+ *  File Name   		: double.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\double.h
  *  Created on			: Feb 9, 2015 :: 4:15:06 PM
  *  Author				: AVINASH
@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define DOUBLE_H_
 
 //Tested
-void maxDoubleString(){
-	int testCases,length;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d",&length);
-		if(length%2 == 0){
-			printf("%d\n",length);
-		}else{
-			printf("%d\n",length-1);
-		}
-	}
+void maxDoubleString() {
+    int testCases,length;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d",&length);
+        if(length%2 == 0) {
+            printf("%d\n",length);
+        } else {
+            printf("%d\n",length-1);
+        }
+    }
 }
 
 #endif /* DOUBLE_H_ */

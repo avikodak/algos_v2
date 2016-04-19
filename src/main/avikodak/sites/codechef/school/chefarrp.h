@@ -76,32 +76,32 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_CHEFARRP_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,subArrayCount,sumSubArray,productSubArray;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		subArrayCount = 0;
-		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-			sumSubArray = 0;
-			productSubArray = 1;
-			for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-				sumSubArray += userInput[innerCounter];
-				productSubArray *= userInput[innerCounter];
-				if(sumSubArray == productSubArray){
-					subArrayCount++;
-				}
-			}
-		}
-		printf("%lld\n",subArrayCount);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,subArrayCount,sumSubArray,productSubArray;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        subArrayCount = 0;
+        for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+            sumSubArray = 0;
+            productSubArray = 1;
+            for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+                sumSubArray += userInput[innerCounter];
+                productSubArray *= userInput[innerCounter];
+                if(sumSubArray == productSubArray) {
+                    subArrayCount++;
+                }
+            }
+        }
+        printf("%lld\n",subArrayCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_CHEFARRP_H_ */

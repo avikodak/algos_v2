@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cielrcpt.h 
+ *  File Name   		: cielrcpt.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cielrcpt.h
  *  Created on			: Feb 9, 2015 :: 9:56:03 AM
  *  Author				: AVINASH
@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define CIELRCPT_H_
 
 //Tested
-void minItemsMenu(){
-	int testCases;
-	scanf("%d",&testCases);
-	int counter = 2048;
-	int minItems,userInput;
-	while(testCases--){
-		scanf("%d",&userInput);
-		counter = 2048;
-		minItems = 0;
-		while(userInput > 0){
-			minItems += userInput/counter;
-			userInput = userInput%counter;
-			counter >> 1;
-		}
-		printf("%d\n",minItems);
-	}
+void minItemsMenu() {
+    int testCases;
+    scanf("%d",&testCases);
+    int counter = 2048;
+    int minItems,userInput;
+    while(testCases--) {
+        scanf("%d",&userInput);
+        counter = 2048;
+        minItems = 0;
+        while(userInput > 0) {
+            minItems += userInput/counter;
+            userInput = userInput%counter;
+            counter >> 1;
+        }
+        printf("%d\n",minItems);
+    }
 }
 
 #endif /* CIELRCPT_H_ */

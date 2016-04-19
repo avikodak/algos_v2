@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_LOCCOMPETITIVEPROGRAMMINGMARATHON_CHOCOLAT_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int m,n;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&m,&n);
-		if(m == n){
-			printf("No Winner\n");
-		}else{
-			if(m > n){
-				printf("Bipin ");
-			}else{
-				printf("Balaji ");
-			}
-			printf("%lld\n",abs(m-n));
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int m,n;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&m,&n);
+        if(m == n) {
+            printf("No Winner\n");
+        } else {
+            if(m > n) {
+                printf("Bipin ");
+            } else {
+                printf("Balaji ");
+            }
+            printf("%lld\n",abs(m-n));
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_LOCCOMPETITIVEPROGRAMMINGMARATHON_CHOCOLAT_H_ */

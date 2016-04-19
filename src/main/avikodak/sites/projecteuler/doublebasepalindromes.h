@@ -71,61 +71,61 @@ using namespace __gnu_cxx;
 #define DOUBLEBASEPALINDROMES_H_
 
 //Tested
-bool isPalindrome(unsigned int userInput){
-	unsigned int revNumber = 0;
-	while(userInput){
-		revNumber *= 10;
-		revNumber += (userInput%10);
-		userInput /= 10;
-	}
-	return revNumber == userInput;
+bool isPalindrome(unsigned int userInput) {
+    unsigned int revNumber = 0;
+    while(userInput) {
+        revNumber *= 10;
+        revNumber += (userInput%10);
+        userInput /= 10;
+    }
+    return revNumber == userInput;
 }
 
 //Tested
-bool isPalindrome(vector<bool> userInput){
-	unsigned int frontCrawler =0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		if(userInput[frontCrawler] != userInput[rearCrawler]){
-			return false;
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	return true;
+bool isPalindrome(vector<bool> userInput) {
+    unsigned int frontCrawler =0,rearCrawler = userInput.size()-1;
+    while(frontCrawler < rearCrawler) {
+        if(userInput[frontCrawler] != userInput[rearCrawler]) {
+            return false;
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    return true;
 }
 
 //Tested
-void convertToBinary(unsigned int userInput,vector<bool> &binary){
-	if(userInput == 1 || userInput == 0){
-		binary.push_back(userInput == 1);
-		return;
-	}
-	convertToBinary(userInput/2,binary);
-	binary.push_back(userInput%2==1);
+void convertToBinary(unsigned int userInput,vector<bool> &binary) {
+    if(userInput == 1 || userInput == 0) {
+        binary.push_back(userInput == 1);
+        return;
+    }
+    convertToBinary(userInput/2,binary);
+    binary.push_back(userInput%2==1);
 }
 
 //Tested
-vector<bool> convertToBinary(unsigned int userInput){
-	vector<bool> binaryRep;
-	convertToBinary(userInput,binaryRep);
+vector<bool> convertToBinary(unsigned int userInput) {
+    vector<bool> binaryRep;
+    convertToBinary(userInput,binaryRep);
 }
 
 //Tested
-bool isPalindromeBinary(unsigned int userInput){
-	vector<bool> binaryRep = convertToBinary(userInput);
-	return isPalindrome(binaryRep);
+bool isPalindromeBinary(unsigned int userInput) {
+    vector<bool> binaryRep = convertToBinary(userInput);
+    return isPalindrome(binaryRep);
 }
 
 //Tested
 //Ans : 872187
-void printSumOfDoubleBasePalindromes(){
-	unsigned long long int sum = 0;
-	for(unsigned int counter = 0;counter < 1000000;counter++){
-		if(isPalindrome(counter) && isPalindromeBinary(counter)){
-			sum += counter;
-		}
-	}
-	cout << sum << endl;
+void printSumOfDoubleBasePalindromes() {
+    unsigned long long int sum = 0;
+    for(unsigned int counter = 0; counter < 1000000; counter++) {
+        if(isPalindrome(counter) && isPalindromeBinary(counter)) {
+            sum += counter;
+        }
+    }
+    cout << sum << endl;
 }
 
 #endif /* DOUBLEBASEPALINDROMES_H_ */

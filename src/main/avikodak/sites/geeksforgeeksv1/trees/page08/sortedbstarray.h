@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortedbstarray.h 
+ *  File Name   		: sortedbstarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\sortedbstarray.h
  *  Created on			: Oct 20, 2014 :: 3:14:48 PM
  *  Author				: AVINASH
@@ -72,13 +72,13 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void sortedBSTArray(vector<int> userInput,unsigned int index){
-	if(index >= userInput.size()){
-		return;
-	}
-	sortedBSTArray(userInput,2*index+1);
-	printf("%d\t",userInput[index]);
-	sortedBSTArray(userInput,2*index+2);
+void sortedBSTArray(vector<int> userInput,unsigned int index) {
+    if(index >= userInput.size()) {
+        return;
+    }
+    sortedBSTArray(userInput,2*index+1);
+    printf("%d\t",userInput[index]);
+    sortedBSTArray(userInput,2*index+2);
 }
 
 #endif /* SORTEDBSTARRAY_H_ */

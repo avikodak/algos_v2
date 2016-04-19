@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphstronglyconnected.h 
+ *  File Name   		: isgraphstronglyconnected.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture30\isgraphstronglyconnected.h
  *  Created on			: Dec 9, 2014 :: 11:22:18 AM
  *  Author				: AVINASH
@@ -73,33 +73,33 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int isGraphStronglyConnected(vector<vector<int> > adjacencyList,bool &flag,int sourceVertex = 0){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	static vector<int> predecessor(adjacencyList.size());
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
-	int minArrivalTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] == INT_MIN){
-			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			minArrivalTime = min(minArrivalTime,isGraphStronglyConnected(adjacencyList,flag,adjacencyList[sourceVertex][counter]));
-			if(!flag){
-				return INT_MAX;
-			}
-		}else{
-			if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] > arrivalDepartureTimes[sourceVertex]){
-				if(adjacencyList[sourceVertex][counter] != predecessor[sourceVertex]){
-					minArrivalTime = min(minArrivalTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
-				}
-			}
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
-	flag = sourceVertex == 0?true:minArrivalTime < arrivalDepartureTimes[sourceVertex]->arrivalTimes;
-	return minArrivalTime;
+int isGraphStronglyConnected(vector<vector<int> > adjacencyList,bool &flag,int sourceVertex = 0) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    static vector<int> predecessor(adjacencyList.size());
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+    int minArrivalTime = arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] == INT_MIN) {
+            predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+            minArrivalTime = min(minArrivalTime,isGraphStronglyConnected(adjacencyList,flag,adjacencyList[sourceVertex][counter]));
+            if(!flag) {
+                return INT_MAX;
+            }
+        } else {
+            if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]] > arrivalDepartureTimes[sourceVertex]) {
+                if(adjacencyList[sourceVertex][counter] != predecessor[sourceVertex]) {
+                    minArrivalTime = min(minArrivalTime,arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes);
+                }
+            }
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+    flag = sourceVertex == 0?true:minArrivalTime < arrivalDepartureTimes[sourceVertex]->arrivalTimes;
+    return minArrivalTime;
 }
 
 /****************************************************************************************************************************************************/

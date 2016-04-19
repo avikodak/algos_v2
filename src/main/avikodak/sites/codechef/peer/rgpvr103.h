@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 #define RGPVR103_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned int totalSticks,temp;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&totalSticks);
-		temp = (totalSticks/2);
-		printf("%u\n",(temp/2)*(temp - (temp/2)));
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned int totalSticks,temp;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&totalSticks);
+        temp = (totalSticks/2);
+        printf("%u\n",(temp/2)*(temp - (temp/2)));
+    }
 }
 
 #endif /* RGPVR103_H_ */

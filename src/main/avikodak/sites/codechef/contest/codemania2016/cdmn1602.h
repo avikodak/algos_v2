@@ -75,48 +75,48 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CODEMANIA2016_CDMN1602_H_
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CODEMANIA2016_CDMN1602_H_
 
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,mValue,total;
-	vector<long long int> fUserInput,sUserInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		fUserInput.clear();
-		sUserInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			fUserInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			sUserInput.push_back(input);
-		}
-		scanf("%lld",&mValue);
-		sort(sUserInput.begin(),sUserInput.end());
-		total = 0;
-		if(mValue != 0){
-			for(unsigned int counter = 0;counter < size;counter++){
-				if(fUserInput[counter] != 0 && ((float)mValue/(float)fUserInput[counter] == mValue/fUserInput[counter])){
-					if(binary_search(sUserInput.begin(),sUserInput.end(),mValue/fUserInput[counter])){
-						total++;
-					}
-				}
-			}
-		}else{
-			long long int zerosCount;
-			for(unsigned int counter = 0;counter < size;counter++){
-				if(fUserInput[counter] == 0){
-					zerosCount++;
-				}
-				if(sUserInput[counter] == 0){
-					zerosCount++;
-				}
-			}
-			total += zerosCount * size;
-		}
-		printf("%lld\n",total);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,mValue,total;
+    vector<long long int> fUserInput,sUserInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        fUserInput.clear();
+        sUserInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            fUserInput.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            sUserInput.push_back(input);
+        }
+        scanf("%lld",&mValue);
+        sort(sUserInput.begin(),sUserInput.end());
+        total = 0;
+        if(mValue != 0) {
+            for(unsigned int counter = 0; counter < size; counter++) {
+                if(fUserInput[counter] != 0 && ((float)mValue/(float)fUserInput[counter] == mValue/fUserInput[counter])) {
+                    if(binary_search(sUserInput.begin(),sUserInput.end(),mValue/fUserInput[counter])) {
+                        total++;
+                    }
+                }
+            }
+        } else {
+            long long int zerosCount;
+            for(unsigned int counter = 0; counter < size; counter++) {
+                if(fUserInput[counter] == 0) {
+                    zerosCount++;
+                }
+                if(sUserInput[counter] == 0) {
+                    zerosCount++;
+                }
+            }
+            total += zerosCount * size;
+        }
+        printf("%lld\n",total);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CODEMANIA2016_CDMN1602_H_ */

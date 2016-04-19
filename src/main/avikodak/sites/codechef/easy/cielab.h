@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cielab.h 
+ *  File Name   		: cielab.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cielab.h
  *  Created on			: Feb 9, 2015 :: 9:02:37 AM
  *  Author				: AVINASH
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define CIELAB_H_
 
 //Tested
-void printWrongSub(){
-	int firstUserInput,secondUserInput;
-	scanf("%d %d",&firstUserInput,&secondUserInput);
-	int difference = firstUserInput - secondUserInput;
-	if(difference%10 == 1){
-		difference /= 10;
-		difference = difference * 10 + 2;
-	}else{
-		difference /= 10;
-		difference = difference * 10 + 1;
-	}
-	printf("%d",difference);
+void printWrongSub() {
+    int firstUserInput,secondUserInput;
+    scanf("%d %d",&firstUserInput,&secondUserInput);
+    int difference = firstUserInput - secondUserInput;
+    if(difference%10 == 1) {
+        difference /= 10;
+        difference = difference * 10 + 2;
+    } else {
+        difference /= 10;
+        difference = difference * 10 + 1;
+    }
+    printf("%d",difference);
 }
 
 #endif /* CIELAB_H_ */

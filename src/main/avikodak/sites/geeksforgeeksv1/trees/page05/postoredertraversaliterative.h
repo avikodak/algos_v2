@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: postoredertraversaliterative.h 
+ *  File Name   		: postoredertraversaliterative.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\postoredertraversaliterative.h
  *  Created on			: Nov 2, 2014 :: 5:20:55 AM
  *  Author				: AVINASH
@@ -72,58 +72,58 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void tPostOrderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(currentNode != null || !auxSpace.empty()){
-		if(currentNode != null){
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			if(!auxSpace.empty() && auxSpace.top() == currentNode->right){
-				auxSpace.pop();
-				auxSpace.push(currentNode);
-				currentNode = currentNode->right;
-			}else{
-				printf("%d\t",currentNode->value);
-				currentNode = null;
-			}
-		}
-	}
+void tPostOrderTraversalIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(currentNode != null || !auxSpace.empty()) {
+        if(currentNode != null) {
+            if(currentNode->right != null) {
+                auxSpace.push(currentNode->right);
+            }
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            if(!auxSpace.empty() && auxSpace.top() == currentNode->right) {
+                auxSpace.pop();
+                auxSpace.push(currentNode);
+                currentNode = currentNode->right;
+            } else {
+                printf("%d\t",currentNode->value);
+                currentNode = null;
+            }
+        }
+    }
 }
 
 //Tested
-void tPostOrderTraversalIterativeV2(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(currentNode != null || !auxSpace.empty()){
-		while(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->right == null){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-			while(!auxSpace.empty() && auxSpace.top()->right == currentNode){
-				currentNode = auxSpace.top();
-				printf("%d\t",currentNode->value);
-				auxSpace.pop();
-			}
-		}
-		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
-	}
+void tPostOrderTraversalIterativeV2(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(currentNode != null || !auxSpace.empty()) {
+        while(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        }
+        if(!auxSpace.empty() && auxSpace.top()->right == null) {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            printf("%d\t",currentNode->value);
+            while(!auxSpace.empty() && auxSpace.top()->right == currentNode) {
+                currentNode = auxSpace.top();
+                printf("%d\t",currentNode->value);
+                auxSpace.pop();
+            }
+        }
+        currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+    }
 }
 
 #endif /* POSTOREDERTRAVERSALITERATIVE_H_ */

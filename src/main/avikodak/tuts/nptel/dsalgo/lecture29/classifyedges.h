@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: classifyedges.h 
+ *  File Name   		: classifyedges.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture29\classifyedges.h
  *  Created on			: Dec 5, 2014 :: 12:03:06 PM
  *  Author				: AVINASH
@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setEdgeTypesInDFS(vector<vector<int> > adjacencyList,int sourceVertex,vector<vector<edge *> > &edgeTypes){
-	if(adjacencyList.size() == 0 || sourceVertex  >= adjacencyList.size()){
-		return;
-	}
-	static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	static int timeCounter = -1;
-	static vector<int> predecessor(adjacencyList.size());
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN){
+void setEdgeTypesInDFS(vector<vector<int> > adjacencyList,int sourceVertex,vector<vector<edge *> > &edgeTypes) {
+    if(adjacencyList.size() == 0 || sourceVertex  >= adjacencyList.size()) {
+        return;
+    }
+    static vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    static int timeCounter = -1;
+    static vector<int> predecessor(adjacencyList.size());
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN) {
 
-		}else{
+        } else {
 
-		}
-	}
-	return;
+        }
+    }
+    return;
 }
 
-vector<vector<edge *> > classifyEdgesInEdges(vector<vector<int> > adjacencyList,int sourceVertex){
-	vector<vector<edge *> > edgeTypes;
-	if(adjacencyList.size() == 0){
-		return edgeTypes;
-	}
-	setEdgeTypesInDFS(adjacencyList,sourceVertex,edgeTypes);
-	return edgeTypes;
+vector<vector<edge *> > classifyEdgesInEdges(vector<vector<int> > adjacencyList,int sourceVertex) {
+    vector<vector<edge *> > edgeTypes;
+    if(adjacencyList.size() == 0) {
+        return edgeTypes;
+    }
+    setEdgeTypesInDFS(adjacencyList,sourceVertex,edgeTypes);
+    return edgeTypes;
 }
 
 #endif /* CLASSIFYEDGES_H_ */

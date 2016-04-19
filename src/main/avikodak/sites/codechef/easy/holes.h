@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: holes.h 
+ *  File Name   		: holes.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\holes.h
  *  Created on			: Feb 3, 2015 :: 12:36:52 PM
  *  Author				: AVINASH
@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define HOLES_H_
 
 //Tested
-int countHoles(char *userInput){
-	int counter = 0;
-	while(userInput[0] != '\0'){
-		switch (userInput[0]) {
-			case 'A':
-			case 'D':
-			case 'O':
-			case 'P':
-			case 'R':
-			case 'Q':
-				counter++;
-				break;
-			case 'B':
-				counter+=2;
-				break;
-		}
-	}
-	return counter;
+int countHoles(char *userInput) {
+    int counter = 0;
+    while(userInput[0] != '\0') {
+        switch (userInput[0]) {
+        case 'A':
+        case 'D':
+        case 'O':
+        case 'P':
+        case 'R':
+        case 'Q':
+            counter++;
+            break;
+        case 'B':
+            counter+=2;
+            break;
+        }
+    }
+    return counter;
 }
 
 #endif /* HOLES_H_ */

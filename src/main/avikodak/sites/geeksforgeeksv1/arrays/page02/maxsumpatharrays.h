@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumpatharrays.h 
+ *  File Name   		: maxsumpatharrays.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\maxsumpatharrays.h
  *  Created on			: Jan 5, 2015 :: 11:38:44 PM
  *  Author				: AVINASH
@@ -74,34 +74,34 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxSumPathArrays(vector<int> firstSortedInput,vector<int> secondSortedInput){
-	if(firstSortedInput.size() == 0 && secondSortedInput.size()){
-		return 0;
-	}
-	int maxSum = 0,maxFirstArraySum = 0,maxSecondArraySum = 0;
-	unsigned int firstCrawler = 0,secondCrawler = 0;
-	while(firstCrawler < firstSortedInput.size() && secondCrawler < secondSortedInput.size()){
-		if(firstSortedInput[firstCrawler] == secondSortedInput[secondCrawler]){
-			maxSum += max(maxFirstArraySum,maxSecondArraySum);
-			maxFirstArraySum = 0;
-			maxSecondArraySum = 0;
-			while(firstCrawler < firstSortedInput.size() && secondCrawler < secondSortedInput.size() && firstSortedInput[firstCrawler] == secondSortedInput[secondCrawler]){
-				maxSum += firstSortedInput[firstCrawler++];
-				secondCrawler++;
-			}
-		}else if(firstSortedInput[firstCrawler] < secondSortedInput[secondCrawler]){
-			maxFirstArraySum += firstSortedInput[firstCrawler++];
-		}else{
-			maxSecondArraySum += secondSortedInput[secondCrawler++];
-		}
-	}
-	while(firstCrawler < firstSortedInput.size()){
-		maxFirstArraySum += firstSortedInput[firstCrawler++];
-	}
-	while(secondCrawler < secondSortedInput.size()){
-		maxSecondArraySum += secondSortedInput[secondCrawler++];
-	}
-	return maxSum + max(maxFirstArraySum,maxSecondArraySum);;
+int maxSumPathArrays(vector<int> firstSortedInput,vector<int> secondSortedInput) {
+    if(firstSortedInput.size() == 0 && secondSortedInput.size()) {
+        return 0;
+    }
+    int maxSum = 0,maxFirstArraySum = 0,maxSecondArraySum = 0;
+    unsigned int firstCrawler = 0,secondCrawler = 0;
+    while(firstCrawler < firstSortedInput.size() && secondCrawler < secondSortedInput.size()) {
+        if(firstSortedInput[firstCrawler] == secondSortedInput[secondCrawler]) {
+            maxSum += max(maxFirstArraySum,maxSecondArraySum);
+            maxFirstArraySum = 0;
+            maxSecondArraySum = 0;
+            while(firstCrawler < firstSortedInput.size() && secondCrawler < secondSortedInput.size() && firstSortedInput[firstCrawler] == secondSortedInput[secondCrawler]) {
+                maxSum += firstSortedInput[firstCrawler++];
+                secondCrawler++;
+            }
+        } else if(firstSortedInput[firstCrawler] < secondSortedInput[secondCrawler]) {
+            maxFirstArraySum += firstSortedInput[firstCrawler++];
+        } else {
+            maxSecondArraySum += secondSortedInput[secondCrawler++];
+        }
+    }
+    while(firstCrawler < firstSortedInput.size()) {
+        maxFirstArraySum += firstSortedInput[firstCrawler++];
+    }
+    while(secondCrawler < secondSortedInput.size()) {
+        maxSecondArraySum += secondSortedInput[secondCrawler++];
+    }
+    return maxSum + max(maxFirstArraySum,maxSecondArraySum);;
 }
 
 #endif /* MAXSUMPATHARRAYS_H_ */

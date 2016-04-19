@@ -76,29 +76,29 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SEARCHINGFORKEY_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size,input,key;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u %u",&size,&key);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		bool flag = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(key == userInput[counter]){
-				printf("%u\n",counter+1);
-				flag = true;
-				break;
-			}
-		}
-		if(!flag){
-			printf("-1\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size,input,key;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u %u",&size,&key);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        bool flag = false;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(key == userInput[counter]) {
+                printf("%u\n",counter+1);
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SEARCHINGFORKEY_H_ */

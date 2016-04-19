@@ -70,27 +70,27 @@ using namespace __gnu_cxx;
 #ifndef TOPFOX_H_
 #define TOPFOX_H_
 
-class TopFox{
+class TopFox {
 public:
-	int possibleHandles(string familyName,string givenName){
-		set<string> handles;
-		vector<string> familyNameSubs,givenNameSubs;
-		for(unsigned int counter = 0;counter < familyName.size();counter++){
-			familyNameSubs.push_back(familyName.substr(0,counter+1));
-		}
-		for(unsigned int counter = 0;counter < givenName.size();counter++){
-			givenNameSubs.push_back(givenName.substr(0,counter+1));
-		}
-		for(unsigned int outerCounter = 0;outerCounter < familyNameSubs.size();outerCounter++){
-			for(unsigned int innerCounter = 0;innerCounter < givenNameSubs.size();innerCounter++){
-				string result;
-				result.append(familyNameSubs[outerCounter].begin(),familyNameSubs[outerCounter].end());
-				result.append(givenNameSubs[innerCounter].begin(),givenNameSubs[innerCounter].end());
-				handles.insert(result);
-			}
-		}
-		return (int)handles.size();
-	}
+    int possibleHandles(string familyName,string givenName) {
+        set<string> handles;
+        vector<string> familyNameSubs,givenNameSubs;
+        for(unsigned int counter = 0; counter < familyName.size(); counter++) {
+            familyNameSubs.push_back(familyName.substr(0,counter+1));
+        }
+        for(unsigned int counter = 0; counter < givenName.size(); counter++) {
+            givenNameSubs.push_back(givenName.substr(0,counter+1));
+        }
+        for(unsigned int outerCounter = 0; outerCounter < familyNameSubs.size(); outerCounter++) {
+            for(unsigned int innerCounter = 0; innerCounter < givenNameSubs.size(); innerCounter++) {
+                string result;
+                result.append(familyNameSubs[outerCounter].begin(),familyNameSubs[outerCounter].end());
+                result.append(givenNameSubs[innerCounter].begin(),givenNameSubs[innerCounter].end());
+                handles.insert(result);
+            }
+        }
+        return (int)handles.size();
+    }
 };
 
 #endif /* TOPFOX_H_ */

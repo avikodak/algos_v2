@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 #define NOPC1_H_
 
 //Tested
-void printResults(){
-	string firstUserinput,secondUserinput;
-	getline(cin,firstUserinput);
-	getline(cin,secondUserinput);
-	if(firstUserinput.find(secondUserinput) == string::npos){
-		printf("N\n");
-	}else{
-		printf("Y\n");
-	}
+void printResults() {
+    string firstUserinput,secondUserinput;
+    getline(cin,firstUserinput);
+    getline(cin,secondUserinput);
+    if(firstUserinput.find(secondUserinput) == string::npos) {
+        printf("N\n");
+    } else {
+        printf("Y\n");
+    }
 }
 
 #endif /* NOPC1_H_ */

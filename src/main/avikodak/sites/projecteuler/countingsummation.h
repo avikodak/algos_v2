@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define COUNTINGSUMMATION_H_
 
 //Tested
-int countingSummationsMain(int userInput,int counter){
-	if(userInput == 0){
-		return 1;
-	}
-	if(userInput < 0 || (userInput > 0 && counter <= 0)){
-		return 0;
-	}
-	return countingSummationsMain(userInput,counter-1) + countingSummationsMain(userInput-counter,counter);
+int countingSummationsMain(int userInput,int counter) {
+    if(userInput == 0) {
+        return 1;
+    }
+    if(userInput < 0 || (userInput > 0 && counter <= 0)) {
+        return 0;
+    }
+    return countingSummationsMain(userInput,counter-1) + countingSummationsMain(userInput-counter,counter);
 }
 
 //Tested
 //Ans : 190569291
-void printTotalWays(unsigned int value){
-	cout << countingSummationsMain(value,value-1);
+void printTotalWays(unsigned int value) {
+    cout << countingSummationsMain(value,value-1);
 }
 
 #endif /* COUNTINGSUMMATION_H_ */

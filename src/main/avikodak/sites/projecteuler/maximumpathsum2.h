@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 7273
-void getMaximumPathSum(){
-	unsigned int rows,input;
-	cin >> rows;
-	vector<vector<unsigned int> > userInput(rows);
-	for(unsigned int rowCounter = 1;rowCounter <= rows;rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter <= rowCounter;columnCounter++){
-			cin >> input;
-			userInput[rowCounter-1].push_back(input);
-		}
-	}
-	for(int rowCounter = userInput.size()-2;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = userInput[rowCounter].size()-1;columnCounter >= 0;columnCounter--){
-			userInput[rowCounter][columnCounter] += max(userInput[rowCounter+1][columnCounter],userInput[rowCounter+1][columnCounter+1]);
-		}
-	}
-	cout << userInput[0][0] << endl;
+void getMaximumPathSum() {
+    unsigned int rows,input;
+    cin >> rows;
+    vector<vector<unsigned int> > userInput(rows);
+    for(unsigned int rowCounter = 1; rowCounter <= rows; rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter <= rowCounter; columnCounter++) {
+            cin >> input;
+            userInput[rowCounter-1].push_back(input);
+        }
+    }
+    for(int rowCounter = userInput.size()-2; rowCounter >= 0; rowCounter--) {
+        for(int columnCounter = userInput[rowCounter].size()-1; columnCounter >= 0; columnCounter--) {
+            userInput[rowCounter][columnCounter] += max(userInput[rowCounter+1][columnCounter],userInput[rowCounter+1][columnCounter+1]);
+        }
+    }
+    cout << userInput[0][0] << endl;
 }
 
 #endif /* MAXIMUMPATHSUM2_H_ */

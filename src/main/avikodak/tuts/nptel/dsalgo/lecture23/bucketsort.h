@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bucketsort.h 
+ *  File Name   		: bucketsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\bucketsort.h
  *  Created on			: Dec 2, 2014 :: 12:19:58 PM
  *  Author				: AVINASH
@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void bucketSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	map<int,unsigned int> frequencyMap;
-	map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()){
-			itToFrequencyMap->second += 1;
-		}else{
-			frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
-		}
-	}
-	unsigned int counter = 0;
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		while(itToFrequencyMap->second--){
-			userInput[counter++] = itToFrequencyMap->first;
-		}
-	}
+void bucketSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    map<int,unsigned int> frequencyMap;
+    map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequencyMap = frequencyMap.find(userInput[counter])) != frequencyMap.end()) {
+            itToFrequencyMap->second += 1;
+        } else {
+            frequencyMap.insert(pair<int,unsigned int>(userInput[counter],1));
+        }
+    }
+    unsigned int counter = 0;
+    for(itToFrequencyMap = frequencyMap.begin(); itToFrequencyMap != frequencyMap.end(); itToFrequencyMap++) {
+        while(itToFrequencyMap->second--) {
+            userInput[counter++] = itToFrequencyMap->first;
+        }
+    }
 }
 
 #endif /* BUCKETSORT_H_ */

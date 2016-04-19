@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define LARGESTPERMUTATION_H_
 
 //Tested
-void largestPermutation(){
-	unsigned int inputSize,noOfSwaps,input;
-	scanf("%u %u",&inputSize,&noOfSwaps);
-	vector<unsigned int> userInput;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	unsigned int maxElementIndex,innerCounter,swapCount = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size() && swapCount < noOfSwaps;outerCounter++){
-		innerCounter = outerCounter;
-		maxElementIndex = outerCounter;
-		for(;innerCounter < userInput.size();innerCounter++){
-			if(userInput[maxElementIndex] < userInput[innerCounter]){
-				maxElementIndex = innerCounter;
-			}
-		}
-		if(maxElementIndex != outerCounter){
-			swap(userInput[outerCounter],userInput[maxElementIndex]);
-			swapCount++;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%u ",userInput[counter]);
-	}
+void largestPermutation() {
+    unsigned int inputSize,noOfSwaps,input;
+    scanf("%u %u",&inputSize,&noOfSwaps);
+    vector<unsigned int> userInput;
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    unsigned int maxElementIndex,innerCounter,swapCount = 0;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size() && swapCount < noOfSwaps; outerCounter++) {
+        innerCounter = outerCounter;
+        maxElementIndex = outerCounter;
+        for(; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[maxElementIndex] < userInput[innerCounter]) {
+                maxElementIndex = innerCounter;
+            }
+        }
+        if(maxElementIndex != outerCounter) {
+            swap(userInput[outerCounter],userInput[maxElementIndex]);
+            swapCount++;
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%u ",userInput[counter]);
+    }
 }
 
 #endif /* LARGESTPERMUTATION_H_ */

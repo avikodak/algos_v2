@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 137846528820
-unsigned long long int getTotalLatticePaths(unsigned int size){
-	vector<vector<unsigned long long int> > matrix(size+1);
-	for(unsigned int counter = 0;counter < matrix.size();counter++){
-		matrix[counter].assign(size+1,0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < size+1;rowCounter++){
-		matrix[rowCounter][size] = 1;
-	}
-	for(unsigned int columnCounter = 0;columnCounter < size+1;columnCounter++){
-		matrix[size][columnCounter] = 1;
-	}
-	matrix[size][size] = 0;
-	for(int rowCounter = size-1;rowCounter >= 0;rowCounter--){
-		for(int columnCounter = size-1;columnCounter >= 0;columnCounter--){
-			matrix[rowCounter][columnCounter] = matrix[rowCounter][columnCounter+1] + matrix[rowCounter+1][columnCounter];
-		}
-	}
-	cout << matrix[0][0] << endl;
+unsigned long long int getTotalLatticePaths(unsigned int size) {
+    vector<vector<unsigned long long int> > matrix(size+1);
+    for(unsigned int counter = 0; counter < matrix.size(); counter++) {
+        matrix[counter].assign(size+1,0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < size+1; rowCounter++) {
+        matrix[rowCounter][size] = 1;
+    }
+    for(unsigned int columnCounter = 0; columnCounter < size+1; columnCounter++) {
+        matrix[size][columnCounter] = 1;
+    }
+    matrix[size][size] = 0;
+    for(int rowCounter = size-1; rowCounter >= 0; rowCounter--) {
+        for(int columnCounter = size-1; columnCounter >= 0; columnCounter--) {
+            matrix[rowCounter][columnCounter] = matrix[rowCounter][columnCounter+1] + matrix[rowCounter+1][columnCounter];
+        }
+    }
+    cout << matrix[0][0] << endl;
 }
 
 #endif /* LATTICEPATHS_H_ */

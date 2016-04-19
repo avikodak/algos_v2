@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 //Tested
 class Palindromize2 {
 public:
-	string minChanges(string userInput){
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				if(userInput[frontCrawler] > userInput[rearCrawler]){
-					userInput[frontCrawler] = userInput[rearCrawler];
-				}else{
-					userInput[rearCrawler] = userInput[frontCrawler];
-				}
-			}
-			frontCrawler++;
-			rearCrawler--;
-		}
-		return userInput;
-	}
+    string minChanges(string userInput) {
+        unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+        while(frontCrawler < rearCrawler) {
+            if(userInput[frontCrawler] != userInput[rearCrawler]) {
+                if(userInput[frontCrawler] > userInput[rearCrawler]) {
+                    userInput[frontCrawler] = userInput[rearCrawler];
+                } else {
+                    userInput[rearCrawler] = userInput[frontCrawler];
+                }
+            }
+            frontCrawler++;
+            rearCrawler--;
+        }
+        return userInput;
+    }
 };
 
 #endif /* PALINDROMIZE2_H_ */

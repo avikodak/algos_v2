@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rotatearray.h 
+ *  File Name   		: rotatearray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearray.h
  *  Created on			: Nov 25, 2014 :: 7:08:55 PM
  *  Author				: AVINASH
@@ -72,41 +72,41 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy){
-	if(userInput.size() == 0){
-		return;
-	}
-	vector<int> auxSpace;
-	unsigned int counter;
-	for(counter = 0;counter < rotateBy;counter++){
-		auxSpace.push_back(userInput[counter]);
-	}
-	int fillCounter = -1;
-	while(counter < userInput.size()){
-		userInput[++fillCounter] = userInput[counter++];
-	}
-	for(counter = 0;counter < auxSpace.size();counter++){
-		userInput[++fillCounter] = auxSpace[counter];
-	}
+void rotateArrayAuxspace(vector<int> &userInput,unsigned int rotateBy) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    vector<int> auxSpace;
+    unsigned int counter;
+    for(counter = 0; counter < rotateBy; counter++) {
+        auxSpace.push_back(userInput[counter]);
+    }
+    int fillCounter = -1;
+    while(counter < userInput.size()) {
+        userInput[++fillCounter] = userInput[counter++];
+    }
+    for(counter = 0; counter < auxSpace.size(); counter++) {
+        userInput[++fillCounter] = auxSpace[counter];
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rotateArrayByOne(vector<int> &userInput){
-	int temp = userInput[0];
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		userInput[counter] = userInput[counter+1];
-	}
-	userInput[userInput.size()-1] = temp;
+void rotateArrayByOne(vector<int> &userInput) {
+    int temp = userInput[0];
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        userInput[counter] = userInput[counter+1];
+    }
+    userInput[userInput.size()-1] = temp;
 }
 
 //Tested
-void rotateArrayON2(vector<int> &userInput,unsigned rotateBy){
-	while(rotateBy--){
-		rotateArrayByOne(userInput);
-	}
+void rotateArrayON2(vector<int> &userInput,unsigned rotateBy) {
+    while(rotateBy--) {
+        rotateArrayByOne(userInput);
+    }
 }
 
 #endif /* ROTATEARRAY_H_ */

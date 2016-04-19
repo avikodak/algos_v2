@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define LARGESTPRIMEFACTOR_H_
 
 //Tested
-long long int max(long int firstInput,long long  int secondInput){
-	return firstInput > secondInput?firstInput:secondInput;
+long long int max(long int firstInput,long long  int secondInput) {
+    return firstInput > secondInput?firstInput:secondInput;
 }
 
 //Tested
 //Ans : 6857
-void printLargestPrimeFactor(long long int userInput){
-	long long int squareRoot = sqrtl(userInput),largestDivisor = 0;
-	bool flag = true;
-	while(flag){
-		flag = false;
-		while(!(userInput&1)){
-			largestDivisor = max(largestDivisor,2);
-			flag = true;
-			userInput /= 2;
-		}
-		for(long long int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				largestDivisor = max(counter,largestDivisor);
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag){
-			largestDivisor = max(largestDivisor,userInput);
-		}
-	}
-	cout << largestDivisor;
+void printLargestPrimeFactor(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput),largestDivisor = 0;
+    bool flag = true;
+    while(flag) {
+        flag = false;
+        while(!(userInput&1)) {
+            largestDivisor = max(largestDivisor,2);
+            flag = true;
+            userInput /= 2;
+        }
+        for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                largestDivisor = max(counter,largestDivisor);
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag) {
+            largestDivisor = max(largestDivisor,userInput);
+        }
+    }
+    cout << largestDivisor;
 }
 
 #endif /* LARGESTPRIMEFACTOR_H_ */

@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 //Locally Tested
 class TournamentsAmbiguityNumber {
 public:
-	int scrutinizeTable(vector<string> table){
-		int totalTriplets = 0;
-		for(unsigned int counter = 0;counter < table.size()-2;counter++){
-			if(table[counter][counter+1] == '1' && table[counter+1][counter+2] == '1'&& table[counter+2][counter] == '1'){
-				totalTriplets += 3;
-			}
-		}
-		return totalTriplets;
-	}
+    int scrutinizeTable(vector<string> table) {
+        int totalTriplets = 0;
+        for(unsigned int counter = 0; counter < table.size()-2; counter++) {
+            if(table[counter][counter+1] == '1' && table[counter+1][counter+2] == '1'&& table[counter+2][counter] == '1') {
+                totalTriplets += 3;
+            }
+        }
+        return totalTriplets;
+    }
 };
 
 #endif /* TOURNAMENTSAMBIGUITYNUMBER_H_ */

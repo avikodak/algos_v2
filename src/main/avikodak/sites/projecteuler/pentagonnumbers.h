@@ -72,60 +72,60 @@ using namespace __gnu_cxx;
 
 //Tested
 unsigned int getPentagonNumber(unsigned int userInput) {
-	return ((userInput) * ((3 * userInput) - 1)) / 2;
+    return ((userInput) * ((3 * userInput) - 1)) / 2;
 }
 
 //Tested
 struct pentagonnumber {
-	unsigned int firstValue;
-	unsigned int secondValue;
+    unsigned int firstValue;
+    unsigned int secondValue;
 
-	pentagonnumber(){}
+    pentagonnumber() {}
 
-	pentagonnumber(unsigned int firstValue,unsigned int secondValue){
-		this->firstValue = firstValue;
-		this->secondValue = secondValue;
-	}
+    pentagonnumber(unsigned int firstValue,unsigned int secondValue) {
+        this->firstValue = firstValue;
+        this->secondValue = secondValue;
+    }
 };
 
 //Tested
 //Ans : 5482660
 void getMinimizedValue() {
-	unsigned int outerCounter = 2, currentValue,currentSum;
-	vector<unsigned int> values;
-	values.push_back(1);
-	map<unsigned int,bool> pentagonValueMap;
-	map<unsigned int,bool>::iterator itToPentagonValueMap;
-	pentagonValueMap.insert(pair<unsigned int,bool>(1,true));
-	queue<pentagonnumber *> potentialSums;
-	pentagonnumber *userInput,*firstValue;
-	while (true) {
-		currentValue = getPentagonNumber(outerCounter);
-		firstValue = potentialSums.empty()?null:potentialSums.front();
-		while(!potentialSums.empty()){
-			userInput = potentialSums.front();
-			currentSum = userInput->firstValue + userInput->secondValue;
-			potentialSums.pop();
-			if(currentSum == currentValue || pentagonValueMap.find(currentSum) != pentagonValueMap.end()){
-				cout << userInput->secondValue - userInput->firstValue << endl;
-				return;
-			}else if(currentSum > currentValue){
-				potentialSums.push(userInput);
-			}
-			if(userInput->firstValue == firstValue->firstValue && userInput->secondValue == firstValue->secondValue){
-				break;
-			}
-		}
-		for(unsigned int counter = 0;counter < values.size();counter++){
-			if((pentagonValueMap.find(currentValue-values[counter])) != pentagonValueMap.end()){
-				userInput = new pentagonnumber(values[counter],currentValue);
-				potentialSums.push(userInput);
-			}
-		}
-		pentagonValueMap.insert(pair<unsigned int,bool>(currentValue,true));
-		values.push_back(currentValue);
-		outerCounter++;
-	}
+    unsigned int outerCounter = 2, currentValue,currentSum;
+    vector<unsigned int> values;
+    values.push_back(1);
+    map<unsigned int,bool> pentagonValueMap;
+    map<unsigned int,bool>::iterator itToPentagonValueMap;
+    pentagonValueMap.insert(pair<unsigned int,bool>(1,true));
+    queue<pentagonnumber *> potentialSums;
+    pentagonnumber *userInput,*firstValue;
+    while (true) {
+        currentValue = getPentagonNumber(outerCounter);
+        firstValue = potentialSums.empty()?null:potentialSums.front();
+        while(!potentialSums.empty()) {
+            userInput = potentialSums.front();
+            currentSum = userInput->firstValue + userInput->secondValue;
+            potentialSums.pop();
+            if(currentSum == currentValue || pentagonValueMap.find(currentSum) != pentagonValueMap.end()) {
+                cout << userInput->secondValue - userInput->firstValue << endl;
+                return;
+            } else if(currentSum > currentValue) {
+                potentialSums.push(userInput);
+            }
+            if(userInput->firstValue == firstValue->firstValue && userInput->secondValue == firstValue->secondValue) {
+                break;
+            }
+        }
+        for(unsigned int counter = 0; counter < values.size(); counter++) {
+            if((pentagonValueMap.find(currentValue-values[counter])) != pentagonValueMap.end()) {
+                userInput = new pentagonnumber(values[counter],currentValue);
+                potentialSums.push(userInput);
+            }
+        }
+        pentagonValueMap.insert(pair<unsigned int,bool>(currentValue,true));
+        values.push_back(currentValue);
+        outerCounter++;
+    }
 }
 
 #endif /* PENTAGONNUMBERS_H_ */

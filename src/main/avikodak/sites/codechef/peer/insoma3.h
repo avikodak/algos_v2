@@ -72,63 +72,63 @@ using namespace __gnu_cxx;
 #define INSOMA3_H_
 
 //Tested
-int icMerge(vector<int> &userInput,int startIndex,int midIndex,int endIndex){
-	int firstCrawler = startIndex,secondCrawler = midIndex+1;
-	vector<int> temp;
-	int inversionCount = 0;
-	while(firstCrawler <= midIndex || secondCrawler <= endIndex){
-		if(firstCrawler > midIndex || secondCrawler > endIndex){
-			if(firstCrawler <= midIndex){
-				temp.push_back(userInput[firstCrawler++]);
-			}else{
-				temp.push_back(userInput[secondCrawler++]);
-			}
-		}else{
-			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				temp.push_back(userInput[firstCrawler++]);
-			}else{
-				temp.push_back(userInput[secondCrawler++]);
-				inversionCount += midIndex + 1 - firstCrawler;
-			}
-		}
-	}
-	for(int counter = 0;counter < temp.size();counter++){
-		userInput[startIndex + counter] = temp[counter];
-	}
-	return inversionCount;
+int icMerge(vector<int> &userInput,int startIndex,int midIndex,int endIndex) {
+    int firstCrawler = startIndex,secondCrawler = midIndex+1;
+    vector<int> temp;
+    int inversionCount = 0;
+    while(firstCrawler <= midIndex || secondCrawler <= endIndex) {
+        if(firstCrawler > midIndex || secondCrawler > endIndex) {
+            if(firstCrawler <= midIndex) {
+                temp.push_back(userInput[firstCrawler++]);
+            } else {
+                temp.push_back(userInput[secondCrawler++]);
+            }
+        } else {
+            if(userInput[firstCrawler] < userInput[secondCrawler]) {
+                temp.push_back(userInput[firstCrawler++]);
+            } else {
+                temp.push_back(userInput[secondCrawler++]);
+                inversionCount += midIndex + 1 - firstCrawler;
+            }
+        }
+    }
+    for(int counter = 0; counter < temp.size(); counter++) {
+        userInput[startIndex + counter] = temp[counter];
+    }
+    return inversionCount;
 }
 
 //Tested
-int inversionCount(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return 0;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	int counter = inversionCount(userInput,startIndex,middleIndex);
-	counter += inversionCount(userInput,middleIndex+1,endIndex);
-	counter += icMerge(userInput,startIndex,middleIndex,endIndex);
-	return counter;
+int inversionCount(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return 0;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    int counter = inversionCount(userInput,startIndex,middleIndex);
+    counter += inversionCount(userInput,middleIndex+1,endIndex);
+    counter += icMerge(userInput,startIndex,middleIndex,endIndex);
+    return counter;
 }
 
 //Tested
-int inversionCountMerging(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int counter = inversionCount(userInput,0,userInput.size()-1);
-	return counter;
+int inversionCountMerging(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int counter = inversionCount(userInput,0,userInput.size()-1);
+    return counter;
 }
 
 //Tested
-void printDisorderlinessIndex(){
-	int size,input;
-	vector<int> userInput;
-	scanf("%u",&size);
-	for(int counter = 0;counter < size;counter++){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	cout << inversionCountMerging(userInput) << endl;
+void printDisorderlinessIndex() {
+    int size,input;
+    vector<int> userInput;
+    scanf("%u",&size);
+    for(int counter = 0; counter < size; counter++) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    cout << inversionCountMerging(userInput) << endl;
 }
 
 #endif /* INSOMA3_H_ */

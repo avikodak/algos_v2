@@ -78,38 +78,38 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void reverseArray(int userInput[],int size){
-	if(size < 2){
-		return;
-	}
-	unsigned int frontCrawler = 0,rearCrawler = size-1;
-	while(frontCrawler < rearCrawler){
-		swap(userInput[frontCrawler++],userInput[rearCrawler--]);
-	}
+void reverseArray(int userInput[],int size) {
+    if(size < 2) {
+        return;
+    }
+    unsigned int frontCrawler = 0,rearCrawler = size-1;
+    while(frontCrawler < rearCrawler) {
+        swap(userInput[frontCrawler++],userInput[rearCrawler--]);
+    }
 }
 
-void reverseArray(int userInput[],unsigned int frontCrawler,unsigned int rearCrawler){
-	if(frontCrawler > rearCrawler){
-		return;
-	}
-	swap(userInput[frontCrawler],userInput[rearCrawler]);
-	reverseArray(userInput,frontCrawler+1,rearCrawler-1);
+void reverseArray(int userInput[],unsigned int frontCrawler,unsigned int rearCrawler) {
+    if(frontCrawler > rearCrawler) {
+        return;
+    }
+    swap(userInput[frontCrawler],userInput[rearCrawler]);
+    reverseArray(userInput,frontCrawler+1,rearCrawler-1);
 }
 
-void reverseArrayAuxSpace(int userInput[],int size){
-	if(size < 2){
-		return;
-	}
-	stack<int> auxSpace;
-	for(unsigned int counter = 0;counter < size;counter++){
-		auxSpace.push(userInput[counter]);
-	}
-	int temp;
-	for(unsigned int counter = 0;counter < size;counter++){
-		temp = auxSpace.top();
-		auxSpace.pop();
-		userInput[counter] = temp;
-	}
+void reverseArrayAuxSpace(int userInput[],int size) {
+    if(size < 2) {
+        return;
+    }
+    stack<int> auxSpace;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        auxSpace.push(userInput[counter]);
+    }
+    int temp;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        temp = auxSpace.top();
+        auxSpace.pop();
+        userInput[counter] = temp;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_REVERSEARRAY_H_ */

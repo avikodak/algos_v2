@@ -71,10 +71,10 @@ using namespace __gnu_cxx;
 #ifndef ARB_H_
 #define ARB_H_
 
-void prcntResults(){
-	unsigned int testCase;
-	scanf("%u",&testCase);
-	printf("%c",'a'+testCase);
+void prcntResults() {
+    unsigned int testCase;
+    scanf("%u",&testCase);
+    printf("%c",'a'+testCase);
 }
 
 #endif /* ARB_H_ */

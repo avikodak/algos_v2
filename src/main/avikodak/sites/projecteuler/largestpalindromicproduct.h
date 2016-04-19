@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define LARGESTPALINDROMICPRODUCT_H_
 
 //Tested
-bool isPalindrome(unsigned int number){
-	unsigned int originalNumber = number,revNumber = 0;
-	while(number){
-		revNumber *= 10;
-		revNumber += (number%10);
-		number /= 10;
-	}
-	return originalNumber == revNumber;
+bool isPalindrome(unsigned int number) {
+    unsigned int originalNumber = number,revNumber = 0;
+    while(number) {
+        revNumber *= 10;
+        revNumber += (number%10);
+        number /= 10;
+    }
+    return originalNumber == revNumber;
 }
 
 //Tested
 //906609
-void getLargestPalindromicProduct(){
-	unsigned int maxProduct = 1,result;
-	for(unsigned int outerCounter = 100;outerCounter < 1000;outerCounter++){
-		for(unsigned int innerCounter = 100;innerCounter < 1000;innerCounter++){
-			result = outerCounter * innerCounter;
-			if(isPalindrome(result)){
-				maxProduct = max(maxProduct,outerCounter*innerCounter);
-			}
-		}
-	}
-	cout << maxProduct;
+void getLargestPalindromicProduct() {
+    unsigned int maxProduct = 1,result;
+    for(unsigned int outerCounter = 100; outerCounter < 1000; outerCounter++) {
+        for(unsigned int innerCounter = 100; innerCounter < 1000; innerCounter++) {
+            result = outerCounter * innerCounter;
+            if(isPalindrome(result)) {
+                maxProduct = max(maxProduct,outerCounter*innerCounter);
+            }
+        }
+    }
+    cout << maxProduct;
 }
 
 #endif /* LARGESTPALINDROMICPRODUCT_H_ */

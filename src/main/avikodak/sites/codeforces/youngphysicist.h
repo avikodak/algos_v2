@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: youngphysicist.h 
+ *  File Name   		: youngphysicist.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\youngphysicist.h
  *  Created on			: Mar 23, 2015 :: 9:55:24 PM
  *  Author				: avikodak
@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define YOUNGPHYSICIST_H_
 
 //Tested
-void isBodyInEquilibriumState(){
-	unsigned int testCases;
-	int xCoordinate,yCoordinate,zCoordinate,xCoordinateSum = 0,yCoordinateSum = 0,zCoordinateSum = 0;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d %d %d",&xCoordinate,&yCoordinate,&zCoordinate);
-		xCoordinateSum += xCoordinate;
-		yCoordinateSum += yCoordinate;
-		zCoordinateSum += zCoordinate;
-	}
-	if(xCoordinateSum == 0 && yCoordinateSum == 0 && zCoordinateSum == 0){
-		printf("YES");
-	}else{
-		printf("NO");
-	}
+void isBodyInEquilibriumState() {
+    unsigned int testCases;
+    int xCoordinate,yCoordinate,zCoordinate,xCoordinateSum = 0,yCoordinateSum = 0,zCoordinateSum = 0;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d %d %d",&xCoordinate,&yCoordinate,&zCoordinate);
+        xCoordinateSum += xCoordinate;
+        yCoordinateSum += yCoordinate;
+        zCoordinateSum += zCoordinate;
+    }
+    if(xCoordinateSum == 0 && yCoordinateSum == 0 && zCoordinateSum == 0) {
+        printf("YES");
+    } else {
+        printf("NO");
+    }
 }
 
 #endif /* YOUNGPHYSICIST_H_ */

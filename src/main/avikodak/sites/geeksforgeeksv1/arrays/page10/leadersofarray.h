@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: leadersofarray.h 
+ *  File Name   		: leadersofarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\leadersofarray.h
  *  Created on			: Nov 25, 2014 :: 12:03:29 AM
  *  Author				: AVINASH
@@ -72,71 +72,71 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printLeadersInArray(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int maxTillNow = INT_MIN;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		if(userInput[counter] > maxTillNow){
-			printf("%d\t",userInput[counter]);
-			maxTillNow = userInput[counter];
-		}
-	}
+void printLeadersInArray(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    int maxTillNow = INT_MIN;
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        if(userInput[counter] > maxTillNow) {
+            printf("%d\t",userInput[counter]);
+            maxTillNow = userInput[counter];
+        }
+    }
 }
 
 //Tested
-int printLeaders(vector<int> userInput,unsigned int counter = 0){
-	if(counter >= userInput.size()){
-		return INT_MIN;
-	}
-	int resultTillNow = printLeaders(userInput,counter+1);
-	if(userInput[counter] > resultTillNow){
-		printf("%d\t",userInput[counter]);
-		resultTillNow = userInput[counter];
-	}
-	return resultTillNow;
+int printLeaders(vector<int> userInput,unsigned int counter = 0) {
+    if(counter >= userInput.size()) {
+        return INT_MIN;
+    }
+    int resultTillNow = printLeaders(userInput,counter+1);
+    if(userInput[counter] > resultTillNow) {
+        printf("%d\t",userInput[counter]);
+        resultTillNow = userInput[counter];
+    }
+    return resultTillNow;
 }
 
 //Tested
-void printLeadersAuxSpace(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	stack<int> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace.push(userInput[counter]);
-	}
-	int maxTillNow = INT_MIN;
-	while(!auxSpace.empty()){
-		if(auxSpace.top() > maxTillNow){
-			printf("%d\t",auxSpace.top());
-			maxTillNow = auxSpace.top();
-		}
-		auxSpace.pop();
-	}
+void printLeadersAuxSpace(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    stack<int> auxSpace;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        auxSpace.push(userInput[counter]);
+    }
+    int maxTillNow = INT_MIN;
+    while(!auxSpace.empty()) {
+        if(auxSpace.top() > maxTillNow) {
+            printf("%d\t",auxSpace.top());
+            maxTillNow = auxSpace.top();
+        }
+        auxSpace.pop();
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printLeadersInArrayON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	bool isLeader;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		isLeader = true;
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				isLeader = false;
-			}
-		}
-		if(isLeader){
-			printf("%d\t",userInput[outerCounter]);
-		}
-	}
+void printLeadersInArrayON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    bool isLeader;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        isLeader = true;
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[innerCounter] > userInput[outerCounter]) {
+                isLeader = false;
+            }
+        }
+        if(isLeader) {
+            printf("%d\t",userInput[outerCounter]);
+        }
+    }
 }
 
 #endif /* LEADERSOFARRAY_H_ */

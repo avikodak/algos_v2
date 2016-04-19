@@ -72,38 +72,38 @@ using namespace __gnu_cxx;
 #define KNIGHTMV_H_
 
 //Tested
-bool isRightAlpha(char ch){
-	return ch >= 'a' && ch <= 'h';
+bool isRightAlpha(char ch) {
+    return ch >= 'a' && ch <= 'h';
 }
 
 //Tested
-bool isRightNumber(char ch){
-	return ch >= '1' && ch <= '8';
+bool isRightNumber(char ch) {
+    return ch >= '1' && ch <= '8';
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	cin >> testCases;
-	cin.ignore();
-	string userInput;
-	int alphaDiff,numbDiff;
-	while(testCases--){
-		getline(cin,userInput);
-		if(userInput.size() == 5 && isRightAlpha(userInput[0]) && isRightAlpha(userInput[3]) && isRightNumber(userInput[1]) && isRightNumber(userInput[4]) && userInput[2] == '-'){
-			alphaDiff = abs(userInput[3]-userInput[0]);
-			numbDiff = abs(userInput[4]-userInput[1]);
-			if(alphaDiff == 2){
-				printf("%s\n",numbDiff == 1?"Yes":"No");
-			}else if(alphaDiff == 1){
-				printf("%s\n",numbDiff == 2?"Yes":"No");
-			}else{
-				printf("No\n");
-			}
-		}else{
-			cout << "Error" << endl;
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    cin >> testCases;
+    cin.ignore();
+    string userInput;
+    int alphaDiff,numbDiff;
+    while(testCases--) {
+        getline(cin,userInput);
+        if(userInput.size() == 5 && isRightAlpha(userInput[0]) && isRightAlpha(userInput[3]) && isRightNumber(userInput[1]) && isRightNumber(userInput[4]) && userInput[2] == '-') {
+            alphaDiff = abs(userInput[3]-userInput[0]);
+            numbDiff = abs(userInput[4]-userInput[1]);
+            if(alphaDiff == 2) {
+                printf("%s\n",numbDiff == 1?"Yes":"No");
+            } else if(alphaDiff == 1) {
+                printf("%s\n",numbDiff == 2?"Yes":"No");
+            } else {
+                printf("No\n");
+            }
+        } else {
+            cout << "Error" << endl;
+        }
+    }
 }
 
 #endif /* KNIGHTMV_H_ */

@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_NOOFFACTORS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	unsigned int input,factorCount;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		factorCount  = 0;
-		for(unsigned int counter = 1;counter <= input;counter++){
-			if(input%counter == 0){
-				factorCount++;
-			}
-		}
-		printf("%u\n",factorCount);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    unsigned int input,factorCount;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        factorCount  = 0;
+        for(unsigned int counter = 1; counter <= input; counter++) {
+            if(input%counter == 0) {
+                factorCount++;
+            }
+        }
+        printf("%u\n",factorCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_NOOFFACTORS_H_ */

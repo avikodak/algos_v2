@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arrayhash.h 
+ *  File Name   		: arrayhash.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\arrayhash.h
  *  Created on			: Mar 27, 2015 :: 8:34:38 PM
  *  Author				: avikodak
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define ARRAYHASH_H_
 
 //Tested
-class ArrayHash{
+class ArrayHash {
 public:
-	int getHash(vector<string> userInput){
-		int hashValue = 0;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-			for(unsigned int innerCrawler = 0;innerCrawler < userInput[outerCrawler].size();innerCrawler++){
-				hashValue += outerCrawler + innerCrawler + (userInput[outerCrawler][innerCrawler] -'A');
-			}
-		}
-	}
+    int getHash(vector<string> userInput) {
+        int hashValue = 0;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+            for(unsigned int innerCrawler = 0; innerCrawler < userInput[outerCrawler].size(); innerCrawler++) {
+                hashValue += outerCrawler + innerCrawler + (userInput[outerCrawler][innerCrawler] -'A');
+            }
+        }
+    }
 };
 
 #endif /* ARRAYHASH_H_ */

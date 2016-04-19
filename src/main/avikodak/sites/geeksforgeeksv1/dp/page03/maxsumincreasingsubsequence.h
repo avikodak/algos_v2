@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumincreasingsubsequence.h 
+ *  File Name   		: maxsumincreasingsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\maxsumincreasingsubsequence.h
  *  Created on			: Dec 9, 2014 :: 8:02:58 PM
  *  Author				: AVINASH
@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define MAXSUMINCREASINGSUBSEQUENCE_H_
 
 //Tested
-int maxSumIncreasingSubsequence(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	vector<int> maxSumsAuxspace;
-	maxSumsAuxspace.push_back(userInput[0]);
-	int maxSum;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		maxSum = INT_MIN;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler] > userInput[innerCrawler]){
-				maxSum = max(maxSum,userInput[outerCrawler]+maxSumsAuxspace[innerCrawler]);
-			}
-		}
-		maxSumsAuxspace.push_back(maxSum);
-	}
-	return *max_element(maxSumsAuxspace.begin(),maxSumsAuxspace.end());
+int maxSumIncreasingSubsequence(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    vector<int> maxSumsAuxspace;
+    maxSumsAuxspace.push_back(userInput[0]);
+    int maxSum;
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        maxSum = INT_MIN;
+        for(unsigned int innerCrawler = 0; innerCrawler < outerCrawler; innerCrawler++) {
+            if(userInput[outerCrawler] > userInput[innerCrawler]) {
+                maxSum = max(maxSum,userInput[outerCrawler]+maxSumsAuxspace[innerCrawler]);
+            }
+        }
+        maxSumsAuxspace.push_back(maxSum);
+    }
+    return *max_element(maxSumsAuxspace.begin(),maxSumsAuxspace.end());
 }
 
 #endif /* MAXSUMINCREASINGSUBSEQUENCE_H_ */

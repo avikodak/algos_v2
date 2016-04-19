@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mathds.h 
+ *  File Name   		: mathds.h
  *	File Location		: D:\algos\algos_v2\src\lib\ds\mathds.h
  *  Created on			: Oct 9, 2014 :: 12:33:13 PM
  *  Author				: AVINASH

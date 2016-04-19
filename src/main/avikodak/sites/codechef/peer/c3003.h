@@ -73,22 +73,22 @@ using namespace __gnu_cxx;
 #define C3003_H_
 
 //Tested
-void printResults(){
-	string userInput,language;
-	unsigned int frequency[26] = {0};
-	cin >> userInput >> language;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		frequency[userInput[counter]-'a']++;
-	}
-	for(unsigned int counter = 0;counter < language.size();counter++){
-		frequency[language[counter]-'a']=0;
-	}
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(frequency[counter] > 0){
-			printf("%c%u",'a'+counter,frequency[counter]);
-		}
-	}
-	cout << endl;
+void printResults() {
+    string userInput,language;
+    unsigned int frequency[26] = {0};
+    cin >> userInput >> language;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        frequency[userInput[counter]-'a']++;
+    }
+    for(unsigned int counter = 0; counter < language.size(); counter++) {
+        frequency[language[counter]-'a']=0;
+    }
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(frequency[counter] > 0) {
+            printf("%c%u",'a'+counter,frequency[counter]);
+        }
+    }
+    cout << endl;
 }
 
 #endif /* C3003_H_ */

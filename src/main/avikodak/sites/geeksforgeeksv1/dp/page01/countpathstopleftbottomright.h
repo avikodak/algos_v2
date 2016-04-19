@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpathstopleftbottomright.h 
+ *  File Name   		: countpathstopleftbottomright.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
  *  Created on			: Jan 12, 2015 :: 11:44:09 PM
  *  Author				: AVINASH
@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define COUNTPATHSTOPLEFTBOTTOMRIGHT_H_
 
 //Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){ // OR is used since there is only one way to reach beginning after we reach first row or first column
-		return 1;
-	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
+int countPathsFromTopLeftToBottomRight(int row,int column) {
+    if(row == 1 || column == 1) { // OR is used since there is only one way to reach beginning after we reach first row or first column
+        return 1;
+    }
+    return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftToBottomRightDP(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
-	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
-	}
-	for(int outerCrawler = 1;outerCrawler < row;outerCrawler++){
-		for(int innerCrawler = 1;innerCrawler < column;innerCrawler++){
-			auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
-		}
-	}
-	return auxSpace[row-1][column-1];
+int countPathsFromTopLeftToBottomRightDP(int row,int column) {
+    if(row == 1 || column == 1) {
+        return 1;
+    }
+    vector<vector<int> > auxSpace(row);
+    for(int counter = 0; counter < row; counter++) {
+        auxSpace[counter].assign(column,1);
+    }
+    for(int outerCrawler = 1; outerCrawler < row; outerCrawler++) {
+        for(int innerCrawler = 1; innerCrawler < column; innerCrawler++) {
+            auxSpace[outerCrawler][innerCrawler] = auxSpace[outerCrawler-1][innerCrawler] + auxSpace[outerCrawler][innerCrawler-1];
+        }
+    }
+    return auxSpace[row-1][column-1];
 }
 
 #endif /* COUNTPATHSTOPLEFTBOTTOMRIGHT_H_ */

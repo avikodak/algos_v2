@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: heapsort.h 
+ *  File Name   		: heapsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\heapsort.h
  *  Created on			: Dec 1, 2014 :: 10:14:57 PM
  *  Author				: AVINASH
@@ -71,51 +71,51 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void hsHeapify(vector<int> &userInput,int index,int size = INT_MIN){
-	if(size == INT_MIN){
-		size = userInput.size();
-	}
-	if(index > size){
-		return;
-	}
-	int temp;
-	while(2*index+1 < size){
-		if(2*index + 2 < size){
-			if(userInput[2*index+1] < userInput[2*index+2]){
-				temp = userInput[2*index+1];
-				userInput[2*index+1] = userInput[index];
-				userInput[index] = temp;
-			}else{
-				temp = userInput[2*index+2];
-				userInput[2*index+2] = userInput[index];
-				userInput[index] = temp;
-			}
-		}else{
-			temp = userInput[2*index+1];
-			userInput[2*index+1] = userInput[index];
-			userInput[index] = temp;
-		}
-	}
+void hsHeapify(vector<int> &userInput,int index,int size = INT_MIN) {
+    if(size == INT_MIN) {
+        size = userInput.size();
+    }
+    if(index > size) {
+        return;
+    }
+    int temp;
+    while(2*index+1 < size) {
+        if(2*index + 2 < size) {
+            if(userInput[2*index+1] < userInput[2*index+2]) {
+                temp = userInput[2*index+1];
+                userInput[2*index+1] = userInput[index];
+                userInput[index] = temp;
+            } else {
+                temp = userInput[2*index+2];
+                userInput[2*index+2] = userInput[index];
+                userInput[index] = temp;
+            }
+        } else {
+            temp = userInput[2*index+1];
+            userInput[2*index+1] = userInput[index];
+            userInput[index] = temp;
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void heapSort(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	for(int counter = userInput.size()/2;counter >= 0;counter--){
-		hsHeapify(userInput,counter);
-	}
-	int tempForSwap;
-	for(int counter = 0;counter < userInput.size();counter++){
-		tempForSwap = userInput[0];
-		userInput[userInput.size()-1-counter] = userInput[0];
-		userInput[userInput.size()-1-counter] = tempForSwap;
-		hsHeapify(userInput,0,userInput.size()-counter);
-	}
-	reverse(userInput.begin(),userInput.end());
+void heapSort(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    for(int counter = userInput.size()/2; counter >= 0; counter--) {
+        hsHeapify(userInput,counter);
+    }
+    int tempForSwap;
+    for(int counter = 0; counter < userInput.size(); counter++) {
+        tempForSwap = userInput[0];
+        userInput[userInput.size()-1-counter] = userInput[0];
+        userInput[userInput.size()-1-counter] = tempForSwap;
+        hsHeapify(userInput,0,userInput.size()-counter);
+    }
+    reverse(userInput.begin(),userInput.end());
 }
 
 

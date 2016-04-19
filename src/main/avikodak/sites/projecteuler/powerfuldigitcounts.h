@@ -70,46 +70,46 @@ using namespace __gnu_cxx;
 #ifndef POWERFULDIGITCOUNTS_H_
 #define POWERFULDIGITCOUNTS_H_
 
-unsigned int getDigitCount(unsigned int userInput){
-	if(userInput == 0){
-		return 0;
-	}
-	unsigned int counter = 0;
-	while(userInput){
-		counter++;
-		userInput /= 10;
-	}
-	return counter;
+unsigned int getDigitCount(unsigned int userInput) {
+    if(userInput == 0) {
+        return 0;
+    }
+    unsigned int counter = 0;
+    while(userInput) {
+        counter++;
+        userInput /= 10;
+    }
+    return counter;
 }
 
-unsigned int pow(unsigned int base,unsigned int power){
-	if(power == 0){
-		return 1;
-	}
-	unsigned int result = 1;
-	for(unsigned int counter = 0;counter < power;counter++){
-		result *= base;
-	}
-	return result;
+unsigned int pow(unsigned int base,unsigned int power) {
+    if(power == 0) {
+        return 1;
+    }
+    unsigned int result = 1;
+    for(unsigned int counter = 0; counter < power; counter++) {
+        result *= base;
+    }
+    return result;
 }
 
-void getNthPowerWithNthDigits(){
-	unsigned int total = 0;
-	unsigned int innerCounter = 0,powResult,digitCount;
-	for(unsigned int outerCounter = 2;outerCounter < 11;outerCounter++){
-		innerCounter = 1;
-		while(true){
-			powResult = pow(outerCounter,innerCounter++);
-			digitCount = getDigitCount(powResult);
-			if(digitCount == innerCounter){
-				cout << outerCounter << " " << innerCounter-1 << endl;
-				total++;
-			}else if(digitCount > innerCounter){
-				break;
-			}
-		}
-	}
-	cout << total << endl;
+void getNthPowerWithNthDigits() {
+    unsigned int total = 0;
+    unsigned int innerCounter = 0,powResult,digitCount;
+    for(unsigned int outerCounter = 2; outerCounter < 11; outerCounter++) {
+        innerCounter = 1;
+        while(true) {
+            powResult = pow(outerCounter,innerCounter++);
+            digitCount = getDigitCount(powResult);
+            if(digitCount == innerCounter) {
+                cout << outerCounter << " " << innerCounter-1 << endl;
+                total++;
+            } else if(digitCount > innerCounter) {
+                break;
+            }
+        }
+    }
+    cout << total << endl;
 }
 
 #endif /* POWERFULDIGITCOUNTS_H_ */

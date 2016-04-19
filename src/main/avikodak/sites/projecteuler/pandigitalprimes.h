@@ -71,56 +71,56 @@ using namespace __gnu_cxx;
 #define PANDIGITALPRIMES_H_
 
 //Tested
-unsigned int isPanDigital(unsigned long long int userInput){
-	unsigned int digitCount[10] = {0};
-	while(userInput){
-		digitCount[userInput%10]++;
-		if(userInput%10 == 0 ||digitCount[userInput%10] > 1){
-			return 0;
-		}
-		userInput /= 10;
-	}
-	if(digitCount[1] == 0){
-		return 0;
-	}
-	unsigned int length = 1;
-	unsigned int counter;
-	for(counter = 2;counter < 10;counter++){
-		if(digitCount[counter] == 1){
-			length++;
-		}else{
-			break;
-		}
-	}
-	for(;counter < 10;counter++){
-		if(digitCount[counter] == 1){
-			return 0;
-		}
-	}
-	return length;
+unsigned int isPanDigital(unsigned long long int userInput) {
+    unsigned int digitCount[10] = {0};
+    while(userInput) {
+        digitCount[userInput%10]++;
+        if(userInput%10 == 0 ||digitCount[userInput%10] > 1) {
+            return 0;
+        }
+        userInput /= 10;
+    }
+    if(digitCount[1] == 0) {
+        return 0;
+    }
+    unsigned int length = 1;
+    unsigned int counter;
+    for(counter = 2; counter < 10; counter++) {
+        if(digitCount[counter] == 1) {
+            length++;
+        } else {
+            break;
+        }
+    }
+    for(; counter < 10; counter++) {
+        if(digitCount[counter] == 1) {
+            return 0;
+        }
+    }
+    return length;
 }
 
 //Tested
 //Ans : 7652413
-void printLargestPanDigitalPrime(){
-	unsigned long int limit = 987654322;
-	vector<bool> flags;
-	flags.assign(limit,true);
-	unsigned long int maxPanDigital = 0;
-	for(unsigned int counter = 2;counter < limit;counter++){
-		if(flags[counter]){
-			if(isPanDigital(counter)){
-				maxPanDigital = maxPanDigital > counter?maxPanDigital:counter;
-				cout << maxPanDigital << endl;
-			}
-			unsigned int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	cout << maxPanDigital << endl;
+void printLargestPanDigitalPrime() {
+    unsigned long int limit = 987654322;
+    vector<bool> flags;
+    flags.assign(limit,true);
+    unsigned long int maxPanDigital = 0;
+    for(unsigned int counter = 2; counter < limit; counter++) {
+        if(flags[counter]) {
+            if(isPanDigital(counter)) {
+                maxPanDigital = maxPanDigital > counter?maxPanDigital:counter;
+                cout << maxPanDigital << endl;
+            }
+            unsigned int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    cout << maxPanDigital << endl;
 }
 
 #endif /* PANDIGITALPRIMES_H_ */

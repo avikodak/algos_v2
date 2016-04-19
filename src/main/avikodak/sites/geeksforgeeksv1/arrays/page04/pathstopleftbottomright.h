@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pathstopleftbottomright.h 
+ *  File Name   		: pathstopleftbottomright.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pathstopleftbottomright.h
  *  Created on			: Dec 22, 2014 :: 6:10:47 PM
  *  Author				: AVINASH
@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define PATHSTOPLEFTBOTTOMRIGHT_H_
 
 //Tested
-int countPathsFromTopLeftToBottomRight(int row,int column){
-	if(row == 1 || column == 1){
-		return 1;
-	}
-	return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
+int countPathsFromTopLeftToBottomRight(int row,int column) {
+    if(row == 1 || column == 1) {
+        return 1;
+    }
+    return countPathsFromTopLeftToBottomRight(row-1,column) + countPathsFromTopLeftToBottomRight(row,column-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countPathsFromTopLeftBottomRightMemoization(int row,int column){
-	if(row == 0 || column == 0){
-		return 1;
-	}
-	vector<vector<int> > auxSpace(row);
-	for(int counter = 0;counter < row;counter++){
-		auxSpace[counter].assign(column,1);
-	}
-	for(int rowCounter = 1;rowCounter < row;rowCounter++){
-		for(int columnCounter = 1;columnCounter < column;columnCounter++){
-			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter] + auxSpace[rowCounter][columnCounter-1];
-		}
-	}
-	return auxSpace[row-1][column-1];
+int countPathsFromTopLeftBottomRightMemoization(int row,int column) {
+    if(row == 0 || column == 0) {
+        return 1;
+    }
+    vector<vector<int> > auxSpace(row);
+    for(int counter = 0; counter < row; counter++) {
+        auxSpace[counter].assign(column,1);
+    }
+    for(int rowCounter = 1; rowCounter < row; rowCounter++) {
+        for(int columnCounter = 1; columnCounter < column; columnCounter++) {
+            auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter] + auxSpace[rowCounter][columnCounter-1];
+        }
+    }
+    return auxSpace[row-1][column-1];
 }
 
 #endif /* PATHSTOPLEFTBOTTOMRIGHT_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: doublecola.h 
+ *  File Name   		: doublecola.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\doublecola.h
  *  Created on			: Feb 28, 2015 :: 10:29:08 PM
  *  Author				: AVINASH
@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #define DOUBLECOLA_H_
 
 //Tested
-void printCharacter(){
-	long int userInput;
-	scanf("%ld",&userInput);
-	long int level = floor(log2(ceil((double)userInput/(double)5)));
-	long int character = ceil(((double)userInput - 5*((double)pow(2,level)-1))/((double)pow(2,level)));
-	switch(character){
-	case 1:
-		printf("Sheldon");
-		break;
-	case 2:
-		printf("Leonard");
-		break;
-	case 3:
-		printf("Penny");
-		break;
-	case 4:
-		printf("Rajesh");
-		break;
-	case 5:
-		printf("Howard");
-		break;
-	}
+void printCharacter() {
+    long int userInput;
+    scanf("%ld",&userInput);
+    long int level = floor(log2(ceil((double)userInput/(double)5)));
+    long int character = ceil(((double)userInput - 5*((double)pow(2,level)-1))/((double)pow(2,level)));
+    switch(character) {
+    case 1:
+        printf("Sheldon");
+        break;
+    case 2:
+        printf("Leonard");
+        break;
+    case 3:
+        printf("Penny");
+        break;
+    case 4:
+        printf("Rajesh");
+        break;
+    case 5:
+        printf("Howard");
+        break;
+    }
 }
 
 #endif /* DOUBLECOLA_H_ */

@@ -72,8 +72,8 @@ using namespace __gnu_cxx;
 #ifndef NYUPLOCK_H_
 #define NYUPLOCK_H_
 
-void printResults(){
-	unsigned int testCases;
+void printResults() {
+    unsigned int testCases;
 
 }
 

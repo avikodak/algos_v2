@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: costofdancing.h 
+ *  File Name   		: costofdancing.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\costofdancing.h
  *  Created on			: Mar 23, 2015 :: 12:50:06 PM
  *  Author				: avikodak
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define COSTOFDANCING_H_
 
 //Tested
-class CostOfDancing{
+class CostOfDancing {
 public:
-	int minimum(int K, vector<int> danceCost){
-		sort(danceCost.begin(),danceCost.end());
-		int cost = 0;
-		for(int counter = 0;counter < K;counter++){
-			cost += danceCost[counter];
-		}
-		return cost;
-	}
+    int minimum(int K, vector<int> danceCost) {
+        sort(danceCost.begin(),danceCost.end());
+        int cost = 0;
+        for(int counter = 0; counter < K; counter++) {
+            cost += danceCost[counter];
+        }
+        return cost;
+    }
 };
 
 #endif /* COSTOFDANCING_H_ */

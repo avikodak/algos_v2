@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: smallestofthreenumbers.h 
+ *  File Name   		: smallestofthreenumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\smallestofthreenumbers.h
  *  Created on			: Jan 9, 2015 :: 12:00:24 PM
  *  Author				: AVINASH
@@ -70,27 +70,27 @@ using namespace __gnu_cxx;
 #ifndef SMALLESTOFTHREENUMBERS_H_
 #define SMALLESTOFTHREENUMBERS_H_
 
-unsigned int smallestOfThreeNumbers(unsigned int firstInput,unsigned int secondInput,unsigned int thirdInput){
-	unsigned int counter = 0;
-	while(firstInput && secondInput && thirdInput){
-		counter++;
-		firstInput--;
-		secondInput--;
-		thirdInput--;
-	}
-	return counter;
+unsigned int smallestOfThreeNumbers(unsigned int firstInput,unsigned int secondInput,unsigned int thirdInput) {
+    unsigned int counter = 0;
+    while(firstInput && secondInput && thirdInput) {
+        counter++;
+        firstInput--;
+        secondInput--;
+        thirdInput--;
+    }
+    return counter;
 }
 
-unsigned int minXY(unsigned int x,unsigned int y){
-	return y ^ ((x^y)&-(x-y));
+unsigned int minXY(unsigned int x,unsigned int y) {
+    return y ^ ((x^y)&-(x-y));
 }
 
-unsigned int minXYV2(unsigned int x,unsigned int y){
-	return y + ((x-y)&((x-y) >> (sizeof(int)*sizeof(char)-1)));
+unsigned int minXYV2(unsigned int x,unsigned int y) {
+    return y + ((x-y)&((x-y) >> (sizeof(int)*sizeof(char)-1)));
 }
 
-unsigned int smallestOfThreeNumbersBitmagic(unsigned int firstInput,unsigned int secondInput,unsigned int thirdInput){
-	return minXY(minXY(firstInput,secondInput),thirdInput);
+unsigned int smallestOfThreeNumbersBitmagic(unsigned int firstInput,unsigned int secondInput,unsigned int thirdInput) {
+    return minXY(minXY(firstInput,secondInput),thirdInput);
 }
 
 #endif /* SMALLESTOFTHREENUMBERS_H_ */

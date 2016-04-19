@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: blockswapalgorotate.h 
+ *  File Name   		: blockswapalgorotate.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\blockswapalgorotate.h
  *  Created on			: Nov 25, 2014 :: 7:09:37 PM
  *  Author				: AVINASH
@@ -73,41 +73,41 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void blockSwap(vector<int> &userInput,int firstStartIndex,int secondStartIndex,int size){
-	while(size--){
-		swap(userInput[firstStartIndex],userInput[secondStartIndex]);
-		firstStartIndex++;
-		secondStartIndex++;
-	}
+void blockSwap(vector<int> &userInput,int firstStartIndex,int secondStartIndex,int size) {
+    while(size--) {
+        swap(userInput[firstStartIndex],userInput[secondStartIndex]);
+        firstStartIndex++;
+        secondStartIndex++;
+    }
 
 }
 
 //Tested
-void rotateUsingBlockSwapAlgoMain(vector<int> &userInput,int rotateBy,int startIndex,int endIndex){
-	if(rotateBy == 0 || rotateBy == endIndex - startIndex + 1){
-		return;
-	}
-	if(endIndex - startIndex + 1== 2 * rotateBy){
-		blockSwap(userInput,startIndex,startIndex + rotateBy,rotateBy);
-		return;
-	}else{
-		if(startIndex + rotateBy - 1 >= endIndex - rotateBy + 1){
-			int size = endIndex - (startIndex + rotateBy) + 1;
-			blockSwap(userInput,startIndex,endIndex-size+1,size);
-			rotateUsingBlockSwapAlgoMain(userInput,2*rotateBy-(endIndex - startIndex + 1),startIndex+size,endIndex);
-		}else{
-			blockSwap(userInput,startIndex,endIndex - rotateBy + 1,rotateBy);
-			rotateUsingBlockSwapAlgoMain(userInput,rotateBy,startIndex,endIndex-rotateBy);
-		}
-	}
+void rotateUsingBlockSwapAlgoMain(vector<int> &userInput,int rotateBy,int startIndex,int endIndex) {
+    if(rotateBy == 0 || rotateBy == endIndex - startIndex + 1) {
+        return;
+    }
+    if(endIndex - startIndex + 1== 2 * rotateBy) {
+        blockSwap(userInput,startIndex,startIndex + rotateBy,rotateBy);
+        return;
+    } else {
+        if(startIndex + rotateBy - 1 >= endIndex - rotateBy + 1) {
+            int size = endIndex - (startIndex + rotateBy) + 1;
+            blockSwap(userInput,startIndex,endIndex-size+1,size);
+            rotateUsingBlockSwapAlgoMain(userInput,2*rotateBy-(endIndex - startIndex + 1),startIndex+size,endIndex);
+        } else {
+            blockSwap(userInput,startIndex,endIndex - rotateBy + 1,rotateBy);
+            rotateUsingBlockSwapAlgoMain(userInput,rotateBy,startIndex,endIndex-rotateBy);
+        }
+    }
 }
 
 //Tested
-void blockSwapRotateAlgo(vector<int> &userInput,unsigned int rotateBy){
-	if(rotateBy == 0 || rotateBy == userInput.size()){
-		return;
-	}
-	rotateUsingBlockSwapAlgoMain(userInput,rotateBy,0,userInput.size()-1);
+void blockSwapRotateAlgo(vector<int> &userInput,unsigned int rotateBy) {
+    if(rotateBy == 0 || rotateBy == userInput.size()) {
+        return;
+    }
+    rotateUsingBlockSwapAlgoMain(userInput,rotateBy,0,userInput.size()-1);
 }
 
 #endif /* BLOCKSWAPALGOROTATE_H_ */

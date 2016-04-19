@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 #define EQUATION_H_
 
 //Tested
-long long int min(long long int A,long long int B){
-	return A < B?A:B;
+long long int min(long long int A,long long int B) {
+    return A < B?A:B;
 }
 
 //Tested
-void getTotalPossibleSums(long long int N,long long int A,long long int B,long long int C){
-	long long int sum = 0;
-	for(long long int aCounter = 0;aCounter <= A;aCounter++){
-		for(long long int bCounter = 0;bCounter <= B;bCounter++){
-			if(aCounter + bCounter <= N){
-				sum += min(N+1-aCounter - bCounter,C+1);
-			}else{
-				break;
-			}
-		}
-	}
-	cout << sum << endl;
+void getTotalPossibleSums(long long int N,long long int A,long long int B,long long int C) {
+    long long int sum = 0;
+    for(long long int aCounter = 0; aCounter <= A; aCounter++) {
+        for(long long int bCounter = 0; bCounter <= B; bCounter++) {
+            if(aCounter + bCounter <= N) {
+                sum += min(N+1-aCounter - bCounter,C+1);
+            } else {
+                break;
+            }
+        }
+    }
+    cout << sum << endl;
 }
 
 //Tested
-void printResults(){
-	long long int testCases,N,A,B,C;
-	cin >> testCases;
-	while(testCases--){
-		cin >> N >> A >> B >> C;
-		getTotalPossibleSums(N,A,B,C);
-	}
+void printResults() {
+    long long int testCases,N,A,B,C;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> N >> A >> B >> C;
+        getTotalPossibleSums(N,A,B,C);
+    }
 }
 
 #endif /* EQUATION_H_ */

@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 #define SALG01_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	int input,maxVal,maxIndex;
-	vector<int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 1;counter <= size;counter++){
-			scanf("%d",&input);
-			userInput.push_back(input);
-			maxVal = input;
-			maxIndex = counter;
-		}
-		for(unsigned int counter = 1;counter <= size;counter++){
-			if(maxVal < userInput[counter-1]){
-				maxVal = userInput[counter-1];
-				maxIndex = counter;
-			}
-		}
-		cout << maxIndex << endl;
-	}
+void printResults() {
+    unsigned int testCases,size;
+    int input,maxVal,maxIndex;
+    vector<int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 1; counter <= size; counter++) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+            maxVal = input;
+            maxIndex = counter;
+        }
+        for(unsigned int counter = 1; counter <= size; counter++) {
+            if(maxVal < userInput[counter-1]) {
+                maxVal = userInput[counter-1];
+                maxIndex = counter;
+            }
+        }
+        cout << maxIndex << endl;
+    }
 }
 
 #endif /* SALG01_H_ */

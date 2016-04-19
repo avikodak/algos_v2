@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define CHEFZOT_H_
 
 //Tested
-void largestProductSubArray(){
-	unsigned int size,input;
-	scanf("%u",&size);
-	vector<unsigned int> userInput;
-	while(size--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	unsigned int outerCounter = 0,innerCounter,maxSize = 0;
-	while(outerCounter < userInput.size()){
-		innerCounter = outerCounter;
-		while(innerCounter < userInput.size() && userInput[innerCounter] != 0){
-			innerCounter++;
-		}
-		if(innerCounter != outerCounter){
-			maxSize = max(maxSize,innerCounter-outerCounter);
-		}
-		outerCounter = innerCounter+1;
-	}
-	cout << maxSize << endl;
+void largestProductSubArray() {
+    unsigned int size,input;
+    scanf("%u",&size);
+    vector<unsigned int> userInput;
+    while(size--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    unsigned int outerCounter = 0,innerCounter,maxSize = 0;
+    while(outerCounter < userInput.size()) {
+        innerCounter = outerCounter;
+        while(innerCounter < userInput.size() && userInput[innerCounter] != 0) {
+            innerCounter++;
+        }
+        if(innerCounter != outerCounter) {
+            maxSize = max(maxSize,innerCounter-outerCounter);
+        }
+        outerCounter = innerCounter+1;
+    }
+    cout << maxSize << endl;
 }
 
 #endif /* CHEFZOT_H_ */

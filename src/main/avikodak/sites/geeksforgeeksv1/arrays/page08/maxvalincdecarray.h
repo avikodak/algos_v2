@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxvalincdecarray.h 
+ *  File Name   		: maxvalincdecarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maxvalincdecarray.h
  *  Created on			: Nov 28, 2014 :: 10:21:54 AM
  *  Author				: AVINASH
@@ -72,51 +72,51 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getMaxValBitonicArrayBinarySearchMain(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	if(endIndex - startIndex == 1){
-		if(userInput[startIndex] > userInput[endIndex]){
-			return userInput[startIndex];
-		}else{
-			return userInput[endIndex];
-		}
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]){
-		return userInput[middleIndex];
-	}else if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] < userInput[middleIndex+1]){
-		return getMaxValBitonicArrayBinarySearchMain(userInput,middleIndex+1,endIndex);
-	}else{
-		return getMaxValBitonicArrayBinarySearchMain(userInput,startIndex,middleIndex-1);
-	}
+int getMaxValBitonicArrayBinarySearchMain(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    if(endIndex - startIndex == 1) {
+        if(userInput[startIndex] > userInput[endIndex]) {
+            return userInput[startIndex];
+        } else {
+            return userInput[endIndex];
+        }
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]) {
+        return userInput[middleIndex];
+    } else if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] < userInput[middleIndex+1]) {
+        return getMaxValBitonicArrayBinarySearchMain(userInput,middleIndex+1,endIndex);
+    } else {
+        return getMaxValBitonicArrayBinarySearchMain(userInput,startIndex,middleIndex-1);
+    }
 }
 
 //Tested
-int getMaxValBitonicArrayBinarySearch(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	return getMaxValBitonicArrayBinarySearchMain(userInput,0,userInput.size()-1);
+int getMaxValBitonicArrayBinarySearch(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    return getMaxValBitonicArrayBinarySearchMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxValBitonicArray(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int maxVal = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		maxVal = max(maxVal,userInput[counter]);
-	}
-	return maxVal;
+int maxValBitonicArray(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int maxVal = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        maxVal = max(maxVal,userInput[counter]);
+    }
+    return maxVal;
 }
 
 #endif /* MAXVALINCDECARRAY_H_ */

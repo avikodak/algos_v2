@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lonelyinteger.h 
+ *  File Name   		: lonelyinteger.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\lonelyinteger.h
  *  Created on			: Jan 30, 2015 :: 8:54:06 AM
  *  Author				: AVINASH
@@ -76,7 +76,7 @@ using namespace __gnu_cxx;
 //Tested
 int lonelyinteger(vector < int > userInput) {
     int xorValue = 0;
-    for(unsigned int counter = 0;counter < userInput.size();counter++){
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
         xorValue ^= userInput[counter];
     }
     return xorValue;

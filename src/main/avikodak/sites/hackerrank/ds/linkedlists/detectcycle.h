@@ -76,19 +76,19 @@ using namespace __gnu_cxx;
 };*/
 
 //Tested
-int HasCycle(Node* head){
-	if(head == NULL || head->next == NULL){
-		return 0;
-	}
-	Node *fastPtr = head->next->next,*slowPtr = head;
-	while(fastPtr != NULL && fastPtr->next != NULL){
-		if(fastPtr == slowPtr ){
-			return 1;
-		}
-		slowPtr = slowPtr->next;
-		fastPtr = fastPtr->next->next;
-	}
-	return 0;
+int HasCycle(Node* head) {
+    if(head == NULL || head->next == NULL) {
+        return 0;
+    }
+    Node *fastPtr = head->next->next,*slowPtr = head;
+    while(fastPtr != NULL && fastPtr->next != NULL) {
+        if(fastPtr == slowPtr ) {
+            return 1;
+        }
+        slowPtr = slowPtr->next;
+        fastPtr = fastPtr->next->next;
+    }
+    return 0;
 }
 
 #endif /* DETECTCYCLE_H_ */

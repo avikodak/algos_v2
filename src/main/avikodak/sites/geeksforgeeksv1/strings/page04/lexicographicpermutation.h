@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lexicographicpermutation.h 
+ *  File Name   		: lexicographicpermutation.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\lexicographicpermutation.h
  *  Created on			: Jan 20, 2015 :: 5:47:34 PM
  *  Author				: AVINASH
@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define LEXICOGRAPHICPERMUTATION_H_
 
 //Tested
-void printLexicographicPermutation(vector<char> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	sort(userInput.begin(),userInput.end());
-	int outerCounter,innerCounter;
-	while(true){
-		printCVector(userInput);
-		PRINT_NEW_LINE;
-		for(outerCounter = userInput.size()-2;outerCounter >= 0;outerCounter--){
-			if(userInput[outerCounter] < userInput[outerCounter+1]){
-				break;
-			}
-		}
-		if(outerCounter < 0){
-			break;
-		}
-		for(innerCounter = userInput.size()-1;innerCounter > outerCounter;innerCounter--){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				break;
-			}
-		}
-		swap(userInput[outerCounter],userInput[innerCounter]);
-		sort(userInput.begin()+outerCounter+1,userInput.end());
-	}
+void printLexicographicPermutation(vector<char> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    sort(userInput.begin(),userInput.end());
+    int outerCounter,innerCounter;
+    while(true) {
+        printCVector(userInput);
+        PRINT_NEW_LINE;
+        for(outerCounter = userInput.size()-2; outerCounter >= 0; outerCounter--) {
+            if(userInput[outerCounter] < userInput[outerCounter+1]) {
+                break;
+            }
+        }
+        if(outerCounter < 0) {
+            break;
+        }
+        for(innerCounter = userInput.size()-1; innerCounter > outerCounter; innerCounter--) {
+            if(userInput[innerCounter] > userInput[outerCounter]) {
+                break;
+            }
+        }
+        swap(userInput[outerCounter],userInput[innerCounter]);
+        sort(userInput.begin()+outerCounter+1,userInput.end());
+    }
 }
 
 #endif /* LEXICOGRAPHICPERMUTATION_H_ */

@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define WORD_H_
 
 //Tested
-void changeCaseWord(){
-	string userInput;
-	cin >> userInput;
-	unsigned int lowerCaseCount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			lowerCaseCount++;
-		}
-	}
-	if(lowerCaseCount >= userInput.size() - lowerCaseCount){
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = userInput[counter] - 'A' + 'a';
-			}
-		}
-	}else{
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-				userInput[counter] = userInput[counter] - 'a' + 'A';
-			}
-		}
-	}
-	cout << userInput;
+void changeCaseWord() {
+    string userInput;
+    cin >> userInput;
+    unsigned int lowerCaseCount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            lowerCaseCount++;
+        }
+    }
+    if(lowerCaseCount >= userInput.size() - lowerCaseCount) {
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                userInput[counter] = userInput[counter] - 'A' + 'a';
+            }
+        }
+    } else {
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+                userInput[counter] = userInput[counter] - 'a' + 'A';
+            }
+        }
+    }
+    cout << userInput;
 }
 
 #endif /* WORD_H_ */

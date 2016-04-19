@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dacmaxsubarraysum.h 
+ *  File Name   		: dacmaxsubarraysum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\dacmaxsubarraysum.h
  *  Created on			: Dec 25, 2014 :: 12:20:17 PM
  *  Author				: AVINASH
@@ -73,31 +73,31 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int leftSum = INT_MIN,sum = 0,rightSum = INT_MIN;
-	for(int counter = middleIndex;counter >= startIndex;counter--){
-		sum += userInput[counter];
-		leftSum = max(leftSum,sum);
-	}
-	for(int counter = middleIndex+1;counter <= endIndex;counter++){
-		sum += userInput[counter];
-		rightSum = max(rightSum,sum);
-	}
-	return leftSum + rightSum;
+int maxCrossOverSum(vector<int> userInput,int startIndex,int middleIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    int leftSum = INT_MIN,sum = 0,rightSum = INT_MIN;
+    for(int counter = middleIndex; counter >= startIndex; counter--) {
+        sum += userInput[counter];
+        leftSum = max(leftSum,sum);
+    }
+    for(int counter = middleIndex+1; counter <= endIndex; counter++) {
+        sum += userInput[counter];
+        rightSum = max(rightSum,sum);
+    }
+    return leftSum + rightSum;
 }
 
-int dacMaxSubArraySum(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	return max(dacMaxSubArraySum(userInput,startIndex,middleIndex),max(dacMaxSubArraySum(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
+int dacMaxSubArraySum(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    return max(dacMaxSubArraySum(userInput,startIndex,middleIndex),max(dacMaxSubArraySum(userInput,middleIndex+1,endIndex),maxCrossOverSum(userInput,startIndex,middleIndex,endIndex)));
 }
 
 #endif /* DACMAXSUBARRAYSUM_H_ */

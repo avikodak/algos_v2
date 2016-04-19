@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 #ifndef PRAC_H_
 #define PRAC_H_
 
-void printResults(){
-	unsigned int testCases;
-	double a,b,c,s,area;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%f %f %f",&a,&b,&c);
-		s = (a+b+c)/2;
-		area = sqrt(s*(s-a)*(s-b)*(s-c));
-		printf("%.2f",area/s);
-	}
+void printResults() {
+    unsigned int testCases;
+    double a,b,c,s,area;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%f %f %f",&a,&b,&c);
+        s = (a+b+c)/2;
+        area = sqrt(s*(s-a)*(s-b)*(s-c));
+        printf("%.2f",area/s);
+    }
 }
 
 #endif /* PRAC_H_ */

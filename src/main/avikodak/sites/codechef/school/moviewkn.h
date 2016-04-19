@@ -77,37 +77,37 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int testCases, size, maxRatingIndex;
-	long long int input, maxProduct, currentProduct;
-	vector<long long int> lengthInput, ratingsInput;
-	scanf("%u", &testCases);
-	while (testCases--) {
-		scanf("%u", &size);
-		lengthInput.clear();
-		ratingsInput.clear();
-		for (unsigned int counter = 0; counter < size; counter++) {
-			scanf("%lld", &input);
-			lengthInput.push_back(input);
-		}
-		for (unsigned int counter = 0; counter < size; counter++) {
-			scanf("%lld", &input);
-			ratingsInput.push_back(input);
-		}
-		maxProduct = lengthInput[0] * ratingsInput[0];
-		maxRatingIndex = 0;
-		for (unsigned int counter = 1; counter < size; counter++) {
-			currentProduct = lengthInput[counter] * ratingsInput[counter];
-			if (currentProduct > maxProduct) {
-				maxProduct = currentProduct;
-				maxRatingIndex = counter;
-			} else if (currentProduct == maxProduct) {
-				if (ratingsInput[maxRatingIndex] < ratingsInput[counter]) {
-					maxRatingIndex = counter;
-				}
-			}
-		}
-		printf("%u\n", maxRatingIndex + 1);
-	}
+    unsigned int testCases, size, maxRatingIndex;
+    long long int input, maxProduct, currentProduct;
+    vector<long long int> lengthInput, ratingsInput;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        scanf("%u", &size);
+        lengthInput.clear();
+        ratingsInput.clear();
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            lengthInput.push_back(input);
+        }
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            ratingsInput.push_back(input);
+        }
+        maxProduct = lengthInput[0] * ratingsInput[0];
+        maxRatingIndex = 0;
+        for (unsigned int counter = 1; counter < size; counter++) {
+            currentProduct = lengthInput[counter] * ratingsInput[counter];
+            if (currentProduct > maxProduct) {
+                maxProduct = currentProduct;
+                maxRatingIndex = counter;
+            } else if (currentProduct == maxProduct) {
+                if (ratingsInput[maxRatingIndex] < ratingsInput[counter]) {
+                    maxRatingIndex = counter;
+                }
+            }
+        }
+        printf("%u\n", maxRatingIndex + 1);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_MOVIEWKN_H_ */

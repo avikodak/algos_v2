@@ -72,58 +72,58 @@ using namespace __gnu_cxx;
 #define SPOON_H_
 
 //Tested
-void isSpoonPresent(vector<string> userInput){
-	for(int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		for(int columnCounter = 0;columnCounter < userInput[0].length();columnCounter++){
-			if(columnCounter+4 < userInput[0].length()){
-				if(userInput[rowCounter][columnCounter] == 's' &&
-						userInput[rowCounter][columnCounter+1] == 'p' &&
-						userInput[rowCounter][columnCounter+2] == 'o' &&
-						userInput[rowCounter][columnCounter+3] == 'o' &&
-						userInput[rowCounter][columnCounter+4] == 'n'){
-					printf("There is a spoon!\n");
-					return;
-				}
-			}else{
-				break;
-			}
-		}
-	}
-	for(int columnCounter = 0;columnCounter < userInput[0].length();columnCounter++){
-		for(int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-			if(rowCounter+4 < userInput.size()){
-				if(userInput[rowCounter][columnCounter] == 's' &&
-						userInput[rowCounter+1][columnCounter] == 'p' &&
-						userInput[rowCounter+2][columnCounter] == 'o' &&
-						userInput[rowCounter+3][columnCounter] == 'o' &&
-						userInput[rowCounter+4][columnCounter] == 'n'){
-					printf("There is a spoon!\n");
-					return;
-				}
-			}else{
-				break;
-			}
-		}
-	}
-	printf("There is indeed no spoon!\n");
+void isSpoonPresent(vector<string> userInput) {
+    for(int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        for(int columnCounter = 0; columnCounter < userInput[0].length(); columnCounter++) {
+            if(columnCounter+4 < userInput[0].length()) {
+                if(userInput[rowCounter][columnCounter] == 's' &&
+                        userInput[rowCounter][columnCounter+1] == 'p' &&
+                        userInput[rowCounter][columnCounter+2] == 'o' &&
+                        userInput[rowCounter][columnCounter+3] == 'o' &&
+                        userInput[rowCounter][columnCounter+4] == 'n') {
+                    printf("There is a spoon!\n");
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+    }
+    for(int columnCounter = 0; columnCounter < userInput[0].length(); columnCounter++) {
+        for(int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+            if(rowCounter+4 < userInput.size()) {
+                if(userInput[rowCounter][columnCounter] == 's' &&
+                        userInput[rowCounter+1][columnCounter] == 'p' &&
+                        userInput[rowCounter+2][columnCounter] == 'o' &&
+                        userInput[rowCounter+3][columnCounter] == 'o' &&
+                        userInput[rowCounter+4][columnCounter] == 'n') {
+                    printf("There is a spoon!\n");
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+    }
+    printf("There is indeed no spoon!\n");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,rows,columns;
-	string input;
-	vector<string> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&rows,&columns);
-		userInput.clear();
-		while(rows--){
-			cin >> input;
-			transform(input.begin(),input.end(),input.begin(),::tolower);
-			userInput.push_back(input);
-		}
-		isSpoonPresent(userInput);
-	}
+void printResults() {
+    unsigned int testCases,rows,columns;
+    string input;
+    vector<string> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&rows,&columns);
+        userInput.clear();
+        while(rows--) {
+            cin >> input;
+            transform(input.begin(),input.end(),input.begin(),::tolower);
+            userInput.push_back(input);
+        }
+        isSpoonPresent(userInput);
+    }
 }
 
 

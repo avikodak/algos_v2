@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #ifndef CAESARCIPHER1_H_
 #define CAESARCIPHER1_H_
 
-void getEncodedString(){
-	unsigned int size,rotate;
-	char userInput[101];
-	scanf("%u",&size);
-	scanf("%s",userInput);
-	scanf("%u",&rotate);
-	unsigned int charAscii;
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(isalpha(userInput[counter])){
-			if(isupper(userInput[counter])){
-				charAscii = userInput[counter] - 'A' + rotate;
-				printf("%c",(charAscii%26) + 'A');
-			}else{
-				charAscii = userInput[counter] - 'a' + rotate;
-				printf("%c",(charAscii%26) + 'a');
-			}
-		}else{
-			printf("%c",userInput[counter]);
-		}
-	}
+void getEncodedString() {
+    unsigned int size,rotate;
+    char userInput[101];
+    scanf("%u",&size);
+    scanf("%s",userInput);
+    scanf("%u",&rotate);
+    unsigned int charAscii;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(isalpha(userInput[counter])) {
+            if(isupper(userInput[counter])) {
+                charAscii = userInput[counter] - 'A' + rotate;
+                printf("%c",(charAscii%26) + 'A');
+            } else {
+                charAscii = userInput[counter] - 'a' + rotate;
+                printf("%c",(charAscii%26) + 'a');
+            }
+        } else {
+            printf("%c",userInput[counter]);
+        }
+    }
 }
 
 #endif /* CAESARCIPHER1_H_ */

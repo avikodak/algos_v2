@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsubsequencesum.h 
+ *  File Name   		: maxsubsequencesum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\maxsubsequencesum.h
  *  Created on			: Dec 19, 2014 :: 12:16:29 PM
  *  Author				: AVINASH
@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef MAXSUBSEQUENCESUM_H_
 #define MAXSUBSEQUENCESUM_H_
 
-int maxSubSequenceSum(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int maxSum = userInput[0];
-	int currentSum = userInput[0];
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		currentSum = max(currentSum,currentSum+userInput[counter]);
-		maxSum = max(maxSum,currentSum);
-	}
-	return maxSum;
+int maxSubSequenceSum(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int maxSum = userInput[0];
+    int currentSum = userInput[0];
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        currentSum = max(currentSum,currentSum+userInput[counter]);
+        maxSum = max(maxSum,currentSum);
+    }
+    return maxSum;
 }
 
 #endif /* MAXSUBSEQUENCESUM_H_ */

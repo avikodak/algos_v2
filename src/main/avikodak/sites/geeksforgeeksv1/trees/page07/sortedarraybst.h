@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortedarraybst.h 
+ *  File Name   		: sortedarraybst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\sortedarraybst.h
  *  Created on			: Oct 23, 2014 :: 10:10:26 AM
  *  Author				: AVINASH
@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *constructBSTFromSortedArray(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	itNode *node = new itNode(userInput[middleIndex]);
-	node->left = constructBSTFromSortedArray(userInput,startIndex,middleIndex-1);
-	node->right = constructBSTFromSortedArray(userInput,middleIndex+1,endIndex);
-	return node;
+itNode *constructBSTFromSortedArray(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return null;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    itNode *node = new itNode(userInput[middleIndex]);
+    node->left = constructBSTFromSortedArray(userInput,startIndex,middleIndex-1);
+    node->right = constructBSTFromSortedArray(userInput,middleIndex+1,endIndex);
+    return node;
 }
 
 #endif /* SORTEDARRAYBST_H_ */

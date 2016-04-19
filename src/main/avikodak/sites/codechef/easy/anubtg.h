@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define ANUBTG_H_
 
 //Tested
-bool sortFunc(unsigned int first,unsigned int second){
-	return first > second;
+bool sortFunc(unsigned int first,unsigned int second) {
+    return first > second;
 }
 
 //Tested
-void getMinAmount(vector<unsigned int> userInput){
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	unsigned int totalAmount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter+=4){
-		totalAmount += userInput[counter];
-		if(counter+1 < userInput.size()){
-			totalAmount += userInput[counter+1];
-		}
-	}
-	cout << totalAmount << endl;
+void getMinAmount(vector<unsigned int> userInput) {
+    sort(userInput.begin(),userInput.end(),sortFunc);
+    unsigned int totalAmount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter+=4) {
+        totalAmount += userInput[counter];
+        if(counter+1 < userInput.size()) {
+            totalAmount += userInput[counter+1];
+        }
+    }
+    cout << totalAmount << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input,size;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		getMinAmount(userInput);
-	}
+void printResults() {
+    unsigned int testCases,input,size;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        getMinAmount(userInput);
+    }
 }
 
 #endif /* ANUBTG_H_ */

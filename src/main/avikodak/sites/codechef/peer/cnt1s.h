@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 #define CNT1S_H_
 
 //Tested
-void countSetBits(unsigned int userInput){
-	unsigned int count = 0;
-	while(userInput){
-		userInput &= (userInput-1);
-		count++;
-	}
-	cout << count << endl;
+void countSetBits(unsigned int userInput) {
+    unsigned int count = 0;
+    while(userInput) {
+        userInput &= (userInput-1);
+        count++;
+    }
+    cout << count << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int input;
-	scanf("%u",&input);
-	countSetBits(input);
+void printResults() {
+    unsigned int input;
+    scanf("%u",&input);
+    countSetBits(input);
 }
 
 #endif /* CNT1S_H_ */

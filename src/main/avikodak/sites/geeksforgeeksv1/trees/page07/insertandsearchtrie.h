@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: insertandsearchtrie.h 
+ *  File Name   		: insertandsearchtrie.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\insertandsearchtrie.h
  *  Created on			: Oct 24, 2014 :: 10:32:37 AM
  *  Author				: AVINASH
@@ -68,85 +68,85 @@ using namespace __gnu_cxx;
 #ifndef INSERTANDSEARCHTRIE_H_
 #define INSERTANDSEARCHTRIE_H_
 
-void insertIntoTrieIterative(cTrieNode **root,char *userInput){
-	if(*root == null){
-		(*root) = new cTrieNode();
-	}
-	cTrieNode *crawler = *root;
-	char ch;
-	unsigned int currentCharIndex;
-	while((ch = *userInput) != '\0'){
-		currentCharIndex = ch - 'a';
-		if(crawler->children[currentCharIndex] == null){
-			crawler->children[currentCharIndex] = new cTrieNode();
-		}
-		crawler = crawler->children[currentCharIndex];
-		userInput++;
-	}
-	crawler->isLeafNode = true;
+void insertIntoTrieIterative(cTrieNode **root,char *userInput) {
+    if(*root == null) {
+        (*root) = new cTrieNode();
+    }
+    cTrieNode *crawler = *root;
+    char ch;
+    unsigned int currentCharIndex;
+    while((ch = *userInput) != '\0') {
+        currentCharIndex = ch - 'a';
+        if(crawler->children[currentCharIndex] == null) {
+            crawler->children[currentCharIndex] = new cTrieNode();
+        }
+        crawler = crawler->children[currentCharIndex];
+        userInput++;
+    }
+    crawler->isLeafNode = true;
 }
 
-void insertIntoTrieMain(cTrieNode *root,char *userInput){
-	if(root == null && userInput == null){
-		return;
-	}
-	if(root == null){
-		throw "Node is null";
-	}
-	if(userInput == '\0'){
-		root->isLeafNode = true;
-		return;
-	}
-	char ch = *userInput;
-	unsigned int currentCharIndex = ch-'a';
-	if(root->children[currentCharIndex] == null){
-		root->children[currentCharIndex] = new cTrieNode();
-	}
-	insertIntoTrieMain(root->children[currentCharIndex],userInput+1);
+void insertIntoTrieMain(cTrieNode *root,char *userInput) {
+    if(root == null && userInput == null) {
+        return;
+    }
+    if(root == null) {
+        throw "Node is null";
+    }
+    if(userInput == '\0') {
+        root->isLeafNode = true;
+        return;
+    }
+    char ch = *userInput;
+    unsigned int currentCharIndex = ch-'a';
+    if(root->children[currentCharIndex] == null) {
+        root->children[currentCharIndex] = new cTrieNode();
+    }
+    insertIntoTrieMain(root->children[currentCharIndex],userInput+1);
 }
 
-void insertIntoTrie(cTrieNode **root,char *userInput){
-	if(*root == null){
-		*root = new cTrieNode();
-	}
-	insertIntoTrieMain(root,userInput);
+void insertIntoTrie(cTrieNode **root,char *userInput) {
+    if(*root == null) {
+        *root = new cTrieNode();
+    }
+    insertIntoTrieMain(root,userInput);
 }
 
-bool searchForWordInTrie(cTrieNode *root,char *userInput){
-	if(root == null){
-		return userInput == null;
-	}
-	cTrieNode *crawler = root;
-	char ch;
-	unsigned int currentCharIndex;
-	while((ch = *userInput) != '\0'){
-		currentCharIndex = ch - 'a';
-		if(crawler->children[currentCharIndex] == null){
-			return false;
-		}
-		crawler = crawler->children[currentCharIndex];
-		userInput++;
-	}
-	return crawler->isLeafNode;
+bool searchForWordInTrie(cTrieNode *root,char *userInput) {
+    if(root == null) {
+        return userInput == null;
+    }
+    cTrieNode *crawler = root;
+    char ch;
+    unsigned int currentCharIndex;
+    while((ch = *userInput) != '\0') {
+        currentCharIndex = ch - 'a';
+        if(crawler->children[currentCharIndex] == null) {
+            return false;
+        }
+        crawler = crawler->children[currentCharIndex];
+        userInput++;
+    }
+    return crawler->isLeafNode;
 }
 
-bool searchForWordInTrie(cTrieNode *root,char *userInput){
-	if(root == null && userInput == null){
-		return true;
-	}
-	if(root == null || userInput == null){
-		if(userInput == null){
-			return root->isLeafNode;
-		}else{
-			return false;
-		}
-	}
-	char ch = *userInput;
-	unsigned int currentCharIndex = ch - 'a';
-	if(root->children[currentCharIndex] == null){
-		return false;
-	}
-	return searchForWordInTrie(root->children[currentCharIndex],userInput+1);
+bool searchForWordInTrie(cTrieNode *root,char *userInput) {
+    if(root == null && userInput == null) {
+        return true;
+    }
+    if(root == null || userInput == null) {
+        if(userInput == null) {
+            return root->isLeafNode;
+        } else {
+            return false;
+        }
+    }
+    char ch = *userInput;
+    unsigned int currentCharIndex = ch - 'a';
+    if(root->children[currentCharIndex] == null) {
+        return false;
+    }
+    return searchForWordInTrie(root->children[currentCharIndex],userInput+1);
 }
 
 #endif /* INSERTANDSEARCHTRIE_H_ */

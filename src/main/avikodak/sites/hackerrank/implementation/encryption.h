@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define ENCRYPTION_H_
 
 //Tested
-void getEncryptedData(){
-	string userInput;
-	cin >> userInput;
-	int columns = ceil(sqrt(userInput.length()));
-	queue<char> rows[columns];
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		rows[counter%columns].push(userInput[counter]);
-	}
-	for(unsigned int counter = 0;counter < columns;counter++){
-		while(!rows[counter].empty()){
-			printf("%c",rows[counter].front());
-			rows[counter].pop();
-		}
-		printf("\n");
-	}
+void getEncryptedData() {
+    string userInput;
+    cin >> userInput;
+    int columns = ceil(sqrt(userInput.length()));
+    queue<char> rows[columns];
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        rows[counter%columns].push(userInput[counter]);
+    }
+    for(unsigned int counter = 0; counter < columns; counter++) {
+        while(!rows[counter].empty()) {
+            printf("%c",rows[counter].front());
+            rows[counter].pop();
+        }
+        printf("\n");
+    }
 }
 
 #endif /* ENCRYPTION_H_ */

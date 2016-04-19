@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sillutil.h 
+ *  File Name   		: sillutil.h
  *	File Location		: D:\algos\algos_v2\src\lib\utils\sillutil.h
  *  Created on			: Oct 9, 2014 :: 12:36:41 PM
  *  Author				: AVINASH
@@ -64,98 +64,98 @@ using namespace __gnu_cxx;
 
 class sillutils {
 private:
-	void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr){
-		if(ptr == null || ptr->next == null){
-			(*firstPtr) = ptr;
-			(*secondPtr) = null;
-			return;
-		}
-		sillNode *slowPtr = ptr,*fastPtr = ptr->next;
-		while(fastPtr != null){
-			fastPtr = fastPtr->next;
-			if(fastPtr != null){
-				fastPtr = fastPtr->next;
-				slowPtr = slowPtr->next;
-			}
-		}
-		(*secondPtr) = slowPtr->next;
-		slowPtr->next = null;
-		(*firstPtr)  = ptr;
-	}
+    void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr) {
+        if(ptr == null || ptr->next == null) {
+            (*firstPtr) = ptr;
+            (*secondPtr) = null;
+            return;
+        }
+        sillNode *slowPtr = ptr,*fastPtr = ptr->next;
+        while(fastPtr != null) {
+            fastPtr = fastPtr->next;
+            if(fastPtr != null) {
+                fastPtr = fastPtr->next;
+                slowPtr = slowPtr->next;
+            }
+        }
+        (*secondPtr) = slowPtr->next;
+        slowPtr->next = null;
+        (*firstPtr)  = ptr;
+    }
 
-	sillNode *merge(sillNode *firstPtr,sillNode *secondPtr){
-		if(firstPtr == null || secondPtr == null){
-			return firstPtr == null?secondPtr:firstPtr;
-		}
-		sillNode *result = null;
-		if(firstPtr->value < secondPtr->value){
-			result  = firstPtr;
-			result->next = merge(firstPtr->next,secondPtr);
-		}else{
-			result = secondPtr;
-		}
-		return result;
-	}
+    sillNode *merge(sillNode *firstPtr,sillNode *secondPtr) {
+        if(firstPtr == null || secondPtr == null) {
+            return firstPtr == null?secondPtr:firstPtr;
+        }
+        sillNode *result = null;
+        if(firstPtr->value < secondPtr->value) {
+            result  = firstPtr;
+            result->next = merge(firstPtr->next,secondPtr);
+        } else {
+            result = secondPtr;
+        }
+        return result;
+    }
 public:
-	//Tested
-	sillNode *getSillFromVector(vector<int> userInput,unsigned int currentIndex = 0){
-		if(currentIndex >= userInput.size()){
-			return null;
-		}
-		sillNode *node = new sillNode(userInput[currentIndex]);
-		node->next = getSillFromVector(userInput,currentIndex+1);
-		return node;
-	}
+    //Tested
+    sillNode *getSillFromVector(vector<int> userInput,unsigned int currentIndex = 0) {
+        if(currentIndex >= userInput.size()) {
+            return null;
+        }
+        sillNode *node = new sillNode(userInput[currentIndex]);
+        node->next = getSillFromVector(userInput,currentIndex+1);
+        return node;
+    }
 
-	//Tested
-	sillNode *getRandomSill(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX){
-		vector<int> randomVector = generateIRandomVector(numberOfNodes,minValue,maxValue);
-		printIVector(randomVector);
-		return getSillFromVector(randomVector);
-	}
+    //Tested
+    sillNode *getRandomSill(unsigned int numberOfNodes,int minValue = INT_MIN,int maxValue = INT_MAX) {
+        vector<int> randomVector = generateIRandomVector(numberOfNodes,minValue,maxValue);
+        printIVector(randomVector);
+        return getSillFromVector(randomVector);
+    }
 
-	//Tested
-	unsigned int lengthOfSill(sillNode *ptr){
-		return ptr == null?0:1+lengthOfSill(ptr->next);
-	}
+    //Tested
+    unsigned int lengthOfSill(sillNode *ptr) {
+        return ptr == null?0:1+lengthOfSill(ptr->next);
+    }
 
-	//Tested
-	iSillHashmap *getSillAsHashmap(sillNode *ptr,unsigned int startIndex = 0){
-		if(ptr == null){
-			return null;
-		}
-		hash_map<unsigned int,sillNode *> indexNodeMap;
-		hash_map<intptr_t,unsigned int> nodeIndexMap;
-		while(ptr != null){
-			indexNodeMap.insert(pair<unsigned int,sillNode *>(startIndex,ptr));
-			nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,startIndex));
-			startIndex += 1;
-			ptr = ptr->next;
-		}
-		iSillHashmap *hashMapOfSill = new iSillHashmap();
-		hashMapOfSill->indexNodeMap = indexNodeMap;
-		hashMapOfSill->nodeIndexMap = nodeIndexMap;
-		return hashMapOfSill;
-	}
+    //Tested
+    iSillHashmap *getSillAsHashmap(sillNode *ptr,unsigned int startIndex = 0) {
+        if(ptr == null) {
+            return null;
+        }
+        hash_map<unsigned int,sillNode *> indexNodeMap;
+        hash_map<intptr_t,unsigned int> nodeIndexMap;
+        while(ptr != null) {
+            indexNodeMap.insert(pair<unsigned int,sillNode *>(startIndex,ptr));
+            nodeIndexMap.insert(pair<intptr_t,unsigned int>((intptr_t)ptr,startIndex));
+            startIndex += 1;
+            ptr = ptr->next;
+        }
+        iSillHashmap *hashMapOfSill = new iSillHashmap();
+        hashMapOfSill->indexNodeMap = indexNodeMap;
+        hashMapOfSill->nodeIndexMap = nodeIndexMap;
+        return hashMapOfSill;
+    }
 
-	//Tested
-	void printSill(sillNode *ptr){
-		while(ptr != null){
-			printf("%d\t",ptr->value);
-			ptr = ptr->next;
-		}
-	}
+    //Tested
+    void printSill(sillNode *ptr) {
+        while(ptr != null) {
+            printf("%d\t",ptr->value);
+            ptr = ptr->next;
+        }
+    }
 
-	void mergeSort(sillNode **ptr){
-		if(*ptr == null || (*ptr)->next == null){
-			return;
-		}
-		sillNode *firstPtr = null,*secondPtr = null;
-		frontBackSplit(*ptr,&firstPtr,&secondPtr);
-		mergeSort(&firstPtr);
-		mergeSort(&secondPtr);
-		(*ptr) = merge(firstPtr,secondPtr);
-	}
+    void mergeSort(sillNode **ptr) {
+        if(*ptr == null || (*ptr)->next == null) {
+            return;
+        }
+        sillNode *firstPtr = null,*secondPtr = null;
+        frontBackSplit(*ptr,&firstPtr,&secondPtr);
+        mergeSort(&firstPtr);
+        mergeSort(&secondPtr);
+        (*ptr) = merge(firstPtr,secondPtr);
+    }
 };
 
 #endif /* SILLUTIL_H_ */

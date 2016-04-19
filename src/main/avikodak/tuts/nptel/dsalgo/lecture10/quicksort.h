@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort.h 
+ *  File Name   		: quicksort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\quicksort.h
  *  Created on			: Nov 18, 2014 :: 2:48:46 PM
  *  Author				: AVINASH
@@ -72,35 +72,35 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int divideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	int key = userInput[startIndex];
-	int pivotIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+int divideStepQuickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return -1;
+    }
+    int key = userInput[startIndex];
+    int pivotIndex = startIndex;
+    while(startIndex < endIndex) {
+        while(userInput[startIndex] <= key) {
+            startIndex++;
+        }
+        while(userInput[endIndex] > key) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    swap(userInput[pivotIndex],userInput[endIndex]);
+    return endIndex;
 }
 
 //Tested
-void quicksort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
-	quicksort(userInput,startIndex,dividingIndex-1);
-	quicksort(userInput,dividingIndex+1,endIndex);
+void quicksort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return;
+    }
+    int dividingIndex = divideStepQuickSort(userInput,startIndex,endIndex);
+    quicksort(userInput,startIndex,dividingIndex-1);
+    quicksort(userInput,dividingIndex+1,endIndex);
 }
 
 #endif /* QUICKSORT_H_ */

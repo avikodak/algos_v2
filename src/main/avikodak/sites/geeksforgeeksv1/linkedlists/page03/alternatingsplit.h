@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: alternatingsplit.h 
+ *  File Name   		: alternatingsplit.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\alternatingsplit.h
  *  Created on			: Oct 21, 2014 :: 12:44:37 PM
  *  Author				: AVINASH
@@ -72,94 +72,94 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *splitSillAlternateNodes(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
-	result[0] = ptr;
-	result[1] = ptr->next;
-	if(ptr->next == null){
-		return result;
-	}
-	bool flag = true;
-	sillNode *firstSillTail = result[0],*secondSillTail = result[1];
-	sillNode *crawler = ptr->next->next;
-	while(crawler != null){
-		if(flag){
-			firstSillTail->next = crawler;
-			firstSillTail = firstSillTail->next;
-		}else{
-			secondSillTail->next = crawler;
-			secondSillTail = secondSillTail->next;
-		}
-		crawler = crawler->next;
-	}
-	return result;
+sillNode *splitSillAlternateNodes(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
+    result[0] = ptr;
+    result[1] = ptr->next;
+    if(ptr->next == null) {
+        return result;
+    }
+    bool flag = true;
+    sillNode *firstSillTail = result[0],*secondSillTail = result[1];
+    sillNode *crawler = ptr->next->next;
+    while(crawler != null) {
+        if(flag) {
+            firstSillTail->next = crawler;
+            firstSillTail = firstSillTail->next;
+        } else {
+            secondSillTail->next = crawler;
+            secondSillTail = secondSillTail->next;
+        }
+        crawler = crawler->next;
+    }
+    return result;
 }
 
-sillNode *splitSillAlternatinglyAuxspace(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	queue<sillNode *> firstAuxspace,secondAuxspace;
-	sillNode *crawler = ptr;
-	bool flag = true;
-	while(crawler != null){
-		if(flag){
-			firstAuxspace.push(crawler);
-		}else{
-			secondAuxspace.push(crawler);
-		}
-		crawler = crawler->next;
-	}
-	sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
-	result[0] = firstAuxspace.front();
-	result[1] = secondAuxspace.front();
-	firstAuxspace.pop();
-	secondAuxspace.pop();
-	sillNode *crawler1 = result[0],*crawler2 = result[1];
-	while(!firstAuxspace.empty()){
-		crawler1->next = firstAuxspace.front();
-		firstAuxspace.pop();
-		crawler1 = crawler1->next;
-	}
-	while(!secondAuxspace.empty()){
-		crawler2->next = secondAuxspace.front();
-		secondAuxspace.pop();
-		crawler2 = crawler2->next;
-	}
-	return result;
+sillNode *splitSillAlternatinglyAuxspace(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    queue<sillNode *> firstAuxspace,secondAuxspace;
+    sillNode *crawler = ptr;
+    bool flag = true;
+    while(crawler != null) {
+        if(flag) {
+            firstAuxspace.push(crawler);
+        } else {
+            secondAuxspace.push(crawler);
+        }
+        crawler = crawler->next;
+    }
+    sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
+    result[0] = firstAuxspace.front();
+    result[1] = secondAuxspace.front();
+    firstAuxspace.pop();
+    secondAuxspace.pop();
+    sillNode *crawler1 = result[0],*crawler2 = result[1];
+    while(!firstAuxspace.empty()) {
+        crawler1->next = firstAuxspace.front();
+        firstAuxspace.pop();
+        crawler1 = crawler1->next;
+    }
+    while(!secondAuxspace.empty()) {
+        crawler2->next = secondAuxspace.front();
+        secondAuxspace.pop();
+        crawler2 = crawler2->next;
+    }
+    return result;
 }
 
-sillNode *splitSillAlternateNodesHashmap(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1);
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
-	sillNode *firstCrawler,*secondCrawler;
-	result[0] = (indexNodeMap.find(1))->second;
-	if(ptr->next == null){
-		result[1] = null;
-		return result;
-	}
-	result[1] = indexNodeMap.find(2)->second;
-	firstCrawler = result[0];
-	secondCrawler = result[1];
-	ptr = ptr->next->next;
-	for(unsigned int counter = 3;counter < indexNodeMap.size();counter++){
-		if(counter%2 == 1){
-			firstCrawler->next = indexNodeMap.find(counter)->second;
-			firstCrawler = firstCrawler->next;
-		}else{
-			secondCrawler->next = indexNodeMap.find(counter)->second;
-			secondCrawler = secondCrawler->next;
-		}
-	}
-	return result;
+sillNode *splitSillAlternateNodesHashmap(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1);
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
+    sillNode *firstCrawler,*secondCrawler;
+    result[0] = (indexNodeMap.find(1))->second;
+    if(ptr->next == null) {
+        result[1] = null;
+        return result;
+    }
+    result[1] = indexNodeMap.find(2)->second;
+    firstCrawler = result[0];
+    secondCrawler = result[1];
+    ptr = ptr->next->next;
+    for(unsigned int counter = 3; counter < indexNodeMap.size(); counter++) {
+        if(counter%2 == 1) {
+            firstCrawler->next = indexNodeMap.find(counter)->second;
+            firstCrawler = firstCrawler->next;
+        } else {
+            secondCrawler->next = indexNodeMap.find(counter)->second;
+            secondCrawler = secondCrawler->next;
+        }
+    }
+    return result;
 }
 
 #endif /* ALTERNATINGSPLIT_H_ */

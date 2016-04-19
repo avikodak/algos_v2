@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sherlockandpairs.h 
+ *  File Name   		: sherlockandpairs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\sherlockandpairs.h
  *  Created on			: Feb 12, 2015 :: 3:13:12 PM
  *  Author				: AVINASH
@@ -70,31 +70,31 @@ using namespace __gnu_cxx;
 #ifndef SHERLOCKANDPAIRS_H_
 #define SHERLOCKANDPAIRS_H_
 
-void countEqualPairs(){
-	long int testCases,size,input;
-	scanf("%ld",&testCases);
-	vector<long int> userInput;
-	long int crawler,counter,total;
-	while(testCases--){
-		scanf("%ld",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%ld",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end());
-		crawler = counter = total = 0;
-		while(crawler < userInput.size()){
-			counter = 1;
-			while(crawler+1 < userInput.size() && userInput[crawler] == userInput[crawler+1]){
-				counter += 1;
-				crawler++;
-			}
-			total += (counter * (counter-1));
-			crawler++;
-		}
-		printf("%ld\n",total);
-	}
+void countEqualPairs() {
+    long int testCases,size,input;
+    scanf("%ld",&testCases);
+    vector<long int> userInput;
+    long int crawler,counter,total;
+    while(testCases--) {
+        scanf("%ld",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%ld",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end());
+        crawler = counter = total = 0;
+        while(crawler < userInput.size()) {
+            counter = 1;
+            while(crawler+1 < userInput.size() && userInput[crawler] == userInput[crawler+1]) {
+                counter += 1;
+                crawler++;
+            }
+            total += (counter * (counter-1));
+            crawler++;
+        }
+        printf("%ld\n",total);
+    }
 }
 
 #endif /* SHERLOCKANDPAIRS_H_ */

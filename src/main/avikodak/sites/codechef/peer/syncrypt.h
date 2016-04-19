@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #ifndef SYNCRYPT_H_
 #define SYNCRYPT_H_
 
-void printResults(){
-	string encryptedInput;
-	string alphabets;
-	getline(cin,encryptedInput);
-	getline(cin,alphabets);
-	for(unsigned int counter = 0;counter < encryptedInput.size();counter++){
-		if(encryptedInput[counter] >= 'A' && encryptedInput[counter] <= 'Z'){
-			cout << alphabets[encryptedInput[counter]-'A'];
-		}else{
-			cout << encryptedInput[counter];
-		}
-	}
+void printResults() {
+    string encryptedInput;
+    string alphabets;
+    getline(cin,encryptedInput);
+    getline(cin,alphabets);
+    for(unsigned int counter = 0; counter < encryptedInput.size(); counter++) {
+        if(encryptedInput[counter] >= 'A' && encryptedInput[counter] <= 'Z') {
+            cout << alphabets[encryptedInput[counter]-'A'];
+        } else {
+            cout << encryptedInput[counter];
+        }
+    }
 }
 
 #endif /* SYNCRYPT_H_ */

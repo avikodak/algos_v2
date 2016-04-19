@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesort.h 
+ *  File Name   		: mergesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\mergesort.h
  *  Created on			: Oct 31, 2014 :: 2:09:06 PM
  *  Author				: AVINASH
@@ -69,51 +69,51 @@ using namespace __gnu_cxx;
 #define MERGESORT_H_
 
 //Tested
-sillNode *merge(sillNode *firstSill,sillNode *secondSill){
-	if(firstSill == null || secondSill == null){
-		return firstSill == null?secondSill:firstSill;
-	}
-	sillNode *result;
-	if(firstSill->value < secondSill->value){
-		result = firstSill;
-		result->next = merge(firstSill->next,secondSill);
-	}else{
-		result = secondSill;
-		result->next = merge(firstSill,secondSill->next);
-	}
-	return result;
+sillNode *merge(sillNode *firstSill,sillNode *secondSill) {
+    if(firstSill == null || secondSill == null) {
+        return firstSill == null?secondSill:firstSill;
+    }
+    sillNode *result;
+    if(firstSill->value < secondSill->value) {
+        result = firstSill;
+        result->next = merge(firstSill->next,secondSill);
+    } else {
+        result = secondSill;
+        result->next = merge(firstSill,secondSill->next);
+    }
+    return result;
 }
 
 //Tested
-void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr){
-	if(ptr == null || ptr->next == null){
-		(*firstPtr) = ptr;
-		(*secondPtr) = null;
-		return;
-	}
-	sillNode *fast = ptr->next,*slow = ptr;
-	while(fast != null){
-		fast = fast->next;
-		if(fast != null){
-			fast = fast->next;
-			slow = slow->next;
-		}
-	}
-	(*secondPtr) = slow->next;
-	(*firstPtr) = ptr;
-	slow->next = null;
+void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr) {
+    if(ptr == null || ptr->next == null) {
+        (*firstPtr) = ptr;
+        (*secondPtr) = null;
+        return;
+    }
+    sillNode *fast = ptr->next,*slow = ptr;
+    while(fast != null) {
+        fast = fast->next;
+        if(fast != null) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+    }
+    (*secondPtr) = slow->next;
+    (*firstPtr) = ptr;
+    slow->next = null;
 }
 
 //Tested
-void mergeSort(sillNode **ptr){
-	if((*ptr) == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *firstPtr = null,*secondPtr = null;
-	frontBackSplit(*ptr,&firstPtr,&secondPtr);
-	mergeSort(&firstPtr);
-	mergeSort(&secondPtr);
-	(*ptr) = merge(firstPtr,secondPtr);
+void mergeSort(sillNode **ptr) {
+    if((*ptr) == null || (*ptr)->next == null) {
+        return;
+    }
+    sillNode *firstPtr = null,*secondPtr = null;
+    frontBackSplit(*ptr,&firstPtr,&secondPtr);
+    mergeSort(&firstPtr);
+    mergeSort(&secondPtr);
+    (*ptr) = merge(firstPtr,secondPtr);
 }
 
 

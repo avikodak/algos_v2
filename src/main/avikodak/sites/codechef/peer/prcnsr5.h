@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 #define PRCNSR5_H_
 
 //Tested
-void printResults(){
-	string userInput;
-	cin >> userInput;
-	switch (userInput[userInput.size()-1]) {
-		case '0':
-		case '2':
-		case '4':
-		case '6':
-		case '8':
-			printf("YES\n");
-			break;
-		default:
-			printf("NO\n");
-	}
+void printResults() {
+    string userInput;
+    cin >> userInput;
+    switch (userInput[userInput.size()-1]) {
+    case '0':
+    case '2':
+    case '4':
+    case '6':
+    case '8':
+        printf("YES\n");
+        break;
+    default:
+        printf("NO\n");
+    }
 }
 
 #endif /* PRCNSR5_H_ */

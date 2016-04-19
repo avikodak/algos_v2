@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define SUMMATIONOFPRIMES_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
 //Ans : 142913828922
-void getSummationOfPrimes(){
-	long long int sum = 2;
-	for(long long int counter = 3;counter < 2000000;counter++){
-		if(isNumberPrime(counter)){
-			sum += counter;
-		}
-	}
-	cout << sum << endl;
+void getSummationOfPrimes() {
+    long long int sum = 2;
+    for(long long int counter = 3; counter < 2000000; counter++) {
+        if(isNumberPrime(counter)) {
+            sum += counter;
+        }
+    }
+    cout << sum << endl;
 }
 
 #endif /* SUMMATIONOFPRIMES_H_ */

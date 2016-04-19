@@ -72,13 +72,13 @@ using namespace __gnu_cxx;
 #ifndef CW08_H_
 #define CW08_H_
 
-void printResults(){
-	string valueStringMap[] ={"","pa","re","ci","vo","mk","x","zi","bi","so"};
-	string userInput;
-	cin >> userInput;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << valueStringMap[userInput[counter]-'0'];
-	}
+void printResults() {
+    string valueStringMap[] = {"","pa","re","ci","vo","mk","x","zi","bi","so"};
+    string userInput;
+    cin >> userInput;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        cout << valueStringMap[userInput[counter]-'0'];
+    }
 }
 
 #endif /* CW08_H_ */

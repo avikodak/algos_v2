@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define IQTEST_H_
 
 //Tested
-void getNumberEvenness(){
-	unsigned int testCases,firstInput,secondInput,thirdInput,input;
-	scanf("%u",&testCases);
-	cin >> firstInput >> secondInput >> thirdInput;
-	bool printOddNumber = false;
-	if(firstInput%2 == 0 && secondInput%2 == 0){
-		if(thirdInput%2 == 1){
-			printf("%u",thirdInput);
-			return;
-		}
-		printOddNumber = true;
-	}else if(firstInput%2 == 0 && thirdInput%2 == 0){
-		printf("%u",secondInput);
-		return;
-	}else if(secondInput%2 == 0 && thirdInput%2 == 0){
-		printf("%u",firstInput);
-		return;
-	}
-	testCases -= 3;
-	while(testCases--){
-		scanf("%u",&input);
-		if(printOddNumber){
-			if(input%2 == 1){
-				printf("%u",input);
-				return;
-			}
-		}else{
-			if(input%2 == 0){
-				printf("%u",input);
-				return;
-			}
-		}
-	}
+void getNumberEvenness() {
+    unsigned int testCases,firstInput,secondInput,thirdInput,input;
+    scanf("%u",&testCases);
+    cin >> firstInput >> secondInput >> thirdInput;
+    bool printOddNumber = false;
+    if(firstInput%2 == 0 && secondInput%2 == 0) {
+        if(thirdInput%2 == 1) {
+            printf("%u",thirdInput);
+            return;
+        }
+        printOddNumber = true;
+    } else if(firstInput%2 == 0 && thirdInput%2 == 0) {
+        printf("%u",secondInput);
+        return;
+    } else if(secondInput%2 == 0 && thirdInput%2 == 0) {
+        printf("%u",firstInput);
+        return;
+    }
+    testCases -= 3;
+    while(testCases--) {
+        scanf("%u",&input);
+        if(printOddNumber) {
+            if(input%2 == 1) {
+                printf("%u",input);
+                return;
+            }
+        } else {
+            if(input%2 == 0) {
+                printf("%u",input);
+                return;
+            }
+        }
+    }
 }
 
 #endif /* IQTEST_H_ */

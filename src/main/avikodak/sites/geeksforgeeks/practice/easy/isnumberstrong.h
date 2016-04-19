@@ -76,21 +76,21 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_ISNUMBERSTRONG_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input,sum,dupInput;
-	scanf("%u",&testCases);
-	long long int factorialCache[] = {1,1,2,6,24,120,720,5040,40320,362880};
-	while(testCases--){
-		scanf("%lld",&input);
-		sum = 0;
-		dupInput = input;
-		while(input){
-			sum += factorialCache[input%10];
-			input /= 10;
-		}
-		printf("%s\n",sum == dupInput?"Strong":"Not Strong");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input,sum,dupInput;
+    scanf("%u",&testCases);
+    long long int factorialCache[] = {1,1,2,6,24,120,720,5040,40320,362880};
+    while(testCases--) {
+        scanf("%lld",&input);
+        sum = 0;
+        dupInput = input;
+        while(input) {
+            sum += factorialCache[input%10];
+            input /= 10;
+        }
+        printf("%s\n",sum == dupInput?"Strong":"Not Strong");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_ISNUMBERSTRONG_H_ */

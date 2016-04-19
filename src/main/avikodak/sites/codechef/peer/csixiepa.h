@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define CSIXIEPA_H_
 
 //Tested
-void printResults(){
-	vector<bool> flags;
-	flags.assign(26,false);
-	unsigned int testCases;
-	string userInput;
-	cin >> testCases;
-	cin.ignore();
-	while(testCases--){
-		getline(cin,userInput);
-		fill(flags.begin(),flags.end(),false);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-				flags[userInput[counter]-'a'] = true;
-			}else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				flags[userInput[counter]-'A'] = true;
-			}
-		}
-		bool isPangram = true;
-		for(unsigned int counter = 0;counter < 26;counter++){
-			if(!flags[counter]){
-				isPangram = false;
-				break;
-			}
-		}
-		printf("%s\n",isPangram?"TRUE":"FALSE");
-	}
+void printResults() {
+    vector<bool> flags;
+    flags.assign(26,false);
+    unsigned int testCases;
+    string userInput;
+    cin >> testCases;
+    cin.ignore();
+    while(testCases--) {
+        getline(cin,userInput);
+        fill(flags.begin(),flags.end(),false);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+                flags[userInput[counter]-'a'] = true;
+            } else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                flags[userInput[counter]-'A'] = true;
+            }
+        }
+        bool isPangram = true;
+        for(unsigned int counter = 0; counter < 26; counter++) {
+            if(!flags[counter]) {
+                isPangram = false;
+                break;
+            }
+        }
+        printf("%s\n",isPangram?"TRUE":"FALSE");
+    }
 }
 
 #endif /* CSIXIEPA_H_ */

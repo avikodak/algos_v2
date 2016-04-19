@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: frequencysill.h 
+ *  File Name   		: frequencysill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\frequencysill.h
  *  Created on			: Oct 12, 2014 :: 6:36:50 PM
  *  Author				: AVINASH
@@ -73,45 +73,45 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int frequencyOfInt(sillNode *ptr,int userInput){
-	if(ptr == null){
-		return 0;
-	}
-	if(ptr->value == userInput){
-		return 1+frequencyOfInt(ptr->next,userInput);
-	}else{
-		return frequencyOfInt(ptr->next,userInput);
-	}
+unsigned int frequencyOfInt(sillNode *ptr,int userInput) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(ptr->value == userInput) {
+        return 1+frequencyOfInt(ptr->next,userInput);
+    } else {
+        return frequencyOfInt(ptr->next,userInput);
+    }
 }
 
 //Tested
-unsigned int frequencyOfIntHashmap(sillNode *ptr,int userInput){
-	if(ptr == null){
-		return 0;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	sillNode *crawler = ptr;
-	while(crawler != null){
-		if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()){
-			frequencyMap[itToFrequencyMap->first]++;
-		}else{
-			frequencyMap[crawler->value] = 1;
-		}
-		crawler = crawler->next;
-	}
-	return (itToFrequencyMap = frequencyMap.find(userInput)) == frequencyMap.end()?0:itToFrequencyMap->second;
+unsigned int frequencyOfIntHashmap(sillNode *ptr,int userInput) {
+    if(ptr == null) {
+        return 0;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    sillNode *crawler = ptr;
+    while(crawler != null) {
+        if((itToFrequencyMap = frequencyMap.find(crawler->value)) != frequencyMap.end()) {
+            frequencyMap[itToFrequencyMap->first]++;
+        } else {
+            frequencyMap[crawler->value] = 1;
+        }
+        crawler = crawler->next;
+    }
+    return (itToFrequencyMap = frequencyMap.find(userInput)) == frequencyMap.end()?0:itToFrequencyMap->second;
 }
 
 //Tested
-unsigned int frequencyOfIntBST(sillNode *ptr,int userInput){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	iftNode *rootBST = utils->getFBSTFromSill(ptr);
-	iftNode *keyNode = utils->searchForValueBST(rootBST,userInput);
-	return keyNode == null?0:keyNode->frequency;
+unsigned int frequencyOfIntBST(sillNode *ptr,int userInput) {
+    if(ptr == null) {
+        return 0;
+    }
+    treeutils *utils = new treeutils();
+    iftNode *rootBST = utils->getFBSTFromSill(ptr);
+    iftNode *keyNode = utils->searchForValueBST(rootBST,userInput);
+    return keyNode == null?0:keyNode->frequency;
 }
 
 /****************************************************************************************************************************************************/

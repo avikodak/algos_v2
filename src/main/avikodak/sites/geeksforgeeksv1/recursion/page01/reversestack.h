@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversestack.h 
+ *  File Name   		: reversestack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\reversestack.h
  *  Created on			: Oct 13, 2014 :: 11:58:07 AM
  *  Author				: AVINASH
@@ -69,14 +69,14 @@ using namespace __gnu_cxx;
 #ifndef REVERSESTACK_H_
 #define REVERSESTACK_H_
 
-void reverseStack(stack<itNode *> &auxSpace){
-	if(auxSpace.empty()){
-		return;
-	}
-	int value = auxSpace.top();
-	auxSpace.pop();
-	reverseStack(auxSpace);
-	auxSpace.push(value);
+void reverseStack(stack<itNode *> &auxSpace) {
+    if(auxSpace.empty()) {
+        return;
+    }
+    int value = auxSpace.top();
+    auxSpace.pop();
+    reverseStack(auxSpace);
+    auxSpace.push(value);
 }
 
 #endif /* REVERSESTACK_H_ */

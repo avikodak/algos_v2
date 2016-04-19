@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define MAXDIFF_H_
 
 //Tested
-void printMinDifference(vector<unsigned int> userInput,int kValue,int sum){
-	int firstKSum=0,lastKSum = 0;
-	sort(userInput.begin(),userInput.end());
-	for(int counter = 0;counter < kValue;counter++){
-		firstKSum += userInput[counter];
-	}
-	for(int counter = userInput.size()-1;kValue--;counter--){
-		lastKSum += userInput[counter];
-	}
-	cout << max(abs(firstKSum - (sum-firstKSum)),abs(lastKSum-(sum-lastKSum))) << endl;
+void printMinDifference(vector<unsigned int> userInput,int kValue,int sum) {
+    int firstKSum=0,lastKSum = 0;
+    sort(userInput.begin(),userInput.end());
+    for(int counter = 0; counter < kValue; counter++) {
+        firstKSum += userInput[counter];
+    }
+    for(int counter = userInput.size()-1; kValue--; counter--) {
+        lastKSum += userInput[counter];
+    }
+    cout << max(abs(firstKSum - (sum-firstKSum)),abs(lastKSum-(sum-lastKSum))) << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input,size;
-	int kValue,sum;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u %u",&size,&kValue);
-		userInput.clear();
-		sum = 0;
-		while(size--){
-			scanf("%u",&input);
-			sum += input;
-			userInput.push_back(input);
-		}
-		printMinDifference(userInput,kValue,sum);
-	}
+void printResults() {
+    unsigned int testCases,input,size;
+    int kValue,sum;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u %u",&size,&kValue);
+        userInput.clear();
+        sum = 0;
+        while(size--) {
+            scanf("%u",&input);
+            sum += input;
+            userInput.push_back(input);
+        }
+        printMinDifference(userInput,kValue,sum);
+    }
 }
 
 #endif /* MAXDIFF_H_ */

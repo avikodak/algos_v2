@@ -76,29 +76,29 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SUMOFDIGITSPALINDROMECHECK_H_
 
 //Tested
-long long int reverseVal(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result = result*10 + (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+long long int reverseVal(long long int userInput) {
+    long long int result = 0;
+    while(userInput) {
+        result = result*10 + (userInput%10);
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input,sum = 0;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		sum = 0;
-		while(input){
-			sum += input%10;
-			input /= 10;
-		}
-		printf("%s\n",reverseVal(sum) == sum?"YES":"NO");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input,sum = 0;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        sum = 0;
+        while(input) {
+            sum += input%10;
+            input /= 10;
+        }
+        printf("%s\n",reverseVal(sum) == sum?"YES":"NO");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SUMOFDIGITSPALINDROMECHECK_H_ */

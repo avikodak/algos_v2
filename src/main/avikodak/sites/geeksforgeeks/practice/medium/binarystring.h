@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_BINARYSTRING_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,onesCount;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		onesCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] == '1'){
-				onesCount++;
-			}
-		}
-		printf("%d\n",(onesCount*(onesCount-1))/2);
-	}
+void solveProblem() {
+    unsigned int testCases,onesCount;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        onesCount = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] == '1') {
+                onesCount++;
+            }
+        }
+        printf("%d\n",(onesCount*(onesCount-1))/2);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_BINARYSTRING_H_ */

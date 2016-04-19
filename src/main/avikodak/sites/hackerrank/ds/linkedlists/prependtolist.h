@@ -70,27 +70,27 @@ using namespace __gnu_cxx;
 #ifndef PREPENDTOLIST_H_
 #define PREPENDTOLIST_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-Node *createNode(int data){
-	Node *nHead = (Node *)malloc(sizeof(Node));
-	nHead->data = data;
-	nHead->next = NULL;
-	return nHead;
+Node *createNode(int data) {
+    Node *nHead = (Node *)malloc(sizeof(Node));
+    nHead->data = data;
+    nHead->next = NULL;
+    return nHead;
 }
 
 //Tested
-Node* Insert(Node *head,int data){
-	if(head == null){
-		return createNode(data);
-	}
-	Node *nHead = createNode(data);
-	nHead->next = head;
-	return nHead;
+Node* Insert(Node *head,int data) {
+    if(head == null) {
+        return createNode(data);
+    }
+    Node *nHead = createNode(data);
+    nHead->next = head;
+    return nHead;
 }
 
 #endif /* PREPENDTOLIST_H_ */

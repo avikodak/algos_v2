@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printallcombinations.h 
+ *  File Name   		: printallcombinations.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\printallcombinations.h
  *  Created on			: Dec 22, 2014 :: 11:03:43 AM
  *  Author				: AVINASH
@@ -70,34 +70,34 @@ using namespace __gnu_cxx;
 #ifndef PRINTALLCOMBINATIONS_H_
 #define PRINTALLCOMBINATIONS_H_
 //Tested
-void printAllCombinations(vector<int> userInput,vector<int> auxSpace,unsigned int r,unsigned int currentIndex = 0){
-	if(userInput.size() < r || currentIndex > userInput.size()){
-		return;
-	}
-	if(auxSpace.size() == r){
-		printIVector(auxSpace,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	printAllCombinations(userInput,auxSpace,r,currentIndex+1);
-	auxSpace.push_back(userInput[currentIndex]);
-	printAllCombinations(userInput,auxSpace,r,currentIndex+1);
+void printAllCombinations(vector<int> userInput,vector<int> auxSpace,unsigned int r,unsigned int currentIndex = 0) {
+    if(userInput.size() < r || currentIndex > userInput.size()) {
+        return;
+    }
+    if(auxSpace.size() == r) {
+        printIVector(auxSpace,false);
+        PRINT_NEW_LINE;
+        return;
+    }
+    printAllCombinations(userInput,auxSpace,r,currentIndex+1);
+    auxSpace.push_back(userInput[currentIndex]);
+    printAllCombinations(userInput,auxSpace,r,currentIndex+1);
 }
 
 //Tested
-void printAllCombinationsV2(vector<int> userInput,vector<int> auxSpace,unsigned int r,int start,unsigned int index){
-	if(userInput.size() < r || index > userInput.size()){
-		return;
-	}
-	if(index == r){
-		printIVector(auxSpace,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = start;counter < userInput.size();counter++){
-		auxSpace[index] = userInput[counter];
-		printAllCombinationsV2(userInput,auxSpace,r,counter+1,index+1);
-	}
+void printAllCombinationsV2(vector<int> userInput,vector<int> auxSpace,unsigned int r,int start,unsigned int index) {
+    if(userInput.size() < r || index > userInput.size()) {
+        return;
+    }
+    if(index == r) {
+        printIVector(auxSpace,false);
+        PRINT_NEW_LINE;
+        return;
+    }
+    for(unsigned int counter = start; counter < userInput.size(); counter++) {
+        auxSpace[index] = userInput[counter];
+        printAllCombinationsV2(userInput,auxSpace,r,counter+1,index+1);
+    }
 }
 
 #endif /* PRINTALLCOMBINATIONS_H_ */

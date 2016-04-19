@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 #define WOLVXR_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%ld",&userInput);
-		printf("%d\n",userInput==1?1:0);
-	}
+void printResults() {
+    unsigned int testCases;
+    long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%ld",&userInput);
+        printf("%d\n",userInput==1?1:0);
+    }
 }
 
 #endif /* WOLVXR_H_ */

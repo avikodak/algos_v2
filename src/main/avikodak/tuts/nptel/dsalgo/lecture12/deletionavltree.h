@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletionavltree.h 
+ *  File Name   		: deletionavltree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture12\deletionavltree.h
  *  Created on			: Nov 18, 2014 :: 11:51:41 PM
  *  Author				: AVINASH

@@ -73,35 +73,35 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 4075
-void getCombinationsUnderMillion(){
-	unsigned int total = 0,currentSum;
-	unsigned int innerCounter;
-	vector<unsigned int> prevValues;
-	vector<unsigned int> currentValues;
-	prevValues.push_back(1);
-	prevValues.push_back(2);
-	prevValues.push_back(1);
-	for(unsigned int outerCounter = 3;outerCounter <= 100;outerCounter++){
-		currentValues.clear();
-		currentValues.push_back(1);
-		for(innerCounter = 0;innerCounter < prevValues.size()-1;innerCounter++){
-			if(prevValues[innerCounter] == MILLION_MARKER || prevValues[innerCounter+1] == MILLION_MARKER){
-				total++;
-				currentValues.push_back(MILLION_MARKER);
-			}else{
-				currentSum = prevValues[innerCounter] + prevValues[innerCounter+1];
-				if(currentSum < MILLION_MARKER){
-					currentValues.push_back(currentSum);
-				}else{
-					total++;
-					currentValues.push_back(MILLION_MARKER);
-				}
-			}
-		}
-		currentValues.push_back(1);
-		prevValues = currentValues;
-	}
-	cout << total << endl;
+void getCombinationsUnderMillion() {
+    unsigned int total = 0,currentSum;
+    unsigned int innerCounter;
+    vector<unsigned int> prevValues;
+    vector<unsigned int> currentValues;
+    prevValues.push_back(1);
+    prevValues.push_back(2);
+    prevValues.push_back(1);
+    for(unsigned int outerCounter = 3; outerCounter <= 100; outerCounter++) {
+        currentValues.clear();
+        currentValues.push_back(1);
+        for(innerCounter = 0; innerCounter < prevValues.size()-1; innerCounter++) {
+            if(prevValues[innerCounter] == MILLION_MARKER || prevValues[innerCounter+1] == MILLION_MARKER) {
+                total++;
+                currentValues.push_back(MILLION_MARKER);
+            } else {
+                currentSum = prevValues[innerCounter] + prevValues[innerCounter+1];
+                if(currentSum < MILLION_MARKER) {
+                    currentValues.push_back(currentSum);
+                } else {
+                    total++;
+                    currentValues.push_back(MILLION_MARKER);
+                }
+            }
+        }
+        currentValues.push_back(1);
+        prevValues = currentValues;
+    }
+    cout << total << endl;
 }
 
 #endif /* COMBINATORICSELECTIONS_H_ */

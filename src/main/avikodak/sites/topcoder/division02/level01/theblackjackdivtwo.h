@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: theblackjackdivtwo.h 
+ *  File Name   		: theblackjackdivtwo.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\theblackjackdivtwo.h
  *  Created on			: Mar 27, 2015 :: 9:01:28 PM
  *  Author				: avikodak
@@ -70,21 +70,21 @@ using namespace __gnu_cxx;
 #ifndef THEBLACKJACKDIVTWO_H_
 #define THEBLACKJACKDIVTWO_H_
 
-class TheBlackJackDivTwo{
+class TheBlackJackDivTwo {
 public:
-	int score(vector<string> cards){
-		int totalScore = 0;
-		for(unsigned int counter = 0;counter < cards.size();counter++){
-			if(cards[counter][0] == 'A'){
-				totalScore += 11;
-			}else if(cards[counter][0] == 'T' || cards[counter][0] == 'J' || cards[counter][0] == 'Q'||cards[counter][0] == 'K'){
-				totalScore += 10;
-			}else{
-				totalScore += cards[counter][0] - '0';
-			}
-		}
-		return totalScore;
-	}
+    int score(vector<string> cards) {
+        int totalScore = 0;
+        for(unsigned int counter = 0; counter < cards.size(); counter++) {
+            if(cards[counter][0] == 'A') {
+                totalScore += 11;
+            } else if(cards[counter][0] == 'T' || cards[counter][0] == 'J' || cards[counter][0] == 'Q'||cards[counter][0] == 'K') {
+                totalScore += 10;
+            } else {
+                totalScore += cards[counter][0] - '0';
+            }
+        }
+        return totalScore;
+    }
 };
 
 #endif /* THEBLACKJACKDIVTWO_H_ */

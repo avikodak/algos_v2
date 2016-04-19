@@ -72,27 +72,27 @@ using namespace __gnu_cxx;
 #define NSIT13_H_
 
 //Tested
-void getUniqueRemainder(vector<unsigned int> userInput){
-	map<unsigned int,bool> flags;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		flags[userInput[counter]%42] = true;
-	}
-	cout << flags.size() << endl;
+void getUniqueRemainder(vector<unsigned int> userInput) {
+    map<unsigned int,bool> flags;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        flags[userInput[counter]%42] = true;
+    }
+    cout << flags.size() << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases = 10;
-	vector<unsigned int> userInput;
-	unsigned int input;
-	while(testCases--){
-		userInput.clear();
-		for(unsigned int counter = 0;counter < 10;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		getUniqueRemainder(userInput);
-	}
+void printResults() {
+    unsigned int testCases = 10;
+    vector<unsigned int> userInput;
+    unsigned int input;
+    while(testCases--) {
+        userInput.clear();
+        for(unsigned int counter = 0; counter < 10; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        getUniqueRemainder(userInput);
+    }
 }
 
 #endif /* NSIT13_H_ */

@@ -73,23 +73,23 @@ using namespace __gnu_cxx;
 #define NOCODING_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	unsigned long long int totalInstructions;
-	while(testCases--){
-		cin >> userInput;
-		totalInstructions = userInput.size()+1;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] >= userInput[counter-1]){
-				totalInstructions += (userInput[counter] - userInput[counter-1]);
-			}else{
-				totalInstructions += ('z'-userInput[counter-1] + (userInput[counter]-'a')+1);
-			}
-		}
-		printf("%s\n",totalInstructions <= 11*userInput.size()?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    unsigned long long int totalInstructions;
+    while(testCases--) {
+        cin >> userInput;
+        totalInstructions = userInput.size()+1;
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= userInput[counter-1]) {
+                totalInstructions += (userInput[counter] - userInput[counter-1]);
+            } else {
+                totalInstructions += ('z'-userInput[counter-1] + (userInput[counter]-'a')+1);
+            }
+        }
+        printf("%s\n",totalInstructions <= 11*userInput.size()?"YES":"NO");
+    }
 }
 
 #endif /* NOCODING_H_ */

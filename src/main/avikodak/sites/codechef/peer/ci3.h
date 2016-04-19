@@ -72,31 +72,31 @@ using namespace __gnu_cxx;
 #ifndef CI3_H_
 #define CI3_H_
 
-double area(double a,double b,double c){
-	double semiPerimeter = (a+b+c)/2;
-	return sqrt(semiPerimeter*(semiPerimeter-a)*(semiPerimeter-b)*(semiPerimeter-c));
+double area(double a,double b,double c) {
+    double semiPerimeter = (a+b+c)/2;
+    return sqrt(semiPerimeter*(semiPerimeter-a)*(semiPerimeter-b)*(semiPerimeter-c));
 }
 
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	double a,b,c,areaOfTriangle,sum = 0;
-	vector<double> areasOfTriangles;
-	while(testCases--){
-		cin >> a >> b >> c;
-		areaOfTriangle = area(a,b,c);
-		sum +=  areaOfTriangle;
-		areasOfTriangles.push_back(areaOfTriangle);
-	}
-	sort(areasOfTriangles.begin(),areasOfTriangles.end());
-	cout << "Min : " << areasOfTriangles[0] << endl;
-	cout << "Max : " << areasOfTriangles[areasOfTriangles.size()-1] << endl;
-	cout << "Avg : " << sum/areasOfTriangles.size() << endl;
-	if(areasOfTriangles.size()%2 == 0){
-		cout << "Med : " << (areasOfTriangles[areasOfTriangles.size()/2]+areasOfTriangles[areasOfTriangles.size()/2])/2 << endl;
-	}else{
-		cout << "Med : " << areasOfTriangles[areasOfTriangles.size()/2] << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    double a,b,c,areaOfTriangle,sum = 0;
+    vector<double> areasOfTriangles;
+    while(testCases--) {
+        cin >> a >> b >> c;
+        areaOfTriangle = area(a,b,c);
+        sum +=  areaOfTriangle;
+        areasOfTriangles.push_back(areaOfTriangle);
+    }
+    sort(areasOfTriangles.begin(),areasOfTriangles.end());
+    cout << "Min : " << areasOfTriangles[0] << endl;
+    cout << "Max : " << areasOfTriangles[areasOfTriangles.size()-1] << endl;
+    cout << "Avg : " << sum/areasOfTriangles.size() << endl;
+    if(areasOfTriangles.size()%2 == 0) {
+        cout << "Med : " << (areasOfTriangles[areasOfTriangles.size()/2]+areasOfTriangles[areasOfTriangles.size()/2])/2 << endl;
+    } else {
+        cout << "Med : " << areasOfTriangles[areasOfTriangles.size()/2] << endl;
+    }
 
 }
 

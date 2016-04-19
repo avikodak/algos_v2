@@ -70,10 +70,10 @@ using namespace __gnu_cxx;
 #ifndef NUMBEROFPOSITIONS_H_
 #define NUMBEROFPOSITIONS_H_
 
-void numberOfPositions(){
-	unsigned int total,minNumber,maxNumber;
-	cin >> total >> minNumber >> maxNumber;
-	printf("%u",min(total - minNumber,maxNumber+1));
+void numberOfPositions() {
+    unsigned int total,minNumber,maxNumber;
+    cin >> total >> minNumber >> maxNumber;
+    printf("%u",min(total - minNumber,maxNumber+1));
 }
 
 #endif /* NUMBEROFPOSITIONS_H_ */

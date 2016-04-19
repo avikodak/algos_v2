@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortedsilltobst.h 
+ *  File Name   		: sortedsilltobst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\sortedsilltobst.h
  *  Created on			: Oct 31, 2014 :: 11:04:31 AM
  *  Author				: AVINASH
@@ -68,16 +68,16 @@ using namespace __gnu_cxx;
 #ifndef SORTEDSILLTOBST_H_
 #define SORTEDSILLTOBST_H_
 
-itNode *sortedSillToBSTMain(sillNode **ptr,int nValue){
-	if(nValue <= 0){
-		return null;
-	}
-	itNode *left = sortedSillToBSTMain(ptr,nValue/2);
-	itNode *root = (*ptr)->value;
-	root->left = left;
-	(*ptr) = (*ptr)->next;
-	root->right = sortedSillToBSTMain(ptr,nValue-(nValue/2)-1);
-	return root;
+itNode *sortedSillToBSTMain(sillNode **ptr,int nValue) {
+    if(nValue <= 0) {
+        return null;
+    }
+    itNode *left = sortedSillToBSTMain(ptr,nValue/2);
+    itNode *root = (*ptr)->value;
+    root->left = left;
+    (*ptr) = (*ptr)->next;
+    root->right = sortedSillToBSTMain(ptr,nValue-(nValue/2)-1);
+    return root;
 }
 
 #endif /* SORTEDSILLTOBST_H_ */

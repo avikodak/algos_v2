@@ -72,33 +72,33 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 840
-void printMaxTrianglesForPerimeter(){
-	map<unsigned int,unsigned int> perimeterTriangleCount;
-	map<unsigned int,unsigned int>::iterator itToPerimeterTriangleCount;
-	unsigned int perimeter,maxTriangles = 0,maxPerimeter;
-	for(unsigned int outerCounter = 3;outerCounter <= 1000;outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter <= 1000;innerCounter++){
-			for(unsigned int difference = innerCounter+1;difference <= 1000;difference++){
-				perimeter = outerCounter + innerCounter + difference;
-				if(perimeter <= 1000){
-					if(difference*difference == ((outerCounter*outerCounter) + (innerCounter*innerCounter))){
-						perimeter = outerCounter + innerCounter + difference;
-						if((itToPerimeterTriangleCount = perimeterTriangleCount.find(perimeter)) == perimeterTriangleCount.end()){
-							perimeterTriangleCount.insert(pair<unsigned int,unsigned int>(perimeter,1));
-						}else{
-							perimeterTriangleCount[perimeter]++;
-						}
-						if(maxTriangles < perimeterTriangleCount[perimeter]){
-							maxTriangles = perimeterTriangleCount[perimeter];
-							maxPerimeter = perimeter;
-						}
-					}
-				}
-			}
-		}
-	}
-	cout << maxPerimeter << endl;
-	return;
+void printMaxTrianglesForPerimeter() {
+    map<unsigned int,unsigned int> perimeterTriangleCount;
+    map<unsigned int,unsigned int>::iterator itToPerimeterTriangleCount;
+    unsigned int perimeter,maxTriangles = 0,maxPerimeter;
+    for(unsigned int outerCounter = 3; outerCounter <= 1000; outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter <= 1000; innerCounter++) {
+            for(unsigned int difference = innerCounter+1; difference <= 1000; difference++) {
+                perimeter = outerCounter + innerCounter + difference;
+                if(perimeter <= 1000) {
+                    if(difference*difference == ((outerCounter*outerCounter) + (innerCounter*innerCounter))) {
+                        perimeter = outerCounter + innerCounter + difference;
+                        if((itToPerimeterTriangleCount = perimeterTriangleCount.find(perimeter)) == perimeterTriangleCount.end()) {
+                            perimeterTriangleCount.insert(pair<unsigned int,unsigned int>(perimeter,1));
+                        } else {
+                            perimeterTriangleCount[perimeter]++;
+                        }
+                        if(maxTriangles < perimeterTriangleCount[perimeter]) {
+                            maxTriangles = perimeterTriangleCount[perimeter];
+                            maxPerimeter = perimeter;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    cout << maxPerimeter << endl;
+    return;
 }
 
 #endif /* INTEGERRIGHTTRIANGLES_H_ */

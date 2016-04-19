@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: removenodespathlength.h 
+ *  File Name   		: removenodespathlength.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\removenodespathlength.h
  *  Created on			: Jan 23, 2015 :: 8:49:57 PM
  *  Author				: AVINASH
@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void removeNodesPathLength(itNode *root,int target,int currentLevel){
-	if(root == null){
-		return;
-	}
-	root->left = removeNodesPathLength(root->left,target,currentLevel+1);
-	root->right = removeNodesPathLength(root->right,target,currentLevel+1);
-	if(root->left == null && root->right == null && target <= currentLevel){
-		free(root);
-		return null;
-	}
-	return root;
+void removeNodesPathLength(itNode *root,int target,int currentLevel) {
+    if(root == null) {
+        return;
+    }
+    root->left = removeNodesPathLength(root->left,target,currentLevel+1);
+    root->right = removeNodesPathLength(root->right,target,currentLevel+1);
+    if(root->left == null && root->right == null && target <= currentLevel) {
+        free(root);
+        return null;
+    }
+    return root;
 }
 
 

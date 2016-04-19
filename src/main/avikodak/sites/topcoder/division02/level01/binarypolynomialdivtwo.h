@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 //Tested
 class BinaryPolynomialDivTwo {
 public:
-	int countRoots(vector<int> userInput){
-		int sum = userInput[0];
-		int rootCounter = (sum == 0?1:0);
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			sum += userInput[counter];
-		}
-		rootCounter += (sum%2==0?1:0);
-		return rootCounter;
-	}
+    int countRoots(vector<int> userInput) {
+        int sum = userInput[0];
+        int rootCounter = (sum == 0?1:0);
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            sum += userInput[counter];
+        }
+        rootCounter += (sum%2==0?1:0);
+        return rootCounter;
+    }
 };
 
 #endif /* BINARYPOLYNOMIALDIVTWO_H_ */

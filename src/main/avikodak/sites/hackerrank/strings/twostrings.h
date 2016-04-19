@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define TWOSTRINGS_H_
 
 //Tested
-void anyCommonSubstring(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string firstUserInput,secondUserInput;
-	string alphabets = "abcdefghijklmnopqrstuvwxyz";
-	bool flag;
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		flag = false;
-		for(unsigned int counter = 0;counter < alphabets.size();counter++){
-			if(firstUserInput.find(alphabets[counter]) != string::npos && secondUserInput.find(alphabets[counter]) != string::npos){
-				printf("YES\n");
-				flag = true;
-				break;
-			}
-		}
-		if(!flag){
-			printf("NO\n");
-		}
-	}
+void anyCommonSubstring() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string firstUserInput,secondUserInput;
+    string alphabets = "abcdefghijklmnopqrstuvwxyz";
+    bool flag;
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        flag = false;
+        for(unsigned int counter = 0; counter < alphabets.size(); counter++) {
+            if(firstUserInput.find(alphabets[counter]) != string::npos && secondUserInput.find(alphabets[counter]) != string::npos) {
+                printf("YES\n");
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            printf("NO\n");
+        }
+    }
 }
 
 #endif /* TWOSTRINGS_H_ */

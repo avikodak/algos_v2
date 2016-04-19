@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: eggdroppingpuzzle.h 
+ *  File Name   		: eggdroppingpuzzle.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\eggdroppingpuzzle.h
  *  Created on			: Dec 15, 2014 :: 11:41:26 AM
  *  Author				: AVINASH
@@ -70,15 +70,15 @@ using namespace __gnu_cxx;
 #ifndef EGGDROPPINGPUZZLE_H_
 #define EGGDROPPINGPUZZLE_H_
 
-int eggDroppingPuzzle(int floorCount,int eggCount){
-	if(floorCount < 2){
-		return floorCount;
-	}
-	int minTrails = INT_MIN;
-	for(int counter = 0;counter < floorCount;counter++){
-		minTrails = min(minTrails,max(eggDroppingPuzzle(floorCount-1,eggCount-1),eggDroppingPuzzle(floorCount - counter,eggCount)));
-	}
-	return 1 + minTrails;
+int eggDroppingPuzzle(int floorCount,int eggCount) {
+    if(floorCount < 2) {
+        return floorCount;
+    }
+    int minTrails = INT_MIN;
+    for(int counter = 0; counter < floorCount; counter++) {
+        minTrails = min(minTrails,max(eggDroppingPuzzle(floorCount-1,eggCount-1),eggDroppingPuzzle(floorCount - counter,eggCount)));
+    }
+    return 1 + minTrails;
 }
 
 #endif /* EGGDROPPINGPUZZLE_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printrightview.h 
+ *  File Name   		: printrightview.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
  *  Created on			: Nov 16, 2014 :: 12:11:12 AM
  *  Author				: AVINASH
@@ -72,46 +72,46 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel){
-	if(ptr == null){
-		return;
-	}
-	if(*maxLevel < currentLevel){
-		printf("%d\t",ptr->value);
-		*maxLevel = currentLevel;
-	}
-	pPrintRightView(ptr->right,currentLevel+1,maxLevel);
-	pPrintRightView(ptr->left,currentLevel+1,maxLevel);
+void pPrintRightView(itNode *ptr,int currentLevel,int *maxLevel) {
+    if(ptr == null) {
+        return;
+    }
+    if(*maxLevel < currentLevel) {
+        printf("%d\t",ptr->value);
+        *maxLevel = currentLevel;
+    }
+    pPrintRightView(ptr->right,currentLevel+1,maxLevel);
+    pPrintRightView(ptr->left,currentLevel+1,maxLevel);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printFirstNodeInLevel(itNode *ptr,unsigned int level){
-	static bool flag = false;
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		if(!flag){
-			printf("%d\t",ptr->value);
-		}
-		flag = true;
-		return;
-	}
-	printFirstNodeInLevel(ptr->right,level-1);
-	printFirstNodeInLevel(ptr->left,level-1);
+void printFirstNodeInLevel(itNode *ptr,unsigned int level) {
+    static bool flag = false;
+    if(ptr == null) {
+        return;
+    }
+    if(level == 0) {
+        if(!flag) {
+            printf("%d\t",ptr->value);
+        }
+        flag = true;
+        return;
+    }
+    printFirstNodeInLevel(ptr->right,level-1);
+    printFirstNodeInLevel(ptr->left,level-1);
 }
 
-void pPrintRightView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	for(unsigned int counter = 0;counter < height;counter++){
-		printFirstNodeInLevel(ptr,counter);
-	}
+void pPrintRightView(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    unsigned int height = utils->getHeightOfTree(ptr);
+    for(unsigned int counter = 0; counter < height; counter++) {
+        printFirstNodeInLevel(ptr,counter);
+    }
 }
 
 #endif /* PRINTRIGHTVIEW_H_ */

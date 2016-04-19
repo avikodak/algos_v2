@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: binarytreetobst.h 
+ *  File Name   		: binarytreetobst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\binarytreetobst.h
  *  Created on			: Oct 23, 2014 :: 6:34:49 PM
  *  Author				: AVINASH
@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void setValuesInTreeWithInorder(itNode *ptr,vector<int> inOrderValues){
-	if(ptr == null){
-		return;
-	}
-	static unsigned int index = 0;
-	setValuesInTreeWithInorder(ptr->left,inOrderValues);
-	ptr->value = inOrderValues[index++];
-	setValuesInTreeWithInorder(ptr->right,inOrderValues);
+void setValuesInTreeWithInorder(itNode *ptr,vector<int> inOrderValues) {
+    if(ptr == null) {
+        return;
+    }
+    static unsigned int index = 0;
+    setValuesInTreeWithInorder(ptr->left,inOrderValues);
+    ptr->value = inOrderValues[index++];
+    setValuesInTreeWithInorder(ptr->right,inOrderValues);
 }
 
 //Tested
-void convertTreeToBST(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	vector<int> inorderValues = utils->getValuesInInorder(ptr);
-	sort(inorderValues.begin(),inorderValues.end());
-	setValuesInTreeWithInorder(ptr,inorderValues);
+void convertTreeToBST(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    vector<int> inorderValues = utils->getValuesInInorder(ptr);
+    sort(inorderValues.begin(),inorderValues.end());
+    setValuesInTreeWithInorder(ptr,inorderValues);
 }
 
 /****************************************************************************************************************************************************/

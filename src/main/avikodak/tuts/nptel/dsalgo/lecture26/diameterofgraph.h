@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diameterofgraph.h 
+ *  File Name   		: diameterofgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\diameterofgraph.h
  *  Created on			: Dec 5, 2014 :: 12:12:45 AM
  *  Author				: AVINASH

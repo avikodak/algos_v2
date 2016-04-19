@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 class SlimeXSlimeRancher2 {
 public:
-	int train(vector<int> attributes){
-		int maxValue = *max_element(attributes.begin(),attributes.end());
-		int weight = 0;
-		for(unsigned int counter = 0;counter < attributes.size();counter++){
-			weight += abs(maxValue - attributes[counter]);
-		}
-		return weight;
-	}
+    int train(vector<int> attributes) {
+        int maxValue = *max_element(attributes.begin(),attributes.end());
+        int weight = 0;
+        for(unsigned int counter = 0; counter < attributes.size(); counter++) {
+            weight += abs(maxValue - attributes[counter]);
+        }
+        return weight;
+    }
 };
 
 #endif /* SLIMEXSLIMERANCHER2_H_ */

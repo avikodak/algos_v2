@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttreetothreaded.h 
+ *  File Name   		: converttreetothreaded.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\converttreetothreaded.h
  *  Created on			: Jan 22, 2015 :: 7:40:53 PM
  *  Author				: AVINASH
@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void convertTreeToThreaded(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				currentNode = currentNode->left;
-			}else{
-				currentNode = currentNode->right;
-			}
-		}else{
-			currentNode = currentNode->right;
-		}
-	}
+void convertTreeToThreaded(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                temp->right = currentNode;
+                currentNode = currentNode->left;
+            } else {
+                currentNode = currentNode->right;
+            }
+        } else {
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 #endif /* CONVERTTREETOTHREADED_H_ */

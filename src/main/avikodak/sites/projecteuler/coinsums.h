@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 73682
-int coinChangeProblem(vector<unsigned int> denominations,int index,int money){
-	if(money == 0){
-		return 1;
-	}
-	if(money < 0 || (money > 0 && index <= 0)){
-		return 0;
-	}
-	return coinChangeProblem(denominations,index-1,money) + coinChangeProblem(denominations,index,money-denominations[index-1]);
+int coinChangeProblem(vector<unsigned int> denominations,int index,int money) {
+    if(money == 0) {
+        return 1;
+    }
+    if(money < 0 || (money > 0 && index <= 0)) {
+        return 0;
+    }
+    return coinChangeProblem(denominations,index-1,money) + coinChangeProblem(denominations,index,money-denominations[index-1]);
 }
 
 #endif /* COINSUMS_H_ */

@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define APPROX2_H_
 
 //Tested
-void printResults(){
-	long long int testCases,size,key,input,total,result,minValue;
-	vector<long long int> userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&size,&key);
-		userInput.clear();
-		for(long long int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		minValue = abs(userInput[1] + userInput[0] - key);
-		total = 0;
-		for(long long int outerCrawler = 0;outerCrawler < size;outerCrawler++){
-			for(long long int innerCrawler = outerCrawler+1;innerCrawler < size;innerCrawler++){
-				result = abs(userInput[outerCrawler] + userInput[innerCrawler]-key);
-				if(result < minValue){
-					total = 1;
-					minValue = result;
-				}else if(result == minValue){
-					total++;
-				}
-			}
-		}
-		printf("%lld %lld\n",minValue,total);
-	}
+void printResults() {
+    long long int testCases,size,key,input,total,result,minValue;
+    vector<long long int> userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&size,&key);
+        userInput.clear();
+        for(long long int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        minValue = abs(userInput[1] + userInput[0] - key);
+        total = 0;
+        for(long long int outerCrawler = 0; outerCrawler < size; outerCrawler++) {
+            for(long long int innerCrawler = outerCrawler+1; innerCrawler < size; innerCrawler++) {
+                result = abs(userInput[outerCrawler] + userInput[innerCrawler]-key);
+                if(result < minValue) {
+                    total = 1;
+                    minValue = result;
+                } else if(result == minValue) {
+                    total++;
+                }
+            }
+        }
+        printf("%lld %lld\n",minValue,total);
+    }
 }
 
 #endif /* APPROX2_H_ */

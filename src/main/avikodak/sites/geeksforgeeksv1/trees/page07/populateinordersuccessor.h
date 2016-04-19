@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: populateinordersuccessor.h 
+ *  File Name   		: populateinordersuccessor.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\populateinordersuccessor.h
  *  Created on			: Oct 23, 2014 :: 11:25:24 AM
  *  Author				: AVINASH
@@ -72,98 +72,98 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void populateInorderSuccessorMain(isuccesssorNode *ptr,isuccesssorNode **prevNode){
-	if(ptr == null){
-		return;
-	}
-	populateInorderSuccessorMain(ptr->left,prevNode);
-	if(*prevNode != null){
-		(*prevNode)->successor = ptr;
-	}
-	(*prevNode) = ptr;
-	populateInorderSuccessorMain(ptr->right,prevNode);
+void populateInorderSuccessorMain(isuccesssorNode *ptr,isuccesssorNode **prevNode) {
+    if(ptr == null) {
+        return;
+    }
+    populateInorderSuccessorMain(ptr->left,prevNode);
+    if(*prevNode != null) {
+        (*prevNode)->successor = ptr;
+    }
+    (*prevNode) = ptr;
+    populateInorderSuccessorMain(ptr->right,prevNode);
 }
 
 //Tested
-void populateInorderSuccessor(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	isuccesssorNode *prevNode = null;
-	populateInorderSuccessorMain(ptr,&prevNode);
-	prevNode->successor = null;
+void populateInorderSuccessor(isuccesssorNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    isuccesssorNode *prevNode = null;
+    populateInorderSuccessorMain(ptr,&prevNode);
+    prevNode->successor = null;
 }
 
 //Tested
-void populateSuccessorReverseInorder(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static isuccesssorNode *prevNode = null;
-	populateSuccessorReverseInorder(ptr->right);
-	ptr->successor = prevNode;
-	prevNode = ptr;
-	populateSuccessorReverseInorder(ptr->left);
+void populateSuccessorReverseInorder(isuccesssorNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static isuccesssorNode *prevNode = null;
+    populateSuccessorReverseInorder(ptr->right);
+    ptr->successor = prevNode;
+    prevNode = ptr;
+    populateSuccessorReverseInorder(ptr->left);
 }
 
 //Tested
-void populateSuccessorReverseInorderIterative(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<isuccesssorNode *> auxSpace;
-	isuccesssorNode *currentNode = ptr;
-	isuccesssorNode *prevNode = null;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->right;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			currentNode->successor = prevNode;
-			prevNode = currentNode;
-			currentNode = currentNode->left;
-		}
-	}
+void populateSuccessorReverseInorderIterative(isuccesssorNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<isuccesssorNode *> auxSpace;
+    isuccesssorNode *currentNode = ptr;
+    isuccesssorNode *prevNode = null;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->right;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            currentNode->successor = prevNode;
+            prevNode = currentNode;
+            currentNode = currentNode->left;
+        }
+    }
 }
 
 //Tested
-void populateSuccessorInorderIterative(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<isuccesssorNode *> auxSpace;
-	isuccesssorNode *currentNode = ptr,*prevNode = null;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			if(prevNode != null){
-				prevNode->successor = currentNode;
-			}
-			prevNode = currentNode;
-			currentNode = currentNode->right;
-		}
-	}
-	prevNode->successor = null;
+void populateSuccessorInorderIterative(isuccesssorNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<isuccesssorNode *> auxSpace;
+    isuccesssorNode *currentNode = ptr,*prevNode = null;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            if(prevNode != null) {
+                prevNode->successor = currentNode;
+            }
+            prevNode = currentNode;
+            currentNode = currentNode->right;
+        }
+    }
+    prevNode->successor = null;
 }
 
 //Tested
-void populateSuccessorInorderRetrieve(isuccesssorNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	vector<isuccesssorNode *> inorderNodes = utils->getSNodesInInOrder(ptr);
-	isuccesssorNode *prevNode = null;
-	for(int counter = inorderNodes.size()-1;counter >= 0;counter--){
-		inorderNodes[counter]->successor = prevNode;
-		prevNode = inorderNodes[counter];
-	}
+void populateSuccessorInorderRetrieve(isuccesssorNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    vector<isuccesssorNode *> inorderNodes = utils->getSNodesInInOrder(ptr);
+    isuccesssorNode *prevNode = null;
+    for(int counter = inorderNodes.size()-1; counter >= 0; counter--) {
+        inorderNodes[counter]->successor = prevNode;
+        prevNode = inorderNodes[counter];
+    }
 }
 
 /****************************************************************************************************************************************************/

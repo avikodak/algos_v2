@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksort2.h 
+ *  File Name   		: quicksort2.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksort2.h
  *  Created on			: Feb 12, 2015 :: 2:08:25 PM
  *  Author				: AVINASH
@@ -71,47 +71,47 @@ using namespace __gnu_cxx;
 #define QUICKSORT2_H_
 
 //Tested
-void printVector(vector<int> userInput,int startIndex,int endIndex){
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		printf("%d ",userInput[counter]);
-	}
-	printf("\n");
+void printVector(vector<int> userInput,int startIndex,int endIndex) {
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        printf("%d ",userInput[counter]);
+    }
+    printf("\n");
 }
 
 //Tested
-int partitionArray(vector<int> &userInput,int start,int end){
-	queue<int> firstBucket,secondBucket;
-	int key = userInput[start];
-	for(int counter = start;counter <= end;counter++){
-		if(userInput[counter] < key){
-			firstBucket.push(userInput[counter]);
-		}else if(userInput[counter] > key){
-			secondBucket.push(userInput[counter]);
-		}
-	}
-	int fillCounter = start,pivotIndex;
-	while(!firstBucket.empty()){
-		userInput[fillCounter++] = firstBucket.front();
-		firstBucket.pop();
-	}
-	userInput[fillCounter++] = key;
-	pivotIndex = fillCounter-1;
-	while(!secondBucket.empty()){
-		userInput[fillCounter++] = secondBucket.front();
-		secondBucket.pop();
-	}
-	return pivotIndex;
+int partitionArray(vector<int> &userInput,int start,int end) {
+    queue<int> firstBucket,secondBucket;
+    int key = userInput[start];
+    for(int counter = start; counter <= end; counter++) {
+        if(userInput[counter] < key) {
+            firstBucket.push(userInput[counter]);
+        } else if(userInput[counter] > key) {
+            secondBucket.push(userInput[counter]);
+        }
+    }
+    int fillCounter = start,pivotIndex;
+    while(!firstBucket.empty()) {
+        userInput[fillCounter++] = firstBucket.front();
+        firstBucket.pop();
+    }
+    userInput[fillCounter++] = key;
+    pivotIndex = fillCounter-1;
+    while(!secondBucket.empty()) {
+        userInput[fillCounter++] = secondBucket.front();
+        secondBucket.pop();
+    }
+    return pivotIndex;
 }
 
 //Tested
-void quickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = partitionArray(userInput,startIndex,endIndex);
-	quickSort(userInput,startIndex,dividingIndex-1);
-	quickSort(userInput,dividingIndex+1,endIndex);
-	printVector(userInput,startIndex,endIndex);
+void quickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int dividingIndex = partitionArray(userInput,startIndex,endIndex);
+    quickSort(userInput,startIndex,dividingIndex-1);
+    quickSort(userInput,dividingIndex+1,endIndex);
+    printVector(userInput,startIndex,endIndex);
 }
 
 #endif /* QUICKSORT2_H_ */

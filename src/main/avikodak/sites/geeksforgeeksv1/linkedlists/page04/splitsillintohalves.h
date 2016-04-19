@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: splitsillintohalves.h 
+ *  File Name   		: splitsillintohalves.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\splitsillintohalves.h
  *  Created on			: Oct 17, 2014 :: 1:45:01 PM
  *  Author				: AVINASH
@@ -72,49 +72,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *splitSillIntoHalfPtrMain(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
+sillNode *splitSillIntoHalfPtrMain(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
 
 }
 
-sillNode *splitSillIntoHalfPtr(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
-	result[0] = ptr;
-	if(ptr->next == null){
-		result[1] = null;
-		return result;
-	}
-	sillNode *fastPtr = ptr->next->next,*slowPtr = ptr;
-	while(slowPtr != null && fastPtr != null && fastPtr->next != null){
-		slowPtr = slowPtr->next;
-		fastPtr = fastPtr->next->next;
-	}
-	result[1] = slowPtr->next;
-	slowPtr->next = null;
-	return result;
+sillNode *splitSillIntoHalfPtr(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
+    result[0] = ptr;
+    if(ptr->next == null) {
+        result[1] = null;
+        return result;
+    }
+    sillNode *fastPtr = ptr->next->next,*slowPtr = ptr;
+    while(slowPtr != null && fastPtr != null && fastPtr->next != null) {
+        slowPtr = slowPtr->next;
+        fastPtr = fastPtr->next->next;
+    }
+    result[1] = slowPtr->next;
+    slowPtr->next = null;
+    return result;
 }
 
-sillNode *splitSillIntoHalfHashmap(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
-	result[0] = ptr;
-	if(ptr->next == null){
-		result[1] = null;
-		return result;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1);
-	unsigned int middleIndex = indexNodeMap.size()/2;
-	result[1] = indexNodeMap.find(middleIndex)->second->next;
-	result[1]->next = null;
-	return result;
+sillNode *splitSillIntoHalfHashmap(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    sillNode *result = (sillNode *)malloc(sizeof(sillNode)*2);
+    result[0] = ptr;
+    if(ptr->next == null) {
+        result[1] = null;
+        return result;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1);
+    unsigned int middleIndex = indexNodeMap.size()/2;
+    result[1] = indexNodeMap.find(middleIndex)->second->next;
+    result[1]->next = null;
+    return result;
 }
 
 /****************************************************************************************************************************************************/

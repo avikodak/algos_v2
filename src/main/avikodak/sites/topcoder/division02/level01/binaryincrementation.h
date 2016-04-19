@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 
 class BinaryIncrementation {
 public:
-	string plusOne(string x){
-		string result;
-		char carry = '1';
-		for(int counter = x.size()-1;counter >= 0;counter--){
-			if(x[counter] == '1' && carry == '1'){
-				result.push_back('0');
-			}else{
-				result.push_back(x[counter]);
-				carry = '0';
-			}
-		}
-		if(carry == '1'){
-			result.push_back('1');
-		}
-		reverse(result.begin(),result.end());
-		return result;
-	}
+    string plusOne(string x) {
+        string result;
+        char carry = '1';
+        for(int counter = x.size()-1; counter >= 0; counter--) {
+            if(x[counter] == '1' && carry == '1') {
+                result.push_back('0');
+            } else {
+                result.push_back(x[counter]);
+                carry = '0';
+            }
+        }
+        if(carry == '1') {
+            result.push_back('1');
+        }
+        reverse(result.begin(),result.end());
+        return result;
+    }
 };
 
 #endif /* BINARYINCREMENTATION_H_ */

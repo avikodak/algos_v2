@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: alternatingchar.h 
+ *  File Name   		: alternatingchar.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\alternatingchar.h
  *  Created on			: Jan 30, 2015 :: 9:11:01 AM
  *  Author				: AVINASH
@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int countDeleteAlternatingChar(char *userInput){
-	if(userInput == NULL || userInput[0] == 0){
-		return 0;
-	}
-	int counter = 0,deleteCounter = 0;
-	while(userInput[counter] != '\0'){
-		while(userInput[counter+1] != '\0' && userInput[counter] == userInput[counter+1]){
-			deleteCounter++;
-			counter++;
-		}
-		counter++;
-	}
-	return deleteCounter;
+int countDeleteAlternatingChar(char *userInput) {
+    if(userInput == NULL || userInput[0] == 0) {
+        return 0;
+    }
+    int counter = 0,deleteCounter = 0;
+    while(userInput[counter] != '\0') {
+        while(userInput[counter+1] != '\0' && userInput[counter] == userInput[counter+1]) {
+            deleteCounter++;
+            counter++;
+        }
+        counter++;
+    }
+    return deleteCounter;
 }
 
 #endif /* ALTERNATINGCHAR_H_ */

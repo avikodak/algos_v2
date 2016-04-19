@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortedsubsequence.h 
+ *  File Name   		: sortedsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\sortedsubsequence.h
  *  Created on			: Nov 27, 2014 :: 7:59:40 PM
  *  Author				: AVINASH
@@ -72,27 +72,27 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iTriplet *getSortedTripletON(vector<int> userInput){
-	if(userInput.size() < 3){
-		return null;
-	}
-	vector<int> leftMin;
-	vector<int> rightMax;
-	leftMin.push_back(INT_MAX);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		leftMin.push_back(min(leftMin[counter-1],userInput[counter-1]));
-	}
-	rightMax.reserve(userInput.size());
-	rightMax[userInput.size()-1] = INT_MIN;
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		rightMax[counter] = max(userInput[counter+1],rightMax[counter+1]);
-	}
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
-		if(userInput[counter] > leftMin[counter] && userInput[counter] < rightMax[counter]){
-			return new iTriplet(leftMin[counter],userInput[counter],rightMax[counter]);
-		}
-	}
-	return null;
+iTriplet *getSortedTripletON(vector<int> userInput) {
+    if(userInput.size() < 3) {
+        return null;
+    }
+    vector<int> leftMin;
+    vector<int> rightMax;
+    leftMin.push_back(INT_MAX);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        leftMin.push_back(min(leftMin[counter-1],userInput[counter-1]));
+    }
+    rightMax.reserve(userInput.size());
+    rightMax[userInput.size()-1] = INT_MIN;
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        rightMax[counter] = max(userInput[counter+1],rightMax[counter+1]);
+    }
+    for(unsigned int counter = 1; counter < userInput.size()-1; counter++) {
+        if(userInput[counter] > leftMin[counter] && userInput[counter] < rightMax[counter]) {
+            return new iTriplet(leftMin[counter],userInput[counter],rightMax[counter]);
+        }
+    }
+    return null;
 }
 
 
@@ -100,20 +100,20 @@ iTriplet *getSortedTripletON(vector<int> userInput){
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iTriplet *getSortedTripletON3(vector<int> userInput){
-	if(userInput.size() < 3){
-		return null;
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
-		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size()-1;middleCounter++){
-			for(unsigned int innerCounter = middleCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[middleCounter] > userInput[outerCounter] && userInput[middleCounter] < userInput[innerCounter]){
-					return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
-				}
-			}
-		}
-	}
-	return null;
+iTriplet *getSortedTripletON3(vector<int> userInput) {
+    if(userInput.size() < 3) {
+        return null;
+    }
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-2; outerCounter++) {
+        for(unsigned int middleCounter = outerCounter+1; middleCounter < userInput.size()-1; middleCounter++) {
+            for(unsigned int innerCounter = middleCounter+1; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[middleCounter] > userInput[outerCounter] && userInput[middleCounter] < userInput[innerCounter]) {
+                    return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
+                }
+            }
+        }
+    }
+    return null;
 }
 
 #endif /* SORTEDSUBSEQUENCE_H_ */

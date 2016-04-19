@@ -76,18 +76,18 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SUMOFDIGITS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,input,sum;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		sum = 0;
-		while(input){
-			sum += input%10;
-			input/=10;
-		}
-		printf("%u\n",sum);
-	}
+void solveProblem() {
+    unsigned int testCases,input,sum;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        sum = 0;
+        while(input) {
+            sum += input%10;
+            input/=10;
+        }
+        printf("%u\n",sum);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SUMOFDIGITS_H_ */

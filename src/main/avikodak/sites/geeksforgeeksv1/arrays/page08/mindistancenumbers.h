@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mindistancenumbers.h 
+ *  File Name   		: mindistancenumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\mindistancenumbers.h
  *  Created on			: Dec 28, 2014 :: 11:39:10 PM
  *  Author				: AVINASH
@@ -74,51 +74,51 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber){
-	if(userInput.size() < 2){
-		return INT_MAX;
-	}
-	int prevIndex = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
-			prevIndex = counter;
-			break;
-		}
-	}
-	if(prevIndex == INT_MIN){
-		return INT_MAX;
-	}
-	int minDistance = INT_MAX;
-	for(unsigned int counter = prevIndex+1;counter < userInput.size();counter++){
-		if(userInput[counter] == firstNumber || userInput[counter] == secondNumber){
-			if(userInput[prevIndex] != userInput[counter]){
-				minDistance = min(minDistance,(int)counter-prevIndex);
-			}
-			prevIndex = counter;
-		}
-	}
-	return minDistance;
+int minDistanceBetweenNumbersON(vector<int> userInput,int firstNumber,int secondNumber) {
+    if(userInput.size() < 2) {
+        return INT_MAX;
+    }
+    int prevIndex = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == firstNumber || userInput[counter] == secondNumber) {
+            prevIndex = counter;
+            break;
+        }
+    }
+    if(prevIndex == INT_MIN) {
+        return INT_MAX;
+    }
+    int minDistance = INT_MAX;
+    for(unsigned int counter = prevIndex+1; counter < userInput.size(); counter++) {
+        if(userInput[counter] == firstNumber || userInput[counter] == secondNumber) {
+            if(userInput[prevIndex] != userInput[counter]) {
+                minDistance = min(minDistance,(int)counter-prevIndex);
+            }
+            prevIndex = counter;
+        }
+    }
+    return minDistance;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int minDistance = INT_MAX;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		if(userInput[outerCounter] == firstNumber || userInput[outerCounter] == secondNumber){
-			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[innerCounter] == (userInput[outerCounter] ^ firstNumber ^ secondNumber)){
-					minDistance = min(minDistance,(int)(innerCounter - outerCounter));
-				}
-			}
-		}
-	}
-	return minDistance;
+int minDistanceBetweenNumbersON2(vector<int> userInput,int firstNumber,int secondNumber) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int minDistance = INT_MAX;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        if(userInput[outerCounter] == firstNumber || userInput[outerCounter] == secondNumber) {
+            for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[innerCounter] == (userInput[outerCounter] ^ firstNumber ^ secondNumber)) {
+                    minDistance = min(minDistance,(int)(innerCounter - outerCounter));
+                }
+            }
+        }
+    }
+    return minDistance;
 }
 
 

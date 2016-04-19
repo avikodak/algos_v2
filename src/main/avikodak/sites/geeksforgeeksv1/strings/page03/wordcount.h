@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: wordcount.h 
+ *  File Name   		: wordcount.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\wordcount.h
  *  Created on			: Jan 16, 2015 :: 11:47:20 AM
  *  Author				: AVINASH
@@ -73,25 +73,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int wordCount(char *userInput){
-	if(userInput == null || userInput != '\0'){
-		return 0;
-	}
-	while(userInput[0] != '\0' && userInput[0] == ' '){
-		userInput++;
-	}
-	int wordCounter = 0;
-	while(userInput[0] != '\0'){
-		if(userInput[0] == ' '){
-			wordCounter++;
-			while(userInput[0] == ' ' && userInput[0] != '\0'){
-				userInput++;
-			}
-		}else{
-			userInput++;
-		}
-	}
-	return wordCounter++;
+int wordCount(char *userInput) {
+    if(userInput == null || userInput != '\0') {
+        return 0;
+    }
+    while(userInput[0] != '\0' && userInput[0] == ' ') {
+        userInput++;
+    }
+    int wordCounter = 0;
+    while(userInput[0] != '\0') {
+        if(userInput[0] == ' ') {
+            wordCounter++;
+            while(userInput[0] == ' ' && userInput[0] != '\0') {
+                userInput++;
+            }
+        } else {
+            userInput++;
+        }
+    }
+    return wordCounter++;
 }
 
 #endif /* WORDCOUNT_H_ */

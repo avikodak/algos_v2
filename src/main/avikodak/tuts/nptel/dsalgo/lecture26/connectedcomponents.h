@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: connectedcomponents.h 
+ *  File Name   		: connectedcomponents.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\connectedcomponents.h
  *  Created on			: Dec 5, 2014 :: 12:13:03 AM
  *  Author				: AVINASH
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getNumberOfConnectedComponents(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return 0;
-	}
-	queue<int> auxSpace;
-	vector<int> connectedComponents(adjacencyList.size(),INT_MIN);
-	int componentCounter = -1,currentNode;
-	for(unsigned int counter = 0;counter < connectedComponentCounter.size();counter++){
-		if(connectedComponents[counter] == INT_MIN){
-			auxSpace.push(counter);
-			connectedComponents[counter] = ++componentCounter;
-			while(!auxSpace.empty()){
-				currentNode = auxSpace.front();
-				auxSpace.pop();
-				for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();counter++){
-					if(adjacencyList[counter][adjacentNodeCounter] == INT_MIN){
-						connectedComponents[adjacencyList[counter][adjacentNodeCounter]] = connectedComponents[counter];
-						auxSpace.push(adjacencyList[counter][adjacentNodeCounter]);
-					}
-				}
-			}
-		}
-	}
-	return componentCounter;
+int getNumberOfConnectedComponents(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return 0;
+    }
+    queue<int> auxSpace;
+    vector<int> connectedComponents(adjacencyList.size(),INT_MIN);
+    int componentCounter = -1,currentNode;
+    for(unsigned int counter = 0; counter < connectedComponentCounter.size(); counter++) {
+        if(connectedComponents[counter] == INT_MIN) {
+            auxSpace.push(counter);
+            connectedComponents[counter] = ++componentCounter;
+            while(!auxSpace.empty()) {
+                currentNode = auxSpace.front();
+                auxSpace.pop();
+                for(unsigned int adjacentNodeCounter = 0; adjacentNodeCounter < adjacencyList[currentNode].size(); counter++) {
+                    if(adjacencyList[counter][adjacentNodeCounter] == INT_MIN) {
+                        connectedComponents[adjacencyList[counter][adjacentNodeCounter]] = connectedComponents[counter];
+                        auxSpace.push(adjacencyList[counter][adjacentNodeCounter]);
+                    }
+                }
+            }
+        }
+    }
+    return componentCounter;
 }
 
 #endif /* CONNECTEDCOMPONENTS_H_ */

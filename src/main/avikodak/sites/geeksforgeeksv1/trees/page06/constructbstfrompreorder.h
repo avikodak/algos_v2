@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructbstfrompreorder.h 
+ *  File Name   		: constructbstfrompreorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructbstfrompreorder.h
  *  Created on			: Nov 13, 2014 :: 10:47:11 AM
  *  Author				: AVINASH
@@ -73,64 +73,64 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *constructBSTFromPreOrderON(vector<int> userInput,int minValue = INT_MIN,int maxValue = INT_MAX){
-	static unsigned int counter = 0;
-	if(counter >= userInput.size()){
-		return null;
-	}
-	int value = userInput[counter];
-	if(value < minValue || value > maxValue){
-		return null;
-	}
-	itNode *node = new itNode(value);
-	counter++;
-	node->left = constructBSTFromPreOrderON(userInput,minValue,value);
-	node->right = constructBSTFromPreOrderON(userInput,value,maxValue);
-	return node;
+itNode *constructBSTFromPreOrderON(vector<int> userInput,int minValue = INT_MIN,int maxValue = INT_MAX) {
+    static unsigned int counter = 0;
+    if(counter >= userInput.size()) {
+        return null;
+    }
+    int value = userInput[counter];
+    if(value < minValue || value > maxValue) {
+        return null;
+    }
+    itNode *node = new itNode(value);
+    counter++;
+    node->left = constructBSTFromPreOrderON(userInput,minValue,value);
+    node->right = constructBSTFromPreOrderON(userInput,value,maxValue);
+    return node;
 }
 
 //Tested
-itNode *constructBSTFromPreorderIterative(vector<int> userInput){
-	if(userInput.size() ==0){
-		return null;
-	}
-	stack<itNode *> auxSpace;
-	itNode *root = new itNode(userInput[0]);
-	auxSpace.push(root);
-	itNode *temp;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		temp = null;
-		while(!auxSpace.empty() && userInput[counter] > auxSpace.top()->value){
-			temp = auxSpace.top();
-			auxSpace.pop();
-		}
-		if(temp != null){
-			temp->right = new itNode(userInput[counter]);
-			auxSpace.push(temp->right);
-		}else{
-			auxSpace.top()->left = new itNode(userInput[counter]);
-			auxSpace.push(auxSpace.top()->left);
-		}
-	}
-	return root;
+itNode *constructBSTFromPreorderIterative(vector<int> userInput) {
+    if(userInput.size() ==0) {
+        return null;
+    }
+    stack<itNode *> auxSpace;
+    itNode *root = new itNode(userInput[0]);
+    auxSpace.push(root);
+    itNode *temp;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        temp = null;
+        while(!auxSpace.empty() && userInput[counter] > auxSpace.top()->value) {
+            temp = auxSpace.top();
+            auxSpace.pop();
+        }
+        if(temp != null) {
+            temp->right = new itNode(userInput[counter]);
+            auxSpace.push(temp->right);
+        } else {
+            auxSpace.top()->left = new itNode(userInput[counter]);
+            auxSpace.push(auxSpace.top()->left);
+        }
+    }
+    return root;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *constructBSTFromPreOrderON2(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
-	}
-	itNode *node = new itNode(userInput[startIndex]);
-	int counter = startIndex+1;
-	while(userInput[startIndex] > userInput[counter] && counter <= endIndex){
-		counter++;
-	}
-	node->left = constructBSTFromPreOrderON2(userInput,startIndex+1,counter-1);
-	node->right = constructBSTFromPreOrderON2(userInput,counter,endIndex);
-	return node;
+itNode *constructBSTFromPreOrderON2(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return null;
+    }
+    itNode *node = new itNode(userInput[startIndex]);
+    int counter = startIndex+1;
+    while(userInput[startIndex] > userInput[counter] && counter <= endIndex) {
+        counter++;
+    }
+    node->left = constructBSTFromPreOrderON2(userInput,startIndex+1,counter-1);
+    node->right = constructBSTFromPreOrderON2(userInput,counter,endIndex);
+    return node;
 }
 
 #endif /* CONSTRUCTBSTFROMPREORDER_H_ */

@@ -76,13 +76,13 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_SWAPTWONUMBERS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,fInput,sInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&fInput,&sInput);
-		printf("%u %u\n",sInput,fInput);
-	}
+void solveProblem() {
+    unsigned int testCases,fInput,sInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&fInput,&sInput);
+        printf("%u %u\n",sInput,fInput);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_SWAPTWONUMBERS_H_ */

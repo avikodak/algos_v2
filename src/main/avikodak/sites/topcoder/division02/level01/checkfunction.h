@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: CheckFunction.h 
+ *  File Name   		: CheckFunction.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\CheckFunction.h
  *  Created on			: Mar 23, 2015 :: 12:26:09 PM
  *  Author				: avikodak
@@ -73,39 +73,39 @@ using namespace __gnu_cxx;
 //Tested
 class CheckFunction {
 public:
-	int newFunction(string userInput){
-		if(userInput.size() == 0){
-			return 0;
-		}
-		unsigned dashFrequency = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			switch(userInput[counter]){
-			case '0':
-			case '6':
-			case '9':
-				dashFrequency += 6;
-				break;
-			case '1':
-				dashFrequency += 2;
-				break;
-			case '2':
-			case '3':
-			case '5':
-				dashFrequency += 5;
-				break;
-			case '4':
-				dashFrequency += 4;
-				break;
-			case '7':
-				dashFrequency += 3;
-				break;
-			case '8':
-				dashFrequency += 7;
-				break;
-			}
-		}
-		return dashFrequency;
-	}
+    int newFunction(string userInput) {
+        if(userInput.size() == 0) {
+            return 0;
+        }
+        unsigned dashFrequency = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            switch(userInput[counter]) {
+            case '0':
+            case '6':
+            case '9':
+                dashFrequency += 6;
+                break;
+            case '1':
+                dashFrequency += 2;
+                break;
+            case '2':
+            case '3':
+            case '5':
+                dashFrequency += 5;
+                break;
+            case '4':
+                dashFrequency += 4;
+                break;
+            case '7':
+                dashFrequency += 3;
+                break;
+            case '8':
+                dashFrequency += 7;
+                break;
+            }
+        }
+        return dashFrequency;
+    }
 };
 
 #endif /* CHECKFUNCTION_H_ */

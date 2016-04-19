@@ -76,26 +76,26 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CODEMANIA2016_CDMN1601_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < 2*size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end());
-		long long int maxCummulativeSum = 0;
-		unsigned int frontCrawler = 0,rearCrawler = 2*size-1;
-		while(frontCrawler < rearCrawler){
-			maxCummulativeSum += userInput[rearCrawler] - userInput[frontCrawler];
-		}
-		cout << maxCummulativeSum << endl;
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < 2*size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end());
+        long long int maxCummulativeSum = 0;
+        unsigned int frontCrawler = 0,rearCrawler = 2*size-1;
+        while(frontCrawler < rearCrawler) {
+            maxCummulativeSum += userInput[rearCrawler] - userInput[frontCrawler];
+        }
+        cout << maxCummulativeSum << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_CODEMANIA2016_CDMN1601_H_ */

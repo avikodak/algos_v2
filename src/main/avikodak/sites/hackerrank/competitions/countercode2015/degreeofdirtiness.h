@@ -71,57 +71,57 @@ using namespace __gnu_cxx;
 #define DEGREEOFDIRTINESS_H_
 
 //Tested
-unsigned int getLeastDirtyLeftToRight(vector<unsigned int> dirtiness){
-	unsigned int minIndex = 0;
-	for(unsigned int counter = 1;counter < dirtiness.size();counter++){
-		if(dirtiness[minIndex] > dirtiness[counter]){
-			minIndex = counter;
-		}
-	}
-	return minIndex;
+unsigned int getLeastDirtyLeftToRight(vector<unsigned int> dirtiness) {
+    unsigned int minIndex = 0;
+    for(unsigned int counter = 1; counter < dirtiness.size(); counter++) {
+        if(dirtiness[minIndex] > dirtiness[counter]) {
+            minIndex = counter;
+        }
+    }
+    return minIndex;
 }
 
 //Tested
-int getLeastDirtyRightToLeft(vector<unsigned int> dirtiness,int minIndexLTR){
-	int minIndex = dirtiness.size()-1;
-	for(int counter = dirtiness.size()-2;counter >= 0;counter--){
-		if(counter != minIndexLTR && dirtiness[minIndex] > dirtiness[counter]){
-			minIndex = counter;
-		}
-	}
-	return minIndex;
+int getLeastDirtyRightToLeft(vector<unsigned int> dirtiness,int minIndexLTR) {
+    int minIndex = dirtiness.size()-1;
+    for(int counter = dirtiness.size()-2; counter >= 0; counter--) {
+        if(counter != minIndexLTR && dirtiness[minIndex] > dirtiness[counter]) {
+            minIndex = counter;
+        }
+    }
+    return minIndex;
 }
 
 //Tested
-void printIndexAndDirtiness(unsigned int total,unsigned int personIndex){
-	vector<unsigned int> dirtiness;
-	dirtiness.assign(total,0);
-	unsigned int minIndexLTR;
-	int minIndexRTL;
-	for(unsigned int counter = 1;counter <= personIndex;counter += 2){
-		minIndexLTR = getLeastDirtyLeftToRight(dirtiness);
-		if(counter == personIndex){
-			cout << minIndexLTR+1 << " " << dirtiness[minIndexLTR] << endl;
-			return;
-		}
-		dirtiness[minIndexLTR]++;
-		minIndexRTL = getLeastDirtyRightToLeft(dirtiness,minIndexLTR);
-		if(counter+1 == personIndex){
-			cout << minIndexRTL+1 << " " << dirtiness[minIndexRTL] << endl;
-			return;
-		}
-		dirtiness[minIndexRTL]++;
-	}
+void printIndexAndDirtiness(unsigned int total,unsigned int personIndex) {
+    vector<unsigned int> dirtiness;
+    dirtiness.assign(total,0);
+    unsigned int minIndexLTR;
+    int minIndexRTL;
+    for(unsigned int counter = 1; counter <= personIndex; counter += 2) {
+        minIndexLTR = getLeastDirtyLeftToRight(dirtiness);
+        if(counter == personIndex) {
+            cout << minIndexLTR+1 << " " << dirtiness[minIndexLTR] << endl;
+            return;
+        }
+        dirtiness[minIndexLTR]++;
+        minIndexRTL = getLeastDirtyRightToLeft(dirtiness,minIndexLTR);
+        if(counter+1 == personIndex) {
+            cout << minIndexRTL+1 << " " << dirtiness[minIndexRTL] << endl;
+            return;
+        }
+        dirtiness[minIndexRTL]++;
+    }
 }
 
 //Tested
-void getIndexAndDirtiness(){
-	unsigned int testCases,total,personIndex;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&total,&personIndex);
-		printIndexAndDirtiness(total,personIndex);
-	}
+void getIndexAndDirtiness() {
+    unsigned int testCases,total,personIndex;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&total,&personIndex);
+        printIndexAndDirtiness(total,personIndex);
+    }
 }
 
 #endif /* DEGREEOFDIRTINESS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: twonodesfixbst.h 
+ *  File Name   		: twonodesfixbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\twonodesfixbst.h
  *  Created on			: Nov 13, 2014 :: 10:24:20 AM
  *  Author				: AVINASH
@@ -72,43 +72,43 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void fixNodesInInorderMain(itNode *ptr,itNode **firstPtr,itNode **midPtr,itNode **lastPtr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	fixNodesInInorderMain(ptr->left,firstPtr,midPtr,lastPtr);
-	if(prevNode != null){
-		if(ptr->value < prevNode->value){
-			if(*firstPtr == null){
-				(*firstPtr) = prevNode;
-				(*midPtr) = ptr;
-			}else{
-				(*lastPtr) = ptr;
-			}
-		}
-	}
-	prevNode = ptr;
-	fixNodesInInorderMain(ptr->right,firstPtr,midPtr,lastPtr);
+void fixNodesInInorderMain(itNode *ptr,itNode **firstPtr,itNode **midPtr,itNode **lastPtr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    fixNodesInInorderMain(ptr->left,firstPtr,midPtr,lastPtr);
+    if(prevNode != null) {
+        if(ptr->value < prevNode->value) {
+            if(*firstPtr == null) {
+                (*firstPtr) = prevNode;
+                (*midPtr) = ptr;
+            } else {
+                (*lastPtr) = ptr;
+            }
+        }
+    }
+    prevNode = ptr;
+    fixNodesInInorderMain(ptr->right,firstPtr,midPtr,lastPtr);
 }
 
 //Tested
-void fixNodesInInOrderON(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *firstPtr = null,*midPtr = null,*lastPtr = null;
-	fixNodesInInorderMain(ptr,&firstPtr,&midPtr,&lastPtr);
-	int temp;
-	if(lastPtr != null){
-		temp = lastPtr->value;
-		lastPtr->value = firstPtr->value;
-		firstPtr->value = temp;
-	}else{
-		temp = midPtr->value;
-		midPtr->value = firstPtr->value;
-		firstPtr->value = temp;
-	}
+void fixNodesInInOrderON(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *firstPtr = null,*midPtr = null,*lastPtr = null;
+    fixNodesInInorderMain(ptr,&firstPtr,&midPtr,&lastPtr);
+    int temp;
+    if(lastPtr != null) {
+        temp = lastPtr->value;
+        lastPtr->value = firstPtr->value;
+        firstPtr->value = temp;
+    } else {
+        temp = midPtr->value;
+        midPtr->value = firstPtr->value;
+        firstPtr->value = temp;
+    }
 }
 
 
@@ -116,25 +116,25 @@ void fixNodesInInOrderON(itNode *ptr){
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void insertNodesInInorder(itNode *ptr,vector<int> inorderValues){
-	if(ptr == null){
-		return;
-	}
-	static unsigned int counter = 0;
-	insertNodesInInorder(ptr->left,inorderValues);
-	ptr->value = inorderValues[counter++];
-	insertNodesInInorder(ptr->right,inorderValues);
+void insertNodesInInorder(itNode *ptr,vector<int> inorderValues) {
+    if(ptr == null) {
+        return;
+    }
+    static unsigned int counter = 0;
+    insertNodesInInorder(ptr->left,inorderValues);
+    ptr->value = inorderValues[counter++];
+    insertNodesInInorder(ptr->right,inorderValues);
 }
 
 //Tested
-void fixBST(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	treeutils *utils = new treeutils();
-	vector<int> inorderValues = utils->getValuesInInorder(ptr);
-	sort(inorderValues.begin(),inorderValues.end());
-	insertNodesInInorder(ptr,inorderValues);
+void fixBST(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    treeutils *utils = new treeutils();
+    vector<int> inorderValues = utils->getValuesInInorder(ptr);
+    sort(inorderValues.begin(),inorderValues.end());
+    insertNodesInInorder(ptr,inorderValues);
 }
 
 /****************************************************************************************************************************************************/

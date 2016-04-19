@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define FLOW002_H_
 
 //Tested
-void findRemainders(){
-	unsigned int testCases,A,B;
-	cin >> testCases;
-	while(testCases--){
-		cin >> A >> B;
-		printf("%d\n",A%B);
-	}
+void findRemainders() {
+    unsigned int testCases,A,B;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> A >> B;
+        printf("%d\n",A%B);
+    }
 }
 
 #endif /* FLOW002_H_ */

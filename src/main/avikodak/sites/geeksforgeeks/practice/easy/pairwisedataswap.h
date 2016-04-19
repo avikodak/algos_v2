@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRWISEDATASWAP_H_
 
 //Tested
-struct node{
-	int data;
-	struct node *next;
+struct node {
+    int data;
+    struct node *next;
 };
 
 //Tested
-void pairWiseSwap(struct node *head){
-	int temp;
-	while(head != null && head->next != null){
-		temp = head->data;
-		head->data = head->next->data;
-		head->next->data = temp;
-		head = head->next->next;
-	}
+void pairWiseSwap(struct node *head) {
+    int temp;
+    while(head != null && head->next != null) {
+        temp = head->data;
+        head->data = head->next->data;
+        head->next->data = temp;
+        head = head->next->next;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PAIRWISEDATASWAP_H_ */

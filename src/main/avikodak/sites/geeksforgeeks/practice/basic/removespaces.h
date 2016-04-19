@@ -76,19 +76,19 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_REMOVESPACES_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		getline(std::cin,userInput);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] != ' '){
-				printf("%c",userInput[counter]);
-			}
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        getline(std::cin,userInput);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] != ' ') {
+                printf("%c",userInput[counter]);
+            }
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_REMOVESPACES_H_ */

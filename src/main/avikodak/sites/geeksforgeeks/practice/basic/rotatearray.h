@@ -76,36 +76,36 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROTATEARRAY_H_
 
 //Tested
-void reverse(vector<long long int> &userInput,unsigned int startIndex,unsigned int endIndex){
-	while(startIndex < endIndex){
-		swap(userInput[startIndex],userInput[endIndex]);
-		startIndex++;
-		endIndex--;
-	}
+void reverse(vector<long long int> &userInput,unsigned int startIndex,unsigned int endIndex) {
+    while(startIndex < endIndex) {
+        swap(userInput[startIndex],userInput[endIndex]);
+        startIndex++;
+        endIndex--;
+    }
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size,rotateBy;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&rotateBy);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		rotateBy = rotateBy%size;
-		reverse(userInput,0,rotateBy-1);
-		reverse(userInput,rotateBy,userInput.size()-1);
-		reverse(userInput,0,userInput.size()-1);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			printf("%lld ",userInput[counter]);
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases,size,rotateBy;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&rotateBy);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        rotateBy = rotateBy%size;
+        reverse(userInput,0,rotateBy-1);
+        reverse(userInput,rotateBy,userInput.size()-1);
+        reverse(userInput,0,userInput.size()-1);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            printf("%lld ",userInput[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROTATEARRAY_H_ */

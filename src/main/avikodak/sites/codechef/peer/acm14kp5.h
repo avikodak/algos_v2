@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 #define ACM14KP5_H_
 
 //Tested
-bool sortFunc(unsigned int first,unsigned int second){
-	return first > second;
+bool sortFunc(unsigned int first,unsigned int second) {
+    return first > second;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	vector<unsigned int> userInput;
-	scanf("%u",&testCases);
-	for(unsigned int counter = 1;counter <= testCases;counter++){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end(),sortFunc);
-		cout << "Case " << counter << ": " << userInput[0]+userInput[1]+userInput[2] << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    vector<unsigned int> userInput;
+    scanf("%u",&testCases);
+    for(unsigned int counter = 1; counter <= testCases; counter++) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end(),sortFunc);
+        cout << "Case " << counter << ": " << userInput[0]+userInput[1]+userInput[2] << endl;
+    }
 }
 
 #endif /* ACM14KP5_H_ */

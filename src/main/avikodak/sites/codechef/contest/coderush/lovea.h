@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 #define LOVEA_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	unsigned long long int lower,upper,lowerSqrt,upperSqrt;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%llu %llu",&lower,&upper);
-		lowerSqrt = sqrtl(lower-1);
-		upperSqrt = sqrtl(upper);
-		cout << upperSqrt - lowerSqrt << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    unsigned long long int lower,upper,lowerSqrt,upperSqrt;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%llu %llu",&lower,&upper);
+        lowerSqrt = sqrtl(lower-1);
+        upperSqrt = sqrtl(upper);
+        cout << upperSqrt - lowerSqrt << endl;
+    }
 }
 
 #endif /* LOVEA_H_ */

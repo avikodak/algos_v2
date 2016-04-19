@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 #define COUNTSTR_H_
 
 //Tested
-void printResults(){
-	unsigned int rows,columns,input,testCases,rowStart,rowEnd,columnStart,columnEnd,total = 0;
-	scanf("%u %u",&rows,&columns);
-	vector<vector<unsigned int> > matrix(rows);
-	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
-		matrix[rowCounter].assign(columns,0);
-	}
-	for(unsigned int rowCounter = 0;rowCounter < rows;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < columns;columnCounter++){
-			scanf("%u",&input);
-			matrix[rowCounter][columnCounter] = input;
-		}
-	}
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u %u %u",&rowStart,&columnStart,&rowEnd,&columnEnd);
-		total = 0;
-		for(unsigned int rowCounter = rowStart-1;rowCounter < rowEnd;rowCounter++){
-			for(unsigned int columnCounter = columnStart-1;columnCounter < columnEnd;columnCounter++){
-				total += matrix[rowCounter][columnCounter];
-			}
-		}
-		printf("%u\n",total);
-	}
+void printResults() {
+    unsigned int rows,columns,input,testCases,rowStart,rowEnd,columnStart,columnEnd,total = 0;
+    scanf("%u %u",&rows,&columns);
+    vector<vector<unsigned int> > matrix(rows);
+    for(unsigned int rowCounter = 0; rowCounter < rows; rowCounter++) {
+        matrix[rowCounter].assign(columns,0);
+    }
+    for(unsigned int rowCounter = 0; rowCounter < rows; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < columns; columnCounter++) {
+            scanf("%u",&input);
+            matrix[rowCounter][columnCounter] = input;
+        }
+    }
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u %u %u",&rowStart,&columnStart,&rowEnd,&columnEnd);
+        total = 0;
+        for(unsigned int rowCounter = rowStart-1; rowCounter < rowEnd; rowCounter++) {
+            for(unsigned int columnCounter = columnStart-1; columnCounter < columnEnd; columnCounter++) {
+                total += matrix[rowCounter][columnCounter];
+            }
+        }
+        printf("%u\n",total);
+    }
 }
 
 #endif /* COUNTSTR_H_ */

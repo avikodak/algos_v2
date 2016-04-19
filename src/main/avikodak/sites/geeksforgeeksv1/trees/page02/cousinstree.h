@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cousinstree.h 
+ *  File Name   		: cousinstree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\cousinstree.h
  *  Created on			: Jan 24, 2015 :: 12:39:27 AM
  *  Author				: AVINASH
@@ -73,35 +73,35 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool areNodesSibilings(itNode *ptr,int firstValue,int secondValue){
-	if(ptr == null){
-		return false;
-	}
-	if(ptr->left != null && ptr->right != null){
-		return (ptr->left->value == firstValue && ptr->right->value == secondValue) || (ptr->left->value == secondValue && ptr->right->value == firstValue);
-	}
-	return areNodesSibilings(ptr->left,firstValue,secondValue) || areNodesSibilings(ptr->right,firstValue,secondValue);
+bool areNodesSibilings(itNode *ptr,int firstValue,int secondValue) {
+    if(ptr == null) {
+        return false;
+    }
+    if(ptr->left != null && ptr->right != null) {
+        return (ptr->left->value == firstValue && ptr->right->value == secondValue) || (ptr->left->value == secondValue && ptr->right->value == firstValue);
+    }
+    return areNodesSibilings(ptr->left,firstValue,secondValue) || areNodesSibilings(ptr->right,firstValue,secondValue);
 }
 
-int levelOfNode(itNode *ptr,int userInput,int level){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	if(ptr->value == userInput){
-		return level;
-	}
-	int leftResult = levelOfNode(ptr->left,userInput,level+1);
-	if(leftResult != null){
-		return leftResult;
-	}
-	return levelOfNode(ptr->right,userInput,level+1);
+int levelOfNode(itNode *ptr,int userInput,int level) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    if(ptr->value == userInput) {
+        return level;
+    }
+    int leftResult = levelOfNode(ptr->left,userInput,level+1);
+    if(leftResult != null) {
+        return leftResult;
+    }
+    return levelOfNode(ptr->right,userInput,level+1);
 }
 
-bool areNodesCousins(itNode *ptr,int firstValue,int secondValue){
-	if(levelOfNode(ptr,firstValue,0) && levelOfNode(ptr,secondValue,0) && !areNodesSibilings(ptr,firstValue,secondValue)){
-		return true;
-	}
-	return false;
+bool areNodesCousins(itNode *ptr,int firstValue,int secondValue) {
+    if(levelOfNode(ptr,firstValue,0) && levelOfNode(ptr,secondValue,0) && !areNodesSibilings(ptr,firstValue,secondValue)) {
+        return true;
+    }
+    return false;
 }
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */

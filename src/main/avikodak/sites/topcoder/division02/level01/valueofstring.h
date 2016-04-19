@@ -72,27 +72,27 @@ using namespace __gnu_cxx;
 
 class ValueOfString {
 public:
-	int findValue(string userInput){
-		map<char,int> frequency;
-		map<char,int>::iterator itToFrequency;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(frequency.find(userInput[counter]) == frequency.end()){
-				frequency[userInput[counter]] = 1;
-			}else{
-				frequency[userInput[counter]] += 1;
-			}
-		}
-		int sum = 0;
-		for(itToFrequency = frequency.begin();itToFrequency != frequency.end();itToFrequency++){
-			sum += itToFrequency->second;
-			frequency[itToFrequency->first] = sum;
-		}
-		sum = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			sum += (userInput[counter] -'a'+1)*(frequency[userInput[counter]]);
-		}
-		return sum;
-	}
+    int findValue(string userInput) {
+        map<char,int> frequency;
+        map<char,int>::iterator itToFrequency;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(frequency.find(userInput[counter]) == frequency.end()) {
+                frequency[userInput[counter]] = 1;
+            } else {
+                frequency[userInput[counter]] += 1;
+            }
+        }
+        int sum = 0;
+        for(itToFrequency = frequency.begin(); itToFrequency != frequency.end(); itToFrequency++) {
+            sum += itToFrequency->second;
+            frequency[itToFrequency->first] = sum;
+        }
+        sum = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            sum += (userInput[counter] -'a'+1)*(frequency[userInput[counter]]);
+        }
+        return sum;
+    }
 };
 
 #endif /* VALUEOFSTRING_H_ */

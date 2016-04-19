@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findfirstcirculartour.h 
+ *  File Name   		: findfirstcirculartour.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\findfirstcirculartour.h
  *  Created on			: Jan 21, 2015 :: 9:29:44 AM
  *  Author				: AVINASH
@@ -73,25 +73,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getFirstStartingPoint(vector<petrolPump *> userInput){
-	if(userInput.size() == 0){
-		return -1;
-	}
-	int startIndex = 0;
-	int endIndex = 1;
-	int currentDistance = userInput[0]->petrol - userInput[0]->nextDistance;
-	while(startIndex != endIndex || currentDistance < 0){
-		while(currentDistance < 0 && endIndex != startIndex){
-			currentDistance = currentDistance - userInput[startIndex]->petrol + userInput[startIndex]->nextDistance;
-			startIndex = (startIndex + 1)%(userInput.size());
-			if(startIndex == 0){
-				return -1;
-			}
-		}
-		currentDistance += userInput[endIndex]->petrol - userInput[endIndex]->nextDistance;
-		endIndex = (endIndex+1)%(userInput.size());
-	}
-	return startIndex;
+int getFirstStartingPoint(vector<petrolPump *> userInput) {
+    if(userInput.size() == 0) {
+        return -1;
+    }
+    int startIndex = 0;
+    int endIndex = 1;
+    int currentDistance = userInput[0]->petrol - userInput[0]->nextDistance;
+    while(startIndex != endIndex || currentDistance < 0) {
+        while(currentDistance < 0 && endIndex != startIndex) {
+            currentDistance = currentDistance - userInput[startIndex]->petrol + userInput[startIndex]->nextDistance;
+            startIndex = (startIndex + 1)%(userInput.size());
+            if(startIndex == 0) {
+                return -1;
+            }
+        }
+        currentDistance += userInput[endIndex]->petrol - userInput[endIndex]->nextDistance;
+        endIndex = (endIndex+1)%(userInput.size());
+    }
+    return startIndex;
 }
 
 /****************************************************************************************************************************************************/

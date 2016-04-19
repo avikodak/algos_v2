@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define FLOW017_H_
 
 //Tested
-void printSecondLargest(vector<unsigned int> userInput){
-	sort(userInput.begin(),userInput.end());
-	printf("%u\n",userInput[1]);
+void printSecondLargest(vector<unsigned int> userInput) {
+    sort(userInput.begin(),userInput.end());
+    printf("%u\n",userInput[1]);
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	cin >> testCases;
-	vector<unsigned int> userInput;
-	while(testCases--){
-		userInput.clear();
-		for(unsigned int counter = 0;counter < 3;counter++){
-			cin >> input;
-			userInput.push_back(input);
-		}
-		printSecondLargest(userInput);
-	}
+void printResults() {
+    unsigned int testCases,input;
+    cin >> testCases;
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        userInput.clear();
+        for(unsigned int counter = 0; counter < 3; counter++) {
+            cin >> input;
+            userInput.push_back(input);
+        }
+        printSecondLargest(userInput);
+    }
 }
 
 #endif /* FLOW017_H_ */

@@ -72,37 +72,37 @@ using namespace __gnu_cxx;
 #define CHEFSQ_H_
 
 //Tested
-void isSubSequence(vector<unsigned int> firstInput,vector<unsigned int> secondInput){
-	unsigned int firstCounter = 0,secondCounter =0;
-	while(firstCounter < firstInput.size() && secondCounter < secondInput.size()){
-		if(firstInput[firstCounter] == secondInput[secondCounter]){
-			secondCounter++;
-		}
-		firstCounter++;
-	}
-	printf("%s\n",secondCounter >= secondInput.size()?"Yes":"No");
+void isSubSequence(vector<unsigned int> firstInput,vector<unsigned int> secondInput) {
+    unsigned int firstCounter = 0,secondCounter =0;
+    while(firstCounter < firstInput.size() && secondCounter < secondInput.size()) {
+        if(firstInput[firstCounter] == secondInput[secondCounter]) {
+            secondCounter++;
+        }
+        firstCounter++;
+    }
+    printf("%s\n",secondCounter >= secondInput.size()?"Yes":"No");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,firstSeqLen,secondSeqLen,input;
-	vector<unsigned int> firstUserInput,secondUserInput;
-	cin >> testCases;
-	while(testCases--){
-		firstUserInput.clear();
-		secondUserInput.clear();
-		cin >> firstSeqLen;
-		for(unsigned int counter = 0;counter < firstSeqLen;counter++){
-			cin >> input;
-			firstUserInput.push_back(input);
-		}
-		cin >> secondSeqLen;
-		for(unsigned int counter = 0;counter < secondSeqLen;counter++){
-			cin >> input;
-			secondUserInput.push_back(input);
-		}
-		isSubSequence(firstUserInput,secondUserInput);
-	}
+void printResults() {
+    unsigned int testCases,firstSeqLen,secondSeqLen,input;
+    vector<unsigned int> firstUserInput,secondUserInput;
+    cin >> testCases;
+    while(testCases--) {
+        firstUserInput.clear();
+        secondUserInput.clear();
+        cin >> firstSeqLen;
+        for(unsigned int counter = 0; counter < firstSeqLen; counter++) {
+            cin >> input;
+            firstUserInput.push_back(input);
+        }
+        cin >> secondSeqLen;
+        for(unsigned int counter = 0; counter < secondSeqLen; counter++) {
+            cin >> input;
+            secondUserInput.push_back(input);
+        }
+        isSubSequence(firstUserInput,secondUserInput);
+    }
 }
 
 #endif /* CHEFSQ_H_ */

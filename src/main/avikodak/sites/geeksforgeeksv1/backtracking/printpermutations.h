@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printpermutations.h 
+ *  File Name   		: printpermutations.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\printpermutations.h
  *  Created on			: Dec 5, 2014 :: 12:34:57 AM
  *  Author				: AVINASH
@@ -69,20 +69,20 @@ using namespace __gnu_cxx;
 #define PRINTPERMUTATIONS_H_
 
 //Tested
-void printPermutations(vector<int> userInput,unsigned int currentIndex){
-	if(currentIndex > userInput.size()){
-		return;
-	}
-	if(currentIndex == userInput.size()){
-		printIVector(userInput);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = currentIndex;counter < userInput.size();counter++){
-		swap(userInput[currentIndex],userInput[counter]);
-		printPermutations(userInput,currentIndex+1);
-		swap(userInput[currentIndex],userInput[counter]);
-	}
+void printPermutations(vector<int> userInput,unsigned int currentIndex) {
+    if(currentIndex > userInput.size()) {
+        return;
+    }
+    if(currentIndex == userInput.size()) {
+        printIVector(userInput);
+        PRINT_NEW_LINE;
+        return;
+    }
+    for(unsigned int counter = currentIndex; counter < userInput.size(); counter++) {
+        swap(userInput[currentIndex],userInput[counter]);
+        printPermutations(userInput,currentIndex+1);
+        swap(userInput[currentIndex],userInput[counter]);
+    }
 }
 
 #endif /* PRINTPERMUTATIONS_H_ */

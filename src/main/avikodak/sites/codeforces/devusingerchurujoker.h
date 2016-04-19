@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define DEVUSINGERCHURUJOKER_H_
 
 //Tested
-void printMaxJokes(){
-	unsigned int totalSongs,timeTaken,input,totalTimeSongs = 0;
-	scanf("%u %u",&totalSongs,&timeTaken);
-	for(unsigned int counter = 0;counter < totalSongs;counter++){
-		scanf("%u",&input);
-		totalTimeSongs += input;
-	}
-	totalTimeSongs += (10*(totalSongs-1));
-	if(totalTimeSongs > timeTaken){
-		printf("-1");
-	}else{
-		printf("%u",((timeTaken - totalTimeSongs)/5 + (10*(totalSongs-1))/5));
-	}
+void printMaxJokes() {
+    unsigned int totalSongs,timeTaken,input,totalTimeSongs = 0;
+    scanf("%u %u",&totalSongs,&timeTaken);
+    for(unsigned int counter = 0; counter < totalSongs; counter++) {
+        scanf("%u",&input);
+        totalTimeSongs += input;
+    }
+    totalTimeSongs += (10*(totalSongs-1));
+    if(totalTimeSongs > timeTaken) {
+        printf("-1");
+    } else {
+        printf("%u",((timeTaken - totalTimeSongs)/5 + (10*(totalSongs-1))/5));
+    }
 }
 
 #endif /* DEVUSINGERCHURUJOKER_H_ */

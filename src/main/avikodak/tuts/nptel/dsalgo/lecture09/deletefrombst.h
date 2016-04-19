@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletefrombst.h 
+ *  File Name   		: deletefrombst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture09\deletefrombst.h
  *  Created on			: Nov 18, 2014 :: 7:35:50 PM
  *  Author				: AVINASH
@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *getNodesParentForValue(itNode *ptr,int value){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->value == value){
-		return ptr;
-	}
-	if(ptr->value > value){
-		return getNodeForValue(ptr->left,value);
-	}else{
-		return getNodeForValue(ptr->right,value);
-	}
+itNode *getNodesParentForValue(itNode *ptr,int value) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->value == value) {
+        return ptr;
+    }
+    if(ptr->value > value) {
+        return getNodeForValue(ptr->left,value);
+    } else {
+        return getNodeForValue(ptr->right,value);
+    }
 }
 
-void deleteNodeFromBst(itNode **root,int value){
-	itNode *nodeToKey = getNodeForValue(*root,value);
+void deleteNodeFromBst(itNode **root,int value) {
+    itNode *nodeToKey = getNodeForValue(*root,value);
 
 }
 

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: evenodds.h 
+ *  File Name   		: evenodds.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\evenodds.h
  *  Created on			: Mar 8, 2015 :: 12:57:11 PM
  *  Author				: avikodak
@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define EVENODDS_H_
 
 //Tested
-void printNumberInSequence(){
-	long long int size,position,half;
-	cin >> size;
-	cin >> position;
-	half = size/2;
-	if(size%2 == 0){
-		if(position <= half){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half);
-		}
-	}else{
-		if(position <= half+1){
-			cout << 2*position-1;
-		}else{
-			cout << 2*(position-half-1);
-		}
+void printNumberInSequence() {
+    long long int size,position,half;
+    cin >> size;
+    cin >> position;
+    half = size/2;
+    if(size%2 == 0) {
+        if(position <= half) {
+            cout << 2*position-1;
+        } else {
+            cout << 2*(position-half);
+        }
+    } else {
+        if(position <= half+1) {
+            cout << 2*position-1;
+        } else {
+            cout << 2*(position-half-1);
+        }
 
-	}
+    }
 }
 
 #endif /* EVENODDS_H_ */

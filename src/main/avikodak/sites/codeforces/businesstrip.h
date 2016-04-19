@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define BUSINESSTRIP_H_
 
 //Tested
-bool comp(int first,int second){
-	return first > second?true:false;
+bool comp(int first,int second) {
+    return first > second?true:false;
 }
 
 //Tested
-void getMinimumMonths(){
-	int height,input;
-	scanf("%d",&height);
-	vector<unsigned int> heightPerMonth;
-	for(unsigned int counter = 0;counter < 12;counter++){
-		scanf("%d",&input);
-		heightPerMonth.push_back(input);
-	}
-	sort(heightPerMonth.begin(),heightPerMonth.end(),comp);
-	int totalHeight = 0;
-	unsigned int months = 0;
-	while(totalHeight < height && months < heightPerMonth.size()){
-		totalHeight += heightPerMonth[months++];
-	}
-	printf("%d",months < heightPerMonth.size()?months:totalHeight == height?12:-1);
+void getMinimumMonths() {
+    int height,input;
+    scanf("%d",&height);
+    vector<unsigned int> heightPerMonth;
+    for(unsigned int counter = 0; counter < 12; counter++) {
+        scanf("%d",&input);
+        heightPerMonth.push_back(input);
+    }
+    sort(heightPerMonth.begin(),heightPerMonth.end(),comp);
+    int totalHeight = 0;
+    unsigned int months = 0;
+    while(totalHeight < height && months < heightPerMonth.size()) {
+        totalHeight += heightPerMonth[months++];
+    }
+    printf("%d",months < heightPerMonth.size()?months:totalHeight == height?12:-1);
 }
 
 #endif /* BUSINESSTRIP_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bstsort.h 
+ *  File Name   		: bstsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\bstsort.h
  *  Created on			: Dec 11, 2014 :: 1:01:27 PM
  *  Author				: AVINASH
@@ -74,54 +74,54 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,unsigned int currentIndex){
-	if(currentIndex >= userInput.size()){
-		return;
-	}
-	if(*root == null){
-		(*root) = new iftNode(userInput[currentIndex]);
-		bsInsertIntoBST(root,*root,userInput,currentIndex+1);
-	}else if(currentNode->value == userInput[currentIndex]){
-		currentNode->frequency += 1;
-		bsInsertIntoBST(root,*root,userInput,currentIndex+1);
-	}else if(currentNode->value > userInput[currentIndex]){
-		if(currentNode->left == null){
-			currentNode->left = new iftNode(userInput[currentIndex]);
-			bsInsertIntoBST(root,*root,userInput,currentIndex+1);
-		}else{
-			bsInsertIntoBST(root,currentNode->left,userInput,currentIndex);
-		}
-	}else{
-		if(currentNode->right == null){
-			currentNode->right = new iftNode(userInput[currentIndex]);
-			bsInsertIntoBST(root,*root,userInput,currentIndex+1);
-		}else{
-			bsInsertIntoBST(root,currentNode->right,userInput,currentIndex);
-		}
-	}
+void bsInsertIntoBST(iftNode **root,iftNode *currentNode,vector<int> userInput,unsigned int currentIndex) {
+    if(currentIndex >= userInput.size()) {
+        return;
+    }
+    if(*root == null) {
+        (*root) = new iftNode(userInput[currentIndex]);
+        bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+    } else if(currentNode->value == userInput[currentIndex]) {
+        currentNode->frequency += 1;
+        bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+    } else if(currentNode->value > userInput[currentIndex]) {
+        if(currentNode->left == null) {
+            currentNode->left = new iftNode(userInput[currentIndex]);
+            bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+        } else {
+            bsInsertIntoBST(root,currentNode->left,userInput,currentIndex);
+        }
+    } else {
+        if(currentNode->right == null) {
+            currentNode->right = new iftNode(userInput[currentIndex]);
+            bsInsertIntoBST(root,*root,userInput,currentIndex+1);
+        } else {
+            bsInsertIntoBST(root,currentNode->right,userInput,currentIndex);
+        }
+    }
 }
 
 //Tested
-void bsSetVectorWithInorderValues(iftNode *ptr,vector<int> &userInput){
-	if(ptr == null){
-		return;
-	}
-	static int fillCounter = -1;
-	bsSetVectorWithInorderValues(ptr->left,userInput);
-	while(ptr->frequency--){
-		userInput[++fillCounter] = ptr->value;
-	}
-	bsSetVectorWithInorderValues(ptr->right,userInput);
+void bsSetVectorWithInorderValues(iftNode *ptr,vector<int> &userInput) {
+    if(ptr == null) {
+        return;
+    }
+    static int fillCounter = -1;
+    bsSetVectorWithInorderValues(ptr->left,userInput);
+    while(ptr->frequency--) {
+        userInput[++fillCounter] = ptr->value;
+    }
+    bsSetVectorWithInorderValues(ptr->right,userInput);
 }
 
 //Tested
-void sBstSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	iftNode *root = null;
-	bsInsertIntoBST(&root,root,userInput,0);
-	bsSetVectorWithInorderValues(root,userInput);
+void sBstSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    iftNode *root = null;
+    bsInsertIntoBST(&root,root,userInput,0);
+    bsSetVectorWithInorderValues(root,userInput);
 }
 
 #endif /* BSTSORTV2_H_ */

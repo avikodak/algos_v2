@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define TIMECONVERSION_H_
 
 //Tested
-void convertTime(){
-	string userInput;
-	cin >> userInput;
-	int sum,carry;
-	if(userInput[8] == 'A'){
-		if(userInput[0] == '1' && userInput[1] =='2'){
-			userInput[0] = userInput[1] = '0';
-		}
-	}else{
-		if(!(userInput[0] == '1' && userInput[1] == '2')){
-			sum = userInput[1] - '0' + 12;
-			carry = sum/10;
-			userInput[1] = (sum%10)+'0';
-			userInput[0] = userInput[0] + carry;
-		}
-	}
-	userInput.erase(8);
-	cout << userInput;
+void convertTime() {
+    string userInput;
+    cin >> userInput;
+    int sum,carry;
+    if(userInput[8] == 'A') {
+        if(userInput[0] == '1' && userInput[1] =='2') {
+            userInput[0] = userInput[1] = '0';
+        }
+    } else {
+        if(!(userInput[0] == '1' && userInput[1] == '2')) {
+            sum = userInput[1] - '0' + 12;
+            carry = sum/10;
+            userInput[1] = (sum%10)+'0';
+            userInput[0] = userInput[0] + carry;
+        }
+    }
+    userInput.erase(8);
+    cout << userInput;
 }
 
 #endif /* TIMECONVERSION_H_ */

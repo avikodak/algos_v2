@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define FLOW011_H_
 
 //Tested
-void calculateSalary(double basic){
-	if(basic > 1500){
-		cout << basic + 500 + (0.98*basic) << endl;
-	}else{
-		cout << basic + (0.1*basic) + (0.90*basic) << endl;
-	}
+void calculateSalary(double basic) {
+    if(basic > 1500) {
+        cout << basic + 500 + (0.98*basic) << endl;
+    } else {
+        cout << basic + (0.1*basic) + (0.90*basic) << endl;
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	double basic;
-	while(testCases--){
-		cin >> basic;
-		calculateSalary(basic);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    double basic;
+    while(testCases--) {
+        cin >> basic;
+        calculateSalary(basic);
+    }
 }
 
 #endif /* FLOW011_H_ */

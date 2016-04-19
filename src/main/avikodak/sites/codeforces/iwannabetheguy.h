@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define IWANNABETHEGUY_H_
 
 //Tested
-void willTheyPassLevels(){
-	unsigned int finalLevel;
-	vector<bool> flags;
-	scanf("%u",&finalLevel);
-	flags.assign(finalLevel,false);
-	unsigned int littleXTotalLevels,littleYTotalLevels;
-	unsigned int inputLevel;
-	scanf("%u",&littleXTotalLevels);
-	while(littleXTotalLevels--){
-		scanf("%u",&inputLevel);
-		flags[inputLevel-1] = true;
-	}
-	scanf("%u",&littleYTotalLevels);
-	while(littleYTotalLevels--){
-		scanf("%u",&inputLevel);
-		flags[inputLevel-1] = true;
-	}
-	for(unsigned int counter = 0;counter < finalLevel;counter++){
-		if(!flags[counter]){
-			printf("Oh, my keyboard!");
-			return;
-		}
-	}
-	printf("I become the guy.");
+void willTheyPassLevels() {
+    unsigned int finalLevel;
+    vector<bool> flags;
+    scanf("%u",&finalLevel);
+    flags.assign(finalLevel,false);
+    unsigned int littleXTotalLevels,littleYTotalLevels;
+    unsigned int inputLevel;
+    scanf("%u",&littleXTotalLevels);
+    while(littleXTotalLevels--) {
+        scanf("%u",&inputLevel);
+        flags[inputLevel-1] = true;
+    }
+    scanf("%u",&littleYTotalLevels);
+    while(littleYTotalLevels--) {
+        scanf("%u",&inputLevel);
+        flags[inputLevel-1] = true;
+    }
+    for(unsigned int counter = 0; counter < finalLevel; counter++) {
+        if(!flags[counter]) {
+            printf("Oh, my keyboard!");
+            return;
+        }
+    }
+    printf("I become the guy.");
 }
 
 #endif /* IWANNABETHEGUY_H_ */

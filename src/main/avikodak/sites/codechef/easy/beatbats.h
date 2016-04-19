@@ -72,62 +72,62 @@ using namespace __gnu_cxx;
 #define BEATBATS_H_
 
 //Tested
-vector<vector<unsigned int> > generateCombinations(){
-	vector<vector<unsigned int> > combinations;
-	vector<unsigned int> indiComb;
-	indiComb.push_back(1);
-	combinations.push_back(indiComb);
-	indiComb.clear();
-	indiComb.push_back(1);
-	indiComb.push_back(2);
-	indiComb.push_back(1);
-	combinations.push_back(indiComb);
-	for(unsigned int outerCounter = 2;outerCounter < 11;outerCounter++){
-		indiComb.clear();
-		indiComb.push_back(1);
-		for(unsigned int innerCounter = 0;innerCounter < combinations[outerCounter-1].size()-1;innerCounter++){
-			indiComb.push_back(combinations[outerCounter-1][innerCounter]+combinations[outerCounter-1][innerCounter+1]);
-		}
-		indiComb.push_back(1);
-		combinations.push_back(indiComb);
-	}
-	return combinations;
+vector<vector<unsigned int> > generateCombinations() {
+    vector<vector<unsigned int> > combinations;
+    vector<unsigned int> indiComb;
+    indiComb.push_back(1);
+    combinations.push_back(indiComb);
+    indiComb.clear();
+    indiComb.push_back(1);
+    indiComb.push_back(2);
+    indiComb.push_back(1);
+    combinations.push_back(indiComb);
+    for(unsigned int outerCounter = 2; outerCounter < 11; outerCounter++) {
+        indiComb.clear();
+        indiComb.push_back(1);
+        for(unsigned int innerCounter = 0; innerCounter < combinations[outerCounter-1].size()-1; innerCounter++) {
+            indiComb.push_back(combinations[outerCounter-1][innerCounter]+combinations[outerCounter-1][innerCounter+1]);
+        }
+        indiComb.push_back(1);
+        combinations.push_back(indiComb);
+    }
+    return combinations;
 }
 
 //Tested
-void printResults(){
-	vector<vector<unsigned int> > combinations = generateCombinations();
-	unsigned int testCases,score,reqPeople;
-	scanf("%u",&testCases);
-	map<unsigned int,unsigned int> scoreFreq;
-	map<unsigned int,unsigned int>::reverse_iterator itToScoreFreq;
-	while(testCases--){
-		scoreFreq.clear();
-		for(unsigned int counter = 0;counter < 11;counter++){
-			scanf("%u",&score);
-			if((scoreFreq.find(score)) != scoreFreq.end()){
-				scoreFreq[score]++;
-			}else{
-				scoreFreq[score] = 1;
-			}
-		}
-		scanf("%u",&reqPeople);
-		if(reqPeople == 11){
-			printf("1\n");
-		}else{
-			for(itToScoreFreq = scoreFreq.rbegin();itToScoreFreq != scoreFreq.rend();++itToScoreFreq){
-				if(itToScoreFreq->second < reqPeople){
-					reqPeople -= itToScoreFreq->second;
-				}else if(itToScoreFreq->second == reqPeople){
-					printf("1\n");
-					break;
-				}else{
-					printf("%u\n",combinations[itToScoreFreq->second-1][reqPeople]);
-					break;
-				}
-			}
-		}
-	}
+void printResults() {
+    vector<vector<unsigned int> > combinations = generateCombinations();
+    unsigned int testCases,score,reqPeople;
+    scanf("%u",&testCases);
+    map<unsigned int,unsigned int> scoreFreq;
+    map<unsigned int,unsigned int>::reverse_iterator itToScoreFreq;
+    while(testCases--) {
+        scoreFreq.clear();
+        for(unsigned int counter = 0; counter < 11; counter++) {
+            scanf("%u",&score);
+            if((scoreFreq.find(score)) != scoreFreq.end()) {
+                scoreFreq[score]++;
+            } else {
+                scoreFreq[score] = 1;
+            }
+        }
+        scanf("%u",&reqPeople);
+        if(reqPeople == 11) {
+            printf("1\n");
+        } else {
+            for(itToScoreFreq = scoreFreq.rbegin(); itToScoreFreq != scoreFreq.rend(); ++itToScoreFreq) {
+                if(itToScoreFreq->second < reqPeople) {
+                    reqPeople -= itToScoreFreq->second;
+                } else if(itToScoreFreq->second == reqPeople) {
+                    printf("1\n");
+                    break;
+                } else {
+                    printf("%u\n",combinations[itToScoreFreq->second-1][reqPeople]);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 #endif /* BEATBATS_H_ */

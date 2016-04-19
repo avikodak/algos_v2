@@ -77,27 +77,27 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int testCases;
-	long long int aCount, bCount;
-	string userInput;
-	scanf("%u", &testCases);
-	while (testCases--) {
-		cin >> userInput;
-		aCount = 0;
-		bCount = 0;
-		for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-			if (userInput[counter] == 'a') {
-				aCount++;
-			} else {
-				bCount++;
-			}
-		}
-		if (aCount == 0 || bCount == 0) {
-			printf("0\n");
-		} else {
-			printf("%lld\n", min(aCount, bCount));
-		}
-	}
+    unsigned int testCases;
+    long long int aCount, bCount;
+    string userInput;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        cin >> userInput;
+        aCount = 0;
+        bCount = 0;
+        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if (userInput[counter] == 'a') {
+                aCount++;
+            } else {
+                bCount++;
+            }
+        }
+        if (aCount == 0 || bCount == 0) {
+            printf("0\n");
+        } else {
+            printf("%lld\n", min(aCount, bCount));
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_CHN09_H_ */

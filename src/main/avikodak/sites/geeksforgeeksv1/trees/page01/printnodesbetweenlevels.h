@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printnodesbetweenlevels.h 
+ *  File Name   		: printnodesbetweenlevels.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\printnodesbetweenlevels.h
  *  Created on			: Jan 22, 2015 :: 7:41:06 PM
  *  Author				: AVINASH
@@ -74,35 +74,35 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printLevelUsingQueue(itNode *ptr,int firstLevel,int secondLevel){
-	if(ptr == null){
-		return;
-	}
-	queue<itNode *> auxSpace;
-	int levelCounter = 1,nodeLevelCounter;
-	auxSpace.push(ptr);
-	itNode *currentNode;
-	while(!auxSpace.empty()){
-		nodeLevelCounter = auxSpace.size();
-		while(nodeLevelCounter--){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			if(levelCounter >= firstLevel && levelCounter <= secondLevel){
-				printf("%d\t",currentNode->value);
-			}
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-		}
-		levelCounter++;
-		if(levelCounter > secondLevel){
-			break;
-		}
-		PRINT_NEW_LINE;
-	}
+void printLevelUsingQueue(itNode *ptr,int firstLevel,int secondLevel) {
+    if(ptr == null) {
+        return;
+    }
+    queue<itNode *> auxSpace;
+    int levelCounter = 1,nodeLevelCounter;
+    auxSpace.push(ptr);
+    itNode *currentNode;
+    while(!auxSpace.empty()) {
+        nodeLevelCounter = auxSpace.size();
+        while(nodeLevelCounter--) {
+            currentNode = auxSpace.front();
+            auxSpace.pop();
+            if(levelCounter >= firstLevel && levelCounter <= secondLevel) {
+                printf("%d\t",currentNode->value);
+            }
+            if(currentNode->left != null) {
+                auxSpace.push(currentNode->left);
+            }
+            if(currentNode->right != null) {
+                auxSpace.push(currentNode->right);
+            }
+        }
+        levelCounter++;
+        if(levelCounter > secondLevel) {
+            break;
+        }
+        PRINT_NEW_LINE;
+    }
 }
 
 
@@ -110,27 +110,27 @@ void printLevelUsingQueue(itNode *ptr,int firstLevel,int secondLevel){
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printLevel(itNode *ptr,int level){
-	if(ptr == null){
-		return;
-	}
-	if(level == 0){
-		printf("%d\t",ptr->value);
-		return;
-	}
-	printLevel(ptr->left,level-1);
-	printLevel(ptr->right,level-1);
+void printLevel(itNode *ptr,int level) {
+    if(ptr == null) {
+        return;
+    }
+    if(level == 0) {
+        printf("%d\t",ptr->value);
+        return;
+    }
+    printLevel(ptr->left,level-1);
+    printLevel(ptr->right,level-1);
 }
 
 //Tested
-void printNodesBetweenLevels(itNode *ptr,int firstLevel,int secondLevel){
-	if(ptr == null){
-		return;
-	}
-	for(int counter = firstLevel;counter <= secondLevel;counter++){
-		printLevel(ptr,counter-1);
-		PRINT_NEW_LINE;
-	}
+void printNodesBetweenLevels(itNode *ptr,int firstLevel,int secondLevel) {
+    if(ptr == null) {
+        return;
+    }
+    for(int counter = firstLevel; counter <= secondLevel; counter++) {
+        printLevel(ptr,counter-1);
+        PRINT_NEW_LINE;
+    }
 }
 
 #endif /* PRINTNODESBETWEENLEVELS_H_ */

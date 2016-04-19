@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define CUBICPERMUTATIONS_H_
 
 //Tested
-string convertULLIntToString(unsigned long long int value){
-	stringstream stream;
-	stream << value;
-	string result;
-	result.append(stream.str());
-	stream.clear();
-	return result;
+string convertULLIntToString(unsigned long long int value) {
+    stringstream stream;
+    stream << value;
+    string result;
+    result.append(stream.str());
+    stream.clear();
+    return result;
 }
 
 //Tested
 //Ans : 127035954683
-void getSmallestCubicPermutation(){
-	unsigned long long int counter = 1,result;
-	string strResult;
-	map<string,vector<unsigned long long int> > valueCounterMap;
-	map<string,vector<unsigned long long int> >::iterator itToValueCounterMap;
-	while(true){
-		result = counter * counter * counter;
-		strResult = convertULLIntToString(result);
-		sort(strResult.begin(),strResult.end());
-		if((itToValueCounterMap = valueCounterMap.find(strResult)) != valueCounterMap.end()){
-			itToValueCounterMap->second.push_back(result);
-			if(itToValueCounterMap->second.size() == 5){
-				cout << itToValueCounterMap->second[0];
-				return;
-			}
-		}else{
-			vector<unsigned long long int> counterList;
-			counterList.push_back(result);
-			valueCounterMap.insert(pair<string,vector<unsigned long long int> >(strResult,counterList));
-		}
-		counter++;
-	}
+void getSmallestCubicPermutation() {
+    unsigned long long int counter = 1,result;
+    string strResult;
+    map<string,vector<unsigned long long int> > valueCounterMap;
+    map<string,vector<unsigned long long int> >::iterator itToValueCounterMap;
+    while(true) {
+        result = counter * counter * counter;
+        strResult = convertULLIntToString(result);
+        sort(strResult.begin(),strResult.end());
+        if((itToValueCounterMap = valueCounterMap.find(strResult)) != valueCounterMap.end()) {
+            itToValueCounterMap->second.push_back(result);
+            if(itToValueCounterMap->second.size() == 5) {
+                cout << itToValueCounterMap->second[0];
+                return;
+            }
+        } else {
+            vector<unsigned long long int> counterList;
+            counterList.push_back(result);
+            valueCounterMap.insert(pair<string,vector<unsigned long long int> >(strResult,counterList));
+        }
+        counter++;
+    }
 }
 
 #endif /* CUBICPERMUTATIONS_H_ */

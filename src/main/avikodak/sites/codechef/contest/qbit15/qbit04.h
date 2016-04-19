@@ -73,23 +73,23 @@ using namespace __gnu_cxx;
 #define QBIT04_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input,sum;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&size);
-		sum = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			sum += input;
-		}
-		if(sum > 0 && sum%size == 0){
-			printf("%lld\n",sum/size);
-		}else{
-			printf("-1\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input,sum;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&size);
+        sum = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            sum += input;
+        }
+        if(sum > 0 && sum%size == 0) {
+            printf("%lld\n",sum/size);
+        } else {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* QBIT04_H_ */

@@ -70,22 +70,22 @@ using namespace __gnu_cxx;
 #ifndef KIWIJUICEEASY_H_
 #define KIWIJUICEEASY_H_
 
-class KiwiJuiceEasy{
+class KiwiJuiceEasy {
 public:
-	vector<int> thePouring(vector<int> capacities,vector<int> bottles,vector<int> fromId,vector<int> toId){
-		for(unsigned int counter = 0;counter < fromId.size();counter++){
-			if(bottles[fromId[counter]] > 0){
-				if(bottles[toId[counter]] + bottles[fromId[counter]] <= capacities[toId[counter]]){
-					bottles[toId[counter]] += bottles[fromId[counter]];
-					bottles[fromId[counter]] = 0;
-				}else{
-					bottles[fromId[counter]] -= capacities[toId[counter]] - bottles[toId[counter]];
-					bottles[toId[counter]] = capacities[toId[counter]];
-				}
-			}
-		}
-		return bottles;
-	}
+    vector<int> thePouring(vector<int> capacities,vector<int> bottles,vector<int> fromId,vector<int> toId) {
+        for(unsigned int counter = 0; counter < fromId.size(); counter++) {
+            if(bottles[fromId[counter]] > 0) {
+                if(bottles[toId[counter]] + bottles[fromId[counter]] <= capacities[toId[counter]]) {
+                    bottles[toId[counter]] += bottles[fromId[counter]];
+                    bottles[fromId[counter]] = 0;
+                } else {
+                    bottles[fromId[counter]] -= capacities[toId[counter]] - bottles[toId[counter]];
+                    bottles[toId[counter]] = capacities[toId[counter]];
+                }
+            }
+        }
+        return bottles;
+    }
 };
 
 #endif /* KIWIJUICEEASY_H_ */

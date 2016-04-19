@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 #define ALK1105_H_
 
 //Tested
-void printResults(){
-	long long int userInput,sum = 0;
-	scanf("%lld",&userInput);
-	sum = ((userInput)*(userInput+1))/2;
-	for(long long int counter = 1;counter <= userInput;counter++){
-		sum += (userInput/counter)*counter;
-		sum -= counter;
-	}
-	printf("%lld\n",sum);
+void printResults() {
+    long long int userInput,sum = 0;
+    scanf("%lld",&userInput);
+    sum = ((userInput)*(userInput+1))/2;
+    for(long long int counter = 1; counter <= userInput; counter++) {
+        sum += (userInput/counter)*counter;
+        sum -= counter;
+    }
+    printf("%lld\n",sum);
 }
 
 #endif /* ALK1105_H_ */

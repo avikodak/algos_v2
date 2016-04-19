@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: straightradixsort.h 
+ *  File Name   		: straightradixsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\straightradixsort.h
  *  Created on			: Dec 2, 2014 :: 12:24:49 PM
  *  Author				: AVINASH
@@ -72,44 +72,44 @@ using namespace __gnu_cxx;
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
 //Tested
-void reorganizeStraightRadixSort(vector<int> &userInput,int bitPosition){
-	if(userInput.size() == 0){
-		return;
-	}
-	queue<int> unsetBitBucket,setBitBucket;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] & 1 << bitPosition){
-			setBitBucket.push(userInput[counter]);
-		}else{
-			unsetBitBucket.push(userInput[counter]);
-		}
-	}
-	userInput.clear();
-	while(!unsetBitBucket.empty()){
-		userInput.push_back(unsetBitBucket.front());
-		unsetBitBucket.pop();
-	}
-	while(!setBitBucket.empty()){
-		userInput.push_back(setBitBucket.front());
-		setBitBucket.pop();
-	}
+void reorganizeStraightRadixSort(vector<int> &userInput,int bitPosition) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    queue<int> unsetBitBucket,setBitBucket;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] & 1 << bitPosition) {
+            setBitBucket.push(userInput[counter]);
+        } else {
+            unsetBitBucket.push(userInput[counter]);
+        }
+    }
+    userInput.clear();
+    while(!unsetBitBucket.empty()) {
+        userInput.push_back(unsetBitBucket.front());
+        unsetBitBucket.pop();
+    }
+    while(!setBitBucket.empty()) {
+        userInput.push_back(setBitBucket.front());
+        setBitBucket.pop();
+    }
 }
 
 //Tested
-void  straightRadixSort(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int maxElement = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(maxElement < userInput[counter]){
-			maxElement = userInput[counter];
-		}
-	}
-	int totalBits = log2(maxElement) + 1;
-	for(int counter = 0;counter < totalBits;counter++){
-		reorganizeStraightRadixSort(userInput,counter);
-	}
+void  straightRadixSort(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    int maxElement = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(maxElement < userInput[counter]) {
+            maxElement = userInput[counter];
+        }
+    }
+    int totalBits = log2(maxElement) + 1;
+    for(int counter = 0; counter < totalBits; counter++) {
+        reorganizeStraightRadixSort(userInput,counter);
+    }
 }
 
 #endif /* STRAIGHTRADIXSORT_H_ */

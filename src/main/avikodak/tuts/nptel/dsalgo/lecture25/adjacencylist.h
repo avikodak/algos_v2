@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: adjacencylist.h 
+ *  File Name   		: adjacencylist.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\adjacencylist.h
  *  Created on			: Dec 5, 2014 :: 8:50:41 AM
  *  Author				: AVINASH
@@ -72,32 +72,32 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<vector<int> > getAdjacencyListForUndirectedGraph(){
-	int noOfVertices,noOfEdges;
-	int sourceVertex,destinationVertex;
-	scanf("%d",&noOfVertices);
-	vector<vector<int> > adjacencyList(noOfVertices);
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		adjacencyList[sourceVertex].push_back(destinationVertex);
-		adjacencyList[destinationVertex].push_back(sourceVertex);
-	}
-	return adjacencyList;
+vector<vector<int> > getAdjacencyListForUndirectedGraph() {
+    int noOfVertices,noOfEdges;
+    int sourceVertex,destinationVertex;
+    scanf("%d",&noOfVertices);
+    vector<vector<int> > adjacencyList(noOfVertices);
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        adjacencyList[sourceVertex].push_back(destinationVertex);
+        adjacencyList[destinationVertex].push_back(sourceVertex);
+    }
+    return adjacencyList;
 }
 
 //Tested
-vector<vector<int> > getAdjacencyListForDirectedGraph(){
-	int noOfVertices,noOfEdges;
-	int sourceVertex,destinationVertex;
-	scanf("%d",&noOfVertices);
-	vector<vector<int> > adjacencyList(noOfVertices);
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		adjacencyList[sourceVertex].push_back(destinationVertex);
-	}
-	return adjacencyList;
+vector<vector<int> > getAdjacencyListForDirectedGraph() {
+    int noOfVertices,noOfEdges;
+    int sourceVertex,destinationVertex;
+    scanf("%d",&noOfVertices);
+    vector<vector<int> > adjacencyList(noOfVertices);
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        adjacencyList[sourceVertex].push_back(destinationVertex);
+    }
+    return adjacencyList;
 }
 
 #endif /* ADJACENCYLIST_H_ */

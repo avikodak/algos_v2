@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define EULER006_H_
 
 //Tested
-double sumOfSquareOfNumbers(double n){
-	return (n*(n+1)*((2*n)+1))/6;
+double sumOfSquareOfNumbers(double n) {
+    return (n*(n+1)*((2*n)+1))/6;
 }
 
 //Tested
-double sumOfNumbers(double n){
-	return (n*(n+1))/2;
+double sumOfNumbers(double n) {
+    return (n*(n+1))/2;
 }
 
 //Tested
-void printDifference(double N){
-	double sum = sumOfNumbers(N);
-	cout << fixed << setprecision(0)  << (sum * sum) - sumOfSquareOfNumbers(N) << endl;
+void printDifference(double N) {
+    double sum = sumOfNumbers(N);
+    cout << fixed << setprecision(0)  << (sum * sum) - sumOfSquareOfNumbers(N) << endl;
 }
 
 //Tested
-void sumSquareDifference(){
-	unsigned int testCases;
-	double N;
-	cin >> testCases;
-	while(testCases--){
-		cin >> N;
-		printDifference(N);
-	}
+void sumSquareDifference() {
+    unsigned int testCases;
+    double N;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> N;
+        printDifference(N);
+    }
 }
 
 #endif /* EULER006_H_ */

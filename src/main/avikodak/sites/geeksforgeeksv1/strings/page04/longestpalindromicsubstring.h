@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestpalindromicsubstring.h 
+ *  File Name   		: longestpalindromicsubstring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\longestpalindromicsubstring.h
  *  Created on			: Jan 16, 2015 :: 10:59:39 AM
  *  Author				: AVINASH
@@ -73,31 +73,31 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int longestPalindromicSubstring(char *userInput){
-	if(userInput[0] == '\0'){
-		return 0;
-	}
-	int length = strlen(userInput);
-	vector<vector<bool> > auxSpace(length);
-	for(unsigned int counter = 0;counter < length;counter++){
-		auxSpace[counter].assign(length,false);
-		auxSpace[counter][counter] = true;
-	}
-	unsigned int innerCrawler;
-	int maxLength = INT_MIN;
-	for(unsigned int lengthCounter = 2;lengthCounter <= length;lengthCounter++){
-		for(unsigned int outerCrawler = 0;outerCrawler < length - lengthCounter+1;outerCrawler++){
-			if(length == 2){
-				auxSpace[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler] && auxSpace[outerCrawler+1][innerCrawler-1];
-			}
-			if(auxSpace[outerCrawler][innerCrawler]){
-				maxLength = max(maxLength,innerCrawler - outerCrawler + 1);
-			}
-		}
-	}
-	return maxLength;
+int longestPalindromicSubstring(char *userInput) {
+    if(userInput[0] == '\0') {
+        return 0;
+    }
+    int length = strlen(userInput);
+    vector<vector<bool> > auxSpace(length);
+    for(unsigned int counter = 0; counter < length; counter++) {
+        auxSpace[counter].assign(length,false);
+        auxSpace[counter][counter] = true;
+    }
+    unsigned int innerCrawler;
+    int maxLength = INT_MIN;
+    for(unsigned int lengthCounter = 2; lengthCounter <= length; lengthCounter++) {
+        for(unsigned int outerCrawler = 0; outerCrawler < length - lengthCounter+1; outerCrawler++) {
+            if(length == 2) {
+                auxSpace[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler];
+            } else {
+                auxSpace[outerCrawler][innerCrawler] = userInput[outerCrawler] == userInput[innerCrawler] && auxSpace[outerCrawler+1][innerCrawler-1];
+            }
+            if(auxSpace[outerCrawler][innerCrawler]) {
+                maxLength = max(maxLength,innerCrawler - outerCrawler + 1);
+            }
+        }
+    }
+    return maxLength;
 }
 
 /****************************************************************************************************************************************************/

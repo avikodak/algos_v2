@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findmedian.h 
+ *  File Name   		: findmedian.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\findmedian.h
  *  Created on			: Feb 12, 2015 :: 8:43:51 PM
  *  Author				: AVINASH
@@ -70,16 +70,16 @@ using namespace __gnu_cxx;
 #ifndef FINDMEDIAN_H_
 #define FINDMEDIAN_H_
 
-void findMedian(){
-	vector<int> userInput;
-	int size,input;
-	scanf("%d",&size);
-	while(size--){
-		scanf("%d",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	printf("%d",userInput[userInput.size()/2]);
+void findMedian() {
+    vector<int> userInput;
+    int size,input;
+    scanf("%d",&size);
+    while(size--) {
+        scanf("%d",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    printf("%d",userInput[userInput.size()/2]);
 }
 
 #endif /* FINDMEDIAN_H_ */

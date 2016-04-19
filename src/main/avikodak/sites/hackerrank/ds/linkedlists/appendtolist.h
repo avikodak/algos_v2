@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define APPENDTOLIST_H_
 
 struct Node {
-	int data;
-	struct Node *next;
+    int data;
+    struct Node *next;
 public:
-	Node(int data){
-		this->data = data;
-		this->next = NULL;
-	}
+    Node(int data) {
+        this->data = data;
+        this->next = NULL;
+    }
 };
 
 //Tested
 Node* Insert(Node *head, int data) {
-	if (head == null) {
-		return new Node(data);
-	}
-	if (head->next == null) {
-		head->next = new Node(data);
-		return head;
-	}
-	Insert(head->next, data);
-	return head;
+    if (head == null) {
+        return new Node(data);
+    }
+    if (head->next == null) {
+        head->next = new Node(data);
+        return head;
+    }
+    Insert(head->next, data);
+    return head;
 }
 
 #endif /* APPENDTOLIST_H_ */

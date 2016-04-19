@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: heightiterative.h 
+ *  File Name   		: heightiterative.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\heightiterative.h
  *  Created on			: Nov 13, 2014 :: 11:38:40 PM
  *  Author				: AVINASH
@@ -72,29 +72,29 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int heightOfTreeIterative(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	queue<itNode *> auxSpace;
-	unsigned int levelCounter = 0,counter;
-	auxSpace.push(ptr);
-	itNode *currentNode;
-	while(!auxSpace.empty()){
-		counter = auxSpace.size();
-		while(counter--){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			if(currentNode->left != null){
-				auxSpace.push(currentNode->left);
-			}
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-		}
-		levelCounter += 1;
-	}
-	return levelCounter;
+unsigned int heightOfTreeIterative(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    queue<itNode *> auxSpace;
+    unsigned int levelCounter = 0,counter;
+    auxSpace.push(ptr);
+    itNode *currentNode;
+    while(!auxSpace.empty()) {
+        counter = auxSpace.size();
+        while(counter--) {
+            currentNode = auxSpace.front();
+            auxSpace.pop();
+            if(currentNode->left != null) {
+                auxSpace.push(currentNode->left);
+            }
+            if(currentNode->right != null) {
+                auxSpace.push(currentNode->right);
+            }
+        }
+        levelCounter += 1;
+    }
+    return levelCounter;
 }
 
 

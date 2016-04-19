@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tripletforsum.h 
+ *  File Name   		: tripletforsum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\tripletforsum.h
  *  Created on			: Nov 27, 2014 :: 7:58:22 PM
  *  Author				: AVINASH
@@ -72,48 +72,48 @@ using namespace __gnu_cxx;
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iTriplet *getTripletForSumON3(vector<int> userInput,int sum){
-	if(userInput.size() < 3){
-		return null;
-	}
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
-		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size()-1;middleCounter++){
-			for(unsigned int innerCounter = middleCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[outerCounter] + userInput[middleCounter] + userInput[innerCounter] == sum){
-					return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
-				}
-			}
-		}
-	}
-	return null;
+iTriplet *getTripletForSumON3(vector<int> userInput,int sum) {
+    if(userInput.size() < 3) {
+        return null;
+    }
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-2; outerCounter++) {
+        for(unsigned int middleCounter = outerCounter+1; middleCounter < userInput.size()-1; middleCounter++) {
+            for(unsigned int innerCounter = middleCounter+1; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[outerCounter] + userInput[middleCounter] + userInput[innerCounter] == sum) {
+                    return new iTriplet(userInput[outerCounter],userInput[middleCounter],userInput[innerCounter]);
+                }
+            }
+        }
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iTriplet *getTripletForSumON2(vector<int> userInput,int sum){
-	if(userInput.size() < 3){
-		return null;
-	}
-	sort(userInput.begin(),userInput.end());
-	int currentSum;
-	unsigned int startCrawler,endCrawler;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-2;outerCounter++){
-		startCrawler = outerCounter + 1;
-		endCrawler = userInput.size()-1;
-		while(startCrawler < endCrawler){
-			currentSum = userInput[outerCounter] + userInput[startCrawler] + userInput[endCrawler];
-			if(currentSum  == sum){
-				return new iTriplet(userInput[outerCounter],userInput[startCrawler],userInput[endCrawler]);
-			}else if(currentSum > sum){
-				endCrawler--;
-			}else{
-				startCrawler++;
-			}
-		}
-	}
-	return null;
+iTriplet *getTripletForSumON2(vector<int> userInput,int sum) {
+    if(userInput.size() < 3) {
+        return null;
+    }
+    sort(userInput.begin(),userInput.end());
+    int currentSum;
+    unsigned int startCrawler,endCrawler;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-2; outerCounter++) {
+        startCrawler = outerCounter + 1;
+        endCrawler = userInput.size()-1;
+        while(startCrawler < endCrawler) {
+            currentSum = userInput[outerCounter] + userInput[startCrawler] + userInput[endCrawler];
+            if(currentSum  == sum) {
+                return new iTriplet(userInput[outerCounter],userInput[startCrawler],userInput[endCrawler]);
+            } else if(currentSum > sum) {
+                endCrawler--;
+            } else {
+                startCrawler++;
+            }
+        }
+    }
+    return null;
 }
 
 #endif /* TRIPLETFORSUM_H_ */

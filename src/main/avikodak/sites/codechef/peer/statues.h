@@ -72,36 +72,36 @@ using namespace __gnu_cxx;
 #define STATUES_H_
 
 //Tested
-void printTotalMoves(vector<int> userInput,int average,int testCaseNo){
-	int totalMoves = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(average < userInput[counter]){
-			totalMoves += (userInput[counter] - average);
-		}
-	}
-	cout << "Set #" << testCaseNo << endl;
-	printf("The minimum number of moves is %u.\n\n",totalMoves);
+void printTotalMoves(vector<int> userInput,int average,int testCaseNo) {
+    int totalMoves = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(average < userInput[counter]) {
+            totalMoves += (userInput[counter] - average);
+        }
+    }
+    cout << "Set #" << testCaseNo << endl;
+    printf("The minimum number of moves is %u.\n\n",totalMoves);
 }
 
 //Tested
-void printResults(){
-	int size,input,sum,testCase = 0;
-	vector<int> userInput;
-	do{
-		scanf("%u",&size);
-		testCase++;
-		if(size == 0){
-			break;
-		}
-		userInput.clear();
-		sum = 0;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-			sum += input;
-		}
-		printTotalMoves(userInput,sum/size,testCase);
-	}while(true);
+void printResults() {
+    int size,input,sum,testCase = 0;
+    vector<int> userInput;
+    do {
+        scanf("%u",&size);
+        testCase++;
+        if(size == 0) {
+            break;
+        }
+        userInput.clear();
+        sum = 0;
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+            sum += input;
+        }
+        printTotalMoves(userInput,sum/size,testCase);
+    } while(true);
 }
 
 #endif /* STATUES_H_ */

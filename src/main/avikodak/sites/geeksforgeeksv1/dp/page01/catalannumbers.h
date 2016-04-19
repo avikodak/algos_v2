@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: catalannumbers.h 
+ *  File Name   		: catalannumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\catalannumbers.h
  *  Created on			: Jan 13, 2015 :: 12:40:12 PM
  *  Author				: AVINASH
@@ -71,34 +71,34 @@ using namespace __gnu_cxx;
 #define CATALANNUMBERS_H_
 
 //Tested
-int catalanNumber(int number){
-	if(number < 2){
-		return 1;
-	}
-	int total = 0;
-	for(int counter = 0;counter < number;counter++){
-		total += catalanNumber(counter)*catalanNumber(number-counter-1);
-	}
-	return total;
+int catalanNumber(int number) {
+    if(number < 2) {
+        return 1;
+    }
+    int total = 0;
+    for(int counter = 0; counter < number; counter++) {
+        total += catalanNumber(counter)*catalanNumber(number-counter-1);
+    }
+    return total;
 }
 
 //Tested
-int catalanNumberMemoization(int number){
-	if(number < 2){
-		return 1;
-	}
-	vector<int> userInput;
-	userInput.push_back(1);
-	userInput.push_back(1);
-	int total;
-	for(int outerCounter = 2;outerCounter <= number;outerCounter++){
-		total = 0;
-		for(int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			total += userInput[innerCounter] * userInput[outerCounter-innerCounter-1];
-		}
-		userInput.push_back(total);
-	}
-	return userInput[userInput.size()-1];
+int catalanNumberMemoization(int number) {
+    if(number < 2) {
+        return 1;
+    }
+    vector<int> userInput;
+    userInput.push_back(1);
+    userInput.push_back(1);
+    int total;
+    for(int outerCounter = 2; outerCounter <= number; outerCounter++) {
+        total = 0;
+        for(int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+            total += userInput[innerCounter] * userInput[outerCounter-innerCounter-1];
+        }
+        userInput.push_back(total);
+    }
+    return userInput[userInput.size()-1];
 }
 
 #endif /* CATALANNUMBERS_H_ */

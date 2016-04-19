@@ -71,81 +71,81 @@ using namespace __gnu_cxx;
 #define QUADRATICPRIMES_H_
 
 //Tested
-vector<unsigned int> generatePrimeNumber(unsigned int limit){
-	vector<bool> flags;
-	vector<unsigned int> primes;
-	flags.assign(limit+2,true);
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			unsigned int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			primes.push_back(counter);
-		}
-	}
-	return primes;
+vector<unsigned int> generatePrimeNumber(unsigned int limit) {
+    vector<bool> flags;
+    vector<unsigned int> primes;
+    flags.assign(limit+2,true);
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            unsigned int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            primes.push_back(counter);
+        }
+    }
+    return primes;
 }
 
 //Tested
-map<long long int,bool> generatePrimeNumberMap(long long int limit){
-	vector<bool> flags;
-	flags.assign(limit+2,true);
-	map<long long int,bool> primeNumberMap;
-	for(long long int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			long long int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	for(long long int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			primeNumberMap.insert(pair<long long int,bool>(counter,true));
-		}
-	}
-	return primeNumberMap;
+map<long long int,bool> generatePrimeNumberMap(long long int limit) {
+    vector<bool> flags;
+    flags.assign(limit+2,true);
+    map<long long int,bool> primeNumberMap;
+    for(long long int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            long long int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    for(long long int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            primeNumberMap.insert(pair<long long int,bool>(counter,true));
+        }
+    }
+    return primeNumberMap;
 }
 
 //Tested
-long long int getConsecutiveLength(long long int a,long long int b,map<long long int,bool> primeNumberMap){
-	long long int counter = 0;
-	long long int value;
-	while(true){
-		value = (counter*counter) + (a*counter) + b;
-		if(primeNumberMap.find(value) == primeNumberMap.end()){
-			break;
-		}
-		counter++;
-	}
-	return counter;
+long long int getConsecutiveLength(long long int a,long long int b,map<long long int,bool> primeNumberMap) {
+    long long int counter = 0;
+    long long int value;
+    while(true) {
+        value = (counter*counter) + (a*counter) + b;
+        if(primeNumberMap.find(value) == primeNumberMap.end()) {
+            break;
+        }
+        counter++;
+    }
+    return counter;
 }
 
 //Tested
 //Ans : -59231
-void printProductForMaxConsecutiveLength(){
-	long long int maxLength = 0,length,maxProduct;
-	map<long long int,bool> primeNumberMap = generatePrimeNumberMap(10000);
-	vector<unsigned int> primeNumbers =generatePrimeNumber(1000);
-	for(long long int outerCounter = -1000;outerCounter <= 1000;outerCounter++){
-		for(unsigned innerCounter = 0;innerCounter < primeNumbers.size();innerCounter++){
-			if(outerCounter + primeNumbers[innerCounter] > 1){
-				length = getConsecutiveLength(outerCounter,primeNumbers[innerCounter],primeNumberMap);
-				if(maxLength < length){
-					maxProduct = outerCounter * primeNumbers[innerCounter];
-					maxLength = length;
-				}
-			}
-		}
-	}
-	cout << maxProduct << endl;
+void printProductForMaxConsecutiveLength() {
+    long long int maxLength = 0,length,maxProduct;
+    map<long long int,bool> primeNumberMap = generatePrimeNumberMap(10000);
+    vector<unsigned int> primeNumbers =generatePrimeNumber(1000);
+    for(long long int outerCounter = -1000; outerCounter <= 1000; outerCounter++) {
+        for(unsigned innerCounter = 0; innerCounter < primeNumbers.size(); innerCounter++) {
+            if(outerCounter + primeNumbers[innerCounter] > 1) {
+                length = getConsecutiveLength(outerCounter,primeNumbers[innerCounter],primeNumberMap);
+                if(maxLength < length) {
+                    maxProduct = outerCounter * primeNumbers[innerCounter];
+                    maxLength = length;
+                }
+            }
+        }
+    }
+    cout << maxProduct << endl;
 }
 
 #endif /* QUADRATICPRIMES_H_ */

@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 
 class LuckyCounter {
 public:
-	int countLuckyMoments(vector<string> moments){
-		int luckyCounter = 0;
-		for(unsigned int counter = 0;counter < moments.size();counter++){
-			if(moments[0] == moments[1] && moments[3] == moments[4]){
-				luckyCounter++;
-			}else if(moments[0] == moments[3] && moments[2] == moments[4]){
-				luckyCounter++;
-			}else if(moments[0] == moments[4] && moments[1] == moments[3]){
-				luckyCounter++;
-			}
-		}
-		return luckyCounter;
-	}
+    int countLuckyMoments(vector<string> moments) {
+        int luckyCounter = 0;
+        for(unsigned int counter = 0; counter < moments.size(); counter++) {
+            if(moments[0] == moments[1] && moments[3] == moments[4]) {
+                luckyCounter++;
+            } else if(moments[0] == moments[3] && moments[2] == moments[4]) {
+                luckyCounter++;
+            } else if(moments[0] == moments[4] && moments[1] == moments[3]) {
+                luckyCounter++;
+            }
+        }
+        return luckyCounter;
+    }
 };
 
 #endif /* LUCKYCOUNTER_H_ */

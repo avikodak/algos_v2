@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: shortestdirectedgraph.h 
+ *  File Name   		: shortestdirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\shortestdirectedgraph.h
  *  Created on			: Dec 15, 2014 :: 6:54:42 PM
  *  Author				: AVINASH
@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(M) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int shortestDistanceDirectedGraph(vector<vector<int> > adjacencyList,int sourceVertex,int destinationVertex){
-	if(adjacencyList.size() == 0){
-		return INT_MAX;
-	}
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	queue<int> auxSpace;
-	int currentIndex;
-	auxSpace.push(sourceVertex);
-	bfsLevels[sourceVertex] = 0;
-	while(!auxSpace.empty()){
-		currentIndex = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentIndex].size();counter++){
-			if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN){
-				if(adjacencyList[currentIndex][counter] == destinationVertex){
-					return 1 + bfsLevels[adjacencyList[currentIndex][counter]];
-				}
-				auxSpace.push(adjacencyList[currentIndex][counter]);
-				bfsLevels[adjacencyList[currentIndex][counter]] = 1 + bfsLevels[currentIndex];
-			}
-		}
-	}
-	return INT_MAX;
+int shortestDistanceDirectedGraph(vector<vector<int> > adjacencyList,int sourceVertex,int destinationVertex) {
+    if(adjacencyList.size() == 0) {
+        return INT_MAX;
+    }
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    queue<int> auxSpace;
+    int currentIndex;
+    auxSpace.push(sourceVertex);
+    bfsLevels[sourceVertex] = 0;
+    while(!auxSpace.empty()) {
+        currentIndex = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentIndex].size(); counter++) {
+            if(bfsLevels[adjacencyList[currentIndex][counter]] == INT_MIN) {
+                if(adjacencyList[currentIndex][counter] == destinationVertex) {
+                    return 1 + bfsLevels[adjacencyList[currentIndex][counter]];
+                }
+                auxSpace.push(adjacencyList[currentIndex][counter]);
+                bfsLevels[adjacencyList[currentIndex][counter]] = 1 + bfsLevels[currentIndex];
+            }
+        }
+    }
+    return INT_MAX;
 }
 
 #endif /* SHORTESTDIRECTEDGRAPH_H_ */

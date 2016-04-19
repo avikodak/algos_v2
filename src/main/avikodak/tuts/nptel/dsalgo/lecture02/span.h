@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: span.h 
+ *  File Name   		: span.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\span.h
  *  Created on			: Oct 18, 2014 :: 1:16:32 PM
  *  Author				: AVINASH
@@ -73,47 +73,47 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<int> getSpansOfStockON(vector<int> userInput){
-	vector<int> stockSpans;
-	if(userInput.size() == 0){
-		return stockSpans;
-	}
-	stockSpans.push_back(INT_MIN);
-	stack<int> auxSpace;
-	auxSpace.push(userInput[0]);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		while(!auxSpace.empty() && userInput[auxSpace.top()] < userInput[counter]){
-			auxSpace.pop();
-		}
-		stockSpans.push_back(auxSpace.empty()?INT_MIN:counter - auxSpace.top());
-		auxSpace.push(counter);
-	}
-	return stockSpans;
+vector<int> getSpansOfStockON(vector<int> userInput) {
+    vector<int> stockSpans;
+    if(userInput.size() == 0) {
+        return stockSpans;
+    }
+    stockSpans.push_back(INT_MIN);
+    stack<int> auxSpace;
+    auxSpace.push(userInput[0]);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        while(!auxSpace.empty() && userInput[auxSpace.top()] < userInput[counter]) {
+            auxSpace.pop();
+        }
+        stockSpans.push_back(auxSpace.empty()?INT_MIN:counter - auxSpace.top());
+        auxSpace.push(counter);
+    }
+    return stockSpans;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<int> getSpansOfStockON2(vector<int> userInput){
-	vector<int> stockSpans;
-	if(userInput.size() == 0){
-		return stockSpans;
-	}
-	stockSpans.push_back(INT_MIN);
-	int innerCrawler;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		for(innerCrawler = outerCrawler;innerCrawler >= 0;innerCrawler--){
-			if(userInput[innerCrawler] > userInput[outerCrawler]){
-				stockSpans.push_back(outerCrawler - innerCrawler);
-				break;
-			}
-		}
-		if(innerCrawler < 0){
-			stockSpans.push_back(INT_MIN);
-		}
-	}
-	return stockSpans;
+vector<int> getSpansOfStockON2(vector<int> userInput) {
+    vector<int> stockSpans;
+    if(userInput.size() == 0) {
+        return stockSpans;
+    }
+    stockSpans.push_back(INT_MIN);
+    int innerCrawler;
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        for(innerCrawler = outerCrawler; innerCrawler >= 0; innerCrawler--) {
+            if(userInput[innerCrawler] > userInput[outerCrawler]) {
+                stockSpans.push_back(outerCrawler - innerCrawler);
+                break;
+            }
+        }
+        if(innerCrawler < 0) {
+            stockSpans.push_back(INT_MIN);
+        }
+    }
+    return stockSpans;
 }
 
 #endif /* SPAN_H_ */

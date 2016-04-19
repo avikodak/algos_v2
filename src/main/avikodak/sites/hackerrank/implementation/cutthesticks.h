@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cutthesticks.h 
+ *  File Name   		: cutthesticks.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\implementation\cutthesticks.h
  *  Created on			: Feb 11, 2015 :: 11:50:19 AM
  *  Author				: AVINASH
@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define CUTTHESTICKS_H_
 
 //Tested
-void printSticksUsed(){
-	int size,input;
-	scanf("%d",&size);
-	vector<int> userInput;
-	while(size--){
-		scanf("%d",&input);
-		userInput.push_back(input);
-	}
-	int minValue,cutsMade;
-	while(true){
-		minValue = *min_element(userInput.begin(),userInput.end());
-		if(minValue == INT_MAX){
-			return;
-		}
-		cutsMade = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] != INT_MAX){
-				if(userInput[counter] == minValue){
-					userInput[counter] = INT_MAX;
-				}else{
-					userInput[counter] -= minValue;
-				}
-				cutsMade++;
-			}
-		}
-		printf("%d\n",cutsMade);
-	}
+void printSticksUsed() {
+    int size,input;
+    scanf("%d",&size);
+    vector<int> userInput;
+    while(size--) {
+        scanf("%d",&input);
+        userInput.push_back(input);
+    }
+    int minValue,cutsMade;
+    while(true) {
+        minValue = *min_element(userInput.begin(),userInput.end());
+        if(minValue == INT_MAX) {
+            return;
+        }
+        cutsMade = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] != INT_MAX) {
+                if(userInput[counter] == minValue) {
+                    userInput[counter] = INT_MAX;
+                } else {
+                    userInput[counter] -= minValue;
+                }
+                cutsMade++;
+            }
+        }
+        printf("%d\n",cutsMade);
+    }
 }
 
 #endif /* CUTTHESTICKS_H_ */

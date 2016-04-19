@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 #define ARAN01_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	unsigned int sum = 0;
-	while(testCases--){
-		cin >> userInput;
-		sum = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			sum += userInput[counter];
-		}
-		printf("%c\n",(char)(sum/userInput.length()));
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    unsigned int sum = 0;
+    while(testCases--) {
+        cin >> userInput;
+        sum = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            sum += userInput[counter];
+        }
+        printf("%c\n",(char)(sum/userInput.length()));
+    }
 }
 
 #endif /* ARAN01_H_ */

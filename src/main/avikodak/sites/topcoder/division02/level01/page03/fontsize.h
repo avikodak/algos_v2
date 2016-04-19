@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 
 class FontSize {
 public:
-	int getPixelWidth(string sentence,vector<int> uppercase,vector<int> lowercase){
-		int width = 0;
-		for(unsigned int counter = 0;counter < sentence.size();counter++){
-			if(sentence[counter] >= 'A' and sentence[counter] <= 'Z'){
-				width += lowercase[sentence[counter]-'A'];
-			}else if(sentence[counter] >= 'a' and sentence[counter] <= 'z'){
-				width += lowercase[sentence[counter]-'a'];
-			}else{
-				width += 3;
-			}
-		}
-		return width;
-	}
+    int getPixelWidth(string sentence,vector<int> uppercase,vector<int> lowercase) {
+        int width = 0;
+        for(unsigned int counter = 0; counter < sentence.size(); counter++) {
+            if(sentence[counter] >= 'A' and sentence[counter] <= 'Z') {
+                width += lowercase[sentence[counter]-'A'];
+            } else if(sentence[counter] >= 'a' and sentence[counter] <= 'z') {
+                width += lowercase[sentence[counter]-'a'];
+            } else {
+                width += 3;
+            }
+        }
+        return width;
+    }
 };
 
 #endif /* FONTSIZE_H_ */

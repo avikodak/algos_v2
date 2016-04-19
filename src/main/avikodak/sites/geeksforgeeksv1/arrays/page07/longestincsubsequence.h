@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestincsubsequence.h 
+ *  File Name   		: longestincsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\longestincsubsequence.h
  *  Created on			: Nov 28, 2014 :: 1:58:53 AM
  *  Author				: AVINASH
@@ -72,72 +72,72 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int longestIncreasingSubSequenceONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> activeLists;
-	activeLists.push_back(userInput[0]);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(activeLists[0] > userInput[counter]){
-			activeLists[0] = userInput[counter];
-		}else if(activeLists[activeLists.size()-1] < userInput[counter]){
-			activeLists.push_back(userInput[counter]);
-		}else{
-			unsigned int innerCounter = 1;
-			while(innerCounter < activeLists.size()-1 && userInput[counter] > activeLists[innerCounter]){
-				innerCounter++;
-			}
-			activeLists[innerCounter] = userInput[counter];
-		}
-		printIVector(activeLists);
-		PRINT_NEW_LINE;
-	}
-	return activeLists.size();
+int longestIncreasingSubSequenceONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> activeLists;
+    activeLists.push_back(userInput[0]);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(activeLists[0] > userInput[counter]) {
+            activeLists[0] = userInput[counter];
+        } else if(activeLists[activeLists.size()-1] < userInput[counter]) {
+            activeLists.push_back(userInput[counter]);
+        } else {
+            unsigned int innerCounter = 1;
+            while(innerCounter < activeLists.size()-1 && userInput[counter] > activeLists[innerCounter]) {
+                innerCounter++;
+            }
+            activeLists[innerCounter] = userInput[counter];
+        }
+        printIVector(activeLists);
+        PRINT_NEW_LINE;
+    }
+    return activeLists.size();
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int longestIncreasingSubSequenceDP(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> maxLengths;
-	int finalMaxVal = 1,currentMax;
-	maxLengths.push_back(1);
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		currentMax = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[outerCounter] > userInput[innerCounter]){
-				currentMax = max(currentMax,1 + maxLengths[innerCounter]);
-			}
-		}
-		maxLengths.push_back(currentMax);
-		finalMaxVal = max(finalMaxVal,currentMax);
-	}
-	return finalMaxVal;
+int longestIncreasingSubSequenceDP(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> maxLengths;
+    int finalMaxVal = 1,currentMax;
+    maxLengths.push_back(1);
+    for(unsigned int outerCounter = 1; outerCounter < userInput.size(); outerCounter++) {
+        currentMax = 1;
+        for(unsigned int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+            if(userInput[outerCounter] > userInput[innerCounter]) {
+                currentMax = max(currentMax,1 + maxLengths[innerCounter]);
+            }
+        }
+        maxLengths.push_back(currentMax);
+        finalMaxVal = max(finalMaxVal,currentMax);
+    }
+    return finalMaxVal;
 }
 
 //Tested
-int longestIncreasingSubSequence(vector<int> userInput,int currentIndex){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	if(currentIndex == 0){
-		return 1;
-	}
-	int maxLength = 1,result;
-	for(int counter = currentIndex-1;counter >= 0;counter--){
-		result = longestIncreasingSubSequence(userInput,counter);
-		if(userInput[counter] < userInput[currentIndex]){
-			maxLength = max(maxLength,1+result);
-		}else{
-			maxLength = max(maxLength,result);
-		}
-	}
-	return maxLength;
+int longestIncreasingSubSequence(vector<int> userInput,int currentIndex) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    if(currentIndex == 0) {
+        return 1;
+    }
+    int maxLength = 1,result;
+    for(int counter = currentIndex-1; counter >= 0; counter--) {
+        result = longestIncreasingSubSequence(userInput,counter);
+        if(userInput[counter] < userInput[currentIndex]) {
+            maxLength = max(maxLength,1+result);
+        } else {
+            maxLength = max(maxLength,result);
+        }
+    }
+    return maxLength;
 }
 
 #endif /* LONGESTINCSUBSEQUENCE_H_ */

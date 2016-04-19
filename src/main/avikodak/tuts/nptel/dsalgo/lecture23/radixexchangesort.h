@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: radixexchangesort.h 
+ *  File Name   		: radixexchangesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\radixexchangesort.h
  *  Created on			: Dec 2, 2014 :: 12:21:42 PM
  *  Author				: AVINASH
@@ -72,45 +72,45 @@ using namespace __gnu_cxx;
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
 //Tested
-int divideStepRadixSort(vector<int> &userInput,int startIndex,int endIndex,int bitposition){
-	int startCrawler = startIndex,endCrawler = endIndex;
-	while(startCrawler <= endCrawler){
-		while(startCrawler <= endCrawler && !(userInput[startCrawler]&1 << bitposition)){
-			startCrawler++;
-		}
-		while(startCrawler <= endCrawler && (userInput[endCrawler] & 1 << bitposition)){
-			endCrawler--;
-		}
-		if(startCrawler < endCrawler){
-			swap(userInput[startCrawler],userInput[endCrawler]);
-		}
-	}
-	return endCrawler;
+int divideStepRadixSort(vector<int> &userInput,int startIndex,int endIndex,int bitposition) {
+    int startCrawler = startIndex,endCrawler = endIndex;
+    while(startCrawler <= endCrawler) {
+        while(startCrawler <= endCrawler && !(userInput[startCrawler]&1 << bitposition)) {
+            startCrawler++;
+        }
+        while(startCrawler <= endCrawler && (userInput[endCrawler] & 1 << bitposition)) {
+            endCrawler--;
+        }
+        if(startCrawler < endCrawler) {
+            swap(userInput[startCrawler],userInput[endCrawler]);
+        }
+    }
+    return endCrawler;
 }
 
 //Tested
-void radixExchangeSortMain(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
-	if(startIndex >= endIndex || bitPosition < 0){
-		return;
-	}
-	int dividingIndex = divideStepRadixSort(userInput,startIndex,endIndex,bitPosition);
-	radixExchangeSortMain(userInput,startIndex,dividingIndex,bitPosition-1);
-	radixExchangeSortMain(userInput,dividingIndex+1,endIndex,bitPosition-1);
+void radixExchangeSortMain(vector<int> &userInput,int startIndex,int endIndex,int bitPosition) {
+    if(startIndex >= endIndex || bitPosition < 0) {
+        return;
+    }
+    int dividingIndex = divideStepRadixSort(userInput,startIndex,endIndex,bitPosition);
+    radixExchangeSortMain(userInput,startIndex,dividingIndex,bitPosition-1);
+    radixExchangeSortMain(userInput,dividingIndex+1,endIndex,bitPosition-1);
 }
 
 //Tested
-void radixExchangeSort(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int maxElement = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(maxElement < userInput[counter]){
-			maxElement = userInput[counter];
-		}
-	}
-	int binaryDigits = log2(maxElement) + 1;
-	radixExchangeSortMain(userInput,0,userInput.size()-1,binaryDigits-1);
+void radixExchangeSort(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    int maxElement = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(maxElement < userInput[counter]) {
+            maxElement = userInput[counter];
+        }
+    }
+    int binaryDigits = log2(maxElement) + 1;
+    radixExchangeSortMain(userInput,0,userInput.size()-1,binaryDigits-1);
 }
 
 #endif /* RADIXEXCHANGESORT_H_ */

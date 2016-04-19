@@ -73,24 +73,24 @@ using namespace __gnu_cxx;
 #define NU03_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	char userInput[100001];
-	scanf("%u",&testCases);
-	unsigned int outerCounter = 0,innerCounter,total = 0;
-	while(testCases--){
-		scanf("%s",userInput);
-		outerCounter = innerCounter = total = 0;
-		while(userInput[outerCounter] != '\0'){
-			innerCounter = outerCounter+1;
-			while(userInput[innerCounter] != '\0' && userInput[innerCounter] == userInput[outerCounter]){
-				total++;
-				innerCounter++;
-			}
-			outerCounter = innerCounter;
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    char userInput[100001];
+    scanf("%u",&testCases);
+    unsigned int outerCounter = 0,innerCounter,total = 0;
+    while(testCases--) {
+        scanf("%s",userInput);
+        outerCounter = innerCounter = total = 0;
+        while(userInput[outerCounter] != '\0') {
+            innerCounter = outerCounter+1;
+            while(userInput[innerCounter] != '\0' && userInput[innerCounter] == userInput[outerCounter]) {
+                total++;
+                innerCounter++;
+            }
+            outerCounter = innerCounter;
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* NU03_H_ */

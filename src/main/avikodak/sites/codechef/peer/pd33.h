@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 #define PD33_H_
 
 //Tested
-void printResults(){
-	unsigned int columnSize;
-	string userInput;
-	while(scanf("%u",&columnSize) && columnSize > 0){
-		cin >> userInput;
-		unsigned int rows = userInput.size()/columnSize;
-		vector<vector<char> > matrix(rows);
-		for(unsigned int counter = 0;counter < rows;counter++){
-			matrix[counter].assign(columnSize,'x');
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			matrix[counter/columnSize][counter%columnSize] = userInput[counter];
-		}
-		for(unsigned int columnCounter = 0;columnCounter < columnSize;columnCounter++){
-			for(unsigned int rowCounter = 0;rowCounter < matrix.size();rowCounter++){
-				if(rowCounter%2 == 0){
-					cout << matrix[rowCounter][columnCounter];
-				}else{
-					cout << matrix[rowCounter][columnSize-columnCounter-1];
-				}
-			}
-		}
-		cout << endl;
-	}
+void printResults() {
+    unsigned int columnSize;
+    string userInput;
+    while(scanf("%u",&columnSize) && columnSize > 0) {
+        cin >> userInput;
+        unsigned int rows = userInput.size()/columnSize;
+        vector<vector<char> > matrix(rows);
+        for(unsigned int counter = 0; counter < rows; counter++) {
+            matrix[counter].assign(columnSize,'x');
+        }
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            matrix[counter/columnSize][counter%columnSize] = userInput[counter];
+        }
+        for(unsigned int columnCounter = 0; columnCounter < columnSize; columnCounter++) {
+            for(unsigned int rowCounter = 0; rowCounter < matrix.size(); rowCounter++) {
+                if(rowCounter%2 == 0) {
+                    cout << matrix[rowCounter][columnCounter];
+                } else {
+                    cout << matrix[rowCounter][columnSize-columnCounter-1];
+                }
+            }
+        }
+        cout << endl;
+    }
 }
 
 #endif /* PD33_H_ */

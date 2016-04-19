@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define a10001STPRIME_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
 //Ans : 104743
-void print10001stPrime(){
-	unsigned int primeCount = 10000;
-	for(long long int counter = 3;;counter+=2){
-		if(isNumberPrime(counter)){
-			primeCount--;
-			if(primeCount == 0){
-				cout << counter << endl;
-				return;
-			}
-		}
-	}
+void print10001stPrime() {
+    unsigned int primeCount = 10000;
+    for(long long int counter = 3;; counter+=2) {
+        if(isNumberPrime(counter)) {
+            primeCount--;
+            if(primeCount == 0) {
+                cout << counter << endl;
+                return;
+            }
+        }
+    }
 
 }
 

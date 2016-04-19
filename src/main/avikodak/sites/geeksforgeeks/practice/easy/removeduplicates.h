@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_REMOVEDUPLICATES_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	map<char,bool> frequencyMap;
-	while(testCases--){
-		cin >> userInput;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			frequencyMap[userInput[counter]] = true;
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(frequencyMap.find(userInput[counter]) != frequencyMap.end()){
-				printf("%c",userInput[counter]);
-				frequencyMap.erase(userInput[counter]);
-			}
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    map<char,bool> frequencyMap;
+    while(testCases--) {
+        cin >> userInput;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            frequencyMap[userInput[counter]] = true;
+        }
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(frequencyMap.find(userInput[counter]) != frequencyMap.end()) {
+                printf("%c",userInput[counter]);
+                frequencyMap.erase(userInput[counter]);
+            }
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_REMOVEDUPLICATES_H_ */

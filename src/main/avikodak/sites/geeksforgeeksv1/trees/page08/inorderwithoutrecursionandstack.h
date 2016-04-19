@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: inorderwithoutrecursionandstack.h 
+ *  File Name   		: inorderwithoutrecursionandstack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inorderwithoutrecursionandstack.h
  *  Created on			: Oct 17, 2014 :: 10:30:22 AM
  *  Author				: AVINASH
@@ -72,141 +72,141 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void imorrisInorderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				currentNode = currentNode->left;
-			}else{
-				temp->right = null;
-				printf("%d\t",currentNode->value);
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void imorrisInorderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                temp->right = currentNode;
+                currentNode = currentNode->left;
+            } else {
+                temp->right = null;
+                printf("%d\t",currentNode->value);
+                currentNode = currentNode->right;
+            }
+        } else {
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 //RECURSIVE PROCEDURES
 //Tested
-void iFixLeftPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	iFixLeftPtr(ptr->left);
-	ptr->left = prevNode;
-	prevNode = ptr;
-	iFixLeftPtr(ptr->right);
+void iFixLeftPtr(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    iFixLeftPtr(ptr->left);
+    ptr->left = prevNode;
+    prevNode = ptr;
+    iFixLeftPtr(ptr->right);
 }
 
 //Tested
-void iFixRightPtr(itNode **ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = *ptr,*prevNode = null;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	while(currentNode != null){
-		currentNode->right = prevNode;
-		prevNode = currentNode;
-		currentNode = currentNode->left;
-	}
-	(*ptr) = prevNode;
+void iFixRightPtr(itNode **ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = *ptr,*prevNode = null;
+    while(currentNode->right != null) {
+        currentNode = currentNode->right;
+    }
+    while(currentNode != null) {
+        currentNode->right = prevNode;
+        prevNode = currentNode;
+        currentNode = currentNode->left;
+    }
+    (*ptr) = prevNode;
 }
 
-void inorderTraversalFixingPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	iFixLeftPtr(ptr);
-	iFixRightPtr(&ptr);
-	while(ptr != null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->right;
-	}
-}
-
-//Tested
-void inorderTraversalDllConversionONMain(itNode *ptr,itNode **root){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	inorderTraversalDllConversionONMain(ptr->left,root);
-	ptr->left = prevNode;
-	if(prevNode == null){
-		(*root) = ptr;
-	}else{
-		prevNode->right = ptr;
-	}
-	prevNode = ptr;
-	inorderTraversalDllConversionONMain(ptr->right,root);
+void inorderTraversalFixingPtr(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    iFixLeftPtr(ptr);
+    iFixRightPtr(&ptr);
+    while(ptr != null) {
+        printf("%d\t",ptr->value);
+        ptr = ptr->right;
+    }
 }
 
 //Tested
-void inorderTraversalDllConversionON(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	inorderTraversalDllConversionONMain(ptr,&ptr);
-	while(ptr != null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->right;
-	}
+void inorderTraversalDllConversionONMain(itNode *ptr,itNode **root) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    inorderTraversalDllConversionONMain(ptr->left,root);
+    ptr->left = prevNode;
+    if(prevNode == null) {
+        (*root) = ptr;
+    } else {
+        prevNode->right = ptr;
+    }
+    prevNode = ptr;
+    inorderTraversalDllConversionONMain(ptr->right,root);
 }
 
 //Tested
-itNode *inorderTraversalDllConversionON2Main(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *temp;
-	if(ptr->left != null){
-		temp = inorderTraversalDllConversionON2Main(ptr->left);
-		while(temp->right != null){
-			temp = temp->right;
-		}
-		temp->right = ptr;
-		ptr->left = temp;
-	}
-	if(ptr->right != null){
-		temp = inorderTraversalDllConversionON2Main(ptr->right);
-		while(temp->left != null){
-			temp = temp->left;
-		}
-		temp->left = ptr;
-		ptr->right = temp;
-	}
-	return ptr;
+void inorderTraversalDllConversionON(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    inorderTraversalDllConversionONMain(ptr,&ptr);
+    while(ptr != null) {
+        printf("%d\t",ptr->value);
+        ptr = ptr->right;
+    }
 }
 
 //Tested
-void inorderTraversalDllConversionON2(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	inorderTraversalDllConversionON2Main(ptr);
-	while(ptr->left != null){
-		ptr = ptr->left;
-	}
-	while(ptr != null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->right;
-	}
+itNode *inorderTraversalDllConversionON2Main(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *temp;
+    if(ptr->left != null) {
+        temp = inorderTraversalDllConversionON2Main(ptr->left);
+        while(temp->right != null) {
+            temp = temp->right;
+        }
+        temp->right = ptr;
+        ptr->left = temp;
+    }
+    if(ptr->right != null) {
+        temp = inorderTraversalDllConversionON2Main(ptr->right);
+        while(temp->left != null) {
+            temp = temp->left;
+        }
+        temp->left = ptr;
+        ptr->right = temp;
+    }
+    return ptr;
+}
+
+//Tested
+void inorderTraversalDllConversionON2(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    inorderTraversalDllConversionON2Main(ptr);
+    while(ptr->left != null) {
+        ptr = ptr->left;
+    }
+    while(ptr != null) {
+        printf("%d\t",ptr->value);
+        ptr = ptr->right;
+    }
 }
 
 

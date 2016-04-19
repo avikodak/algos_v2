@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define VANYAANDCARDS_H_
 
 //Tested
-void printTotalCardsRequired(){
-	unsigned int totalCards;
-	int maxValue,input,totalSum = 0;
-	scanf("%u %u",&totalCards,&maxValue);
-	while(totalCards--){
-		scanf("%u",&input);
-		totalSum += input;
-	}
-	totalSum = abs(totalSum);
-	int cardsRequired = 0;
-	cardsRequired = (totalSum/maxValue);
-	if(totalSum%maxValue > 0){
-		cardsRequired += 1;
-	}
-	printf("%d",cardsRequired);
+void printTotalCardsRequired() {
+    unsigned int totalCards;
+    int maxValue,input,totalSum = 0;
+    scanf("%u %u",&totalCards,&maxValue);
+    while(totalCards--) {
+        scanf("%u",&input);
+        totalSum += input;
+    }
+    totalSum = abs(totalSum);
+    int cardsRequired = 0;
+    cardsRequired = (totalSum/maxValue);
+    if(totalSum%maxValue > 0) {
+        cardsRequired += 1;
+    }
+    printf("%d",cardsRequired);
 }
 
 #endif /* VANYAANDCARDS_H_ */

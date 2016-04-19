@@ -74,22 +74,22 @@ using namespace __gnu_cxx;
 #define TSX02_H_
 
 //Tested
-long long int calculatePower(long long int base,long long int power){
-	long long int result = base;
-	for(long long int counter = 0;counter < power;counter++){
-		result = (result*result)%MODN;
-	}
-	return result;
+long long int calculatePower(long long int base,long long int power) {
+    long long int result = base;
+    for(long long int counter = 0; counter < power; counter++) {
+        result = (result*result)%MODN;
+    }
+    return result;
 }
 
 //Tested
-void printResults(){
-	long long int testCases,base,year;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&base,&year);
-		printf("%lld\n",calculatePower(base,year-2000));
-	}
+void printResults() {
+    long long int testCases,base,year;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&base,&year);
+        printf("%lld\n",calculatePower(base,year-2000));
+    }
 }
 
 #endif /* TSX02_H_ */

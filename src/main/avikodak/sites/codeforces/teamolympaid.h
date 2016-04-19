@@ -70,22 +70,22 @@ using namespace __gnu_cxx;
 #ifndef TEAMOLYMPAID_H_
 #define TEAMOLYMPAID_H_
 
-void makeTeams(){
-	unsigned int testCases,subject;
-	scanf("%u",&testCases);
-	queue<unsigned int> buckets[3];
-	for(unsigned int counter = 0;counter < testCases;counter++){
-		scanf("%u",&subject);
-		buckets[subject-1].push(counter+1);
-	}
-	unsigned int minTeams = min(min(buckets[0].size(),buckets[1].size()),buckets[2].size());
-	printf("%u\n",minTeams);
-	while(minTeams--){
-		printf("%u %u %u\n",buckets[0].front(),buckets[1].front(),buckets[2].front());
-		buckets[0].pop();
-		buckets[1].pop();
-		buckets[2].pop();
-	}
+void makeTeams() {
+    unsigned int testCases,subject;
+    scanf("%u",&testCases);
+    queue<unsigned int> buckets[3];
+    for(unsigned int counter = 0; counter < testCases; counter++) {
+        scanf("%u",&subject);
+        buckets[subject-1].push(counter+1);
+    }
+    unsigned int minTeams = min(min(buckets[0].size(),buckets[1].size()),buckets[2].size());
+    printf("%u\n",minTeams);
+    while(minTeams--) {
+        printf("%u %u %u\n",buckets[0].front(),buckets[1].front(),buckets[2].front());
+        buckets[0].pop();
+        buckets[1].pop();
+        buckets[2].pop();
+    }
 }
 
 #endif /* TEAMOLYMPAID_H_ */

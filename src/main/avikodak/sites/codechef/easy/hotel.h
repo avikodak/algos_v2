@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define HOTEL_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,arrival,departure,size,maxGuests;
-	scanf("%u",&testCases);
-	vector<unsigned int> guestsCount,arrivalTimes,departureTimes;
-	while(testCases--){
-		scanf("%u",&size);
-		arrivalTimes.clear();
-		departureTimes.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&arrival);
-			arrivalTimes.push_back(arrival);
-		}
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&departure);
-			departureTimes.push_back(departure);
-		}
-		guestsCount.clear();
-		guestsCount.assign(1001,0);
-		maxGuests = 0;
-		for(unsigned int counter = 0;counter < arrivalTimes.size();counter++){
-			for(unsigned int timeCounter = arrivalTimes[counter];timeCounter < departureTimes[counter];timeCounter++){
-				guestsCount[timeCounter]++;
-				maxGuests = max(maxGuests,guestsCount[timeCounter]);
-			}
-		}
-		printf("%u\n",maxGuests);
-	}
+void printResults() {
+    unsigned int testCases,arrival,departure,size,maxGuests;
+    scanf("%u",&testCases);
+    vector<unsigned int> guestsCount,arrivalTimes,departureTimes;
+    while(testCases--) {
+        scanf("%u",&size);
+        arrivalTimes.clear();
+        departureTimes.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&arrival);
+            arrivalTimes.push_back(arrival);
+        }
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&departure);
+            departureTimes.push_back(departure);
+        }
+        guestsCount.clear();
+        guestsCount.assign(1001,0);
+        maxGuests = 0;
+        for(unsigned int counter = 0; counter < arrivalTimes.size(); counter++) {
+            for(unsigned int timeCounter = arrivalTimes[counter]; timeCounter < departureTimes[counter]; timeCounter++) {
+                guestsCount[timeCounter]++;
+                maxGuests = max(maxGuests,guestsCount[timeCounter]);
+            }
+        }
+        printf("%u\n",maxGuests);
+    }
 }
 
 #endif /* HOTEL_H_ */

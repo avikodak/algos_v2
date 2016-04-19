@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: serializedeserializetree.h 
+ *  File Name   		: serializedeserializetree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\serializedeserializetree.h
  *  Created on			: Jan 22, 2015 :: 7:40:29 PM
  *  Author				: AVINASH
@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void serializeTree(itNode *ptr,vector<int> &serializedString){
-	if(ptr == null){
-		serializedString.push_back(INT_MAX);
-		return;
-	}
-	serializedString.push_back(ptr->value);
-	serializeTree(ptr->left,serializedString);
-	serializeTree(ptr->right,serializedString);
+void serializeTree(itNode *ptr,vector<int> &serializedString) {
+    if(ptr == null) {
+        serializedString.push_back(INT_MAX);
+        return;
+    }
+    serializedString.push_back(ptr->value);
+    serializeTree(ptr->left,serializedString);
+    serializeTree(ptr->right,serializedString);
 }
 
-itNode *deserializeTree(vector<int> serializedString){
-	static unsigned int counter = 0;
-	if(counter >= serializedString.size()){
-		return null;
-	}
-	if(serializedString[counter] == INT_MAX){
-		counter++;
-		return null;
-	}
-	itNode *root = new itNode(serializedString[counter++]);
-	root->left = deserializeTree(serializedString);
-	root->right = deserializeTree(serializedString);
-	return root;
+itNode *deserializeTree(vector<int> serializedString) {
+    static unsigned int counter = 0;
+    if(counter >= serializedString.size()) {
+        return null;
+    }
+    if(serializedString[counter] == INT_MAX) {
+        counter++;
+        return null;
+    }
+    itNode *root = new itNode(serializedString[counter++]);
+    root->left = deserializeTree(serializedString);
+    root->right = deserializeTree(serializedString);
+    return root;
 }
 
 #endif /* SERIALIZEDESERIALIZETREE_H_ */

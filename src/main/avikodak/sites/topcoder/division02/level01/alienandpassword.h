@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: alienandpassword.h 
+ *  File Name   		: alienandpassword.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\alienandpassword.h
  *  Created on			: Mar 28, 2015 :: 11:23:18 AM
  *  Author				: avikodak
@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef ALIENANDPASSWORD_H_
 #define ALIENANDPASSWORD_H_
 
-class AlienAndPassword{
+class AlienAndPassword {
 public:
-	int getNumber(string userInput){
-		int totalCount = 1;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			while(counter < userInput.size() && userInput[counter] == userInput[counter-1]){
-				counter++;
-			}
-			if(counter < userInput.size()){
-				totalCount++;
-			}
-		}
-		return totalCount;
-	}
+    int getNumber(string userInput) {
+        int totalCount = 1;
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            while(counter < userInput.size() && userInput[counter] == userInput[counter-1]) {
+                counter++;
+            }
+            if(counter < userInput.size()) {
+                totalCount++;
+            }
+        }
+        return totalCount;
+    }
 };
 
 #endif /* ALIENANDPASSWORD_H_ */

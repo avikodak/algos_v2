@@ -71,43 +71,43 @@ using namespace __gnu_cxx;
 #define TWOARRAYS_H_
 
 //Tested
-bool sortFunc(unsigned int first,unsigned int second){
-	return first > second;
+bool sortFunc(unsigned int first,unsigned int second) {
+    return first > second;
 }
 
 //Tested
-void isPermutationPresentForSum(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int inputSize,sum,input;
-	vector<unsigned int> firstUserInput,secondUserInput;
-	bool flag;
-	while(testCases--){
-		scanf("%u %u",&inputSize,&sum);
-		firstUserInput.clear();
-		secondUserInput.clear();
-		for(unsigned int counter = 0;counter < inputSize;counter++){
-			scanf("%u",&input);
-			firstUserInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < inputSize;counter++){
-			scanf("%u",&input);
-			secondUserInput.push_back(input);
-		}
-		sort(firstUserInput.begin(),firstUserInput.end());
-		sort(secondUserInput.begin(),secondUserInput.end(),sortFunc);
-		flag = false;
-		for(unsigned int counter = 0;counter < firstUserInput.size();counter++){
-			if(firstUserInput[counter] + secondUserInput[counter] < sum){
-				printf("NO\n");
-				flag = true;
-				break;
-			}
-		}
-		if(!flag){
-			printf("YES\n");
-		}
-	}
+void isPermutationPresentForSum() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned int inputSize,sum,input;
+    vector<unsigned int> firstUserInput,secondUserInput;
+    bool flag;
+    while(testCases--) {
+        scanf("%u %u",&inputSize,&sum);
+        firstUserInput.clear();
+        secondUserInput.clear();
+        for(unsigned int counter = 0; counter < inputSize; counter++) {
+            scanf("%u",&input);
+            firstUserInput.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < inputSize; counter++) {
+            scanf("%u",&input);
+            secondUserInput.push_back(input);
+        }
+        sort(firstUserInput.begin(),firstUserInput.end());
+        sort(secondUserInput.begin(),secondUserInput.end(),sortFunc);
+        flag = false;
+        for(unsigned int counter = 0; counter < firstUserInput.size(); counter++) {
+            if(firstUserInput[counter] + secondUserInput[counter] < sum) {
+                printf("NO\n");
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            printf("YES\n");
+        }
+    }
 }
 
 #endif /* TWOARRAYS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: straightradixsort.h 
+ *  File Name   		: straightradixsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\straightradixsort.h
  *  Created on			: Dec 22, 2014 :: 3:40:10 PM
  *  Author				: AVINASH
@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define STRAIGHTRADIXSORT_H_
 
 //Tested
-void rearrangeValuesStraightRadixSort(vector<int> &userInput,int bitPosition){
-	if(userInput.size() < 2){
-		return;
-	}
-	queue<int> zeroBucket,oneBucket;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] & 1 << bitPosition){
-			oneBucket.push(userInput[counter]);
-		}else{
-			zeroBucket.push(userInput[counter]);
-		}
-	}
-	int fillCounter = -1;
-	while(!zeroBucket.empty()){
-		userInput[++fillCounter] = zeroBucket.front();
-		zeroBucket.pop();
-	}
-	while(!oneBucket.empty()){
-		userInput[++fillCounter] = oneBucket.front();
-		oneBucket.pop();
-	}
+void rearrangeValuesStraightRadixSort(vector<int> &userInput,int bitPosition) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    queue<int> zeroBucket,oneBucket;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] & 1 << bitPosition) {
+            oneBucket.push(userInput[counter]);
+        } else {
+            zeroBucket.push(userInput[counter]);
+        }
+    }
+    int fillCounter = -1;
+    while(!zeroBucket.empty()) {
+        userInput[++fillCounter] = zeroBucket.front();
+        zeroBucket.pop();
+    }
+    while(!oneBucket.empty()) {
+        userInput[++fillCounter] = oneBucket.front();
+        oneBucket.pop();
+    }
 }
 
 //Tested
-void straightRadixSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int maxVal = *max_element(userInput.begin(),userInput.end());
-	unsigned int noOfBits = log2(maxVal) + 1;
-	for(unsigned int counter = 0;counter < noOfBits;counter++){
-		rearrangeValuesStraightRadixSort(userInput,counter);
-	}
+void straightRadixSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int maxVal = *max_element(userInput.begin(),userInput.end());
+    unsigned int noOfBits = log2(maxVal) + 1;
+    for(unsigned int counter = 0; counter < noOfBits; counter++) {
+        rearrangeValuesStraightRadixSort(userInput,counter);
+    }
 }
 
 #endif /* STRAIGHTRADIXSORT_H_ */

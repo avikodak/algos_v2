@@ -71,48 +71,48 @@ using namespace __gnu_cxx;
 #define SONGSOFPI_H_
 
 //Tested
-bool isChar(char userInput){
-	if((userInput >= 'a' && userInput <= 'z')||(userInput >= 'A' && userInput <= 'Z')){
-		return true;
-	}
-	return false;
+bool isChar(char userInput) {
+    if((userInput >= 'a' && userInput <= 'z')||(userInput >= 'A' && userInput <= 'Z')) {
+        return true;
+    }
+    return false;
 }
 
 //Tested
-void isPISong(){
-	unsigned int testCases;
-	cin >> testCases;
-	string piValue = "31415926535897932384626433833";
-	string charCount;
-	unsigned int letterCount;
-	string userInput;
-	getline(std::cin,userInput);
-	while(testCases--){
-		charCount.clear();
-		getline(std::cin,userInput);
-		letterCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(isChar(userInput[counter])){
-				letterCount++;
-			}else{
-				if(letterCount != 0){
-					charCount.push_back(letterCount+'0');
-				}
-				letterCount = 0;
-			}
-		}
-		if(letterCount != 0){
-			charCount.push_back(letterCount+'0');
-		}
-		bool flag = true;
-		for(unsigned int counter = 0;counter < charCount.size();counter++){
-			if(piValue[counter] != charCount[counter]){
-				flag = false;
-				break;
-			}
-		}
-		printf("%s\n",flag?"It's a pi song.":"It's not a pi song.");
-	}
+void isPISong() {
+    unsigned int testCases;
+    cin >> testCases;
+    string piValue = "31415926535897932384626433833";
+    string charCount;
+    unsigned int letterCount;
+    string userInput;
+    getline(std::cin,userInput);
+    while(testCases--) {
+        charCount.clear();
+        getline(std::cin,userInput);
+        letterCount = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(isChar(userInput[counter])) {
+                letterCount++;
+            } else {
+                if(letterCount != 0) {
+                    charCount.push_back(letterCount+'0');
+                }
+                letterCount = 0;
+            }
+        }
+        if(letterCount != 0) {
+            charCount.push_back(letterCount+'0');
+        }
+        bool flag = true;
+        for(unsigned int counter = 0; counter < charCount.size(); counter++) {
+            if(piValue[counter] != charCount[counter]) {
+                flag = false;
+                break;
+            }
+        }
+        printf("%s\n",flag?"It's a pi song.":"It's not a pi song.");
+    }
 }
 
 #endif /* SONGSOFPI_H_ */

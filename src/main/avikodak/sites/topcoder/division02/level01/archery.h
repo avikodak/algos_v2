@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 //Tested
 class Archery {
 public:
-	double expectedPoints(int N,vector<int> ringPoints){
-		unsigned int square = (N+1)*(N+1);
-		double expectedValue = 0;
-		for(unsigned int counter = 0;counter < ringPoints.size();counter++){
-			expectedValue += ((2*counter+1)/square)*(ringPoints[counter]);
-		}
-		return expectedValue;
-	}
+    double expectedPoints(int N,vector<int> ringPoints) {
+        unsigned int square = (N+1)*(N+1);
+        double expectedValue = 0;
+        for(unsigned int counter = 0; counter < ringPoints.size(); counter++) {
+            expectedValue += ((2*counter+1)/square)*(ringPoints[counter]);
+        }
+        return expectedValue;
+    }
 };
 
 #endif /* ARCHERY_H_ */

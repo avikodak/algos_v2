@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 class WakingUpEasy {
 public:
-	int countAlarms(vector<int> volume, int S){
-		int totalAlarms = 0;
-		while(S > 0){
-			S -= volume[totalAlarms%volume.size()];
-			totalAlarms++;
-		}
-		return totalAlarms;
-	}
+    int countAlarms(vector<int> volume, int S) {
+        int totalAlarms = 0;
+        while(S > 0) {
+            S -= volume[totalAlarms%volume.size()];
+            totalAlarms++;
+        }
+        return totalAlarms;
+    }
 };
 
 #endif /* WAKINGUPEASY_H_ */

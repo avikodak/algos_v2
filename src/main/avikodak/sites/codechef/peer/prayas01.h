@@ -74,17 +74,17 @@ using namespace __gnu_cxx;
 #define PRAYAS01_H_
 
 //Tested
-void printResults(){
-	long long int testCases,input;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		if(input == 2){
-			printf("YES\n");
-			continue;
-		}
-		printf("%s\n",input%4 == 1?"YES":"NO");
-	}
+void printResults() {
+    long long int testCases,input;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        if(input == 2) {
+            printf("YES\n");
+            continue;
+        }
+        printf("%s\n",input%4 == 1?"YES":"NO");
+    }
 }
 
 #endif /* PRAYAS01_H_ */

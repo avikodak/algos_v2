@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: generatepattern.h 
+ *  File Name   		: generatepattern.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\careercup\facebook\generatepattern.h
  *  Created on			: Jan 20, 2015 :: 3:03:06 PM
  *  Author				: AVINASH

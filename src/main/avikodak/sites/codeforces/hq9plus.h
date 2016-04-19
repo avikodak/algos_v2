@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: hq9plus.h 
+ *  File Name   		: hq9plus.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\hq9plus.h
  *  Created on			: Feb 28, 2015 :: 8:31:25 PM
  *  Author				: AVINASH
@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define HQ9PLUS_H_
 
 //Tested
-void isProgrammingInstruction(){
-	char userInput[MAX_INPUT_SIZE],*ptrToUserInput;
-	scanf("%s",userInput);
-	ptrToUserInput = userInput;
-	while(ptrToUserInput[0] != '\0'){
-		if(ptrToUserInput[0] == 'H' || ptrToUserInput[0] == 'Q' || ptrToUserInput[0] == '9'){
-			printf("YES");
-			return;
-		}
-		ptrToUserInput++;
-	}
-	printf("NO");
+void isProgrammingInstruction() {
+    char userInput[MAX_INPUT_SIZE],*ptrToUserInput;
+    scanf("%s",userInput);
+    ptrToUserInput = userInput;
+    while(ptrToUserInput[0] != '\0') {
+        if(ptrToUserInput[0] == 'H' || ptrToUserInput[0] == 'Q' || ptrToUserInput[0] == '9') {
+            printf("YES");
+            return;
+        }
+        ptrToUserInput++;
+    }
+    printf("NO");
 }
 
 #endif /* HQ9PLUS_H_ */

@@ -71,50 +71,50 @@ using namespace __gnu_cxx;
 #define BOUNCYNUMBERS_H_
 
 //Tested
-bool isBouncyNumber(unsigned long long int userInput){
-	vector<unsigned int> digits;
-	while(userInput){
-		digits.push_back(userInput%10);
-		userInput /= 10;
-	}
-	bool isIncreasing = true;
-	for(unsigned int counter = 1;counter < digits.size();counter++){
-		if(digits[counter] < digits[counter-1]){
-			isIncreasing = false;
-			break;
-		}
-	}
-	if(isIncreasing){
-		return false;
-	}
-	bool isDecreasing = true;
-	for(unsigned int counter = 1;counter < digits.size();counter++){
-		if(digits[counter] > digits[counter-1]){
-			isDecreasing = false;
-			break;
-		}
-	}
-	if(isDecreasing){
-		return false;
-	}
-	return true;
+bool isBouncyNumber(unsigned long long int userInput) {
+    vector<unsigned int> digits;
+    while(userInput) {
+        digits.push_back(userInput%10);
+        userInput /= 10;
+    }
+    bool isIncreasing = true;
+    for(unsigned int counter = 1; counter < digits.size(); counter++) {
+        if(digits[counter] < digits[counter-1]) {
+            isIncreasing = false;
+            break;
+        }
+    }
+    if(isIncreasing) {
+        return false;
+    }
+    bool isDecreasing = true;
+    for(unsigned int counter = 1; counter < digits.size(); counter++) {
+        if(digits[counter] > digits[counter-1]) {
+            isDecreasing = false;
+            break;
+        }
+    }
+    if(isDecreasing) {
+        return false;
+    }
+    return true;
 }
 
 //Tested
 //Ans : 1587000
-void getLeastNumber(){
-	unsigned long long int counter = 99;
-	unsigned long long int bouncyNumbersCount = 0;
-	while(true){
-		if(isBouncyNumber(counter)){
-			bouncyNumbersCount++;
-		}
-		if(bouncyNumbersCount*100 >= 99*counter){
-			cout << counter << endl;
-			return;
-		}
-		counter++;
-	}
+void getLeastNumber() {
+    unsigned long long int counter = 99;
+    unsigned long long int bouncyNumbersCount = 0;
+    while(true) {
+        if(isBouncyNumber(counter)) {
+            bouncyNumbersCount++;
+        }
+        if(bouncyNumbersCount*100 >= 99*counter) {
+            cout << counter << endl;
+            return;
+        }
+        counter++;
+    }
 }
 
 #endif /* BOUNCYNUMBERS_H_ */

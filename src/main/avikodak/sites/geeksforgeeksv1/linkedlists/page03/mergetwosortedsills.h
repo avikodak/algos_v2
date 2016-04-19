@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergetwosortedsills.h 
+ *  File Name   		: mergetwosortedsills.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\mergetwosortedsills.h
  *  Created on			: Oct 23, 2014 :: 10:16:30 AM
  *  Author				: AVINASH
@@ -72,57 +72,57 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *mergeTwoSortedSillON(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null && secondPtr == null){
-		return null;
-	}
-	if(firstPtr == null || secondPtr == null){
-		return firstPtr == null?secondPtr:firstPtr;
-	}
-	sillNode *node = new sillNode();
-	if(firstPtr->value == secondPtr->value){
-		node->value = firstPtr->value;
-		node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr->next);
-	}else if(firstPtr->value < secondPtr->value){
-		node->value = firstPtr->value;
-		node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr);
-	}else{
-		node->value = secondPtr->value;
-		node->next = mergeTwoSortedSillON(firstPtr,secondPtr->next);
-	}
-	return node;
+sillNode *mergeTwoSortedSillON(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null && secondPtr == null) {
+        return null;
+    }
+    if(firstPtr == null || secondPtr == null) {
+        return firstPtr == null?secondPtr:firstPtr;
+    }
+    sillNode *node = new sillNode();
+    if(firstPtr->value == secondPtr->value) {
+        node->value = firstPtr->value;
+        node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr->next);
+    } else if(firstPtr->value < secondPtr->value) {
+        node->value = firstPtr->value;
+        node->next = mergeTwoSortedSillON(firstPtr->next,secondPtr);
+    } else {
+        node->value = secondPtr->value;
+        node->next = mergeTwoSortedSillON(firstPtr,secondPtr->next);
+    }
+    return node;
 }
 
-sillNode *mergeTwoSortedSillsONIterative(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null && secondPtr == null){
-		return null;
-	}
-	if(firstPtr == null || secondPtr == null){
-		return firstPtr == null?secondPtr:firstPtr;
-	}
-	sillNode *mergedSill = null,*mergedSillCrawler;
-	int temp;
-	while(firstPtr != null && secondPtr != null){
-		if(firstPtr->value == secondPtr->value){
-			temp = firstPtr->value;
-			firstPtr = firstPtr->next;
-			secondPtr = secondPtr->next;
-		}else if(firstPtr->value > secondPtr->value){
-			temp = secondPtr->value;
-			secondPtr = secondPtr->next;
-		}else{
-			temp =  firstPtr->value;
-			firstPtr = firstPtr->next;
-		}
-		if(mergedSill == null){
-			mergedSill = new sillNode(temp);
-			mergedSillCrawler = mergedSill;
-		}else{
-			mergedSillCrawler->next = new sillNode(temp);
-			mergedSillCrawler = mergedSillCrawler->next;
-		}
-	}
-	return mergedSill;
+sillNode *mergeTwoSortedSillsONIterative(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null && secondPtr == null) {
+        return null;
+    }
+    if(firstPtr == null || secondPtr == null) {
+        return firstPtr == null?secondPtr:firstPtr;
+    }
+    sillNode *mergedSill = null,*mergedSillCrawler;
+    int temp;
+    while(firstPtr != null && secondPtr != null) {
+        if(firstPtr->value == secondPtr->value) {
+            temp = firstPtr->value;
+            firstPtr = firstPtr->next;
+            secondPtr = secondPtr->next;
+        } else if(firstPtr->value > secondPtr->value) {
+            temp = secondPtr->value;
+            secondPtr = secondPtr->next;
+        } else {
+            temp =  firstPtr->value;
+            firstPtr = firstPtr->next;
+        }
+        if(mergedSill == null) {
+            mergedSill = new sillNode(temp);
+            mergedSillCrawler = mergedSill;
+        } else {
+            mergedSillCrawler->next = new sillNode(temp);
+            mergedSillCrawler = mergedSillCrawler->next;
+        }
+    }
+    return mergedSill;
 }
 
 /****************************************************************************************************************************************************/

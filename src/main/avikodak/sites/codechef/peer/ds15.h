@@ -72,29 +72,29 @@ using namespace __gnu_cxx;
 #define DS15_H_
 
 //Tested
-void getSumOfProperDivisors(unsigned int userInput){
-	if(userInput == 1){
-		printf("0\n");
-		return;
-	}
-	unsigned int sum = 1,limit = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(userInput%counter == 0){
-			sum += counter;
-			sum += (userInput/counter);
-		}
-	}
-	cout << sum << endl;
+void getSumOfProperDivisors(unsigned int userInput) {
+    if(userInput == 1) {
+        printf("0\n");
+        return;
+    }
+    unsigned int sum = 1,limit = sqrt(userInput);
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(userInput%counter == 0) {
+            sum += counter;
+            sum += (userInput/counter);
+        }
+    }
+    cout << sum << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		getSumOfProperDivisors(input);
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        getSumOfProperDivisors(input);
+    }
 }
 
 #endif /* DS15_H_ */

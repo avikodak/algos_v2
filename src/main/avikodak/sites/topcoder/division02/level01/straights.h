@@ -72,10 +72,10 @@ using namespace __gnu_cxx;
 
 class Straights {
 public:
-	int howMany(vector<int> hand, int k){
-		unsigned int frontCrawler = 0,rearCrawler = 0;
+    int howMany(vector<int> hand, int k) {
+        unsigned int frontCrawler = 0,rearCrawler = 0;
 
-	}
+    }
 };
 
 #endif /* STRAIGHTS_H_ */

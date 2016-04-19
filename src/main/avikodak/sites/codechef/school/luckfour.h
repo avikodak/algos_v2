@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define LUCKFOUR_H_
 
 //Tested
-void printFourCount(unsigned long long int userInput){
-	unsigned int counter = 0;
-	while(userInput){
-		if(userInput%10 == 4){
-			counter++;
-		}
-		userInput/=10;
-	}
-	printf("%u\n",counter);
+void printFourCount(unsigned long long int userInput) {
+    unsigned int counter = 0;
+    while(userInput) {
+        if(userInput%10 == 4) {
+            counter++;
+        }
+        userInput/=10;
+    }
+    printf("%u\n",counter);
 }
 
 //Tested
-void getFourCountsForInput(){
-	unsigned int testCases;
-	unsigned long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		printFourCount(userInput);
-	}
+void getFourCountsForInput() {
+    unsigned int testCases;
+    unsigned long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        printFourCount(userInput);
+    }
 }
 
 #endif /* LUCKFOUR_H_ */

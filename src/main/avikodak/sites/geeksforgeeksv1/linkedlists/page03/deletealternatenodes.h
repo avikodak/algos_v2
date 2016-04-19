@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletealternatenodes.h 
+ *  File Name   		: deletealternatenodes.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletealternatenodes.h
  *  Created on			: Oct 21, 2014 :: 12:44:27 PM
  *  Author				: AVINASH
@@ -72,55 +72,55 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void deleteAlternateNodes(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	sillNode *nodeToBeDeleted = ptr->next;
-	ptr->next = ptr->next->next;
-	free(nodeToBeDeleted);
-	deleteAlternateNodes(ptr->next);
+void deleteAlternateNodes(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    sillNode *nodeToBeDeleted = ptr->next;
+    ptr->next = ptr->next->next;
+    free(nodeToBeDeleted);
+    deleteAlternateNodes(ptr->next);
 }
 
-void deleteAlternateNodesIterative(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	sillNode *crawler = ptr,*nodeToBeDeleted;
-	while(crawler != null && crawler->next != null){
-		nodeToBeDeleted = crawler->next;
-		crawler->next = crawler->next->next;
-		free(nodeToBeDeleted);
-	}
+void deleteAlternateNodesIterative(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    sillNode *crawler = ptr,*nodeToBeDeleted;
+    while(crawler != null && crawler->next != null) {
+        nodeToBeDeleted = crawler->next;
+        crawler->next = crawler->next->next;
+        free(nodeToBeDeleted);
+    }
 }
 
-void deleteAlternateNodesHashmap(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return;
-	}
-	map<unsigned int,sillNode *> indexNodeMap;
-	map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	sillNode *crawler = ptr;
-	unsigned int counter = 0;
-	while(crawler != null){
-		indexNodeMap.insert(pair<unsigned int,sillNode *>(++counter,crawler));
-		crawler = crawler->next;
-	}
-	bool evenNode = false;
-	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		if(evenNode){
-			free(itToIndexNodeMap->second);
-			indexNodeMap.erase(itToIndexNodeMap->first);
-		}
-		evenNode = !evenNode;
-	}
-	sillNode *prevNode = indexNodeMap.begin()->second;
-	for(itToIndexNodeMap = indexNodeMap.begin()+1;itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		prevNode->next = itToIndexNodeMap->second;
-		if(itToIndexNodeMap+1 == indexNodeMap.end()){
-			itToIndexNodeMap->second = null;
-		}
-	}
+void deleteAlternateNodesHashmap(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return;
+    }
+    map<unsigned int,sillNode *> indexNodeMap;
+    map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    sillNode *crawler = ptr;
+    unsigned int counter = 0;
+    while(crawler != null) {
+        indexNodeMap.insert(pair<unsigned int,sillNode *>(++counter,crawler));
+        crawler = crawler->next;
+    }
+    bool evenNode = false;
+    for(itToIndexNodeMap = indexNodeMap.begin(); itToIndexNodeMap != indexNodeMap.end(); itToIndexNodeMap++) {
+        if(evenNode) {
+            free(itToIndexNodeMap->second);
+            indexNodeMap.erase(itToIndexNodeMap->first);
+        }
+        evenNode = !evenNode;
+    }
+    sillNode *prevNode = indexNodeMap.begin()->second;
+    for(itToIndexNodeMap = indexNodeMap.begin()+1; itToIndexNodeMap != indexNodeMap.end(); itToIndexNodeMap++) {
+        prevNode->next = itToIndexNodeMap->second;
+        if(itToIndexNodeMap+1 == indexNodeMap.end()) {
+            itToIndexNodeMap->second = null;
+        }
+    }
 }
 
 #endif /* DELETEALTERNATENODES_H_ */

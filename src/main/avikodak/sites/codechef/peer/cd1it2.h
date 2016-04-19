@@ -76,17 +76,17 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_CD1IT2_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long double LOG_10_E_CONST=0.4342944819032518276511289189166;
-	long double input;
-	long long int result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input;
-		result = ((long long int)input*LOG_10_E_CONST)+1;
-		cout << result << endl;
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long double LOG_10_E_CONST=0.4342944819032518276511289189166;
+    long double input;
+    long long int result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input;
+        result = ((long long int)input*LOG_10_E_CONST)+1;
+        cout << result << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_CD1IT2_H_ */

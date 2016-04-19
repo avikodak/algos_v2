@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletenodedll.h 
+ *  File Name   		: deletenodedll.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletenodedll.h
  *  Created on			: Oct 19, 2014 :: 1:02:09 PM
  *  Author				: AVINASH
@@ -72,22 +72,22 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(1) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void deleteNodeDll(dillNode **ptr,dillNode *nodeToBeDeleted){
-	if(*ptr == null){
-		return;
-	}
-	if(nodeToBeDeleted == *ptr){
-		return;
-	}
-	dillNode *crawler = (*ptr),*temp;
-	while(crawler != null && crawler != nodeToBeDeleted){
-		crawler = crawler->next;
-	}
-	if(crawler == nodeToBeDeleted){
-		crawler->prev->next = crawler->next;
-		crawler->next->prev = crawler->prev;
-		free(crawler);
-	}
+void deleteNodeDll(dillNode **ptr,dillNode *nodeToBeDeleted) {
+    if(*ptr == null) {
+        return;
+    }
+    if(nodeToBeDeleted == *ptr) {
+        return;
+    }
+    dillNode *crawler = (*ptr),*temp;
+    while(crawler != null && crawler != nodeToBeDeleted) {
+        crawler = crawler->next;
+    }
+    if(crawler == nodeToBeDeleted) {
+        crawler->prev->next = crawler->next;
+        crawler->next->prev = crawler->prev;
+        free(crawler);
+    }
 }
 
 #endif /* DELETENODEDLL_H_ */

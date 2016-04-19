@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: flippingbits.h 
+ *  File Name   		: flippingbits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\flippingbits.h
  *  Created on			: Jan 30, 2015 :: 8:56:22 AM
  *  Author				: AVINASH
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /* 																	O(1) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int flipBits(unsigned int userInput){
-	return ~userInput;
+unsigned int flipBits(unsigned int userInput) {
+    return ~userInput;
 }
 
 #endif /* FLIPPINGBITS_H_ */

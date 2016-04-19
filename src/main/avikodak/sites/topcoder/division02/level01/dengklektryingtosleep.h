@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dengklektryingtosleep.h 
+ *  File Name   		: dengklektryingtosleep.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\dengklektryingtosleep.h
  *  Created on			: Mar 28, 2015 :: 10:29:19 PM
  *  Author				: avikodak
@@ -70,13 +70,13 @@ using namespace __gnu_cxx;
 #ifndef DENGKLEKTRYINGTOSLEEP_H_
 #define DENGKLEKTRYINGTOSLEEP_H_
 
-class DengklekTryingToSleep{
+class DengklekTryingToSleep {
 public:
-	int minDucks(vector<int> ducks){
-		int minValue = *min_element(ducks.begin(),ducks.end());
-		int maxValue = *max_element(ducks.begin(),ducks.end());
-		return abs((int)ducks.size() - (maxValue - minValue+1));
-	}
+    int minDucks(vector<int> ducks) {
+        int minValue = *min_element(ducks.begin(),ducks.end());
+        int maxValue = *max_element(ducks.begin(),ducks.end());
+        return abs((int)ducks.size() - (maxValue - minValue+1));
+    }
 };
 
 

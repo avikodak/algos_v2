@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gdfs.h 
+ *  File Name   		: gdfs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\gdfs.h
  *  Created on			: Dec 15, 2014 :: 5:48:57 PM
  *  Author				: AVINASH
@@ -70,30 +70,30 @@ using namespace __gnu_cxx;
 #ifndef GDFS_H_
 #define GDFS_H_
 
-void dfsMain(vector<vector<int> > adjacencyList,vector<dfsTimes *> &times,int sourceVertex){
-	if(sourceVertex >= (int)adjacencyList.size()){
-		return;
-	}
-	static int timeCounter = -1;
-	times[sourceVertex]->arrivalTimes = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(times[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX){
-			dfsMain(adjacencyList,times,adjacencyList[sourceVertex][counter]);
-		}
-	}
-	times[sourceVertex]->departureTimes = ++timeCounter;
+void dfsMain(vector<vector<int> > adjacencyList,vector<dfsTimes *> &times,int sourceVertex) {
+    if(sourceVertex >= (int)adjacencyList.size()) {
+        return;
+    }
+    static int timeCounter = -1;
+    times[sourceVertex]->arrivalTimes = ++timeCounter;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(times[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX) {
+            dfsMain(adjacencyList,times,adjacencyList[sourceVertex][counter]);
+        }
+    }
+    times[sourceVertex]->departureTimes = ++timeCounter;
 }
 
-vector<dfsTimes *> dfs(vector<vector<int> > adjacencyList,int sourceVertex){
-	vector<dfsTimes *> times;
-	if(adjacencyList.size() == 0){
-		return times;
-	}
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-		times.push_back(new dfsTimes());
-	}
-	dfsMain(adjacencyList,times,sourceVertex);
-	return times;
+vector<dfsTimes *> dfs(vector<vector<int> > adjacencyList,int sourceVertex) {
+    vector<dfsTimes *> times;
+    if(adjacencyList.size() == 0) {
+        return times;
+    }
+    for(unsigned int counter = 0; counter < adjacencyList.size(); counter++) {
+        times.push_back(new dfsTimes());
+    }
+    dfsMain(adjacencyList,times,sourceVertex);
+    return times;
 }
 
 #endif /* GDFS_H_ */

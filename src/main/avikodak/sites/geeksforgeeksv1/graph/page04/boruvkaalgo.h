@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: boruvkaalgo.h 
+ *  File Name   		: boruvkaalgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\boruvkaalgo.h
  *  Created on			: Dec 26, 2014 :: 10:35:27 AM
  *  Author				: AVINASH

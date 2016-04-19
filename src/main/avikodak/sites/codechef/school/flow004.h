@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define FLOW004_H_
 
 //Tested
-void getSumOfFirstLastDigit(){
-	unsigned int testCases,input,sum =0,prevDigit;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		sum = input%10;
-		while(input){
-			prevDigit = input%10;
-			input /= 10;
-		}
-		printf("%u\n",sum+prevDigit);
-	}
+void getSumOfFirstLastDigit() {
+    unsigned int testCases,input,sum =0,prevDigit;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        sum = input%10;
+        while(input) {
+            prevDigit = input%10;
+            input /= 10;
+        }
+        printf("%u\n",sum+prevDigit);
+    }
 }
 
 #endif /* FLOW004_H_ */

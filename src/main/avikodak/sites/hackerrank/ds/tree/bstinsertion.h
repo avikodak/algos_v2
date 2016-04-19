@@ -77,39 +77,39 @@ using namespace __gnu_cxx;
 };*/
 
 //Tested
-node * insert(node *root, int value){
-	node *crawler = root;
-	if(root == null){
-		root = new node();
-		root->data = value;
-		root->left = null;
-		root->right = null;
-		return root;
-	}
-	while(crawler != null){
-		if(crawler->data >= value){
-			if(crawler->left == null){
-				crawler->left = new node();
-				crawler->left->data = value;
-				crawler->left->left = null;
-				crawler->left->right = null;
-				break;
-			}else{
-				crawler = crawler->left;
-			}
-		}else{
-			if(crawler->right == null){
-				crawler->right = new node();
-				crawler->right->data = value;
-				crawler->right->left = null;
-				crawler->right->right = null;
+node * insert(node *root, int value) {
+    node *crawler = root;
+    if(root == null) {
+        root = new node();
+        root->data = value;
+        root->left = null;
+        root->right = null;
+        return root;
+    }
+    while(crawler != null) {
+        if(crawler->data >= value) {
+            if(crawler->left == null) {
+                crawler->left = new node();
+                crawler->left->data = value;
+                crawler->left->left = null;
+                crawler->left->right = null;
                 break;
-			}else{
-				crawler = crawler->right;
-			}
-		}
-	}
-	return root;
+            } else {
+                crawler = crawler->left;
+            }
+        } else {
+            if(crawler->right == null) {
+                crawler->right = new node();
+                crawler->right->data = value;
+                crawler->right->left = null;
+                crawler->right->right = null;
+                break;
+            } else {
+                crawler = crawler->right;
+            }
+        }
+    }
+    return root;
 }
 
 #endif /* BSTINSERTION_H_ */

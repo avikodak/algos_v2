@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printverticalorder.h 
+ *  File Name   		: printverticalorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printverticalorder.h
  *  Created on			: Nov 15, 2014 :: 11:38:42 PM
  *  Author				: AVINASH
@@ -72,75 +72,75 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void setNodesVerticalOrderMain(itNode *ptr,int verticalLevel,map<int,vector<itNode *> > &verticalLevelNodesMap){
-	if(ptr == null){
-		return;
-	}
-	map<int,vector<itNode *> >::iterator itToVerticalLevelNodeMap = verticalLevelNodesMap.find(verticalLevel);
-	if(itToVerticalLevelNodeMap == verticalLevelNodesMap.end()){
-		vector<itNode *> nodesList;
-		nodesList.push_back(ptr);
-		verticalLevelNodesMap[verticalLevel] = nodesList;
-	}else{
-		itToVerticalLevelNodeMap->second.push_back(ptr);
-	}
-	setNodesVerticalOrderMain(ptr->left,verticalLevel-1,verticalLevelNodesMap);
-	setNodesVerticalOrderMain(ptr->right,verticalLevel+1,verticalLevelNodesMap);
+void setNodesVerticalOrderMain(itNode *ptr,int verticalLevel,map<int,vector<itNode *> > &verticalLevelNodesMap) {
+    if(ptr == null) {
+        return;
+    }
+    map<int,vector<itNode *> >::iterator itToVerticalLevelNodeMap = verticalLevelNodesMap.find(verticalLevel);
+    if(itToVerticalLevelNodeMap == verticalLevelNodesMap.end()) {
+        vector<itNode *> nodesList;
+        nodesList.push_back(ptr);
+        verticalLevelNodesMap[verticalLevel] = nodesList;
+    } else {
+        itToVerticalLevelNodeMap->second.push_back(ptr);
+    }
+    setNodesVerticalOrderMain(ptr->left,verticalLevel-1,verticalLevelNodesMap);
+    setNodesVerticalOrderMain(ptr->right,verticalLevel+1,verticalLevelNodesMap);
 }
 
 //Tested
-void printVerticalOrder(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	map<int,vector<itNode *> > verticalLevelNodesMap;
-	map<int,vector<itNode *> >::iterator itToVerticalLevelNodesMap;
-	setNodesVerticalOrderMain(ptr,0,verticalLevelNodesMap);
-	for(itToVerticalLevelNodesMap = verticalLevelNodesMap.begin();itToVerticalLevelNodesMap != verticalLevelNodesMap.end();itToVerticalLevelNodesMap++){
-		for(unsigned int counter = 0;counter < itToVerticalLevelNodesMap->second.size();counter++){
-			printf("%d\t",itToVerticalLevelNodesMap->second[counter]->value);
-		}
-		PRINT_NEW_LINE;
-	}
+void printVerticalOrder(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    map<int,vector<itNode *> > verticalLevelNodesMap;
+    map<int,vector<itNode *> >::iterator itToVerticalLevelNodesMap;
+    setNodesVerticalOrderMain(ptr,0,verticalLevelNodesMap);
+    for(itToVerticalLevelNodesMap = verticalLevelNodesMap.begin(); itToVerticalLevelNodesMap != verticalLevelNodesMap.end(); itToVerticalLevelNodesMap++) {
+        for(unsigned int counter = 0; counter < itToVerticalLevelNodesMap->second.size(); counter++) {
+            printf("%d\t",itToVerticalLevelNodesMap->second[counter]->value);
+        }
+        PRINT_NEW_LINE;
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void findMinMaxVerticalLevel(itNode *ptr,int currentVerticalLevel,int *minVerticalLevel,int *maxVerticalLevel){
-	if(ptr == null){
-		return;
-	}
-	*minVerticalLevel = min(*minVerticalLevel,currentVerticalLevel);
-	*maxVerticalLevel = max(*maxVerticalLevel,currentVerticalLevel);
-	findMinMaxVerticalLevel(ptr->left,currentVerticalLevel-1,minVerticalLevel,maxVerticalLevel);
-	findMinMaxVerticalLevel(ptr->right,currentVerticalLevel+1,minVerticalLevel,maxVerticalLevel);
+void findMinMaxVerticalLevel(itNode *ptr,int currentVerticalLevel,int *minVerticalLevel,int *maxVerticalLevel) {
+    if(ptr == null) {
+        return;
+    }
+    *minVerticalLevel = min(*minVerticalLevel,currentVerticalLevel);
+    *maxVerticalLevel = max(*maxVerticalLevel,currentVerticalLevel);
+    findMinMaxVerticalLevel(ptr->left,currentVerticalLevel-1,minVerticalLevel,maxVerticalLevel);
+    findMinMaxVerticalLevel(ptr->right,currentVerticalLevel+1,minVerticalLevel,maxVerticalLevel);
 }
 
 //Tested
-void printVerticalLevel(itNode *ptr,int verticalLevel,int currentLevel){
-	if(ptr == null){
-		return;
-	}
-	if(currentLevel == verticalLevel){
-		printf("%d\t",ptr->value);
-	}
-	printVerticalLevel(ptr->left,verticalLevel,currentLevel-1);
-	printVerticalLevel(ptr->right,verticalLevel,currentLevel+1);
+void printVerticalLevel(itNode *ptr,int verticalLevel,int currentLevel) {
+    if(ptr == null) {
+        return;
+    }
+    if(currentLevel == verticalLevel) {
+        printf("%d\t",ptr->value);
+    }
+    printVerticalLevel(ptr->left,verticalLevel,currentLevel-1);
+    printVerticalLevel(ptr->right,verticalLevel,currentLevel+1);
 }
 
 //Tested
-void printAllVerticalLevel(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	int minVerticalLevel = INT_MAX,maxVerticalLevel = INT_MIN;
-	findMinMaxVerticalLevel(ptr,0,&minVerticalLevel,&maxVerticalLevel);
-	for(int counter = minVerticalLevel;counter <= maxVerticalLevel;counter++){
-		printVerticalLevel(ptr,counter,0);
-		PRINT_NEW_LINE;
-	}
+void printAllVerticalLevel(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    int minVerticalLevel = INT_MAX,maxVerticalLevel = INT_MIN;
+    findMinMaxVerticalLevel(ptr,0,&minVerticalLevel,&maxVerticalLevel);
+    for(int counter = minVerticalLevel; counter <= maxVerticalLevel; counter++) {
+        printVerticalLevel(ptr,counter,0);
+        PRINT_NEW_LINE;
+    }
 }
 
 #endif /* PRINTVERTICALORDER_H_ */

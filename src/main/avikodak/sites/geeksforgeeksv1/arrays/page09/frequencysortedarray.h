@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: frequencysortedarray.h 
+ *  File Name   		: frequencysortedarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\frequencysortedarray.h
  *  Created on			: Nov 26, 2014 :: 6:29:43 PM
  *  Author				: AVINASH
@@ -73,74 +73,74 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		if(middleIndex-1 >= startIndex && userInput[middleIndex-1] == key){
-			return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-		}else{
-			return middleIndex;
-		}
-	}else if(userInput[middleIndex] > key){
-		return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-	}else{
-		return getLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
-	}
+int getLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        if(middleIndex-1 >= startIndex && userInput[middleIndex-1] == key) {
+            return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+        } else {
+            return middleIndex;
+        }
+    } else if(userInput[middleIndex] > key) {
+        return getLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+    } else {
+        return getLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+    }
 }
 
 //Tested
-int getHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key ){
-			return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
-		}else{
-			return middleIndex;
-		}
-	}else if(userInput[middleIndex] > key){
-		return getHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
-	}else{
-		return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
-	}
+int getHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        if(middleIndex+1 <= endIndex && userInput[middleIndex+1] == key ) {
+            return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+        } else {
+            return middleIndex;
+        }
+    } else if(userInput[middleIndex] > key) {
+        return getHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
+    } else {
+        return getHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+    }
 }
 
 //Tested
-int getFrequencySortedArray(vector<int> userInput,int key){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int lowIndex = getLowerBoundBinarySearch(userInput,key,0,userInput.size()-1);
-	if(lowIndex == INT_MAX){
-		return 0;
-	}
-	int highIndex = getHigherBoundBinarySearch(userInput,key,0,userInput.size()-1);
-	if(highIndex == INT_MIN){
-		return 0;
-	}
-	return highIndex - lowIndex + 1;
+int getFrequencySortedArray(vector<int> userInput,int key) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int lowIndex = getLowerBoundBinarySearch(userInput,key,0,userInput.size()-1);
+    if(lowIndex == INT_MAX) {
+        return 0;
+    }
+    int highIndex = getHigherBoundBinarySearch(userInput,key,0,userInput.size()-1);
+    if(highIndex == INT_MIN) {
+        return 0;
+    }
+    return highIndex - lowIndex + 1;
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int frequencySortedArrayON(vector<int> userInput,int key){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	unsigned int frequency = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == key){
-			frequency++;
-		}
-	}
-	return frequency;
+unsigned int frequencySortedArrayON(vector<int> userInput,int key) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    unsigned int frequency = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == key) {
+            frequency++;
+        }
+    }
+    return frequency;
 }
 
 #endif /* FREQUENCYSORTEDARRAY_H_ */

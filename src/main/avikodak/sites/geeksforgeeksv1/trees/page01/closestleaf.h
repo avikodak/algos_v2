@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: closestleaf.h 
+ *  File Name   		: closestleaf.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\closestleaf.h
  *  Created on			: Jan 23, 2015 :: 8:49:43 PM
  *  Author				: AVINASH
@@ -74,49 +74,49 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void closestLeafMain(itNode *ptr,itNode **leaf,int &minHeight,int level){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->left == null && ptr->right == null){
-		if(minHeight > level){
-			minHeight = level;
-			(*leaf) = ptr;
-		}
-		return;
-	}
-	closestLeafMain(ptr->left,leaf,minHeight,level+1);
-	closestLeafMain(ptr->right,leaf,minHeight,level+1);
+void closestLeafMain(itNode *ptr,itNode **leaf,int &minHeight,int level) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        if(minHeight > level) {
+            minHeight = level;
+            (*leaf) = ptr;
+        }
+        return;
+    }
+    closestLeafMain(ptr->left,leaf,minHeight,level+1);
+    closestLeafMain(ptr->right,leaf,minHeight,level+1);
 }
 
 //Tested
-void ancestorsMain(itNode *ptr,itNode **leaf,stack<itNode *> auxSpace,int value){
-	if(ptr == null){
-		return;
-	}
-	auxSpace.push(ptr);
-	if(ptr->value == value){
-		int minLevel = INT_MAX,counter = 0;
-		while(!auxSpace.empty()){
-			closestLeafMain(auxSpace.top(),leaf,minLevel,counter);
-			auxSpace.pop();
-			counter++;
-		}
-		return;
-	}
-	ancestorsMain(ptr->left,leaf,auxSpace,value);
-	ancestorsMain(ptr->right,leaf,auxSpace,value);
+void ancestorsMain(itNode *ptr,itNode **leaf,stack<itNode *> auxSpace,int value) {
+    if(ptr == null) {
+        return;
+    }
+    auxSpace.push(ptr);
+    if(ptr->value == value) {
+        int minLevel = INT_MAX,counter = 0;
+        while(!auxSpace.empty()) {
+            closestLeafMain(auxSpace.top(),leaf,minLevel,counter);
+            auxSpace.pop();
+            counter++;
+        }
+        return;
+    }
+    ancestorsMain(ptr->left,leaf,auxSpace,value);
+    ancestorsMain(ptr->right,leaf,auxSpace,value);
 }
 
 //Tested
-itNode *getClosestLeaf(itNode *ptr,int key){
-	if(ptr == null){
-		return null;
-	}
-	stack<itNode *> auxSpace;
-	itNode *leaf = null;
-	ancestorsMain(ptr,&leaf,auxSpace,key);
-	return leaf;
+itNode *getClosestLeaf(itNode *ptr,int key) {
+    if(ptr == null) {
+        return null;
+    }
+    stack<itNode *> auxSpace;
+    itNode *leaf = null;
+    ancestorsMain(ptr,&leaf,auxSpace,key);
+    return leaf;
 }
 
 #endif /* CLOSESTLEAF_H_ */

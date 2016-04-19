@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #ifndef ANAGRAM_H_
 #define ANAGRAM_H_
 
-void countReplaceChars(){
-	unsigned int testCases;
-	string userInput,firstStr,secondStr;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		if(userInput.size()&1){
-			printf("-1\n");
-		}else{
-			firstStr = userInput.substr(0,userInput.size()/2);
-			secondStr = userInput.substr(userInput.size()/2);
-			sort(firstStr.begin(),firstStr.end());
-			sort(secondStr.begin(),secondStr.end());
-			unsigned int firstCrawler = 0,secondCrawler = 0,charCount = 0;
-			while(firstCrawler < firstStr.size() && secondCrawler < secondStr.size()){
-				if(firstStr[firstCrawler] != secondStr[secondCrawler]){
-					if(firstStr[firstCrawler] < secondStr[secondCrawler]){
-						firstCrawler++;
-					}else{
-						secondCrawler++;
-					}
-					charCount++;
-				}else{
-					firstCrawler++;
-					secondCrawler++;
-				}
-			}
-			if(firstCrawler < firstStr.size()){
-				charCount += firstStr.size() - firstCrawler;
-			}else if(secondCrawler < secondStr.size()){
-				charCount += secondStr.size() - secondCrawler;
-			}
-			printf("%d\n",(charCount/2));
-		}
-	}
+void countReplaceChars() {
+    unsigned int testCases;
+    string userInput,firstStr,secondStr;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        if(userInput.size()&1) {
+            printf("-1\n");
+        } else {
+            firstStr = userInput.substr(0,userInput.size()/2);
+            secondStr = userInput.substr(userInput.size()/2);
+            sort(firstStr.begin(),firstStr.end());
+            sort(secondStr.begin(),secondStr.end());
+            unsigned int firstCrawler = 0,secondCrawler = 0,charCount = 0;
+            while(firstCrawler < firstStr.size() && secondCrawler < secondStr.size()) {
+                if(firstStr[firstCrawler] != secondStr[secondCrawler]) {
+                    if(firstStr[firstCrawler] < secondStr[secondCrawler]) {
+                        firstCrawler++;
+                    } else {
+                        secondCrawler++;
+                    }
+                    charCount++;
+                } else {
+                    firstCrawler++;
+                    secondCrawler++;
+                }
+            }
+            if(firstCrawler < firstStr.size()) {
+                charCount += firstStr.size() - firstCrawler;
+            } else if(secondCrawler < secondStr.size()) {
+                charCount += secondStr.size() - secondCrawler;
+            }
+            printf("%d\n",(charCount/2));
+        }
+    }
 }
 
 #endif /* ANAGRAM_H_ */

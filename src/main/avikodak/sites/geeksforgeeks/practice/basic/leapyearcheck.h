@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_LEAPYEARCHECK_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	unsigned int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		if(input%100 != 0){
-			printf("%s\n",input%4 == 0?"Yes":"No");
-		}else if(input%400 == 0){
-			printf("Yes\n");
-		}else{
-			printf("No\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    unsigned int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        if(input%100 != 0) {
+            printf("%s\n",input%4 == 0?"Yes":"No");
+        } else if(input%400 == 0) {
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_LEAPYEARCHECK_H_ */

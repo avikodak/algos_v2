@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_CT03_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int noOfErasers,noOfPencils;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		noOfErasers = 0;
-		noOfPencils = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] == 'E'){
-				noOfErasers++;
-			}else{
-				noOfPencils++;
-			}
-		}
-		printf("%lld %lld\n",min(noOfErasers,noOfPencils),abs(noOfErasers-noOfPencils));
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int noOfErasers,noOfPencils;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        noOfErasers = 0;
+        noOfPencils = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] == 'E') {
+                noOfErasers++;
+            } else {
+                noOfPencils++;
+            }
+        }
+        printf("%lld %lld\n",min(noOfErasers,noOfPencils),abs(noOfErasers-noOfPencils));
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_CT03_H_ */

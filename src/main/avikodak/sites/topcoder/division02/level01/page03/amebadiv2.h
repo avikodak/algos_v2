@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 //Tested
 class AmebaDiv2 {
 public:
-	int simulate(vector<int> gelSizes, int ameobaSize){
-		for(unsigned int counter = 0;counter < gelSizes.size();counter++){
-			if(ameobaSize == gelSizes[counter]){
-				ameobaSize *= 2;
-			}
-		}
-		return ameobaSize;
-	}
+    int simulate(vector<int> gelSizes, int ameobaSize) {
+        for(unsigned int counter = 0; counter < gelSizes.size(); counter++) {
+            if(ameobaSize == gelSizes[counter]) {
+                ameobaSize *= 2;
+            }
+        }
+        return ameobaSize;
+    }
 };
 
 #endif /* AMEBADIV2_H_ */

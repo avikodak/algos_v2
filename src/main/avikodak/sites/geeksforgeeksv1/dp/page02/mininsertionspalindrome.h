@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mininsertionspalindrome.h 
+ *  File Name   		: mininsertionspalindrome.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\mininsertionspalindrome.h
  *  Created on			: Jan 12, 2015 :: 6:19:46 PM
  *  Author				: AVINASH
@@ -70,14 +70,14 @@ using namespace __gnu_cxx;
 #ifndef MININSERTIONSPALINDROME_H_
 #define MININSERTIONSPALINDROME_H_
 
-int minimumNoOfInsertionsPalindrome(char *userInput,int startIndex,int endIndex){
-	if(userInput == null || startIndex > endIndex){
-		return 0;
-	}
-	if(startIndex == endIndex){
-		return 1;
-	}
-	return userInput[startIndex] == userInput[endIndex]?minimumNoOfInsertionsPalindrome(userInput,startIndex+1,endIndex-1):min(minimumNoOfInsertionsPalindrome(userInput,startIndex+1,endIndex),minimumNoOfInsertionsPalindrome(userInput,startIndex,endIndex-1));
+int minimumNoOfInsertionsPalindrome(char *userInput,int startIndex,int endIndex) {
+    if(userInput == null || startIndex > endIndex) {
+        return 0;
+    }
+    if(startIndex == endIndex) {
+        return 1;
+    }
+    return userInput[startIndex] == userInput[endIndex]?minimumNoOfInsertionsPalindrome(userInput,startIndex+1,endIndex-1):min(minimumNoOfInsertionsPalindrome(userInput,startIndex+1,endIndex),minimumNoOfInsertionsPalindrome(userInput,startIndex,endIndex-1));
 }
 
 #endif /* MININSERTIONSPALINDROME_H_ */

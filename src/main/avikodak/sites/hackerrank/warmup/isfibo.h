@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isfibo.h 
+ *  File Name   		: isfibo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\isfibo.h
  *  Created on			: Feb 10, 2015 :: 9:39:28 AM
  *  Author				: AVINASH
@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define ISFIBO_H_
 
 //Tested
-void isNumberFibonacci(){
-	vector<long int> fibonacciSequence;
-	fibonacciSequence.push_back(0);
-	fibonacciSequence.push_back(1);
-	fibonacciSequence.push_back(1);
-	int testCases;
-	long int input,prevVal,prevPrevVal,nextVal;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%ld",&input);
-		if(fibonacciSequence[fibonacciSequence.size()-1] >= input){
-			if(binary_search(fibonacciSequence.begin(),fibonacciSequence.end(),input)){
-				printf("IsFibo\n");
-			}else{
-				printf("IsNotFibo\n");
-			}
-		}else{
-			prevVal = fibonacciSequence[fibonacciSequence.size()-1];
-			prevPrevVal = fibonacciSequence[fibonacciSequence.size()-2];
-			while(true){
-				nextVal = prevVal + prevPrevVal;
-				prevPrevVal = prevVal;
-				prevVal = nextVal;
-				fibonacciSequence.push_back(nextVal);
-				if(nextVal >= input){
-					if(nextVal == input){
-						printf("IsFibo\n");
-					}else{
-						printf("IsNotFibo\n");
-					}
-					break;
-				}
-			}
-		}
-	}
+void isNumberFibonacci() {
+    vector<long int> fibonacciSequence;
+    fibonacciSequence.push_back(0);
+    fibonacciSequence.push_back(1);
+    fibonacciSequence.push_back(1);
+    int testCases;
+    long int input,prevVal,prevPrevVal,nextVal;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%ld",&input);
+        if(fibonacciSequence[fibonacciSequence.size()-1] >= input) {
+            if(binary_search(fibonacciSequence.begin(),fibonacciSequence.end(),input)) {
+                printf("IsFibo\n");
+            } else {
+                printf("IsNotFibo\n");
+            }
+        } else {
+            prevVal = fibonacciSequence[fibonacciSequence.size()-1];
+            prevPrevVal = fibonacciSequence[fibonacciSequence.size()-2];
+            while(true) {
+                nextVal = prevVal + prevPrevVal;
+                prevPrevVal = prevVal;
+                prevVal = nextVal;
+                fibonacciSequence.push_back(nextVal);
+                if(nextVal >= input) {
+                    if(nextVal == input) {
+                        printf("IsFibo\n");
+                    } else {
+                        printf("IsNotFibo\n");
+                    }
+                    break;
+                }
+            }
+        }
+    }
 }
 
 #endif /* ISFIBO_H_ */

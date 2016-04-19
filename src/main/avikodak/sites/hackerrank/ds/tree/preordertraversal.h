@@ -72,7 +72,7 @@ using namespace __gnu_cxx;
 
 //Tested
 void Preorder(node *root) {
-    if(root == NULL){
+    if(root == NULL) {
         return;
     }
     printf("%d ",root->data);

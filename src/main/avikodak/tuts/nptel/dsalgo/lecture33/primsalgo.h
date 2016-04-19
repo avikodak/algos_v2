@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: primsalgo.h 
+ *  File Name   		: primsalgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture33\primsalgo.h
  *  Created on			: Dec 9, 2014 :: 1:18:37 PM
  *  Author				: AVINASH
@@ -74,51 +74,51 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Works only in directed edges should be slightly modified for undirected
-void insertVerticesEdgesIntoHeap(vector<wEdge *> &heap,vector<vector<wVertex *> > adjacencyList,int sourceVertex){
-	wEdge *temp;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		heap.push_back(new wEdge(sourceVertex,adjacencyList[sourceVertex][counter]->vertex,adjacencyList[sourceVertex][counter]->weight,false));
-		int vertexIndex = heap.size()-1;
-		while(vertexIndex > 0){
-			if(heap[vertexIndex]->weight < heap[vertexIndex/2]->weight){
-				temp = heap[vertexIndex];
-				heap[vertexIndex] = heap[vertexIndex/2];
-				heap[vertexIndex/2] = temp;
-			}else{
-				break;
-			}
-			vertexIndex /= 2;
-		}
-	}
+void insertVerticesEdgesIntoHeap(vector<wEdge *> &heap,vector<vector<wVertex *> > adjacencyList,int sourceVertex) {
+    wEdge *temp;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        heap.push_back(new wEdge(sourceVertex,adjacencyList[sourceVertex][counter]->vertex,adjacencyList[sourceVertex][counter]->weight,false));
+        int vertexIndex = heap.size()-1;
+        while(vertexIndex > 0) {
+            if(heap[vertexIndex]->weight < heap[vertexIndex/2]->weight) {
+                temp = heap[vertexIndex];
+                heap[vertexIndex] = heap[vertexIndex/2];
+                heap[vertexIndex/2] = temp;
+            } else {
+                break;
+            }
+            vertexIndex /= 2;
+        }
+    }
 }
 
-void heapify(vector<wEdge *> &heap,int index){
-	while(2*index + 1 < heap.size()){
-		if(2*index + 2 < heap.size()){
+void heapify(vector<wEdge *> &heap,int index) {
+    while(2*index + 1 < heap.size()) {
+        if(2*index + 2 < heap.size()) {
 
-		}else{
+        } else {
 
-		}
-	}
+        }
+    }
 }
 
-void deleteMinEdgeFromHeap(vector<wEdge *> &heap){
-	heap[0] = heap[heap.size()-1];
-	heap.erase(heap.size()-1);
-	heapify(heap,0);
+void deleteMinEdgeFromHeap(vector<wEdge *> &heap) {
+    heap[0] = heap[heap.size()-1];
+    heap.erase(heap.size()-1);
+    heapify(heap,0);
 }
 
-wEdge *getMinEdge(vector<wEdge *> heap){
-	if(heap.size() == 0){
-		return null;
-	}
-	return heap[0];
+wEdge *getMinEdge(vector<wEdge *> heap) {
+    if(heap.size() == 0) {
+        return null;
+    }
+    return heap[0];
 }
 
-vector<wEdge *> minSpanningTreePrimsAlgo(vector<vector<wVertex *> > adjacencyList,int noOfVertices){
-	vector<bool> flagsForVertices(noOfVertices);
-	flagsForVertices[0] = 1;
-	vertex<wEdge *> heap;
+vector<wEdge *> minSpanningTreePrimsAlgo(vector<vector<wVertex *> > adjacencyList,int noOfVertices) {
+    vector<bool> flagsForVertices(noOfVertices);
+    flagsForVertices[0] = 1;
+    vertex<wEdge *> heap;
 
 }
 

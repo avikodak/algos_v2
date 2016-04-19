@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: floydwarshallalgo.h 
+ *  File Name   		: floydwarshallalgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\floydwarshallalgo.h
  *  Created on			: Dec 16, 2014 :: 6:07:40 PM
  *  Author				: AVINASH
@@ -70,20 +70,20 @@ using namespace __gnu_cxx;
 #ifndef FLOYDWARSHALLALGO_H_
 #define FLOYDWARSHALLALGO_H_
 
-int getShortestPathFloydWarshallAlgo(vector<vector<int> > adjacencyMatrix,int sourceVertex,int destinationVertex){
-	if(adjacencyMatrix.size() == 0 || sourceVertex >= adjacencyMatrix.size() || destinationVertex >= adjacencyMatrix.size()){
-		return INT_MAX;
-	}
-	for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-		for(unsigned int rowCounter = 0;rowCounter < adjacencyMatrix.size();rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < adjacencyMatrix.size();columnCounter++){
-				if(adjacencyMatrix[rowCounter][columnCounter] > adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter]){
-					adjacencyMatrix[rowCounter][columnCounter] = adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter];
-				}
-			}
-		}
-	}
-	return adjacencyMatrix[sourceVertex][destinationVertex];
+int getShortestPathFloydWarshallAlgo(vector<vector<int> > adjacencyMatrix,int sourceVertex,int destinationVertex) {
+    if(adjacencyMatrix.size() == 0 || sourceVertex >= adjacencyMatrix.size() || destinationVertex >= adjacencyMatrix.size()) {
+        return INT_MAX;
+    }
+    for(unsigned int counter = 0; counter < adjacencyMatrix.size(); counter++) {
+        for(unsigned int rowCounter = 0; rowCounter < adjacencyMatrix.size(); rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < adjacencyMatrix.size(); columnCounter++) {
+                if(adjacencyMatrix[rowCounter][columnCounter] > adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter]) {
+                    adjacencyMatrix[rowCounter][columnCounter] = adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter];
+                }
+            }
+        }
+    }
+    return adjacencyMatrix[sourceVertex][destinationVertex];
 }
 
 #endif /* FLOYDWARSHALLALGO_H_ */

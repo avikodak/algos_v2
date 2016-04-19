@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: booleanarraypuzzle.h 
+ *  File Name   		: booleanarraypuzzle.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\booleanarraypuzzle.h
  *  Created on			: Jan 9, 2015 :: 11:38:47 AM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef BOOLEANARRAYPUZZLE_H_
 #define BOOLEANARRAYPUZZLE_H_
 
-void booleanArrayPuzzle(vector<bool> userInput){
-	userInput[userInput[1]] = userInput[!userInput[1]];
+void booleanArrayPuzzle(vector<bool> userInput) {
+    userInput[userInput[1]] = userInput[!userInput[1]];
 }
 
 #endif /* BOOLEANARRAYPUZZLE_H_ */

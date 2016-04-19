@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletefromredblacktree.h 
+ *  File Name   		: deletefromredblacktree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture14\deletefromredblacktree.h
  *  Created on			: Nov 20, 2014 :: 1:18:34 PM
  *  Author				: AVINASH
@@ -72,65 +72,65 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-iRbTreeNode *search(iRbTreeNode *ptr,int value){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->value == value){
-		return ptr;
-	}
-	if(ptr->value > value){
-		return search(ptr->left,value);
-	}else{
-		return search(ptr->right,value);
-	}
+iRbTreeNode *search(iRbTreeNode *ptr,int value) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->value == value) {
+        return ptr;
+    }
+    if(ptr->value > value) {
+        return search(ptr->left,value);
+    } else {
+        return search(ptr->right,value);
+    }
 }
 
-iRbTreeNode *successorIfTwoNodesPresent(iRbTreeNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->right == null){
-		throw "Invalid node";
-	}
-	ptr = ptr->right;
-	while(ptr->left != null){
-		ptr = ptr->left;
-	}
-	return ptr;
+iRbTreeNode *successorIfTwoNodesPresent(iRbTreeNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->right == null) {
+        throw "Invalid node";
+    }
+    ptr = ptr->right;
+    while(ptr->left != null) {
+        ptr = ptr->left;
+    }
+    return ptr;
 }
 
-void reorganiseTree(iRbTreeNode *nodeToBeDeleted){
-	if(nodeToBeDeleted == null){
-		return;
-	}
-	if(nodeToBeDeleted->isRedNode){
-		return;
-	}
-	iRbTreeNode *parentToKeyNode = nodeToBeDeleted->parent;
-	if(parentToKeyNode->left != null || parentToKeyNode->right != null){
-		return;
-	}
+void reorganiseTree(iRbTreeNode *nodeToBeDeleted) {
+    if(nodeToBeDeleted == null) {
+        return;
+    }
+    if(nodeToBeDeleted->isRedNode) {
+        return;
+    }
+    iRbTreeNode *parentToKeyNode = nodeToBeDeleted->parent;
+    if(parentToKeyNode->left != null || parentToKeyNode->right != null) {
+        return;
+    }
 
 }
 
-void deleteFromRedBlackTree(iRbTreeNode **root,int value){
-	if(*root == null){
-		return;
-	}
-	if((*root)->value == value){
-		return;
-	}
-	iRbTreeNode *ptrToKey = search(*root,value);
-	if(ptrToKey == null){
-		return;
-	}
-	if(ptrToKey->left != null && ptrToKey->right != null){
-		iRbTreeNode *successor = successorIfTwoNodesPresent(ptr);
-		ptrToKey->value = successor->value;
-		successor->value = value;
-		ptrToKey = successor;
-	}
+void deleteFromRedBlackTree(iRbTreeNode **root,int value) {
+    if(*root == null) {
+        return;
+    }
+    if((*root)->value == value) {
+        return;
+    }
+    iRbTreeNode *ptrToKey = search(*root,value);
+    if(ptrToKey == null) {
+        return;
+    }
+    if(ptrToKey->left != null && ptrToKey->right != null) {
+        iRbTreeNode *successor = successorIfTwoNodesPresent(ptr);
+        ptrToKey->value = successor->value;
+        successor->value = value;
+        ptrToKey = successor;
+    }
 }
 
 #endif /* DELETEFROMREDBLACKTREE_H_ */

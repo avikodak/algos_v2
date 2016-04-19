@@ -73,12 +73,12 @@ using namespace __gnu_cxx;
 #define DS08_H_
 
 //Tested
-void printResults(){
-	string userInput;
-	cin >> userInput;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%c",'A' + (userInput[counter]-'A'+3)%26);
-	}
+void printResults() {
+    string userInput;
+    cin >> userInput;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%c",'A' + (userInput[counter]-'A'+3)%26);
+    }
 }
 
 #endif /* DS08_H_ */

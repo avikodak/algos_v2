@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodesill.h 
+ *  File Name   		: getnthnodesill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodesill.h
  *  Created on			: Oct 10, 2014 :: 3:41:31 PM
  *  Author				: AVINASH
@@ -73,67 +73,67 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeSill(sillNode *ptr,unsigned int nValue){
-	if(nValue == 0 || ptr == null){
-		return null;
-	}
-	if(nValue == 1){
-		return ptr;
-	}
-	return getNthNodeSill(ptr->next,nValue-1);
+sillNode *getNthNodeSill(sillNode *ptr,unsigned int nValue) {
+    if(nValue == 0 || ptr == null) {
+        return null;
+    }
+    if(nValue == 1) {
+        return ptr;
+    }
+    return getNthNodeSill(ptr->next,nValue-1);
 }
 
 //Tested
-sillNode *getNthNodeSillIterative(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	nValue -= 1;
-	while(nValue-- && ptr != null){
-		ptr = ptr->next;
-	}
-	return ptr;
+sillNode *getNthNodeSillIterative(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    nValue -= 1;
+    while(nValue-- && ptr != null) {
+        ptr = ptr->next;
+    }
+    return ptr;
 }
 
 //Tested
-sillNode *getNthNodeSillHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	iSillHashmap *hashmapOfSill = utils->getSillAsHashmap(ptr,1);
-	hash_map<unsigned int,sillNode *> indexNodeMap = hashmapOfSill->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if((itToIndexNodeMap = indexNodeMap.find(nValue)) != indexNodeMap.end()){
-		return itToIndexNodeMap->second;
-	}
-	return null;
+sillNode *getNthNodeSillHashmap(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillutils *utils = new sillutils();
+    iSillHashmap *hashmapOfSill = utils->getSillAsHashmap(ptr,1);
+    hash_map<unsigned int,sillNode *> indexNodeMap = hashmapOfSill->indexNodeMap;
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    if((itToIndexNodeMap = indexNodeMap.find(nValue)) != indexNodeMap.end()) {
+        return itToIndexNodeMap->second;
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeSillON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler,*crawler;
-	unsigned int counter;
-	while(outerCrawler != null){
-		innerCrawler = outerCrawler;
-		crawler = ptr;
-		counter = 1;
-		while(crawler != innerCrawler){
-			crawler = crawler->next;
-			counter += 1;
-		}
-		if(counter == nValue){
-			return innerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
+sillNode *getNthNodeSillON2(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillNode *outerCrawler = ptr,*innerCrawler,*crawler;
+    unsigned int counter;
+    while(outerCrawler != null) {
+        innerCrawler = outerCrawler;
+        crawler = ptr;
+        counter = 1;
+        while(crawler != innerCrawler) {
+            crawler = crawler->next;
+            counter += 1;
+        }
+        if(counter == nValue) {
+            return innerCrawler;
+        }
+        outerCrawler = outerCrawler->next;
+    }
+    return null;
 }
 
 #endif /* GETNTHNODESILL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: selectionsort.h 
+ *  File Name   		: selectionsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\selectionsort.h
  *  Created on			: Dec 11, 2014 :: 1:00:36 PM
  *  Author				: AVINASH
@@ -74,20 +74,20 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void selectionSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int minValIndex;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size()-1;outerCrawler++){
-		minValIndex = outerCrawler;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[minValIndex] > userInput[innerCrawler]){
-				minValIndex = innerCrawler;
-			}
-		}
-		swap(userInput[outerCrawler],userInput[minValIndex]);
-	}
+void selectionSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int minValIndex;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size()-1; outerCrawler++) {
+        minValIndex = outerCrawler;
+        for(unsigned int innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+            if(userInput[minValIndex] > userInput[innerCrawler]) {
+                minValIndex = innerCrawler;
+            }
+        }
+        swap(userInput[outerCrawler],userInput[minValIndex]);
+    }
 }
 
 #endif /* SELECTIONSORTV2_H_ */

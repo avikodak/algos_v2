@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define TRIANGULARPENTAGONALHEXAGONAL_H_
 
 //Tested
-unsigned int getTriangleNumber(unsigned int userInput){
-	return ((userInput)*(userInput+1))/2;
+unsigned int getTriangleNumber(unsigned int userInput) {
+    return ((userInput)*(userInput+1))/2;
 }
 
 //Tested
 unsigned int getPentagonNumber(unsigned int userInput) {
-	return ((userInput) * ((3 * userInput) - 1)) / 2;
+    return ((userInput) * ((3 * userInput) - 1)) / 2;
 }
 
 //Tested
-unsigned int getHexagonalNumber(unsigned int userInput){
-	return (userInput)*((2*userInput)-1);
+unsigned int getHexagonalNumber(unsigned int userInput) {
+    return (userInput)*((2*userInput)-1);
 }
 
 //Tested
 //Ans : 1533776805
-void getIntersectionNumber(){
-	unsigned int counter = 1;
-	map<unsigned int,bool> triangleNumberMap;
-	map<unsigned int,bool> pentagonNumberMap;
-	map<unsigned int,bool> hexagonalNumberMap;
-	unsigned int triangleNumber,pentagonNumber,hexagonalNumber;
-	while(true){
-		triangleNumber = getTriangleNumber(counter);
-		pentagonNumber = getPentagonNumber(counter);
-		hexagonalNumber = getHexagonalNumber(counter);
-		if(triangleNumber > 40755 && hexagonalNumberMap.find(triangleNumber) != hexagonalNumberMap.end() && pentagonNumberMap.find(triangleNumber) != pentagonNumberMap.end()){
-			cout << triangleNumber << endl;
-			return;
-		}
-		triangleNumberMap.insert(pair<unsigned int,bool>(triangleNumber,true));
-		pentagonNumberMap.insert(pair<unsigned int,bool>(pentagonNumber,true));
-		hexagonalNumberMap.insert(pair<unsigned int,bool>(hexagonalNumber,true));
-		counter++;
-	}
+void getIntersectionNumber() {
+    unsigned int counter = 1;
+    map<unsigned int,bool> triangleNumberMap;
+    map<unsigned int,bool> pentagonNumberMap;
+    map<unsigned int,bool> hexagonalNumberMap;
+    unsigned int triangleNumber,pentagonNumber,hexagonalNumber;
+    while(true) {
+        triangleNumber = getTriangleNumber(counter);
+        pentagonNumber = getPentagonNumber(counter);
+        hexagonalNumber = getHexagonalNumber(counter);
+        if(triangleNumber > 40755 && hexagonalNumberMap.find(triangleNumber) != hexagonalNumberMap.end() && pentagonNumberMap.find(triangleNumber) != pentagonNumberMap.end()) {
+            cout << triangleNumber << endl;
+            return;
+        }
+        triangleNumberMap.insert(pair<unsigned int,bool>(triangleNumber,true));
+        pentagonNumberMap.insert(pair<unsigned int,bool>(pentagonNumber,true));
+        hexagonalNumberMap.insert(pair<unsigned int,bool>(hexagonalNumber,true));
+        counter++;
+    }
 }
 
 #endif /* TRIANGULARPENTAGONALHEXAGONAL_H_ */

@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTREVERSEARRAY_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	stack<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push(input);
-		}
-		while(!userInput.empty()){
-			printf("%lld ",userInput.top());
-			userInput.pop();
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    stack<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push(input);
+        }
+        while(!userInput.empty()) {
+            printf("%lld ",userInput.top());
+            userInput.pop();
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTREVERSEARRAY_H_ */

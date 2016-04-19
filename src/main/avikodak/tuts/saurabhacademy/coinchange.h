@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: coinchange.h 
+ *  File Name   		: coinchange.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\coinchange.h
  *  Created on			: Oct 28, 2014 :: 7:27:02 PM
  *  Author				: AVINASH
@@ -69,46 +69,46 @@ using namespace __gnu_cxx;
 #define COINCHANGE_H_
 
 //Tested
-unsigned int coinChange(vector<unsigned int> &availableDenominations,unsigned int amount){
-	if(amount == 0){
-		return 0;
-	}
-	unsigned int minNoOfNotes = UINT_MAX;
-	unsigned int result;
-	for(unsigned int counter = 0;counter < availableDenominations.size();counter++){
-		if(availableDenominations[counter] <= amount){
-			result = coinChange(availableDenominations,amount-availableDenominations[counter]);
-			if(result != UINT_MAX){
-				minNoOfNotes = 1 + min(minNoOfNotes,result);
-			}
-		}
-	}
-	return minNoOfNotes;
+unsigned int coinChange(vector<unsigned int> &availableDenominations,unsigned int amount) {
+    if(amount == 0) {
+        return 0;
+    }
+    unsigned int minNoOfNotes = UINT_MAX;
+    unsigned int result;
+    for(unsigned int counter = 0; counter < availableDenominations.size(); counter++) {
+        if(availableDenominations[counter] <= amount) {
+            result = coinChange(availableDenominations,amount-availableDenominations[counter]);
+            if(result != UINT_MAX) {
+                minNoOfNotes = 1 + min(minNoOfNotes,result);
+            }
+        }
+    }
+    return minNoOfNotes;
 }
 
 //Tested
-unsigned int coinChangeMemoization(vector<unsigned int> availableDenominations,unsigned int amount){
-	if(amount == 0){
-		return 0;
-	}
-	static hash_map<unsigned int,unsigned int> amountMinCoinMap;
-	hash_map<unsigned int,unsigned int>::iterator itToAmountMinCoinMap;
-	unsigned int minCoins = UINT_MAX;
-	unsigned int result;
-	for(unsigned int counter = 0;counter < availableDenominations.size();counter++){
-		if(amount >= availableDenominations[counter]){
-			if((itToAmountMinCoinMap = amountMinCoinMap.find(amount)) == amountMinCoinMap.end()){
-				result = coinChangeMemoization(availableDenominations,amount - availableDenominations[counter]);
-				if(result != UINT_MAX){
-					minCoins = 1 + min(minCoins,result);
-				}
-			}else{
-				minCoins = min(minCoins,itToAmountMinCoinMap->second);
-			}
-		}
-	}
-	amountMinCoinMap.insert(pair<unsigned int,unsigned int>(amount,minCoins));
-	return minCoins;
+unsigned int coinChangeMemoization(vector<unsigned int> availableDenominations,unsigned int amount) {
+    if(amount == 0) {
+        return 0;
+    }
+    static hash_map<unsigned int,unsigned int> amountMinCoinMap;
+    hash_map<unsigned int,unsigned int>::iterator itToAmountMinCoinMap;
+    unsigned int minCoins = UINT_MAX;
+    unsigned int result;
+    for(unsigned int counter = 0; counter < availableDenominations.size(); counter++) {
+        if(amount >= availableDenominations[counter]) {
+            if((itToAmountMinCoinMap = amountMinCoinMap.find(amount)) == amountMinCoinMap.end()) {
+                result = coinChangeMemoization(availableDenominations,amount - availableDenominations[counter]);
+                if(result != UINT_MAX) {
+                    minCoins = 1 + min(minCoins,result);
+                }
+            } else {
+                minCoins = min(minCoins,itToAmountMinCoinMap->second);
+            }
+        }
+    }
+    amountMinCoinMap.insert(pair<unsigned int,unsigned int>(amount,minCoins));
+    return minCoins;
 }
 
 #endif /* COINCHANGE_H_ */

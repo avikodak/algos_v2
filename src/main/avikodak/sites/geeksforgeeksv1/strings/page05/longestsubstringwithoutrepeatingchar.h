@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestsubstringwithoutrepeatingchar.h 
+ *  File Name   		: longestsubstringwithoutrepeatingchar.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\longestsubstringwithoutrepeatingchar.h
  *  Created on			: Jan 16, 2015 :: 9:05:23 AM
  *  Author				: AVINASH
@@ -74,44 +74,44 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int longestSubstringWithoutRepeatingCharsON(char *userInput){
-	if(userInput == null || userInput[0] == '\0'){
-		return 0;
-	}
-	hash_map<char,unsigned int> charIndexMap;
-	hash_map<char,unsigned int>::iterator itToCharIndexMap;
-	int maxLength = 0,currentLength = 0;
-	for(unsigned int counter = 0;counter < strlen(userInput);counter++){
-		itToCharIndexMap = charIndexMap.find(userInput[counter]);
-		if(itToCharIndexMap == charIndexMap.end() || itToCharIndexMap->second < counter - currentLength){
-			currentLength++;
-		}else{
-			maxLength = max(maxLength,currentLength);
-			currentLength = counter - itToCharIndexMap->second;
-		}
-		charIndexMap[userInput[counter]] = counter;
-	}
-	return maxLength;
+int longestSubstringWithoutRepeatingCharsON(char *userInput) {
+    if(userInput == null || userInput[0] == '\0') {
+        return 0;
+    }
+    hash_map<char,unsigned int> charIndexMap;
+    hash_map<char,unsigned int>::iterator itToCharIndexMap;
+    int maxLength = 0,currentLength = 0;
+    for(unsigned int counter = 0; counter < strlen(userInput); counter++) {
+        itToCharIndexMap = charIndexMap.find(userInput[counter]);
+        if(itToCharIndexMap == charIndexMap.end() || itToCharIndexMap->second < counter - currentLength) {
+            currentLength++;
+        } else {
+            maxLength = max(maxLength,currentLength);
+            currentLength = counter - itToCharIndexMap->second;
+        }
+        charIndexMap[userInput[counter]] = counter;
+    }
+    return maxLength;
 }
 
 //Tested
-int longestSubstringWithoutRepeatingCharsONV2(char *userInput){
-	if(userInput == null || userInput[0] == '\0'){
-		return 0;
-	}
-	hash_map<char,unsigned int> charIndexMap;
-	hash_map<char,unsigned int>::iterator itToCharIndexMap;
-	int maxLength = 0;
-	unsigned int startIndex = 0;
-	for(unsigned int counter = 0;counter < strlen(userInput);counter++){
-		itToCharIndexMap = charIndexMap.find(userInput[counter]);
-		if(itToCharIndexMap != charIndexMap.end() && itToCharIndexMap->second >= startIndex){
-			maxLength = max(maxLength,(int)(counter - startIndex));
-			startIndex = itToCharIndexMap->second + 1;
-		}
-		charIndexMap[userInput[counter]] = counter;
-	}
-	return maxLength;
+int longestSubstringWithoutRepeatingCharsONV2(char *userInput) {
+    if(userInput == null || userInput[0] == '\0') {
+        return 0;
+    }
+    hash_map<char,unsigned int> charIndexMap;
+    hash_map<char,unsigned int>::iterator itToCharIndexMap;
+    int maxLength = 0;
+    unsigned int startIndex = 0;
+    for(unsigned int counter = 0; counter < strlen(userInput); counter++) {
+        itToCharIndexMap = charIndexMap.find(userInput[counter]);
+        if(itToCharIndexMap != charIndexMap.end() && itToCharIndexMap->second >= startIndex) {
+            maxLength = max(maxLength,(int)(counter - startIndex));
+            startIndex = itToCharIndexMap->second + 1;
+        }
+        charIndexMap[userInput[counter]] = counter;
+    }
+    return maxLength;
 }
 
 /****************************************************************************************************************************************************/

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: smallestsubarraygreatersum.h 
+ *  File Name   		: smallestsubarraygreatersum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\smallestsubarraygreatersum.h
  *  Created on			: Jan 5, 2015 :: 8:05:45 AM
  *  Author				: AVINASH
@@ -73,42 +73,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int smallestSubarrayGreaterSumON(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	unsigned int start = 0,end = 0;
-	int currentSum = 0,minSize = INT_MAX;
-	while(end < userInput.size()){
-		while(end < userInput.size() && currentSum + userInput[end] < sum){
-			currentSum += userInput[end++];
-		}
-		while(start <= end && currentSum > sum){
-			minSize = min(minSize,end - start + 1);
-			currentSum -= userInput[start++];
-		}
-	}
-	return minSize;
+int smallestSubarrayGreaterSumON(vector<int> userInput,int sum) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    unsigned int start = 0,end = 0;
+    int currentSum = 0,minSize = INT_MAX;
+    while(end < userInput.size()) {
+        while(end < userInput.size() && currentSum + userInput[end] < sum) {
+            currentSum += userInput[end++];
+        }
+        while(start <= end && currentSum > sum) {
+            minSize = min(minSize,end - start + 1);
+            currentSum -= userInput[start++];
+        }
+    }
+    return minSize;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int smallestSubarrayGreaterSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int minSize = INT_MAX,innerCrawler,currentSum;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		currentSum = 0;
-		for(innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-			currentSum += userInput[innerCrawler];
-			if(currentSum > sum){
-				minSize = min(minSize,innerCrawler - outerCrawler + 1);
-			}
-		}
-	}
-	return minSize;
+int smallestSubarrayGreaterSumON2(vector<int> userInput,int sum) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int minSize = INT_MAX,innerCrawler,currentSum;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        currentSum = 0;
+        for(innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+            currentSum += userInput[innerCrawler];
+            if(currentSum > sum) {
+                minSize = min(minSize,innerCrawler - outerCrawler + 1);
+            }
+        }
+    }
+    return minSize;
 }
 
 #endif /* SMALLESTSUBARRAYGREATERSUM_H_ */

@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define MAXIMUMINTABLE_H_
 
 //Tested
-void getMaximumTable(){
-	unsigned int size;
-	scanf("%u",&size);
-	vector<vector<unsigned int> > matrix(size);
-	for(unsigned int counter = 0;counter < size;counter++){
-		matrix[counter].assign(size,1);
-	}
-	for(unsigned int rowCounter = 1;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter < size;columnCounter++){
-			matrix[rowCounter][columnCounter] = matrix[rowCounter-1][columnCounter] + matrix[rowCounter][columnCounter-1];
-		}
-	}
-	printf("%d",matrix[size-1][size-1]);
+void getMaximumTable() {
+    unsigned int size;
+    scanf("%u",&size);
+    vector<vector<unsigned int> > matrix(size);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        matrix[counter].assign(size,1);
+    }
+    for(unsigned int rowCounter = 1; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter < size; columnCounter++) {
+            matrix[rowCounter][columnCounter] = matrix[rowCounter-1][columnCounter] + matrix[rowCounter][columnCounter-1];
+        }
+    }
+    printf("%d",matrix[size-1][size-1]);
 }
 
 #endif /* MAXIMUMINTABLE_H_ */

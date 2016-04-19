@@ -72,16 +72,16 @@ using namespace __gnu_cxx;
 
 class TeamSplit {
 public:
-	int difference(vector<int> strengths){
-		sort(strengths.begin(),strengths.end());
-		bool flag = true;
-		int sum = 0;
-		for(unsigned int counter = 0;counter < strengths.size();counter++){
-			sum += flag?strengths[counter]:-1*strengths[counter];
-			flag = !flag;
-		}
-		return abs(sum);
-	}
+    int difference(vector<int> strengths) {
+        sort(strengths.begin(),strengths.end());
+        bool flag = true;
+        int sum = 0;
+        for(unsigned int counter = 0; counter < strengths.size(); counter++) {
+            sum += flag?strengths[counter]:-1*strengths[counter];
+            flag = !flag;
+        }
+        return abs(sum);
+    }
 };
 
 #endif /* TEAMSPLIT_H_ */

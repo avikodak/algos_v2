@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define PUZZLES_H_
 
 //Tested
-void getMinDifference(){
-	unsigned int itemCount,totalStudents,input,frontCrawler= 0,rearCrawler,minDifference = UINT_MAX;
-	vector<unsigned int> userInput;
-	scanf("%u %u",&totalStudents,&itemCount);
-	while(itemCount--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	rearCrawler = totalStudents-1;
-	while(rearCrawler < userInput.size()){
-		minDifference = min(minDifference,userInput[rearCrawler]-userInput[frontCrawler]);
-		frontCrawler++;
-		rearCrawler++;
-	}
-	printf("%u",minDifference);
+void getMinDifference() {
+    unsigned int itemCount,totalStudents,input,frontCrawler= 0,rearCrawler,minDifference = UINT_MAX;
+    vector<unsigned int> userInput;
+    scanf("%u %u",&totalStudents,&itemCount);
+    while(itemCount--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    rearCrawler = totalStudents-1;
+    while(rearCrawler < userInput.size()) {
+        minDifference = min(minDifference,userInput[rearCrawler]-userInput[frontCrawler]);
+        frontCrawler++;
+        rearCrawler++;
+    }
+    printf("%u",minDifference);
 }
 
 #endif /* PUZZLES_H_ */

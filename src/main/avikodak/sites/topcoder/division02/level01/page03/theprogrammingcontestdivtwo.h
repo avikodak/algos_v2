@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 
 class TheProgrammingContestDivTwo {
 public:
-	vector<int> find(int time, vector<int> requiredTime){
-		int totalScore = 0,totalTime = 0;
-		unsigned int counter = 0;
-		sort(requiredTime.begin(),requiredTime.end());
-		while(totalTime <= time && counter < requiredTime.size()){
-			if(totalTime + requiredTime[counter] <= time){
-				totalScore++;
-				totalTime += requiredTime[counter];
-			}else{
-				break;
-			}
-		}
-		vector<int> result;
-		result.push_back(totalScore);
-		result.push_back(totalTime);
-		return result;
-	}
+    vector<int> find(int time, vector<int> requiredTime) {
+        int totalScore = 0,totalTime = 0;
+        unsigned int counter = 0;
+        sort(requiredTime.begin(),requiredTime.end());
+        while(totalTime <= time && counter < requiredTime.size()) {
+            if(totalTime + requiredTime[counter] <= time) {
+                totalScore++;
+                totalTime += requiredTime[counter];
+            } else {
+                break;
+            }
+        }
+        vector<int> result;
+        result.push_back(totalScore);
+        result.push_back(totalTime);
+        return result;
+    }
 };
 
 #endif /* THEPROGRAMMINGCONTESTDIVTWO_H_ */

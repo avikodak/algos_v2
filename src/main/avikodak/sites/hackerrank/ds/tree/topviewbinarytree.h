@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #define TOPVIEWBINARYTREE_H_
 
 //Tested
-void top_view(node *root,bool isLeftChild){
-	if(root == NULL){
-		return;
-	}
-	if(isLeftChild){
-		top_view(root->left,true);
+void top_view(node *root,bool isLeftChild) {
+    if(root == NULL) {
+        return;
+    }
+    if(isLeftChild) {
+        top_view(root->left,true);
         printf("%d ",root->data);
-	}
-	if(!isLeftChild){
+    }
+    if(!isLeftChild) {
         printf("%d ",root->data);
-		top_view(root->right,false);
-	}
+        top_view(root->right,false);
+    }
 }
 
 //Tested
-void top_view(node *root){
-	if(root == NULL){
-		return;
-	}
-	top_view(root->left,true);
-	printf("%d ",root->data);
-	top_view(root->right,false);
+void top_view(node *root) {
+    if(root == NULL) {
+        return;
+    }
+    top_view(root->left,true);
+    printf("%d ",root->data);
+    top_view(root->right,false);
 }
 
 #endif /* TOPVIEWBINARYTREE_H_ */

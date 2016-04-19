@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chocolatefeast.h 
+ *  File Name   		: chocolatefeast.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
  *  Created on			: Feb 6, 2015 :: 9:06:34 AM
  *  Author				: AVINASH
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define CHOCOLATEFEAST_H_
 
 //Tested
-void totalChocolates(){
-	int testCases;
-	scanf("%d",&testCases);
-	long int money,cost,offer,total,activeWrappers;
-	while(testCases--){
-		scanf("%ld %ld %ld",&money,&cost,&offer);
-		total = money/cost;
-		activeWrappers = total;
-		while(activeWrappers >= offer){
-			total += (activeWrappers/offer);
-			activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
-		}
-		printf("%ld\n",total);
-	}
+void totalChocolates() {
+    int testCases;
+    scanf("%d",&testCases);
+    long int money,cost,offer,total,activeWrappers;
+    while(testCases--) {
+        scanf("%ld %ld %ld",&money,&cost,&offer);
+        total = money/cost;
+        activeWrappers = total;
+        while(activeWrappers >= offer) {
+            total += (activeWrappers/offer);
+            activeWrappers = (activeWrappers/offer) + (activeWrappers%offer);
+        }
+        printf("%ld\n",total);
+    }
 }
 
 #endif /* CHOCOLATEFEAST_H_ */

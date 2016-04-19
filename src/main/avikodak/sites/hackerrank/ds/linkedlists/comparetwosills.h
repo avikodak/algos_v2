@@ -70,21 +70,21 @@ using namespace __gnu_cxx;
 #ifndef COMPARETWOSILLS_H_
 #define COMPARETWOSILLS_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-int CompareLists(Node *headA, Node* headB){
-	while(headA != null && headB != null){
-		if(headA->data != headB->data){
-			return 0;
-		}
-		headA = headA->next;
-		headB = headB->next;
-	}
-	return (headA != null || headB != null)?0:1;
+int CompareLists(Node *headA, Node* headB) {
+    while(headA != null && headB != null) {
+        if(headA->data != headB->data) {
+            return 0;
+        }
+        headA = headA->next;
+        headB = headB->next;
+    }
+    return (headA != null || headB != null)?0:1;
 }
 
 #endif /* COMPARETWOSILLS_H_ */

@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 #define MUHANDSTICKS_H_
 
 //Tested
-void identifyAnimal(){
-	int frequency[9] = {0};
-	int userInput;
-	for(unsigned int counter = 0;counter < 6;counter++){
-		scanf("%d",&userInput);
-		frequency[userInput-1]++;
-	}
-	bool fourFlag = false,fiveFlag = false,sixFlag = false,twoFlag = false;
-	for(unsigned int counter = 0;counter < 9;counter++){
-		if(frequency[counter] ==  2){
-			twoFlag = true;
-		}else if(frequency[counter] == 4){
-			fourFlag = true;
-		}else if(frequency[counter] == 5){
-			fiveFlag = true;
-		}else if(frequency[counter] == 6){
-			sixFlag = true;
-		}
-	}
-	if(fourFlag || fiveFlag || sixFlag){
-		if(fourFlag){
-			printf("%s",twoFlag?"Elephant":"Bear");
-		}else{
-			if(sixFlag){
-				printf("Elephant");
-			}else{
-				printf("Bear");
-			}
-		}
-	}else{
-		printf("Alien");
-	}
+void identifyAnimal() {
+    int frequency[9] = {0};
+    int userInput;
+    for(unsigned int counter = 0; counter < 6; counter++) {
+        scanf("%d",&userInput);
+        frequency[userInput-1]++;
+    }
+    bool fourFlag = false,fiveFlag = false,sixFlag = false,twoFlag = false;
+    for(unsigned int counter = 0; counter < 9; counter++) {
+        if(frequency[counter] ==  2) {
+            twoFlag = true;
+        } else if(frequency[counter] == 4) {
+            fourFlag = true;
+        } else if(frequency[counter] == 5) {
+            fiveFlag = true;
+        } else if(frequency[counter] == 6) {
+            sixFlag = true;
+        }
+    }
+    if(fourFlag || fiveFlag || sixFlag) {
+        if(fourFlag) {
+            printf("%s",twoFlag?"Elephant":"Bear");
+        } else {
+            if(sixFlag) {
+                printf("Elephant");
+            } else {
+                printf("Bear");
+            }
+        }
+    } else {
+        printf("Alien");
+    }
 }
 #endif /* MUHANDSTICKS_H_ */
 

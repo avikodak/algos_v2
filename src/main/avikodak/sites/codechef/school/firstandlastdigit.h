@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef FIRSTANDLASTDIGIT_H_
 #define FIRSTANDLASTDIGIT_H_
 
-void getFirstAndLastDigit(){
-	unsigned int testCases,userInput,sum =0;
-	cin >> testCases;
-	while(testCases){
-		cin >> userInput;
-		sum = userInput%10;
-		while(userInput > 10){
-			userInput /= 10;
-		}
-		sum += userInput%10;
-		cout << sum << endl;
-	}
+void getFirstAndLastDigit() {
+    unsigned int testCases,userInput,sum =0;
+    cin >> testCases;
+    while(testCases) {
+        cin >> userInput;
+        sum = userInput%10;
+        while(userInput > 10) {
+            userInput /= 10;
+        }
+        sum += userInput%10;
+        cout << sum << endl;
+    }
 }
 
 #endif /* FIRSTANDLASTDIGIT_H_ */

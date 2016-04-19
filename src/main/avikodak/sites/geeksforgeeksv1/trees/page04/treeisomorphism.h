@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: treeisomorphism.h 
+ *  File Name   		: treeisomorphism.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\treeisomorphism.h
  *  Created on			: Nov 14, 2014 :: 12:07:06 AM
  *  Author				: AVINASH
@@ -69,17 +69,17 @@ using namespace __gnu_cxx;
 #define TREEISOMORPHISM_H_
 
 //Tested
-bool areTreesIsomorphs(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	if(firstTreePtr->value != secondTreePtr->value){
-		return false;
-	}
-	return (areTreesIsomorphs(firstTreePtr->left,secondTreePtr->left)&&areTreesIsomorphs(firstTreePtr->right,secondTreePtr->right)) || (areTreesIsomorphs(firstTreePtr->left,secondTreePtr->right)&&areTreesIsomorphs(firstTreePtr->right,secondTreePtr->left));
+bool areTreesIsomorphs(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    if(firstTreePtr->value != secondTreePtr->value) {
+        return false;
+    }
+    return (areTreesIsomorphs(firstTreePtr->left,secondTreePtr->left)&&areTreesIsomorphs(firstTreePtr->right,secondTreePtr->right)) || (areTreesIsomorphs(firstTreePtr->left,secondTreePtr->right)&&areTreesIsomorphs(firstTreePtr->right,secondTreePtr->left));
 }
 
 #endif /* TREEISOMORPHISM_H_ */

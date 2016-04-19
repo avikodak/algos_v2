@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define AWSGAME1_H_
 
 //Tested
-long long int gcd(long long int first,long long int second){
-	if(second == 0){
-		return first;
-	}
-	return gcd(second,first%second);
+long long int gcd(long long int first,long long int second) {
+    if(second == 0) {
+        return first;
+    }
+    return gcd(second,first%second);
 }
 
 //Tested
-void printGCD(vector<long long int> userInput){
-	if(userInput.size() == 1){
-		printf("%lld\n",userInput[0]);
-		return;
-	}
-	long long int result = gcd(userInput[0],userInput[1]);
-	for(unsigned int counter = 2;counter < userInput.size();counter++){
-		result = gcd(result,userInput[counter]);
-	}
-	cout << result << endl;
+void printGCD(vector<long long int> userInput) {
+    if(userInput.size() == 1) {
+        printf("%lld\n",userInput[0]);
+        return;
+    }
+    long long int result = gcd(userInput[0],userInput[1]);
+    for(unsigned int counter = 2; counter < userInput.size(); counter++) {
+        result = gcd(result,userInput[counter]);
+    }
+    cout << result << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		printGCD(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        printGCD(userInput);
+    }
 }
 
 #endif /* AWSGAME1_H_ */

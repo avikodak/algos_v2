@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_KADANEALGO_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		int maxSum = INT_MIN,currentSum = INT_MIN;
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%d",&input);
-			if(counter == 0){
-				currentSum = input;
-			}else{
-				currentSum = max(input,currentSum+input);
-			}
-			maxSum = max(maxSum,currentSum);
-		}
-		printf("%d\n",maxSum);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        int maxSum = INT_MIN,currentSum = INT_MIN;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%d",&input);
+            if(counter == 0) {
+                currentSum = input;
+            } else {
+                currentSum = max(input,currentSum+input);
+            }
+            maxSum = max(maxSum,currentSum);
+        }
+        printf("%d\n",maxSum);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_KADANEALGO_H_ */

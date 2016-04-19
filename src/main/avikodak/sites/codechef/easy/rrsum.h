@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define RRSUM_H_
 
 //Tested
-void printResults(){
-	long long int nValue,totalQueries,query;
-	cin >> nValue >> totalQueries;
-	long long int minValue = nValue+2;
-	long long int maxValue = 3*nValue;
-	long long int difference;
-	for(unsigned int counter = 0;counter < totalQueries;counter++){
-		cin >> query;
-		if(query < minValue || query > maxValue){
-			cout << "0" << endl;
-		}else{
-			difference = query - minValue + 1;
-			if(difference <= nValue){
-				cout << query - minValue + 1 << endl;
-			}else{
-				cout << maxValue - query + 1 << endl;
-			}
-		}
-	}
+void printResults() {
+    long long int nValue,totalQueries,query;
+    cin >> nValue >> totalQueries;
+    long long int minValue = nValue+2;
+    long long int maxValue = 3*nValue;
+    long long int difference;
+    for(unsigned int counter = 0; counter < totalQueries; counter++) {
+        cin >> query;
+        if(query < minValue || query > maxValue) {
+            cout << "0" << endl;
+        } else {
+            difference = query - minValue + 1;
+            if(difference <= nValue) {
+                cout << query - minValue + 1 << endl;
+            } else {
+                cout << maxValue - query + 1 << endl;
+            }
+        }
+    }
 }
 
 #endif /* RRSUM_H_ */

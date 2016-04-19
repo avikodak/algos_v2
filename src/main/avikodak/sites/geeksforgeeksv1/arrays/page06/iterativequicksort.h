@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: iterativequicksort.h 
+ *  File Name   		: iterativequicksort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\iterativequicksort.h
  *  Created on			: Dec 25, 2014 :: 6:09:14 PM
  *  Author				: AVINASH
@@ -74,49 +74,49 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int partitionQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return INT_MIN;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[pivotIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] < key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] >= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
+int partitionQuickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return INT_MIN;
+    }
+    int pivotIndex = endIndex;
+    int key = userInput[pivotIndex];
+    while(startIndex < endIndex) {
+        while(userInput[startIndex] < key) {
+            startIndex++;
+        }
+        while(startIndex < endIndex && userInput[endIndex] >= key) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    swap(userInput[endIndex],userInput[pivotIndex]);
+    return endIndex;
 }
 
 //Tested
-void quickSortIterative(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	stack<int> auxSpace;
-	auxSpace.push(0);
-	auxSpace.push(userInput.size()-1);
-	int startIndex,endIndex,dividingIndex;
-	while(!auxSpace.empty()){
-		endIndex = auxSpace.top();
-		auxSpace.pop();
-		startIndex = auxSpace.top();
-		auxSpace.pop();
-		if(startIndex < endIndex){
-			dividingIndex = partitionQuickSort(userInput,startIndex,endIndex);
-			auxSpace.push(startIndex);
-			auxSpace.push(dividingIndex-1);
-			auxSpace.push(dividingIndex+1);
-			auxSpace.push(endIndex);
-		}
-	}
+void quickSortIterative(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    stack<int> auxSpace;
+    auxSpace.push(0);
+    auxSpace.push(userInput.size()-1);
+    int startIndex,endIndex,dividingIndex;
+    while(!auxSpace.empty()) {
+        endIndex = auxSpace.top();
+        auxSpace.pop();
+        startIndex = auxSpace.top();
+        auxSpace.pop();
+        if(startIndex < endIndex) {
+            dividingIndex = partitionQuickSort(userInput,startIndex,endIndex);
+            auxSpace.push(startIndex);
+            auxSpace.push(dividingIndex-1);
+            auxSpace.push(dividingIndex+1);
+            auxSpace.push(endIndex);
+        }
+    }
 }
 
 #endif /* ITERATIVEQUICKSORT_H_ */

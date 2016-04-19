@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: luckydivision.h 
+ *  File Name   		: luckydivision.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\luckydivision.h
  *  Created on			: Mar 3, 2015 :: 6:30:19 PM
  *  Author				: avikodak
@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define LUCKYDIVISION_H_
 
 //Tested
-void printIsNumberCloseToLucky(){
-	int luckyNumbers[] = {4,7,44,47,74,77,444,447,474,477,744,747,774,777};
-	unsigned int userInput;
-	scanf("%d",&userInput);
-	unsigned int size = sizeof(luckyNumbers)/sizeof(int);
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(luckyNumbers[counter] > userInput){
-			printf("NO");
-			return;
-		}
-		if(userInput%luckyNumbers[counter] == 0){
-			printf("YES");
-			return;
-		}
-	}
-	printf("NO");
+void printIsNumberCloseToLucky() {
+    int luckyNumbers[] = {4,7,44,47,74,77,444,447,474,477,744,747,774,777};
+    unsigned int userInput;
+    scanf("%d",&userInput);
+    unsigned int size = sizeof(luckyNumbers)/sizeof(int);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(luckyNumbers[counter] > userInput) {
+            printf("NO");
+            return;
+        }
+        if(userInput%luckyNumbers[counter] == 0) {
+            printf("YES");
+            return;
+        }
+    }
+    printf("NO");
 }
 
 #endif /* LUCKYDIVISION_H_ */

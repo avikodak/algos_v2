@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arrayqueue.h 
+ *  File Name   		: arrayqueue.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\arrayqueue.h
  *  Created on			: Oct 20, 2014 :: 2:07:02 PM
  *  Author				: AVINASH
@@ -71,61 +71,61 @@ using namespace __gnu_cxx;
 
 class arrayqueue {
 private:
-	int *queue;
-	int frontIndex,rearIndex;
-	int maxSize;
+    int *queue;
+    int frontIndex,rearIndex;
+    int maxSize;
 public:
-	arrayqueue(){
-		this->maxSize = 1024;
-		frontIndex = -1;
-		rearIndex = 0;
-		this->queue = (int *)malloc(sizeof(int)*maxSize);
-	}
+    arrayqueue() {
+        this->maxSize = 1024;
+        frontIndex = -1;
+        rearIndex = 0;
+        this->queue = (int *)malloc(sizeof(int)*maxSize);
+    }
 
-	arrayqueue(int size){
-		this->maxSize = size;
-		this->queue = (int *)malloc(sizeof(int)*maxSize);
-		frontIndex = -1;
-		rearIndex = 0;
-	}
+    arrayqueue(int size) {
+        this->maxSize = size;
+        this->queue = (int *)malloc(sizeof(int)*maxSize);
+        frontIndex = -1;
+        rearIndex = 0;
+    }
 
-	bool isFull(){
-		return (rearIndex+1)%maxSize == frontIndex;
-	}
+    bool isFull() {
+        return (rearIndex+1)%maxSize == frontIndex;
+    }
 
-	bool isEmpty(){
-		return frontIndex == -1 ||  rearIndex == frontIndex;
-	}
+    bool isEmpty() {
+        return frontIndex == -1 ||  rearIndex == frontIndex;
+    }
 
-	void push(int value){
-		if(isFull()){
-			throw "Queue is full";
-		}
-		if(frontIndex == -1){
-			frontIndex = 0;
-		}
-		queue[rearIndex] = value;
-		rearIndex = (rearIndex+1)%maxSize;
-	}
+    void push(int value) {
+        if(isFull()) {
+            throw "Queue is full";
+        }
+        if(frontIndex == -1) {
+            frontIndex = 0;
+        }
+        queue[rearIndex] = value;
+        rearIndex = (rearIndex+1)%maxSize;
+    }
 
-	void pop(){
-		if(isEmpty()){
-			throw "Queue is empty";
-		}
-		queue[frontIndex] = 0;
-		frontIndex = (frontIndex+1)%maxSize;
-	}
+    void pop() {
+        if(isEmpty()) {
+            throw "Queue is empty";
+        }
+        queue[frontIndex] = 0;
+        frontIndex = (frontIndex+1)%maxSize;
+    }
 
-	int front(){
-		if(isEmpty()){
-			throw "Queue is empty";
-		}
-		return queue[frontIndex];
-	}
+    int front() {
+        if(isEmpty()) {
+            throw "Queue is empty";
+        }
+        return queue[frontIndex];
+    }
 
-	unsigned int size(){
-		return maxSize - rearIndex + frontIndex;
-	}
+    unsigned int size() {
+        return maxSize - rearIndex + frontIndex;
+    }
 };
 
 #endif /* ARRAYQUEUE_H_ */

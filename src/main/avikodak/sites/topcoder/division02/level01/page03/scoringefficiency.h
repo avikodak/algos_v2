@@ -73,26 +73,26 @@ using namespace __gnu_cxx;
 //Tested
 class ScoringEfficiency {
 public:
-	double getPointsPerShot(vector<string> gameLog){
-		map<string,int> logScoreMap;
-		map<string,int>::iterator itToLogScoreMap;
-		logScoreMap.insert(pair<string,int>("Made 3 point field goal",3));
-		logScoreMap.insert(pair<string,int>("Made 2 point field goal",2));
-		logScoreMap.insert(pair<string,int>("Made free throw",1));
-		logScoreMap.insert(pair<string,int>("Missed free throw",-1));
-		int totalPoints = 0,freeThrowsAttempted = 0;
-		for(unsigned int counter = 0;counter < gameLog.size();counter++){
-			if((itToLogScoreMap = logScoreMap.find(gameLog[counter])) != logScoreMap.end()){
-				if(itToLogScoreMap->second == -1 || itToLogScoreMap->second == 1){
-					freeThrowsAttempted++;
-				}
-				if(itToLogScoreMap->second != -1){
-					totalPoints += itToLogScoreMap->second;
-				}
-			}
-		}
-		return (double)totalPoints/((double)(gameLog.size()-freeThrowsAttempted)+(double)(0.5*freeThrowsAttempted));
-	}
+    double getPointsPerShot(vector<string> gameLog) {
+        map<string,int> logScoreMap;
+        map<string,int>::iterator itToLogScoreMap;
+        logScoreMap.insert(pair<string,int>("Made 3 point field goal",3));
+        logScoreMap.insert(pair<string,int>("Made 2 point field goal",2));
+        logScoreMap.insert(pair<string,int>("Made free throw",1));
+        logScoreMap.insert(pair<string,int>("Missed free throw",-1));
+        int totalPoints = 0,freeThrowsAttempted = 0;
+        for(unsigned int counter = 0; counter < gameLog.size(); counter++) {
+            if((itToLogScoreMap = logScoreMap.find(gameLog[counter])) != logScoreMap.end()) {
+                if(itToLogScoreMap->second == -1 || itToLogScoreMap->second == 1) {
+                    freeThrowsAttempted++;
+                }
+                if(itToLogScoreMap->second != -1) {
+                    totalPoints += itToLogScoreMap->second;
+                }
+            }
+        }
+        return (double)totalPoints/((double)(gameLog.size()-freeThrowsAttempted)+(double)(0.5*freeThrowsAttempted));
+    }
 };
 
 #endif /* SCORINGEFFICIENCY_H_ */

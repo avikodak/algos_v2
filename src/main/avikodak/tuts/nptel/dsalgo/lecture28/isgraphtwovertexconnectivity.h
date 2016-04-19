@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphtwovertexconnectivity.h 
+ *  File Name   		: isgraphtwovertexconnectivity.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture28\isgraphtwovertexconnectivity.h
  *  Created on			: Dec 5, 2014 :: 12:00:25 PM
  *  Author				: AVINASH

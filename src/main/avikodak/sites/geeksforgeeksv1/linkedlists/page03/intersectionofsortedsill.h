@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: intersectionofsortedsill.h 
+ *  File Name   		: intersectionofsortedsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\intersectionofsortedsill.h
  *  Created on			: Oct 19, 2014 :: 4:37:34 PM
  *  Author				: AVINASH
@@ -72,84 +72,84 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *intersectionOfSortedSill(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
-	}
-	sillNode *intersectionOfSill = null,*intersectionCrawler = null;
-	while(firstPtr != null && secondPtr != null){
-		if(firstPtr->value == secondPtr->value){
-			if(intersectionOfSill == null){
-				intersectionOfSill = new sillNode(firstPtr->value);
-				intersectionCrawler = intersectionOfSill;
-			}else{
-				intersectionCrawler->next = new sillNode(firstPtr->value);
-			}
-			firstPtr = firstPtr->next;
-			secondPtr = secondPtr->next;
-		}else{
-			if(firstPtr->value > secondPtr->value){
-				secondPtr = secondPtr->next;
-			}else{
-				firstPtr = firstPtr->next;
-			}
-		}
-	}
-	return intersectionOfSill;
+sillNode *intersectionOfSortedSill(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null || secondPtr == null) {
+        return null;
+    }
+    sillNode *intersectionOfSill = null,*intersectionCrawler = null;
+    while(firstPtr != null && secondPtr != null) {
+        if(firstPtr->value == secondPtr->value) {
+            if(intersectionOfSill == null) {
+                intersectionOfSill = new sillNode(firstPtr->value);
+                intersectionCrawler = intersectionOfSill;
+            } else {
+                intersectionCrawler->next = new sillNode(firstPtr->value);
+            }
+            firstPtr = firstPtr->next;
+            secondPtr = secondPtr->next;
+        } else {
+            if(firstPtr->value > secondPtr->value) {
+                secondPtr = secondPtr->next;
+            } else {
+                firstPtr = firstPtr->next;
+            }
+        }
+    }
+    return intersectionOfSill;
 }
 
-sillNode *getIntersectionOfSortedSillHashmap(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	sillNode *crawler = firstPtr,*intersectionHead = null,*intersectionCrawler;
-	while(crawler != null){
-		if(frequencyMap.find(crawler->value) == frequencyMap.end()){
-			frequencyMap[crawler->value] = 1;
-		}else{
-			frequencyMap[crawler->value] += 1;
-		}
-		crawler = crawler->next;
-	}
-	crawler = secondPtr;
-	while(crawler != null){
-		itToFrequencyMap = frequencyMap.find(crawler->value);
-		if(itToFrequencyMap != frequencyMap.end()){
-			if(itToFrequencyMap->second == 1){
-				frequencyMap.erase(crawler->value);
-			}else{
-				itToFrequencyMap->second -= 1;
-			}
-			if(intersectionHead == null){
-				intersectionHead = new sillNode(crawler->value);
-				intersectionCrawler = intersectionHead;
-			}else{
-				intersectionCrawler->next = new sillNode(crawler->value);
-			}
-		}
-	}
-	return intersectionHead;
+sillNode *getIntersectionOfSortedSillHashmap(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null || secondPtr == null) {
+        return null;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    sillNode *crawler = firstPtr,*intersectionHead = null,*intersectionCrawler;
+    while(crawler != null) {
+        if(frequencyMap.find(crawler->value) == frequencyMap.end()) {
+            frequencyMap[crawler->value] = 1;
+        } else {
+            frequencyMap[crawler->value] += 1;
+        }
+        crawler = crawler->next;
+    }
+    crawler = secondPtr;
+    while(crawler != null) {
+        itToFrequencyMap = frequencyMap.find(crawler->value);
+        if(itToFrequencyMap != frequencyMap.end()) {
+            if(itToFrequencyMap->second == 1) {
+                frequencyMap.erase(crawler->value);
+            } else {
+                itToFrequencyMap->second -= 1;
+            }
+            if(intersectionHead == null) {
+                intersectionHead = new sillNode(crawler->value);
+                intersectionCrawler = intersectionHead;
+            } else {
+                intersectionCrawler->next = new sillNode(crawler->value);
+            }
+        }
+    }
+    return intersectionHead;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-sillNode *intersectionOfSortedSillON2(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return null;
-	}
-	unsigned int prevElementFrequency = 0;
-	sillNode *firstSillCrawler = firstPtr,*secondSillCrawler = secondPtr;
-	sillNode *intersectionSill = null;
-	while(firstSillCrawler != null){
-		secondSillCrawler = secondPtr;
-		while(secondSillCrawler != null){
+sillNode *intersectionOfSortedSillON2(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null || secondPtr == null) {
+        return null;
+    }
+    unsigned int prevElementFrequency = 0;
+    sillNode *firstSillCrawler = firstPtr,*secondSillCrawler = secondPtr;
+    sillNode *intersectionSill = null;
+    while(firstSillCrawler != null) {
+        secondSillCrawler = secondPtr;
+        while(secondSillCrawler != null) {
 
-		}
-		firstSillCrawler = firstSillCrawler->next;
-	}
+        }
+        firstSillCrawler = firstSillCrawler->next;
+    }
 }
 #endif /* INTERSECTIONOFSORTEDSILL_H_ */
 

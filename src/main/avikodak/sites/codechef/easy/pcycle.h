@@ -71,44 +71,44 @@ using namespace __gnu_cxx;
 #define PCYCLE_H_
 
 //Tested
-void printPermutationCycle(vector<unsigned int> userInput){
-	vector<bool> visitedFlags;
-	visitedFlags.assign(userInput.size(),false);
-	vector<vector<unsigned int> > cyclesList;
-	for(unsigned int outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		if(!visitedFlags[outerCounter]){
-			vector<unsigned int> cycle;
-			while(true){
-				cycle.push_back(outerCounter);
-				if(visitedFlags[outerCounter]){
-					break;
-				}
-				visitedFlags[outerCounter] = true;
-				outerCounter = userInput[outerCounter];
-			}
-			cyclesList.push_back(cycle);
-		}
-	}
-	cout << cyclesList.size() << endl;
-	for(unsigned int outerCounter = 0;outerCounter < cyclesList.size();outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < cyclesList[outerCounter].size();innerCounter++){
-			cout << cyclesList[outerCounter][innerCounter] << " ";
-		}
-		cout << endl;
-	}
+void printPermutationCycle(vector<unsigned int> userInput) {
+    vector<bool> visitedFlags;
+    visitedFlags.assign(userInput.size(),false);
+    vector<vector<unsigned int> > cyclesList;
+    for(unsigned int outerCounter = 1; outerCounter < userInput.size(); outerCounter++) {
+        if(!visitedFlags[outerCounter]) {
+            vector<unsigned int> cycle;
+            while(true) {
+                cycle.push_back(outerCounter);
+                if(visitedFlags[outerCounter]) {
+                    break;
+                }
+                visitedFlags[outerCounter] = true;
+                outerCounter = userInput[outerCounter];
+            }
+            cyclesList.push_back(cycle);
+        }
+    }
+    cout << cyclesList.size() << endl;
+    for(unsigned int outerCounter = 0; outerCounter < cyclesList.size(); outerCounter++) {
+        for(unsigned int innerCounter = 0; innerCounter < cyclesList[outerCounter].size(); innerCounter++) {
+            cout << cyclesList[outerCounter][innerCounter] << " ";
+        }
+        cout << endl;
+    }
 }
 
 //Tested
-void printResults(){
-	vector<unsigned int> userInput;
-	userInput.push_back(0);
-	unsigned int size,input;
-	scanf("%u",&size);
-	while(size--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	printPermutationCycle(userInput);
+void printResults() {
+    vector<unsigned int> userInput;
+    userInput.push_back(0);
+    unsigned int size,input;
+    scanf("%u",&size);
+    while(size--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    printPermutationCycle(userInput);
 }
 
 #endif /* PCYCLE_H_ */

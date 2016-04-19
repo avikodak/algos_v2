@@ -73,23 +73,23 @@ using namespace __gnu_cxx;
 #define HELPLIRA_H_
 
 //Tested
-void printResults(){
-	unsigned int size,minAreaIndex,maxAreaIndex;
-	double minArea,maxArea,area,x1,y1,x2,y2,x3,y3;
-	scanf("%u",&size);
-	for(unsigned int counter = 0;counter < size;counter++){
-		scanf("%lf %lf %lf %lf %lf %lf",&x1,&y1,&x2,&y2,&x3,&y3);
-		area = abs((x1*y2-y1*x2)+(x2*y3-y2*x3)+(x3*y1-y3*x1))/2;
-		if(counter == 0 || minArea >= area){
-			minArea = area;
-			minAreaIndex = counter;
-		}
-		if(counter == 0 || maxArea <= area){
-			maxArea = area;
-			maxAreaIndex = counter;
-		}
-	}
-	printf("%u %u\n",minAreaIndex+1,maxAreaIndex+1);
+void printResults() {
+    unsigned int size,minAreaIndex,maxAreaIndex;
+    double minArea,maxArea,area,x1,y1,x2,y2,x3,y3;
+    scanf("%u",&size);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        scanf("%lf %lf %lf %lf %lf %lf",&x1,&y1,&x2,&y2,&x3,&y3);
+        area = abs((x1*y2-y1*x2)+(x2*y3-y2*x3)+(x3*y1-y3*x1))/2;
+        if(counter == 0 || minArea >= area) {
+            minArea = area;
+            minAreaIndex = counter;
+        }
+        if(counter == 0 || maxArea <= area) {
+            maxArea = area;
+            maxAreaIndex = counter;
+        }
+    }
+    printf("%u %u\n",minAreaIndex+1,maxAreaIndex+1);
 }
 
 #endif /* HELPLIRA_H_ */

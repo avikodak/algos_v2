@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deleteanodegivenptr.h 
+ *  File Name   		: deleteanodegivenptr.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deleteanodegivenptr.h
  *  Created on			: Oct 11, 2014 :: 10:54:09 AM
  *  Author				: AVINASH
@@ -74,17 +74,17 @@ using namespace __gnu_cxx;
 /* 																	O(1) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void deleteNodeGivenPtr(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	if(ptr->next == null){
-		throw "Can't delete";
-	}
-	ptr->value = ptr->next->value;
-	sillNode *nodeToBeDeleted = ptr->next;
-	ptr->next = ptr->next->next;
-	free(nodeToBeDeleted);
+void deleteNodeGivenPtr(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    if(ptr->next == null) {
+        throw "Can't delete";
+    }
+    ptr->value = ptr->next->value;
+    sillNode *nodeToBeDeleted = ptr->next;
+    ptr->next = ptr->next->next;
+    free(nodeToBeDeleted);
 }
 
 #endif /* DELETEANODEGIVENPTR_H_ */

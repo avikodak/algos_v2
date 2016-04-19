@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define NOLOGIC_H_
 
 //Tested
-void printNoLogicAns(string userInput){
-	unsigned int frequencyCount[26] = {0};
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <= 'z')
-		frequencyCount[userInput[counter]-'a']++;
-	}
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(frequencyCount[counter] == 0){
-			printf("%c\n",counter+'a');
-			return;
-		}
-	}
-	cout << "~" << endl;
+void printNoLogicAns(string userInput) {
+    unsigned int frequencyCount[26] = {0};
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <= 'z')
+            frequencyCount[userInput[counter]-'a']++;
+    }
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(frequencyCount[counter] == 0) {
+            printf("%c\n",counter+'a');
+            return;
+        }
+    }
+    cout << "~" << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	cin >> testCases;
-	cin.ignore();
-	while(testCases--){
-		getline(cin,userInput);
-		transform(userInput.begin(),userInput.end(),userInput.begin(),::tolower);
-		printNoLogicAns(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    cin >> testCases;
+    cin.ignore();
+    while(testCases--) {
+        getline(cin,userInput);
+        transform(userInput.begin(),userInput.end(),userInput.begin(),::tolower);
+        printNoLogicAns(userInput);
+    }
 }
 
 #endif /* NOLOGIC_H_ */

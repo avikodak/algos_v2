@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tripletforgivensum.h 
+ *  File Name   		: tripletforgivensum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\tripletforgivensum.h
  *  Created on			: Oct 31, 2014 :: 12:08:14 PM
  *  Author				: AVINASH
@@ -72,104 +72,104 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr){
-	if(ptr == null || ptr->next == null){
-		(*firstPtr) = ptr;
-		(*secondPtr) = null;
-		return;
-	}
-	sillNode *fastPtr = ptr->next,*slowPtr = ptr;
-	while(fastPtr != null){
-		fastPtr = fastPtr->next;
-		if(fastPtr != null){
-			slowPtr = slowPtr->next;
-			fastPtr = fastPtr->next;
-		}
-	}
-	(*secondPtr) = slowPtr->next;
-	slowPtr->next = null;
-	(*firstPtr) = ptr;
+void frontBackSplit(sillNode *ptr,sillNode **firstPtr,sillNode **secondPtr) {
+    if(ptr == null || ptr->next == null) {
+        (*firstPtr) = ptr;
+        (*secondPtr) = null;
+        return;
+    }
+    sillNode *fastPtr = ptr->next,*slowPtr = ptr;
+    while(fastPtr != null) {
+        fastPtr = fastPtr->next;
+        if(fastPtr != null) {
+            slowPtr = slowPtr->next;
+            fastPtr = fastPtr->next;
+        }
+    }
+    (*secondPtr) = slowPtr->next;
+    slowPtr->next = null;
+    (*firstPtr) = ptr;
 }
 
-sillNode *merge(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return firstPtr == null?secondPtr:firstPtr;
-	}
-	sillNode *result = null;
-	if(firstPtr->value < secondPtr->value){
-		result = a;
-		result->next = merge(firstPtr->next,secondPtr);
-	}else{
-		result = b;
-		result->next = merge(firstPtr,secondPtr->next);
-	}
-	return result;
+sillNode *merge(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null || secondPtr == null) {
+        return firstPtr == null?secondPtr:firstPtr;
+    }
+    sillNode *result = null;
+    if(firstPtr->value < secondPtr->value) {
+        result = a;
+        result->next = merge(firstPtr->next,secondPtr);
+    } else {
+        result = b;
+        result->next = merge(firstPtr,secondPtr->next);
+    }
+    return result;
 }
 
-void mergeSort(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *firstPtr = null,*secondPtr = null;
-	frontBackSplit(*ptr,&firstPtr,&secondPtr);
-	mergeSort(&firstPtr);
-	mergeSort(&secondPtr);
-	(*ptr) = merge(firstPtr,secondPtr);
+void mergeSort(sillNode **ptr) {
+    if(*ptr == null || (*ptr)->next == null) {
+        return;
+    }
+    sillNode *firstPtr = null,*secondPtr = null;
+    frontBackSplit(*ptr,&firstPtr,&secondPtr);
+    mergeSort(&firstPtr);
+    mergeSort(&secondPtr);
+    (*ptr) = merge(firstPtr,secondPtr);
 }
 
-iTriplet *getTripletForGivenSum(sillNode *firstPtr,sillNode *secondPtr,sillNode *thirdPtr,int value){
-	if(firstPtr == null || secondPtr == null || thirdPtr == null){
-		return null;
-	}
-	mergeSort(&firstPtr);
-	mergeSort(&secondPtr);
-	mergeSort(&thirdPtr);
-	reverseSill(&thirdPtr);
-	sillNode *firstCrawler = firstPtr,*secondCrawler,*thirdCrawler;
-	int sum;
-	while(firstCrawler != null){
-		secondCrawler = secondPtr;
-		thirdCrawler = thirdPtr;
-		while(secondCrawler != null && thirdCrawler != null){
-			sum = firstCrawler->value + secondCrawler->value + thirdCrawler->value;
-			if(sum == value){
-				iTriplet *result = new iTriplet(firstCrawler->value,secondCrawler->value,thirdCrawler->value);
-				return result;
-			}
-			if(sum > value){
-				thirdCrawler = thirdCrawler->next;
-			}else{
-				secondCrawler = secondCrawler->next;
-			}
-		}
-	}
-	return null;
+iTriplet *getTripletForGivenSum(sillNode *firstPtr,sillNode *secondPtr,sillNode *thirdPtr,int value) {
+    if(firstPtr == null || secondPtr == null || thirdPtr == null) {
+        return null;
+    }
+    mergeSort(&firstPtr);
+    mergeSort(&secondPtr);
+    mergeSort(&thirdPtr);
+    reverseSill(&thirdPtr);
+    sillNode *firstCrawler = firstPtr,*secondCrawler,*thirdCrawler;
+    int sum;
+    while(firstCrawler != null) {
+        secondCrawler = secondPtr;
+        thirdCrawler = thirdPtr;
+        while(secondCrawler != null && thirdCrawler != null) {
+            sum = firstCrawler->value + secondCrawler->value + thirdCrawler->value;
+            if(sum == value) {
+                iTriplet *result = new iTriplet(firstCrawler->value,secondCrawler->value,thirdCrawler->value);
+                return result;
+            }
+            if(sum > value) {
+                thirdCrawler = thirdCrawler->next;
+            } else {
+                secondCrawler = secondCrawler->next;
+            }
+        }
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-iTriplet *getTripletForGivenSum(sillNode *firstPtr,sillNode *secondPtr,sillNode *thirdPtr,int value){
-	if(firstPtr == null || secondPtr == null || thirdPtr == null){
-		return null;
-	}
-	sillNode *firstCrawler = firstPtr,*secondCrawler = null,*thirdCrawler = null;
-	while(firstCrawler != null){
-		secondCrawler = secondPtr;
-		while(secondCrawler != null){
-			thirdCrawler = thirdPtr;
-			while(thirdCrawler != null){
-				if(firstCrawler->value + secondCrawler->value + thirdCrawler->value == value){
-					iTriplet *result = new iTriplet(firstCrawler->value,secondCrawler->value,thirdCrawler->value);
-					return result;
-				}
-				thirdCrawler = thirdCrawler->next;
-			}
-			secondCrawler = secondCrawler->next;
-		}
-		firstCrawler = firstCrawler->next;
-	}
-	return null;
+iTriplet *getTripletForGivenSum(sillNode *firstPtr,sillNode *secondPtr,sillNode *thirdPtr,int value) {
+    if(firstPtr == null || secondPtr == null || thirdPtr == null) {
+        return null;
+    }
+    sillNode *firstCrawler = firstPtr,*secondCrawler = null,*thirdCrawler = null;
+    while(firstCrawler != null) {
+        secondCrawler = secondPtr;
+        while(secondCrawler != null) {
+            thirdCrawler = thirdPtr;
+            while(thirdCrawler != null) {
+                if(firstCrawler->value + secondCrawler->value + thirdCrawler->value == value) {
+                    iTriplet *result = new iTriplet(firstCrawler->value,secondCrawler->value,thirdCrawler->value);
+                    return result;
+                }
+                thirdCrawler = thirdCrawler->next;
+            }
+            secondCrawler = secondCrawler->next;
+        }
+        firstCrawler = firstCrawler->next;
+    }
+    return null;
 }
 
 #endif /* TRIPLETFORGIVENSUM_H_ */

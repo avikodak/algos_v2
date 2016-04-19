@@ -72,38 +72,38 @@ using namespace __gnu_cxx;
 #define LCPESY_H_
 
 //Tested
-void printLongestCommonPattern(string firstUserInput,string secondUserInput){
-	map<char,unsigned int> frequencyMap;
-	for(unsigned int counter = 0;counter < firstUserInput.length();counter++){
-		if(frequencyMap.find(firstUserInput[counter]) == frequencyMap.end()){
-			frequencyMap[firstUserInput[counter]] = 1;
-		}else{
-			frequencyMap[firstUserInput[counter]]++;
-		}
-	}
-	unsigned int commonChars = 0;
-	for(unsigned int counter = 0;counter < secondUserInput.length();counter++){
-		if(frequencyMap.find(secondUserInput[counter]) != frequencyMap.end()){
-			commonChars++;
-			if(frequencyMap[secondUserInput[counter]] == 1){
-				frequencyMap.erase(secondUserInput[counter]);
-			}else{
-				frequencyMap[secondUserInput[counter]]--;
-			}
-		}
-	}
-	cout << commonChars << endl;
+void printLongestCommonPattern(string firstUserInput,string secondUserInput) {
+    map<char,unsigned int> frequencyMap;
+    for(unsigned int counter = 0; counter < firstUserInput.length(); counter++) {
+        if(frequencyMap.find(firstUserInput[counter]) == frequencyMap.end()) {
+            frequencyMap[firstUserInput[counter]] = 1;
+        } else {
+            frequencyMap[firstUserInput[counter]]++;
+        }
+    }
+    unsigned int commonChars = 0;
+    for(unsigned int counter = 0; counter < secondUserInput.length(); counter++) {
+        if(frequencyMap.find(secondUserInput[counter]) != frequencyMap.end()) {
+            commonChars++;
+            if(frequencyMap[secondUserInput[counter]] == 1) {
+                frequencyMap.erase(secondUserInput[counter]);
+            } else {
+                frequencyMap[secondUserInput[counter]]--;
+            }
+        }
+    }
+    cout << commonChars << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string firstUserInput,secondUserInput;
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		printLongestCommonPattern(firstUserInput,secondUserInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string firstUserInput,secondUserInput;
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        printLongestCommonPattern(firstUserInput,secondUserInput);
+    }
 }
 
 #endif /* LCPESY_H_ */

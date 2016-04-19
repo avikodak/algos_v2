@@ -72,9 +72,9 @@ using namespace __gnu_cxx;
 
 //Tested
 void printNumberMirror() {
-	unsigned long long int userInput;
-	cin >> userInput;
-	cout << userInput;
+    unsigned long long int userInput;
+    cin >> userInput;
+    cout << userInput;
 }
 
 #endif /* START01_H_ */

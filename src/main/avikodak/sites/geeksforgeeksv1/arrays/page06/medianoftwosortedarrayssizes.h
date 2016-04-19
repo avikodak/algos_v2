@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: medianoftwosortedarrayssizes.h 
+ *  File Name   		: medianoftwosortedarrayssizes.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\medianoftwosortedarrayssizes.h
  *  Created on			: Jan 3, 2015 :: 10:08:46 AM
  *  Author				: AVINASH
@@ -78,47 +78,47 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int medianOfTwoSortedArrayDifferentSizesON(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return INT_MAX;
-	}
-	int size = (firstSortedArray.size() + secondSortedArray.size()),medianSize;
-	int prevNumber,currentNumber,firstCrawler = 0,secondCrawler = 0;
-	while(medianSize-- && (firstCrawler < firstSortedArray.size() || secondCrawler < secondSortedArray.size())){
-		prevNumber = currentNumber;
-		if(firstCrawler >= firstSortedArray.size() || secondCrawler >= secondSortedArray.size()){
-			if(firstCrawler < firstSortedArray.size()){
-				currentNumber = firstSortedArray[firstCrawler];
-				firstCrawler++;
-			}else{
-				currentNumber = secondSortedArray[secondCrawler];
-				secondCrawler++;
-			}
-		}else{
-			if(firstSortedArray[firstCrawler] < secondSortedArray[secondCrawler]){
-				currentNumber = firstSortedArray[firstCrawler];
-				firstCrawler++;
-			}else{
-				currentNumber = secondSortedArray[secondCrawler];
-				secondCrawler++;
-			}
-		}
-	}
-	return size%2  == 1?currentNumber:(currentNumber + prevNumber)/2;
+int medianOfTwoSortedArrayDifferentSizesON(vector<int> firstSortedArray,vector<int> secondSortedArray) {
+    if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0) {
+        return INT_MAX;
+    }
+    int size = (firstSortedArray.size() + secondSortedArray.size()),medianSize;
+    int prevNumber,currentNumber,firstCrawler = 0,secondCrawler = 0;
+    while(medianSize-- && (firstCrawler < firstSortedArray.size() || secondCrawler < secondSortedArray.size())) {
+        prevNumber = currentNumber;
+        if(firstCrawler >= firstSortedArray.size() || secondCrawler >= secondSortedArray.size()) {
+            if(firstCrawler < firstSortedArray.size()) {
+                currentNumber = firstSortedArray[firstCrawler];
+                firstCrawler++;
+            } else {
+                currentNumber = secondSortedArray[secondCrawler];
+                secondCrawler++;
+            }
+        } else {
+            if(firstSortedArray[firstCrawler] < secondSortedArray[secondCrawler]) {
+                currentNumber = firstSortedArray[firstCrawler];
+                firstCrawler++;
+            } else {
+                currentNumber = secondSortedArray[secondCrawler];
+                secondCrawler++;
+            }
+        }
+    }
+    return size%2  == 1?currentNumber:(currentNumber + prevNumber)/2;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int medianOfTwoSortedArrayDifferentSizesONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray){
-	if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0){
-		return INT_MIN;
-	}
-	vector<int> mergedArray;
-	merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
-	sort(mergedArray.begin(),mergedArray.end());
-	int size = mergedArray.size();
-	return size % 2 == 1?mergedArray[size/2]:(mergedArray[size/2] + mergedArray[size/2-1])/2;
+int medianOfTwoSortedArrayDifferentSizesONLOGN(vector<int> firstSortedArray,vector<int> secondSortedArray) {
+    if(firstSortedArray.size() == 0 && secondSortedArray.size() == 0) {
+        return INT_MIN;
+    }
+    vector<int> mergedArray;
+    merge(firstSortedArray.begin(),firstSortedArray.end(),secondSortedArray.begin(),secondSortedArray.end(),mergedArray.begin());
+    sort(mergedArray.begin(),mergedArray.end());
+    int size = mergedArray.size();
+    return size % 2 == 1?mergedArray[size/2]:(mergedArray[size/2] + mergedArray[size/2-1])/2;
 }
 
 

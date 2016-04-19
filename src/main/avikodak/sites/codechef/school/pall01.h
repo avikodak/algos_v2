@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define PALL01_H_
 
 //Tested
-unsigned int reverseNumber(unsigned int userInput){
-	unsigned int reverse = 0;
-	while(userInput){
-		reverse = (reverse << 3) + (reverse << 1) + userInput%10;
-		userInput /= 10;
-	}
-	return reverse;
+unsigned int reverseNumber(unsigned int userInput) {
+    unsigned int reverse = 0;
+    while(userInput) {
+        reverse = (reverse << 3) + (reverse << 1) + userInput%10;
+        userInput /= 10;
+    }
+    return reverse;
 }
 
 //Tested
-void checkForPalindromes(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		if(reverseNumber(input) == input){
-			printf("wins\n");
-		}else{
-			printf("losses\n");
-		}
-	}
+void checkForPalindromes() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        if(reverseNumber(input) == input) {
+            printf("wins\n");
+        } else {
+            printf("losses\n");
+        }
+    }
 }
 
 #endif /* PALL01_H_ */

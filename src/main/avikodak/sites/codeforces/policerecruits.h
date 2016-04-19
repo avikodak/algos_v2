@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: policerecruits.h 
+ *  File Name   		: policerecruits.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\policerecruits.h
  *  Created on			: Mar 10, 2015 :: 11:06:03 AM
  *  Author				: avikodak
@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define POLICERECRUITS_H_
 
 //Tested
-void getCrimesUntreated(){
-	int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
-	scanf("%d",&totalEvents);
-	while(totalEvents--){
-		scanf("%d",&event);
-		if(event > 0){
-			totalRecruits += event;
-		}else{
-			if(totalRecruits == 0){
-				crimesUntreated += 1;
-			}else{
-				if(totalRecruits != 0){
-					totalRecruits -= 1;
-				}
-			}
-		}
-	}
-	printf("%d",crimesUntreated);
+void getCrimesUntreated() {
+    int totalEvents,crimesUntreated = 0,event,totalRecruits = 0;
+    scanf("%d",&totalEvents);
+    while(totalEvents--) {
+        scanf("%d",&event);
+        if(event > 0) {
+            totalRecruits += event;
+        } else {
+            if(totalRecruits == 0) {
+                crimesUntreated += 1;
+            } else {
+                if(totalRecruits != 0) {
+                    totalRecruits -= 1;
+                }
+            }
+        }
+    }
+    printf("%d",crimesUntreated);
 }
 
 #endif /* POLICERECRUITS_H_ */

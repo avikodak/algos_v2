@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sillqueue.h 
+ *  File Name   		: sillqueue.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\sillqueue.h
  *  Created on			: Oct 20, 2014 :: 2:08:14 PM
  *  Author				: AVINASH
@@ -71,52 +71,52 @@ using namespace __gnu_cxx;
 
 class sillqueue {
 private:
-	sillNode *head,*tail;
+    sillNode *head,*tail;
 public:
-	sillqueue(){
-		this->head = null;
-		this->tail = null;
-	}
+    sillqueue() {
+        this->head = null;
+        this->tail = null;
+    }
 
-	bool isEmpty(){
-		return head == null;
-	}
+    bool isEmpty() {
+        return head == null;
+    }
 
-	void push(int value){
-		if(head == null){
-			head = new sillNode(value);
-			tail = head;
-		}else{
-			tail->next = new sillNode(value);
-			tail = tail->next;
-		}
-	}
+    void push(int value) {
+        if(head == null) {
+            head = new sillNode(value);
+            tail = head;
+        } else {
+            tail->next = new sillNode(value);
+            tail = tail->next;
+        }
+    }
 
-	void pop(){
-		if(isEmpty()){
-			throw "Queue empty";
-		}
-		sillNode *temp = head;
-		head = head->next;
-		free(temp);
-	}
+    void pop() {
+        if(isEmpty()) {
+            throw "Queue empty";
+        }
+        sillNode *temp = head;
+        head = head->next;
+        free(temp);
+    }
 
-	unsigned int size(){
-		sillNode *crawler = head;
-		unsigned int counter = 0;
-		while(crawler != null){
-			counter++;
-			crawler = crawler->next;
-		}
-		return counter;
-	}
+    unsigned int size() {
+        sillNode *crawler = head;
+        unsigned int counter = 0;
+        while(crawler != null) {
+            counter++;
+            crawler = crawler->next;
+        }
+        return counter;
+    }
 
-	int front(){
-		if(isEmpty()){
-			throw "Queue empty";
-		}
-		return head->value;
-	}
+    int front() {
+        if(isEmpty()) {
+            throw "Queue empty";
+        }
+        return head->value;
+    }
 };
 
 #endif /* SILLQUEUE_H_ */

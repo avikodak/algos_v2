@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define MULTIPLESOF3AND5_H_
 
 //Tested
-void sumOfMultiplesOf3And5(long long int number){
-	long long int sum = 0,threeMultiple = 0,fiveMultiple =0;
-	while(threeMultiple < number || fiveMultiple < number){
-		if(threeMultiple == fiveMultiple){
-			sum += threeMultiple;
-			threeMultiple += 3;
-			fiveMultiple += 5;
-		}else if(threeMultiple < fiveMultiple){
-			sum +=  threeMultiple;
-			threeMultiple += 3;
-		}else{
-			sum += fiveMultiple;
-			fiveMultiple += 5;
-		}
-	}
-	cout << sum << endl;
+void sumOfMultiplesOf3And5(long long int number) {
+    long long int sum = 0,threeMultiple = 0,fiveMultiple =0;
+    while(threeMultiple < number || fiveMultiple < number) {
+        if(threeMultiple == fiveMultiple) {
+            sum += threeMultiple;
+            threeMultiple += 3;
+            fiveMultiple += 5;
+        } else if(threeMultiple < fiveMultiple) {
+            sum +=  threeMultiple;
+            threeMultiple += 3;
+        } else {
+            sum += fiveMultiple;
+            fiveMultiple += 5;
+        }
+    }
+    cout << sum << endl;
 }
 
 

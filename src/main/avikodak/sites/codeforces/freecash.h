@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define FREECASH_H_
 
 //Tested
-void getFreeCashCountersRequired(){
-	unsigned int testCases,hour,minute;
-	scanf("%u",&testCases);
-	map<unsigned int,map<unsigned int,unsigned int> > timeCountersMap;
-	map<unsigned int,map<unsigned int,unsigned int> >::iterator itToTimeCountersMap;
-	map<unsigned int,unsigned int> existingMinuteMap;
-	map<unsigned int,unsigned int>::iterator itToExistingMinuteMap;
-	unsigned int maxFreeCash = 0;
-	while(testCases--){
-		scanf("%u %u",&hour,&minute);
-		if((itToTimeCountersMap = timeCountersMap.find(hour)) != timeCountersMap.end()){
-			existingMinuteMap = itToTimeCountersMap->second;
-			if((itToExistingMinuteMap = existingMinuteMap.find(minute)) != existingMinuteMap.end()){
-				timeCountersMap[hour][minute] = itToExistingMinuteMap->second+1;
-					maxFreeCash = max(maxFreeCash,itToExistingMinuteMap->second+1);
-			}else{
-				timeCountersMap[hour][minute] = 1;
-				maxFreeCash = max(maxFreeCash,1U);
-			}
-		}else{
-			timeCountersMap[hour][minute] = 1;
-			maxFreeCash = max(maxFreeCash,1U);
-		}
-	}
-	printf("%u",maxFreeCash);
+void getFreeCashCountersRequired() {
+    unsigned int testCases,hour,minute;
+    scanf("%u",&testCases);
+    map<unsigned int,map<unsigned int,unsigned int> > timeCountersMap;
+    map<unsigned int,map<unsigned int,unsigned int> >::iterator itToTimeCountersMap;
+    map<unsigned int,unsigned int> existingMinuteMap;
+    map<unsigned int,unsigned int>::iterator itToExistingMinuteMap;
+    unsigned int maxFreeCash = 0;
+    while(testCases--) {
+        scanf("%u %u",&hour,&minute);
+        if((itToTimeCountersMap = timeCountersMap.find(hour)) != timeCountersMap.end()) {
+            existingMinuteMap = itToTimeCountersMap->second;
+            if((itToExistingMinuteMap = existingMinuteMap.find(minute)) != existingMinuteMap.end()) {
+                timeCountersMap[hour][minute] = itToExistingMinuteMap->second+1;
+                maxFreeCash = max(maxFreeCash,itToExistingMinuteMap->second+1);
+            } else {
+                timeCountersMap[hour][minute] = 1;
+                maxFreeCash = max(maxFreeCash,1U);
+            }
+        } else {
+            timeCountersMap[hour][minute] = 1;
+            maxFreeCash = max(maxFreeCash,1U);
+        }
+    }
+    printf("%u",maxFreeCash);
 }
 #endif /* FREECASH_H_ */
 

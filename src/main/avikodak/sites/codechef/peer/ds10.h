@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 #define DS10_H_
 
 //Tested
-void printResults(){
-	unsigned int userInput,sum = 1;
-	scanf("%u",&userInput);
-	for(unsigned int counter = 2;counter < userInput;counter++){
-		if(userInput%counter == 0){
-			sum += counter;
-		}
-	}
-	cout << sum << endl;
+void printResults() {
+    unsigned int userInput,sum = 1;
+    scanf("%u",&userInput);
+    for(unsigned int counter = 2; counter < userInput; counter++) {
+        if(userInput%counter == 0) {
+            sum += counter;
+        }
+    }
+    cout << sum << endl;
 }
 
 #endif /* DS10_H_ */

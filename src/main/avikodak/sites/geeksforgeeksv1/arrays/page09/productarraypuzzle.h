@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: productarraypuzzle.h 
+ *  File Name   		: productarraypuzzle.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\productarraypuzzle.h
  *  Created on			: Nov 26, 2014 :: 1:12:53 AM
  *  Author				: AVINASH
@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void productArrayPuzzle(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	vector<int> leftProduct,rightProduct;
-	leftProduct.reserve(userInput.size());
-	rightProduct.reserve(userInput.size());
-	leftProduct[0] = 1;
-	rightProduct[userInput.size()-1] = 1;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		leftProduct[counter] = leftProduct[counter-1] * userInput[counter-1];
-	}
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		rightProduct[counter] = rightProduct[counter+1] * userInput[counter+1];
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		userInput[counter] = leftProduct[counter] * rightProduct[counter];
-	}
+void productArrayPuzzle(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    vector<int> leftProduct,rightProduct;
+    leftProduct.reserve(userInput.size());
+    rightProduct.reserve(userInput.size());
+    leftProduct[0] = 1;
+    rightProduct[userInput.size()-1] = 1;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        leftProduct[counter] = leftProduct[counter-1] * userInput[counter-1];
+    }
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        rightProduct[counter] = rightProduct[counter+1] * userInput[counter+1];
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        userInput[counter] = leftProduct[counter] * rightProduct[counter];
+    }
 }
 
 #endif /* PRODUCTARRAYPUZZLE_H_ */

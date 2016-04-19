@@ -76,34 +76,34 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROCKPAPERSCISSORS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		if(userInput[0] == userInput[1]){
-			printf("DRAW\n");
-		}else if(userInput[0] == 'R' || userInput[1] == 'R'){
-			if(userInput[0] == 'S' || userInput[1] == 'S'){
-				printf("%c\n",userInput[0] == 'R'?'A':'B');
-			}else{
-				printf("%c\n",userInput[0] == 'P'?'A':'B');
-			}
-		}else if(userInput[0] == 'S' || userInput[1] == 'S'){
-			if(userInput[0] == 'R' || userInput[1] == 'R'){
-				printf("%c\n",userInput[0] == 'R'?'A':'B');
-			}else{
-				printf("%c\n",userInput[0] == 'S'?'A':'B');
-			}
-		}else{
-			if(userInput[0] == 'R' || userInput[1] == 'R'){
-				printf("%c\n",userInput[0] == 'P'?'A':'B');
-			}else{
-				printf("%c\n",userInput[0] == 'S'?'A':'B');
-			}
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        if(userInput[0] == userInput[1]) {
+            printf("DRAW\n");
+        } else if(userInput[0] == 'R' || userInput[1] == 'R') {
+            if(userInput[0] == 'S' || userInput[1] == 'S') {
+                printf("%c\n",userInput[0] == 'R'?'A':'B');
+            } else {
+                printf("%c\n",userInput[0] == 'P'?'A':'B');
+            }
+        } else if(userInput[0] == 'S' || userInput[1] == 'S') {
+            if(userInput[0] == 'R' || userInput[1] == 'R') {
+                printf("%c\n",userInput[0] == 'R'?'A':'B');
+            } else {
+                printf("%c\n",userInput[0] == 'S'?'A':'B');
+            }
+        } else {
+            if(userInput[0] == 'R' || userInput[1] == 'R') {
+                printf("%c\n",userInput[0] == 'P'?'A':'B');
+            } else {
+                printf("%c\n",userInput[0] == 'S'?'A':'B');
+            }
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ROCKPAPERSCISSORS_H_ */

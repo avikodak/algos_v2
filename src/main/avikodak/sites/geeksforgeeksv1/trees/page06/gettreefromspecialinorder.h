@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gettreefromspecialinorder.h 
+ *  File Name   		: gettreefromspecialinorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\gettreefromspecialinorder.h
  *  Created on			: Oct 23, 2014 :: 6:42:52 PM
  *  Author				: AVINASH
@@ -72,37 +72,37 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int getMaxIndexValue(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return UINT_MAX;
-	}
-	unsigned int maxIndex = startIndex;
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		if(userInput[maxIndex] < userInput[counter]){
-			maxIndex = counter;
-		}
-	}
-	return maxIndex;
+unsigned int getMaxIndexValue(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return UINT_MAX;
+    }
+    unsigned int maxIndex = startIndex;
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        if(userInput[maxIndex] < userInput[counter]) {
+            maxIndex = counter;
+        }
+    }
+    return maxIndex;
 }
 
 //Tested
-itNode *getTreeFromSpecialInOrderMain(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return null;
-	}
-	unsigned int maxIndex = getMaxIndexValue(userInput,startIndex,endIndex);
-	itNode *node = new itNode(userInput[maxIndex]);
-	node->left = getTreeFromSpecialInOrderMain(userInput,startIndex,maxIndex-1);
-	node->right = getTreeFromSpecialInOrderMain(userInput,maxIndex+1,endIndex);
-	return node;
+itNode *getTreeFromSpecialInOrderMain(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return null;
+    }
+    unsigned int maxIndex = getMaxIndexValue(userInput,startIndex,endIndex);
+    itNode *node = new itNode(userInput[maxIndex]);
+    node->left = getTreeFromSpecialInOrderMain(userInput,startIndex,maxIndex-1);
+    node->right = getTreeFromSpecialInOrderMain(userInput,maxIndex+1,endIndex);
+    return node;
 }
 
 //Tested
-itNode *getTreeFromSpecialInorder(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	return getTreeFromSpecialInOrderMain(userInput,0,userInput.size()-1);
+itNode *getTreeFromSpecialInorder(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    return getTreeFromSpecialInOrderMain(userInput,0,userInput.size()-1);
 }
 
 #endif /* GETTREEFROMSPECIALINORDER_H_ */

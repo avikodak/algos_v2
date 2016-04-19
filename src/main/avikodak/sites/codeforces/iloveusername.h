@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: iloveusername.h 
+ *  File Name   		: iloveusername.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\iloveusername.h
  *  Created on			: Mar 8, 2015 :: 12:12:33 PM
  *  Author				: avikodak
@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define ILOVEUSERNAME_H_
 
 //Tested
-void getNumberOfAmazingPerformance(){
-	unsigned int testCases;
-	int points,maxTillNow = INT_MIN,minTillNow = INT_MAX,noOfAmazingPerformance = 0;
-	scanf("%d",&testCases);
-	for(unsigned int counter = 0;counter < testCases;counter++){
-		scanf("%d",&points);
-		if(counter != 0){
-			if(maxTillNow < points){
-				noOfAmazingPerformance++;
-				maxTillNow = points;
-			}else if(minTillNow > points){
-				noOfAmazingPerformance++;
-				minTillNow = points;
-			}
-		}else{
-			maxTillNow = points;
-			minTillNow = points;
-		}
-	}
-	printf("%d",noOfAmazingPerformance);
+void getNumberOfAmazingPerformance() {
+    unsigned int testCases;
+    int points,maxTillNow = INT_MIN,minTillNow = INT_MAX,noOfAmazingPerformance = 0;
+    scanf("%d",&testCases);
+    for(unsigned int counter = 0; counter < testCases; counter++) {
+        scanf("%d",&points);
+        if(counter != 0) {
+            if(maxTillNow < points) {
+                noOfAmazingPerformance++;
+                maxTillNow = points;
+            } else if(minTillNow > points) {
+                noOfAmazingPerformance++;
+                minTillNow = points;
+            }
+        } else {
+            maxTillNow = points;
+            minTillNow = points;
+        }
+    }
+    printf("%d",noOfAmazingPerformance);
 }
 
 #endif /* ILOVEUSERNAME_H_ */

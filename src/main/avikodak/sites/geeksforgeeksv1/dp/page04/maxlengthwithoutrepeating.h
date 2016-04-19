@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlengthwithoutrepeating.h 
+ *  File Name   		: maxlengthwithoutrepeating.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\maxlengthwithoutrepeating.h
  *  Created on			: Jan 13, 2015 :: 8:17:43 PM
  *  Author				: AVINASH
@@ -74,25 +74,25 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxLengthWithoutRepeatingON(char *userInput){
-	if(userInput == null || userInput[0] == '\0'){
-		return 0;
-	}
-	int length = strlen(userInput);
-	int maxLength = INT_MIN,currentLength = 0;
-	hash_map<char,int> charIndexMap;
-	hash_map<char,int>::iterator itToCharIndexMap;
-	for(int counter = 0;counter < length;counter++){
-		if((itToCharIndexMap = charIndexMap.find(userInput[counter])) == charIndexMap.end() || itToCharIndexMap->second < counter - currentLength){
-			currentLength++;
-		}else{
-			//printf("%d\t",currentLength);
-			maxLength = max(maxLength,currentLength);
-			currentLength = counter - itToCharIndexMap->second;
-		}
-		charIndexMap[userInput[counter]] = counter;
-	}
-	return maxLength;
+int maxLengthWithoutRepeatingON(char *userInput) {
+    if(userInput == null || userInput[0] == '\0') {
+        return 0;
+    }
+    int length = strlen(userInput);
+    int maxLength = INT_MIN,currentLength = 0;
+    hash_map<char,int> charIndexMap;
+    hash_map<char,int>::iterator itToCharIndexMap;
+    for(int counter = 0; counter < length; counter++) {
+        if((itToCharIndexMap = charIndexMap.find(userInput[counter])) == charIndexMap.end() || itToCharIndexMap->second < counter - currentLength) {
+            currentLength++;
+        } else {
+            //printf("%d\t",currentLength);
+            maxLength = max(maxLength,currentLength);
+            currentLength = counter - itToCharIndexMap->second;
+        }
+        charIndexMap[userInput[counter]] = counter;
+    }
+    return maxLength;
 }
 
 #endif /* MAXLENGTHWITHOUTREPEATING_H_ */

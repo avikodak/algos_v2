@@ -78,39 +78,39 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void printLeaders(int userInput[],int size){
-	if(size == 0){
-		return;
-	}
-	int maxTillNow = INT_MIN;
-	for(int counter = size-1;counter >= 0;counter--){
-		if(userInput[counter] > maxTillNow){
-			printf("%d\t",userInput[counter]);
-			maxTillNow = userInput[counter];
-		}
-	}
+void printLeaders(int userInput[],int size) {
+    if(size == 0) {
+        return;
+    }
+    int maxTillNow = INT_MIN;
+    for(int counter = size-1; counter >= 0; counter--) {
+        if(userInput[counter] > maxTillNow) {
+            printf("%d\t",userInput[counter]);
+            maxTillNow = userInput[counter];
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-void printLeadersON2(int userInput[],int size){
-	if(size == 0){
-		return;
-	}
-	int maxTillNow;
-	for(int outerCrawler = size-1;outerCrawler >= 0;outerCrawler--){
-		maxTillNow = userInput[outerCrawler];
-		for(int innerCrawler = size-1;innerCrawler > outerCrawler;innerCrawler--){
-			if(userInput[innerCrawler] > maxTillNow){
-				maxTillNow = userInput[innerCrawler];
-				break;
-			}
-		}
-		if(maxTillNow == userInput[outerCrawler]){
-			printf("%d\t",maxTillNow);
-		}
-	}
+void printLeadersON2(int userInput[],int size) {
+    if(size == 0) {
+        return;
+    }
+    int maxTillNow;
+    for(int outerCrawler = size-1; outerCrawler >= 0; outerCrawler--) {
+        maxTillNow = userInput[outerCrawler];
+        for(int innerCrawler = size-1; innerCrawler > outerCrawler; innerCrawler--) {
+            if(userInput[innerCrawler] > maxTillNow) {
+                maxTillNow = userInput[innerCrawler];
+                break;
+            }
+        }
+        if(maxTillNow == userInput[outerCrawler]) {
+            printf("%d\t",maxTillNow);
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_GETLEADERS_H_ */

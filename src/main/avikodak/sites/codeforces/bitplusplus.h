@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bitplusplus.h 
+ *  File Name   		: bitplusplus.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\bitplusplus.h
  *  Created on			: Feb 28, 2015 :: 7:28:16 PM
  *  Author				: AVINASH
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef BITPLUSPLUS_H_
 #define BITPLUSPLUS_H_
 
-void printPostBitPlusPlusOperation(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	char userInput[MAX_INPUT_SIZE];
-	int counter = 0;
-	while(testCases--){
-		scanf("%s",userInput);
-		if(userInput[1] == '+'){
-			counter++;
-		}else{
-			counter--;
-		}
-	}
+void printPostBitPlusPlusOperation() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    char userInput[MAX_INPUT_SIZE];
+    int counter = 0;
+    while(testCases--) {
+        scanf("%s",userInput);
+        if(userInput[1] == '+') {
+            counter++;
+        } else {
+            counter--;
+        }
+    }
 }
 
 #endif /* BITPLUSPLUS_H_ */

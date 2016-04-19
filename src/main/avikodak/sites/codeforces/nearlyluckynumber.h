@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nearlyluckynumber.h 
+ *  File Name   		: nearlyluckynumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\nearlyluckynumber.h
  *  Created on			: Mar 1, 2015 :: 10:39:07 AM
  *  Author				: AVINASH
@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define NEARLYLUCKYNUMBER_H_
 
 //Tested
-bool isNumberLucky(long long int userInput){
-	if(userInput == 0){
-		return false;
-	}
-	long long int lastDigit;
-	while(userInput > 0){
-		lastDigit = userInput%10;
-		if(lastDigit != 4 && lastDigit != 7){
-			return false;
-		}
-		userInput /= 10;
-	}
-	return true;
+bool isNumberLucky(long long int userInput) {
+    if(userInput == 0) {
+        return false;
+    }
+    long long int lastDigit;
+    while(userInput > 0) {
+        lastDigit = userInput%10;
+        if(lastDigit != 4 && lastDigit != 7) {
+            return false;
+        }
+        userInput /= 10;
+    }
+    return true;
 }
 
 //Tested
-void isNumberNearlyLuckyNumber(){
-	long long int userInput,lastDigit,luckyDigitCounter = 0;
-	cin >> userInput;
-	while(userInput > 0){
-		lastDigit = userInput%10;
-		if(lastDigit == 4 || lastDigit == 7){
-			luckyDigitCounter++;
-		}
-		userInput /= 10;
-	}
-	if(isNumberLucky(luckyDigitCounter)){
-		printf("YES");
-	}else{
-		printf("NO");
-	}
+void isNumberNearlyLuckyNumber() {
+    long long int userInput,lastDigit,luckyDigitCounter = 0;
+    cin >> userInput;
+    while(userInput > 0) {
+        lastDigit = userInput%10;
+        if(lastDigit == 4 || lastDigit == 7) {
+            luckyDigitCounter++;
+        }
+        userInput /= 10;
+    }
+    if(isNumberLucky(luckyDigitCounter)) {
+        printf("YES");
+    } else {
+        printf("NO");
+    }
 }
 
 #endif /* NEARLYLUCKYNUMBER_H_ */

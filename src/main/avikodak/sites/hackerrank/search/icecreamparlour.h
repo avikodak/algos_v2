@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: icecreamparlour.h 
+ *  File Name   		: icecreamparlour.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\search\icecreamparlour.h
  *  Created on			: Feb 11, 2015 :: 12:32:13 PM
  *  Author				: AVINASH
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define ICECREAMPARLOUR_H_
 
 //Tested
-void getIndicesForSum(){
-	int testCases,size,sum,input;
-	vector<int> userInput;
-	bool flag;
-	while(testCases--){
-		scanf("%d %d",&sum,&size);
-		userInput.clear();
-		while(size--){
-			scanf("%d",&input);
-			userInput.push_back(input);
-		}
-		flag = false;
-		for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-			for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-				if(userInput[outerCrawler] + userInput[innerCrawler] == sum){
-					printf("%d %d\n",outerCrawler+1,innerCrawler+1);
-					flag = true;
-				}
-			}
-			if(flag){
-				break;
-			}
-		}
-	}
+void getIndicesForSum() {
+    int testCases,size,sum,input;
+    vector<int> userInput;
+    bool flag;
+    while(testCases--) {
+        scanf("%d %d",&sum,&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+        }
+        flag = false;
+        for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+            for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+                if(userInput[outerCrawler] + userInput[innerCrawler] == sum) {
+                    printf("%d %d\n",outerCrawler+1,innerCrawler+1);
+                    flag = true;
+                }
+            }
+            if(flag) {
+                break;
+            }
+        }
+    }
 }
 
 #endif /* ICECREAMPARLOUR_H_ */

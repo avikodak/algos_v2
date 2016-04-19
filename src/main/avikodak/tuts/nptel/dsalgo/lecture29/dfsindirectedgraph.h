@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dfsindirectedgraph.h 
+ *  File Name   		: dfsindirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture29\dfsindirectedgraph.h
  *  Created on			: Dec 5, 2014 :: 12:03:18 PM
  *  Author				: AVINASH
@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setDfsTimesInDirectedGraphMain(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes){
-	if(adjacencyList.size() == 0 || sourceVertex  >= adjacencyList.size()){
-		return;
-	}
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN){
-			setDfsTimesInDirectedGraphMain(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+void setDfsTimesInDirectedGraphMain(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes) {
+    if(adjacencyList.size() == 0 || sourceVertex  >= adjacencyList.size()) {
+        return;
+    }
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MIN) {
+            setDfsTimesInDirectedGraphMain(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
 }
 
-vector<dfsTimes *> getDfsTimesInDirectedGraph(vector<vector<int> > adjacencyList,int sourceVertex){
-	vector<dfsTimes *> arrivalDepartureTimes;
-	if(adjacencyList.size() == 0){
-		return arrivalDepartureTimes;
-	}
-	setDfsTimesInDirectedGraphMain(adjacencyList,sourceVertex,arrivalDepartureTimes);
-	return arrivalDepartureTimes;
+vector<dfsTimes *> getDfsTimesInDirectedGraph(vector<vector<int> > adjacencyList,int sourceVertex) {
+    vector<dfsTimes *> arrivalDepartureTimes;
+    if(adjacencyList.size() == 0) {
+        return arrivalDepartureTimes;
+    }
+    setDfsTimesInDirectedGraphMain(adjacencyList,sourceVertex,arrivalDepartureTimes);
+    return arrivalDepartureTimes;
 }
 
 #endif /* DFSINDIRECTEDGRAPH_H_ */

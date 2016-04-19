@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printprefrompostinorder.h 
+ *  File Name   		: printprefrompostinorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\printprefrompostinorder.h
  *  Created on			: Nov 13, 2014 :: 11:55:39 PM
  *  Author				: AVINASH
@@ -68,35 +68,35 @@ using namespace __gnu_cxx;
 #ifndef PRINTPREFROMPOSTINORDER_H_
 #define PRINTPREFROMPOSTINORDER_H_
 
-int findIndexInInorder(vector<int> inOrder,int startIndex,int endIndex,int key){
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		if(inOrder[counter] == key){
-			return counter;
-		}
-	}
-	return INT_MIN;
+int findIndexInInorder(vector<int> inOrder,int startIndex,int endIndex,int key) {
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        if(inOrder[counter] == key) {
+            return counter;
+        }
+    }
+    return INT_MIN;
 }
 
-itNode *constructFromPostInorder(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex){
-	static int currentPostOrderIndex = postOrder.size()-1;
-	if(currentPostOrderIndex < 0 || startIndex > endIndex){
-		return null;
-	}
-	itNode *node = new itNode(postOrder[currentPostOrderIndex]);
-	int index = findIndexInInorder(inOrder,startIndex,endIndex,postOrder[currentPostOrderIndex]);
-	currentPostOrderIndex--;
-	node->right = constructFromPostInorder(postOrder,inOrder,startIndex,index-1);
-	node->left = constructFromPostInorder(postOrder,inOrder,index+1,endIndex);
-	return node;
+itNode *constructFromPostInorder(vector<int> postOrder,vector<int> inOrder,int startIndex,int endIndex) {
+    static int currentPostOrderIndex = postOrder.size()-1;
+    if(currentPostOrderIndex < 0 || startIndex > endIndex) {
+        return null;
+    }
+    itNode *node = new itNode(postOrder[currentPostOrderIndex]);
+    int index = findIndexInInorder(inOrder,startIndex,endIndex,postOrder[currentPostOrderIndex]);
+    currentPostOrderIndex--;
+    node->right = constructFromPostInorder(postOrder,inOrder,startIndex,index-1);
+    node->left = constructFromPostInorder(postOrder,inOrder,index+1,endIndex);
+    return node;
 }
 
-void printPreOrderFromPostAndInorder(vector<int> postOrder,vector<int> inOrder){
-	if(postOrder.size() == 0){
-		return;
-	}
-	itNode *root = constructFromPostInorder(postOrder,inOrder,0,inOrder.size()-1);
-	treeutils *utils = new treeutils();
-	utils->preOrderTraversal(root);
+void printPreOrderFromPostAndInorder(vector<int> postOrder,vector<int> inOrder) {
+    if(postOrder.size() == 0) {
+        return;
+    }
+    itNode *root = constructFromPostInorder(postOrder,inOrder,0,inOrder.size()-1);
+    treeutils *utils = new treeutils();
+    utils->preOrderTraversal(root);
 }
 
 #endif /* PRINTPREFROMPOSTINORDER_H_ */

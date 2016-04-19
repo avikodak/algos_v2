@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tricount.h 
+ *  File Name   		: tricount.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\tricount.h
  *  Created on			: Feb 3, 2015 :: 1:03:20 PM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef TRICOUNT_H_
 #define TRICOUNT_H_
 
-int getTriangleCount(int userInput){
-	return 1 + 2 * (userInput) * (userInput-1);
+int getTriangleCount(int userInput) {
+    return 1 + 2 * (userInput) * (userInput-1);
 }
 
 #endif /* TRICOUNT_H_ */

@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 #define DS07_H_
 
 //Tested
-void printResults(){
-	long long int costPrice,repair,sellingPrice;
-	scanf("%lld %lld %lld",&costPrice,&repair,&sellingPrice);
-	if(sellingPrice > costPrice+repair){
-		printf("PROFIT");
-	}else{
-		printf("LOSS");
-	}
+void printResults() {
+    long long int costPrice,repair,sellingPrice;
+    scanf("%lld %lld %lld",&costPrice,&repair,&sellingPrice);
+    if(sellingPrice > costPrice+repair) {
+        printf("PROFIT");
+    } else {
+        printf("LOSS");
+    }
 }
 
 #endif /* DS07_H_ */

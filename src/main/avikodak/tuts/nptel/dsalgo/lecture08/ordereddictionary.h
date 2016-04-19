@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ordereddictionary.h 
+ *  File Name   		: ordereddictionary.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\ordereddictionary.h
  *  Created on			: Nov 19, 2014 :: 12:55:14 AM
  *  Author				: AVINASH
@@ -70,90 +70,90 @@ using namespace __gnu_cxx;
 
 class ordereddict {
 private:
-	dillNode *head;
+    dillNode *head;
 
-	dillNode *getNodeForValue(int value){
-		dillNode *crawler = head;
-		while(crawler != null){
-			if(crawler->value == value){
-				return crawler;
-			}
-		}
-		return null;
-	}
+    dillNode *getNodeForValue(int value) {
+        dillNode *crawler = head;
+        while(crawler != null) {
+            if(crawler->value == value) {
+                return crawler;
+            }
+        }
+        return null;
+    }
 
 public:
-	void insert(int value){
-		if(head == null){
-			head = new dillNode(value);
-			return;
-		}
-		dillNode *crawler = head;
-		while(crawler->value < value){
-			crawler = crawler->next;
-		}
-		dillNode *newNode = new dillNode(crawler->value);
-		crawler->value = value;
-		newNode->next = crawler->next;
-		crawler->next = newNode;
-	}
+    void insert(int value) {
+        if(head == null) {
+            head = new dillNode(value);
+            return;
+        }
+        dillNode *crawler = head;
+        while(crawler->value < value) {
+            crawler = crawler->next;
+        }
+        dillNode *newNode = new dillNode(crawler->value);
+        crawler->value = value;
+        newNode->next = crawler->next;
+        crawler->next = newNode;
+    }
 
-	void remove(int value){
-		if(head == null){
-			return;
-		}
-		dillNode *nodeToBeDeleted,*crawler = head;
-		if(head->value == value){
-			nodeToBeDeleted = head;
-			head = head->next;
-			free(nodeToBeDeleted);
-			return;
-		}
-		while(crawler->next != null){
-			if(crawler->next->value == value){
-				nodeToBeDeleted = crawler->next;
-				crawler->next = crawler->next->next;
-				free(nodeToBeDeleted);
-				return;
-			}
-			crawler = crawler->next;
-		}
-	}
+    void remove(int value) {
+        if(head == null) {
+            return;
+        }
+        dillNode *nodeToBeDeleted,*crawler = head;
+        if(head->value == value) {
+            nodeToBeDeleted = head;
+            head = head->next;
+            free(nodeToBeDeleted);
+            return;
+        }
+        while(crawler->next != null) {
+            if(crawler->next->value == value) {
+                nodeToBeDeleted = crawler->next;
+                crawler->next = crawler->next->next;
+                free(nodeToBeDeleted);
+                return;
+            }
+            crawler = crawler->next;
+        }
+    }
 
-	void print(){
-		dillNode *crawler = head;
-		while(crawler != null){
-			printf("%d\t",crawler->value);
-			crawler = crawler->next;
-		}
-	}
+    void print() {
+        dillNode *crawler = head;
+        while(crawler != null) {
+            printf("%d\t",crawler->value);
+            crawler = crawler->next;
+        }
+    }
 
-	bool search(int value){
-		dillNode *crawler = head;
-		while(crawler != null){
-			if(crawler->value == value){
-				return true;
-			}
-			crawler = crawler->next;
-		}
-		return false;
-	}
+    bool search(int value) {
+        dillNode *crawler = head;
+        while(crawler != null) {
+            if(crawler->value == value) {
+                return true;
+            }
+            crawler = crawler->next;
+        }
+        return false;
+    }
 
-	int predecessor(int value){
-		dillNode *ptrToKey = getNodeForValue(value);
-		if(ptrToKey == null || ptrToKey->prev == null){
-			return INT_MIN;
-		}
-		return ptrToKey->prev->value;
-	}
+    int predecessor(int value) {
+        dillNode *ptrToKey = getNodeForValue(value);
+        if(ptrToKey == null || ptrToKey->prev == null) {
+            return INT_MIN;
+        }
+        return ptrToKey->prev->value;
+    }
 
-	int successor(int value){
-		dillNode *ptrToKey = getNodeForValue(value);
-		if(ptrToKey == null || ptrToKey->next == null){
-			return INT_MAX;
-		}
-		return ptrToKey->next->value;
-	}
+    int successor(int value) {
+        dillNode *ptrToKey = getNodeForValue(value);
+        if(ptrToKey == null || ptrToKey->next == null) {
+            return INT_MAX;
+        }
+        return ptrToKey->next->value;
+    }
 };
 
 #endif /* ORDEREDDICTIONARY_H_ */

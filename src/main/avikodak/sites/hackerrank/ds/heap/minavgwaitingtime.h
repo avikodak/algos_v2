@@ -70,34 +70,34 @@ using namespace __gnu_cxx;
 #ifndef MINAVGWAITINGTIME_H_
 #define MINAVGWAITINGTIME_H_
 
-void minHeapify(vector<int> &userInput,int index){
-	while(index > 0 && userInput[index/2] > userInput[index]){
-		swap(userInput[inde/2],userInput[index]);
-		index /= 2;
-	}
+void minHeapify(vector<int> &userInput,int index) {
+    while(index > 0 && userInput[index/2] > userInput[index]) {
+        swap(userInput[inde/2],userInput[index]);
+        index /= 2;
+    }
 }
 
-void insertIntoMinHeap(vector<int> &userInput,int value){
-	userInput.push_back(value);
-	minHeapify(userInput,userInput.size()-1);
+void insertIntoMinHeap(vector<int> &userInput,int value) {
+    userInput.push_back(value);
+    minHeapify(userInput,userInput.size()-1);
 }
 
-int getMin(vector<int> &userInput){
+int getMin(vector<int> &userInput) {
 
 }
 
-void findMinAverageWaitingTime(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int arrivalTime,timeToCook;
-	unsigned int cummulativeTime = 0;
-	vector<int> heap;
-	while(testCases--){
-		scanf("%u %u",&arrivalTime,&timeToCook);
-		if(cummulativeTime >= arrivalTime){
-			insertIntoMinHeap(heap,timeToCook);
-		}
-	}
+void findMinAverageWaitingTime() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned int arrivalTime,timeToCook;
+    unsigned int cummulativeTime = 0;
+    vector<int> heap;
+    while(testCases--) {
+        scanf("%u %u",&arrivalTime,&timeToCook);
+        if(cummulativeTime >= arrivalTime) {
+            insertIntoMinHeap(heap,timeToCook);
+        }
+    }
 }
 
 #endif /* MINAVGWAITINGTIME_H_ */

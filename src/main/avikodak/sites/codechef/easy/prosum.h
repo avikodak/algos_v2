@@ -73,26 +73,26 @@ using namespace __gnu_cxx;
 #define PROSUM_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input,twoCount,greater2Count,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		twoCount = 0;
-		greater2Count = 0;
-		while(size--){
-			scanf("%lld",&input);
-			if(input == 2){
-				twoCount++;
-			}else if(input > 2){
-				greater2Count++;
-			}
-		}
-		result = ((greater2Count)*(greater2Count-1))/2;
-		result += twoCount*greater2Count;
-		printf("%lld\n",result);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input,twoCount,greater2Count,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        twoCount = 0;
+        greater2Count = 0;
+        while(size--) {
+            scanf("%lld",&input);
+            if(input == 2) {
+                twoCount++;
+            } else if(input > 2) {
+                greater2Count++;
+            }
+        }
+        result = ((greater2Count)*(greater2Count-1))/2;
+        result += twoCount*greater2Count;
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* PROSUM_H_ */

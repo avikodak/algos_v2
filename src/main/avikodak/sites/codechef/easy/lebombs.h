@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 #define LEBOMBS_H_
 
 //Tested
-void getBuildingCount(string userInput){
-	string bombedBuilding = userInput;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == '1'){
-			if(counter-1 >= 0){
-				bombedBuilding[counter-1] = '1';
-			}
-			if(counter+1 < userInput.size()){
-				bombedBuilding[counter+1] = '1';
-			}
-		}
-	}
-	unsigned int savedBuilding = 0;
-	for(unsigned int counter = 0;counter < bombedBuilding.size();counter++){
-		if(bombedBuilding[counter] == '0'){
-			savedBuilding++;
-		}
-	}
-	cout << savedBuilding << endl;
+void getBuildingCount(string userInput) {
+    string bombedBuilding = userInput;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == '1') {
+            if(counter-1 >= 0) {
+                bombedBuilding[counter-1] = '1';
+            }
+            if(counter+1 < userInput.size()) {
+                bombedBuilding[counter+1] = '1';
+            }
+        }
+    }
+    unsigned int savedBuilding = 0;
+    for(unsigned int counter = 0; counter < bombedBuilding.size(); counter++) {
+        if(bombedBuilding[counter] == '0') {
+            savedBuilding++;
+        }
+    }
+    cout << savedBuilding << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> size >> userInput;
-		getBuildingCount(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> size >> userInput;
+        getBuildingCount(userInput);
+    }
 }
 
 #endif /* LEBOMBS_H_ */

@@ -80,80 +80,80 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-sillNode *getMiddleTwoPtrs(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	sillNode *fastPtr = ptr,*slowPtr = ptr;
-	while(fastPtr != null && fastPtr->next != null){
-		slowPtr = slowPtr->next;
-		fastPtr = fastPtr->next->next;
-	}
-	return slowPtr;
+sillNode *getMiddleTwoPtrs(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    sillNode *fastPtr = ptr,*slowPtr = ptr;
+    while(fastPtr != null && fastPtr->next != null) {
+        slowPtr = slowPtr->next;
+        fastPtr = fastPtr->next->next;
+    }
+    return slowPtr;
 }
 
-unsigned int lengthOfSill(sillNode *ptr){
-	return ptr == null?0:1+lengthOfSill(ptr->next);
+unsigned int lengthOfSill(sillNode *ptr) {
+    return ptr == null?0:1+lengthOfSill(ptr->next);
 }
 
-sillNode *getMiddleBySillLength(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	unsigned int length = lengthOfSill(ptr);
-	sillNode *crawler = ptr;
-	length /= 2;
-	while(length){
-		crawler = crawler->next;
-		length--;
-	}
-	return crawler;
+sillNode *getMiddleBySillLength(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    unsigned int length = lengthOfSill(ptr);
+    sillNode *crawler = ptr;
+    length /= 2;
+    while(length) {
+        crawler = crawler->next;
+        length--;
+    }
+    return crawler;
 }
 
-sillNode *getMiddleSill(sillNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	unsigned int counter = 0;
-	sillNode *middlePtr = ptr,*crawler = ptr;
-	while(ptr != null){
-		if(counter%2 == 1){
-			middlePtr = middlePtr->next;
-		}
-		counter++;
-		crawler = crawler->next;
-	}
-	return middlePtr;
+sillNode *getMiddleSill(sillNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    unsigned int counter = 0;
+    sillNode *middlePtr = ptr,*crawler = ptr;
+    while(ptr != null) {
+        if(counter%2 == 1) {
+            middlePtr = middlePtr->next;
+        }
+        counter++;
+        crawler = crawler->next;
+    }
+    return middlePtr;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-sillNode *getMiddleSillON2(sillNode *ptr){
-	if(ptr == null || ptr->next == null){
-		return ptr;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int firstHalfLength,secondHalfLength;
-	while(outerCrawler != null){
-		firstHalfLength = 0;
-		secondHalfLength = 0;
-		innerCrawler = ptr;
-		while(innerCrawler != outerCrawler){
-			firstHalfLength++;
-			innerCrawler = innerCrawler->next;
-		}
-		innerCrawler = outerCrawler->next;
-		while(innerCrawler != null){
-			secondHalfLength++;
-			innerCrawler = innerCrawler->next;
-		}
-		if(abs(firstHalfLength-secondHalfLength) < 2){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
+sillNode *getMiddleSillON2(sillNode *ptr) {
+    if(ptr == null || ptr->next == null) {
+        return ptr;
+    }
+    sillNode *outerCrawler = ptr,*innerCrawler;
+    unsigned int firstHalfLength,secondHalfLength;
+    while(outerCrawler != null) {
+        firstHalfLength = 0;
+        secondHalfLength = 0;
+        innerCrawler = ptr;
+        while(innerCrawler != outerCrawler) {
+            firstHalfLength++;
+            innerCrawler = innerCrawler->next;
+        }
+        innerCrawler = outerCrawler->next;
+        while(innerCrawler != null) {
+            secondHalfLength++;
+            innerCrawler = innerCrawler->next;
+        }
+        if(abs(firstHalfLength-secondHalfLength) < 2) {
+            return outerCrawler;
+        }
+        outerCrawler = outerCrawler->next;
+    }
+    return null;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_PRINTMIDDLESILL_H_ */

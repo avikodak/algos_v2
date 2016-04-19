@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: searchinsortedpivotedarray.h 
+ *  File Name   		: searchinsortedpivotedarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\searchinsortedpivotedarray.h
  *  Created on			: Oct 17, 2014 :: 6:49:44 PM
  *  Author				: AVINASH
@@ -73,93 +73,93 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getPivotElementIndex(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex == endIndex){
-		return startIndex;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]){
-		return middleIndex;
-	}else if(userInput[middleIndex] > userInput[startIndex]){
-		return getPivotElementIndex(userInput,middleIndex+1,endIndex);
-	}else{
-		return getPivotElementIndex(userInput,startIndex,middleIndex-1);
-	}
+int getPivotElementIndex(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    if(startIndex == endIndex) {
+        return startIndex;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]) {
+        return middleIndex;
+    } else if(userInput[middleIndex] > userInput[startIndex]) {
+        return getPivotElementIndex(userInput,middleIndex+1,endIndex);
+    } else {
+        return getPivotElementIndex(userInput,startIndex,middleIndex-1);
+    }
 }
 
 //Tested
-bool binarySearchPivot(vector<int> userInput,int startIndex,int endIndex,int key){
-	if(startIndex > endIndex){
-		return false;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return true;
-	}else if(userInput[middleIndex] > key){
-		return binarySearchPivot(userInput,startIndex,middleIndex-1,key);
-	}else{
-		return binarySearchPivot(userInput,middleIndex+1,endIndex,key);
-	}
+bool binarySearchPivot(vector<int> userInput,int startIndex,int endIndex,int key) {
+    if(startIndex > endIndex) {
+        return false;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return true;
+    } else if(userInput[middleIndex] > key) {
+        return binarySearchPivot(userInput,startIndex,middleIndex-1,key);
+    } else {
+        return binarySearchPivot(userInput,middleIndex+1,endIndex,key);
+    }
 }
 
 //Tested
-bool searchInSortedPivotedArray(vector<int> userInput,int key){
-	int pivotIndex = getPivotElementIndex(userInput,0,userInput.size()-1);
-	if(pivotIndex == INT_MAX){
-		return false;
-	}
-	if(userInput[0] <= key && key <= userInput[pivotIndex]){
-		return binarySearchPivot(userInput,0,pivotIndex,key);
-	}else{
-		return binarySearchPivot(userInput,pivotIndex+1,userInput.size()-1,key);
-	}
+bool searchInSortedPivotedArray(vector<int> userInput,int key) {
+    int pivotIndex = getPivotElementIndex(userInput,0,userInput.size()-1);
+    if(pivotIndex == INT_MAX) {
+        return false;
+    }
+    if(userInput[0] <= key && key <= userInput[pivotIndex]) {
+        return binarySearchPivot(userInput,0,pivotIndex,key);
+    } else {
+        return binarySearchPivot(userInput,pivotIndex+1,userInput.size()-1,key);
+    }
 }
 
 //Tested
-bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return false;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return true;
-	}else if(userInput[startIndex] < userInput[middleIndex]){
-		if(key >= userInput[startIndex] && key <= userInput[middleIndex-1]){
-			return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
-		}else{
-			return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
-		}
-	}else{
-		if(key >= userInput[middleIndex+1] && key <= userInput[endIndex]){
-			return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
-		}else{
-			return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
-		}
-	}
+bool searchInSortedPivotedArrayOLOGN(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return false;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return true;
+    } else if(userInput[startIndex] < userInput[middleIndex]) {
+        if(key >= userInput[startIndex] && key <= userInput[middleIndex-1]) {
+            return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
+        } else {
+            return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
+        }
+    } else {
+        if(key >= userInput[middleIndex+1] && key <= userInput[endIndex]) {
+            return searchInSortedPivotedArrayOLOGN(userInput,key,middleIndex+1,endIndex);
+        } else {
+            return searchInSortedPivotedArrayOLOGN(userInput,key,startIndex,middleIndex-1);
+        }
+    }
 }
 
 //Tested
-bool searchInSortedPivotedArrayOLOGN(vector<int> &userInput,int key){
-	if(userInput.size() == 0){
-		return false;
-	}
-	return searchInSortedPivotedArrayOLOGN(userInput,key,0,userInput.size()-1);
+bool searchInSortedPivotedArrayOLOGN(vector<int> &userInput,int key) {
+    if(userInput.size() == 0) {
+        return false;
+    }
+    return searchInSortedPivotedArrayOLOGN(userInput,key,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool searchInRotatedArray(vector<int> userInput,int key){
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == key){
-			return true;
-		}
-	}
-	return false;
+bool searchInRotatedArray(vector<int> userInput,int key) {
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == key) {
+            return true;
+        }
+    }
+    return false;
 }
 
 

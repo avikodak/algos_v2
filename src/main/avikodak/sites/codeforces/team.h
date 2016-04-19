@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: team.h 
+ *  File Name   		: team.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\team.h
  *  Created on			: Feb 28, 2015 :: 1:59:52 PM
  *  Author				: AVINASH
@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef TEAM_H_
 #define TEAM_H_
 
-void printNoOfSolutionsAttempted(){
-	unsigned int testCases,problemSolved = 0;
-	int firstInput,secondInput,thirdInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d %d %d",&firstInput,&secondInput,&thirdInput);
-		if(firstInput+secondInput+thirdInput >= 2){
-			problemSolved++;
-		}
-	}
-	printf("%u",problemSolved);
+void printNoOfSolutionsAttempted() {
+    unsigned int testCases,problemSolved = 0;
+    int firstInput,secondInput,thirdInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d %d %d",&firstInput,&secondInput,&thirdInput);
+        if(firstInput+secondInput+thirdInput >= 2) {
+            problemSolved++;
+        }
+    }
+    printf("%u",problemSolved);
 }
 
 #endif /* TEAM_H_ */

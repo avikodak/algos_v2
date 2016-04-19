@@ -72,32 +72,32 @@ using namespace __gnu_cxx;
 #define DPC101_H_
 
 //Tested
-void printTotalCarryOperations(long long int firstUserInput,long long int secondUserInput){
-	long long int carry = 0,operations = 0,sum;
-	while(firstUserInput > 0 || secondUserInput > 0){
-		sum = (firstUserInput%10) + (secondUserInput%10) + carry;
-		if(sum > 9){
-			operations++;
-		}
-		carry = sum/10;
-		firstUserInput /= 10;
-		secondUserInput /= 10;
-	}
-	if(operations == 0){
-		printf("No carry operation.\n");
-	}else if(operations == 1){
-		printf("%lld carry operation.\n",operations);
-	}else{
-		printf("%lld carry operations.\n",operations);
-	}
+void printTotalCarryOperations(long long int firstUserInput,long long int secondUserInput) {
+    long long int carry = 0,operations = 0,sum;
+    while(firstUserInput > 0 || secondUserInput > 0) {
+        sum = (firstUserInput%10) + (secondUserInput%10) + carry;
+        if(sum > 9) {
+            operations++;
+        }
+        carry = sum/10;
+        firstUserInput /= 10;
+        secondUserInput /= 10;
+    }
+    if(operations == 0) {
+        printf("No carry operation.\n");
+    } else if(operations == 1) {
+        printf("%lld carry operation.\n",operations);
+    } else {
+        printf("%lld carry operations.\n",operations);
+    }
 }
 
 //Tested
-void printResults(){
-	long long int firstUserInput,secondUserInput;
-	while(scanf("%lld",&firstUserInput) && scanf("%lld",&secondUserInput) && firstUserInput != 0 && secondUserInput != 0){
-		printTotalCarryOperations(firstUserInput,secondUserInput);
-	}
+void printResults() {
+    long long int firstUserInput,secondUserInput;
+    while(scanf("%lld",&firstUserInput) && scanf("%lld",&secondUserInput) && firstUserInput != 0 && secondUserInput != 0) {
+        printTotalCarryOperations(firstUserInput,secondUserInput);
+    }
 }
 
 #endif /* DPC101_H_ */

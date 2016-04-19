@@ -76,38 +76,38 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		string upperCase,lowerCase;
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				upperCase.push_back(userInput[counter]);
-			}else{
-				lowerCase.push_back(userInput[counter]);
-			}
-		}
-		sort(lowerCase.begin(),lowerCase.end());
-		sort(upperCase.begin(),upperCase.end());
-		unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				userInput[counter] = upperCase[upperCaseIndex++];
-			}else{
-				userInput[counter] = lowerCase[lowerCaseIndex++];
-			}
-		}
-		cout << userInput << endl;
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        string upperCase,lowerCase;
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                upperCase.push_back(userInput[counter]);
+            } else {
+                lowerCase.push_back(userInput[counter]);
+            }
+        }
+        sort(lowerCase.begin(),lowerCase.end());
+        sort(upperCase.begin(),upperCase.end());
+        unsigned int lowerCaseIndex = 0,upperCaseIndex = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                userInput[counter] = upperCase[upperCaseIndex++];
+            } else {
+                userInput[counter] = lowerCase[lowerCaseIndex++];
+            }
+        }
+        cout << userInput << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_CASESPECIFICSTRINGSORT_H_ */

@@ -70,22 +70,22 @@ using namespace __gnu_cxx;
 #ifndef PRINTREVERSE_H_
 #define PRINTREVERSE_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-void ReversePrint(Node *head){
-	if(head == null){
-		return;
-	}
-	if(head->next == NULL){
-		printf("%d\n",head->data);
-		return;
-	}
-	ReversePrint(head->next);
-	printf("%d\n",head->data);
+void ReversePrint(Node *head) {
+    if(head == null) {
+        return;
+    }
+    if(head->next == NULL) {
+        printf("%d\n",head->data);
+        return;
+    }
+    ReversePrint(head->next);
+    printf("%d\n",head->data);
 }
 
 #endif /* PRINTREVERSE_H_ */

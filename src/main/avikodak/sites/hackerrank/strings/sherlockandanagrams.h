@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define SHERLOCKANDANAGRAMS_H_
 
 //Tested
-void getTotalUnorderedAnagramicPairs(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	map<string,int> strFrequency;
-	map<string,int>::iterator itToStrFrequency;
-	unsigned int totalPairs;
-	while(testCases--){
-		cin >> userInput;
-		strFrequency.clear();
-		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-			for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-				string subString = userInput.substr(outerCounter,innerCounter-outerCounter+1);
-				sort(subString.begin(),subString.end());
-				if((itToStrFrequency = strFrequency.find(subString)) != strFrequency.end()){
-					strFrequency[subString] += 1;
-				}else{
-					strFrequency.insert(pair<string,int>(subString,1));
-				}
-			}
-		}
-		totalPairs = 0;
-		for(itToStrFrequency = strFrequency.begin();itToStrFrequency != strFrequency.end();itToStrFrequency++){
-			if(itToStrFrequency->second > 1){
-				totalPairs += ((itToStrFrequency->second)*(itToStrFrequency->second-1))/2;
-			}
-		}
-		cout << totalPairs << endl;
-	}
+void getTotalUnorderedAnagramicPairs() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    map<string,int> strFrequency;
+    map<string,int>::iterator itToStrFrequency;
+    unsigned int totalPairs;
+    while(testCases--) {
+        cin >> userInput;
+        strFrequency.clear();
+        for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+            for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+                string subString = userInput.substr(outerCounter,innerCounter-outerCounter+1);
+                sort(subString.begin(),subString.end());
+                if((itToStrFrequency = strFrequency.find(subString)) != strFrequency.end()) {
+                    strFrequency[subString] += 1;
+                } else {
+                    strFrequency.insert(pair<string,int>(subString,1));
+                }
+            }
+        }
+        totalPairs = 0;
+        for(itToStrFrequency = strFrequency.begin(); itToStrFrequency != strFrequency.end(); itToStrFrequency++) {
+            if(itToStrFrequency->second > 1) {
+                totalPairs += ((itToStrFrequency->second)*(itToStrFrequency->second-1))/2;
+            }
+        }
+        cout << totalPairs << endl;
+    }
 }
 
 #endif /* SHERLOCKANDANAGRAMS_H_ */

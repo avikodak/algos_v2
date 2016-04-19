@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: morrispreorder.h 
+ *  File Name   		: morrispreorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\morrispreorder.h
  *  Created on			: Nov 2, 2014 :: 5:13:44 AM
  *  Author				: AVINASH
@@ -72,30 +72,30 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void mMorrisPreOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				printf("%d\t",currentNode->value);
-				currentNode = currentNode->left;
-			}else{
-				temp->right = null;
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void mMorrisPreOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                temp->right = currentNode;
+                printf("%d\t",currentNode->value);
+                currentNode = currentNode->left;
+            } else {
+                temp->right = null;
+                currentNode = currentNode->right;
+            }
+        } else {
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 #endif /* MORRISPREORDER_H_ */

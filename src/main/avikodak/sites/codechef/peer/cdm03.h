@@ -73,26 +73,26 @@ using namespace __gnu_cxx;
 #define CDM03_H_
 
 //Tested
-unsigned int printLastDigit(unsigned int userInput,unsigned int power){
-	unsigned int product = (userInput%10);
-	if(product < 2 || product == 6){
-		return product;
-	}
-	userInput %= 10;
-	for(unsigned int counter = 2;counter <= power;counter++){
-		product = (product*userInput)%10;
-	}
-	return product;
+unsigned int printLastDigit(unsigned int userInput,unsigned int power) {
+    unsigned int product = (userInput%10);
+    if(product < 2 || product == 6) {
+        return product;
+    }
+    userInput %= 10;
+    for(unsigned int counter = 2; counter <= power; counter++) {
+        product = (product*userInput)%10;
+    }
+    return product;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,base,power;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&base,&power);
-		cout << printLastDigit(base,power) << endl;
-	}
+void printResults() {
+    unsigned int testCases,base,power;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&base,&power);
+        cout << printLastDigit(base,power) << endl;
+    }
 }
 
 #endif /* CDM03_H_ */

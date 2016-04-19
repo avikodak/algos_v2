@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findhackerrank.h 
+ *  File Name   		: findhackerrank.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\regex\findhackerrank.h
  *  Created on			: Mar 12, 2015 :: 5:46:56 PM
  *  Author				: avikodak
@@ -81,27 +81,27 @@ void split(const string &s, char delim, vector<string> &elements) {
 }
 
 
-void printResultOfConversation(){
-	int numberOfTestCases;
-	scanf("%d",&numberOfTestCases);
-	string userInput;
-	vector<string> words;
-	int firstWordFlag,lastWordFlag;
-	while(numberOfTestCases--){
-		cin >> userInput;
-		split(userInput,',',words);
-		firstWordFlag = words[0].compare(HACKER_RANK_LOWER_CASE);
-		lastWordFlag = words[words.size()-1].compare(HACKER_RANK_LOWER_CASE);
-		if(firstWordFlag == 0 && lastWordFlag == 0){
-			printf("0\n");
-		}else if(firstWordFlag == 0){
-			printf("1\n");
-		}else if(lastWordFlag == 0){
-			printf("2\n");
-		}else{
-			printf("-1\n");
-		}
-	}
+void printResultOfConversation() {
+    int numberOfTestCases;
+    scanf("%d",&numberOfTestCases);
+    string userInput;
+    vector<string> words;
+    int firstWordFlag,lastWordFlag;
+    while(numberOfTestCases--) {
+        cin >> userInput;
+        split(userInput,',',words);
+        firstWordFlag = words[0].compare(HACKER_RANK_LOWER_CASE);
+        lastWordFlag = words[words.size()-1].compare(HACKER_RANK_LOWER_CASE);
+        if(firstWordFlag == 0 && lastWordFlag == 0) {
+            printf("0\n");
+        } else if(firstWordFlag == 0) {
+            printf("1\n");
+        } else if(lastWordFlag == 0) {
+            printf("2\n");
+        } else {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* FINDHACKERRANK_H_ */

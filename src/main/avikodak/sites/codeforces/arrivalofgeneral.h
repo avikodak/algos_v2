@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arrivalofgeneral.h 
+ *  File Name   		: arrivalofgeneral.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\arrivalofgeneral.h
  *  Created on			: Mar 22, 2015 :: 8:22:54 PM
  *  Author				: avikodak
@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define ARRIVALOFGENERAL_H_
 
 //Tested
-void noOfSwapsForLines(){
-	vector<unsigned int> userInput;
-	unsigned int testCases,heights;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d",&heights);
-		userInput.push_back(heights);
-	}
-	unsigned int maxVal = 0,minVal = UINT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		maxVal = max(maxVal,userInput[counter]);
-		minVal = min(minVal,userInput[counter]);
-	}
-	unsigned int maxValIndex,minValueIndex;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == maxVal){
-			maxValIndex = counter;
-			break;
-		}
-	}
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		if(userInput[counter] == minVal){
-			minValueIndex = counter;
-			break;
-		}
-	}
-	if(minValueIndex > maxValIndex){
-		printf("%d",userInput.size() - minValueIndex + maxValIndex - 1);
-	}else{
-		printf("%d",userInput.size() - minValueIndex + maxValIndex - 2);
-	}
+void noOfSwapsForLines() {
+    vector<unsigned int> userInput;
+    unsigned int testCases,heights;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d",&heights);
+        userInput.push_back(heights);
+    }
+    unsigned int maxVal = 0,minVal = UINT_MAX;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        maxVal = max(maxVal,userInput[counter]);
+        minVal = min(minVal,userInput[counter]);
+    }
+    unsigned int maxValIndex,minValueIndex;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == maxVal) {
+            maxValIndex = counter;
+            break;
+        }
+    }
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        if(userInput[counter] == minVal) {
+            minValueIndex = counter;
+            break;
+        }
+    }
+    if(minValueIndex > maxValIndex) {
+        printf("%d",userInput.size() - minValueIndex + maxValIndex - 1);
+    } else {
+        printf("%d",userInput.size() - minValueIndex + maxValIndex - 2);
+    }
 }
 
 #endif /* ARRIVALOFGENERAL_H_ */

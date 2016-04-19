@@ -72,35 +72,35 @@ using namespace __gnu_cxx;
 
 class VowelLatin {
 private:
-	bool isVowel(char ch){
-		switch(ch){
-		case a:
-		case e:
-		case i:
-		case o:
-		case u:
-		case A:
-		case E:
-		case I:
-		case O:
-		case U:
-			return true;
-		}
-		return false;
-	}
+    bool isVowel(char ch) {
+        switch(ch) {
+        case a:
+        case e:
+        case i:
+        case o:
+        case u:
+        case A:
+        case E:
+        case I:
+        case O:
+        case U:
+            return true;
+        }
+        return false;
+    }
 public:
-	string translate(string word){
-		string result,vowels;
-		for(unsigned int counter = 0;counter < word.size();counter++){
-			if(isVowel(word[counter])){
-				vowels.push_back(word[counter]);
-			}else{
-				result.push_back(word[counter]);
-			}
-		}
-		result.append(vowels.begin(),vowels.end());
-		return result;
-	}
+    string translate(string word) {
+        string result,vowels;
+        for(unsigned int counter = 0; counter < word.size(); counter++) {
+            if(isVowel(word[counter])) {
+                vowels.push_back(word[counter]);
+            } else {
+                result.push_back(word[counter]);
+            }
+        }
+        result.append(vowels.begin(),vowels.end());
+        return result;
+    }
 };
 
 #endif /* VOWELLATIN_H_ */

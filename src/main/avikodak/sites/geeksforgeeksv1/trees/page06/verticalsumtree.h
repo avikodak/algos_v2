@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: verticalsumtree.h 
+ *  File Name   		: verticalsumtree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\verticalsumtree.h
  *  Created on			: Oct 23, 2014 :: 6:13:06 PM
  *  Author				: AVINASH
@@ -72,31 +72,31 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void setVerticalSum(itNode *ptr,int currentVerticalLevel,hash_map<int,int> &verticalSumMap){
-	if(ptr == null){
-		return;
-	}
-	hash_map<int,int>::iterator itToVerticalSumMap;
-	if((itToVerticalSumMap = verticalSumMap.find(currentVerticalLevel)) == verticalSumMap.end()){
-		verticalSumMap.insert(pair<int,int>(currentVerticalLevel,ptr->value));
-	}else{
-		verticalSumMap[currentVerticalLevel] += ptr->value;
-	}
-	setVerticalSum(ptr->left,currentVerticalLevel-1,verticalSumMap);
-	setVerticalSum(ptr->right,currentVerticalLevel+1,verticalSumMap);
+void setVerticalSum(itNode *ptr,int currentVerticalLevel,hash_map<int,int> &verticalSumMap) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<int,int>::iterator itToVerticalSumMap;
+    if((itToVerticalSumMap = verticalSumMap.find(currentVerticalLevel)) == verticalSumMap.end()) {
+        verticalSumMap.insert(pair<int,int>(currentVerticalLevel,ptr->value));
+    } else {
+        verticalSumMap[currentVerticalLevel] += ptr->value;
+    }
+    setVerticalSum(ptr->left,currentVerticalLevel-1,verticalSumMap);
+    setVerticalSum(ptr->right,currentVerticalLevel+1,verticalSumMap);
 }
 
 //Tested
-void printVerticalSums(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	hash_map<int,int> verticalSums;
-	setVerticalSum(ptr,0,verticalSums);
-	hash_map<int,int>::iterator itToVerticalSums;
-	for(itToVerticalSums = verticalSums.begin();itToVerticalSums != verticalSums.end();itToVerticalSums++){
-		printf("%d %d\n",itToVerticalSums->first,itToVerticalSums->second);
-	}
+void printVerticalSums(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<int,int> verticalSums;
+    setVerticalSum(ptr,0,verticalSums);
+    hash_map<int,int>::iterator itToVerticalSums;
+    for(itToVerticalSums = verticalSums.begin(); itToVerticalSums != verticalSums.end(); itToVerticalSums++) {
+        printf("%d %d\n",itToVerticalSums->first,itToVerticalSums->second);
+    }
 }
 
 #endif /* VERTICALSUMTREE_H_ */

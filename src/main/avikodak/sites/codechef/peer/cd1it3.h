@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define CD1IT3_H_
 
 //Tested
-void printResults(){
-	unsigned int size;
-	long long int reqSum,input,reqNumber;
-	vector<long long int> userInput;
-	scanf("%u %lld",&size,&reqSum);
-	while(size--){
-		scanf("%lld",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	bool pairPresent = false;
-	for(unsigned int counter =0;counter < userInput.size();counter++){
-		reqNumber = reqSum - userInput[counter];
-		if(userInput[counter] == reqNumber){
-			if(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]){
-				pairPresent = true;
-				break;
-			}
-		}else{
-			if(binary_search(userInput.begin(),userInput.end(),reqNumber)){
-				pairPresent = true;
-				break;
-			}
-		}
-	}
-	printf("%s\n",pairPresent?"Yes":"No");
+void printResults() {
+    unsigned int size;
+    long long int reqSum,input,reqNumber;
+    vector<long long int> userInput;
+    scanf("%u %lld",&size,&reqSum);
+    while(size--) {
+        scanf("%lld",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    bool pairPresent = false;
+    for(unsigned int counter =0; counter < userInput.size(); counter++) {
+        reqNumber = reqSum - userInput[counter];
+        if(userInput[counter] == reqNumber) {
+            if(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]) {
+                pairPresent = true;
+                break;
+            }
+        } else {
+            if(binary_search(userInput.begin(),userInput.end(),reqNumber)) {
+                pairPresent = true;
+                break;
+            }
+        }
+    }
+    printf("%s\n",pairPresent?"Yes":"No");
 }
 
 #endif /* CD1IT3_H_ */

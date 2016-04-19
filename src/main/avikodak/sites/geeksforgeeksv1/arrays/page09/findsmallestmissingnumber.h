@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findsmallestmissingnumber.h 
+ *  File Name   		: findsmallestmissingnumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findsmallestmissingnumber.h
  *  Created on			: Nov 26, 2014 :: 6:27:58 PM
  *  Author				: AVINASH
@@ -72,71 +72,71 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int findSmallestMissingNumberMain(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return userInput.size();
-	}
-	if(startIndex != userInput[startIndex]){
-		return startIndex;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] > middleIndex){
-		return findSmallestMissingNumberMain(userInput,startIndex,middleIndex-1);
-	}else{
-		return findSmallestMissingNumberMain(userInput,middleIndex+1,endIndex);
-	}
+int findSmallestMissingNumberMain(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return userInput.size();
+    }
+    if(startIndex != userInput[startIndex]) {
+        return startIndex;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] > middleIndex) {
+        return findSmallestMissingNumberMain(userInput,startIndex,middleIndex-1);
+    } else {
+        return findSmallestMissingNumberMain(userInput,middleIndex+1,endIndex);
+    }
 }
 
 //Tested
-int findSmallestMissingNumber(vector<int> userInput){
-	return findSmallestMissingNumberMain(userInput,0,userInput.size()-1);
+int findSmallestMissingNumber(vector<int> userInput) {
+    return findSmallestMissingNumberMain(userInput,0,userInput.size()-1);
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int findSmallestMissingNumbersLinear(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(counter != userInput[counter]){
-			return counter;
-		}
-	}
-	return userInput.size();
+unsigned int findSmallestMissingNumbersLinear(vector<unsigned int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(counter != userInput[counter]) {
+            return counter;
+        }
+    }
+    return userInput.size();
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool smnBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return false;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return true;
-	}else if(userInput[middleIndex] > key){
-		return smnBinarySearch(userInput,key,startIndex,middleIndex-1);
-	}else{
-		return smnBinarySearch(userInput,key,middleIndex+1,endIndex);
-	}
+bool smnBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return false;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return true;
+    } else if(userInput[middleIndex] > key) {
+        return smnBinarySearch(userInput,key,startIndex,middleIndex-1);
+    } else {
+        return smnBinarySearch(userInput,key,middleIndex+1,endIndex);
+    }
 }
 
 //Tested
-unsigned int findSmallestMissingNumbers(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(!smnBinarySearch(userInput,counter,0,userInput.size()-1)){
-			return counter;
-		}
-	}
-	return userInput.size();
+unsigned int findSmallestMissingNumbers(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(!smnBinarySearch(userInput,counter,0,userInput.size()-1)) {
+            return counter;
+        }
+    }
+    return userInput.size();
 }
 
 
@@ -144,24 +144,24 @@ unsigned int findSmallestMissingNumbers(vector<int> userInput){
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int findSmallestMissingNumberON2(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	bool valFound;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		valFound = false;
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] == counter){
-				valFound = true;
-				break;
-			}
-		}
-		if(!valFound){
-			return counter;
-		}
-	}
-	return userInput.size();
+unsigned int findSmallestMissingNumberON2(vector<unsigned int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    bool valFound;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        valFound = false;
+        for(unsigned int innerCounter = 0; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[innerCounter] == counter) {
+                valFound = true;
+                break;
+            }
+        }
+        if(!valFound) {
+            return counter;
+        }
+    }
+    return userInput.size();
 }
 
 #endif /* FINDSMALLESTMISSINGNUMBER_H_ */

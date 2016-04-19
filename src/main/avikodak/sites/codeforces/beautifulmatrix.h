@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulmatrix.h 
+ *  File Name   		: beautifulmatrix.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\beautifulmatrix.h
  *  Created on			: Mar 3, 2015 :: 8:51:35 AM
  *  Author				: avikodak
@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define BEAUTIFULMATRIX_H_
 
 //Tested
-void beautifulMatrix(){
-	unsigned int input;
-	for(unsigned int outerCrawler = 1;outerCrawler < 6;outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < 6;innerCrawler++){
-			scanf("%d",&input);
-			if(input == 1){
-				printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
-				return;
-			}
-		}
-	}
+void beautifulMatrix() {
+    unsigned int input;
+    for(unsigned int outerCrawler = 1; outerCrawler < 6; outerCrawler++) {
+        for(unsigned int innerCrawler = 1; innerCrawler < 6; innerCrawler++) {
+            scanf("%d",&input);
+            if(input == 1) {
+                printf("%d",abs(outerCrawler-3)+abs(innerCrawler-3));
+                return;
+            }
+        }
+    }
 }
 
 #endif /* BEAUTIFULMATRIX_H_ */

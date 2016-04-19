@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define HEADBOB_H_
 
 //Tested
-void printTypeOfPerson(string userInput){
-	unsigned int yCount = 0,iCount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == 'Y'){
-			yCount++;
-		}else if(userInput[counter] == 'I'){
-			iCount++;
-		}
-	}
-	if(yCount != 0 || iCount != 0){
-		if(yCount != 0 && iCount != 0){
-			printf("NOT SURE\n");
-		}else{
-			printf("%s\n",yCount > 0?"NOT INDIAN":"INDIAN");
-		}
-	}else{
-		printf("NOT SURE\n");
-	}
+void printTypeOfPerson(string userInput) {
+    unsigned int yCount = 0,iCount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == 'Y') {
+            yCount++;
+        } else if(userInput[counter] == 'I') {
+            iCount++;
+        }
+    }
+    if(yCount != 0 || iCount != 0) {
+        if(yCount != 0 && iCount != 0) {
+            printf("NOT SURE\n");
+        } else {
+            printf("%s\n",yCount > 0?"NOT INDIAN":"INDIAN");
+        }
+    } else {
+        printf("NOT SURE\n");
+    }
 }
 
 //Tested
-void getTypesForInput(){
-	unsigned int testCases,length;
-	string userInput;
-	cin >> testCases;
-	while(testCases--){
-		cin >> length >> userInput;
-		printTypeOfPerson(userInput);
-	}
+void getTypesForInput() {
+    unsigned int testCases,length;
+    string userInput;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> length >> userInput;
+        printTypeOfPerson(userInput);
+    }
 }
 
 #endif /* HEADBOB_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: interleavingstrings.h 
+ *  File Name   		: interleavingstrings.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
  *  Created on			: Jan 12, 2015 :: 4:09:13 PM
  *  Author				: AVINASH
@@ -73,55 +73,55 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isStringInterleavedMemoization(char *firstString,char *secondString,char *thirdString){
-	if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0'){
-		return true;
-	}
-	int firstStringLength = strlen(firstString);
-	int secondStringLength = strlen(secondString);
-	int thirdStringLength = strlen(thirdString);
-	vector<vector<bool> > auxSpace(firstString+1);
-	for(unsigned int counter = 0;counter <= firstStringLength;counter++){
-		auxSpace[counter].assign(secondStringLength+1,false);
-	}
-	for(unsigned int outerCounter = 0;outerCounter <= firstStringLength;outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter <= secondStringLength;innerCounter++){
-			if(outerCounter == 0 && innerCounter == 0){
-				auxSpace[outerCounter][innerCounter] = true;
-			}else if(outerCounter == 0 && secondString[innerCounter-1] == thirdString[innerCounter-1]){
-				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
-			}else if(innerCounter == 0 && firstString[innerCounter] == thirdString[innerCounter-1]){
-				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
-			}else if(firstString[outerCounter] == thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] != thirdString[outerCounter+innerCounter-1]){
-				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
-			}else if(firstString[outerCounter] != thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] == thirdString[outerCounter+innerCounter-1]){
-				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
-			}else{
-				auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1] || auxSpace[outerCounter-1][innerCounter];
-			}
-		}
-	}
-	return auxSpace[firstStringLength-1][secondStringLength-1];
+bool isStringInterleavedMemoization(char *firstString,char *secondString,char *thirdString) {
+    if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0') {
+        return true;
+    }
+    int firstStringLength = strlen(firstString);
+    int secondStringLength = strlen(secondString);
+    int thirdStringLength = strlen(thirdString);
+    vector<vector<bool> > auxSpace(firstString+1);
+    for(unsigned int counter = 0; counter <= firstStringLength; counter++) {
+        auxSpace[counter].assign(secondStringLength+1,false);
+    }
+    for(unsigned int outerCounter = 0; outerCounter <= firstStringLength; outerCounter++) {
+        for(unsigned int innerCounter = 0; innerCounter <= secondStringLength; innerCounter++) {
+            if(outerCounter == 0 && innerCounter == 0) {
+                auxSpace[outerCounter][innerCounter] = true;
+            } else if(outerCounter == 0 && secondString[innerCounter-1] == thirdString[innerCounter-1]) {
+                auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
+            } else if(innerCounter == 0 && firstString[innerCounter] == thirdString[innerCounter-1]) {
+                auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
+            } else if(firstString[outerCounter] == thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] != thirdString[outerCounter+innerCounter-1]) {
+                auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter-1][innerCounter];
+            } else if(firstString[outerCounter] != thirdString[outerCounter + innerCounter - 1]  && secondString[innerCounter] == thirdString[outerCounter+innerCounter-1]) {
+                auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1];
+            } else {
+                auxSpace[outerCounter][innerCounter] = auxSpace[outerCounter][innerCounter-1] || auxSpace[outerCounter-1][innerCounter];
+            }
+        }
+    }
+    return auxSpace[firstStringLength-1][secondStringLength-1];
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(2^N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isStringInterleaved(char *firstString,char *secondString,char *thirdString){
-	if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0'){
-		return true;
-	}
-	if(thirdString[0] == '\0'){
-		return false;
-	}
-	bool truthValue = false;
-	if(firstString[0] != '\0'){
-		truthValue = truthValue || (thirdString[0] == firstString[0] && isStringInterleaved(firstString+1,secondString,thirdString+1));
-	}
-	if(secondString[0]  != '\0'){
-		truthValue = truthValue || (thirdString[0] == secondString[0] && isStringInterleaved(firstString,secondString+1,thirdString+1));
-	}
-	return truthValue;
+bool isStringInterleaved(char *firstString,char *secondString,char *thirdString) {
+    if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0') {
+        return true;
+    }
+    if(thirdString[0] == '\0') {
+        return false;
+    }
+    bool truthValue = false;
+    if(firstString[0] != '\0') {
+        truthValue = truthValue || (thirdString[0] == firstString[0] && isStringInterleaved(firstString+1,secondString,thirdString+1));
+    }
+    if(secondString[0]  != '\0') {
+        truthValue = truthValue || (thirdString[0] == secondString[0] && isStringInterleaved(firstString,secondString+1,thirdString+1));
+    }
+    return truthValue;
 }
 
 #endif /* INTERLEAVINGSTRINGS_H_ */

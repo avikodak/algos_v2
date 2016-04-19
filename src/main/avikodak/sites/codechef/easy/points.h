@@ -71,57 +71,57 @@ using namespace __gnu_cxx;
 #define POINTS_H_
 
 //Tested
-struct point{
-	int xValue;
-	int yValue;
+struct point {
+    int xValue;
+    int yValue;
 
-	point(int xValue,int yValue){
-		this->xValue = xValue;
-		this->yValue = yValue;
-	}
+    point(int xValue,int yValue) {
+        this->xValue = xValue;
+        this->yValue = yValue;
+    }
 };
 
 //Tested
-double distance(point *first,point *second){
-	double firstValue = pow((first->xValue - second->xValue),2);
-	double secondValue = pow((first->yValue - second->yValue),2);
-	return sqrt(firstValue + secondValue);
+double distance(point *first,point *second) {
+    double firstValue = pow((first->xValue - second->xValue),2);
+    double secondValue = pow((first->yValue - second->yValue),2);
+    return sqrt(firstValue + secondValue);
 }
 
 //Tested
-bool sortFunc(point *first,point *second){
-	if(first->xValue == second->xValue){
-		return first->yValue > second->yValue;
-	}
-	return first->xValue < second->xValue;
+bool sortFunc(point *first,point *second) {
+    if(first->xValue == second->xValue) {
+        return first->yValue > second->yValue;
+    }
+    return first->xValue < second->xValue;
 }
 
 //Tested
-void calTotalDistance(vector<point *> userInput){
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	double totalDistance = 0;
-	for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-		totalDistance += distance(userInput[counter],userInput[counter+1]);
-	}
-	cout.precision(2);
-	cout << fixed << totalDistance << endl;
+void calTotalDistance(vector<point *> userInput) {
+    sort(userInput.begin(),userInput.end(),sortFunc);
+    double totalDistance = 0;
+    for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+        totalDistance += distance(userInput[counter],userInput[counter+1]);
+    }
+    cout.precision(2);
+    cout << fixed << totalDistance << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	int xValue,yValue;
-	scanf("%u",&testCases);
-	vector<point *> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%d %d",&xValue,&yValue);
-			userInput.push_back(new point(xValue,yValue));
-		}
-		calTotalDistance(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    int xValue,yValue;
+    scanf("%u",&testCases);
+    vector<point *> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%d %d",&xValue,&yValue);
+            userInput.push_back(new point(xValue,yValue));
+        }
+        calTotalDistance(userInput);
+    }
 }
 
 #endif /* POINTS_H_ */

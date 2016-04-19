@@ -75,46 +75,46 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SORTSILLS0S1S2S_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SORTSILLS0S1S2S_H_
 
-struct node{
-	int data;
-	struct node *next;
+struct node {
+    int data;
+    struct node *next;
 };
 
 //Tested
-void sortList(struct node *head){
-	if(head == NULL){
-		return;
-	}
-	unsigned int zeroFrequency = 0,oneFrequency = 0,twoFrequency = 0;
-	node *crawler = head;
-	while(crawler != NULL){
-		switch (crawler->data) {
-			case 0:
-				zeroFrequency++;
-				break;
-			case 1:
-				oneFrequency++;
-				break;
-			case 2:
-				twoFrequency++;
-				break;
-		}
-		crawler = crawler->next;
-	}
-	crawler = head;
-	while(crawler != null){
-		if(zeroFrequency > 0){
-			crawler->data = 0;
-			zeroFrequency--;
-		}else if(oneFrequency > 0){
-			crawler->data = 1;
-			oneFrequency--;
-		}else{
-			crawler->data = 2;
-			twoFrequency--;
-		}
-		crawler = crawler->next;
-	}
+void sortList(struct node *head) {
+    if(head == NULL) {
+        return;
+    }
+    unsigned int zeroFrequency = 0,oneFrequency = 0,twoFrequency = 0;
+    node *crawler = head;
+    while(crawler != NULL) {
+        switch (crawler->data) {
+        case 0:
+            zeroFrequency++;
+            break;
+        case 1:
+            oneFrequency++;
+            break;
+        case 2:
+            twoFrequency++;
+            break;
+        }
+        crawler = crawler->next;
+    }
+    crawler = head;
+    while(crawler != null) {
+        if(zeroFrequency > 0) {
+            crawler->data = 0;
+            zeroFrequency--;
+        } else if(oneFrequency > 0) {
+            crawler->data = 1;
+            oneFrequency--;
+        } else {
+            crawler->data = 2;
+            twoFrequency--;
+        }
+        crawler = crawler->next;
+    }
 }
 
 

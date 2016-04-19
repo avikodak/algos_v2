@@ -77,32 +77,32 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MULTIPLYMATRICES_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	int fUserInput[ROWS_COUNT][COLUMNS_COUNT],sUserInput[ROWS_COUNT][COLUMNS_COUNT];
-	scanf("%u",&testCases);
-	while(testCases--){
-		for(unsigned int rowCounter = 0;rowCounter < ROWS_COUNT;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < COLUMNS_COUNT;columnCounter++){
-				scanf("%d",&fUserInput[rowCounter][columnCounter]);
-			}
-		}
-		for(unsigned int rowCounter = 0;rowCounter < ROWS_COUNT;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < COLUMNS_COUNT;columnCounter++){
-				scanf("%d",&sUserInput[rowCounter][columnCounter]);
-			}
-		}
-		for(unsigned int rowCounter = 0;rowCounter < ROWS_COUNT;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < COLUMNS_COUNT;columnCounter++){
-				int sum = 0;
-				for(unsigned int innerColumnCounter = 0;innerColumnCounter < COLUMNS_COUNT;innerColumnCounter++){
-					sum += fUserInput[rowCounter][innerColumnCounter]*sUserInput[innerColumnCounter][columnCounter];
-				}
-				printf("%d ",sum);
-			}
-			printf("\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    int fUserInput[ROWS_COUNT][COLUMNS_COUNT],sUserInput[ROWS_COUNT][COLUMNS_COUNT];
+    scanf("%u",&testCases);
+    while(testCases--) {
+        for(unsigned int rowCounter = 0; rowCounter < ROWS_COUNT; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < COLUMNS_COUNT; columnCounter++) {
+                scanf("%d",&fUserInput[rowCounter][columnCounter]);
+            }
+        }
+        for(unsigned int rowCounter = 0; rowCounter < ROWS_COUNT; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < COLUMNS_COUNT; columnCounter++) {
+                scanf("%d",&sUserInput[rowCounter][columnCounter]);
+            }
+        }
+        for(unsigned int rowCounter = 0; rowCounter < ROWS_COUNT; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < COLUMNS_COUNT; columnCounter++) {
+                int sum = 0;
+                for(unsigned int innerColumnCounter = 0; innerColumnCounter < COLUMNS_COUNT; innerColumnCounter++) {
+                    sum += fUserInput[rowCounter][innerColumnCounter]*sUserInput[innerColumnCounter][columnCounter];
+                }
+                printf("%d ",sum);
+            }
+            printf("\n");
+        }
+    }
 }
 
 

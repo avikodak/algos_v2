@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 #define GAME2048_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		cout << userInput-1 << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        cout << userInput-1 << endl;
+    }
 }
 
 #endif /* GAME2048_H_ */

@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define TACHSTCK_H_
 
 //Tested
-void printChopSticksPairs(){
-	long long int size,difference,input,totalPairs = 0;
-	vector<long long int> userInput;
-	cin >> size >> difference;
-	while(size--){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size()-1;){
-		if(userInput[counter+1] - userInput[counter] <= difference){
-			totalPairs++;
-			counter += 2;
-		}else{
-			counter++;
-		}
-	}
-	cout << totalPairs << endl;
+void printChopSticksPairs() {
+    long long int size,difference,input,totalPairs = 0;
+    vector<long long int> userInput;
+    cin >> size >> difference;
+    while(size--) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size()-1;) {
+        if(userInput[counter+1] - userInput[counter] <= difference) {
+            totalPairs++;
+            counter += 2;
+        } else {
+            counter++;
+        }
+    }
+    cout << totalPairs << endl;
 }
 
 #endif /* TACHSTCK_H_ */

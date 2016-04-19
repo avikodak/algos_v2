@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphacyclic.h 
+ *  File Name   		: isgraphacyclic.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\isgraphacyclic.h
  *  Created on			: Dec 4, 2014 :: 11:50:18 PM
  *  Author				: AVINASH
@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isGraphAcyclic(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
-	vector<int> predecessor(adjacencyList.size(),INT_MIN);
-	queue<int> auxSpace;
-	int currentNode;
-	for(unsigned int counter = 0;counter < adjacencyList.size();counter++){
-		auxSpace.push(counter);
-		while(!auxSpace.empty()){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			for(unsigned int adjacentNodeCounter = 0;adjacentNodeCounter < adjacencyList[currentNode].size();adjacentNodeCounter++){
-				if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == INT_MIN){
-					predecessor[adjacencyList[currentNode][adjacentNodeCounter]] = currentNode;
-					bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = bfsLevels[currentNode];
-					auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
-				}else{
-					if(predecessor[currentNode] != adjacencyList[currentNode][adjacentNodeCounter]){
-						return false;
-					}
-				}
-			}
-		}
-	}
-	return true;
+bool isGraphAcyclic(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    vector<int> bfsLevels(adjacencyList.size(),INT_MIN);
+    vector<int> predecessor(adjacencyList.size(),INT_MIN);
+    queue<int> auxSpace;
+    int currentNode;
+    for(unsigned int counter = 0; counter < adjacencyList.size(); counter++) {
+        auxSpace.push(counter);
+        while(!auxSpace.empty()) {
+            currentNode = auxSpace.front();
+            auxSpace.pop();
+            for(unsigned int adjacentNodeCounter = 0; adjacentNodeCounter < adjacencyList[currentNode].size(); adjacentNodeCounter++) {
+                if(bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] == INT_MIN) {
+                    predecessor[adjacencyList[currentNode][adjacentNodeCounter]] = currentNode;
+                    bfsLevels[adjacencyList[currentNode][adjacentNodeCounter]] = bfsLevels[currentNode];
+                    auxSpace.push(adjacencyList[currentNode][adjacentNodeCounter]);
+                } else {
+                    if(predecessor[currentNode] != adjacencyList[currentNode][adjacentNodeCounter]) {
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
 }
 
 #endif /* ISGRAPHACYCLIC_H_ */

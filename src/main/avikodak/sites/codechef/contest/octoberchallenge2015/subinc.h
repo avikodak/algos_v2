@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define SUBINC_H_
 
 //Tested
-void printResults(){
-	long long int testCases,size,input,result;
-	vector<long long int> userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&size);
-		userInput.clear();
-		result = 0;
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		unsigned int outerCrawler= 0,innerCrawler;
-		long long int incSubSize  = 0;
-		while(outerCrawler < userInput.size()){
-			innerCrawler = outerCrawler+1;
-			incSubSize = 1;
-			while(innerCrawler < userInput.size() && userInput[innerCrawler] >= userInput[innerCrawler-1]){
-				incSubSize++;
-				innerCrawler++;
-			}
-			result += ((incSubSize)*(incSubSize+1))/2;
-			outerCrawler = innerCrawler;
-		}
-		printf("%lld\n",result);
-	}
+void printResults() {
+    long long int testCases,size,input,result;
+    vector<long long int> userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&size);
+        userInput.clear();
+        result = 0;
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        unsigned int outerCrawler= 0,innerCrawler;
+        long long int incSubSize  = 0;
+        while(outerCrawler < userInput.size()) {
+            innerCrawler = outerCrawler+1;
+            incSubSize = 1;
+            while(innerCrawler < userInput.size() && userInput[innerCrawler] >= userInput[innerCrawler-1]) {
+                incSubSize++;
+                innerCrawler++;
+            }
+            result += ((incSubSize)*(incSubSize+1))/2;
+            outerCrawler = innerCrawler;
+        }
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* SUBINC_H_ */

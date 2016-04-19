@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: heightofnode.h 
+ *  File Name   		: heightofnode.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture11\heightofnode.h
  *  Created on			: Nov 18, 2014 :: 7:22:26 PM
  *  Author				: AVINASH
@@ -68,19 +68,19 @@ using namespace __gnu_cxx;
 #ifndef HEIGHTOFNODE_H_
 #define HEIGHTOFNODE_H_
 
-unsigned int heightOfNode(itNode *ptr,int value){
-	if(ptr == null){
-		return 0;
-	}
-	if(ptr->value == value){
-		treeutils *utils = new treeutils();
-		return utils->getHeightOfTree(ptr);
-	}
-	unsigned int result = heightOfNode(ptr->left,value);
-	if(result == 0){
-		return result;
-	}
-	return heightOfNode(ptr->right,value);
+unsigned int heightOfNode(itNode *ptr,int value) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(ptr->value == value) {
+        treeutils *utils = new treeutils();
+        return utils->getHeightOfTree(ptr);
+    }
+    unsigned int result = heightOfNode(ptr->left,value);
+    if(result == 0) {
+        return result;
+    }
+    return heightOfNode(ptr->right,value);
 }
 
 #endif /* HEIGHTOFNODE_H_ */

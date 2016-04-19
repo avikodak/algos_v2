@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 709
-void getLargestExponentialLine(){
-	unsigned int testCases,maxLineNumber;
-	cin >> testCases;
-	double maxValue = 0,exponent,base,result;
-	for(unsigned int counter = 1;counter <= testCases;counter++){
-		cin >> base >> exponent;
-		result = exponent * log10(base);
-		cout << result << endl;
-		if(maxValue < result){
-			maxValue = result;
-			maxLineNumber = counter;
-		}
-	}
-	cout << maxLineNumber << endl;
+void getLargestExponentialLine() {
+    unsigned int testCases,maxLineNumber;
+    cin >> testCases;
+    double maxValue = 0,exponent,base,result;
+    for(unsigned int counter = 1; counter <= testCases; counter++) {
+        cin >> base >> exponent;
+        result = exponent * log10(base);
+        cout << result << endl;
+        if(maxValue < result) {
+            maxValue = result;
+            maxLineNumber = counter;
+        }
+    }
+    cout << maxLineNumber << endl;
 }
 
 #endif /* LARGESTEXPONENTIAL_H_ */

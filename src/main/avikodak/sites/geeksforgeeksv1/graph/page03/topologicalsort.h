@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: topologicalsort.h 
+ *  File Name   		: topologicalsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\topologicalsort.h
  *  Created on			: Dec 15, 2014 :: 6:54:52 PM
  *  Author				: AVINASH
@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef TOPOLOGICALSORT_H_
 #define TOPOLOGICALSORT_H_
 
-void topologicalSort(vector<vector<int> > adjacencyList,int sourceVertex,stack<int> &sortedOrder){
-	if(adjacencyList.size() == 0 || sortedOrder >= adjacencyList.size()){
-		return;
-	}
-	static vector<bool> visitedFlags(adjacencyList.size(),INT_MIN);
-	visitedFlags[sourceVertex] = true;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(!visitedFlags[adjacencyList[sourceVertex][counter]]){
-			topologicalSort(adjacencyList,adjacencyList[sourceVertex][counter],sortedOrder);
-		}
-	}
-	sortedOrder.push_back(sourceVertex);
+void topologicalSort(vector<vector<int> > adjacencyList,int sourceVertex,stack<int> &sortedOrder) {
+    if(adjacencyList.size() == 0 || sortedOrder >= adjacencyList.size()) {
+        return;
+    }
+    static vector<bool> visitedFlags(adjacencyList.size(),INT_MIN);
+    visitedFlags[sourceVertex] = true;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(!visitedFlags[adjacencyList[sourceVertex][counter]]) {
+            topologicalSort(adjacencyList,adjacencyList[sourceVertex][counter],sortedOrder);
+        }
+    }
+    sortedOrder.push_back(sourceVertex);
 }
 
 #endif /* TOPOLOGICALSORT_H_ */

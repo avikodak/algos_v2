@@ -76,14 +76,14 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COUNTODDFACTORS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%lld\n",sqrt(input));
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%lld\n",sqrt(input));
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COUNTODDFACTORS_H_ */

@@ -79,14 +79,14 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(1) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void deletePtr(sillNode *ptr){
-	if(ptr->next == null){
-		throw invalid_argument("Tail node cannot be deleted");
-	}
-	ptr->value = ptr->next->value;
-	sillNode *nodeToDelete = ptr->next;
-	ptr->next = ptr->next->next;
-	free(nodeToDelete);
+void deletePtr(sillNode *ptr) {
+    if(ptr->next == null) {
+        throw invalid_argument("Tail node cannot be deleted");
+    }
+    ptr->value = ptr->next->value;
+    sillNode *nodeToDelete = ptr->next;
+    ptr->next = ptr->next->next;
+    free(nodeToDelete);
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_DELETEANODEBYPTR_H_ */

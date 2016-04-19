@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: floorceilbst.h 
+ *  File Name   		: floorceilbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\floorceilbst.h
  *  Created on			: Nov 13, 2014 :: 12:20:17 PM
  *  Author				: AVINASH
@@ -72,34 +72,34 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int ceilBST(itNode *ptr,int value){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	if(ptr->value == value){
-		return ptr->value;
-	}
-	if(ptr->value < value){
-		return ceilBST(ptr->right,value);
-	}else{
-		int result = ceilBST(ptr->left,value);
-		return result >= value?result:ptr->value;
-	}
+int ceilBST(itNode *ptr,int value) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    if(ptr->value == value) {
+        return ptr->value;
+    }
+    if(ptr->value < value) {
+        return ceilBST(ptr->right,value);
+    } else {
+        int result = ceilBST(ptr->left,value);
+        return result >= value?result:ptr->value;
+    }
 }
 
-int floorBST(itNode *ptr,int value){
-	if(ptr == null){
-		return INT_MAX;
-	}
-	if(ptr->value == value){
-		return ptr->value;
-	}
-	if(ptr->value > value){
-		return floorBST(ptr->left,value);
-	}else{
-		int result = floorBST(ptr->right,value);
-		return result < value?result:ptr->value;
-	}
+int floorBST(itNode *ptr,int value) {
+    if(ptr == null) {
+        return INT_MAX;
+    }
+    if(ptr->value == value) {
+        return ptr->value;
+    }
+    if(ptr->value > value) {
+        return floorBST(ptr->left,value);
+    } else {
+        int result = floorBST(ptr->right,value);
+        return result < value?result:ptr->value;
+    }
 }
 
 /****************************************************************************************************************************************************/

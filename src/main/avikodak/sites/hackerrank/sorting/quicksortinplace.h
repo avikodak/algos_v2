@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: quicksortinplace.h 
+ *  File Name   		: quicksortinplace.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksortinplace.h
  *  Created on			: Feb 12, 2015 :: 2:47:37 PM
  *  Author				: AVINASH
@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 #define QUICKSORTINPLACE_H_
 
 //Tested
-void printVector(vector<int> userInput){
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%d ",userInput[counter]);
-	}
-	printf("\n");
+void printVector(vector<int> userInput) {
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%d ",userInput[counter]);
+    }
+    printf("\n");
 }
 
 //Tested
-int partitionArray(vector<int> &userInput,int start,int end){
-	int pivotElement = end;
-	int key = userInput[end];
-	int frontCrawler = start,rearCrawler = start;
-	while(rearCrawler <= end){
-		if(userInput[rearCrawler] < key){
-			swap(userInput[frontCrawler],userInput[rearCrawler]);
-			frontCrawler++;
-		}
-		rearCrawler++;
-	}
-	swap(userInput[frontCrawler],userInput[pivotElement]);
-	printVector(userInput);
-	return frontCrawler;
+int partitionArray(vector<int> &userInput,int start,int end) {
+    int pivotElement = end;
+    int key = userInput[end];
+    int frontCrawler = start,rearCrawler = start;
+    while(rearCrawler <= end) {
+        if(userInput[rearCrawler] < key) {
+            swap(userInput[frontCrawler],userInput[rearCrawler]);
+            frontCrawler++;
+        }
+        rearCrawler++;
+    }
+    swap(userInput[frontCrawler],userInput[pivotElement]);
+    printVector(userInput);
+    return frontCrawler;
 }
 
 //Tested
-void quickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = partitionArray(userInput,startIndex,endIndex);
-	quickSort(userInput,startIndex,dividingIndex-1);
-	quickSort(userInput,dividingIndex+1,endIndex);
+void quickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int dividingIndex = partitionArray(userInput,startIndex,endIndex);
+    quickSort(userInput,startIndex,dividingIndex-1);
+    quickSort(userInput,dividingIndex+1,endIndex);
 }
 
 #endif /* QUICKSORTINPLACE_H_ */

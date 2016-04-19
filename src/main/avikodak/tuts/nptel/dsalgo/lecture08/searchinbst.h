@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: searchinbst.h 
+ *  File Name   		: searchinbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\searchinbst.h
  *  Created on			: Nov 18, 2014 :: 7:40:22 PM
  *  Author				: AVINASH
@@ -72,35 +72,35 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *searchInBst(itNode *ptr,int userInput){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->value == userInput){
-		return ptr;
-	}else if(ptr->value > userInput){
-		return searchInBst(ptr->left,userInput);
-	}else{
-		return searchInBst(ptr->right,userInput);
-	}
+itNode *searchInBst(itNode *ptr,int userInput) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->value == userInput) {
+        return ptr;
+    } else if(ptr->value > userInput) {
+        return searchInBst(ptr->left,userInput);
+    } else {
+        return searchInBst(ptr->right,userInput);
+    }
 }
 
 //Tested
-itNode *searchInBstIterative(itNode *ptr,int userInput){
-	if(ptr == null){
-		return null;
-	}
-	itNode *currentNode = ptr;
-	while(currentNode != null){
-		if(currentNode->value == userInput){
-			break;
-		}else if(currentNode->value > userInput){
-			currentNode = currentNode->left;
-		}else{
-			currentNode = currentNode->right;
-		}
-	}
-	return currentNode;
+itNode *searchInBstIterative(itNode *ptr,int userInput) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *currentNode = ptr;
+    while(currentNode != null) {
+        if(currentNode->value == userInput) {
+            break;
+        } else if(currentNode->value > userInput) {
+            currentNode = currentNode->left;
+        } else {
+            currentNode = currentNode->right;
+        }
+    }
+    return currentNode;
 }
 
 #endif /* SEARCHINBST_H_ */

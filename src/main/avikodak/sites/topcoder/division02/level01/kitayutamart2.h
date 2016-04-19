@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kitayutamart2.h 
+ *  File Name   		: kitayutamart2.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\kitayutamart2.h
  *  Created on			: Mar 28, 2015 :: 10:08:16 PM
  *  Author				: avikodak
@@ -70,11 +70,11 @@ using namespace __gnu_cxx;
 #ifndef KITAYUTAMART2_H_
 #define KITAYUTAMART2_H_
 
-class KitayutaMart2{
+class KitayutaMart2 {
 public:
-	int numBought(int K, int T){
-		return log2((T/K)+1);
-	}
+    int numBought(int K, int T) {
+        return log2((T/K)+1);
+    }
 };
 
 #endif /* KITAYUTAMART2_H_ */

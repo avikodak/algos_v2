@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minimumbst.h 
+ *  File Name   		: minimumbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\minimumbst.h
  *  Created on			: Nov 18, 2014 :: 7:40:04 PM
  *  Author				: AVINASH
@@ -72,26 +72,26 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *getMinNodeBst(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->left == null){
-		return ptr;
-	}
-	return getMinNodeBst(ptr->left);
+itNode *getMinNodeBst(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->left == null) {
+        return ptr;
+    }
+    return getMinNodeBst(ptr->left);
 }
 
 //Tested
-itNode *getMinNodeBstIterative(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *currentNode = ptr;
-	while(currentNode->left != null){
-		currentNode = currentNode->left;
-	}
-	return currentNode;
+itNode *getMinNodeBstIterative(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *currentNode = ptr;
+    while(currentNode->left != null) {
+        currentNode = currentNode->left;
+    }
+    return currentNode;
 }
 
 #endif /* MINIMUMBST_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: firstnonrepeating.h 
+ *  File Name   		: firstnonrepeating.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\firstnonrepeating.h
  *  Created on			: Jan 16, 2015 :: 11:47:59 AM
  *  Author				: AVINASH
@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-char firstNonRepeatingChar(char *userInput){
-	if(userInput == null || userInput[0] == '\0'){
-		return '\0';
-	}
-	char *temp = userInput;
-	hash_map<char,unsigned int>  frequencyMap;
-	hash_map<char,unsigned int>::iterator itToFrequencyMap;
-	while(userInput[0] != '\0'){
-		if((itToFrequencyMap = frequencyMap.find(userInput[0])) == frequencyMap.end()){
-			frequencyMap[userInput[0]] = 1;
-		}else{
-			frequencyMap[userInput[0]] += 1;
-		}
-		userInput++;
-	}
-	while(temp[0] != '\0'){
-		itToFrequencyMap = frequencyMap.find(temp[0]);
-		if(itToFrequencyMap->second == 1){
-			return temp[0];
-		}
-	}
-	return '\0';
+char firstNonRepeatingChar(char *userInput) {
+    if(userInput == null || userInput[0] == '\0') {
+        return '\0';
+    }
+    char *temp = userInput;
+    hash_map<char,unsigned int>  frequencyMap;
+    hash_map<char,unsigned int>::iterator itToFrequencyMap;
+    while(userInput[0] != '\0') {
+        if((itToFrequencyMap = frequencyMap.find(userInput[0])) == frequencyMap.end()) {
+            frequencyMap[userInput[0]] = 1;
+        } else {
+            frequencyMap[userInput[0]] += 1;
+        }
+        userInput++;
+    }
+    while(temp[0] != '\0') {
+        itToFrequencyMap = frequencyMap.find(temp[0]);
+        if(itToFrequencyMap->second == 1) {
+            return temp[0];
+        }
+    }
+    return '\0';
 }
 
 

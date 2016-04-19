@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: radixexchangesort.h 
+ *  File Name   		: radixexchangesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\radixexchangesort.h
  *  Created on			: Dec 11, 2014 :: 1:00:56 PM
  *  Author				: AVINASH
@@ -74,41 +74,41 @@ using namespace __gnu_cxx;
 /* 																	O(B*N) Algorithm 																*/
 /****************************************************************************************************************************************************/
 //Tested
-int divideStepRadixExchangeSort(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
-	if(userInput.size() == 0 || bitPosition < 0){
-		return INT_MIN;
-	}
-	while(startIndex <= endIndex){
-		while(startIndex <= endIndex && !(userInput[startIndex] & 1 << bitPosition)){
-			startIndex++;
-		}
-		while(startIndex <= endIndex && userInput[endIndex] & 1 << bitPosition){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	return endIndex;
+int divideStepRadixExchangeSort(vector<int> &userInput,int startIndex,int endIndex,int bitPosition) {
+    if(userInput.size() == 0 || bitPosition < 0) {
+        return INT_MIN;
+    }
+    while(startIndex <= endIndex) {
+        while(startIndex <= endIndex && !(userInput[startIndex] & 1 << bitPosition)) {
+            startIndex++;
+        }
+        while(startIndex <= endIndex && userInput[endIndex] & 1 << bitPosition) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    return endIndex;
 }
 
 //Tested
-void radixExchangeSortMainV2(vector<int> &userInput,int startIndex,int endIndex,int bitPosition){
-	if(startIndex >= endIndex || bitPosition < 0){
-		return;
-	}
-	int dividingIndex = divideStepRadixExchangeSort(userInput,startIndex,endIndex,bitPosition);
-	radixExchangeSortMainV2(userInput,startIndex,dividingIndex,bitPosition-1);
-	radixExchangeSortMainV2(userInput,dividingIndex+1,endIndex,bitPosition-1);
+void radixExchangeSortMainV2(vector<int> &userInput,int startIndex,int endIndex,int bitPosition) {
+    if(startIndex >= endIndex || bitPosition < 0) {
+        return;
+    }
+    int dividingIndex = divideStepRadixExchangeSort(userInput,startIndex,endIndex,bitPosition);
+    radixExchangeSortMainV2(userInput,startIndex,dividingIndex,bitPosition-1);
+    radixExchangeSortMainV2(userInput,dividingIndex+1,endIndex,bitPosition-1);
 }
 
 //Tested
-void radixExchangeSortV2(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	int maxVal = *max_element(userInput.begin(),userInput.end());
-	radixExchangeSortMainV2(userInput,0,userInput.size(),log2(maxVal));
+void radixExchangeSortV2(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    int maxVal = *max_element(userInput.begin(),userInput.end());
+    radixExchangeSortMainV2(userInput,0,userInput.size(),log2(maxVal));
 }
 
 #endif /* RADIXEXCHANGESORTV2_H_ */

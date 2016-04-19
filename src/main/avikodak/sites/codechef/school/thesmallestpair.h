@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define THESMALLESTPAIR_H_
 
 //Tested
-void printTheSmallestPairSum(vector<unsigned int> userInput){
-	unsigned int smallestSum = UINT_MAX,runningMin = userInput[userInput.size()-1];
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		smallestSum = min(smallestSum,userInput[counter]+runningMin);
-		if(runningMin > userInput[counter]){
-			runningMin = userInput[counter];
-		}
-	}
-	cout << smallestSum << endl;
+void printTheSmallestPairSum(vector<unsigned int> userInput) {
+    unsigned int smallestSum = UINT_MAX,runningMin = userInput[userInput.size()-1];
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        smallestSum = min(smallestSum,userInput[counter]+runningMin);
+        if(runningMin > userInput[counter]) {
+            runningMin = userInput[counter];
+        }
+    }
+    cout << smallestSum << endl;
 }
 
 //Tested
-void getSmallestPairs(){
-	unsigned int testCases,input,inputSize;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		userInput.clear();
-		scanf("%u",&inputSize);
-		while(inputSize--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		printTheSmallestPairSum(userInput);
-	}
+void getSmallestPairs() {
+    unsigned int testCases,input,inputSize;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        userInput.clear();
+        scanf("%u",&inputSize);
+        while(inputSize--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        printTheSmallestPairSum(userInput);
+    }
 }
 
 #endif /* THESMALLESTPAIR_H_ */

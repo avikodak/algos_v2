@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: test.h 
+ *  File Name   		: test.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\test.h
  *  Created on			: Feb 3, 2015 :: 10:35:43 AM
  *  Author				: AVINASH
@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define TEST_H_
 
 //Tested
-void testIO(){
-	int userInput;
-	while(true){
-		scanf("%d",&userInput);
-		if(userInput == 42){
-			break;
-		}
-		printf("%d\n",userInput);
-	}
+void testIO() {
+    int userInput;
+    while(true) {
+        scanf("%d",&userInput);
+        if(userInput == 42) {
+            break;
+        }
+        printf("%d\n",userInput);
+    }
 }
 
 #endif /* TEST_H_ */

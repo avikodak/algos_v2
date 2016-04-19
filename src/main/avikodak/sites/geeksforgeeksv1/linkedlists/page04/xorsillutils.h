@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: xorsillutils.h 
+ *  File Name   		: xorsillutils.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
  *  Created on			: Oct 16, 2014 :: 10:59:59 AM
  *  Author				: AVINASH
@@ -69,31 +69,31 @@ using namespace __gnu_cxx;
 #ifndef XORSILLUTILS_H_
 #define XORSILLUTILS_H_
 
-void insertIntoXORSill(xorSillNode **head,int value){
-	if(*head == null){
-		(*head) = new xorSillNode(value);
-		return;
-	}
-	xorSillNode *prevNode = null,*crawler = *head,*temp;
-	while(crawler->addressesXor ^ (intptr_t)prevNode){
-		temp = crawler;
-		crawler = crawler->addressesXor ^ (intptr_t)prevNode;
-		prevNode = temp;
-	}
-	temp = new xorSillNode(value);
-	crawler->addressesXor = (intptr_t)prevNode ^ (intptr_t)temp;
+void insertIntoXORSill(xorSillNode **head,int value) {
+    if(*head == null) {
+        (*head) = new xorSillNode(value);
+        return;
+    }
+    xorSillNode *prevNode = null,*crawler = *head,*temp;
+    while(crawler->addressesXor ^ (intptr_t)prevNode) {
+        temp = crawler;
+        crawler = crawler->addressesXor ^ (intptr_t)prevNode;
+        prevNode = temp;
+    }
+    temp = new xorSillNode(value);
+    crawler->addressesXor = (intptr_t)prevNode ^ (intptr_t)temp;
 }
 
-void printXorList(xorSillNode *head){
-	if(head == null){
-		return;
-	}
-	xorSillNode *prevNode = null,*crawler = head;
-	while(crawler != null){
-		printf("%d",crawler->value);
-		prevNode = crawler;
-		crawler = (xorSillNode *)(crawler->addressesXor ^ (intptr_t)prevNode);
-	}
+void printXorList(xorSillNode *head) {
+    if(head == null) {
+        return;
+    }
+    xorSillNode *prevNode = null,*crawler = head;
+    while(crawler != null) {
+        printf("%d",crawler->value);
+        prevNode = crawler;
+        crawler = (xorSillNode *)(crawler->addressesXor ^ (intptr_t)prevNode);
+    }
 }
 
 #endif /* XORSILLUTILS_H_ */

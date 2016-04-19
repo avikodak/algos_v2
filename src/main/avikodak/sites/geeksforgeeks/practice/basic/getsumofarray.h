@@ -76,19 +76,19 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GETSUMOFARRAY_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		result = 0;
-		while(size--){
-			scanf("%lld",&input);
-			result += input;
-		}
-		printf("%lld\n",result);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        result = 0;
+        while(size--) {
+            scanf("%lld",&input);
+            result += input;
+        }
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GETSUMOFARRAY_H_ */

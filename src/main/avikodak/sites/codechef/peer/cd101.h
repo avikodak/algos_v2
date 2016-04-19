@@ -72,10 +72,10 @@ using namespace __gnu_cxx;
 #define CD101_H_
 
 //Tested
-void printResults(){
-	unsigned int l,m,n;
-	scanf("%u %u %u",&l,&m,&n);
-	printf("%u\n",max(m-l-1,n-m-1));
+void printResults() {
+    unsigned int l,m,n;
+    scanf("%u %u %u",&l,&m,&n);
+    printf("%u\n",max(m-l-1,n-m-1));
 }
 
 #endif /* CD101_H_ */

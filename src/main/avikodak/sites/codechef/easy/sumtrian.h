@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sumtrian.h 
+ *  File Name   		: sumtrian.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\sumtrian.h
  *  Created on			: Feb 5, 2015 :: 10:33:39 AM
  *  Author				: AVINASH
@@ -74,35 +74,35 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 //Tested
-void maxSumTriangle(){
-	int testCases;
-	scanf("%d",&testCases);
-	int rows;
-	int number;
-	int maxSum = 0;
-	while(testCases--){
-		scanf("%d",&rows);
-		vector<vector<int> > userInput(rows);
-		maxSum = 0;
-		for(int rowCounter = 0;rowCounter < rows;rowCounter++){
-			for(int columnCounter = 0;columnCounter <= rowCounter;columnCounter++){
-				scanf("%d",&number);
-				if(rowCounter-1 >= 0){
-					if(columnCounter-1 >= 0 && (int)userInput[rowCounter-1].size() > columnCounter){
-						number += max(userInput[rowCounter-1][columnCounter-1],userInput[rowCounter-1][columnCounter]);
-					} else if((int)userInput[rowCounter-1].size() > columnCounter){
-						number += userInput[rowCounter-1][columnCounter];
-					}else if(columnCounter-1 >= 0){
-						number += userInput[rowCounter-1][columnCounter-1];
-					}
-				}
-				maxSum = max(maxSum,number);
-				userInput[rowCounter].push_back(number);
-			}
-		}
-		userInput.clear();
-		printf("%d\n",maxSum);
-	}
+void maxSumTriangle() {
+    int testCases;
+    scanf("%d",&testCases);
+    int rows;
+    int number;
+    int maxSum = 0;
+    while(testCases--) {
+        scanf("%d",&rows);
+        vector<vector<int> > userInput(rows);
+        maxSum = 0;
+        for(int rowCounter = 0; rowCounter < rows; rowCounter++) {
+            for(int columnCounter = 0; columnCounter <= rowCounter; columnCounter++) {
+                scanf("%d",&number);
+                if(rowCounter-1 >= 0) {
+                    if(columnCounter-1 >= 0 && (int)userInput[rowCounter-1].size() > columnCounter) {
+                        number += max(userInput[rowCounter-1][columnCounter-1],userInput[rowCounter-1][columnCounter]);
+                    } else if((int)userInput[rowCounter-1].size() > columnCounter) {
+                        number += userInput[rowCounter-1][columnCounter];
+                    } else if(columnCounter-1 >= 0) {
+                        number += userInput[rowCounter-1][columnCounter-1];
+                    }
+                }
+                maxSum = max(maxSum,number);
+                userInput[rowCounter].push_back(number);
+            }
+        }
+        userInput.clear();
+        printf("%d\n",maxSum);
+    }
 }
 
 #endif /* SUMTRIAN_H_ */

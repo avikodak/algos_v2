@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: compressionmap.h 
+ *  File Name   		: compressionmap.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture05\compressionmap.h
  *  Created on			: Nov 17, 2014 :: 7:34:22 PM
  *  Author				: AVINASH
@@ -70,17 +70,17 @@ using namespace __gnu_cxx;
 #ifndef COMPRESSIONMAP_H_
 #define COMPRESSIONMAP_H_
 
-int getHashValueTraditional(int userInput){
-	return userInput % SIZE_OF_HASH_MAP;
+int getHashValueTraditional(int userInput) {
+    return userInput % SIZE_OF_HASH_MAP;
 }
 
-int getHashValueV2(int userInput){
-	double conjugateOfGoldenRatio = (sqrt(5) - 1)/(double)(2);
-	return floor(SIZE_OF_HASH_MAP * modf((conjugateOfGoldenRatio*userInput)));
+int getHashValueV2(int userInput) {
+    double conjugateOfGoldenRatio = (sqrt(5) - 1)/(double)(2);
+    return floor(SIZE_OF_HASH_MAP * modf((conjugateOfGoldenRatio*userInput)));
 }
 
-int getHashValueMAD(int userInput){
-	return (MAD_A*userInput + MAD_B) % SIZE_OF_HASH_MAP;
+int getHashValueMAD(int userInput) {
+    return (MAD_A*userInput + MAD_B) % SIZE_OF_HASH_MAP;
 }
 
 #endif /* COMPRESSIONMAP_H_ */

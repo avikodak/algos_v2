@@ -78,49 +78,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-sillNode *itGetNthNode(sillNode *ptr,unsigned int nValue){
-	for(unsigned int counter = 0;counter < nValue;counter++){
-		ptr = ptr->next;
-	}
-	return ptr;
+sillNode *itGetNthNode(sillNode *ptr,unsigned int nValue) {
+    for(unsigned int counter = 0; counter < nValue; counter++) {
+        ptr = ptr->next;
+    }
+    return ptr;
 }
 
-sillNode *getNthNode(sillNode *ptr,unsigned int nValue){
-	if(nValue == 0){
-		return ptr;
-	}
-	return getNthNode(ptr,nValue-1);
+sillNode *getNthNode(sillNode *ptr,unsigned int nValue) {
+    if(nValue == 0) {
+        return ptr;
+    }
+    return getNthNode(ptr,nValue-1);
 }
 
-sillNode *getNthNodeCaching(sillNode *ptr,unsigned int nValue){
-	map<unsigned int,sillNode *> indexNodeMap;
-	map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	unsigned int indexCounter = 0;
-	while(ptr != null){
-		indexNodeMap.insert(pair<unsigned int,sillNode *>(indexCounter++,ptr));
-		ptr = ptr->next;
-	}
-	return (itToIndexNodeMap = indexNodeMap.find(nValue)) == indexNodeMap.end()?null:itToIndexNodeMap->second;
+sillNode *getNthNodeCaching(sillNode *ptr,unsigned int nValue) {
+    map<unsigned int,sillNode *> indexNodeMap;
+    map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    unsigned int indexCounter = 0;
+    while(ptr != null) {
+        indexNodeMap.insert(pair<unsigned int,sillNode *>(indexCounter++,ptr));
+        ptr = ptr->next;
+    }
+    return (itToIndexNodeMap = indexNodeMap.find(nValue)) == indexNodeMap.end()?null:itToIndexNodeMap->second;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-sillNode *getNthNodeON2(sillNode *ptr,unsigned int nValue){
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	while(outerCrawler != null){
-		innerCrawler = ptr;
-		unsigned int index = 0;
-		while(innerCrawler != outerCrawler){
-			index++;
-			innerCrawler = innerCrawler->next;
-		}
-		if(index == nValue){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
+sillNode *getNthNodeON2(sillNode *ptr,unsigned int nValue) {
+    sillNode *outerCrawler = ptr,*innerCrawler;
+    while(outerCrawler != null) {
+        innerCrawler = ptr;
+        unsigned int index = 0;
+        while(innerCrawler != outerCrawler) {
+            index++;
+            innerCrawler = innerCrawler->next;
+        }
+        if(index == nValue) {
+            return outerCrawler;
+        }
+        outerCrawler = outerCrawler->next;
+    }
+    return null;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_GETNTHNODE_H_ */

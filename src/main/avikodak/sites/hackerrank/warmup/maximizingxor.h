@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maximizingxor.h 
+ *  File Name   		: maximizingxor.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\maximizingxor.h
  *  Created on			: Jan 30, 2015 :: 8:59:31 AM
  *  Author				: AVINASH
@@ -74,14 +74,14 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maximizingXOR(int firstUserInput,int secondUserInput){
-	int maxResult = 0;
-	for(int outerCrawler = firstUserInput;outerCrawler <= secondUserInput;outerCrawler++){
-		for(int innerCrawler = outerCrawler;innerCrawler <= secondUserInput;innerCrawler++){
-			maxResult = max(maxResult,outerCrawler^innerCrawler);
-		}
-	}
-	return maxResult;
+int maximizingXOR(int firstUserInput,int secondUserInput) {
+    int maxResult = 0;
+    for(int outerCrawler = firstUserInput; outerCrawler <= secondUserInput; outerCrawler++) {
+        for(int innerCrawler = outerCrawler; innerCrawler <= secondUserInput; innerCrawler++) {
+            maxResult = max(maxResult,outerCrawler^innerCrawler);
+        }
+    }
+    return maxResult;
 }
 
 #endif /* MAXIMIZINGXOR_H_ */

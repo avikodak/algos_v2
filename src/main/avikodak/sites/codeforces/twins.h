@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: twins.h 
+ *  File Name   		: twins.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\twins.h
  *  Created on			: Mar 22, 2015 :: 7:10:09 PM
  *  Author				: avikodak
@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define TWINS_H_
 
 //Tested
-void getMinimumNoOfCoins(){
-	unsigned int testCases;
-	unsigned int coinValue,totalAmount = 0,minCoins = 0;
-	vector<unsigned int> coins;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&coinValue);
-		coins.push_back(coinValue);
-		totalAmount += coinValue;
-	}
-	sort(coins.begin(),coins.end());
-	unsigned int firstTwinAmount = 0;
-	for(int counter = coins.size()-1;counter >= 0;counter--){
-		if(firstTwinAmount > totalAmount - firstTwinAmount){
-			break;
-		}else{
-			firstTwinAmount += coins[counter];
-			minCoins++;
-		}
-	}
-	printf("%u",minCoins);
+void getMinimumNoOfCoins() {
+    unsigned int testCases;
+    unsigned int coinValue,totalAmount = 0,minCoins = 0;
+    vector<unsigned int> coins;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&coinValue);
+        coins.push_back(coinValue);
+        totalAmount += coinValue;
+    }
+    sort(coins.begin(),coins.end());
+    unsigned int firstTwinAmount = 0;
+    for(int counter = coins.size()-1; counter >= 0; counter--) {
+        if(firstTwinAmount > totalAmount - firstTwinAmount) {
+            break;
+        } else {
+            firstTwinAmount += coins[counter];
+            minCoins++;
+        }
+    }
+    printf("%u",minCoins);
 }
 
 #endif /* TWINS_H_ */

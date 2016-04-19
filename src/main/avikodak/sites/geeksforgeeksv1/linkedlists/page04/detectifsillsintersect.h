@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: detectifsillsintersect.h 
+ *  File Name   		: detectifsillsintersect.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\detectifsillsintersect.h
  *  Created on			: Oct 16, 2014 :: 10:29:59 AM
  *  Author				: AVINASH
@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool detectIfSillsIntersect(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null || secondPtr == null){
-		return false;
-	}
-	while(firstPtr->next != null){
-		firstPtr = firstPtr->next;
-	}
-	while(secondPtr->next != null){
-		secondPtr = secondPtr->next;
-	}
-	return firstPtr == secondPtr;
+bool detectIfSillsIntersect(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null || secondPtr == null) {
+        return false;
+    }
+    while(firstPtr->next != null) {
+        firstPtr = firstPtr->next;
+    }
+    while(secondPtr->next != null) {
+        secondPtr = secondPtr->next;
+    }
+    return firstPtr == secondPtr;
 }
 
 #endif /* DETECTIFSILLSINTERSECT_H_ */

@@ -70,40 +70,40 @@ using namespace __gnu_cxx;
 #ifndef CANDIES_H_
 #define CANDIES_H_
 
-unsigned int getMinCandies(vector<unsigned int> userInput){
-	vector<int> candiesCounterFTOB,candiesCounterBTOF;
-	candiesCounterFTOB.push_back(1);
-	int minValue = INT_MAX;
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] > userInput[counter-1]){
-			candiesCounterFTOB.push_back(candiesCounter[counter-1]+1);
-		}else{
-			candiesCounterFTOB.push_back(candiesCounter[counter-1]-1);
-		}
-	}
-	candiesCounterBTOF.assign(userInput.size(),1);
-	for(int counter = userInput.size()-2;counter >=0;counter--){
-		if(userInput[counter] > userInput[counter+1]){
-			candiesCounterBTOF[counter] = userInput[counter+1]+1;
-		}else{
-			candiesCounterBTOF[counter] = userInput[counter+1]-11;
-		}
-	}
-	unsigned int minCandyCount = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		minCandyCount += max(candiesCounterBTOF[counter],candiesCounterFTOB[counter]);
-	}
-	return minCandiesCount;
+unsigned int getMinCandies(vector<unsigned int> userInput) {
+    vector<int> candiesCounterFTOB,candiesCounterBTOF;
+    candiesCounterFTOB.push_back(1);
+    int minValue = INT_MAX;
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] > userInput[counter-1]) {
+            candiesCounterFTOB.push_back(candiesCounter[counter-1]+1);
+        } else {
+            candiesCounterFTOB.push_back(candiesCounter[counter-1]-1);
+        }
+    }
+    candiesCounterBTOF.assign(userInput.size(),1);
+    for(int counter = userInput.size()-2; counter >=0; counter--) {
+        if(userInput[counter] > userInput[counter+1]) {
+            candiesCounterBTOF[counter] = userInput[counter+1]+1;
+        } else {
+            candiesCounterBTOF[counter] = userInput[counter+1]-11;
+        }
+    }
+    unsigned int minCandyCount = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        minCandyCount += max(candiesCounterBTOF[counter],candiesCounterFTOB[counter]);
+    }
+    return minCandiesCount;
 }
 
-void printMinCandies(){
-	unsigned int testSize,input;
-	scanf("%u",&testSize);
-	vector<unsigned int> userInput;
-	while(testSize--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
+void printMinCandies() {
+    unsigned int testSize,input;
+    scanf("%u",&testSize);
+    vector<unsigned int> userInput;
+    while(testSize--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
 }
 
 #endif /* CANDIES_H_ */

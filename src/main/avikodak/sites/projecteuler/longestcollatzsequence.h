@@ -71,38 +71,38 @@ using namespace __gnu_cxx;
 #define LONGESTCOLLATZSEQUENCE_H_
 
 //Tested
-unsigned long long int computeLengthCollatzSequence(map<unsigned int,unsigned long long int> &auxSpace,unsigned int value){
-	if(value == 1){
-		return 1;
-	}
-	map<unsigned int,unsigned long long int>::iterator itToAuxSpace;
-	if((itToAuxSpace = auxSpace.find(value)) != auxSpace.end()){
-		return itToAuxSpace->second;
-	}
-	unsigned long long int length;
-	if(value%2 == 0){
-		length =  1 + computeLengthCollatzSequence(auxSpace,value/2);
-	}else{
-		length = 1 + computeLengthCollatzSequence(auxSpace,3*value+1);
-	}
-	auxSpace.insert(pair<unsigned int,unsigned long long int>(value,length));
-	return length;
+unsigned long long int computeLengthCollatzSequence(map<unsigned int,unsigned long long int> &auxSpace,unsigned int value) {
+    if(value == 1) {
+        return 1;
+    }
+    map<unsigned int,unsigned long long int>::iterator itToAuxSpace;
+    if((itToAuxSpace = auxSpace.find(value)) != auxSpace.end()) {
+        return itToAuxSpace->second;
+    }
+    unsigned long long int length;
+    if(value%2 == 0) {
+        length =  1 + computeLengthCollatzSequence(auxSpace,value/2);
+    } else {
+        length = 1 + computeLengthCollatzSequence(auxSpace,3*value+1);
+    }
+    auxSpace.insert(pair<unsigned int,unsigned long long int>(value,length));
+    return length;
 }
 
 //Tested
 //Ans : 837799
-void printLongestCollatzSequence(unsigned int limit){
-	map<unsigned int,unsigned long long int> auxSpace;
-	unsigned long long int maxLength = 0,result;
-	unsigned int startingNumber = 1;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		result = computeLengthCollatzSequence(auxSpace,counter);
-		if(result > maxLength){
-			maxLength = result;
-			startingNumber = counter;
-		}
-	}
-	cout << startingNumber << endl;
+void printLongestCollatzSequence(unsigned int limit) {
+    map<unsigned int,unsigned long long int> auxSpace;
+    unsigned long long int maxLength = 0,result;
+    unsigned int startingNumber = 1;
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        result = computeLengthCollatzSequence(auxSpace,counter);
+        if(result > maxLength) {
+            maxLength = result;
+            startingNumber = counter;
+        }
+    }
+    cout << startingNumber << endl;
 }
 
 #endif /* LONGESTCOLLATZSEQUENCE_H_ */

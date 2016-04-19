@@ -70,41 +70,41 @@ using namespace __gnu_cxx;
 #ifndef APPLEMANANDTOASTMAN_H_
 #define APPLEMANANDTOASTMAN_H_
 
-unsigned int getVectorSum(vector<unsigned int> userInput,unsigned int startIndex,unsigned int endIndex){
-	unsigned int sum = 0;
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		sum += userInput[counter];
-	}
-	return sum;
+unsigned int getVectorSum(vector<unsigned int> userInput,unsigned int startIndex,unsigned int endIndex) {
+    unsigned int sum = 0;
+    for(unsigned int counter = startIndex; counter <= endIndex; counter++) {
+        sum += userInput[counter];
+    }
+    return sum;
 }
 
-unsigned int getSumDivideStep(vector<unsigned int> userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex > endIndex){
-		return 0;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	long long int sum = getVectorSum(userInput,startIndex,endIndex);
-	sum += getSumDivideStep(userInput,startIndex,endIndex-1);
-	sum += getSumDivideStep(userInput,endIndex,endIndex);
-	return sum;
+unsigned int getSumDivideStep(vector<unsigned int> userInput,unsigned int startIndex,unsigned int endIndex) {
+    if(startIndex > endIndex) {
+        return 0;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    long long int sum = getVectorSum(userInput,startIndex,endIndex);
+    sum += getSumDivideStep(userInput,startIndex,endIndex-1);
+    sum += getSumDivideStep(userInput,endIndex,endIndex);
+    return sum;
 }
 
-bool compare(unsigned int first,unsigned int second){
-	return first > second?true:false;
+bool compare(unsigned int first,unsigned int second) {
+    return first > second?true:false;
 }
 
-void getTotalSum(){
-	unsigned int testCases,input;
-	vector<unsigned int> userInput;
-	cin >> testCases;
-	while(testCases--){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end(),compare);
-	cout << getSumDivideStep(userInput,0,userInput.size()-1);
+void getTotalSum() {
+    unsigned int testCases,input;
+    vector<unsigned int> userInput;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end(),compare);
+    cout << getSumDivideStep(userInput,0,userInput.size()-1);
 }
 
 #endif /* APPLEMANANDTOASTMAN_H_ */

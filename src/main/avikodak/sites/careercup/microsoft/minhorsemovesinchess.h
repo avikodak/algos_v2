@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minhorsemovesinchess.h 
+ *  File Name   		: minhorsemovesinchess.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\careercup\microsoft\minhorsemovesinchess.h
  *  Created on			: Dec 22, 2014 :: 10:22:50 PM
  *  Author				: AVINASH
@@ -70,40 +70,40 @@ using namespace __gnu_cxx;
 #ifndef MINHORSEMOVESINCHESS_H_
 #define MINHORSEMOVESINCHESS_H_
 
-int minHorseMoveInChess(vector<vector<bool> > configuration,int destinationX,int destinationY,int currentX,int currentY){
-	if(currentX > configuration[0].size() || currentX < 0 || currentY > configuration.size() || currentY < 0){
-		return INT_MAX;
-	}
-	if(currentX == destinationX && currentY == destinationY){
-		return 0;
-	}
-	int minMoves = INT_MAX;
-	configuration[currentX][currentY] = true;
-	if(!configuration[currentX+1][currentY-2]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY-2));
-	}
-	if(!configuration[currentX+1][currentY+2]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY+2));
-	}
-	if(!configuration[currentX+2][currentY-1]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY-1));
-	}
-	if(!configuration[currentX+2][currentY+1]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY+1));
-	}
-	if(!configuration[currentX-1][currentY-2]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY-2));
-	}
-	if(!configuration[currentX-1][currentY+2]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY+2));
-	}
-	if(!configuration[currentX-2][currentY-1]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY-1));
-	}
-	if(!configuration[currentX-2][currentY+1]){
-		minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY+1));
-	}
-	return minMoves;
+int minHorseMoveInChess(vector<vector<bool> > configuration,int destinationX,int destinationY,int currentX,int currentY) {
+    if(currentX > configuration[0].size() || currentX < 0 || currentY > configuration.size() || currentY < 0) {
+        return INT_MAX;
+    }
+    if(currentX == destinationX && currentY == destinationY) {
+        return 0;
+    }
+    int minMoves = INT_MAX;
+    configuration[currentX][currentY] = true;
+    if(!configuration[currentX+1][currentY-2]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY-2));
+    }
+    if(!configuration[currentX+1][currentY+2]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+1,currentY+2));
+    }
+    if(!configuration[currentX+2][currentY-1]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY-1));
+    }
+    if(!configuration[currentX+2][currentY+1]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX+2,currentY+1));
+    }
+    if(!configuration[currentX-1][currentY-2]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY-2));
+    }
+    if(!configuration[currentX-1][currentY+2]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-1,currentY+2));
+    }
+    if(!configuration[currentX-2][currentY-1]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY-1));
+    }
+    if(!configuration[currentX-2][currentY+1]) {
+        minMoves = min(minMoves,minHorseMoveInChess(configuration,destinationX,destinationY,currentX-2,currentY+1));
+    }
+    return minMoves;
 }
 
 #endif /* MINHORSEMOVESINCHESS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: postordertraversal.h 
+ *  File Name   		: postordertraversal.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\postordertraversal.h
  *  Created on			: Nov 17, 2014 :: 11:30:59 PM
  *  Author				: AVINASH
@@ -72,68 +72,68 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void postOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	postOrderTraversal(ptr->left);
-	postOrderTraversal(ptr->right);
-	printf("%d\t",ptr->value);
+void postOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    postOrderTraversal(ptr->left);
+    postOrderTraversal(ptr->right);
+    printf("%d\t",ptr->value);
 }
 
 //Tested
-void postOrderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			if(currentNode->right != null){
-				auxSpace.push(currentNode->right);
-			}
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			if(!auxSpace.empty() && currentNode->right == auxSpace.top()){
-				auxSpace.pop();
-				auxSpace.push(currentNode);
-				currentNode = currentNode->right;
-			}else{
-				printf("%d\t",currentNode->value);
-				currentNode = null;
-			}
-		}
-	}
+void postOrderTraversalIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            if(currentNode->right != null) {
+                auxSpace.push(currentNode->right);
+            }
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            if(!auxSpace.empty() && currentNode->right == auxSpace.top()) {
+                auxSpace.pop();
+                auxSpace.push(currentNode);
+                currentNode = currentNode->right;
+            } else {
+                printf("%d\t",currentNode->value);
+                currentNode = null;
+            }
+        }
+    }
 }
 
 //Tested
-void postOrderTraversalIterativeV2(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty() || currentNode != null){
-		while(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->left;
-		}
-		if(!auxSpace.empty() && auxSpace.top()->right == null){
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			printf("%d\t",currentNode->value);
-			while(!auxSpace.empty() && currentNode == auxSpace.top()->right){
-				currentNode = auxSpace.top();
-				printf("%d\t",currentNode->value);
-				auxSpace.pop();
-			}
-		}
-		currentNode = auxSpace.empty()?null:auxSpace.top()->right;
-	}
+void postOrderTraversalIterativeV2(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    while(!auxSpace.empty() || currentNode != null) {
+        while(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->left;
+        }
+        if(!auxSpace.empty() && auxSpace.top()->right == null) {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            printf("%d\t",currentNode->value);
+            while(!auxSpace.empty() && currentNode == auxSpace.top()->right) {
+                currentNode = auxSpace.top();
+                printf("%d\t",currentNode->value);
+                auxSpace.pop();
+            }
+        }
+        currentNode = auxSpace.empty()?null:auxSpace.top()->right;
+    }
 }
 
 #endif /* POSTORDERTRAVERSAL_H_ */

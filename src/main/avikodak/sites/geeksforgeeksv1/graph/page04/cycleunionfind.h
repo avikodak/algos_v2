@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cycleunionfind.h 
+ *  File Name   		: cycleunionfind.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\cycleunionfind.h
  *  Created on			: Dec 15, 2014 :: 9:09:06 PM
  *  Author				: AVINASH
@@ -70,44 +70,44 @@ using namespace __gnu_cxx;
 #ifndef CYCLEUNIONFIND_H_
 #define CYCLEUNIONFIND_H_
 
-void ncUnion(ncUnionfind *firstComponent,ncUnionfind *secondComponent){
-	if(firstComponent->nodeCounter >= secondComponent->nodeCounter){
-		firstComponent->nodeCounter += secondComponent->nodeCounter;
-		secondComponent->parentVertex = firstComponent->parentVertex;
-	}else{
-		secondComponent->nodeCounter += firstComponent->nodeCounter;
-		firstComponent->parentVertex = secondComponent->parentVertex;
-	}
+void ncUnion(ncUnionfind *firstComponent,ncUnionfind *secondComponent) {
+    if(firstComponent->nodeCounter >= secondComponent->nodeCounter) {
+        firstComponent->nodeCounter += secondComponent->nodeCounter;
+        secondComponent->parentVertex = firstComponent->parentVertex;
+    } else {
+        secondComponent->nodeCounter += firstComponent->nodeCounter;
+        firstComponent->parentVertex = secondComponent->parentVertex;
+    }
 }
 
-ncUnionfind *ncFind(vector<ncUnionfind *> unionFindDS,int vertex){
-	if(unionFindDS.size() >= vertex){
-		return null;
-	}
-	while(unionFindDS[vertex]->parentVertex != vertex){
-		vertex = unionFindDS[vertex]->parentVertex;
-	}
-	return unionFindDS[vertex];
+ncUnionfind *ncFind(vector<ncUnionfind *> unionFindDS,int vertex) {
+    if(unionFindDS.size() >= vertex) {
+        return null;
+    }
+    while(unionFindDS[vertex]->parentVertex != vertex) {
+        vertex = unionFindDS[vertex]->parentVertex;
+    }
+    return unionFindDS[vertex];
 }
 
-bool isGraphAcyclic(vector<edge *> edgeList,int noOfVertices){
-	if(edgeList.size() == 0){
-		return true;
-	}
-	vector<ncUnionfind *>  unionFindDS;
-	for(unsigned int counter = 0;counter < noOfVertices;counter++){
-		unionFindDS.push_back(new ncUnionfind(counter));
-	}
-	ncUnionfind *firstComponent,*secondComponent;
-	for(unsigned int counter = 0;counter < edgeList.size();counter++){
-		firstComponent = ncFind(unionFindDS,edgeList[counter]->sourceVertex);
-		secondComponent = ncFind(unionFindDS,edgeList[counter]->destinationVertex);
-		if(firstComponent->parentVertex == secondComponent->parentVertex){
-			return false;
-		}
-		ncUnion(firstComponent,secondComponent);
-	}
-	return true;
+bool isGraphAcyclic(vector<edge *> edgeList,int noOfVertices) {
+    if(edgeList.size() == 0) {
+        return true;
+    }
+    vector<ncUnionfind *>  unionFindDS;
+    for(unsigned int counter = 0; counter < noOfVertices; counter++) {
+        unionFindDS.push_back(new ncUnionfind(counter));
+    }
+    ncUnionfind *firstComponent,*secondComponent;
+    for(unsigned int counter = 0; counter < edgeList.size(); counter++) {
+        firstComponent = ncFind(unionFindDS,edgeList[counter]->sourceVertex);
+        secondComponent = ncFind(unionFindDS,edgeList[counter]->destinationVertex);
+        if(firstComponent->parentVertex == secondComponent->parentVertex) {
+            return false;
+        }
+        ncUnion(firstComponent,secondComponent);
+    }
+    return true;
 }
 
 #endif /* CYCLEUNIONFIND_H_ */

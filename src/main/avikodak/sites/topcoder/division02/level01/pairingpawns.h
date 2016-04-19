@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 class PairingPawns {
 public:
-	int savedPawnCount(vector<int> start){
-		int pawnsMoved = 0;
-		for(int counter = start.size();counter >= 0;counter--){
-			start[counter] += pawnsMoved;
-			pawnsMoved = (start[counter]/2);
-		}
-		return start[0];
-	}
+    int savedPawnCount(vector<int> start) {
+        int pawnsMoved = 0;
+        for(int counter = start.size(); counter >= 0; counter--) {
+            start[counter] += pawnsMoved;
+            pawnsMoved = (start[counter]/2);
+        }
+        return start[0];
+    }
 };
 
 #endif /* PAIRINGPAWNS_H_ */

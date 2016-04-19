@@ -70,30 +70,30 @@ using namespace __gnu_cxx;
 #ifndef FLOW010_H_
 #define FLOW010_H_
 
-void printStringClass(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	char ch;
-	while(testCases--){
-		switch (ch) {
-		case 'b':
-		case 'B':
-			printf("BattleShip\n");
-			break;
-		case 'c':
-		case 'C':
-			printf("Cruiser\n");
-			break;
-		case 'd':
-		case 'D':
-			printf("Destroyer\n");
-			break;
-		case 'f':
-		case 'F':
-			printf("Frigate\n");
-			break;
-		}
-	}
+void printStringClass() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    char ch;
+    while(testCases--) {
+        switch (ch) {
+        case 'b':
+        case 'B':
+            printf("BattleShip\n");
+            break;
+        case 'c':
+        case 'C':
+            printf("Cruiser\n");
+            break;
+        case 'd':
+        case 'D':
+            printf("Destroyer\n");
+            break;
+        case 'f':
+        case 'F':
+            printf("Frigate\n");
+            break;
+        }
+    }
 }
 
 #endif /* FLOW010_H_ */

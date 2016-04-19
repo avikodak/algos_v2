@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsumrectangle2d.h 
+ *  File Name   		: maxsumrectangle2d.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\maxsumrectangle2d.h
  *  Created on			: Jan 4, 2015 :: 1:36:57 AM
  *  Author				: AVINASH

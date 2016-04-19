@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 //Tested
 class P8XMatrixTransformation {
 public:
-	string solve(vector<string> original,vector<string> target){
-		unsigned zeroCount[2] = {0},oneCount[2] = {0};
-		for(unsigned int rowCounter = 0;rowCounter < original[0].size();rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < original.size();columnCounter++){
-				if(original[rowCounter][columnCounter]=='0'){
-					zeroCount[0]++;
-				}else{
-					oneCount[0]++;
-				}
-			}
-		}
-		for(unsigned int rowCounter = 0;rowCounter < target[0].size();rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < target.size();columnCounter++){
-				if(target[rowCounter][columnCounter]=='0'){
-					zeroCount[1]++;
-				}else{
-					oneCount[1]++;
-				}
-			}
-		}
-		return zeroCount[0] == zeroCount[1] && oneCount[0] == oneCount[1]?"YES":"NO";
-	}
+    string solve(vector<string> original,vector<string> target) {
+        unsigned zeroCount[2] = {0},oneCount[2] = {0};
+        for(unsigned int rowCounter = 0; rowCounter < original[0].size(); rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < original.size(); columnCounter++) {
+                if(original[rowCounter][columnCounter]=='0') {
+                    zeroCount[0]++;
+                } else {
+                    oneCount[0]++;
+                }
+            }
+        }
+        for(unsigned int rowCounter = 0; rowCounter < target[0].size(); rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < target.size(); columnCounter++) {
+                if(target[rowCounter][columnCounter]=='0') {
+                    zeroCount[1]++;
+                } else {
+                    oneCount[1]++;
+                }
+            }
+        }
+        return zeroCount[0] == zeroCount[1] && oneCount[0] == oneCount[1]?"YES":"NO";
+    }
 };
 
 #endif /* P8XMATRIXTRANSFORMATION_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: binarysearch.h 
+ *  File Name   		: binarysearch.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\binarysearch.h
  *  Created on			: Oct 22, 2014 :: 12:40:53 PM
  *  Author				: AVINASH
@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int binarySearchMain(vector<int> userInput,int key,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	unsigned int middleIndex = (startIndex  + endIndex)/2;
-	if(userInput[middleIndex] == key){
-		return middleIndex;
-	}
-	if(userInput[middleIndex] > key){
-		return binarySearchMain(userInput,key,startIndex,middleIndex-1);
-	}else{
-		return binarySearchMain(userInput,key,middleIndex+1,endIndex);
-	}
+int binarySearchMain(vector<int> userInput,int key,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    unsigned int middleIndex = (startIndex  + endIndex)/2;
+    if(userInput[middleIndex] == key) {
+        return middleIndex;
+    }
+    if(userInput[middleIndex] > key) {
+        return binarySearchMain(userInput,key,startIndex,middleIndex-1);
+    } else {
+        return binarySearchMain(userInput,key,middleIndex+1,endIndex);
+    }
 }
 
 //Tested
-int binarySearch(vector<int> userInput,int key){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	return binarySearchMain(userInput,key,0,userInput.size()-1);
+int binarySearch(vector<int> userInput,int key) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    return binarySearchMain(userInput,key,0,userInput.size()-1);
 }
 
 #endif /* BINARYSEARCH_H_ */

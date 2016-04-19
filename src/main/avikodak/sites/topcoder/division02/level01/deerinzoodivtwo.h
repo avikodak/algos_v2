@@ -70,18 +70,18 @@ using namespace __gnu_cxx;
 #ifndef DEERINZOODIVTWO_H_
 #define DEERINZOODIVTWO_H_
 
-class DeerInZooDivTwo{
+class DeerInZooDivTwo {
 public:
-	vector<int> getminmax(int N,int K){
-		vector<int> result;
-		result.push_back(N-K);
-		if(k%2 == 0){
-			result.push_back(N-(K/2));
-		}else{
-			result.push_back(N-(K/2)-1);
-		}
-		return result;
-	}
+    vector<int> getminmax(int N,int K) {
+        vector<int> result;
+        result.push_back(N-K);
+        if(k%2 == 0) {
+            result.push_back(N-(K/2));
+        } else {
+            result.push_back(N-(K/2)-1);
+        }
+        return result;
+    }
 };
 
 #endif /* DEERINZOODIVTWO_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletenodeconstraints.h 
+ *  File Name   		: deletenodeconstraints.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\deletenodeconstraints.h
  *  Created on			: Oct 31, 2014 :: 10:53:14 AM
  *  Author				: AVINASH
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void deleteNodeGivenConstraints(sillNode *head,sillNode *nodeToBeDeleted){
-	if(head == null){
-		return;
-	}
-	sillNode *temp;
-	if(head == nodeToBeDeleted){
-		if(head->next == null){
-			throw "There is only one node in single linked lists";
-		}
-		head->value = head->next->value;
-		temp = head->next;
-		head->next = head->next->next;
-		free(temp);
-	}else{
-		while(head->next != null && head->next != nodeToBeDeleted){
-			head = head->next;
-		}
-		if(head->next == null){
-			return;
-		}
-		temp = head->next;
-		head->next = head->next->next;
-		free(temp);
-	}
+void deleteNodeGivenConstraints(sillNode *head,sillNode *nodeToBeDeleted) {
+    if(head == null) {
+        return;
+    }
+    sillNode *temp;
+    if(head == nodeToBeDeleted) {
+        if(head->next == null) {
+            throw "There is only one node in single linked lists";
+        }
+        head->value = head->next->value;
+        temp = head->next;
+        head->next = head->next->next;
+        free(temp);
+    } else {
+        while(head->next != null && head->next != nodeToBeDeleted) {
+            head = head->next;
+        }
+        if(head->next == null) {
+            return;
+        }
+        temp = head->next;
+        head->next = head->next->next;
+        free(temp);
+    }
 }
 
 #endif /* DELETENODECONSTRAINTS_H_ */

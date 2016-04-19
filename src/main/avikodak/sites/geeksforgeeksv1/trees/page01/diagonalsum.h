@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: diagonalsum.h 
+ *  File Name   		: diagonalsum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\diagonalsum.h
  *  Created on			: Jan 22, 2015 :: 7:39:44 PM
  *  Author				: AVINASH
@@ -74,31 +74,31 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void diagonalSumMain(itNode *ptr,hash_map<int,int> &diagonalSum,int level){
-	if(ptr == null){
-		return;
-	}
-	hash_map<int,int>::iterator itToDiagonalSum;
-	if((itToDiagonalSum = diagonalSum.find(level)) == diagonalSum.end()){
-		diagonalSum[level] = ptr->value;
-	}else{
-		diagonalSum[level] += ptr->value;
-	}
-	diagonalSumMain(ptr->left,diagonalSum,level-1);
-	diagonalSumMain(ptr->right,diagonalSum,level);
+void diagonalSumMain(itNode *ptr,hash_map<int,int> &diagonalSum,int level) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<int,int>::iterator itToDiagonalSum;
+    if((itToDiagonalSum = diagonalSum.find(level)) == diagonalSum.end()) {
+        diagonalSum[level] = ptr->value;
+    } else {
+        diagonalSum[level] += ptr->value;
+    }
+    diagonalSumMain(ptr->left,diagonalSum,level-1);
+    diagonalSumMain(ptr->right,diagonalSum,level);
 }
 
 //Tested
-void printDiagonalSums(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	hash_map<int,int> diagonalSumMap;
-	diagonalSumMain(ptr,diagonalSumMap,0);
-	hash_map<int,int>::iterator itToDiagonalSumMap;
-	for(itToDiagonalSumMap = diagonalSumMap.begin();itToDiagonalSumMap != diagonalSumMap.end();itToDiagonalSumMap++){
-		printf("%d\t",itToDiagonalSumMap->second);
-	}
+void printDiagonalSums(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<int,int> diagonalSumMap;
+    diagonalSumMain(ptr,diagonalSumMap,0);
+    hash_map<int,int>::iterator itToDiagonalSumMap;
+    for(itToDiagonalSumMap = diagonalSumMap.begin(); itToDiagonalSumMap != diagonalSumMap.end(); itToDiagonalSumMap++) {
+        printf("%d\t",itToDiagonalSumMap->second);
+    }
 }
 
 #endif /* DIAGONALSUM_H_ */

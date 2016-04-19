@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #ifndef MULDIV_H_
 #define MULDIV_H_
 
-void performOperation(long long int N,long long int K,long long int M){
-	for(long long int counter = 1;counter <= M;counter++){
-		if(N%K == 0){
-			N /= K;
-		}else{
-			N *= K;
-		}
-	}
-	cout << N << endl;
+void performOperation(long long int N,long long int K,long long int M) {
+    for(long long int counter = 1; counter <= M; counter++) {
+        if(N%K == 0) {
+            N /= K;
+        } else {
+            N *= K;
+        }
+    }
+    cout << N << endl;
 }
 
-void printResults(){
-	unsigned int testCases;
-	long long int N,K,M;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&N,&K,&M);
-		performOperation(N,K,M);
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int N,K,M;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld %lld",&N,&K,&M);
+        performOperation(N,K,M);
+    }
 }
 
 #endif /* MULDIV_H_ */

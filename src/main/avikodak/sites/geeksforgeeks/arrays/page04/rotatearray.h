@@ -78,59 +78,59 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void reverseArray(int userInput[],int start,int end){
-	while(start < end){
-		swap(userInput[start],userInput[end]);
-		start++;
-		end--;
-	}
+void reverseArray(int userInput[],int start,int end) {
+    while(start < end) {
+        swap(userInput[start],userInput[end]);
+        start++;
+        end--;
+    }
 }
 
-void rotateArrayByReversal(int userInput[],int size,int rotateBy){
-	if(size == 0){
-		return;
-	}
-	reverseArray(userInput,0,rotateBy-1);
-	reverseArray(userInput,rotateBy,size-1);
-	reverseArray(userInput,0,size-1);
+void rotateArrayByReversal(int userInput[],int size,int rotateBy) {
+    if(size == 0) {
+        return;
+    }
+    reverseArray(userInput,0,rotateBy-1);
+    reverseArray(userInput,rotateBy,size-1);
+    reverseArray(userInput,0,size-1);
 }
 
-void rotateArrayAuxSpace(int userInput[],int size,int rotateBy){
-	if(size == 0){
-		return;
-	}
-	int *auxSpace;
-	auxSpace = (int *)malloc(size*sizeof(int));
-	int fillIndex = -1;
-	for(unsigned int counter = rotateBy;counter < size;counter++){
-		auxSpace[++fillIndex] = userInput[counter];
-	}
-	for(unsigned int counter = 0;counter < rotateBy;counter++){
-		auxSpace[++fillIndex] = userInput[counter];
-	}
+void rotateArrayAuxSpace(int userInput[],int size,int rotateBy) {
+    if(size == 0) {
+        return;
+    }
+    int *auxSpace;
+    auxSpace = (int *)malloc(size*sizeof(int));
+    int fillIndex = -1;
+    for(unsigned int counter = rotateBy; counter < size; counter++) {
+        auxSpace[++fillIndex] = userInput[counter];
+    }
+    for(unsigned int counter = 0; counter < rotateBy; counter++) {
+        auxSpace[++fillIndex] = userInput[counter];
+    }
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-void moveFirstValueToLast(int userInput[],int size){
-	if(size == 0){
-		return;
-	}
-	int temp = userInput[0];
-	for(unsigned int counter = 1;counter < size;counter){
-		userInput[counter-1] = userInput[counter];
-	}
-	userInput[size-1] = temp;
+void moveFirstValueToLast(int userInput[],int size) {
+    if(size == 0) {
+        return;
+    }
+    int temp = userInput[0];
+    for(unsigned int counter = 1; counter < size; counter) {
+        userInput[counter-1] = userInput[counter];
+    }
+    userInput[size-1] = temp;
 }
 
-void rotateArray(int userInput[],int size,int rotateBy){
-	if(rotateBy == 0 || rotateBy == size){
-		return;
-	}
-	for(unsigned int counter = 0;counter < rotateBy;counter++){
-		moveFirstValueToLast(userInput,size);
-	}
+void rotateArray(int userInput[],int size,int rotateBy) {
+    if(rotateBy == 0 || rotateBy == size) {
+        return;
+    }
+    for(unsigned int counter = 0; counter < rotateBy; counter++) {
+        moveFirstValueToLast(userInput,size);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_ROTATEARRAY_H_ */

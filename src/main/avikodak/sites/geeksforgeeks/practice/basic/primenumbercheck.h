@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRIMENUMBERCHECK_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	unsigned int input,limit;
-	bool isPrime;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		limit = sqrt(input);
-		isPrime = true;
-		for(unsigned int counter = 2;counter <= limit;counter++){
-			if(input%counter == 0){
-				isPrime = false;
-				break;
-			}
-		}
-		printf("%s\n",isPrime?"Yes":"No");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    unsigned int input,limit;
+    bool isPrime;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        limit = sqrt(input);
+        isPrime = true;
+        for(unsigned int counter = 2; counter <= limit; counter++) {
+            if(input%counter == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        printf("%s\n",isPrime?"Yes":"No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRIMENUMBERCHECK_H_ */

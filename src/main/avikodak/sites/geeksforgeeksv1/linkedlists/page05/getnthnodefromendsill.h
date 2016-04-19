@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getnthnodefromendsill.h 
+ *  File Name   		: getnthnodefromendsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
  *  Created on			: Oct 12, 2014 :: 11:34:01 AM
  *  Author				: AVINASH
@@ -73,91 +73,91 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
-	nValue--;
-	if(nValue == 0){
-		return ptr;
-	}
-	return nthNode;
+sillNode *getNthNodeFromEnd(sillNode *ptr,unsigned int &nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillNode *nthNode = getNthNodeFromEnd(ptr->next,nValue);
+    nValue--;
+    if(nValue == 0) {
+        return ptr;
+    }
+    return nthNode;
 }
 
 //Tested
-sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *frontCrawler = ptr,*rearCrawler= ptr;
-	while(nValue-- && frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-	}
-	if(frontCrawler == null){
-		return null;
-	}
-	while(frontCrawler != null){
-		frontCrawler = frontCrawler->next;
-		rearCrawler = rearCrawler->next;
-	}
-	return rearCrawler;
+sillNode *getNthNodeFromEndTwoPtrs(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillNode *frontCrawler = ptr,*rearCrawler= ptr;
+    while(nValue-- && frontCrawler != null) {
+        frontCrawler = frontCrawler->next;
+    }
+    if(frontCrawler == null) {
+        return null;
+    }
+    while(frontCrawler != null) {
+        frontCrawler = frontCrawler->next;
+        rearCrawler = rearCrawler->next;
+    }
+    return rearCrawler;
 }
 
 //Tested
-sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	if(nValue > lengthOfSill){
-		return null;
-	}
-	lengthOfSill -= nValue;
-	while(lengthOfSill--){
-		ptr = ptr->next;
-	}
-	return ptr;
+sillNode *getNthNodeByFindingLength(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillutils *utils = new sillutils();
+    unsigned int lengthOfSill = utils->lengthOfSill(ptr);
+    if(nValue > lengthOfSill) {
+        return null;
+    }
+    lengthOfSill -= nValue;
+    while(lengthOfSill--) {
+        ptr = ptr->next;
+    }
+    return ptr;
 }
 
 //Tested
-sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	if(nValue > indexNodeMap.size()){
-		return null;
-	}
-	return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
+sillNode *getNthNodeFromEndHashmap(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    if(nValue > indexNodeMap.size()) {
+        return null;
+    }
+    return indexNodeMap.find(indexNodeMap.size()-nValue+1)->second;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue){
-	if(ptr == null || nValue == 0){
-		return null;
-	}
-	sillNode *outerCrawler = ptr,*innerCrawler;
-	unsigned int counter;
-	while(outerCrawler != null){
-		counter = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler != null){
-			counter += 1;
-			innerCrawler = innerCrawler->next;
-		}
-		if(counter == nValue){
-			return outerCrawler;
-		}
-		outerCrawler = outerCrawler->next;
-	}
-	return null;
+sillNode *getNthNodeFromEndON2(sillNode *ptr,unsigned int nValue) {
+    if(ptr == null || nValue == 0) {
+        return null;
+    }
+    sillNode *outerCrawler = ptr,*innerCrawler;
+    unsigned int counter;
+    while(outerCrawler != null) {
+        counter = 0;
+        innerCrawler = outerCrawler;
+        while(innerCrawler != null) {
+            counter += 1;
+            innerCrawler = innerCrawler->next;
+        }
+        if(counter == nValue) {
+            return outerCrawler;
+        }
+        outerCrawler = outerCrawler->next;
+    }
+    return null;
 }
 
 #endif /* GETNTHNODEFROMENDSILL_H_ */

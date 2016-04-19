@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 
 class ChristmasTreeDecorationDiv2 {
 public:
-	int solve(vector<int> colours,vector<int> x,vector<int> y){
-		int beautifulCount = 0;
-		for(unsigned int counter = 0;counter < x.size();counter++){
-			if(colours[x[counter]] != colours[y[counter]]){
-				beautifulCount++;
-			}
-		}
-		return beautifulCount;
-	}
+    int solve(vector<int> colours,vector<int> x,vector<int> y) {
+        int beautifulCount = 0;
+        for(unsigned int counter = 0; counter < x.size(); counter++) {
+            if(colours[x[counter]] != colours[y[counter]]) {
+                beautifulCount++;
+            }
+        }
+        return beautifulCount;
+    }
 };
 
 #endif /* CHRISTMASTREEDECORATIONDIV2_H_ */

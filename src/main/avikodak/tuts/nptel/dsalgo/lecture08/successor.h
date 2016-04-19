@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: successor.h 
+ *  File Name   		: successor.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\successor.h
  *  Created on			: Nov 18, 2014 :: 8:40:26 PM
  *  Author				: AVINASH
@@ -72,57 +72,57 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *getSuccessor(itNode *ptr,int value){
-	static bool keyFound = false;
-	if(ptr == null){
-		return null;
-	}
-	if(ptr->value == value){
-		if(ptr->right != null){
-			ptr = ptr->right;
-			while(ptr->left != null){
-				ptr = ptr->left;
-			}
-			return ptr;
-		}
-		keyFound = true;
-		return null;
-	}else if(ptr->value > value){
-		itNode *result = getSuccessor(ptr->left,value);
-		if(result == null){
-			return keyFound?ptr:null;
-		}
-		return result;
-	}else{
-		return getSuccessor(ptr->right,value);
-	}
+itNode *getSuccessor(itNode *ptr,int value) {
+    static bool keyFound = false;
+    if(ptr == null) {
+        return null;
+    }
+    if(ptr->value == value) {
+        if(ptr->right != null) {
+            ptr = ptr->right;
+            while(ptr->left != null) {
+                ptr = ptr->left;
+            }
+            return ptr;
+        }
+        keyFound = true;
+        return null;
+    } else if(ptr->value > value) {
+        itNode *result = getSuccessor(ptr->left,value);
+        if(result == null) {
+            return keyFound?ptr:null;
+        }
+        return result;
+    } else {
+        return getSuccessor(ptr->right,value);
+    }
 }
 
 //Tested
-itNode *getSuccessorIterative(itNode *ptr,int value){
-	if(ptr == null){
-		return null;
-	}
-	itNode *probableSuccessor = null,*currentNode = ptr;
-	while(currentNode != null){
-		if(currentNode->value == value){
-			if(currentNode->right == null){
-				return probableSuccessor;
-			}else{
-				currentNode = currentNode->right;
-				while(currentNode->left != null){
-					currentNode = currentNode->left;
-				}
-				return currentNode;
-			}
-		}else if(currentNode->value > value){
-			probableSuccessor = currentNode;
-			currentNode = currentNode->left;
-		}else{
-			currentNode = currentNode->right;
-		}
-	}
-	return currentNode;
+itNode *getSuccessorIterative(itNode *ptr,int value) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *probableSuccessor = null,*currentNode = ptr;
+    while(currentNode != null) {
+        if(currentNode->value == value) {
+            if(currentNode->right == null) {
+                return probableSuccessor;
+            } else {
+                currentNode = currentNode->right;
+                while(currentNode->left != null) {
+                    currentNode = currentNode->left;
+                }
+                return currentNode;
+            }
+        } else if(currentNode->value > value) {
+            probableSuccessor = currentNode;
+            currentNode = currentNode->left;
+        } else {
+            currentNode = currentNode->right;
+        }
+    }
+    return currentNode;
 }
 
 #endif /* SUCCESSOR_H_ */

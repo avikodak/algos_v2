@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: peakelement.h 
+ *  File Name   		: peakelement.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\peakelement.h
  *  Created on			: Jan 18, 2015 :: 6:00:53 PM
  *  Author				: AVINASH
@@ -74,49 +74,49 @@ using namespace __gnu_cxx;
 /* 																O(LOGN) Algorithm 															    	*/
 /****************************************************************************************************************************************************/
 //Tested
-int findPeakElementBinarySearch(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	if(startIndex == endIndex){
-		return userInput[startIndex];
-	}
-	if(endIndex - startIndex == 1){
-		return max(userInput[startIndex],userInput[endIndex]);
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]){
-		return userInput[middleIndex];
-	}
-	if(userInput[middleIndex-1] > userInput[middleIndex]){
-		return findPeakElementBinarySearch(userInput,startIndex,middleIndex-1);
-	}else{
-		return findPeakElementBinarySearch(userInput,middleIndex+1,endIndex);
-	}
+int findPeakElementBinarySearch(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    if(startIndex == endIndex) {
+        return userInput[startIndex];
+    }
+    if(endIndex - startIndex == 1) {
+        return max(userInput[startIndex],userInput[endIndex]);
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    if(userInput[middleIndex] > userInput[middleIndex-1] && userInput[middleIndex] > userInput[middleIndex+1]) {
+        return userInput[middleIndex];
+    }
+    if(userInput[middleIndex-1] > userInput[middleIndex]) {
+        return findPeakElementBinarySearch(userInput,startIndex,middleIndex-1);
+    } else {
+        return findPeakElementBinarySearch(userInput,middleIndex+1,endIndex);
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int findPeakElementON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	if(userInput.size() == 1){
-		return userInput[0];
-	}
-	if(userInput[0] > userInput[1]){
-		return userInput[0];
-	}
-	if(userInput[userInput.size()-1] > userInput[userInput.size()-2]){
-		return userInput[userInput.size()-1];
-	}
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter++){
-		if(userInput[counter] > userInput[counter-1] && userInput[counter] > userInput[counter+1]){
-			return userInput[counter];
-		}
-	}
-	return INT_MIN;
+int findPeakElementON(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    if(userInput.size() == 1) {
+        return userInput[0];
+    }
+    if(userInput[0] > userInput[1]) {
+        return userInput[0];
+    }
+    if(userInput[userInput.size()-1] > userInput[userInput.size()-2]) {
+        return userInput[userInput.size()-1];
+    }
+    for(unsigned int counter = 1; counter < userInput.size()-1; counter++) {
+        if(userInput[counter] > userInput[counter-1] && userInput[counter] > userInput[counter+1]) {
+            return userInput[counter];
+        }
+    }
+    return INT_MIN;
 }
 
 #endif /* PEAKELEMENT_H_ */

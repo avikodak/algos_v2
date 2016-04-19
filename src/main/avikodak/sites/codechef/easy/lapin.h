@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lapin.h 
+ *  File Name   		: lapin.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\lapin.h
  *  Created on			: Feb 9, 2015 :: 10:06:30 PM
  *  Author				: AVINASH
@@ -73,46 +73,46 @@ using namespace __gnu_cxx;
 #define LAPIN_H_
 
 //Tested
-bool isStringLapindrome(char *user){
-	unsigned int length = strlen(user);
-	unsigned int secondCrawler = 0,size;
-	if(length&1){
-		secondCrawler = (length/2)+1;
-	}else{
-		secondCrawler = length/2;
-	}
-	size = (length/2);
-	unsigned frequencies[ALPHABET_SIZE] = {0};
-	for(unsigned int counter = 0;counter < size;counter++){
-		frequencies[user[counter]-'a']++;
-	}
-	for(unsigned int counter = secondCrawler;counter < length;counter++){
-		if(frequencies[user[counter]-'a'] == 0){
-			return false;
-		}
-		frequencies[user[counter]-'a']--;
-	}
-	for(unsigned int counter = 0;counter < ALPHABET_SIZE;counter++){
-		if(frequencies[counter] > 0){
-			return false;
-		}
-	}
-	return true;
+bool isStringLapindrome(char *user) {
+    unsigned int length = strlen(user);
+    unsigned int secondCrawler = 0,size;
+    if(length&1) {
+        secondCrawler = (length/2)+1;
+    } else {
+        secondCrawler = length/2;
+    }
+    size = (length/2);
+    unsigned frequencies[ALPHABET_SIZE] = {0};
+    for(unsigned int counter = 0; counter < size; counter++) {
+        frequencies[user[counter]-'a']++;
+    }
+    for(unsigned int counter = secondCrawler; counter < length; counter++) {
+        if(frequencies[user[counter]-'a'] == 0) {
+            return false;
+        }
+        frequencies[user[counter]-'a']--;
+    }
+    for(unsigned int counter = 0; counter < ALPHABET_SIZE; counter++) {
+        if(frequencies[counter] > 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void areStringLapindromes(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	char userInput[MAX_INPUT_SIZE];
-	while(testCases--){
-		scanf("%s",userInput);
-		if(isStringLapindrome(userInput)){
-			printf("YES\n");
-		}else{
-			printf("NO\n");
-		}
-	}
+void areStringLapindromes() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    char userInput[MAX_INPUT_SIZE];
+    while(testCases--) {
+        scanf("%s",userInput);
+        if(isStringLapindrome(userInput)) {
+            printf("YES\n");
+        } else {
+            printf("NO\n");
+        }
+    }
 }
 
 #endif /* LAPIN_H_ */

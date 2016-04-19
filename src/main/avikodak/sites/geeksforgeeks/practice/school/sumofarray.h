@@ -79,18 +79,18 @@ using namespace __gnu_cxx;
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
 //Tested
-void printResult(){
-	unsigned int testCases,size,input,sum;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		sum = 0;
-		while(size--){
-			scanf("%u",input);
-			sum += input;
-		}
-		printf("%u\n",sum);
-	}
+void printResult() {
+    unsigned int testCases,size,input,sum;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        sum = 0;
+        while(size--) {
+            scanf("%u",input);
+            sum += input;
+        }
+        printf("%u\n",sum);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_SUMOFARRAY_H_ */

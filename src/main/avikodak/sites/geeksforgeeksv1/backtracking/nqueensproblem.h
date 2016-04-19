@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nqueensproblem.h 
+ *  File Name   		: nqueensproblem.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\nqueensproblem.h
  *  Created on			: Jan 7, 2015 :: 6:59:03 PM
  *  Author				: AVINASH
@@ -71,51 +71,51 @@ using namespace __gnu_cxx;
 #define NQUEENSPROBLEM_H_
 
 //Tested
-bool nqIsSafe(vector<vector<bool> > currentConfiguration,int row,int column){
-	if(row < 0 || row >= (int)currentConfiguration.size() || column < 0 || column >= (int)currentConfiguration[0].size()){
-		return false;
-	}
-	for(int rowCounter = 0;rowCounter < row;rowCounter++){
-		if(currentConfiguration[rowCounter][column]){
-			return false;
-		}
-	}
-	int rowCounter = row - 1,columnCounter = column - 1;
-	while(rowCounter >= 0 && columnCounter >= 0){
-		if(currentConfiguration[rowCounter][columnCounter]){
-			return false;
-		}
-		rowCounter--;
-		columnCounter--;
-	}
-	return true;
+bool nqIsSafe(vector<vector<bool> > currentConfiguration,int row,int column) {
+    if(row < 0 || row >= (int)currentConfiguration.size() || column < 0 || column >= (int)currentConfiguration[0].size()) {
+        return false;
+    }
+    for(int rowCounter = 0; rowCounter < row; rowCounter++) {
+        if(currentConfiguration[rowCounter][column]) {
+            return false;
+        }
+    }
+    int rowCounter = row - 1,columnCounter = column - 1;
+    while(rowCounter >= 0 && columnCounter >= 0) {
+        if(currentConfiguration[rowCounter][columnCounter]) {
+            return false;
+        }
+        rowCounter--;
+        columnCounter--;
+    }
+    return true;
 }
 
 //Tested
-bool nQueenProblemMain(vector<vector<bool> > currentConfiguration,unsigned int queen){
-	if(queen == currentConfiguration.size()){
-		printIVector(currentConfiguration);
-		return true;
-	}
-	for(unsigned int columnCounter = 0;columnCounter < currentConfiguration[queen].size();columnCounter++){
-		if(nqIsSafe(currentConfiguration,queen,columnCounter)){
-			currentConfiguration[queen][columnCounter] = true;
-			if(nQueenProblemMain(currentConfiguration,queen+1)){
-				return true;
-			}
-			currentConfiguration[queen][columnCounter] = false;
-		}
-	}
-	return false;
+bool nQueenProblemMain(vector<vector<bool> > currentConfiguration,unsigned int queen) {
+    if(queen == currentConfiguration.size()) {
+        printIVector(currentConfiguration);
+        return true;
+    }
+    for(unsigned int columnCounter = 0; columnCounter < currentConfiguration[queen].size(); columnCounter++) {
+        if(nqIsSafe(currentConfiguration,queen,columnCounter)) {
+            currentConfiguration[queen][columnCounter] = true;
+            if(nQueenProblemMain(currentConfiguration,queen+1)) {
+                return true;
+            }
+            currentConfiguration[queen][columnCounter] = false;
+        }
+    }
+    return false;
 }
 
 //Tested
-void nQueenProblem(unsigned int queenCount){
-	vector<vector<bool> > board(queenCount);
-	for(unsigned int counter = 0;counter < queenCount;counter++){
-		board[counter].assign(queenCount,false);
-	}
-	nQueenProblemMain(board,0);
+void nQueenProblem(unsigned int queenCount) {
+    vector<vector<bool> > board(queenCount);
+    for(unsigned int counter = 0; counter < queenCount; counter++) {
+        board[counter].assign(queenCount,false);
+    }
+    nQueenProblemMain(board,0);
 }
 
 #endif /* NQUEENSPROBLEM_H_ */

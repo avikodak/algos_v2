@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define FLOWERS_H_
 
 //Tested
-bool sortFunc(unsigned int first,unsigned int second){
-	return first > second;
+bool sortFunc(unsigned int first,unsigned int second) {
+    return first > second;
 }
 
 //Tested
-void findMinimumAmountMoney(){
-	unsigned int inputSize,friendsCount,input;
-	scanf("%u %u",&inputSize,&friendsCount);
-	vector<unsigned int> userInput;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	unsigned int friendLoopCount = 0;
-	unsigned int minSum = 0;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		minSum += (((friendLoopCount/friendsCount)+1)*userInput[counter]);
+void findMinimumAmountMoney() {
+    unsigned int inputSize,friendsCount,input;
+    scanf("%u %u",&inputSize,&friendsCount);
+    vector<unsigned int> userInput;
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end(),sortFunc);
+    unsigned int friendLoopCount = 0;
+    unsigned int minSum = 0;
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        minSum += (((friendLoopCount/friendsCount)+1)*userInput[counter]);
         friendLoopCount++;
-	}
-	cout << minSum << endl;
+    }
+    cout << minSum << endl;
 }
 
 #endif /* FLOWERS_H_ */

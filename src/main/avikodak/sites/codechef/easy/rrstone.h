@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define RRSTONE_H_
 
 //Tested
-void printArray(long long int size, vector<long long int> userInput){
-    for(long long int counter = 0;counter < size;counter++){
+void printArray(long long int size, vector<long long int> userInput) {
+    for(long long int counter = 0; counter < size; counter++) {
         cout << userInput[counter] << " ";
     }
     cout << endl;
 }
 
 //Tested
-void printArrayPostOps(){
-	long long int size,operations,maxVal,input;
-	cin >> size >> operations;
-	vector<long long int> userInput;
-	for(long long int counter = 0;counter < size;counter++){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	if(operations == 0){
-		printArray(size,userInput);
-		return;
-	}
-	if(operations%2 == 1){
-		operations = 1;
-	}else{
-		operations = 2;
-	}
-	for(long long int counter = 0;counter < operations;counter++){
-		maxVal = *max_element(userInput.begin(),userInput.end());
-		for(int innerCounter = 0;innerCounter < size;innerCounter++){
-			userInput[innerCounter] = maxVal - userInput[innerCounter];
-		}
-	}
+void printArrayPostOps() {
+    long long int size,operations,maxVal,input;
+    cin >> size >> operations;
+    vector<long long int> userInput;
+    for(long long int counter = 0; counter < size; counter++) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    if(operations == 0) {
+        printArray(size,userInput);
+        return;
+    }
+    if(operations%2 == 1) {
+        operations = 1;
+    } else {
+        operations = 2;
+    }
+    for(long long int counter = 0; counter < operations; counter++) {
+        maxVal = *max_element(userInput.begin(),userInput.end());
+        for(int innerCounter = 0; innerCounter < size; innerCounter++) {
+            userInput[innerCounter] = maxVal - userInput[innerCounter];
+        }
+    }
 
     printArray(size, userInput);
 }

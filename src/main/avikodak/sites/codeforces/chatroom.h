@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chatroom.h 
+ *  File Name   		: chatroom.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\chatroom.h
  *  Created on			: Mar 3, 2015 :: 7:37:38 AM
  *  Author				: avikodak
@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define CHATROOM_H_
 
 //Tested
-void doesVasyaSayHello(){
-	char userInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToUserInput;
-	char pattern[] = "hello",*ptrToPattern;
-	scanf("%s",userInput);
-	ptrToPattern = pattern;
-	ptrToUserInput = userInput;
-	while(ptrToUserInput[0] != '\0' && ptrToPattern[0] != '\0'){
-		if(ptrToUserInput[0] == ptrToPattern[0]){
-			ptrToPattern++;
-		}
-		ptrToUserInput++;
-	}
-	printf("%s",ptrToPattern[0] == '\0'?"YES":"NO");
+void doesVasyaSayHello() {
+    char userInput[CODEFORCES_MAX_INPUT_SIZE],*ptrToUserInput;
+    char pattern[] = "hello",*ptrToPattern;
+    scanf("%s",userInput);
+    ptrToPattern = pattern;
+    ptrToUserInput = userInput;
+    while(ptrToUserInput[0] != '\0' && ptrToPattern[0] != '\0') {
+        if(ptrToUserInput[0] == ptrToPattern[0]) {
+            ptrToPattern++;
+        }
+        ptrToUserInput++;
+    }
+    printf("%s",ptrToPattern[0] == '\0'?"YES":"NO");
 }
 
 #endif /* CHATROOM_H_ */

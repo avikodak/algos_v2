@@ -72,11 +72,11 @@ using namespace __gnu_cxx;
 #define DS05_H_
 
 //Tested
-void printResults(){
-	unsigned int perimeter,side;
-	scanf("%u",&perimeter);
-	side = (perimeter/4);
-	cout << side*side << endl;
+void printResults() {
+    unsigned int perimeter,side;
+    scanf("%u",&perimeter);
+    side = (perimeter/4);
+    cout << side*side << endl;
 }
 
 #endif /* DS05_H_ */

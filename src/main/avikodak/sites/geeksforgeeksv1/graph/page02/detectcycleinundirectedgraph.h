@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: detectcycleinundirectedgraph.h 
+ *  File Name   		: detectcycleinundirectedgraph.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\detectcycleinundirectedgraph.h
  *  Created on			: Dec 26, 2014 :: 7:39:19 PM
  *  Author				: AVINASH
@@ -73,49 +73,49 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isUndirectedGraphAcyclicBFS(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() < 2){
-		return true;
-	}
-	queue<int> auxSpace;
-	int currentNode;
-	auxSpace.push(0);
-	vector<int> bfsLevels(adjacencyList.size(),INT_MAX);
-	bfsLevels[0] = 0;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		for(unsigned int counter = 0;counter < adjacencyList[currentNode].size();counter++){
-			if(bfsLevels[adjacencyList[currentNode][counter]] == INT_MAX){
-				bfsLevels[adjacencyList[currentNode][counter]] = 1 + bfsLevels[currentNode];
-				auxSpace.push(adjacencyList[currentNode][counter]);
-			}else if(bfsLevels[adjacencyList[currentNode][counter]] < bfsLevels[counter]){
-				return false;
-			}
-		}
-	}
-	return true;
+bool isUndirectedGraphAcyclicBFS(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() < 2) {
+        return true;
+    }
+    queue<int> auxSpace;
+    int currentNode;
+    auxSpace.push(0);
+    vector<int> bfsLevels(adjacencyList.size(),INT_MAX);
+    bfsLevels[0] = 0;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        for(unsigned int counter = 0; counter < adjacencyList[currentNode].size(); counter++) {
+            if(bfsLevels[adjacencyList[currentNode][counter]] == INT_MAX) {
+                bfsLevels[adjacencyList[currentNode][counter]] = 1 + bfsLevels[currentNode];
+                auxSpace.push(adjacencyList[currentNode][counter]);
+            } else if(bfsLevels[adjacencyList[currentNode][counter]] < bfsLevels[counter]) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-bool isUndirectedGraphAcyclicDFS(vector<vector<int> > adjacencyList,int sourceVertex){
-	if(adjacencyList.size() < 2){
-		return true;
-	}
-	if(sourceVertex >= adjacencyList.size()){
-		return false;
-	}
-	static vector<int> predecessor(adjacencyList.size(),INT_MAX);
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MAX){
-			predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
-			if(!isUndirectedGraphAcyclicBFS(adjacencyList,adjacencyList[sourceVertex][counter])){
-				return false;
-			}
-		}else if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]){
-			return false;
-		}
-	}
-	return true;
+bool isUndirectedGraphAcyclicDFS(vector<vector<int> > adjacencyList,int sourceVertex) {
+    if(adjacencyList.size() < 2) {
+        return true;
+    }
+    if(sourceVertex >= adjacencyList.size()) {
+        return false;
+    }
+    static vector<int> predecessor(adjacencyList.size(),INT_MAX);
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(predecessor[adjacencyList[sourceVertex][counter]] == INT_MAX) {
+            predecessor[adjacencyList[sourceVertex][counter]] = sourceVertex;
+            if(!isUndirectedGraphAcyclicBFS(adjacencyList,adjacencyList[sourceVertex][counter])) {
+                return false;
+            }
+        } else if(predecessor[sourceVertex] != adjacencyList[sourceVertex][counter]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* DETECTCYCLEINUNDIRECTEDGRAPH_H_ */

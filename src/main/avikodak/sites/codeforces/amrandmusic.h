@@ -71,48 +71,48 @@ using namespace __gnu_cxx;
 #define AMRANDMUSIC_H_
 
 //Tested
-struct valIndex{
+struct valIndex {
 public:
-	unsigned int value;
-	unsigned int index;
+    unsigned int value;
+    unsigned int index;
 
-	valIndex(unsigned int value,unsigned int index){
-		this->value = value;
-		this->index = index;
-	}
+    valIndex(unsigned int value,unsigned int index) {
+        this->value = value;
+        this->index = index;
+    }
 };
 
 //Tested
-bool compare(valIndex *first,valIndex *second){
-	return first->value < second->value;
+bool compare(valIndex *first,valIndex *second) {
+    return first->value < second->value;
 }
 
 //Tested
-void printInstruments(){
-	unsigned int totalDays,instrumentsCount,days;
-	scanf("%u %u",&instrumentsCount,&totalDays);
-	vector<valIndex *> userInput;
-	valIndex *temp;
-	for(unsigned int counter = 0;counter < instrumentsCount;counter++){
-		scanf("%u",&days);
-		temp = new valIndex(days,counter+1);
-		userInput.push_back(temp);
-	}
-	sort(userInput.begin(),userInput.end(),compare);
-	queue<unsigned int> result;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(totalDays >= userInput[counter]->value){
-			result.push(userInput[counter]->index);
-			totalDays -= userInput[counter]->value;
-		}else{
-			break;
-		}
-	}
-	printf("%u\n",result.size());
-	while(!result.empty()){
-		printf("%u ",result.front());
-		result.pop();
-	}
+void printInstruments() {
+    unsigned int totalDays,instrumentsCount,days;
+    scanf("%u %u",&instrumentsCount,&totalDays);
+    vector<valIndex *> userInput;
+    valIndex *temp;
+    for(unsigned int counter = 0; counter < instrumentsCount; counter++) {
+        scanf("%u",&days);
+        temp = new valIndex(days,counter+1);
+        userInput.push_back(temp);
+    }
+    sort(userInput.begin(),userInput.end(),compare);
+    queue<unsigned int> result;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(totalDays >= userInput[counter]->value) {
+            result.push(userInput[counter]->index);
+            totalDays -= userInput[counter]->value;
+        } else {
+            break;
+        }
+    }
+    printf("%u\n",result.size());
+    while(!result.empty()) {
+        printf("%u ",result.front());
+        result.pop();
+    }
 }
 
 #endif /* AMRANDMUSIC_H_ */

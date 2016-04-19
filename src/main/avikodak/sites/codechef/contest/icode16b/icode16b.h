@@ -76,32 +76,32 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16B_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string fUserInput,sUserInput;
-	unsigned int nikeshCount,jyotiCount;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> fUserInput >> sUserInput;
-		int frequency[26] = {0};
-		for(unsigned int counter = 0;counter < sUserInput.size();counter++){
-			frequency[sUserInput[counter]-'a']++;
-		}
-		nikeshCount = 0;
-		jyotiCount = 0;
-		for(unsigned int counter = 0;counter < fUserInput.size();counter++){
-			if(counter < sUserInput.size()){
-				if(fUserInput[counter] == sUserInput[counter]){
-					nikeshCount++;
-				}
-			}
-			if(frequency[fUserInput[counter]-'a'] > 0){
-				jyotiCount++;
-				frequency[fUserInput[counter]-'a']--;
-			}
-		}
-		printf("%uN%uJ%uS\n",nikeshCount,jyotiCount-nikeshCount,fUserInput.size()-jyotiCount);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string fUserInput,sUserInput;
+    unsigned int nikeshCount,jyotiCount;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> fUserInput >> sUserInput;
+        int frequency[26] = {0};
+        for(unsigned int counter = 0; counter < sUserInput.size(); counter++) {
+            frequency[sUserInput[counter]-'a']++;
+        }
+        nikeshCount = 0;
+        jyotiCount = 0;
+        for(unsigned int counter = 0; counter < fUserInput.size(); counter++) {
+            if(counter < sUserInput.size()) {
+                if(fUserInput[counter] == sUserInput[counter]) {
+                    nikeshCount++;
+                }
+            }
+            if(frequency[fUserInput[counter]-'a'] > 0) {
+                jyotiCount++;
+                frequency[fUserInput[counter]-'a']--;
+            }
+        }
+        printf("%uN%uJ%uS\n",nikeshCount,jyotiCount-nikeshCount,fUserInput.size()-jyotiCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16B_H_ */

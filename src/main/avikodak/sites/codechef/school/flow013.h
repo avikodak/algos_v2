@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define FLOW013_H_
 
 //Tested
-void isValidTriangle(double angleA,double angleB,double angleC){
-	if(angleA == 0 || angleB == 0 || angleC == 0){
-		printf("NO\n");
-	}
-	double total = angleA + angleB + angleC;
-	printf("%s\n",total == 180?"YES":"NO");
+void isValidTriangle(double angleA,double angleB,double angleC) {
+    if(angleA == 0 || angleB == 0 || angleC == 0) {
+        printf("NO\n");
+    }
+    double total = angleA + angleB + angleC;
+    printf("%s\n",total == 180?"YES":"NO");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	double angleA,angleB,angleC;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> angleA >> angleB >> angleC;
-		isValidTriangle(angleA,angleB,angleC);
-	}
+void printResults() {
+    unsigned int testCases;
+    double angleA,angleB,angleC;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> angleA >> angleB >> angleC;
+        isValidTriangle(angleA,angleB,angleC);
+    }
 }
 
 #endif /* FLOW013_H_ */

@@ -72,17 +72,17 @@ using namespace __gnu_cxx;
 
 class AccessLevel {
 public:
-	string canAccess(vector<int> rights, int minPermission){
-		string result;
-		for(unsigned int counter = 0;counter < rights.size();counter++){
-			if(rights[counter] >= minPermission){
-				result.push_back('A');
-			}else{
-				result.push_back('D');
-			}
-		}
-		return result;
-	}
+    string canAccess(vector<int> rights, int minPermission) {
+        string result;
+        for(unsigned int counter = 0; counter < rights.size(); counter++) {
+            if(rights[counter] >= minPermission) {
+                result.push_back('A');
+            } else {
+                result.push_back('D');
+            }
+        }
+        return result;
+    }
 };
 
 #endif /* ACCESSLEVEL_H_ */

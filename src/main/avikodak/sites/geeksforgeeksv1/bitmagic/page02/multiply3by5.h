@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: multiply3by5.h 
+ *  File Name   		: multiply3by5.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\multiply3by5.h
  *  Created on			: Jan 9, 2015 :: 10:32:20 AM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef MULTIPLY3BY5_H_
 #define MULTIPLY3BY5_H_
 
-int multiplyBy3Point5(int userInput){
-	return (userInput << 3 - userInput) >> 1;
+int multiplyBy3Point5(int userInput) {
+    return (userInput << 3 - userInput) >> 1;
 }
 
 #endif /* MULTIPLY3BY5_H_ */

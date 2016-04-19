@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 #define NBSUM_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long int userInput,oddNumbers,evenNumbers;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%ld",&userInput);
-		if(userInput%2 == 0){
-			oddNumbers = (userInput/2);
-		}else{
-			oddNumbers = (userInput/2) + 1;
-		}
-		evenNumbers = (userInput/2);
-		printf("%ld\n",oddNumbers*oddNumbers - ((evenNumbers)*(evenNumbers+1)));
-	}
+void printResults() {
+    unsigned int testCases;
+    long int userInput,oddNumbers,evenNumbers;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%ld",&userInput);
+        if(userInput%2 == 0) {
+            oddNumbers = (userInput/2);
+        } else {
+            oddNumbers = (userInput/2) + 1;
+        }
+        evenNumbers = (userInput/2);
+        printf("%ld\n",oddNumbers*oddNumbers - ((evenNumbers)*(evenNumbers+1)));
+    }
 }
 
 #endif /* NBSUM_H_ */

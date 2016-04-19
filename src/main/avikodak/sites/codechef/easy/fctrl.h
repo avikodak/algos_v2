@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: fctrl.h 
+ *  File Name   		: fctrl.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\fctrl.h
  *  Created on			: Feb 3, 2015 :: 12:25:58 PM
  *  Author				: AVINASH
@@ -71,14 +71,14 @@ using namespace __gnu_cxx;
 #define FCTRL_H_
 
 //Tested
-int zfunction(int userInput){
-	int counter = 0;
-	int divisor = 5;
-	while(userInput/divisor > 0){
-		counter += (userInput/divisor);
-		divisor *= 5;
-	}
-	return counter;
+int zfunction(int userInput) {
+    int counter = 0;
+    int divisor = 5;
+    while(userInput/divisor > 0) {
+        counter += (userInput/divisor);
+        divisor *= 5;
+    }
+    return counter;
 }
 
 #endif /* FCTRL_H_ */

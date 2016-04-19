@@ -73,16 +73,16 @@ using namespace __gnu_cxx;
 #define CODQ2_H_
 
 //Tested
-void printResults(){
-	unsigned int money;
-	scanf("%u",&money);
-	printf("%u\n",money/5);
-	money = money%5;
-	printf("%u\n",money/3);
-	money %= 3;
-	printf("%u\n",money/2);
-	money %= 2;
-	printf("%u\n",money);
+void printResults() {
+    unsigned int money;
+    scanf("%u",&money);
+    printf("%u\n",money/5);
+    money = money%5;
+    printf("%u\n",money/3);
+    money %= 3;
+    printf("%u\n",money/2);
+    money %= 2;
+    printf("%u\n",money);
 }
 
 #endif /* CODQ2_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: insertionheapon.h 
+ *  File Name   		: insertionheapon.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\insertionheapon.h
  *  Created on			: Dec 1, 2014 :: 10:15:06 PM
  *  Author				: AVINASH
@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void heapify(vector<int> &userInput,int index){
-	int temp;
-	while(2*index + 1 < userInput.size()){
-		if(2*index + 2 < userInput.size()){
-			if(userInput[index] > userInput[2*index + 1] || userInput[index] > userInput[2*index+2]){
-				if(userInput[2*index+1] < userInput[2*index+2]){
-					temp = userInput[2*index+1];
-					userInput[2*index+1] = userInput[index];
-					userInput[index] = temp;
-					index = 2*index+1;
-				}else{
-					temp = userInput[2*index+2];
-					userInput[2*index+2] = userInput[index];
-					userInput[index] = temp;
-					index = 2*index+2;
-				}
-			}
-		}else{
-			temp = userInput[2*index+1];
-			userInput[2*index+1] = userInput[index];
-			userInput[index] = temp;
-			index = 2*index+1;
-		}
+void heapify(vector<int> &userInput,int index) {
+    int temp;
+    while(2*index + 1 < userInput.size()) {
+        if(2*index + 2 < userInput.size()) {
+            if(userInput[index] > userInput[2*index + 1] || userInput[index] > userInput[2*index+2]) {
+                if(userInput[2*index+1] < userInput[2*index+2]) {
+                    temp = userInput[2*index+1];
+                    userInput[2*index+1] = userInput[index];
+                    userInput[index] = temp;
+                    index = 2*index+1;
+                } else {
+                    temp = userInput[2*index+2];
+                    userInput[2*index+2] = userInput[index];
+                    userInput[index] = temp;
+                    index = 2*index+2;
+                }
+            }
+        } else {
+            temp = userInput[2*index+1];
+            userInput[2*index+1] = userInput[index];
+            userInput[index] = temp;
+            index = 2*index+1;
+        }
 
-	}
+    }
 }
 
-void insertionHeapON(vector<int> &userInput){
-	for(int counter = userInput.size()/2;counter >= 0;counter--){
-		heapify(userInput,counter);
-	}
+void insertionHeapON(vector<int> &userInput) {
+    for(int counter = userInput.size()/2; counter >= 0; counter--) {
+        heapify(userInput,counter);
+    }
 }
 
 #endif /* INSERTIONHEAPON_H_ */

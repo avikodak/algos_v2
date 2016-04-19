@@ -71,55 +71,55 @@ using namespace __gnu_cxx;
 #define EULER013_H_
 
 //Tested
-vector<unsigned int> convertToDigits(string userInput){
-	vector<unsigned int> number;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		number.push_back(userInput[counter]-'0');
-	}
-	return number;
+vector<unsigned int> convertToDigits(string userInput) {
+    vector<unsigned int> number;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        number.push_back(userInput[counter]-'0');
+    }
+    return number;
 }
 
 //Tested
-void getSumOfNumbers(vector<vector<unsigned int> > userInputs){
-	vector<unsigned int> result;
-	if(userInputs.size() == 0){
-		return;
-	}
-	reverse(userInputs[0].begin(),userInputs[0].end());
-	result = userInputs[0];
-	unsigned int firstCrawler,secondCrawler,sum = 0,carry =0;
-	for(unsigned int counter = 1;counter < userInputs.size();counter++){
-		reverse(userInputs[counter].begin(),userInputs[counter].end());
-		firstCrawler = secondCrawler = carry = 0;
-		while(firstCrawler < result.size() && secondCrawler < userInputs[counter].size()){
-			sum = result[firstCrawler] + userInputs[counter][secondCrawler] + carry;
-			result[firstCrawler] = sum%10;
-			firstCrawler++;
-			secondCrawler++;
-			carry = sum/10;
-		}
-		while(firstCrawler < result.size()){
-			sum = result[firstCrawler] + carry;
-			result[firstCrawler] = sum%10;
-			carry = sum/10;
-			firstCrawler++;
-		}
-		while(secondCrawler < userInputs[counter].size()){
-			sum = userInputs[counter][secondCrawler] + carry;
-			result.push_back(sum%10);
-			carry = sum/10;
-			secondCrawler++;
-		}
-		while(carry){
-			result.push_back(carry%10);
-			carry /= 10;
-		}
-	}
-	reverse(result.begin(),result.end());
-	for(unsigned int counter = 0;counter < 10;counter++){
-		cout << result[counter];
-	}
-	cout << endl;
+void getSumOfNumbers(vector<vector<unsigned int> > userInputs) {
+    vector<unsigned int> result;
+    if(userInputs.size() == 0) {
+        return;
+    }
+    reverse(userInputs[0].begin(),userInputs[0].end());
+    result = userInputs[0];
+    unsigned int firstCrawler,secondCrawler,sum = 0,carry =0;
+    for(unsigned int counter = 1; counter < userInputs.size(); counter++) {
+        reverse(userInputs[counter].begin(),userInputs[counter].end());
+        firstCrawler = secondCrawler = carry = 0;
+        while(firstCrawler < result.size() && secondCrawler < userInputs[counter].size()) {
+            sum = result[firstCrawler] + userInputs[counter][secondCrawler] + carry;
+            result[firstCrawler] = sum%10;
+            firstCrawler++;
+            secondCrawler++;
+            carry = sum/10;
+        }
+        while(firstCrawler < result.size()) {
+            sum = result[firstCrawler] + carry;
+            result[firstCrawler] = sum%10;
+            carry = sum/10;
+            firstCrawler++;
+        }
+        while(secondCrawler < userInputs[counter].size()) {
+            sum = userInputs[counter][secondCrawler] + carry;
+            result.push_back(sum%10);
+            carry = sum/10;
+            secondCrawler++;
+        }
+        while(carry) {
+            result.push_back(carry%10);
+            carry /= 10;
+        }
+    }
+    reverse(result.begin(),result.end());
+    for(unsigned int counter = 0; counter < 10; counter++) {
+        cout << result[counter];
+    }
+    cout << endl;
 }
 
 #endif /* EULER013_H_ */

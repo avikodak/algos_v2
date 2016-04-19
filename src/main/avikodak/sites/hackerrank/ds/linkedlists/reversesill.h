@@ -70,23 +70,23 @@ using namespace __gnu_cxx;
 #ifndef REVERSESILL_H_
 #define REVERSESILL_H_
 
-struct Node{
-	int data;
-	Node *next;
+struct Node {
+    int data;
+    Node *next;
 };
 
 //Tested
-Node *Reverse(Node *head){
-	if(head == null){
-		return null;
-	}
-	if(head->next == null){
-		return head;
-	}
-	Node *ptr = Reverse(head->next);
-	head->next->next = head;
-	head->next = null;
-	return ptr;
+Node *Reverse(Node *head) {
+    if(head == null) {
+        return null;
+    }
+    if(head->next == null) {
+        return head;
+    }
+    Node *ptr = Reverse(head->next);
+    head->next->next = head;
+    head->next = null;
+    return ptr;
 }
 
 #endif /* REVERSESILL_H_ */

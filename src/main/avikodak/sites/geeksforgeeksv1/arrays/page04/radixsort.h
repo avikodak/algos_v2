@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: radixsort.h 
+ *  File Name   		: radixsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\radixsort.h
  *  Created on			: Dec 22, 2014 :: 3:39:04 PM
  *  Author				: AVINASH
@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define RADIXSORT_H_
 
 //Tested
-int getDividingIndexRadixSort(vector<int> &userInput,int start,int end,int index){
-	if(start > end || index < 0){
-		return INT_MIN;
-	}
-	while(start <= end){
-		while(start <= end && !(userInput[start] & 1 << index)){
-			start++;
-		}
-		while(start <= end && userInput[end] & 1 << index){
-			end--;
-		}
-		if(start < end){
-			swap(userInput[start],userInput[end]);
-		}
-	}
-	return end;
+int getDividingIndexRadixSort(vector<int> &userInput,int start,int end,int index) {
+    if(start > end || index < 0) {
+        return INT_MIN;
+    }
+    while(start <= end) {
+        while(start <= end && !(userInput[start] & 1 << index)) {
+            start++;
+        }
+        while(start <= end && userInput[end] & 1 << index) {
+            end--;
+        }
+        if(start < end) {
+            swap(userInput[start],userInput[end]);
+        }
+    }
+    return end;
 }
 
 //Tested
-void radixSortMain(vector<int> &userInput,int start,int end,int index){
-	if(start >= end || index < 0){
-		return;
-	}
-	int dividingIndex = getDividingIndexRadixSort(userInput,start,end,index);
-	radixSortMain(userInput,start,dividingIndex,index-1);
-	radixSortMain(userInput,dividingIndex+1,end,index-1);
+void radixSortMain(vector<int> &userInput,int start,int end,int index) {
+    if(start >= end || index < 0) {
+        return;
+    }
+    int dividingIndex = getDividingIndexRadixSort(userInput,start,end,index);
+    radixSortMain(userInput,start,dividingIndex,index-1);
+    radixSortMain(userInput,dividingIndex+1,end,index-1);
 }
 
 //Tested
-void radixSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int noOfBits = log2(*max_element(userInput.begin(),userInput.end()));
-	radixSortMain(userInput,0,userInput.size()-1,noOfBits+1);
+void radixSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int noOfBits = log2(*max_element(userInput.begin(),userInput.end()));
+    radixSortMain(userInput,0,userInput.size()-1,noOfBits+1);
 }
 
 #endif /* RADIXSORT_H_ */

@@ -73,13 +73,13 @@ using namespace __gnu_cxx;
 #define SMHTE_H_
 
 //Tested
-void printResults(){
-	long long int testCases,input;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%d\n",input&&(!(input&(input-1))));
-	}
+void printResults() {
+    long long int testCases,input;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%d\n",input&&(!(input&(input-1))));
+    }
 }
 
 #endif /* SMHTE_H_ */

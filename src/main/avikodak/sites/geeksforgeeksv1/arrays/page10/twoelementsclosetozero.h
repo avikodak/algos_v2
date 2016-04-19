@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: twoelementsclosetozero.h 
+ *  File Name   		: twoelementsclosetozero.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\twoelementsclosetozero.h
  *  Created on			: Nov 25, 2014 :: 6:38:30 PM
  *  Author				: AVINASH
@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getTwoElementsClosestToZeroONLOGN(vector<int> userInput){
-	sort(userInput.begin(),userInput.end());
-	int startCrawler = 0,endCrawler = userInput.size()-1,sum,min = INT_MAX;
-	iPair *result = new iPair(INT_MAX,INT_MAX);
-	while(startCrawler < endCrawler){
-		sum = userInput[startCrawler] + userInput[endCrawler];
-		if(abs(min) > abs(sum)){
-			min = sum;
-			result->firstValue =  userInput[startCrawler];
-			result->secondValue = userInput[endCrawler];
-		}
-		if(sum > 0){
-			endCrawler--;
-		}else{
-			startCrawler++;
-		}
-	}
-	return result;
+iPair *getTwoElementsClosestToZeroONLOGN(vector<int> userInput) {
+    sort(userInput.begin(),userInput.end());
+    int startCrawler = 0,endCrawler = userInput.size()-1,sum,min = INT_MAX;
+    iPair *result = new iPair(INT_MAX,INT_MAX);
+    while(startCrawler < endCrawler) {
+        sum = userInput[startCrawler] + userInput[endCrawler];
+        if(abs(min) > abs(sum)) {
+            min = sum;
+            result->firstValue =  userInput[startCrawler];
+            result->secondValue = userInput[endCrawler];
+        }
+        if(sum > 0) {
+            endCrawler--;
+        } else {
+            startCrawler++;
+        }
+    }
+    return result;
 }
 
 
@@ -97,21 +97,21 @@ iPair *getTwoElementsClosestToZeroONLOGN(vector<int> userInput){
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getTwoElementsClosestToZero(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	int minSum = INT_MAX;
-	iPair *result = new iPair(INT_MAX,INT_MAX);
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(abs(minSum) > abs(userInput[outerCrawler] + userInput[innerCrawler])){
-				result->firstValue = userInput[outerCrawler];
-				result->secondValue = userInput[innerCrawler];
-			}
-		}
-	}
-	return result;
+iPair *getTwoElementsClosestToZero(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    int minSum = INT_MAX;
+    iPair *result = new iPair(INT_MAX,INT_MAX);
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            if(abs(minSum) > abs(userInput[outerCrawler] + userInput[innerCrawler])) {
+                result->firstValue = userInput[outerCrawler];
+                result->secondValue = userInput[innerCrawler];
+            }
+        }
+    }
+    return result;
 }
 
 #endif /* TWOELEMENTSCLOSETOZERO_H_ */

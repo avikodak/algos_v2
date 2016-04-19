@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 #define RUBIX4_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,sum,maxConsecutive;
-	int input;
-	vector<int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%d",&input);
-			userInput.push_back(input);
-		}
-		maxConsecutive = 0;
-		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-			sum = 1;
-			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[innerCounter] - userInput[outerCounter] == innerCounter-outerCounter){
-					sum++;
-				}
-			}
-			maxConsecutive = max(maxConsecutive,sum);
-		}
-		printf("%u\n",userInput.size()-maxConsecutive);
-	}
+void printResults() {
+    unsigned int testCases,size,sum,maxConsecutive;
+    int input;
+    vector<int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+        }
+        maxConsecutive = 0;
+        for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+            sum = 1;
+            for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[innerCounter] - userInput[outerCounter] == innerCounter-outerCounter) {
+                    sum++;
+                }
+            }
+            maxConsecutive = max(maxConsecutive,sum);
+        }
+        printf("%u\n",userInput.size()-maxConsecutive);
+    }
 }
 
 #endif /* RUBIX4_H_ */

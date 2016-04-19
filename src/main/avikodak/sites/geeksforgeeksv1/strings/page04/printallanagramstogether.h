@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printallanagramstogether.h 
+ *  File Name   		: printallanagramstogether.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\printallanagramstogether.h
  *  Created on			: Jan 16, 2015 :: 10:19:44 AM
  *  Author				: AVINASH
@@ -73,7 +73,7 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printAllAnagramsTogether(char *userInput[],int totalWords){
+void printAllAnagramsTogether(char *userInput[],int totalWords) {
 
 }
 

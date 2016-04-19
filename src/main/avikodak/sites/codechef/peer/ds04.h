@@ -73,10 +73,10 @@ using namespace __gnu_cxx;
 #define DS04_H_
 
 //Tested
-void printResults(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	printf("%u",((userInput)*(userInput+1))/2);
+void printResults() {
+    unsigned int userInput;
+    scanf("%u",&userInput);
+    printf("%u",((userInput)*(userInput+1))/2);
 }
 
 #endif /* DS04_H_ */

@@ -75,20 +75,20 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_SINGLENUMBER_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_SINGLENUMBER_H_
 
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	scanf("%u",&testCases);
-	long long int xorResult;
-	while(testCases--){
-		scanf("%u",&size);
-		xorResult = 0;
-		while(size--){
-			scanf("%lld",&input);
-			xorResult ^= input;
-		}
-		printf("%lld\n",xorResult);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    scanf("%u",&testCases);
+    long long int xorResult;
+    while(testCases--) {
+        scanf("%u",&size);
+        xorResult = 0;
+        while(size--) {
+            scanf("%lld",&input);
+            xorResult ^= input;
+        }
+        printf("%lld\n",xorResult);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_SINGLENUMBER_H_ */

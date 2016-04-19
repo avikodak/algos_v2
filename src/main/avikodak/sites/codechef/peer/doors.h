@@ -75,29 +75,31 @@ using namespace __gnu_cxx;
 
 //Tested
 inline unsigned int scan() {
-	unsigned int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+    unsigned int t=0,neg=0;
+    char c;
+    c=gc();
+    while((c<'0' || c>'9')&& c!='-')
+        c=gc();
+    if(c=='-') {
+        neg=1;
+        c=gc();
+    }
+    while(c>='0' && c<='9') {
+        t=(t<<3)+(t<<1)+c-'0';
+        c=gc();
+    }
+    if(neg) t=-t;
+    return(t);
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,userInput;
-	testCases = scan();
-	while(testCases--){
-		userInput = scan();
-		printf("%u\n",(unsigned int)sqrt(userInput));
-	}
+void printResults() {
+    unsigned int testCases,userInput;
+    testCases = scan();
+    while(testCases--) {
+        userInput = scan();
+        printf("%u\n",(unsigned int)sqrt(userInput));
+    }
 }
 
 #endif /* DOORS_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlenchainofpairs.h 
+ *  File Name   		: maxlenchainofpairs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxlenchainofpairs.h
  *  Created on			: Dec 1, 2014 :: 3:30:35 PM
  *  Author				: AVINASH
@@ -72,74 +72,74 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void mergePairs(vector<iPair *> &userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	vector<iPair *> auxSpace;
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler > middleIndex || secondCrawler > endIndex){
-			if(firstCrawler <= middleIndex){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}else{
-			if(userInput[firstCrawler]->firstValue < userInput[secondCrawler]->firstValue){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		userInput[startIndex + counter] = auxSpace[counter];
-	}
+void mergePairs(vector<iPair *> &userInput,int startIndex,int middleIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    vector<iPair *> auxSpace;
+    int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+    while(firstCrawler <= middleIndex || secondCrawler <= endIndex) {
+        if(firstCrawler > middleIndex || secondCrawler > endIndex) {
+            if(firstCrawler <= middleIndex) {
+                auxSpace.push_back(userInput[firstCrawler++]);
+            } else {
+                auxSpace.push_back(userInput[secondCrawler++]);
+            }
+        } else {
+            if(userInput[firstCrawler]->firstValue < userInput[secondCrawler]->firstValue) {
+                auxSpace.push_back(userInput[firstCrawler++]);
+            } else {
+                auxSpace.push_back(userInput[secondCrawler++]);
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        userInput[startIndex + counter] = auxSpace[counter];
+    }
 }
 
 //Tested
-void mergeSortPairs(vector<iPair *> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	mergeSortPairs(userInput,startIndex,middleIndex);
-	mergeSortPairs(userInput,middleIndex+1,endIndex);
-	mergePairs(userInput,startIndex,middleIndex,endIndex);
+void mergeSortPairs(vector<iPair *> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    mergeSortPairs(userInput,startIndex,middleIndex);
+    mergeSortPairs(userInput,middleIndex+1,endIndex);
+    mergePairs(userInput,startIndex,middleIndex,endIndex);
 }
 
 //Tested
-int getMaxLengthChainOfPairs(vector<iPair *> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	if(userInput.size() == 1){
-		return 1;
-	}
-	vector<int> lengths;
-	lengths.push_back(1);
-	int maxLength;
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		maxLength = 1;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(userInput[outerCrawler]->firstValue > userInput[innerCrawler]->secondValue){
-				maxLength  = max(maxLength,1+lengths[innerCrawler]);
-			}
-		}
-		lengths.push_back(maxLength);
-	}
-	return lengths[lengths.size()-1];
+int getMaxLengthChainOfPairs(vector<iPair *> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    if(userInput.size() == 1) {
+        return 1;
+    }
+    vector<int> lengths;
+    lengths.push_back(1);
+    int maxLength;
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        maxLength = 1;
+        for(unsigned int innerCrawler = 0; innerCrawler < outerCrawler; innerCrawler++) {
+            if(userInput[outerCrawler]->firstValue > userInput[innerCrawler]->secondValue) {
+                maxLength  = max(maxLength,1+lengths[innerCrawler]);
+            }
+        }
+        lengths.push_back(maxLength);
+    }
+    return lengths[lengths.size()-1];
 }
 
 //Tested
-int maxLengthChainOfPairs(vector<iPair *> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	mergeSortPairs(userInput,0,userInput.size()-1);
-	printIVector(userInput);
-	return getMaxLengthChainOfPairs(userInput);
+int maxLengthChainOfPairs(vector<iPair *> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    mergeSortPairs(userInput,0,userInput.size()-1);
+    printIVector(userInput);
+    return getMaxLengthChainOfPairs(userInput);
 }
 
 #endif /* MAXLENCHAINOFPAIRS_H_ */

@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define REVERSEDILL_H_
 
 //Tested
-Node* Reverse(Node* head){
-	if(head == null){
-		return null;
-	}
-	Node *crawler = head,*temp;
-	while(crawler != null){
-		temp = crawler->prev;
-		crawler->prev = crawler->next;
-		crawler->next = temp;
-		head = crawler;
-		crawler = crawler->prev;
-	}
+Node* Reverse(Node* head) {
+    if(head == null) {
+        return null;
+    }
+    Node *crawler = head,*temp;
+    while(crawler != null) {
+        temp = crawler->prev;
+        crawler->prev = crawler->next;
+        crawler->next = temp;
+        head = crawler;
+        crawler = crawler->prev;
+    }
     return head;
 }
 

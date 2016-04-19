@@ -72,17 +72,17 @@ using namespace __gnu_cxx;
 
 //Tested
 //Ans : 669171001
-void printNumberSpiralDiagonal(){
-	unsigned int sum = 1;
-	unsigned int number = 1;
-	for(unsigned int counter = 1;2*counter + 1 <= 5;counter++){
-		sum += (number + 2*counter);
-		sum += (number + 2*2*counter);
-		sum += (number + 2*3*counter);
-		sum += (number + 2*4*counter);
-		number = number + 2*4*counter;
-	}
-	cout << sum << endl;
+void printNumberSpiralDiagonal() {
+    unsigned int sum = 1;
+    unsigned int number = 1;
+    for(unsigned int counter = 1; 2*counter + 1 <= 5; counter++) {
+        sum += (number + 2*counter);
+        sum += (number + 2*2*counter);
+        sum += (number + 2*3*counter);
+        sum += (number + 2*4*counter);
+        number = number + 2*4*counter;
+    }
+    cout << sum << endl;
 }
 
 #endif /* NUMBERSPIRALDIAGONALS_H_ */

@@ -71,37 +71,37 @@ using namespace __gnu_cxx;
 #define GRIDCHALLENGE_H_
 
 //Tested
-void isLexicographicallySorted(){
-	unsigned int testCases,inputSize;
-	scanf("%u",&testCases);
-	vector<string> userInput;
-	string input;
-	bool flag;
-	while(testCases--){
-		userInput.clear();
-		scanf("%u",&inputSize);
-		while(inputSize--){
-			cin >> input;
-			sort(input.begin(),input.end());
-			userInput.push_back(input);
-		}
-		flag = false;
-		for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-			for(unsigned int rowCounter = 0;rowCounter < userInput.size()-1;rowCounter++){
-				if(userInput[rowCounter][columnCounter] > userInput[rowCounter+1][columnCounter]){
-					printf("NO\n");
-					flag = true;
-					break;
-				}
-			}
-			if(flag){
-				break;
-			}
-		}
-		if(!flag){
-			printf("YES\n");
-		}
-	}
+void isLexicographicallySorted() {
+    unsigned int testCases,inputSize;
+    scanf("%u",&testCases);
+    vector<string> userInput;
+    string input;
+    bool flag;
+    while(testCases--) {
+        userInput.clear();
+        scanf("%u",&inputSize);
+        while(inputSize--) {
+            cin >> input;
+            sort(input.begin(),input.end());
+            userInput.push_back(input);
+        }
+        flag = false;
+        for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+            for(unsigned int rowCounter = 0; rowCounter < userInput.size()-1; rowCounter++) {
+                if(userInput[rowCounter][columnCounter] > userInput[rowCounter+1][columnCounter]) {
+                    printf("NO\n");
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag) {
+                break;
+            }
+        }
+        if(!flag) {
+            printf("YES\n");
+        }
+    }
 }
 
 #endif /* GRIDCHALLENGE_H_ */

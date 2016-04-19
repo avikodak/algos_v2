@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: oppositesigns.h 
+ *  File Name   		: oppositesigns.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\oppositesigns.h
  *  Created on			: Jan 9, 2015 :: 5:25:15 PM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef OPPOSITESIGNS_H_
 #define OPPOSITESIGNS_H_
 
-bool oppositeSigns(int firstUserInput,int secondUserInput){
-	return firstUserInput ^ secondUserInput < 0;
+bool oppositeSigns(int firstUserInput,int secondUserInput) {
+    return firstUserInput ^ secondUserInput < 0;
 }
 
 #endif /* OPPOSITESIGNS_H_ */

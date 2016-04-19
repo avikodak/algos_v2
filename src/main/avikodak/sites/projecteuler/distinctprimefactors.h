@@ -71,65 +71,65 @@ using namespace __gnu_cxx;
 #define DISTINCTPRIMEFACTORS_H_
 
 //Tested
-map<unsigned long long int,unsigned long long int> primeFactorization(unsigned long long int userInput){
-	unsigned long long int squareRoot = sqrtl(userInput);
-	map<unsigned long long int,unsigned long long int> factorsCounter;
-	map<unsigned long long int,unsigned long long int>::iterator itToFactorsCount;
-	bool flag = true;
-	while(flag){
-		flag = false;
-		while(!(userInput&1)){
-			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
-				factorsCounter[2] = 1;
-			}else{
-				factorsCounter[2]++;
-			}
-			flag = true;
-			userInput /= 2;
-		}
-		for(unsigned long long int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				if(factorsCounter.find(counter) == factorsCounter.end()){
-					factorsCounter[counter] = 1;
-				}else{
-					factorsCounter[counter]++;
-				}
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag && userInput != 1){
-			if(factorsCounter.find(userInput) == factorsCounter.end()){
-				factorsCounter[userInput] = 1;
-			}else{
-				factorsCounter[userInput]++;
-			}
-		}
-	}
-	return factorsCounter;
+map<unsigned long long int,unsigned long long int> primeFactorization(unsigned long long int userInput) {
+    unsigned long long int squareRoot = sqrtl(userInput);
+    map<unsigned long long int,unsigned long long int> factorsCounter;
+    map<unsigned long long int,unsigned long long int>::iterator itToFactorsCount;
+    bool flag = true;
+    while(flag) {
+        flag = false;
+        while(!(userInput&1)) {
+            if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()) {
+                factorsCounter[2] = 1;
+            } else {
+                factorsCounter[2]++;
+            }
+            flag = true;
+            userInput /= 2;
+        }
+        for(unsigned long long int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                if(factorsCounter.find(counter) == factorsCounter.end()) {
+                    factorsCounter[counter] = 1;
+                } else {
+                    factorsCounter[counter]++;
+                }
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag && userInput != 1) {
+            if(factorsCounter.find(userInput) == factorsCounter.end()) {
+                factorsCounter[userInput] = 1;
+            } else {
+                factorsCounter[userInput]++;
+            }
+        }
+    }
+    return factorsCounter;
 }
 
 //Tested
 //Ans : 134043
-void findFirstFourDistinctPrimeFactors(){
-	unsigned long long int counter = 2;
-	unsigned int consecutiveCounter  = 0;
-	map<unsigned long long int,unsigned long long int> primeFactors;
-	map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactors;
-	while(true){
-		primeFactors = primeFactorization(counter);
-		if(primeFactors.size() == 4){
-			consecutiveCounter++;
-			if(consecutiveCounter == 4){
-				cout << counter-3 << endl;
-				return;
-			}
-		}else{
-			consecutiveCounter = 0;
-		}
-		counter++;
-	}
+void findFirstFourDistinctPrimeFactors() {
+    unsigned long long int counter = 2;
+    unsigned int consecutiveCounter  = 0;
+    map<unsigned long long int,unsigned long long int> primeFactors;
+    map<unsigned long long int,unsigned long long int>::iterator itToPrimeFactors;
+    while(true) {
+        primeFactors = primeFactorization(counter);
+        if(primeFactors.size() == 4) {
+            consecutiveCounter++;
+            if(consecutiveCounter == 4) {
+                cout << counter-3 << endl;
+                return;
+            }
+        } else {
+            consecutiveCounter = 0;
+        }
+        counter++;
+    }
 }
 
 #endif /* DISTINCTPRIMEFACTORS_H_ */

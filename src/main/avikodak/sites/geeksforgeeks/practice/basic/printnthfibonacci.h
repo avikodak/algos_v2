@@ -77,26 +77,26 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTNTHFIBONACCI_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		long long int currentNumber = 1,prevNumber = 0;
-		if(input == 1){
-			printf("0\n");
-		}else if(input == 2){
-			printf("1\n");
-		}else{
-			for(unsigned int counter = 2;counter < input;counter++){
-				long long temp = (currentNumber + prevNumber)%MODN;
-				prevNumber = currentNumber;
-				currentNumber = temp;
-			}
-			printf("%lld\n",currentNumber%MODN);
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        long long int currentNumber = 1,prevNumber = 0;
+        if(input == 1) {
+            printf("0\n");
+        } else if(input == 2) {
+            printf("1\n");
+        } else {
+            for(unsigned int counter = 2; counter < input; counter++) {
+                long long temp = (currentNumber + prevNumber)%MODN;
+                prevNumber = currentNumber;
+                currentNumber = temp;
+            }
+            printf("%lld\n",currentNumber%MODN);
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PRINTNTHFIBONACCI_H_ */

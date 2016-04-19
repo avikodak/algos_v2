@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 #define CDS003_H_
 
 //Tested
-void decryptSentence(string userInput){
-	unsigned int asciiValue = 0;
-	for(unsigned int crawler = 0;crawler < userInput.size();crawler++){
-		asciiValue = (asciiValue << 3) + (asciiValue << 1) + userInput[crawler]-'0';
-		if(asciiValue == ' ' || (asciiValue >= 'a' && asciiValue <= 'z') || (asciiValue >= 'A' && asciiValue <= 'Z')){
-			printf("%c",asciiValue);
-			asciiValue = 0;
-		}
-	}
-	printf("\n");
+void decryptSentence(string userInput) {
+    unsigned int asciiValue = 0;
+    for(unsigned int crawler = 0; crawler < userInput.size(); crawler++) {
+        asciiValue = (asciiValue << 3) + (asciiValue << 1) + userInput[crawler]-'0';
+        if(asciiValue == ' ' || (asciiValue >= 'a' && asciiValue <= 'z') || (asciiValue >= 'A' && asciiValue <= 'Z')) {
+            printf("%c",asciiValue);
+            asciiValue = 0;
+        }
+    }
+    printf("\n");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		decryptSentence(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        decryptSentence(userInput);
+    }
 }
 
 #endif /* CDS003_H_ */

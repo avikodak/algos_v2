@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: commonelementsthreesorted.h 
+ *  File Name   		: commonelementsthreesorted.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\commonelementsthreesorted.h
  *  Created on			: Jan 5, 2015 :: 11:23:46 PM
  *  Author				: AVINASH
@@ -74,33 +74,35 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<int> commonElementsThreeSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,vector<int> thirdSortedArray){
-	vector<int> commonElements;
-	if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0 || thirdSortedArray.size() == 0){
-		return commonElements;
-	}
-	unsigned int firstCounter = 0,secondCounter = 0,thirdCounter = 0;
-	while(firstCounter < firstSortedArray.size() && secondCounter < secondSortedArray.size() && thirdCounter < thirdSortedArray.size()){
-		if(firstSortedArray[firstCounter]  == secondSortedArray[secondCounter] && firstSortedArray[firstCounter] == thirdSortedArray[thirdCounter]){
-			commonElements.push_back(firstSortedArray[firstCounter]);
-			firstCounter++;secondCounter++;thirdCounter++;
-		}else{
-			if(firstSortedArray[firstCounter] < secondSortedArray[secondCounter]){
-				if(firstSortedArray[firstCounter] < thirdSortedArray[thirdCounter]){
-					firstCounter++;
-				}else{
-					thirdCounter++;
-				}
-			}else{
-				if(secondSortedArray[secondCounter] < thirdSortedArray[thirdCounter]){
-					secondCounter++;
-				}else{
-					thirdCounter++;
-				}
-			}
-		}
-	}
-	return commonElements;
+vector<int> commonElementsThreeSortedArrays(vector<int> firstSortedArray,vector<int> secondSortedArray,vector<int> thirdSortedArray) {
+    vector<int> commonElements;
+    if(firstSortedArray.size() == 0 || secondSortedArray.size() == 0 || thirdSortedArray.size() == 0) {
+        return commonElements;
+    }
+    unsigned int firstCounter = 0,secondCounter = 0,thirdCounter = 0;
+    while(firstCounter < firstSortedArray.size() && secondCounter < secondSortedArray.size() && thirdCounter < thirdSortedArray.size()) {
+        if(firstSortedArray[firstCounter]  == secondSortedArray[secondCounter] && firstSortedArray[firstCounter] == thirdSortedArray[thirdCounter]) {
+            commonElements.push_back(firstSortedArray[firstCounter]);
+            firstCounter++;
+            secondCounter++;
+            thirdCounter++;
+        } else {
+            if(firstSortedArray[firstCounter] < secondSortedArray[secondCounter]) {
+                if(firstSortedArray[firstCounter] < thirdSortedArray[thirdCounter]) {
+                    firstCounter++;
+                } else {
+                    thirdCounter++;
+                }
+            } else {
+                if(secondSortedArray[secondCounter] < thirdSortedArray[thirdCounter]) {
+                    secondCounter++;
+                } else {
+                    thirdCounter++;
+                }
+            }
+        }
+    }
+    return commonElements;
 }
 
 /****************************************************************************************************************************************************/

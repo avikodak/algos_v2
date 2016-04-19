@@ -71,69 +71,69 @@ using namespace __gnu_cxx;
 #define HIGHLYDIVISIBLETRIANGULARNO_H_
 
 //Tested
-map<long long int,long long int> primeFactorization(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	map<long long int,long long int> factorsCounter;
-	map<long long int,long long int>::iterator itToFactorsCount;
-	bool flag = true;
-	while(flag){
-		flag = false;
-		while(!(userInput&1)){
-			if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()){
-				factorsCounter[2] = 1;
-			}else{
-				factorsCounter[2]++;
-			}
-			flag = true;
-			userInput /= 2;
-		}
-		for(long long int counter = 3;counter <= squareRoot;counter+=2){
-			if(userInput%counter == 0){
-				if(factorsCounter.find(counter) == factorsCounter.end()){
-					factorsCounter[counter] = 1;
-				}else{
-					factorsCounter[counter]++;
-				}
-				flag = true;
-				userInput /= counter;
-				break;
-			}
-		}
-		if(!flag && userInput != 1){
-			if(factorsCounter.find(userInput) == factorsCounter.end()){
-				factorsCounter[userInput] = 1;
-			}else{
-				factorsCounter[userInput]++;
-			}
-		}
-	}
-	return factorsCounter;
+map<long long int,long long int> primeFactorization(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    map<long long int,long long int> factorsCounter;
+    map<long long int,long long int>::iterator itToFactorsCount;
+    bool flag = true;
+    while(flag) {
+        flag = false;
+        while(!(userInput&1)) {
+            if((itToFactorsCount = factorsCounter.find(2)) == factorsCounter.end()) {
+                factorsCounter[2] = 1;
+            } else {
+                factorsCounter[2]++;
+            }
+            flag = true;
+            userInput /= 2;
+        }
+        for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+            if(userInput%counter == 0) {
+                if(factorsCounter.find(counter) == factorsCounter.end()) {
+                    factorsCounter[counter] = 1;
+                } else {
+                    factorsCounter[counter]++;
+                }
+                flag = true;
+                userInput /= counter;
+                break;
+            }
+        }
+        if(!flag && userInput != 1) {
+            if(factorsCounter.find(userInput) == factorsCounter.end()) {
+                factorsCounter[userInput] = 1;
+            } else {
+                factorsCounter[userInput]++;
+            }
+        }
+    }
+    return factorsCounter;
 }
 
 //Tested
-long long int getDivisorsCount(unsigned int value,bool properDivisorCount){
-	map<long long int,long long int> primeFactors = primeFactorization(value);
-	long long int divisorCount = 1;
-	map<long long int,long long int>::iterator itToPrimeFactors;
-	for(itToPrimeFactors = primeFactors.begin();itToPrimeFactors != primeFactors.end();itToPrimeFactors++){
-		divisorCount *= (itToPrimeFactors->second+1);
-	}
-	return !properDivisorCount?divisorCount:divisorCount-1;
+long long int getDivisorsCount(unsigned int value,bool properDivisorCount) {
+    map<long long int,long long int> primeFactors = primeFactorization(value);
+    long long int divisorCount = 1;
+    map<long long int,long long int>::iterator itToPrimeFactors;
+    for(itToPrimeFactors = primeFactors.begin(); itToPrimeFactors != primeFactors.end(); itToPrimeFactors++) {
+        divisorCount *= (itToPrimeFactors->second+1);
+    }
+    return !properDivisorCount?divisorCount:divisorCount-1;
 }
 
 //Tested
 //Ans : 76576500
-void getNumberWithFiveHundredDivisor(){
-	long long int value,counter  = 1,divisorCount;
-	while(true){
-		value = ((counter)*(counter+1))/2;
-		divisorCount = getDivisorsCount(value,false);
-		if(divisorCount > 500){
-			cout << value;
-			break;
-		}
-		counter++;
-	}
+void getNumberWithFiveHundredDivisor() {
+    long long int value,counter  = 1,divisorCount;
+    while(true) {
+        value = ((counter)*(counter+1))/2;
+        divisorCount = getDivisorsCount(value,false);
+        if(divisorCount > 500) {
+            cout << value;
+            break;
+        }
+        counter++;
+    }
 }
 
 #endif /* HIGHLYDIVISIBLETRIANGULARNO_H_ */

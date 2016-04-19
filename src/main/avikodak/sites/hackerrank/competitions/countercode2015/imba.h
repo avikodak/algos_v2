@@ -70,27 +70,27 @@ using namespace __gnu_cxx;
 #ifndef IMBA_H_
 #define IMBA_H_
 
-void printImbaFormat(unsigned int userInput){
-	int backToFront = userInput/2,frontToBack = (userInput/2)+1;
-	if(userInput%2 == 1){
-		printf("%u ",(userInput/2)+1);
-		frontToBack = (userInput/2)+2;
-	}
-	while(backToFront > 0){
-		printf("%u %u",backToFront+1,frontToBack+1);
-		backToFront--;
-		frontToBack++;
-	}
-	printf("\n");
+void printImbaFormat(unsigned int userInput) {
+    int backToFront = userInput/2,frontToBack = (userInput/2)+1;
+    if(userInput%2 == 1) {
+        printf("%u ",(userInput/2)+1);
+        frontToBack = (userInput/2)+2;
+    }
+    while(backToFront > 0) {
+        printf("%u %u",backToFront+1,frontToBack+1);
+        backToFront--;
+        frontToBack++;
+    }
+    printf("\n");
 }
 
-void getImbaFormat(){
-	unsigned int testCases,userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&userInput);
-		printImbaFormat(userInput);
-	}
+void getImbaFormat() {
+    unsigned int testCases,userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&userInput);
+        printImbaFormat(userInput);
+    }
 }
 
 #endif /* IMBA_H_ */

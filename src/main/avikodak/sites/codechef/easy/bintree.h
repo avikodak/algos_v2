@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 #define BINTREE_H_
 
 //Tested
-void printShortestDistance(long long int first,long long int second){
-	long long int distance = 0;
-	while(first != second){
-		if(first > second){
-			first /= 2;
-		}else{
-			second /= 2;
-		}
-		distance++;
-	}
-	cout << distance << endl;
+void printShortestDistance(long long int first,long long int second) {
+    long long int distance = 0;
+    while(first != second) {
+        if(first > second) {
+            first /= 2;
+        } else {
+            second /= 2;
+        }
+        distance++;
+    }
+    cout << distance << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int first,second;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld %lld",&first,&second);
-		printShortestDistance(first,second);
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int first,second;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld",&first,&second);
+        printShortestDistance(first,second);
+    }
 }
 
 #endif /* BINTREE_H_ */

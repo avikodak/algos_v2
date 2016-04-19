@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define DIAGONALDIFFERENCE_H_
 
 //Tested
-void getAbsoluteDifference(){
-	unsigned int size;
-	int input;
-	scanf("%u",&size);
-	unsigned int leftToRight = 0,rightToLeftRow = 0,rightToLeftColumn = size-1;
-	int leftToRightSum = 0,rightToLeftSum = 0;
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-			scanf("%d",&input);
-			if(leftToRight == rowCounter && leftToRight == columnCounter){
-				leftToRightSum += input;
-				leftToRight++;
-			}
-			if(rowCounter == rightToLeftRow && columnCounter == rightToLeftColumn){
-				rightToLeftSum += input;
-				rightToLeftRow++;
-				rightToLeftColumn--;
-			}
-		}
-	}
-	printf("%d",abs(leftToRightSum - rightToLeftSum));
+void getAbsoluteDifference() {
+    unsigned int size;
+    int input;
+    scanf("%u",&size);
+    unsigned int leftToRight = 0,rightToLeftRow = 0,rightToLeftColumn = size-1;
+    int leftToRightSum = 0,rightToLeftSum = 0;
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+            scanf("%d",&input);
+            if(leftToRight == rowCounter && leftToRight == columnCounter) {
+                leftToRightSum += input;
+                leftToRight++;
+            }
+            if(rowCounter == rightToLeftRow && columnCounter == rightToLeftColumn) {
+                rightToLeftSum += input;
+                rightToLeftRow++;
+                rightToLeftColumn--;
+            }
+        }
+    }
+    printf("%d",abs(leftToRightSum - rightToLeftSum));
 }
 
 #endif /* DIAGONALDIFFERENCE_H_ */

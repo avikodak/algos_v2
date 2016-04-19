@@ -72,39 +72,39 @@ using namespace __gnu_cxx;
 #define HLPSUG_H_
 
 //Tested
-bool isPrime(unsigned int userInput){
-	if(userInput == 1){
-		return false;
-	}
-	if(userInput == 2){
-		return true;
-	}
-	if(userInput%2 == 0){
-		return false;
-	}
-	unsigned int limit = sqrt(userInput);
-	for(unsigned int counter = 3;counter <= limit;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isPrime(unsigned int userInput) {
+    if(userInput == 1) {
+        return false;
+    }
+    if(userInput == 2) {
+        return true;
+    }
+    if(userInput%2 == 0) {
+        return false;
+    }
+    unsigned int limit = sqrt(userInput);
+    for(unsigned int counter = 3; counter <= limit; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input,total;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		total = 0;
-		for(unsigned int counter = 29;counter <= input;counter++){
-			if(isPrime(counter)){
-				total += counter;
-			}
-		}
-		cout << total  << endl;
-	}
+void printResults() {
+    unsigned int testCases,input,total;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        total = 0;
+        for(unsigned int counter = 29; counter <= input; counter++) {
+            if(isPrime(counter)) {
+                total += counter;
+            }
+        }
+        cout << total  << endl;
+    }
 }
 
 #endif /* HLPSUG_H_ */

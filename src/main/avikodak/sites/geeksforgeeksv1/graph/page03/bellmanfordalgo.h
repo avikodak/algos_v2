@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bellmanfordalgo.h 
+ *  File Name   		: bellmanfordalgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\bellmanfordalgo.h
  *  Created on			: Dec 26, 2014 :: 10:31:58 AM
  *  Author				: AVINASH
@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int shortestPathBellmanFord(vector<wEdge *> weightedEdges,int noOfVertices,int sourceVertex,int destinationVertex){
-	if(weightedEdges.size() == 0){
-		return INT_MAX;
-	}
-	vector<int> pathDistances(noOfVertices,INT_MAX);
-	pathDistances[sourceVertex] = 0;
-	for(unsigned int vertexCounter = 0;vertexCounter < noOfVertices;vertexCounter++){
-		for(unsigned int edgeCounter = 0;edgeCounter < weightedEdges.size();edgeCounter++){
-			pathDistances[weightedEdges[edgeCounter]->destinationVertex] = min(pathDistances[weightedEdges[edgeCounter]->destinationVertex],weightedEdges[edgeCounter]->weight + pathDistances[weightedEdges[edgeCounter]->sourceVertex]);
-		}
-	}
-	return pathDistances[destinationVertex];
+int shortestPathBellmanFord(vector<wEdge *> weightedEdges,int noOfVertices,int sourceVertex,int destinationVertex) {
+    if(weightedEdges.size() == 0) {
+        return INT_MAX;
+    }
+    vector<int> pathDistances(noOfVertices,INT_MAX);
+    pathDistances[sourceVertex] = 0;
+    for(unsigned int vertexCounter = 0; vertexCounter < noOfVertices; vertexCounter++) {
+        for(unsigned int edgeCounter = 0; edgeCounter < weightedEdges.size(); edgeCounter++) {
+            pathDistances[weightedEdges[edgeCounter]->destinationVertex] = min(pathDistances[weightedEdges[edgeCounter]->destinationVertex],weightedEdges[edgeCounter]->weight + pathDistances[weightedEdges[edgeCounter]->sourceVertex]);
+        }
+    }
+    return pathDistances[destinationVertex];
 }
 
 #endif /* BELLMANFORDALGO_H_ */

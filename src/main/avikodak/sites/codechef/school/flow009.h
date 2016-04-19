@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 #define FLOW009_H_
 
 //Tested
-void getTotalExpenses(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	double quantity,price,total;
+void getTotalExpenses() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    double quantity,price,total;
 
-	while(testCases--){
-		cin >> quantity >> price;
-		total = quantity * price;
-		if(quantity > 1000){
-			cout <<  std::setprecision (6) << fixed << total - (0.1*total )<< endl;
-		}else{
-			cout <<  std::setprecision (6) << fixed << total << endl;
-		}
-	}
+    while(testCases--) {
+        cin >> quantity >> price;
+        total = quantity * price;
+        if(quantity > 1000) {
+            cout <<  std::setprecision (6) << fixed << total - (0.1*total )<< endl;
+        } else {
+            cout <<  std::setprecision (6) << fixed << total << endl;
+        }
+    }
 }
 
 #endif /* FLOW009_H_ */

@@ -76,22 +76,22 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_REPEATITIVEADDDIGITS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input,sumOfDigits;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		while(input > 9){
-			sumOfDigits  = 0;
-			while(input){
-				sumOfDigits += (input%10);
-				input /= 10;
-			}
-			input = sumOfDigits;
-		}
-		printf("%lld\n",input);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input,sumOfDigits;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        while(input > 9) {
+            sumOfDigits  = 0;
+            while(input) {
+                sumOfDigits += (input%10);
+                input /= 10;
+            }
+            input = sumOfDigits;
+        }
+        printf("%lld\n",input);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_REPEATITIVEADDDIGITS_H_ */

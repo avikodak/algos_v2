@@ -72,34 +72,34 @@ using namespace __gnu_cxx;
 #define CREDE2_H_
 
 //Tested
-unsigned int getSumOfDigits(unsigned int userInput){
-	unsigned int sum = 0;
-	while(userInput){
-		sum += userInput%10;
-		userInput /= 10;
-	}
-	return sum;
+unsigned int getSumOfDigits(unsigned int userInput) {
+    unsigned int sum = 0;
+    while(userInput) {
+        sum += userInput%10;
+        userInput /= 10;
+    }
+    return sum;
 }
 
 //Tested
-void printSmallestEncore(unsigned int userInput){
-	for(unsigned int counter = 1;counter < userInput;counter++){
-		if(counter+getSumOfDigits(counter) == userInput){
-			cout << counter << endl;
-			return;
-		}
-	}
-	cout << "NONE" << endl;
+void printSmallestEncore(unsigned int userInput) {
+    for(unsigned int counter = 1; counter < userInput; counter++) {
+        if(counter+getSumOfDigits(counter) == userInput) {
+            cout << counter << endl;
+            return;
+        }
+    }
+    cout << "NONE" << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printSmallestEncore(input);
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printSmallestEncore(input);
+    }
 }
 
 #endif /* CREDE2_H_ */

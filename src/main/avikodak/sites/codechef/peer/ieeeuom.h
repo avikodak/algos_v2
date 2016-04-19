@@ -73,25 +73,25 @@ using namespace __gnu_cxx;
 #define IEEEUOM_H_
 
 //Tested
-bool isArmStrongNumber(unsigned int userInput){
-	unsigned int sum = 0,lastDigit,temp=userInput;
-	while(temp){
-		lastDigit = temp%10;
-		sum += (lastDigit*lastDigit*lastDigit);
-		temp /= 10;
-	}
-	return sum == userInput;
+bool isArmStrongNumber(unsigned int userInput) {
+    unsigned int sum = 0,lastDigit,temp=userInput;
+    while(temp) {
+        lastDigit = temp%10;
+        sum += (lastDigit*lastDigit*lastDigit);
+        temp /= 10;
+    }
+    return sum == userInput;
 }
 
 //Tested
-void printResults(){
-	unsigned int lower,upper;
-	scanf("%u %u",&lower,&upper);
-	for(unsigned int counter = lower;counter <= upper;counter++){
-		if(isArmStrongNumber(counter)){
-			printf("%u\n",counter);
-		}
-	}
+void printResults() {
+    unsigned int lower,upper;
+    scanf("%u %u",&lower,&upper);
+    for(unsigned int counter = lower; counter <= upper; counter++) {
+        if(isArmStrongNumber(counter)) {
+            printf("%u\n",counter);
+        }
+    }
 }
 
 #endif /* IEEEUOM_H_ */

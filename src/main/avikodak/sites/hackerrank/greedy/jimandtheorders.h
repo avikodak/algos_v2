@@ -71,44 +71,44 @@ using namespace __gnu_cxx;
 #define JIMANDTHEORDERS_H_
 
 //Tested
-struct order{
+struct order {
 public:
-	unsigned int time;
-	unsigned int index;
+    unsigned int time;
+    unsigned int index;
 
-	order(){
-	}
+    order() {
+    }
 
-	order(unsigned int time,unsigned int index){
-		this->time = time;
-		this->index = index;
-	}
+    order(unsigned int time,unsigned int index) {
+        this->time = time;
+        this->index = index;
+    }
 };
 
 //Tested
-bool sortFunc(order *firstOrder,order *secondOrder){
-	if(firstOrder->time == secondOrder->time){
-		return firstOrder->index < secondOrder->index;
-	}else{
-		return firstOrder->time < secondOrder->time;
-	}
+bool sortFunc(order *firstOrder,order *secondOrder) {
+    if(firstOrder->time == secondOrder->time) {
+        return firstOrder->index < secondOrder->index;
+    } else {
+        return firstOrder->time < secondOrder->time;
+    }
 }
 
 //Tested
-void getOrderSequence(){
-	unsigned int inputSize,arrivalTime,timeToCook;
-	scanf("%u",&inputSize);
-	vector<order *> userInput;
+void getOrderSequence() {
+    unsigned int inputSize,arrivalTime,timeToCook;
+    scanf("%u",&inputSize);
+    vector<order *> userInput;
     order *temp;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u %u",&arrivalTime,&timeToCook);
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        scanf("%u %u",&arrivalTime,&timeToCook);
         temp = new order(arrivalTime+timeToCook,counter);
-		userInput.push_back(temp);
-	}
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%d ",userInput[counter]->index+1);
-	}
+        userInput.push_back(temp);
+    }
+    sort(userInput.begin(),userInput.end(),sortFunc);
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%d ",userInput[counter]->index+1);
+    }
 }
 
 #endif /* JIMANDTHEORDERS_H_ */

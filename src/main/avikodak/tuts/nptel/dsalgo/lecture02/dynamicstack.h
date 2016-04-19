@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dynamicarray.h 
+ *  File Name   		: dynamicarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicarray.h
  *  Created on			: Oct 18, 2014 :: 1:16:17 PM
  *  Author				: AVINASH
@@ -69,56 +69,56 @@ using namespace __gnu_cxx;
 #define DYNAMICSTACK_H_
 
 //Tested
-class dynamicstack{
+class dynamicstack {
 private:
-	sillNode *topNode;
-	unsigned int counter;
+    sillNode *topNode;
+    unsigned int counter;
 public:
-	dynamicstack(){
-		topNode = null;
-		counter = 0;
-	}
+    dynamicstack() {
+        topNode = null;
+        counter = 0;
+    }
 
-	//Tested
-	bool isEmpty(){
-		return topNode == null;
-	}
+    //Tested
+    bool isEmpty() {
+        return topNode == null;
+    }
 
-	//Tested
-	unsigned int size(){
-		return counter;
-	}
+    //Tested
+    unsigned int size() {
+        return counter;
+    }
 
-	//Tested
-	void push(int value){
-		if(topNode == null){
-			topNode = new sillNode(value);
-		}else{
-			sillNode *temp = new sillNode(value);
-			temp->next = topNode;
-			topNode = temp;
-		}
-		counter++;
-	}
+    //Tested
+    void push(int value) {
+        if(topNode == null) {
+            topNode = new sillNode(value);
+        } else {
+            sillNode *temp = new sillNode(value);
+            temp->next = topNode;
+            topNode = temp;
+        }
+        counter++;
+    }
 
-	//Tested
-	void pop(){
-		if(topNode == null){
-			throw "Stack is empty";
-		}
-		sillNode *temp = topNode;
-		topNode = topNode->next;
-		free(temp);
-		counter--;
-	}
+    //Tested
+    void pop() {
+        if(topNode == null) {
+            throw "Stack is empty";
+        }
+        sillNode *temp = topNode;
+        topNode = topNode->next;
+        free(temp);
+        counter--;
+    }
 
-	//Tested
-	int top(){
-		if(isEmpty()){
-			throw "Stack is empty";
-		}
-		return topNode->value;
-	}
+    //Tested
+    int top() {
+        if(isEmpty()) {
+            throw "Stack is empty";
+        }
+        return topNode->value;
+    }
 };
 
 #endif /* DYNAMICSTACK_H_ */

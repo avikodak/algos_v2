@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pangrams.h 
+ *  File Name   		: pangrams.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\strings\pangrams.h
  *  Created on			: Feb 12, 2015 :: 8:51:55 PM
  *  Author				: AVINASH
@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define PANGRAMS_H_
 
 //Tested
-void isStringPangram(){
-	string userInput;
-	getline(cin, userInput);
-	vector<bool> flags(26,false);
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			flags[userInput[counter] - 'a'] = true;
-		}else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-			flags[userInput[counter] - 'A'] = true;
-		}
-	}
+void isStringPangram() {
+    string userInput;
+    getline(cin, userInput);
+    vector<bool> flags(26,false);
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            flags[userInput[counter] - 'a'] = true;
+        } else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+            flags[userInput[counter] - 'A'] = true;
+        }
+    }
 
-	bool allAlphaUsed = true;
-	for(unsigned int counter = 0;counter < flags.size();counter++){
-		if(!flags[counter]){
-			allAlphaUsed = false;
-			break;
-		}
+    bool allAlphaUsed = true;
+    for(unsigned int counter = 0; counter < flags.size(); counter++) {
+        if(!flags[counter]) {
+            allAlphaUsed = false;
+            break;
+        }
 
-	}
-	printf("%s",allAlphaUsed?"pangram":"not pangram");
+    }
+    printf("%s",allAlphaUsed?"pangram":"not pangram");
 }
 
 #endif /* PANGRAMS_H_ */

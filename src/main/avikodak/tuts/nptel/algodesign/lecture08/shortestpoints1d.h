@@ -1,10 +1,10 @@
- /****************************************************************************************************************************************************
- *  File Name   		: shortestpoints1d.h 
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture08\shortestpoints1d.h
- *  Created on			: Dec 13, 2014 :: 10:41:49 AM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+/****************************************************************************************************************************************************
+*  File Name   		: shortestpoints1d.h
+*	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture08\shortestpoints1d.h
+*  Created on			: Dec 13, 2014 :: 10:41:49 AM
+*  Author				: AVINASH
+*  Testing Status 		: TODO
+*  URL 				: TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

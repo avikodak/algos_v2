@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nextrightnode.h 
+ *  File Name   		: nextrightnode.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\nextrightnode.h
  *  Created on			: Nov 15, 2014 :: 4:09:50 PM
  *  Author				: AVINASH
@@ -72,93 +72,93 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-inrNode *nrGetNextRight(inrNode *ptr){
-	if(ptr ==null){
-		return null;
-	}
-	while(ptr != null){
-		if(ptr->left != null){
-			return ptr->left;
-		}else if(ptr->right != null){
-			return ptr->right;
-		}
-		ptr = ptr->nextRight;
-	}
-	return null;
+inrNode *nrGetNextRight(inrNode *ptr) {
+    if(ptr ==null) {
+        return null;
+    }
+    while(ptr != null) {
+        if(ptr->left != null) {
+            return ptr->left;
+        } else if(ptr->right != null) {
+            return ptr->right;
+        }
+        ptr = ptr->nextRight;
+    }
+    return null;
 }
 
 //Tested
-void nrConnectNodesInSameLevel(inrNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	nrConnectNodesInSameLevel(ptr->nextRight);
-	if(ptr->left != null){
-		if(ptr->right != null){
-			ptr->left->nextRight = ptr->right;
-			ptr->right->nextRight = nrGetNextRight(ptr->nextRight);
-		}else{
-			ptr->left->nextRight = nrGetNextRight(ptr->nextRight);
-		}
-		nrConnectNodesInSameLevel(ptr->left);
-	}else if(ptr->right != null){
-		ptr->right->nextRight = nrGetNextRight(ptr->nextRight);
-		nrConnectNodesInSameLevel(ptr->right);
-	}else{
-		nrConnectNodesInSameLevel(ptr->nextRight);
-	}
+void nrConnectNodesInSameLevel(inrNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    nrConnectNodesInSameLevel(ptr->nextRight);
+    if(ptr->left != null) {
+        if(ptr->right != null) {
+            ptr->left->nextRight = ptr->right;
+            ptr->right->nextRight = nrGetNextRight(ptr->nextRight);
+        } else {
+            ptr->left->nextRight = nrGetNextRight(ptr->nextRight);
+        }
+        nrConnectNodesInSameLevel(ptr->left);
+    } else if(ptr->right != null) {
+        ptr->right->nextRight = nrGetNextRight(ptr->nextRight);
+        nrConnectNodesInSameLevel(ptr->right);
+    } else {
+        nrConnectNodesInSameLevel(ptr->nextRight);
+    }
 }
 
 //Tested
-int getNextRightValueIfPresent(inrNode *ptr,int value){
-	while(ptr != null){
-		if(ptr->value == value){
-			return ptr->nextRight == null?0:ptr->nextRight->value;
-		}
-		ptr = ptr->nextRight;
-	}
-	return INT_MIN;
+int getNextRightValueIfPresent(inrNode *ptr,int value) {
+    while(ptr != null) {
+        if(ptr->value == value) {
+            return ptr->nextRight == null?0:ptr->nextRight->value;
+        }
+        ptr = ptr->nextRight;
+    }
+    return INT_MIN;
 }
 
 //Tested
-int getNextRightNode(inrNode *ptr,int value){
-	if(ptr == null){
-		return 0;
-	}
-	nrConnectNodesInSameLevel(ptr);
-	int temp;
-	while(ptr != null){
-		temp = getNextRightValueIfPresent(ptr,value);
-		if(temp != INT_MIN){
-			return temp;
-		}
-		if(ptr->left != null){
-			ptr = ptr->left;
-		}else if(ptr->right != null){
-			ptr = ptr->right;
-		}else{
-			ptr = ptr->nextRight;
-		}
-	}
-	return 0;
+int getNextRightNode(inrNode *ptr,int value) {
+    if(ptr == null) {
+        return 0;
+    }
+    nrConnectNodesInSameLevel(ptr);
+    int temp;
+    while(ptr != null) {
+        temp = getNextRightValueIfPresent(ptr,value);
+        if(temp != INT_MIN) {
+            return temp;
+        }
+        if(ptr->left != null) {
+            ptr = ptr->left;
+        } else if(ptr->right != null) {
+            ptr = ptr->right;
+        } else {
+            ptr = ptr->nextRight;
+        }
+    }
+    return 0;
 }
 
-itNode *getNextRightLevelOrder(itNode *ptr,int level){
-	if(ptr == null){
-		return  null;
-	}
-	queue<itNode *> auxSpace;
-	itNode *currentNode = null;
-	auxSpace.push(ptr);
-	unsigned int nodeCounter = 0;
-	while(!auxSpace.empty()){
-		nodeCounter = auxSpace.size();
-		currentNode = auxSpace.front();
-		while(nodeCounter--){
+itNode *getNextRightLevelOrder(itNode *ptr,int level) {
+    if(ptr == null) {
+        return  null;
+    }
+    queue<itNode *> auxSpace;
+    itNode *currentNode = null;
+    auxSpace.push(ptr);
+    unsigned int nodeCounter = 0;
+    while(!auxSpace.empty()) {
+        nodeCounter = auxSpace.size();
+        currentNode = auxSpace.front();
+        while(nodeCounter--) {
 
-		}
-	}
-	return currentNode;
+        }
+    }
+    return currentNode;
 }
 
 

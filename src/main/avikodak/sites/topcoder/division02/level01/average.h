@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 //Local Tested
 class Average {
 public:
-	int belowAvg(vector<int> math, vector<int> verbal){
-		int sum = 0;
-		for(unsigned int counter = 0;counter < math.size();counter++){
-			sum += math[counter];
-			sum += verbal[counter];
-		}
-		double average = ((double)(sum)/(double)(math.size()));
-		int belowAverageCount = 0;
-		for(unsigned int counter = 0;counter < math.size();counter++){
-			if(((double)math[counter] + (double)verbal[counter]) < average){
-				belowAverageCount++;
-			}
-		}
-		return belowAverageCount;
-	}
+    int belowAvg(vector<int> math, vector<int> verbal) {
+        int sum = 0;
+        for(unsigned int counter = 0; counter < math.size(); counter++) {
+            sum += math[counter];
+            sum += verbal[counter];
+        }
+        double average = ((double)(sum)/(double)(math.size()));
+        int belowAverageCount = 0;
+        for(unsigned int counter = 0; counter < math.size(); counter++) {
+            if(((double)math[counter] + (double)verbal[counter]) < average) {
+                belowAverageCount++;
+            }
+        }
+        return belowAverageCount;
+    }
 };
 
 #endif /* AVERAGE_H_ */

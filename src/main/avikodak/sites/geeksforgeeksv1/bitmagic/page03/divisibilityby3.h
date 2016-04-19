@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: divisibilityby3.h 
+ *  File Name   		: divisibilityby3.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\divisibilityby3.h
  *  Created on			: Jan 9, 2015 :: 9:06:44 AM
  *  Author				: AVINASH
@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define DIVISIBILITYBY3_H_
 
 //Tested
-int divisibilityBy3(int userInput){
-	if(userInput == 0){
-		return true;
-	}
-	if(userInput < 2){
-		return false;
-	}
-	unsigned int evenSetBitCounter = 0,oddSetBitCounter = 0;
-	while(userInput > 0){
-		if(userInput & 1){
-			evenSetBitCounter += 1;
-		}
-		userInput = userInput >> 1;
-		if(userInput & 1){
-			oddSetBitCounter += 1;
-		}
-		userInput = userInput >> 1;
-	}
-	return divisibilityBy3(abs(evenSetBitCounter - oddSetBitCounter));
+int divisibilityBy3(int userInput) {
+    if(userInput == 0) {
+        return true;
+    }
+    if(userInput < 2) {
+        return false;
+    }
+    unsigned int evenSetBitCounter = 0,oddSetBitCounter = 0;
+    while(userInput > 0) {
+        if(userInput & 1) {
+            evenSetBitCounter += 1;
+        }
+        userInput = userInput >> 1;
+        if(userInput & 1) {
+            oddSetBitCounter += 1;
+        }
+        userInput = userInput >> 1;
+    }
+    return divisibilityBy3(abs(evenSetBitCounter - oddSetBitCounter));
 }
 
 #endif /* DIVISIBILITYBY3_H_ */

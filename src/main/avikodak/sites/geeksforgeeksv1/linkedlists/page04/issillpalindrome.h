@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: issillpalindrome.h 
+ *  File Name   		: issillpalindrome.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\issillpalindrome.h
  *  Created on			: Oct 14, 2014 :: 12:58:42 PM
  *  Author				: AVINASH
@@ -74,103 +74,103 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isSillPalindrome(sillNode *ptr,sillNode **frontCrawler){
-	if(ptr == null){
-		return true;
-	}
-	bool truthValue = isSillPalindrome(ptr->next,frontCrawler);
-	truthValue = truthValue && (ptr->value == (*frontCrawler)->value);
-	(*frontCrawler) = (*frontCrawler)->next;
-	return truthValue;
+bool isSillPalindrome(sillNode *ptr,sillNode **frontCrawler) {
+    if(ptr == null) {
+        return true;
+    }
+    bool truthValue = isSillPalindrome(ptr->next,frontCrawler);
+    truthValue = truthValue && (ptr->value == (*frontCrawler)->value);
+    (*frontCrawler) = (*frontCrawler)->next;
+    return truthValue;
 }
 
 //Tested
-bool isSillPalindromeAuxspace(sillNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	stack<sillNode *> auxSpace;
-	sillNode *crawler = ptr;
-	while(crawler != null){
-		auxSpace.push(crawler);
-		crawler = crawler->next;
-	}
-	crawler = ptr;
-	while(!auxSpace.empty()){
-		if(crawler->value != auxSpace.top()->value){
-			return false;
-		}
-		auxSpace.pop();
-		crawler = crawler->next;
-	}
-	return true;
+bool isSillPalindromeAuxspace(sillNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    stack<sillNode *> auxSpace;
+    sillNode *crawler = ptr;
+    while(crawler != null) {
+        auxSpace.push(crawler);
+        crawler = crawler->next;
+    }
+    crawler = ptr;
+    while(!auxSpace.empty()) {
+        if(crawler->value != auxSpace.top()->value) {
+            return false;
+        }
+        auxSpace.pop();
+        crawler = crawler->next;
+    }
+    return true;
 }
 
 //Tested
-bool isSillPalindromeByReverse(sillNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	sillNode *reversedSill = reverseSillNewSill(ptr);
-	while(ptr != null && reversedSill != null){
-		if(ptr->value != reversedSill->value){
-			return false;
-		}
-		ptr = ptr->next;
-		reversedSill = reversedSill->next;
-	}
-	return true;
+bool isSillPalindromeByReverse(sillNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    sillNode *reversedSill = reverseSillNewSill(ptr);
+    while(ptr != null && reversedSill != null) {
+        if(ptr->value != reversedSill->value) {
+            return false;
+        }
+        ptr = ptr->next;
+        reversedSill = reversedSill->next;
+    }
+    return true;
 }
 
 //Tested
-bool isSillPalindromeHashmap(sillNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	for(unsigned int counter = lengthOfSill;counter > lengthOfSill/2;counter--){
-		itToIndexNodeMap = indexNodeMap.find(counter);
-		if(ptr->value != itToIndexNodeMap->second->value){
-			return false;
-		}
-		ptr = ptr->next;
-	}
-	return true;
+bool isSillPalindromeHashmap(sillNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(ptr,1)->indexNodeMap;
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;
+    unsigned int lengthOfSill = utils->lengthOfSill(ptr);
+    for(unsigned int counter = lengthOfSill; counter > lengthOfSill/2; counter--) {
+        itToIndexNodeMap = indexNodeMap.find(counter);
+        if(ptr->value != itToIndexNodeMap->second->value) {
+            return false;
+        }
+        ptr = ptr->next;
+    }
+    return true;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-sillNode *getNodeForIndexSill(sillNode *ptr,unsigned int index){
-	if(ptr == null){
-		return null;
-	}
-	if(index == 0){
-		return ptr;
-	}
-	return getNodeForIndexSill(ptr->next,index-1);
+sillNode *getNodeForIndexSill(sillNode *ptr,unsigned int index) {
+    if(ptr == null) {
+        return null;
+    }
+    if(index == 0) {
+        return ptr;
+    }
+    return getNodeForIndexSill(ptr->next,index-1);
 }
 
 //Tested
-bool isSillPalindromeON2(sillNode *ptr){
-	if(ptr == null){
-		return true;
-	}
-	sillutils *utils = new sillutils();
-	unsigned int lengthOfSill = utils->lengthOfSill(ptr);
-	sillNode *crawler = ptr,*temp;
-	for(unsigned int counter = 0;counter <= lengthOfSill/2;counter++){
-		temp = getNodeForIndexSill(ptr,lengthOfSill-counter-1);
-		if(temp->value != crawler->value){
-			return false;
-		}
-		crawler = crawler->next;
-	}
-	return true;
+bool isSillPalindromeON2(sillNode *ptr) {
+    if(ptr == null) {
+        return true;
+    }
+    sillutils *utils = new sillutils();
+    unsigned int lengthOfSill = utils->lengthOfSill(ptr);
+    sillNode *crawler = ptr,*temp;
+    for(unsigned int counter = 0; counter <= lengthOfSill/2; counter++) {
+        temp = getNodeForIndexSill(ptr,lengthOfSill-counter-1);
+        if(temp->value != crawler->value) {
+            return false;
+        }
+        crawler = crawler->next;
+    }
+    return true;
 }
 
 #endif /* ISSILLPALINDROME_H_ */

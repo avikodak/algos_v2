@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 #define HOLDIL_H_
 
 //Tested
-vector<unsigned long long int> initialize(){
-	vector<unsigned long long int> values;
-	unsigned long long int sums = 0;
-	for(unsigned long long int counter = 1;counter < LIMIT;counter++){
-		sums += (counter * counter);
-		if(sums >= LIMIT){
-			break;
-		}
-		values.push_back(sums);
-	}
-	return values;
+vector<unsigned long long int> initialize() {
+    vector<unsigned long long int> values;
+    unsigned long long int sums = 0;
+    for(unsigned long long int counter = 1; counter < LIMIT; counter++) {
+        sums += (counter * counter);
+        if(sums >= LIMIT) {
+            break;
+        }
+        values.push_back(sums);
+    }
+    return values;
 }
 
 //Tested
-void printResults(){
-	vector<unsigned long long int> values = initialize();
-	unsigned int testCases;
-	unsigned long long int userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%llu",&userInput);
-		cout << upper_bound(values.begin(),values.end(),userInput) - values.begin() << endl;
-	}
+void printResults() {
+    vector<unsigned long long int> values = initialize();
+    unsigned int testCases;
+    unsigned long long int userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%llu",&userInput);
+        cout << upper_bound(values.begin(),values.end(),userInput) - values.begin() << endl;
+    }
 }
 
 #endif /* HOLDIL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: turnoffrightmostbit.h 
+ *  File Name   		: turnoffrightmostbit.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
  *  Created on			: Jan 9, 2015 :: 10:45:37 AM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef TURNOFFRIGHTMOSTBIT_H_
 #define TURNOFFRIGHTMOSTBIT_H_
 
-unsigned int turnOffRightMostBit(unsigned int counter){
-	return counter & (counter-1);
+unsigned int turnOffRightMostBit(unsigned int counter) {
+    return counter & (counter-1);
 }
 
 #endif /* TURNOFFRIGHTMOSTBIT_H_ */

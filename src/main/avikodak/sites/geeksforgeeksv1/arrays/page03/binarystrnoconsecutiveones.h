@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: binarystrnoconsecutiveones.h 
+ *  File Name   		: binarystrnoconsecutiveones.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\binarystrnoconsecutiveones.h
  *  Created on			: Jan 19, 2015 :: 8:47:30 AM
  *  Author				: AVINASH
@@ -70,35 +70,35 @@ using namespace __gnu_cxx;
 #ifndef BINARYSTRNOCONSECUTIVEONES_H_
 #define BINARYSTRNOCONSECUTIVEONES_H_
 
-int countBinaryStringsByGeneratingSets(vector<bool> userInput,unsigned int nValue){
-	if(nValue == 0){
-		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-			if(userInput[counter] && userInput[counter+1]){
-				return 0;
-			}
-		}
-		return userInput.size() == 0?0:1;
-	}
-	int counter = 0;
-	userInput[nValue-1] = false;
-	counter += countBinaryStringsByGeneratingSets(userInput,nValue-1);
-	userInput[nValue-1] = true;
-	return counter + countBinaryStringsByGeneratingSets(userInput,nValue-1);
+int countBinaryStringsByGeneratingSets(vector<bool> userInput,unsigned int nValue) {
+    if(nValue == 0) {
+        for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+            if(userInput[counter] && userInput[counter+1]) {
+                return 0;
+            }
+        }
+        return userInput.size() == 0?0:1;
+    }
+    int counter = 0;
+    userInput[nValue-1] = false;
+    counter += countBinaryStringsByGeneratingSets(userInput,nValue-1);
+    userInput[nValue-1] = true;
+    return counter + countBinaryStringsByGeneratingSets(userInput,nValue-1);
 }
 
 //Tested
-int countBinaryStringsNoConsecutiveOnes(unsigned int nValue){
-	if(nValue == 0){
-		return 1;
-	}
-	vector<int> endingWithZero,endingWithOne;
-	endingWithOne.push_back(1);
-	endingWithZero.push_back(1);
-	for(unsigned int counter = 1;counter < nValue;counter++){
-		endingWithZero.push_back(endingWithZero[counter-1] + endingWithOne[counter-1]);
-		endingWithOne.push_back(endingWithZero[counter-1]);
-	}
-	return endingWithZero[endingWithZero.size()-1] + endingWithOne[endingWithOne.size()-1];
+int countBinaryStringsNoConsecutiveOnes(unsigned int nValue) {
+    if(nValue == 0) {
+        return 1;
+    }
+    vector<int> endingWithZero,endingWithOne;
+    endingWithOne.push_back(1);
+    endingWithZero.push_back(1);
+    for(unsigned int counter = 1; counter < nValue; counter++) {
+        endingWithZero.push_back(endingWithZero[counter-1] + endingWithOne[counter-1]);
+        endingWithOne.push_back(endingWithZero[counter-1]);
+    }
+    return endingWithZero[endingWithZero.size()-1] + endingWithOne[endingWithOne.size()-1];
 }
 
 #endif /* BINARYSTRNOCONSECUTIVEONES_H_ */

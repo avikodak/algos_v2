@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: 01knapsack.h 
+ *  File Name   		: 01knapsack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\01knapsack.h
  *  Created on			: Oct 28, 2014 :: 7:32:20 PM
  *  Author				: AVINASH
@@ -69,90 +69,90 @@ using namespace __gnu_cxx;
 #define KNAPSACK01_H_
 
 //Tested
-int knapsackProblem(vector<int> weights,vector<int> benefits,int maxWeight,unsigned int currentIndex = 0){
-	if(currentIndex > weights.size()){
-		return INT_MIN;
-	}
-	if(currentIndex == weights.size()){
-		return 0;
-	}
-	return max(knapsackProblem(weights,benefits,maxWeight,currentIndex+1),weights[currentIndex] > maxWeight?INT_MIN:benefits[currentIndex] + knapsackProblem(weights,benefits,maxWeight-weights[currentIndex],currentIndex+1));
+int knapsackProblem(vector<int> weights,vector<int> benefits,int maxWeight,unsigned int currentIndex = 0) {
+    if(currentIndex > weights.size()) {
+        return INT_MIN;
+    }
+    if(currentIndex == weights.size()) {
+        return 0;
+    }
+    return max(knapsackProblem(weights,benefits,maxWeight,currentIndex+1),weights[currentIndex] > maxWeight?INT_MIN:benefits[currentIndex] + knapsackProblem(weights,benefits,maxWeight-weights[currentIndex],currentIndex+1));
 }
 
 //Tested
-int knapsackProblemMemoization(vector<int> weights,vector<int> benefits,unsigned int maxWeight){
-	if(weights.size() == 0){
-		return INT_MIN;
-	}
-	vector<vector<int> > auxSpace(weights.size());
-	for(unsigned int rowCounter = 0;rowCounter < weights.size();rowCounter++){
-		auxSpace[rowCounter].resize(maxWeight+1);
-		auxSpace[rowCounter][0] = 0;
-	}
-	for(unsigned int columnCounter = 0;columnCounter <= maxWeight;columnCounter++){
-		auxSpace[0][columnCounter] = 0;
-	}
-	for(unsigned int rowCounter = 1;rowCounter < weights.size();rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter <= maxWeight;columnCounter++){
-			auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter];
-			if(weights[rowCounter-1] <= (int)columnCounter ){
-				auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter][columnCounter],benefits[rowCounter-1] + auxSpace[rowCounter-1][columnCounter-weights[rowCounter-1]]);
-			}
-		}
-	}
-	return auxSpace[auxSpace.size()-1][maxWeight];
+int knapsackProblemMemoization(vector<int> weights,vector<int> benefits,unsigned int maxWeight) {
+    if(weights.size() == 0) {
+        return INT_MIN;
+    }
+    vector<vector<int> > auxSpace(weights.size());
+    for(unsigned int rowCounter = 0; rowCounter < weights.size(); rowCounter++) {
+        auxSpace[rowCounter].resize(maxWeight+1);
+        auxSpace[rowCounter][0] = 0;
+    }
+    for(unsigned int columnCounter = 0; columnCounter <= maxWeight; columnCounter++) {
+        auxSpace[0][columnCounter] = 0;
+    }
+    for(unsigned int rowCounter = 1; rowCounter < weights.size(); rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter <= maxWeight; columnCounter++) {
+            auxSpace[rowCounter][columnCounter] = auxSpace[rowCounter-1][columnCounter];
+            if(weights[rowCounter-1] <= (int)columnCounter ) {
+                auxSpace[rowCounter][columnCounter] = max(auxSpace[rowCounter][columnCounter],benefits[rowCounter-1] + auxSpace[rowCounter-1][columnCounter-weights[rowCounter-1]]);
+            }
+        }
+    }
+    return auxSpace[auxSpace.size()-1][maxWeight];
 }
 
 //Tested
-int knapsackProblemO2NMain(vector<int> weights,vector<int> benefits,unsigned int maxWeight,vector<int> subset,unsigned int currentIndex = 0){
-	if(currentIndex > weights.size()){
-		return INT_MIN;
-	}
-	if(currentIndex == weights.size()){
-		unsigned int sumWeight = 0;
-		int sumBenefit = 0;
-		for(unsigned int counter = 0;counter < subset.size();counter++){
-			sumWeight += weights[subset[counter]];
-			sumBenefit += benefits[subset[counter]];
-		}
-		return sumWeight == maxWeight?sumBenefit:INT_MIN;
-	}
-	int result = knapsackProblemO2NMain(weights,benefits,maxWeight,subset,currentIndex+1);
-	subset.push_back(currentIndex);
-	return max(result,knapsackProblemO2NMain(weights,benefits,maxWeight,subset,currentIndex+1));
+int knapsackProblemO2NMain(vector<int> weights,vector<int> benefits,unsigned int maxWeight,vector<int> subset,unsigned int currentIndex = 0) {
+    if(currentIndex > weights.size()) {
+        return INT_MIN;
+    }
+    if(currentIndex == weights.size()) {
+        unsigned int sumWeight = 0;
+        int sumBenefit = 0;
+        for(unsigned int counter = 0; counter < subset.size(); counter++) {
+            sumWeight += weights[subset[counter]];
+            sumBenefit += benefits[subset[counter]];
+        }
+        return sumWeight == maxWeight?sumBenefit:INT_MIN;
+    }
+    int result = knapsackProblemO2NMain(weights,benefits,maxWeight,subset,currentIndex+1);
+    subset.push_back(currentIndex);
+    return max(result,knapsackProblemO2NMain(weights,benefits,maxWeight,subset,currentIndex+1));
 }
 
 //Tested
-int knapsackProblemO2N(vector<int> weights,vector<int> benefits,unsigned int maxWeight){
-	if(weights.size() == 0){
-		return INT_MIN;
-	}
-	vector<int> subset;
-	return knapsackProblemO2NMain(weights,benefits,maxWeight,subset);
+int knapsackProblemO2N(vector<int> weights,vector<int> benefits,unsigned int maxWeight) {
+    if(weights.size() == 0) {
+        return INT_MIN;
+    }
+    vector<int> subset;
+    return knapsackProblemO2NMain(weights,benefits,maxWeight,subset);
 }
 
 //Tested
-int knapsackProblemO2NIterative(vector<int> weight,vector<int> benefits,unsigned int maxWeight){
-	if(weight.size() == 0){
-		return INT_MIN;
-	}
-	unsigned int sumWeight;
-	int sumBenefits;
-	int maxBenefit = INT_MIN;
-	for(unsigned int outerCounter = 0;outerCounter < pow(2,weight.size());outerCounter++){
-		sumWeight = 0;
-		sumBenefits = 0;
-		for(unsigned int innerCounter = 0;innerCounter < weight.size();innerCounter++){
-			if(outerCounter & 1 << innerCounter){
-				sumWeight += weight[innerCounter];
-				sumBenefits += benefits[innerCounter];
-			}
-		}
-		if(sumWeight <= maxWeight){
-			maxBenefit = max(maxBenefit,sumBenefits);
-		}
-	}
-	return maxBenefit;
+int knapsackProblemO2NIterative(vector<int> weight,vector<int> benefits,unsigned int maxWeight) {
+    if(weight.size() == 0) {
+        return INT_MIN;
+    }
+    unsigned int sumWeight;
+    int sumBenefits;
+    int maxBenefit = INT_MIN;
+    for(unsigned int outerCounter = 0; outerCounter < pow(2,weight.size()); outerCounter++) {
+        sumWeight = 0;
+        sumBenefits = 0;
+        for(unsigned int innerCounter = 0; innerCounter < weight.size(); innerCounter++) {
+            if(outerCounter & 1 << innerCounter) {
+                sumWeight += weight[innerCounter];
+                sumBenefits += benefits[innerCounter];
+            }
+        }
+        if(sumWeight <= maxWeight) {
+            maxBenefit = max(maxBenefit,sumBenefits);
+        }
+    }
+    return maxBenefit;
 }
 
 #endif /* 01KNAPSACK_H_ */

@@ -71,13 +71,13 @@ using namespace __gnu_cxx;
 #define FSQRT_H_
 
 //Tested
-void getSquareRoots(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printf("%u\n",sqrt(input));
-	}
+void getSquareRoots() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printf("%u\n",sqrt(input));
+    }
 }
 
 #endif /* FSQRT_H_ */

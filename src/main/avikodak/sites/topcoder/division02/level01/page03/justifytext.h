@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 //Tested
 class JustifyText {
 public:
-	vector<string> format(vector<string> text){
-		unsigned int maxLength = 0,difference;
-		for(unsigned int counter = 0;counter < text.size();counter++){
-			maxLength = max(maxLength,text.size());
-		}
-		for(unsigned int counter = 0;counter < text.size();counter++){
-			difference = maxLength - text.size();
-			while(maxLength--){
-				text[counter].insert(0,' ');
-			}
-		}
-		return text;
-	}
+    vector<string> format(vector<string> text) {
+        unsigned int maxLength = 0,difference;
+        for(unsigned int counter = 0; counter < text.size(); counter++) {
+            maxLength = max(maxLength,text.size());
+        }
+        for(unsigned int counter = 0; counter < text.size(); counter++) {
+            difference = maxLength - text.size();
+            while(maxLength--) {
+                text[counter].insert(0,' ');
+            }
+        }
+        return text;
+    }
 };
 
 #endif /* JUSTIFYTEXT_H_ */

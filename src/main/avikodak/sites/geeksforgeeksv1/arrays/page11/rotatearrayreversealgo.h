@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rotatearrayreversealgo.h 
+ *  File Name   		: rotatearrayreversealgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearrayreversealgo.h
  *  Created on			: Nov 25, 2014 :: 7:09:28 PM
  *  Author				: AVINASH
@@ -72,10 +72,10 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void rotateArrayReverseAlgo(vector<int> &userInput,unsigned int rotateBy){
-	reverseArray(userInput,0,rotateBy-1);
-	reverseArray(userInput,rotateBy,userInput.size()-1);
-	reverseArray(userInput,0,userInput.size()-1);
+void rotateArrayReverseAlgo(vector<int> &userInput,unsigned int rotateBy) {
+    reverseArray(userInput,0,rotateBy-1);
+    reverseArray(userInput,rotateBy,userInput.size()-1);
+    reverseArray(userInput,0,userInput.size()-1);
 }
 
 #endif /* ROTATEARRAYREVERSEALGO_H_ */

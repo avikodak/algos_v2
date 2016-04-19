@@ -73,17 +73,17 @@ using namespace __gnu_cxx;
 //Locally Tested
 class RunningAroundPark {
 public:
-	int numberOfLap(int totalTrees, vector<int> visitedOrder){
-		int recentTree = visitedOrder[0];
-		int minLap = 1;
-		for(unsigned int counter = 1;counter < visitedOrder.size();counter++){
-			if(visitedOrder[counter] <= recentTree){
-				minLap++;
-			}
-			recentTree = visitedOrder[counter];
-		}
-		return minLap;
-	}
+    int numberOfLap(int totalTrees, vector<int> visitedOrder) {
+        int recentTree = visitedOrder[0];
+        int minLap = 1;
+        for(unsigned int counter = 1; counter < visitedOrder.size(); counter++) {
+            if(visitedOrder[counter] <= recentTree) {
+                minLap++;
+            }
+            recentTree = visitedOrder[counter];
+        }
+        return minLap;
+    }
 };
 
 #endif /* RUNNINGAROUNDPARK_H_ */

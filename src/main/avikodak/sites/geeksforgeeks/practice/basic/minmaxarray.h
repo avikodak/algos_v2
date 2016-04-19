@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MINMAXARRAY_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,input,size,minValue,maxValue;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		minValue = UINT_MAX;
-		maxValue = 0;
-		while(size--){
-			scanf("%d",&input);
-			maxValue = max(maxValue,input);
-			minValue = min(minValue,input);
-		}
-		printf("%u %u\n",maxValue,minValue);
-	}
+void solveProblem() {
+    unsigned int testCases,input,size,minValue,maxValue;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        minValue = UINT_MAX;
+        maxValue = 0;
+        while(size--) {
+            scanf("%d",&input);
+            maxValue = max(maxValue,input);
+            minValue = min(minValue,input);
+        }
+        printf("%u %u\n",maxValue,minValue);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MINMAXARRAY_H_ */

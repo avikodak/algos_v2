@@ -71,43 +71,43 @@ using namespace __gnu_cxx;
 #define EULER010_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void printSum(long long int limit){
-	if(limit < 2){
-		printf("0\n");
+void printSum(long long int limit) {
+    if(limit < 2) {
+        printf("0\n");
         return;
-	}
-	long long int sum = 2;
-	for(long long int counter = 3;counter <= limit;counter++){
-		if(isNumberPrime(counter)){
-			sum += counter;
-		}
-	}
-	cout << sum << endl;
+    }
+    long long int sum = 2;
+    for(long long int counter = 3; counter <= limit; counter++) {
+        if(isNumberPrime(counter)) {
+            sum += counter;
+        }
+    }
+    cout << sum << endl;
 }
 
 //Tested
-void getSummationOfPrimes(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int input;
-	while(testCases--){
-		cin >> input;
-		printSum(input);
-	}
+void getSummationOfPrimes() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int input;
+    while(testCases--) {
+        cin >> input;
+        printSum(input);
+    }
 }
 
 #endif /* EULER010_H_ */

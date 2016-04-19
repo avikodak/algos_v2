@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 #define WALK_H_
 
 //Tested
-void printMinSteps(vector<long long int> userInput){
-	long long int minVelocity = 0;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		minVelocity++;
-		if(minVelocity < userInput[counter]){
-			minVelocity += (userInput[counter] - minVelocity);
-		}
-	}
-	cout << minVelocity << endl;
+void printMinSteps(vector<long long int> userInput) {
+    long long int minVelocity = 0;
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        minVelocity++;
+        if(minVelocity < userInput[counter]) {
+            minVelocity += (userInput[counter] - minVelocity);
+        }
+    }
+    cout << minVelocity << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input;
-	scanf("%u",&testCases);
-	vector<long long int> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			cin >> input;
-			userInput.push_back(input);
-		}
-		printMinSteps(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input;
+    scanf("%u",&testCases);
+    vector<long long int> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            cin >> input;
+            userInput.push_back(input);
+        }
+        printMinSteps(userInput);
+    }
 }
 
 #endif /* WALK_H_ */

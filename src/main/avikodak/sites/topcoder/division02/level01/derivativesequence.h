@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 
 class DerivativeSequence {
 public:
-	vector<int> derSeq(vector<int> userInput, int n){
-		vector<int> result;
-		for(unsigned int counter = 0;counter < n;counter++){
-			for(unsigned int innerCounter = 0;innerCounter < userInput.size()-1;innerCounter++){
-				result.push_back(userInput[counter+1]-userInput[counter]);
-			}
-			userInput.clear();
-			copy(result.begin(),result.end(),userInput.begin());
-			result.clear();
-		}
-		return result;
-	}
+    vector<int> derSeq(vector<int> userInput, int n) {
+        vector<int> result;
+        for(unsigned int counter = 0; counter < n; counter++) {
+            for(unsigned int innerCounter = 0; innerCounter < userInput.size()-1; innerCounter++) {
+                result.push_back(userInput[counter+1]-userInput[counter]);
+            }
+            userInput.clear();
+            copy(result.begin(),result.end(),userInput.begin());
+            result.clear();
+        }
+        return result;
+    }
 };
 
 #endif /* DERIVATIVESEQUENCE_H_ */

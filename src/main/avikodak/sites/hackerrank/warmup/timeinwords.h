@@ -70,37 +70,37 @@ using namespace __gnu_cxx;
 #ifndef TIMEINWORDS_H_
 #define TIMEINWORDS_H_
 
-map<unsigned int,string> init(){
-	map<unsigned int,string> numberWordsMap;
-	numberWordsMap.insert(pair<unsigned int,string>(1,"one"));
-	numberWordsMap.insert(pair<unsigned int,string>(2,"two"));
-	numberWordsMap.insert(pair<unsigned int,string>(3,"three"));
-	numberWordsMap.insert(pair<unsigned int,string>(4,"four"));
-	numberWordsMap.insert(pair<unsigned int,string>(5,"five"));
-	numberWordsMap.insert(pair<unsigned int,string>(6,"six"));
-	numberWordsMap.insert(pair<unsigned int,string>(7,"seven"));
-	numberWordsMap.insert(pair<unsigned int,string>(8,"eight"));
-	numberWordsMap.insert(pair<unsigned int,string>(9,"nine"));
-	numberWordsMap.insert(pair<unsigned int,string>(10,"ten"));
-	numberWordsMap.insert(pair<unsigned int,string>(11,"eleven"));
-	numberWordsMap.insert(pair<unsigned int,string>(12,"twelve"));
-	numberWordsMap.insert(pair<unsigned int,string>(13,"thirteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(14,"fourteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(15,"fifteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(16,"sixteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(17,"seventeen"));
-	numberWordsMap.insert(pair<unsigned int,string>(18,"eighteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(19,"nineteen"));
-	numberWordsMap.insert(pair<unsigned int,string>(20,"twenty"));
-	numberWordsMap.insert(pair<unsigned int,string>(21,"twenty one"));
-	numberWordsMap.insert(pair<unsigned int,string>(22,"twenty two"));
-	numberWordsMap.insert(pair<unsigned int,string>(23,"twenty three"));
-	numberWordsMap.insert(pair<unsigned int,string>(24,"twenty four"));
-	numberWordsMap.insert(pair<unsigned int,string>(25,"twenty five"));
-	numberWordsMap.insert(pair<unsigned int,string>(26,"twenty six"));
-	numberWordsMap.insert(pair<unsigned int,string>(27,"twenty seven"));
-	numberWordsMap.insert(pair<unsigned int,string>(28,"twenty eight"));
-	numberWordsMap.insert(pair<unsigned int,string>(29,"twenty nine"));
+map<unsigned int,string> init() {
+    map<unsigned int,string> numberWordsMap;
+    numberWordsMap.insert(pair<unsigned int,string>(1,"one"));
+    numberWordsMap.insert(pair<unsigned int,string>(2,"two"));
+    numberWordsMap.insert(pair<unsigned int,string>(3,"three"));
+    numberWordsMap.insert(pair<unsigned int,string>(4,"four"));
+    numberWordsMap.insert(pair<unsigned int,string>(5,"five"));
+    numberWordsMap.insert(pair<unsigned int,string>(6,"six"));
+    numberWordsMap.insert(pair<unsigned int,string>(7,"seven"));
+    numberWordsMap.insert(pair<unsigned int,string>(8,"eight"));
+    numberWordsMap.insert(pair<unsigned int,string>(9,"nine"));
+    numberWordsMap.insert(pair<unsigned int,string>(10,"ten"));
+    numberWordsMap.insert(pair<unsigned int,string>(11,"eleven"));
+    numberWordsMap.insert(pair<unsigned int,string>(12,"twelve"));
+    numberWordsMap.insert(pair<unsigned int,string>(13,"thirteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(14,"fourteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(15,"fifteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(16,"sixteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(17,"seventeen"));
+    numberWordsMap.insert(pair<unsigned int,string>(18,"eighteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(19,"nineteen"));
+    numberWordsMap.insert(pair<unsigned int,string>(20,"twenty"));
+    numberWordsMap.insert(pair<unsigned int,string>(21,"twenty one"));
+    numberWordsMap.insert(pair<unsigned int,string>(22,"twenty two"));
+    numberWordsMap.insert(pair<unsigned int,string>(23,"twenty three"));
+    numberWordsMap.insert(pair<unsigned int,string>(24,"twenty four"));
+    numberWordsMap.insert(pair<unsigned int,string>(25,"twenty five"));
+    numberWordsMap.insert(pair<unsigned int,string>(26,"twenty six"));
+    numberWordsMap.insert(pair<unsigned int,string>(27,"twenty seven"));
+    numberWordsMap.insert(pair<unsigned int,string>(28,"twenty eight"));
+    numberWordsMap.insert(pair<unsigned int,string>(29,"twenty nine"));
 }
 
 

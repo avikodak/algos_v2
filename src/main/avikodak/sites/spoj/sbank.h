@@ -73,34 +73,34 @@ using namespace __gnu_cxx;
 #define SBANK_H_
 
 //Tested
-void printResults(){
-	int testCases,size;
-	string input;
-	vector<string> userInput;
-	map<string,unsigned int> presenceMap;
-	getline(cin,input);
-	testCases = atoi(input.c_str());
-	while(testCases--){
-		getline(cin,input);
-		userInput.clear();
-		size = atoi(input.c_str());
-		presenceMap.clear();
-		while(size--){
-			getline(cin,input);
-			if(presenceMap.find(input) == presenceMap.end()){
-				userInput.push_back(input);
-				presenceMap[input] = 1;
-			}else{
-				presenceMap[input]++;
-			}
-		}
-		getline(cin,input);
-		sort(userInput.begin(),userInput.end());
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			cout << userInput[counter] << " " << presenceMap[userInput[counter]] << endl;
-		}
-		cout << endl;
-	}
+void printResults() {
+    int testCases,size;
+    string input;
+    vector<string> userInput;
+    map<string,unsigned int> presenceMap;
+    getline(cin,input);
+    testCases = atoi(input.c_str());
+    while(testCases--) {
+        getline(cin,input);
+        userInput.clear();
+        size = atoi(input.c_str());
+        presenceMap.clear();
+        while(size--) {
+            getline(cin,input);
+            if(presenceMap.find(input) == presenceMap.end()) {
+                userInput.push_back(input);
+                presenceMap[input] = 1;
+            } else {
+                presenceMap[input]++;
+            }
+        }
+        getline(cin,input);
+        sort(userInput.begin(),userInput.end());
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            cout << userInput[counter] << " " << presenceMap[userInput[counter]] << endl;
+        }
+        cout << endl;
+    }
 }
 
 #endif /* SBANK_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: firsttwomins.h 
+ *  File Name   		: firsttwomins.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\firsttwomins.h
  *  Created on			: Dec 12, 2014 :: 12:27:23 PM
  *  Author				: AVINASH
@@ -74,76 +74,76 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *findFirstTwoMinsON(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(INT_MAX,INT_MAX);
-	if(userInput.size() == 1){
-		result->firstValue = userInput[0];
-		result->secondValue = INT_MAX;
-		return result;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(result->firstValue > userInput[counter]){
-			result->secondValue = result->firstValue;
-			result->firstValue = userInput[counter];
-		}else if(result->secondValue > userInput[counter]){
-			result->secondValue = userInput[counter];
-		}
-	}
-	return result;
+iPair *findFirstTwoMinsON(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(INT_MAX,INT_MAX);
+    if(userInput.size() == 1) {
+        result->firstValue = userInput[0];
+        result->secondValue = INT_MAX;
+        return result;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(result->firstValue > userInput[counter]) {
+            result->secondValue = result->firstValue;
+            result->firstValue = userInput[counter];
+        } else if(result->secondValue > userInput[counter]) {
+            result->secondValue = userInput[counter];
+        }
+    }
+    return result;
 }
 
 //Tested
-iPair *findFirstTwoMinDAD(vector<int> userInput,int startIndex,int endIndex){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(INT_MAX,INT_MAX);
-	if(endIndex == startIndex){
-		result->firstValue = userInput[startIndex];
-		result->secondValue = INT_MAX;
-		return result;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	iPair *leftResult = findFirstTwoMinDAD(userInput,startIndex,middleIndex);
-	iPair *rightResult = findFirstTwoMinDAD(userInput,middleIndex+1,endIndex);
-	if(leftResult->firstValue > rightResult->firstValue){
-		result->firstValue = rightResult->firstValue;
-		if(leftResult->firstValue > rightResult->secondValue){
-			result->secondValue = rightResult->secondValue;
-		}else{
-			result->secondValue = leftResult->firstValue;
-		}
-	}else{
-		result->firstValue = leftResult->firstValue;
-		if(rightResult->firstValue > leftResult->secondValue){
-			result->secondValue = leftResult->secondValue;
-		}else{
-			result->secondValue = rightResult->firstValue;
-		}
-	}
-	return result;
+iPair *findFirstTwoMinDAD(vector<int> userInput,int startIndex,int endIndex) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(INT_MAX,INT_MAX);
+    if(endIndex == startIndex) {
+        result->firstValue = userInput[startIndex];
+        result->secondValue = INT_MAX;
+        return result;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    iPair *leftResult = findFirstTwoMinDAD(userInput,startIndex,middleIndex);
+    iPair *rightResult = findFirstTwoMinDAD(userInput,middleIndex+1,endIndex);
+    if(leftResult->firstValue > rightResult->firstValue) {
+        result->firstValue = rightResult->firstValue;
+        if(leftResult->firstValue > rightResult->secondValue) {
+            result->secondValue = rightResult->secondValue;
+        } else {
+            result->secondValue = leftResult->firstValue;
+        }
+    } else {
+        result->firstValue = leftResult->firstValue;
+        if(rightResult->firstValue > leftResult->secondValue) {
+            result->secondValue = leftResult->secondValue;
+        } else {
+            result->secondValue = rightResult->firstValue;
+        }
+    }
+    return result;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *findFirstTwoMinsONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return null;
-	}
-	iPair *result = new iPair(INT_MAX,INT_MAX);
-	if(userInput.size() == 1){
-		result->firstValue = userInput[0];
-		return result;
-	}
-	sort(userInput.begin(),userInput.end());
-	result->firstValue = userInput[0];
-	result->secondValue = userInput[1];
-	return result;
+iPair *findFirstTwoMinsONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    iPair *result = new iPair(INT_MAX,INT_MAX);
+    if(userInput.size() == 1) {
+        result->firstValue = userInput[0];
+        return result;
+    }
+    sort(userInput.begin(),userInput.end());
+    result->firstValue = userInput[0];
+    result->secondValue = userInput[1];
+    return result;
 }
 
 /****************************************************************************************************************************************************/

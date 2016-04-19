@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: gameofthrones.h 
+ *  File Name   		: gameofthrones.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\gameofthrones.h
  *  Created on			: Feb 5, 2015 :: 8:48:27 PM
  *  Author				: AVINASH
@@ -74,21 +74,21 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool palindromePermutation(string userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	int frequencies[LOWERCASE_ENG_ALPHABET_SIZE] = {0};
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		frequencies[userInput[counter]-'a'] += 1;
-	}
-	int oddFrequency = 0;
-	for(unsigned int counter = 0;counter < LOWERCASE_ENG_ALPHABET_SIZE;counter++){
-		if(frequencies[counter]%2 == 1){
-			oddFrequency++;
-		}
-	}
-	return oddFrequency <= 1;
+bool palindromePermutation(string userInput) {
+    if(userInput.size() == 0) {
+        return true;
+    }
+    int frequencies[LOWERCASE_ENG_ALPHABET_SIZE] = {0};
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        frequencies[userInput[counter]-'a'] += 1;
+    }
+    int oddFrequency = 0;
+    for(unsigned int counter = 0; counter < LOWERCASE_ENG_ALPHABET_SIZE; counter++) {
+        if(frequencies[counter]%2 == 1) {
+            oddFrequency++;
+        }
+    }
+    return oddFrequency <= 1;
 }
 
 #endif /* GAMEOFTHRONES_H_ */

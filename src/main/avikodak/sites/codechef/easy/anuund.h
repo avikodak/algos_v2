@@ -71,34 +71,34 @@ using namespace __gnu_cxx;
 #define ANUUND_H_
 
 //Tested
-void waveSort(vector<unsigned int> userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 1;counter < userInput.size()-1;counter+=2){
-		swap(userInput[counter],userInput[counter+1]);
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		cout << userInput[counter] << " ";
-	}
-	cout << endl;
+void waveSort(vector<unsigned int> userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 1; counter < userInput.size()-1; counter+=2) {
+        swap(userInput[counter],userInput[counter+1]);
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        cout << userInput[counter] << " ";
+    }
+    cout << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		waveSort(userInput);
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        waveSort(userInput);
+    }
 }
 
 #endif /* ANUUND_H_ */

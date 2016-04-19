@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define RRJOKE_H_
 
 //Tested
-unsigned int getXorValue(unsigned int userInput){
-	unsigned int result = 0;
-	for(unsigned int counter = 1;counter <= userInput;counter++){
-		result ^= counter;
-	}
-	return result;
+unsigned int getXorValue(unsigned int userInput) {
+    unsigned int result = 0;
+    for(unsigned int counter = 1; counter <= userInput; counter++) {
+        result ^= counter;
+    }
+    return result;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,xCoordinate,yCoordinate;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		cout << getXorValue(size) << endl;
-		while(size--){
-			scanf("%u %u",&xCoordinate,&yCoordinate);
-		}
-	}
+void printResults() {
+    unsigned int testCases,size,xCoordinate,yCoordinate;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        cout << getXorValue(size) << endl;
+        while(size--) {
+            scanf("%u %u",&xCoordinate,&yCoordinate);
+        }
+    }
 }
 
 #endif /* RRJOKE_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: commonds.h 
+ *  File Name   		: commonds.h
  *	File Location		: D:\algos\algos_v2\src\lib\ds\commonds.h
  *  Created on			: Oct 9, 2014 :: 12:38:37 PM
  *  Author				: AVINASH
@@ -55,201 +55,201 @@ using namespace __gnu_cxx;
 #ifndef COMMONDS_H_
 #define COMMONDS_H_
 
-struct iPair{
-	int firstValue;
-	int secondValue;
+struct iPair {
+    int firstValue;
+    int secondValue;
 
-	iPair(){
-		this->firstValue = INT_MAX;
-		this->secondValue = INT_MAX;
-	}
+    iPair() {
+        this->firstValue = INT_MAX;
+        this->secondValue = INT_MAX;
+    }
 
-	iPair(int firstValue,int secondValue){
-		this->firstValue = firstValue;
-		this->secondValue = secondValue;
-	}
+    iPair(int firstValue,int secondValue) {
+        this->firstValue = firstValue;
+        this->secondValue = secondValue;
+    }
 };
 
-struct iTriplet{
-	int firstValue;
-	int secondValue;
-	int thirdValue;
+struct iTriplet {
+    int firstValue;
+    int secondValue;
+    int thirdValue;
 
-	iTriplet(){
+    iTriplet() {
 
-	}
+    }
 
-	iTriplet(int firstValue,int secondValue,int thirdValue){
-		this->firstValue = firstValue;
-		this->secondValue = secondValue;
-		this->thirdValue = thirdValue;
-	}
+    iTriplet(int firstValue,int secondValue,int thirdValue) {
+        this->firstValue = firstValue;
+        this->secondValue = secondValue;
+        this->thirdValue = thirdValue;
+    }
 };
 
-struct iFrequency{
-	int value;
-	unsigned int frequency;
+struct iFrequency {
+    int value;
+    unsigned int frequency;
 
-	iFrequency(){
+    iFrequency() {
 
-	}
+    }
 
-	iFrequency(int value){
-		this->value = value;
-		this->frequency = 1;
-	}
+    iFrequency(int value) {
+        this->value = value;
+        this->frequency = 1;
+    }
 
-	iFrequency(int value,unsigned int frequency){
-		this->value = value;
-		this->frequency = frequency;
-	}
+    iFrequency(int value,unsigned int frequency) {
+        this->value = value;
+        this->frequency = frequency;
+    }
 };
 
-struct iPairVector{
-	vector<int> firstVector;
-	vector<int> secondVector;
+struct iPairVector {
+    vector<int> firstVector;
+    vector<int> secondVector;
 
-	iPairVector(){
+    iPairVector() {
 
-	}
+    }
 
-	iPairVector(vector<int> firstVector){
-		this->firstVector = firstVector;
-	}
+    iPairVector(vector<int> firstVector) {
+        this->firstVector = firstVector;
+    }
 
-	iPairVector(vector<int> firstVector,vector<int> secondVector){
-		this->firstVector = firstVector;
-		this->secondVector = secondVector;
-	}
+    iPairVector(vector<int> firstVector,vector<int> secondVector) {
+        this->firstVector = firstVector;
+        this->secondVector = secondVector;
+    }
 };
 
-struct iMaxMin{
-	int maxValue;
-	int minValue;
+struct iMaxMin {
+    int maxValue;
+    int minValue;
 
-	iMaxMin(){
-		this->maxValue = INT_MIN;
-		this->minValue = INT_MAX;
-	}
+    iMaxMin() {
+        this->maxValue = INT_MIN;
+        this->minValue = INT_MAX;
+    }
 
-	iMaxMin(int minValue,int maxValue){
-		this->minValue = minValue;
-		this->maxValue = maxValue;
-	}
+    iMaxMin(int minValue,int maxValue) {
+        this->minValue = minValue;
+        this->maxValue = maxValue;
+    }
 };
 
-struct floorceiling{
-	int floor;
-	int ceiling;
+struct floorceiling {
+    int floor;
+    int ceiling;
 
-	floorceiling(){
+    floorceiling() {
 
-	}
+    }
 
-	floorceiling(int floor,int ceiling){
-		this->floor = floor;
-		this->ceiling = ceiling;
-	}
+    floorceiling(int floor,int ceiling) {
+        this->floor = floor;
+        this->ceiling = ceiling;
+    }
 };
 
-struct iQuadruple{
-	int firstValue;
-	int secondValue;
-	int thirdValue;
-	int fourthValue;
+struct iQuadruple {
+    int firstValue;
+    int secondValue;
+    int thirdValue;
+    int fourthValue;
 
-	iQuadruple(){
-		this->firstValue = INT_MAX;
-		this->secondValue = INT_MAX;
-		this->thirdValue = INT_MAX;
-		this->fourthValue = INT_MAX;
-	}
+    iQuadruple() {
+        this->firstValue = INT_MAX;
+        this->secondValue = INT_MAX;
+        this->thirdValue = INT_MAX;
+        this->fourthValue = INT_MAX;
+    }
 
-	iQuadruple(int firstValue,int secondValue,int thirdValue,int fourthValue){
-		this->firstValue = firstValue;
-		this->secondValue = secondValue;
-		this->thirdValue = thirdValue;
-		this->fourthValue = fourthValue;
-	}
+    iQuadruple(int firstValue,int secondValue,int thirdValue,int fourthValue) {
+        this->firstValue = firstValue;
+        this->secondValue = secondValue;
+        this->thirdValue = thirdValue;
+        this->fourthValue = fourthValue;
+    }
 };
 
-struct iValueIndex{
-	int value;
-	unsigned int firstValueIndex;
-	unsigned int secondvalueIndex;
+struct iValueIndex {
+    int value;
+    unsigned int firstValueIndex;
+    unsigned int secondvalueIndex;
 
-	iValueIndex(){
+    iValueIndex() {
 
-	}
+    }
 
-	iValueIndex(int value,unsigned int firstIndex,unsigned int secondIndex){
-		this->value = value;
-		this->firstValueIndex = firstIndex;
-		this->secondvalueIndex = secondIndex;
-	}
+    iValueIndex(int value,unsigned int firstIndex,unsigned int secondIndex) {
+        this->value = value;
+        this->firstValueIndex = firstIndex;
+        this->secondvalueIndex = secondIndex;
+    }
 
 };
 
-struct matrixsize{
-	int rows;
-	int columns;
+struct matrixsize {
+    int rows;
+    int columns;
 
-	matrixsize(){
-		this->rows = 0;
-		this->columns = 0;
-	}
+    matrixsize() {
+        this->rows = 0;
+        this->columns = 0;
+    }
 
-	matrixsize(int rows,int columns){
-		this->rows = rows;
-		this->columns = columns;
-	}
+    matrixsize(int rows,int columns) {
+        this->rows = rows;
+        this->columns = columns;
+    }
 };
 
-struct iInterval{
-	int start;
-	int end;
+struct iInterval {
+    int start;
+    int end;
 
-	iInterval(){
+    iInterval() {
 
-	}
+    }
 
-	iInterval(int start,int end){
-		this->start = start;
-		this->end = end;
-	}
+    iInterval(int start,int end) {
+        this->start = start;
+        this->end = end;
+    }
 };
 
-struct rowColumn{
-	int row;
-	int column;
+struct rowColumn {
+    int row;
+    int column;
 
-	rowColumn(){
-		this->row = INT_MAX;
-		this->column = INT_MAX;
-	}
+    rowColumn() {
+        this->row = INT_MAX;
+        this->column = INT_MAX;
+    }
 
-	rowColumn(int row,int column){
-		this->row = row;
-		this->column = column;
-	}
+    rowColumn(int row,int column) {
+        this->row = row;
+        this->column = column;
+    }
 };
 
-struct iRowColumn{
-	int value;
-	int row;
-	int column;
+struct iRowColumn {
+    int value;
+    int row;
+    int column;
 
-	iRowColumn(){
-		this->value = INT_MIN;
-		this->row = INT_MAX;
-		this->column = INT_MAX;
-	}
+    iRowColumn() {
+        this->value = INT_MIN;
+        this->row = INT_MAX;
+        this->column = INT_MAX;
+    }
 
-	iRowColumn(int value,int row,int column){
-		this->value = value;
-		this->row = row;
-		this->column = column;
-	}
+    iRowColumn(int value,int row,int column) {
+        this->value = value;
+        this->row = row;
+        this->column = column;
+    }
 };
 
 #endif /* COMMONDS_H_ */

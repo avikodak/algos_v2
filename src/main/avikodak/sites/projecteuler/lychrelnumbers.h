@@ -71,47 +71,47 @@ using namespace __gnu_cxx;
 #define LYCHRELNUMBERS_H_
 
 //Tested
-unsigned long long int reverseNumber(unsigned long long int userInput){
-	unsigned long long int reverseValue = 0;
-	while(userInput){
-		reverseValue *= 10;
-		reverseValue += (userInput%10);
-		userInput /= 10;
-	}
-	return reverseValue;
+unsigned long long int reverseNumber(unsigned long long int userInput) {
+    unsigned long long int reverseValue = 0;
+    while(userInput) {
+        reverseValue *= 10;
+        reverseValue += (userInput%10);
+        userInput /= 10;
+    }
+    return reverseValue;
 }
 
 //Tested
-bool isPalindrome(unsigned long long int userInput){
-	return reverseNumber(userInput) == userInput;
+bool isPalindrome(unsigned long long int userInput) {
+    return reverseNumber(userInput) == userInput;
 }
 
 //Tested
-unsigned long long int getIntermediateValue(unsigned long long int userInput){
-	return userInput + reverseNumber(userInput);
+unsigned long long int getIntermediateValue(unsigned long long int userInput) {
+    return userInput + reverseNumber(userInput);
 }
 
 //Tested
-bool isLychrelNumber(unsigned long long int userInput){
-	for(unsigned int counter = 0;counter < 50;counter++){
-		userInput = userInput+reverseNumber(userInput);
-		if(isPalindrome(userInput)){
-			return false;
-		}
-	}
-	return true;
+bool isLychrelNumber(unsigned long long int userInput) {
+    for(unsigned int counter = 0; counter < 50; counter++) {
+        userInput = userInput+reverseNumber(userInput);
+        if(isPalindrome(userInput)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
 //Ans : 249
-void getTotalLychrelNumber(){
-	unsigned int total = 0;
-	for(unsigned long long int counter = 10;counter < 10000;counter++){
-		if(isLychrelNumber(counter)){
-			total++;
-		}
-	}
-	cout << total << endl;
+void getTotalLychrelNumber() {
+    unsigned int total = 0;
+    for(unsigned long long int counter = 10; counter < 10000; counter++) {
+        if(isLychrelNumber(counter)) {
+            total++;
+        }
+    }
+    cout << total << endl;
 }
 
 #endif /* LYCHRELNUMBERS_H_ */

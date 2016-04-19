@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_PNUM_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input,kValue;
-	string operation;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input >> operation >> kValue;
-		if(operation[0] == 'o'){
-			cout << 2*kValue << endl;
-		}else{
-			cout << 2*kValue-1 << endl;
-		}
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input,kValue;
+    string operation;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input >> operation >> kValue;
+        if(operation[0] == 'o') {
+            cout << 2*kValue << endl;
+        } else {
+            cout << 2*kValue-1 << endl;
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_PEER_PNUM_H_ */

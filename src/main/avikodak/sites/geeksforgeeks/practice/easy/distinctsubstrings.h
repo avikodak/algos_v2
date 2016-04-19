@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_DISTINCTSUBSTRINGS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size,distinctCount;
-	scanf("%u",&testCases);
-	string userInput;
-	map<string,bool> visitedSubStrings;
-	while(testCases--){
-		scanf("%u",&size);
-		cin >> userInput;
-		visitedSubStrings.clear();
-		distinctCount = 0;
-		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-			if(visitedSubStrings.find(userInput.substr(counter,2)) == visitedSubStrings.end()){
-				distinctCount++;
-				visitedSubStrings.insert(pair<string,bool>(userInput.substr(counter,2),true));
-			}
-		}
-		printf("%u\n",distinctCount);
-	}
+void solveProblem() {
+    unsigned int testCases,size,distinctCount;
+    scanf("%u",&testCases);
+    string userInput;
+    map<string,bool> visitedSubStrings;
+    while(testCases--) {
+        scanf("%u",&size);
+        cin >> userInput;
+        visitedSubStrings.clear();
+        distinctCount = 0;
+        for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+            if(visitedSubStrings.find(userInput.substr(counter,2)) == visitedSubStrings.end()) {
+                distinctCount++;
+                visitedSubStrings.insert(pair<string,bool>(userInput.substr(counter,2),true));
+            }
+        }
+        printf("%u\n",distinctCount);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_DISTINCTSUBSTRINGS_H_ */

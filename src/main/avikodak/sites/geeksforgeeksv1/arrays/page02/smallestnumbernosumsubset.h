@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: smallestnumbernosumsubset.h 
+ *  File Name   		: smallestnumbernosumsubset.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\smallestnumbernosumsubset.h
  *  Created on			: Jan 5, 2015 :: 11:30:21 PM
  *  Author				: AVINASH
@@ -74,15 +74,15 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int smallestNumberNoSubset(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 1;
-	}
-	int result = 1;
-	for(unsigned int counter = 0;counter < userInput.size() && userInput[counter] <= result;counter++){
-		result += userInput[counter];
-	}
-	return result;
+int smallestNumberNoSubset(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 1;
+    }
+    int result = 1;
+    for(unsigned int counter = 0; counter < userInput.size() && userInput[counter] <= result; counter++) {
+        result += userInput[counter];
+    }
+    return result;
 }
 
 /****************************************************************************************************************************************************/

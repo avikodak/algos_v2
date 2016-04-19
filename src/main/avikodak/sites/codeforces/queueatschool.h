@@ -71,28 +71,28 @@ using namespace __gnu_cxx;
 #define QUEUEATSCHOOL_H_
 
 //Tested
-void getArrangement(){
-	unsigned int people,noOfRounds;
-	scanf("%u %u",&people,&noOfRounds);
-	string userInput;
-	cin >> userInput;
-	for(unsigned int outerCounter = 0;outerCounter < noOfRounds;outerCounter++){
-		for(unsigned int innerCounter = 0;innerCounter < userInput.size();){
-			if(userInput[innerCounter] == 'B'){
-				if(innerCounter+1 < userInput.size() && userInput[innerCounter+1] =='G'){
-					swap(userInput[innerCounter],userInput[innerCounter+1]);
-					innerCounter+= 2;
-				}else{
-					innerCounter++;
-				}
-			}else{
-				innerCounter++;
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%c",userInput[counter]);
-	}
+void getArrangement() {
+    unsigned int people,noOfRounds;
+    scanf("%u %u",&people,&noOfRounds);
+    string userInput;
+    cin >> userInput;
+    for(unsigned int outerCounter = 0; outerCounter < noOfRounds; outerCounter++) {
+        for(unsigned int innerCounter = 0; innerCounter < userInput.size();) {
+            if(userInput[innerCounter] == 'B') {
+                if(innerCounter+1 < userInput.size() && userInput[innerCounter+1] =='G') {
+                    swap(userInput[innerCounter],userInput[innerCounter+1]);
+                    innerCounter+= 2;
+                } else {
+                    innerCounter++;
+                }
+            } else {
+                innerCounter++;
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%c",userInput[counter]);
+    }
 }
 #endif /* QUEUEATSCHOOL_H_ */
 

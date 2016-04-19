@@ -73,36 +73,36 @@ using namespace __gnu_cxx;
 #define GRANAMA_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string firstUserInput,secondUserInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		int firstFreq[26] = {0},secondFreq[26] = {0};
-		for(unsigned int counter = 0;counter < firstUserInput.size();counter++){
-			firstFreq[firstUserInput[counter]-'a']++;
-		}
-		for(unsigned int counter = 0;counter < secondUserInput.size();counter++){
-			secondFreq[secondUserInput[counter]-'a']++;
-		}
-		bool flag=true;
-		for(unsigned int counter = 0;counter < 26;counter++){
-			if(firstFreq[counter] != secondFreq[counter]){
-				flag = false;
-				break;
-			}
-		}
-		for(unsigned int counter = 0;counter < 26;counter++){
-			if(firstFreq[counter] > 0 || secondFreq[counter] > 0){
-				if(firstFreq[counter] == 0 || secondFreq[counter] == 0){
-					flag = true;
-					break;
-				}
-			}
-		}
-		printf("%s\n",flag?"YES":"NO");
-	}
+void printResults() {
+    unsigned int testCases;
+    string firstUserInput,secondUserInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        int firstFreq[26] = {0},secondFreq[26] = {0};
+        for(unsigned int counter = 0; counter < firstUserInput.size(); counter++) {
+            firstFreq[firstUserInput[counter]-'a']++;
+        }
+        for(unsigned int counter = 0; counter < secondUserInput.size(); counter++) {
+            secondFreq[secondUserInput[counter]-'a']++;
+        }
+        bool flag=true;
+        for(unsigned int counter = 0; counter < 26; counter++) {
+            if(firstFreq[counter] != secondFreq[counter]) {
+                flag = false;
+                break;
+            }
+        }
+        for(unsigned int counter = 0; counter < 26; counter++) {
+            if(firstFreq[counter] > 0 || secondFreq[counter] > 0) {
+                if(firstFreq[counter] == 0 || secondFreq[counter] == 0) {
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        printf("%s\n",flag?"YES":"NO");
+    }
 }
 
 #endif /* GRANAMA_H_ */

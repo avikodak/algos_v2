@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: isgraphconnected.h 
+ *  File Name   		: isgraphconnected.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture28\isgraphconnected.h
  *  Created on			: Dec 5, 2014 :: 11:30:13 AM
  *  Author				: AVINASH
@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setDfsTimes(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes){
-	if(adjacencyList.size() == 0){
-		return;
-	}
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX){
-			setDfsTimes(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+void setDfsTimes(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes) {
+    if(adjacencyList.size() == 0) {
+        return;
+    }
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes = ++timeCounter;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX) {
+            setDfsTimes(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
 }
 
-bool isGraphConnectedDfs(vector<vector<int> > adjacencyList){
-	if(adjacencyList.size() == 0){
-		return true;
-	}
-	vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	setDfsTimes(adjacencyList,0,arrivalDepartureTimes);
-	for(unsigned int counter = 0;counter < arrivalDepartureTimes.size();counter++){
-		if(arrivalDepartureTimes[counter]->arrivalTimes == INT_MAX){
-			return false;
-		}
-	}
-	return true;
+bool isGraphConnectedDfs(vector<vector<int> > adjacencyList) {
+    if(adjacencyList.size() == 0) {
+        return true;
+    }
+    vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    setDfsTimes(adjacencyList,0,arrivalDepartureTimes);
+    for(unsigned int counter = 0; counter < arrivalDepartureTimes.size(); counter++) {
+        if(arrivalDepartureTimes[counter]->arrivalTimes == INT_MAX) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* ISGRAPHCONNECTED_H_ */

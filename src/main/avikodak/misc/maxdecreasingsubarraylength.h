@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxdecreasingsubarraylength.h 
+ *  File Name   		: maxdecreasingsubarraylength.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\maxdecreasingsubarraylength.h
  *  Created on			: Nov 28, 2014 :: 12:41:52 PM
  *  Author				: AVINASH
@@ -71,20 +71,20 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int maxDecreasingSubArrayLength(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> lengths;
-	lengths.push_back(1);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] < userInput[counter-1]){
-			lengths.push_back(lengths[counter-1] + 1);
-		}else{
-			lengths.push_back(1);
-		}
-	}
-	return lengths;
+int maxDecreasingSubArrayLength(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> lengths;
+    lengths.push_back(1);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] < userInput[counter-1]) {
+            lengths.push_back(lengths[counter-1] + 1);
+        } else {
+            lengths.push_back(1);
+        }
+    }
+    return lengths;
 }
 
 /****************************************************************************************************************************************************/
@@ -94,16 +94,16 @@ int maxDecreasingSubArrayLength(vector<int> userInput){
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isVectorSortedDescending(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex || endIndex >= userInput.size()){
-		return false;
-	}
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] > userInput[counter-1]){
-			return false;
-		}
-	}
-	return true;
+bool isVectorSortedDescending(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex || endIndex >= userInput.size()) {
+        return false;
+    }
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] > userInput[counter-1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* MAXDECREASINGSUBARRAYLENGTH_H_ */

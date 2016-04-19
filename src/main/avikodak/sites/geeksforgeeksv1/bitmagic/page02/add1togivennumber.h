@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: add1togivennumber.h 
+ *  File Name   		: add1togivennumber.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\add1togivennumber.h
  *  Created on			: Jan 9, 2015 :: 1:30:45 PM
  *  Author				: AVINASH
@@ -70,8 +70,8 @@ using namespace __gnu_cxx;
 #ifndef ADD1TOGIVENNUMBER_H_
 #define ADD1TOGIVENNUMBER_H_
 
-int addOneToNumber(int number){
-	return -(~number);
+int addOneToNumber(int number) {
+    return -(~number);
 }
 
 #endif /* ADD1TOGIVENNUMBER_H_ */

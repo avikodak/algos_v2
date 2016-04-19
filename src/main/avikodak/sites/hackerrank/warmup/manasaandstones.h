@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: manasaandstones.h 
+ *  File Name   		: manasaandstones.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
  *  Created on			: Feb 6, 2015 :: 6:46:18 PM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define MANASAANDSTONES_H_
 
 //Tested
-void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput){
-	unsigned int minValue = min(firstUserInput,secondUserInput);
-	unsigned int maxValue = max(firstUserInput,secondUserInput);
-	unsigned int difference = maxValue - minValue;
-	unsigned int lowValue = minValue * (nValue-1);
-	unsigned int highValue = (nValue-1) * maxValue;
-	while(lowValue <= highValue){
-		cout << lowValue << " ";
-		lowValue += difference;
-        if(difference == 0){
+void printPossibilites(unsigned int nValue,unsigned int firstUserInput,unsigned int secondUserInput) {
+    unsigned int minValue = min(firstUserInput,secondUserInput);
+    unsigned int maxValue = max(firstUserInput,secondUserInput);
+    unsigned int difference = maxValue - minValue;
+    unsigned int lowValue = minValue * (nValue-1);
+    unsigned int highValue = (nValue-1) * maxValue;
+    while(lowValue <= highValue) {
+        cout << lowValue << " ";
+        lowValue += difference;
+        if(difference == 0) {
             return;
         }
-	}
+    }
 }
 
 //Tested
-void getPossibilitesForInput(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	unsigned int nValue,firstUserInput,secondUserInput;
-	while(testCases--){
-		scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
-		printPossibilites(nValue,firstUserInput,secondUserInput);
-		printf("\n");
-	}
+void getPossibilitesForInput() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    unsigned int nValue,firstUserInput,secondUserInput;
+    while(testCases--) {
+        scanf("%u %u %u",&nValue,&firstUserInput,&secondUserInput);
+        printPossibilites(nValue,firstUserInput,secondUserInput);
+        printf("\n");
+    }
 }
 
 //Tested
 //Not Optimized
-void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue){
-	if(nValue == 1){
-		if(prevValue != value){
-			printf("%d\t",value);
-			prevValue = value;
-		}
-		return;
-	}
-	printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
-	printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+void printPossibilites(int value,int nValue,int firstUserInput,int secondUserInput,int &prevValue) {
+    if(nValue == 1) {
+        if(prevValue != value) {
+            printf("%d\t",value);
+            prevValue = value;
+        }
+        return;
+    }
+    printPossibilites(value+firstUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
+    printPossibilites(value+secondUserInput,nValue-1,firstUserInput,secondUserInput,prevValue);
 }
 
 #endif /* MANASAANDSTONES_H_ */

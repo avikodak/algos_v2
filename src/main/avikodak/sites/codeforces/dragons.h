@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define DRAGONS_H_
 
 //Tested
-struct upair{
+struct upair {
 public:
-	unsigned int first;
-	unsigned int second;
+    unsigned int first;
+    unsigned int second;
 
-	upair(unsigned int first,unsigned int second){
-		this->first = first;
-		this->second = second;
-	}
+    upair(unsigned int first,unsigned int second) {
+        this->first = first;
+        this->second = second;
+    }
 };
 
 //Tested
-bool compare(upair *fpair,upair *spair){
-	return fpair->first < spair->first;
+bool compare(upair *fpair,upair *spair) {
+    return fpair->first < spair->first;
 }
 
 //Tested
-void winOrLoss(){
-	unsigned int strength,testCases,first,second;
-	scanf("%u %u",&strength,&testCases);
-	vector<upair *> userInput;
-	upair *element;
-	while(testCases--){
-		scanf("%u %u",&first,&second);
-		element = new upair(first,second);
-		userInput.push_back(element);
-	}
-	sort(userInput.begin(),userInput.end(),compare);
-	unsigned int counter = 0;
-	for(;counter < userInput.size() && strength > userInput[counter]->first;counter++){
-		strength += userInput[counter]->second;
-	}
-	printf("%s",counter == userInput.size()?"YES":"NO");
+void winOrLoss() {
+    unsigned int strength,testCases,first,second;
+    scanf("%u %u",&strength,&testCases);
+    vector<upair *> userInput;
+    upair *element;
+    while(testCases--) {
+        scanf("%u %u",&first,&second);
+        element = new upair(first,second);
+        userInput.push_back(element);
+    }
+    sort(userInput.begin(),userInput.end(),compare);
+    unsigned int counter = 0;
+    for(; counter < userInput.size() && strength > userInput[counter]->first; counter++) {
+        strength += userInput[counter]->second;
+    }
+    printf("%s",counter == userInput.size()?"YES":"NO");
 }
 
 

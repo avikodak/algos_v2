@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: absolutevalue.h 
+ *  File Name   		: absolutevalue.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\absolutevalue.h
  *  Created on			: Jan 9, 2015 :: 10:58:19 AM
  *  Author				: AVINASH
@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define ABSOLUTEVALUE_H_
 
 //Tested
-int absoluteValue(int userInput){
-	int mask = (userInput ) >> (sizeof(int) * sizeof(char)-1);
-	return (mask + userInput) ^ mask;
+int absoluteValue(int userInput) {
+    int mask = (userInput ) >> (sizeof(int) * sizeof(char)-1);
+    return (mask + userInput) ^ mask;
 }
 
 //Tested
-int absoluteValueSub(int userInput){
-	int mask = (userInput) >> (sizeof(int) *sizeof(char) - 1);
-	return (userInput ^ mask) - mask;
+int absoluteValueSub(int userInput) {
+    int mask = (userInput) >> (sizeof(int) *sizeof(char) - 1);
+    return (userInput ^ mask) - mask;
 }
 
 #endif /* ABSOLUTEVALUE_H_ */

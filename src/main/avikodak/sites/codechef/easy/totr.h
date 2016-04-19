@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define TOTR_H_
 
 //Tested
-void translate(string userInput,string dictionary){
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <='z'){
-			printf("%c",dictionary[userInput[counter]-'a']);
-		}else if(userInput[counter] >= 'A' && userInput[counter] <='Z'){
-			printf("%c",dictionary[userInput[counter]-'A']-'a'+'A');
-		}else{
-			if(userInput[counter] == '_'){
-				printf(" ");
-			}else{
-				printf("%c",userInput[counter]);
-			}
-		}
-	}
-	printf("\n");
+void translate(string userInput,string dictionary) {
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <='z') {
+            printf("%c",dictionary[userInput[counter]-'a']);
+        } else if(userInput[counter] >= 'A' && userInput[counter] <='Z') {
+            printf("%c",dictionary[userInput[counter]-'A']-'a'+'A');
+        } else {
+            if(userInput[counter] == '_') {
+                printf(" ");
+            } else {
+                printf("%c",userInput[counter]);
+            }
+        }
+    }
+    printf("\n");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string dictionary,userInput;
-	scanf("%u",&testCases);
-	cin >> dictionary;
-	while(testCases--){
-		cin >> userInput;
-		translate(userInput,dictionary);
-	}
+void printResults() {
+    unsigned int testCases;
+    string dictionary,userInput;
+    scanf("%u",&testCases);
+    cin >> dictionary;
+    while(testCases--) {
+        cin >> userInput;
+        translate(userInput,dictionary);
+    }
 }
 
 #endif /* TOTR_H_ */

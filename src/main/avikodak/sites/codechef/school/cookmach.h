@@ -72,46 +72,46 @@ using namespace __gnu_cxx;
 #define COOKMACH_H_
 
 //Tested
-long long int isPowerOf2(long long int userInput){
-	long long int logValue = log2(userInput);
-	if(pow(2,logValue) == userInput){
-		return logValue;
-	}else{
-		return -1;
-	}
+long long int isPowerOf2(long long int userInput) {
+    long long int logValue = log2(userInput);
+    if(pow(2,logValue) == userInput) {
+        return logValue;
+    } else {
+        return -1;
+    }
 }
 
 //Tested
-void getTotalSettings(long long int userInput,long long int reqSetting){
-	if(userInput == reqSetting){
-		printf("0\n");
-		return;
-	}
-	long long int totalOperations = 0;
-	long long int logValue;
-	while(userInput != reqSetting){
-		if((logValue = isPowerOf2(userInput)) != -1 && userInput < reqSetting){
-			totalOperations += ((long long int)log2(reqSetting) - logValue);
-			break;
-		}else if(userInput%2 == 0){
-			userInput /= 2;
-		}else{
-			userInput = (userInput-1)/2;
-		}
-		totalOperations++;
-	}
-	cout << totalOperations << endl;
+void getTotalSettings(long long int userInput,long long int reqSetting) {
+    if(userInput == reqSetting) {
+        printf("0\n");
+        return;
+    }
+    long long int totalOperations = 0;
+    long long int logValue;
+    while(userInput != reqSetting) {
+        if((logValue = isPowerOf2(userInput)) != -1 && userInput < reqSetting) {
+            totalOperations += ((long long int)log2(reqSetting) - logValue);
+            break;
+        } else if(userInput%2 == 0) {
+            userInput /= 2;
+        } else {
+            userInput = (userInput-1)/2;
+        }
+        totalOperations++;
+    }
+    cout << totalOperations << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput,reqSettings;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput >> reqSettings;
-		getTotalSettings(userInput,reqSettings);
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput,reqSettings;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput >> reqSettings;
+        getTotalSettings(userInput,reqSettings);
+    }
 }
 
 #endif /* COOKMACH_H_ */

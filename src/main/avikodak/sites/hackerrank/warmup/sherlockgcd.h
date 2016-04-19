@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sherlockgcd.h 
+ *  File Name   		: sherlockgcd.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\sherlockgcd.h
  *  Created on			: Feb 10, 2015 :: 10:19:28 AM
  *  Author				: AVINASH
@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define SHERLOCKGCD_H_
 
 //Tested
-int gcd(int firstUserInput,int secondUserInput){
-	if(firstUserInput == 1 || secondUserInput == 1){
-		return 1;
-	}
-	if(secondUserInput%firstUserInput == 0){
-		return firstUserInput;
-	}
-	return gcd(secondUserInput%firstUserInput,firstUserInput);
+int gcd(int firstUserInput,int secondUserInput) {
+    if(firstUserInput == 1 || secondUserInput == 1) {
+        return 1;
+    }
+    if(secondUserInput%firstUserInput == 0) {
+        return firstUserInput;
+    }
+    return gcd(secondUserInput%firstUserInput,firstUserInput);
 }
 
 //Tested
-int gcdOfVector(vector<int> userInput){
-	if(userInput.size() == 1){
-		return userInput[0];
-	}
-	int result = gcd(userInput[0],userInput[1]);
-	for(unsigned int counter = 2;counter < userInput.size();counter++){
-		result = gcd(result,userInput[counter]);
-		if(result == 1){
-			return result;
-		}
-	}
-	return result;
+int gcdOfVector(vector<int> userInput) {
+    if(userInput.size() == 1) {
+        return userInput[0];
+    }
+    int result = gcd(userInput[0],userInput[1]);
+    for(unsigned int counter = 2; counter < userInput.size(); counter++) {
+        result = gcd(result,userInput[counter]);
+        if(result == 1) {
+            return result;
+        }
+    }
+    return result;
 }
 
 //Tested
-void sherlockAndGCD(){
-	int testCases,size,inputs;
-	scanf("%d",&testCases);
-	vector<int> userInput;
-	while(testCases--){
-		scanf("%d",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%d",&inputs);
-			userInput.push_back(inputs);
-		}
-		printf("%s\n",gcdOfVector(userInput)==1?"YES":"NO");
-	}
+void sherlockAndGCD() {
+    int testCases,size,inputs;
+    scanf("%d",&testCases);
+    vector<int> userInput;
+    while(testCases--) {
+        scanf("%d",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%d",&inputs);
+            userInput.push_back(inputs);
+        }
+        printf("%s\n",gcdOfVector(userInput)==1?"YES":"NO");
+    }
 }
 
 #endif /* SHERLOCKGCD_H_ */

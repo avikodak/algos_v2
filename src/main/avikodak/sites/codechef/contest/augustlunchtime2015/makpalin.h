@@ -71,42 +71,42 @@ using namespace __gnu_cxx;
 #define MAKPALIN_H_
 
 //Tested
-bool isPalindrome(string userInput){
-	unsigned long int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		if(userInput[frontCrawler] != userInput[rearCrawler]){
-			if(userInput[frontCrawler] != '?' && userInput[rearCrawler] != '?'){
-				return false;
-			}
-		}
-		frontCrawler++;
-		rearCrawler--;
-	}
-	return true;
+bool isPalindrome(string userInput) {
+    unsigned long int frontCrawler = 0,rearCrawler = userInput.size()-1;
+    while(frontCrawler < rearCrawler) {
+        if(userInput[frontCrawler] != userInput[rearCrawler]) {
+            if(userInput[frontCrawler] != '?' && userInput[rearCrawler] != '?') {
+                return false;
+            }
+        }
+        frontCrawler++;
+        rearCrawler--;
+    }
+    return true;
 }
 
 //Tested
-void printTotalPossiblePalindrome(string userInput){
-	unsigned long int total = 0;
-	for(unsigned long int counter = 0;counter <= userInput.size();counter++){
-		userInput.insert(counter,1,'?');
-		if(isPalindrome(userInput)){
-			total++;
-		}
-		userInput.erase(counter,1);
-	}
-	cout << total << endl;
+void printTotalPossiblePalindrome(string userInput) {
+    unsigned long int total = 0;
+    for(unsigned long int counter = 0; counter <= userInput.size(); counter++) {
+        userInput.insert(counter,1,'?');
+        if(isPalindrome(userInput)) {
+            total++;
+        }
+        userInput.erase(counter,1);
+    }
+    cout << total << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		printTotalPossiblePalindrome(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        printTotalPossiblePalindrome(userInput);
+    }
 }
 
 #endif /* MAKPALIN_H_ */

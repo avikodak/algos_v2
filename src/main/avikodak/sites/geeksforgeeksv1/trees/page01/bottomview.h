@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bottomview.h 
+ *  File Name   		: bottomview.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\bottomview.h
  *  Created on			: Jan 22, 2015 :: 7:39:58 PM
  *  Author				: AVINASH
@@ -75,36 +75,36 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void bottomView(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	hash_map<intptr_t,int> nodeHIndexMap;
-	hash_map<intptr_t,int>::iterator itToNodeHIndexMap;
-	hash_map<int,int> indexValueMap;
-	hash_map<int,int>::iterator itToIndexValueMap;
-	queue<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	int currentNodeHIndex;
-	nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)ptr,0));
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		currentNodeHIndex = nodeHIndexMap.find((intptr_t)currentNode)->second;
-		indexValueMap[currentNodeHIndex] = currentNode->value;
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-			nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->left,currentNodeHIndex-1));
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-			nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->right,currentNodeHIndex+1));
-		}
-	}
-	for(itToIndexValueMap = indexValueMap.begin();itToIndexValueMap != indexValueMap.end();itToIndexValueMap++){
-		printf("%d\t",itToIndexValueMap->second);
-	}
+void bottomView(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    hash_map<intptr_t,int> nodeHIndexMap;
+    hash_map<intptr_t,int>::iterator itToNodeHIndexMap;
+    hash_map<int,int> indexValueMap;
+    hash_map<int,int>::iterator itToIndexValueMap;
+    queue<itNode *> auxSpace;
+    itNode *currentNode;
+    auxSpace.push(ptr);
+    int currentNodeHIndex;
+    nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)ptr,0));
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        currentNodeHIndex = nodeHIndexMap.find((intptr_t)currentNode)->second;
+        indexValueMap[currentNodeHIndex] = currentNode->value;
+        if(currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+            nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->left,currentNodeHIndex-1));
+        }
+        if(currentNode->right != null) {
+            auxSpace.push(currentNode->right);
+            nodeHIndexMap.insert(pair<intptr_t,int>((intptr_t)currentNode->right,currentNodeHIndex+1));
+        }
+    }
+    for(itToIndexValueMap = indexValueMap.begin(); itToIndexValueMap != indexValueMap.end(); itToIndexValueMap++) {
+        printf("%d\t",itToIndexValueMap->second);
+    }
 }
 
 #endif /* BOTTOMVIEW_H_ */

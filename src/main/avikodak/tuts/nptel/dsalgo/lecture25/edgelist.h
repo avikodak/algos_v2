@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: edgelist.h 
+ *  File Name   		: edgelist.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\edgelist.h
  *  Created on			: Dec 5, 2014 :: 9:45:34 AM
  *  Author				: AVINASH
@@ -70,28 +70,28 @@ using namespace __gnu_cxx;
 #ifndef EDGELIST_H_
 #define EDGELIST_H_
 
-vector<edge *> getEdgeListForUndirectedGraph(){
-	vector<edge *> edgeDS;
-	int noOfEdges;
-	int sourceVertex,destinationVertex;
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		edgeDS.push_back(new edge(sourceVertex,destinationVertex,false));
-	}
-	return edgeDS;
+vector<edge *> getEdgeListForUndirectedGraph() {
+    vector<edge *> edgeDS;
+    int noOfEdges;
+    int sourceVertex,destinationVertex;
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        edgeDS.push_back(new edge(sourceVertex,destinationVertex,false));
+    }
+    return edgeDS;
 }
 
-vector<edge *> getEdgeListForDirectedGraph(){
-	vector<edge *> edgeDS;
-	int noOfEdges;
-	int sourceVertex,destinationVertex;
-	scanf("%d",&noOfEdges);
-	while(noOfEdges--){
-		scanf("%d %d",&sourceVertex,&destinationVertex);
-		edgeDS.push_back(new edge(sourceVertex,destinationVertex,true));
-	}
-	return edgeDS;
+vector<edge *> getEdgeListForDirectedGraph() {
+    vector<edge *> edgeDS;
+    int noOfEdges;
+    int sourceVertex,destinationVertex;
+    scanf("%d",&noOfEdges);
+    while(noOfEdges--) {
+        scanf("%d %d",&sourceVertex,&destinationVertex);
+        edgeDS.push_back(new edge(sourceVertex,destinationVertex,true));
+    }
+    return edgeDS;
 }
 
 #endif /* EDGELIST_H_ */

@@ -73,7 +73,7 @@ using namespace __gnu_cxx;
 void printSimpleArraySum() {
     unsigned int testCases,input,sum =0;
     cin >> testCases;
-    while(testCases--){
+    while(testCases--) {
         cin >> input;
         sum += input;
     }

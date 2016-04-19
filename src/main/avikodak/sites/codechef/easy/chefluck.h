@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define CHEFLUCK_H_
 
 //Tested
-void printResults(){
-	long long int testCases,digitCount;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&digitCount);
-		long long int fourCount = 0,sevenCount = 0;
-		bool luckyFound = false;
-		if(digitCount%7 == 0){
-			fourCount = digitCount;
-		}else{
-			fourCount = digitCount - digitCount%7;
-			sevenCount = digitCount%7;
-		}
-		while(fourCount >= 0){
-			if(fourCount%7 == 0 && sevenCount%4 == 0){
-				printf("%lld\n",fourCount);
-				luckyFound = true;
-				break;
-			}
-			fourCount -= 7;
-			sevenCount += 7;
-		}
-		if(!luckyFound){
-			printf("-1\n");
-		}
-	}
+void printResults() {
+    long long int testCases,digitCount;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&digitCount);
+        long long int fourCount = 0,sevenCount = 0;
+        bool luckyFound = false;
+        if(digitCount%7 == 0) {
+            fourCount = digitCount;
+        } else {
+            fourCount = digitCount - digitCount%7;
+            sevenCount = digitCount%7;
+        }
+        while(fourCount >= 0) {
+            if(fourCount%7 == 0 && sevenCount%4 == 0) {
+                printf("%lld\n",fourCount);
+                luckyFound = true;
+                break;
+            }
+            fourCount -= 7;
+            sevenCount += 7;
+        }
+        if(!luckyFound) {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* CHEFLUCK_H_ */

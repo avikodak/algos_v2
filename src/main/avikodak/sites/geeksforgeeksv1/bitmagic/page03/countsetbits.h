@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countsetbits.h 
+ *  File Name   		: countsetbits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\countsetbits.h
  *  Created on			: Jan 9, 2015 :: 9:18:01 AM
  *  Author				: AVINASH
@@ -70,32 +70,32 @@ using namespace __gnu_cxx;
 #ifndef COUNTSETBITS_H_
 #define COUNTSETBITS_H_
 
-int countSetBitNaive(int userInput){
-	int counter = 0;
-	while(userInput > 0){
-		if(userInput & 1){
-			counter += 1;
-		}
-		userInput = userInput >> 1;
-	}
-	return counter;
+int countSetBitNaive(int userInput) {
+    int counter = 0;
+    while(userInput > 0) {
+        if(userInput & 1) {
+            counter += 1;
+        }
+        userInput = userInput >> 1;
+    }
+    return counter;
 }
 
-int countSetBitsRightmostBit(int userInput){
-	unsigned int counter = 0;
-	while(userInput & -userInput){
-		counter += 1;
-	}
-	return counter;
+int countSetBitsRightmostBit(int userInput) {
+    unsigned int counter = 0;
+    while(userInput & -userInput) {
+        counter += 1;
+    }
+    return counter;
 }
 
-int countSetBits(int counter){
-	unsigned int bitcounter = 0;
-	while(counter > 0){
-		bitcounter++;
-		counter = counter & (counter - 1);
-	}
-	return bitcounter;
+int countSetBits(int counter) {
+    unsigned int bitcounter = 0;
+    while(counter > 0) {
+        bitcounter++;
+        counter = counter & (counter - 1);
+    }
+    return bitcounter;
 }
 
 #endif /* COUNTSETBITS_H_ */

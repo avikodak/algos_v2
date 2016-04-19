@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: floydwarshallalgotrithm.h 
+ *  File Name   		: floydwarshallalgotrithm.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\floydwarshallalgotrithm.h
  *  Created on			: Dec 26, 2014 :: 9:14:13 AM
  *  Author				: AVINASH
@@ -76,31 +76,31 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int shortestDistanceFloydWarshall(vector<wEdge *> edgeList,unsigned int noOfVertices,int sourceVertex,int destinationVertex){
-	if(edgeList.size() == 0){
-		return INT_MIN;
-	}
-	vector<vector<int> > adjacencyMatrix(noOfVertices);
-	for(unsigned int counter = 0;counter < adjacencyMatrix.size();counter++){
-		adjacencyMatrix[counter].assign(noOfVertices,GRAPH_EDGE_INFINITY);
-	}
-	wEdge *temp;
-	for(unsigned int outerCounter = 0;outerCounter < edgeList.size();outerCounter++){
-			temp = edgeList[outerCounter];
-			adjacencyMatrix[temp->sourceVertex][temp->destinationVertex] = temp->weight;
-	}
-	for(unsigned int counter = 0;counter < noOfVertices;counter++){
-		if(adjacencyMatrix[counter][counter] == GRAPH_EDGE_INFINITY)
-			adjacencyMatrix[counter][counter] = 0;
-	}
-	for(unsigned int counter = 0;counter < noOfVertices;counter++){
-		for(unsigned int rowCounter = 0;rowCounter < noOfVertices;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < noOfVertices;columnCounter++){
-				adjacencyMatrix[rowCounter][columnCounter] = min(adjacencyMatrix[rowCounter][columnCounter],adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter]);
-			}
-		}
-	}
-	return adjacencyMatrix[sourceVertex][destinationVertex];
+int shortestDistanceFloydWarshall(vector<wEdge *> edgeList,unsigned int noOfVertices,int sourceVertex,int destinationVertex) {
+    if(edgeList.size() == 0) {
+        return INT_MIN;
+    }
+    vector<vector<int> > adjacencyMatrix(noOfVertices);
+    for(unsigned int counter = 0; counter < adjacencyMatrix.size(); counter++) {
+        adjacencyMatrix[counter].assign(noOfVertices,GRAPH_EDGE_INFINITY);
+    }
+    wEdge *temp;
+    for(unsigned int outerCounter = 0; outerCounter < edgeList.size(); outerCounter++) {
+        temp = edgeList[outerCounter];
+        adjacencyMatrix[temp->sourceVertex][temp->destinationVertex] = temp->weight;
+    }
+    for(unsigned int counter = 0; counter < noOfVertices; counter++) {
+        if(adjacencyMatrix[counter][counter] == GRAPH_EDGE_INFINITY)
+            adjacencyMatrix[counter][counter] = 0;
+    }
+    for(unsigned int counter = 0; counter < noOfVertices; counter++) {
+        for(unsigned int rowCounter = 0; rowCounter < noOfVertices; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < noOfVertices; columnCounter++) {
+                adjacencyMatrix[rowCounter][columnCounter] = min(adjacencyMatrix[rowCounter][columnCounter],adjacencyMatrix[rowCounter][counter] + adjacencyMatrix[counter][columnCounter]);
+            }
+        }
+    }
+    return adjacencyMatrix[sourceVertex][destinationVertex];
 }
 
 #endif /* FLOYDWARSHALLALGOTRITHM_H_ */

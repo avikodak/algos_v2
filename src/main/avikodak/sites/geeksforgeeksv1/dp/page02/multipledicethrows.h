@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: multipledicethrows.h 
+ *  File Name   		: multipledicethrows.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\multipledicethrows.h
  *  Created on			: Jan 12, 2015 :: 7:03:38 PM
  *  Author				: AVINASH
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define MULTIPLEDICETHROWS_H_
 
 //Tested
-int countNumberWaysToSum(int diceFaces,int diceIndex,int sum){
-	if(diceIndex < 0){
-		return 0;
-	}
-	if(diceIndex == 0){
-		return sum == 0?1:0;
-	}
-	int total = 0;
-	for(int counter = 1;counter <= diceFaces;counter++){
-		total += countNumberWaysToSum(diceFaces,diceIndex-1,sum - counter);
-	}
-	return total;
+int countNumberWaysToSum(int diceFaces,int diceIndex,int sum) {
+    if(diceIndex < 0) {
+        return 0;
+    }
+    if(diceIndex == 0) {
+        return sum == 0?1:0;
+    }
+    int total = 0;
+    for(int counter = 1; counter <= diceFaces; counter++) {
+        total += countNumberWaysToSum(diceFaces,diceIndex-1,sum - counter);
+    }
+    return total;
 }
 
 #endif /* MULTIPLEDICETHROWS_H_ */

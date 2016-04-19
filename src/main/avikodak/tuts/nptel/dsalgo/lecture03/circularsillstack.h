@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: circularsill.h 
+ *  File Name   		: circularsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\circularsill.h
  *  Created on			: Oct 20, 2014 :: 2:07:37 PM
  *  Author				: AVINASH
@@ -71,60 +71,60 @@ using namespace __gnu_cxx;
 
 class circularsill {
 private:
-	sillNode *head;
+    sillNode *head;
 public:
-	circularsill(){
-		head = null;
-	}
+    circularsill() {
+        head = null;
+    }
 
-	bool isEmpty(){
-		return head == null;
-	}
+    bool isEmpty() {
+        return head == null;
+    }
 
-	void push(int value){
-		if(head == null){
-			head = new sillNode(value);
-			head->next = head;
-		}else{
-			sillNode *newNode = new sillNode(head->value);
-			newNode->next = head->next;
-			head->value = value;
-			head->next = newNode;
-		}
-	}
+    void push(int value) {
+        if(head == null) {
+            head = new sillNode(value);
+            head->next = head;
+        } else {
+            sillNode *newNode = new sillNode(head->value);
+            newNode->next = head->next;
+            head->value = value;
+            head->next = newNode;
+        }
+    }
 
-	void pop(){
-		if(isEmpty()){
-			throw "Stack is empty";
-		}
-		sillNode *nodeToBeDeleted = null;
-		if(head->next == head){
-			nodeToBeDeleted = head;
-			*head = null;
-		}else{
-			head->value = head->next->value;
-			nodeToBeDeleted = head->next;
-			head->next = head->next->next;
-		}
-		free(nodeToBeDeleted);
-	}
+    void pop() {
+        if(isEmpty()) {
+            throw "Stack is empty";
+        }
+        sillNode *nodeToBeDeleted = null;
+        if(head->next == head) {
+            nodeToBeDeleted = head;
+            *head = null;
+        } else {
+            head->value = head->next->value;
+            nodeToBeDeleted = head->next;
+            head->next = head->next->next;
+        }
+        free(nodeToBeDeleted);
+    }
 
-	int top(){
-		if(isEmpty()){
-			throw "Stack is empty";
-		}
-		return head->value;
-	}
+    int top() {
+        if(isEmpty()) {
+            throw "Stack is empty";
+        }
+        return head->value;
+    }
 
-	unsigned int size(){
-		sillNode *crawler = head;
-		unsigned int counter = 0;
-		while(crawler->next != head){
-			crawler = crawler->next;
-			counter++;
-		}
-		return counter;
-	}
+    unsigned int size() {
+        sillNode *crawler = head;
+        unsigned int counter = 0;
+        while(crawler->next != head) {
+            crawler = crawler->next;
+            counter++;
+        }
+        return counter;
+    }
 
 };
 

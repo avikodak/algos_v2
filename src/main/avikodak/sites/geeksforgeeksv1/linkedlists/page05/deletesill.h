@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: deletesill.h 
+ *  File Name   		: deletesill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deletesill.h
  *  Created on			: Oct 12, 2014 :: 5:58:52 PM
  *  Author				: AVINASH
@@ -73,87 +73,87 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void deleteSillMainTailRecursion(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	deleteSillMainTailRecursion(ptr->next);
-	free(ptr);
+void deleteSillMainTailRecursion(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    deleteSillMainTailRecursion(ptr->next);
+    free(ptr);
 }
 
 //Tested
-void deleteSillTailRecusion(sillNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	deleteSillMainTailRecursion(*ptr);
-	(*ptr) = null;
+void deleteSillTailRecusion(sillNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    deleteSillMainTailRecursion(*ptr);
+    (*ptr) = null;
 }
 
 //Tested
-void deleteSillMain(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	sillNode *temp = ptr->next;
-	free(ptr);
-	deleteSillMain(temp);
+void deleteSillMain(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    sillNode *temp = ptr->next;
+    free(ptr);
+    deleteSillMain(temp);
 }
 
 //Tested
-void deleteSill(sillNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	deleteSillMain(*ptr);
-	(*ptr) = null;
+void deleteSill(sillNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    deleteSillMain(*ptr);
+    (*ptr) = null;
 }
 
 //Tested
-void deleteSillIterative(sillNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	stack<sillNode *> auxSpace;
-	sillNode *crawler = *ptr;
-	while(crawler != null){
-		auxSpace.push(crawler);
-		crawler = crawler->next;
-	}
-	while(!auxSpace.empty()){
-		crawler = auxSpace.top();
-		auxSpace.pop();
-		free(crawler);
-	}
-	(*ptr) = null;
+void deleteSillIterative(sillNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    stack<sillNode *> auxSpace;
+    sillNode *crawler = *ptr;
+    while(crawler != null) {
+        auxSpace.push(crawler);
+        crawler = crawler->next;
+    }
+    while(!auxSpace.empty()) {
+        crawler = auxSpace.top();
+        auxSpace.pop();
+        free(crawler);
+    }
+    (*ptr) = null;
 }
 
 //Tested
-void deleteSillIterativeV2(sillNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	sillNode *temp,*nodeToBeDeleted = *ptr;
-	do{
-		temp = nodeToBeDeleted->next;
-		free(nodeToBeDeleted);
-		nodeToBeDeleted = temp;
-	}while(temp != null);
-	(*ptr) = null;
+void deleteSillIterativeV2(sillNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    sillNode *temp,*nodeToBeDeleted = *ptr;
+    do {
+        temp = nodeToBeDeleted->next;
+        free(nodeToBeDeleted);
+        nodeToBeDeleted = temp;
+    } while(temp != null);
+    (*ptr) = null;
 }
 
 //Tested
-void deleteSillHashmap(sillNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(*ptr)->indexNodeMap;
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;;
-	for(itToIndexNodeMap = indexNodeMap.begin();itToIndexNodeMap != indexNodeMap.end();itToIndexNodeMap++){
-		free(itToIndexNodeMap->second);
-	}
-	(*ptr) = null;
+void deleteSillHashmap(sillNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMap = utils->getSillAsHashmap(*ptr)->indexNodeMap;
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMap;;
+    for(itToIndexNodeMap = indexNodeMap.begin(); itToIndexNodeMap != indexNodeMap.end(); itToIndexNodeMap++) {
+        free(itToIndexNodeMap->second);
+    }
+    (*ptr) = null;
 }
 
 /****************************************************************************************************************************************************/

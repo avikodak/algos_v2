@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 class BoundingBox {
 public:
-	int smallestArea(vector<int> X,vector<int> Y){
-		int minX,maxX,minY,maxY;
-		minX = *min_element(X.begin(),X.end());
-		maxX = *max_element(X.begin(),X.end());
-		minY = *min_element(Y.begin(),Y.end());
-		maxY = *max_element(Y.begin(),Y.end());
-		return abs(maxX-minX)*abs(maxY- minY);
-	}
+    int smallestArea(vector<int> X,vector<int> Y) {
+        int minX,maxX,minY,maxY;
+        minX = *min_element(X.begin(),X.end());
+        maxX = *max_element(X.begin(),X.end());
+        minY = *min_element(Y.begin(),Y.end());
+        maxY = *max_element(Y.begin(),Y.end());
+        return abs(maxX-minX)*abs(maxY- minY);
+    }
 };
 
 #endif /* BOUNDINGBOX_H_ */

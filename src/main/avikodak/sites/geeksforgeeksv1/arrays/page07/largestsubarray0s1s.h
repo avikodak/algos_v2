@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: largestsubarray0s1s.h 
+ *  File Name   		: largestsubarray0s1s.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\largestsubarray0s1s.h
  *  Created on			: Dec 29, 2014 :: 4:21:37 PM
  *  Author				: AVINASH
@@ -74,62 +74,62 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int largestEqualSubarray0s1s(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int maxSize = INT_MIN;
-	int startIndex;
-	hash_map<int,unsigned int> valueIndexMap;
-	hash_map<int,unsigned int>::iterator itToValueIndexMap;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(counter != 0){
-			userInput[counter] = userInput[counter-1] + (userInput[counter] == 0?-1:1);
-		}else{
-			userInput[counter] = userInput[counter] == 0?-1:1;
-		}
-		if(userInput[counter] == 0){
-			maxSize = max(maxSize,(int)(counter+1));
-			startIndex = 0;
-		}else {
-			if((itToValueIndexMap = valueIndexMap.find(userInput[counter])) == valueIndexMap.end()){
-				valueIndexMap.insert(pair<int,unsigned int>(userInput[counter],counter));
-			}else{
-				startIndex = itToValueIndexMap->second;
-				maxSize = max(maxSize,(int)(counter - startIndex));
-			}
-		}
-	}
-	return maxSize;
+int largestEqualSubarray0s1s(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int maxSize = INT_MIN;
+    int startIndex;
+    hash_map<int,unsigned int> valueIndexMap;
+    hash_map<int,unsigned int>::iterator itToValueIndexMap;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(counter != 0) {
+            userInput[counter] = userInput[counter-1] + (userInput[counter] == 0?-1:1);
+        } else {
+            userInput[counter] = userInput[counter] == 0?-1:1;
+        }
+        if(userInput[counter] == 0) {
+            maxSize = max(maxSize,(int)(counter+1));
+            startIndex = 0;
+        } else {
+            if((itToValueIndexMap = valueIndexMap.find(userInput[counter])) == valueIndexMap.end()) {
+                valueIndexMap.insert(pair<int,unsigned int>(userInput[counter],counter));
+            } else {
+                startIndex = itToValueIndexMap->second;
+                maxSize = max(maxSize,(int)(counter - startIndex));
+            }
+        }
+    }
+    return maxSize;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int largestEqualSubarray0s1sON3(vector<int> userInput){
-	if(userInput.size() < 2){
-		return 0;
-	}
-	int maxSize = INT_MIN;
-	int zeroCounter,oneCounter;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		for(unsigned int middleCounter = outerCounter+1;middleCounter < userInput.size();middleCounter++){
-			zeroCounter = 0;
-			oneCounter = 0;
-			for(unsigned int innerCounter = outerCounter;innerCounter <= middleCounter;innerCounter++){
-				if(userInput[innerCounter] == 0){
-					zeroCounter++;
-				}else{
-					oneCounter++;
-				}
-			}
-			if(zeroCounter == oneCounter){
-				maxSize = max(maxSize,(int)(middleCounter - outerCounter + 1));
-			}
-		}
-	}
-	return maxSize;
+int largestEqualSubarray0s1sON3(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return 0;
+    }
+    int maxSize = INT_MIN;
+    int zeroCounter,oneCounter;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        for(unsigned int middleCounter = outerCounter+1; middleCounter < userInput.size(); middleCounter++) {
+            zeroCounter = 0;
+            oneCounter = 0;
+            for(unsigned int innerCounter = outerCounter; innerCounter <= middleCounter; innerCounter++) {
+                if(userInput[innerCounter] == 0) {
+                    zeroCounter++;
+                } else {
+                    oneCounter++;
+                }
+            }
+            if(zeroCounter == oneCounter) {
+                maxSize = max(maxSize,(int)(middleCounter - outerCounter + 1));
+            }
+        }
+    }
+    return maxSize;
 }
 
 #endif /* LARGESTSUBARRAY0S1S_H_ */

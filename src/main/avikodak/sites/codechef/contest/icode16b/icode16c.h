@@ -77,36 +77,36 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16C_H_
 
 //Tested
-struct alphaBeta{
-	long long int alphaValue;
-	long long int betaValue;
+struct alphaBeta {
+    long long int alphaValue;
+    long long int betaValue;
 
-	alphaBeta(long long int alphaValue,long long int betaValue){
-		this->alphaValue = alphaValue;
-		this->betaValue = betaValue;
-	}
+    alphaBeta(long long int alphaValue,long long int betaValue) {
+        this->alphaValue = alphaValue;
+        this->betaValue = betaValue;
+    }
 };
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input,alphaValue,betaValue;
-	scanf("%u",&testCases);
-	vector<alphaBeta *> memoization;
-	memoization.push_back(new alphaBeta(1,0));
-	memoization.push_back(new alphaBeta(0,1));
-	memoization.push_back(new alphaBeta(2,1));
-	while(testCases--){
-		scanf("%lld",&input);
-		if(input >= memoization.size()){
-			for(long long int counter = memoization.size();counter <= input;counter++){
-				alphaValue = (memoization[counter-1]->alphaValue%MODN + memoization[counter-2]->alphaValue%MODN + memoization[counter-3]->alphaValue%MODN)%MODN;
-				betaValue = (memoization[counter-1]->betaValue%MODN + memoization[counter-2]->betaValue%MODN + memoization[counter-3]->betaValue%MODN)%MODN;
-				memoization.push_back(new alphaBeta(alphaValue,betaValue));
-			}
-		}
-		printf("%lld %lld\n",memoization[input]->alphaValue,memoization[input]->betaValue);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input,alphaValue,betaValue;
+    scanf("%u",&testCases);
+    vector<alphaBeta *> memoization;
+    memoization.push_back(new alphaBeta(1,0));
+    memoization.push_back(new alphaBeta(0,1));
+    memoization.push_back(new alphaBeta(2,1));
+    while(testCases--) {
+        scanf("%lld",&input);
+        if(input >= memoization.size()) {
+            for(long long int counter = memoization.size(); counter <= input; counter++) {
+                alphaValue = (memoization[counter-1]->alphaValue%MODN + memoization[counter-2]->alphaValue%MODN + memoization[counter-3]->alphaValue%MODN)%MODN;
+                betaValue = (memoization[counter-1]->betaValue%MODN + memoization[counter-2]->betaValue%MODN + memoization[counter-3]->betaValue%MODN)%MODN;
+                memoization.push_back(new alphaBeta(alphaValue,betaValue));
+            }
+        }
+        printf("%lld %lld\n",memoization[input]->alphaValue,memoization[input]->betaValue);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ICODE16B_ICODE16C_H_ */

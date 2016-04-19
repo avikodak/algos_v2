@@ -73,47 +73,47 @@ using namespace __gnu_cxx;
 #define AXR3P3_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	stack<char> operators;
-	map<char,unsigned int> precedenceMap;
-	precedenceMap.insert(pair<char,unsigned int>('(',0));
-	precedenceMap.insert(pair<char,unsigned int>('+',1));
-	precedenceMap.insert(pair<char,unsigned int>('-',2));
-	precedenceMap.insert(pair<char,unsigned int>('*',3));
-	precedenceMap.insert(pair<char,unsigned int>('/',4));
-	precedenceMap.insert(pair<char,unsigned int>('^',5));
-	while(testCases--){
-		cin >> userInput;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] == '('){
-				operators.push('(');
-			}else if(userInput[counter] == ')'){
-				while(!operators.empty() && operators.top() != '('){
-					printf("%c",operators.top());
-					operators.pop();
-				}
-				operators.pop();
-			}else if(userInput[counter] == '+' || userInput[counter] == '-' || userInput[counter] == '*' || userInput[counter] == '/' || userInput[counter] == '^'){
-				while(!operators.empty() && precedenceMap.find(userInput[counter])->second < precedenceMap.find(operators.top())->second){
-					printf("%c",operators.top());
-					operators.pop();
-				}
-				operators.push(userInput[counter]);
-			}else if(isalpha(userInput[counter])){
-				printf("%c",userInput[counter]);
-			}
-		}
-		while(!operators.empty()){
-			if(operators.top() != '('){
-				printf("%c",operators.top());
-			}
-			operators.pop();
-		}
-		printf("\n");
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    stack<char> operators;
+    map<char,unsigned int> precedenceMap;
+    precedenceMap.insert(pair<char,unsigned int>('(',0));
+    precedenceMap.insert(pair<char,unsigned int>('+',1));
+    precedenceMap.insert(pair<char,unsigned int>('-',2));
+    precedenceMap.insert(pair<char,unsigned int>('*',3));
+    precedenceMap.insert(pair<char,unsigned int>('/',4));
+    precedenceMap.insert(pair<char,unsigned int>('^',5));
+    while(testCases--) {
+        cin >> userInput;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] == '(') {
+                operators.push('(');
+            } else if(userInput[counter] == ')') {
+                while(!operators.empty() && operators.top() != '(') {
+                    printf("%c",operators.top());
+                    operators.pop();
+                }
+                operators.pop();
+            } else if(userInput[counter] == '+' || userInput[counter] == '-' || userInput[counter] == '*' || userInput[counter] == '/' || userInput[counter] == '^') {
+                while(!operators.empty() && precedenceMap.find(userInput[counter])->second < precedenceMap.find(operators.top())->second) {
+                    printf("%c",operators.top());
+                    operators.pop();
+                }
+                operators.push(userInput[counter]);
+            } else if(isalpha(userInput[counter])) {
+                printf("%c",userInput[counter]);
+            }
+        }
+        while(!operators.empty()) {
+            if(operators.top() != '(') {
+                printf("%c",operators.top());
+            }
+            operators.pop();
+        }
+        printf("\n");
+    }
 }
 
 #endif /* AXR3P3_H_ */

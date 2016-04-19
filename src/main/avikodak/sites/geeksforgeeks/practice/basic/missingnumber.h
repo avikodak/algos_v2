@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MISSINGNUMBER_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	int input;
-	vector<int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size-1;counter++){
-			scanf("%d",&input);
-			userInput.push_back(input);
-		}
-		for(unsigned int counter = 0;counter < size-1;counter++){
-			userInput[abs(userInput[counter])-1] *= -1;
-		}
-		for(unsigned int counter = 0;counter < size-1;counter++){
-			if(userInput[counter] > 0){
-				printf("%d\n",counter+1);
-				break;
-			}
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    int input;
+    vector<int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size-1; counter++) {
+            scanf("%d",&input);
+            userInput.push_back(input);
+        }
+        for(unsigned int counter = 0; counter < size-1; counter++) {
+            userInput[abs(userInput[counter])-1] *= -1;
+        }
+        for(unsigned int counter = 0; counter < size-1; counter++) {
+            if(userInput[counter] > 0) {
+                printf("%d\n",counter+1);
+                break;
+            }
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MISSINGNUMBER_H_ */

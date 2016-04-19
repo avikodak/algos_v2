@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define EXPRESSION_H_
 
 //Tested
-void getMaxValue(){
-	unsigned int a,b,c,maxValue = 0;
-	scanf("%u %u %u",&a,&b,&c);
-	maxValue = max(maxValue,a+b+c);
-	maxValue = max(maxValue,a+(b*c));
-	maxValue = max(maxValue,(a+b)*c);
-	maxValue = max(maxValue,a*(b+c));
-	maxValue = max(maxValue,(a*b)+c);
-	maxValue = max(maxValue,a*b*c);
-	printf("%u",maxValue);
+void getMaxValue() {
+    unsigned int a,b,c,maxValue = 0;
+    scanf("%u %u %u",&a,&b,&c);
+    maxValue = max(maxValue,a+b+c);
+    maxValue = max(maxValue,a+(b*c));
+    maxValue = max(maxValue,(a+b)*c);
+    maxValue = max(maxValue,a*(b+c));
+    maxValue = max(maxValue,(a*b)+c);
+    maxValue = max(maxValue,a*b*c);
+    printf("%u",maxValue);
 }
 
 #endif /* EXPRESSION_H_ */

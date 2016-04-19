@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define SQUAREDIGITCHAINS_H_
 
 //Tested
-bool reachedGoal(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitSquareMap,unsigned long long int target = 89){
-	unsigned int outerCounter = userInput,innerCounter;
-	while(outerCounter != 1 && outerCounter != 89){
-		innerCounter = 0;
-		while(outerCounter){
-			innerCounter += digitSquareMap.find(outerCounter%10)->second;
-			outerCounter /= 10;
-		}
-		outerCounter = innerCounter;
-	}
-	return outerCounter == target;
+bool reachedGoal(unsigned long long int userInput,map<unsigned long long int,unsigned long long int> digitSquareMap,unsigned long long int target = 89) {
+    unsigned int outerCounter = userInput,innerCounter;
+    while(outerCounter != 1 && outerCounter != 89) {
+        innerCounter = 0;
+        while(outerCounter) {
+            innerCounter += digitSquareMap.find(outerCounter%10)->second;
+            outerCounter /= 10;
+        }
+        outerCounter = innerCounter;
+    }
+    return outerCounter == target;
 }
 
 //Tested
-map<unsigned long long int,unsigned long long int> getDigitSquareMap(){
-	map<unsigned long long int,unsigned long long int> digitSquareMap;
-	for(unsigned long long int counter = 0;counter < 10;counter++){
-		digitSquareMap.insert(pair<unsigned long long int,unsigned long long int>(counter,counter*counter));
-	}
-	return digitSquareMap;
+map<unsigned long long int,unsigned long long int> getDigitSquareMap() {
+    map<unsigned long long int,unsigned long long int> digitSquareMap;
+    for(unsigned long long int counter = 0; counter < 10; counter++) {
+        digitSquareMap.insert(pair<unsigned long long int,unsigned long long int>(counter,counter*counter));
+    }
+    return digitSquareMap;
 }
 
 //Tested
 //Ans : 8581146
-void getTotalThatArriveTo89(){
-	unsigned long long int total = 0;
-	map<unsigned long long int,unsigned long long int> digitSquareMap = getDigitSquareMap();
-	for(unsigned long long int counter = 2;counter < 10000000;counter++){
-		if(reachedGoal(counter,digitSquareMap)){
-			total++;
-		}
-	}
-	cout << total << endl;
+void getTotalThatArriveTo89() {
+    unsigned long long int total = 0;
+    map<unsigned long long int,unsigned long long int> digitSquareMap = getDigitSquareMap();
+    for(unsigned long long int counter = 2; counter < 10000000; counter++) {
+        if(reachedGoal(counter,digitSquareMap)) {
+            total++;
+        }
+    }
+    cout << total << endl;
 }
 
 #endif /* SQUAREDIGITCHAINS_H_ */

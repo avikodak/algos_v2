@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructcompletetreefromsill.h 
+ *  File Name   		: constructcompletetreefromsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\constructcompletetreefromsill.h
  *  Created on			: Nov 13, 2014 :: 1:05:02 PM
  *  Author				: AVINASH
@@ -72,88 +72,88 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-itNode *constructTreeFromSill(sillNode *head){
-	if(head == null){
-		return null;
-	}
-	itNode *root = new itNode(head->value);
-	sillNode *crawler = head->next;
-	queue<itNode *> auxSpace;
-	auxSpace.push(root);
-	itNode *currentNode;
-	while(crawler != null){
-		currentNode = auxSpace.front();
-		if(currentNode->left == null){
-			currentNode->left = new itNode(crawler->value);
-			auxSpace.push(currentNode->left);
-		}else{
-			currentNode->right = new itNode(crawler->value);
-			auxSpace.push(currentNode->right);
-			auxSpace.pop();
-		}
-		crawler = crawler->next;
-	}
-	return root;
+itNode *constructTreeFromSill(sillNode *head) {
+    if(head == null) {
+        return null;
+    }
+    itNode *root = new itNode(head->value);
+    sillNode *crawler = head->next;
+    queue<itNode *> auxSpace;
+    auxSpace.push(root);
+    itNode *currentNode;
+    while(crawler != null) {
+        currentNode = auxSpace.front();
+        if(currentNode->left == null) {
+            currentNode->left = new itNode(crawler->value);
+            auxSpace.push(currentNode->left);
+        } else {
+            currentNode->right = new itNode(crawler->value);
+            auxSpace.push(currentNode->right);
+            auxSpace.pop();
+        }
+        crawler = crawler->next;
+    }
+    return root;
 }
 
 //Tested
-itNode *constructTreeFromSillHashmap(sillNode *head){
-	if(head == null){
-		return null;
-	}
-	hash_map<unsigned int,int> indexValueMap;
-	unsigned int counter = 1;
-	sillNode *crawler = head;
-	while(crawler != null){
-		indexValueMap.insert(pair<unsigned int,int>(counter++,crawler->value));
-		crawler = crawler->next;
-	}
-	treeutils *utils = new treeutils();
-	return utils->getITreeFromHashmap(indexValueMap);
+itNode *constructTreeFromSillHashmap(sillNode *head) {
+    if(head == null) {
+        return null;
+    }
+    hash_map<unsigned int,int> indexValueMap;
+    unsigned int counter = 1;
+    sillNode *crawler = head;
+    while(crawler != null) {
+        indexValueMap.insert(pair<unsigned int,int>(counter++,crawler->value));
+        crawler = crawler->next;
+    }
+    treeutils *utils = new treeutils();
+    return utils->getITreeFromHashmap(indexValueMap);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void insertValueIntoTree(itNode **root,int value){
-	if(*root == null){
-		(*root) = new itNode(value);
-		return;
-	}
-	queue<itNode *> auxSpace;
-	auxSpace.push(*root);
-	itNode *currentNode;
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.front();
-		auxSpace.pop();
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}else{
-			currentNode->left = new itNode(value);
-			return;
-		}
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}else{
-			currentNode->right = new itNode(value);
-			return;
-		}
-	}
+void insertValueIntoTree(itNode **root,int value) {
+    if(*root == null) {
+        (*root) = new itNode(value);
+        return;
+    }
+    queue<itNode *> auxSpace;
+    auxSpace.push(*root);
+    itNode *currentNode;
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        if(currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+        } else {
+            currentNode->left = new itNode(value);
+            return;
+        }
+        if(currentNode->right != null) {
+            auxSpace.push(currentNode->right);
+        } else {
+            currentNode->right = new itNode(value);
+            return;
+        }
+    }
 }
 
 //Tested
-itNode *constructCompleteTreeON2(sillNode *head){
-	if(head == null){
-		return null;
-	}
-	itNode *root = null;
-	sillNode *crawler = head;
-	while(crawler != null){
-		insertValueIntoTree(&root,crawler->value);
-		crawler = crawler->next;
-	}
-	return root;
+itNode *constructCompleteTreeON2(sillNode *head) {
+    if(head == null) {
+        return null;
+    }
+    itNode *root = null;
+    sillNode *crawler = head;
+    while(crawler != null) {
+        insertValueIntoTree(&root,crawler->value);
+        crawler = crawler->next;
+    }
+    return root;
 }
 
 #endif /* CONSTRUCTCOMPLETETREEFROMSILL_H_ */

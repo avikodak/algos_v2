@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: insertionsortpart1.h 
+ *  File Name   		: insertionsortpart1.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\insertionsortpart1.h
  *  Created on			: Feb 12, 2015 :: 12:25:57 PM
  *  Author				: AVINASH
@@ -71,29 +71,29 @@ using namespace __gnu_cxx;
 #define INSERTIONSORTPART1_H_
 
 //Tested
-void printVector(vector<int> userInput){
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%d ",userInput[counter]);
-	}
-	printf("\n");
+void printVector(vector<int> userInput) {
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%d ",userInput[counter]);
+    }
+    printf("\n");
 }
 
 //Tested
-void insertionSortMainStep(){
-	int size,input;
-	scanf("%d",&size);
-	vector<int> userInput;
-	while(size--){
-		scanf("%d",&input);
-		userInput.push_back(input);
-	}
-	int key = userInput[userInput.size()-1],crawler = userInput.size()-2;
-	while(crawler >= 0 && userInput[crawler] > key){
-		userInput[crawler+1] = userInput[crawler];
-		printVector(userInput);
-	}
-	userInput[crawler+1] = key;
-	printVector(userInput);
+void insertionSortMainStep() {
+    int size,input;
+    scanf("%d",&size);
+    vector<int> userInput;
+    while(size--) {
+        scanf("%d",&input);
+        userInput.push_back(input);
+    }
+    int key = userInput[userInput.size()-1],crawler = userInput.size()-2;
+    while(crawler >= 0 && userInput[crawler] > key) {
+        userInput[crawler+1] = userInput[crawler];
+        printVector(userInput);
+    }
+    userInput[crawler+1] = key;
+    printVector(userInput);
 }
 
 #endif /* INSERTIONSORTPART1_H_ */

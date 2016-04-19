@@ -72,36 +72,36 @@ using namespace __gnu_cxx;
 #define NSIT15_H_
 
 //Tested
-bool hasDigit(unsigned int userInput,unsigned int digit){
-	while(userInput){
-		if(userInput%10 == digit){
-			return true;
-		}
-		userInput /= 10;
-	}
-	return false;
+bool hasDigit(unsigned int userInput,unsigned int digit) {
+    while(userInput) {
+        if(userInput%10 == digit) {
+            return true;
+        }
+        userInput /= 10;
+    }
+    return false;
 }
 
 //Tested
-void printMaxValue(unsigned int size,unsigned int digitLost){
-	unsigned int value = 1;
-	while(size){
-		if(!hasDigit(value,digitLost)){
-			size--;
-		}
-		value++;
-	}
-	cout << value-1 << endl;
+void printMaxValue(unsigned int size,unsigned int digitLost) {
+    unsigned int value = 1;
+    while(size) {
+        if(!hasDigit(value,digitLost)) {
+            size--;
+        }
+        value++;
+    }
+    cout << value-1 << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,digitLost;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&size,&digitLost);
-		printMaxValue(size,digitLost);
-	}
+void printResults() {
+    unsigned int testCases,size,digitLost;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&size,&digitLost);
+        printMaxValue(size,digitLost);
+    }
 }
 
 #endif /* NSIT15_H_ */

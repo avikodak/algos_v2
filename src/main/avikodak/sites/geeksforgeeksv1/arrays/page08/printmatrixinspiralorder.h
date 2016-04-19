@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printmatrixinspiralorder.h 
+ *  File Name   		: printmatrixinspiralorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\printmatrixinspiralorder.h
  *  Created on			: Nov 27, 2014 :: 7:42:39 PM
  *  Author				: AVINASH
@@ -72,32 +72,32 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void printMatrixInSpiralOrderMain(vector<vector<int> > userInput,int startRowIndex,int endRowIndex,int startColumnIndex,int endColumnIndex){
-	if(startRowIndex > endRowIndex || startColumnIndex > endColumnIndex){
-		return;
-	}
-	for(int counter = startColumnIndex;counter <= endColumnIndex;counter++){
-		printf("%d\t",userInput[startRowIndex][counter]);
-	}
-	for(int counter = startRowIndex+1;counter <= endRowIndex;counter++){
-		printf("%d\t",userInput[counter][endColumnIndex]);
-	}
-	if(startRowIndex < endRowIndex){
-		for(int counter = endColumnIndex-1;counter >= startColumnIndex;counter--){
-			printf("%d\t",userInput[endRowIndex][counter]);
-		}
-	}
-	if(startColumnIndex < endColumnIndex){
-		for(int counter = endRowIndex-1;counter > startRowIndex;counter--){
-			printf("%d\t",userInput[counter][startColumnIndex]);
-		}
-	}
-	printMatrixInSpiralOrderMain(userInput,startRowIndex+1,endRowIndex-1,startColumnIndex+1,endColumnIndex-1);
+void printMatrixInSpiralOrderMain(vector<vector<int> > userInput,int startRowIndex,int endRowIndex,int startColumnIndex,int endColumnIndex) {
+    if(startRowIndex > endRowIndex || startColumnIndex > endColumnIndex) {
+        return;
+    }
+    for(int counter = startColumnIndex; counter <= endColumnIndex; counter++) {
+        printf("%d\t",userInput[startRowIndex][counter]);
+    }
+    for(int counter = startRowIndex+1; counter <= endRowIndex; counter++) {
+        printf("%d\t",userInput[counter][endColumnIndex]);
+    }
+    if(startRowIndex < endRowIndex) {
+        for(int counter = endColumnIndex-1; counter >= startColumnIndex; counter--) {
+            printf("%d\t",userInput[endRowIndex][counter]);
+        }
+    }
+    if(startColumnIndex < endColumnIndex) {
+        for(int counter = endRowIndex-1; counter > startRowIndex; counter--) {
+            printf("%d\t",userInput[counter][startColumnIndex]);
+        }
+    }
+    printMatrixInSpiralOrderMain(userInput,startRowIndex+1,endRowIndex-1,startColumnIndex+1,endColumnIndex-1);
 }
 
 //Tested
-void printMatrixInSpiralOrder(vector<vector<int> > userInput){
-	printMatrixInSpiralOrderMain(userInput,0,userInput.size()-1,0,userInput[0].size()-1);
+void printMatrixInSpiralOrder(vector<vector<int> > userInput) {
+    printMatrixInSpiralOrderMain(userInput,0,userInput.size()-1,0,userInput[0].size()-1);
 }
 
 #endif /* PRINTMATRIXINSPIRALORDER_H_ */

@@ -71,19 +71,19 @@ using namespace __gnu_cxx;
 #define XENIAANDRINGROAD_H_
 
 //Tested
-void totalSteps(){
-	long long int noHouses,taskCount,house,prevHouse = 1,totalSteps = 0;
-	cin >> noHouses >> taskCount;
-	while(taskCount--){
-		cin >> house;
-		if(house >= prevHouse){
-			totalSteps += house - prevHouse;
-		}else{
-			totalSteps += noHouses - prevHouse + house;
-		}
-		prevHouse = house;
-	}
-	cout << totalSteps;
+void totalSteps() {
+    long long int noHouses,taskCount,house,prevHouse = 1,totalSteps = 0;
+    cin >> noHouses >> taskCount;
+    while(taskCount--) {
+        cin >> house;
+        if(house >= prevHouse) {
+            totalSteps += house - prevHouse;
+        } else {
+            totalSteps += noHouses - prevHouse + house;
+        }
+        prevHouse = house;
+    }
+    cout << totalSteps;
 }
 
 

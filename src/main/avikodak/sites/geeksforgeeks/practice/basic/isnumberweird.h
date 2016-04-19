@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERWEIRD_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,input,size;
-	unsigned int weirdNumbers[] = {70, 836, 4030, 5830, 7192, 7912, 9272};
-	bool isNumberWeird = false;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		isNumberWeird = false;
-		size = sizeof(weirdNumbers)/sizeof(int);
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(input == weirdNumbers[counter]){
-				isNumberWeird = true;
-				break;
-			}
-		}
-		printf("%s\n",isNumberWeird?"Weird":"Not Weird");
-	}
+void solveProblem() {
+    unsigned int testCases,input,size;
+    unsigned int weirdNumbers[] = {70, 836, 4030, 5830, 7192, 7912, 9272};
+    bool isNumberWeird = false;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        isNumberWeird = false;
+        size = sizeof(weirdNumbers)/sizeof(int);
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(input == weirdNumbers[counter]) {
+                isNumberWeird = true;
+                break;
+            }
+        }
+        printf("%s\n",isNumberWeird?"Weird":"Not Weird");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_ISNUMBERWEIRD_H_ */

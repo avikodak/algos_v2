@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #define FLOW007_H_
 
 //Tested
-void printReverse(unsigned int userInput){
-	unsigned int reverse = 0;
-	while(userInput){
-		reverse *= 10;
-		reverse += userInput%10;
-		userInput/=10;
-	}
-	printf("%u\n",reverse);
+void printReverse(unsigned int userInput) {
+    unsigned int reverse = 0;
+    while(userInput) {
+        reverse *= 10;
+        reverse += userInput%10;
+        userInput/=10;
+    }
+    printf("%u\n",reverse);
 }
 
 //Tested
-void printReverseInput(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printReverse(input);
-	}
+void printReverseInput() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printReverse(input);
+    }
 }
 
 #endif /* FLOW007_H_ */

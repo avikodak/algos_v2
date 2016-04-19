@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: capslock.h 
+ *  File Name   		: capslock.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\capslock.h
  *  Created on			: Feb 28, 2015 :: 12:43:09 PM
  *  Author				: AVINASH
@@ -72,47 +72,47 @@ using namespace __gnu_cxx;
 #define CAPSLOCK_H_
 
 //Tested
-bool testForUpperCase(char *userInput){
-	while(userInput[0] != '\0'){
-		if(userInput[0] < 'A' || userInput[0] > 'Z'){
-			return false;
-		}
-		userInput++;
-	}
-	return true;
+bool testForUpperCase(char *userInput) {
+    while(userInput[0] != '\0') {
+        if(userInput[0] < 'A' || userInput[0] > 'Z') {
+            return false;
+        }
+        userInput++;
+    }
+    return true;
 }
 
 //Tested
-void printLetterCase(char *userInput){
-	while(userInput[0] != '\0'){
-		if(userInput[0] >= 'A' && userInput[0] <= 'Z'){
-			printf("%c",userInput[0] - 'A' + 'a');
-		}else{
-			printf("%c",userInput[0] - 'a' + 'A');
-		}
-		userInput++;
-	}
-	printf("\n");
+void printLetterCase(char *userInput) {
+    while(userInput[0] != '\0') {
+        if(userInput[0] >= 'A' && userInput[0] <= 'Z') {
+            printf("%c",userInput[0] - 'A' + 'a');
+        } else {
+            printf("%c",userInput[0] - 'a' + 'A');
+        }
+        userInput++;
+    }
+    printf("\n");
 }
 
 //Tested
-void printChangedCase(){
-	char userInput[MAX_INPUT_SIZE];
-	scanf("%s",userInput);
-	if(userInput[0] >= 'A' && userInput[0] <= 'Z'){
-		if(testForUpperCase(userInput)){
-			printLetterCase(userInput);
-		}else{
-			printf("%s\n",userInput);
-		}
-	}else if(userInput[0] >= 'a' && userInput[0] <= 'z'){
-		if(testForUpperCase(userInput+1)){
-			printLetterCase(userInput);
-		}else{
-			printf("%s\n",userInput);
-		}
+void printChangedCase() {
+    char userInput[MAX_INPUT_SIZE];
+    scanf("%s",userInput);
+    if(userInput[0] >= 'A' && userInput[0] <= 'Z') {
+        if(testForUpperCase(userInput)) {
+            printLetterCase(userInput);
+        } else {
+            printf("%s\n",userInput);
+        }
+    } else if(userInput[0] >= 'a' && userInput[0] <= 'z') {
+        if(testForUpperCase(userInput+1)) {
+            printLetterCase(userInput);
+        } else {
+            printf("%s\n",userInput);
+        }
 
-	}
+    }
 }
 
 #endif /* CAPSLOCK_H_ */

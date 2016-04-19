@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define GETVALUEFROMEND_H_
 
 struct Node {
-	int data;
-	struct Node *next;
+    int data;
+    struct Node *next;
 };
 
 //Tested
 int GetNode(Node *head, int positionFromTail) {
-	stack<Node *> auxSpace;
-	while(head != null){
-		auxSpace.push(head);
-		head  = head->next;
-	}
-	int counter = 0;
-	while(!auxSpace.empty()){
-		if(counter == positionFromTail){
-			return auxSpace.top()->data;
-		}
-		auxSpace.pop();
-		counter++;
-	}
-	return INT_MIN;
+    stack<Node *> auxSpace;
+    while(head != null) {
+        auxSpace.push(head);
+        head  = head->next;
+    }
+    int counter = 0;
+    while(!auxSpace.empty()) {
+        if(counter == positionFromTail) {
+            return auxSpace.top()->data;
+        }
+        auxSpace.pop();
+        counter++;
+    }
+    return INT_MIN;
 }
 
 #endif /* GETVALUEFROMEND_H_ */

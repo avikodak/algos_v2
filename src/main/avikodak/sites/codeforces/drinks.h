@@ -71,14 +71,14 @@ using namespace __gnu_cxx;
 #define DRINKS_H_
 
 //Tested
-void volumeFractionOfOrange(){
-	unsigned int totalDrinks,sumOfFractions = 0,input;
-	scanf("%u",&totalDrinks);
-	for(unsigned int counter = 0;counter < totalDrinks;counter++){
-		scanf("%u",&input);
-		sumOfFractions += input;
-	}
-	printf("%.12f",(double)(sumOfFractions)/(double)(totalDrinks));
+void volumeFractionOfOrange() {
+    unsigned int totalDrinks,sumOfFractions = 0,input;
+    scanf("%u",&totalDrinks);
+    for(unsigned int counter = 0; counter < totalDrinks; counter++) {
+        scanf("%u",&input);
+        sumOfFractions += input;
+    }
+    printf("%.12f",(double)(sumOfFractions)/(double)(totalDrinks));
 }
 
 #endif /* DRINKS_H_ */

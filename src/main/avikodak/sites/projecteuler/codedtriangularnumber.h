@@ -71,48 +71,48 @@ using namespace __gnu_cxx;
 #define CODEDTRIANGULARNUMBER_H_
 
 //Tested
-unsigned int getTriangleNumber(unsigned int userInput){
-	return (userInput*(userInput+1))/2;
+unsigned int getTriangleNumber(unsigned int userInput) {
+    return (userInput*(userInput+1))/2;
 }
 
 //Tested
-map<unsigned int,bool> generateTriangularNumber(unsigned int userInput){
-	map<unsigned int,bool> triangleNumberMap;
-	for(unsigned int counter = 0;counter <= userInput;counter++){
-		triangleNumberMap.insert(pair<unsigned int,bool>(getTriangleNumber(counter),true));
-	}
-	return triangleNumberMap;
+map<unsigned int,bool> generateTriangularNumber(unsigned int userInput) {
+    map<unsigned int,bool> triangleNumberMap;
+    for(unsigned int counter = 0; counter <= userInput; counter++) {
+        triangleNumberMap.insert(pair<unsigned int,bool>(getTriangleNumber(counter),true));
+    }
+    return triangleNumberMap;
 }
 
 //Tested
-unsigned int getStringCharValue(string userInput){
-	unsigned int sum = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-			sum += userInput[counter] - 'A' + 1;
-		}else if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			sum += userInput[counter] - 'a' + 1;
-		}
-	}
-	return sum;
+unsigned int getStringCharValue(string userInput) {
+    unsigned int sum = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+            sum += userInput[counter] - 'A' + 1;
+        } else if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            sum += userInput[counter] - 'a' + 1;
+        }
+    }
+    return sum;
 }
 
 //Tested
 //Ans : 162
-void getTotalCodedTriangleNumber(){
-	map<unsigned int,bool> triangleNumberMap = generateTriangularNumber(20);
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	unsigned int counter = 0,strValue;
-	while(testCases--){
-		cin >> userInput;
-		strValue = getStringCharValue(userInput);
-		if(triangleNumberMap.find(strValue) != triangleNumberMap.end()){
-			counter++;
-		}
-	}
-	cout << counter << endl;
+void getTotalCodedTriangleNumber() {
+    map<unsigned int,bool> triangleNumberMap = generateTriangularNumber(20);
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    unsigned int counter = 0,strValue;
+    while(testCases--) {
+        cin >> userInput;
+        strValue = getStringCharValue(userInput);
+        if(triangleNumberMap.find(strValue) != triangleNumberMap.end()) {
+            counter++;
+        }
+    }
+    cout << counter << endl;
 }
 
 #endif /* CODEDTRIANGULARNUMBER_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ideque.h 
+ *  File Name   		: ideque.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\ideque.h
  *  Created on			: Oct 20, 2014 :: 2:08:05 PM
  *  Author				: AVINASH
@@ -71,88 +71,88 @@ using namespace __gnu_cxx;
 
 class ideque {
 private:
-	dillNode *front,*rear;
+    dillNode *front,*rear;
 public:
-	ideque(){
-		front = null;
-		rear = null;
-	}
+    ideque() {
+        front = null;
+        rear = null;
+    }
 
-	bool isEmpty(){
-		return front == null || rear == null;
-	}
+    bool isEmpty() {
+        return front == null || rear == null;
+    }
 
-	int get_front(){
-		if(isEmpty()){
-			throw "Deque is empty";
-		}
-		return front->value;
-	}
+    int get_front() {
+        if(isEmpty()) {
+            throw "Deque is empty";
+        }
+        return front->value;
+    }
 
-	int get_rear(){
-		if(isEmpty()){
-			throw "Deque is empty";
-		}
-		return rear->value;
-	}
+    int get_rear() {
+        if(isEmpty()) {
+            throw "Deque is empty";
+        }
+        return rear->value;
+    }
 
-	void push_front(int value){
-		dillNode *newNode = new dillNode(value);
-		newNode->next = front;
-		if(front != null){
-			front->prev = newNode;
-		}
-		front = newNode;
-		if(rear == null){
-			rear = front;
-		}
-	}
+    void push_front(int value) {
+        dillNode *newNode = new dillNode(value);
+        newNode->next = front;
+        if(front != null) {
+            front->prev = newNode;
+        }
+        front = newNode;
+        if(rear == null) {
+            rear = front;
+        }
+    }
 
-	void push_back(int value){
-		dillNode *newNode = new dillNode(value);
-		newNode->prev = rear;
-		if(rear != null){
-			rear->next = newNode;
-			rear = newNode;
-		}
-		if(front == null){
-			front = rear;
-		}
-	}
+    void push_back(int value) {
+        dillNode *newNode = new dillNode(value);
+        newNode->prev = rear;
+        if(rear != null) {
+            rear->next = newNode;
+            rear = newNode;
+        }
+        if(front == null) {
+            front = rear;
+        }
+    }
 
-	void pop_front(){
-		if(isEmpty()){
-			throw "Deque is empty";
-		}
-		dillNode *temp = front;
-		if(front == rear){
-			rear  = null;
-		}
-		front = front->next;
-		free(temp);
-	}
+    void pop_front() {
+        if(isEmpty()) {
+            throw "Deque is empty";
+        }
+        dillNode *temp = front;
+        if(front == rear) {
+            rear  = null;
+        }
+        front = front->next;
+        free(temp);
+    }
 
-	void pop_back(){
-		if(isEmpty()){
-			throw "Deque is empty";
-		}
-		dillNode *temp = rear;
-		if(front == rear){
-			front = null;
-		}
-		rear = rear->prev;
-		free(temp);
-	}
+    void pop_back() {
+        if(isEmpty()) {
+            throw "Deque is empty";
+        }
+        dillNode *temp = rear;
+        if(front == rear) {
+            front = null;
+        }
+        rear = rear->prev;
+        free(temp);
+    }
 
-	unsigned int size(){
-		unsigned int counter = 0;
-		dillNode *crawler = front;
-		while(crawler != null){
-			counter++;
-			crawler = crawler->next;
-		}
-		return counter;
-	}
+    unsigned int size() {
+        unsigned int counter = 0;
+        dillNode *crawler = front;
+        while(crawler != null) {
+            counter++;
+            crawler = crawler->next;
+        }
+        return counter;
+    }
 };
 
 

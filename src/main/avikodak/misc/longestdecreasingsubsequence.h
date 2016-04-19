@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestdecreasingsubsequence.h 
+ *  File Name   		: longestdecreasingsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\longestdecreasingsubsequence.h
  *  Created on			: Nov 29, 2014 :: 10:16:42 AM
  *  Author				: AVINASH
@@ -76,42 +76,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int longestDecreasingSequence(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> lengths;
-	lengths.push_back(1);
-	int maxLength;
-	for(unsigned int  outerCounter = 1;outerCounter < userInput.size();outerCounter++){
-		maxLength = 1;
-		for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-			if(userInput[innerCounter] > userInput[outerCounter]){
-				maxLength = max(maxLength,1 + lengths[innerCounter]);
-			}
-		}
-		lengths.push_back(maxLength);
-	}
-	return lengths[lengths.size()-1];
+int longestDecreasingSequence(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> lengths;
+    lengths.push_back(1);
+    int maxLength;
+    for(unsigned int  outerCounter = 1; outerCounter < userInput.size(); outerCounter++) {
+        maxLength = 1;
+        for(unsigned int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+            if(userInput[innerCounter] > userInput[outerCounter]) {
+                maxLength = max(maxLength,1 + lengths[innerCounter]);
+            }
+        }
+        lengths.push_back(maxLength);
+    }
+    return lengths[lengths.size()-1];
 }
 
-int longestDecreasingSubSequence(vector<int> userInput,int currentIndex = 0){
-	if(currentIndex >= userInput.size()){
-		return INT_MAX;
-	}
-	if(userInput.size() == 0){
-		return 0;
-	}
-	if(currentIndex == 1){
-		return 1;
-	}
-	int maxLength = 1;
-	for(int counter = currentIndex - 1;counter >= 0;counter--){
-		if(userInput[counter] > userInput[currentIndex]){
-			maxLength = max(maxLength,longestDecreasingSubSequence(userInput,counter));
-		}
-	}
-	return maxLength;
+int longestDecreasingSubSequence(vector<int> userInput,int currentIndex = 0) {
+    if(currentIndex >= userInput.size()) {
+        return INT_MAX;
+    }
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    if(currentIndex == 1) {
+        return 1;
+    }
+    int maxLength = 1;
+    for(int counter = currentIndex - 1; counter >= 0; counter--) {
+        if(userInput[counter] > userInput[currentIndex]) {
+            maxLength = max(maxLength,longestDecreasingSubSequence(userInput,counter));
+        }
+    }
+    return maxLength;
 }
 
 

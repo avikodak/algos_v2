@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: insomniacure.h 
+ *  File Name   		: insomniacure.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\insomniacure.h
  *  Created on			: Mar 1, 2015 :: 9:14:13 PM
  *  Author				: AVINASH
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define INSOMNIACURE_H_
 
 //Tested
-void getNumberDamagedDragons(){
-	int k,l,m,n,d;
-	scanf("%d %d %d %d %d",&k,&l,&m,&n,&d);
-	unsigned int damagedDrangonCounter = 0;
-	for(int counter = 1;counter <= d;counter++){
-		if(counter%k == 0 || counter%l == 0 || counter%m == 0 || counter%n == 0){
-			damagedDrangonCounter++;
-		}
-	}
-	printf("%d",damagedDrangonCounter);
+void getNumberDamagedDragons() {
+    int k,l,m,n,d;
+    scanf("%d %d %d %d %d",&k,&l,&m,&n,&d);
+    unsigned int damagedDrangonCounter = 0;
+    for(int counter = 1; counter <= d; counter++) {
+        if(counter%k == 0 || counter%l == 0 || counter%m == 0 || counter%n == 0) {
+            damagedDrangonCounter++;
+        }
+    }
+    printf("%d",damagedDrangonCounter);
 }
 
 #endif /* INSOMNIACURE_H_ */

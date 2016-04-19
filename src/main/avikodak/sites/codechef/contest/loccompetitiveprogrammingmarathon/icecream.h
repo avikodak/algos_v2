@@ -76,18 +76,18 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_LOCCOMPETITIVEPROGRAMMINGMARATHON_ICECREAM_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	double 	r1,h1,r2,h2;
-	const double PI = 3.141592653589793;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> r1 >> h1 >> r2 >> h2;
-		double volumeCone = ((PI * r1 * r1 * h1)/3) + ((2 * PI * r1 * r1 * r1)/3);
-		double volumeCylinder = PI * r2 * r2 * h2;
-		cout << std::fixed;
-		cout << std::setprecision(9) << volumeCone <<  " " << volumeCylinder << endl;
-	}
+void solveProblem() {
+    unsigned int testCases;
+    double 	r1,h1,r2,h2;
+    const double PI = 3.141592653589793;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> r1 >> h1 >> r2 >> h2;
+        double volumeCone = ((PI * r1 * r1 * h1)/3) + ((2 * PI * r1 * r1 * r1)/3);
+        double volumeCylinder = PI * r2 * r2 * h2;
+        cout << std::fixed;
+        cout << std::setprecision(9) << volumeCone <<  " " << volumeCylinder << endl;
+    }
 }
 
 

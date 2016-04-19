@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: searchinrowcolumnsortedmatrix.h 
+ *  File Name   		: searchinrowcolumnsortedmatrix.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\searchinrowcolumnsortedmatrix.h
  *  Created on			: Dec 1, 2014 :: 12:31:00 PM
  *  Author				: AVINASH
@@ -69,21 +69,21 @@ using namespace __gnu_cxx;
 #define SEARCHINROWCOLUMNSORTEDMATRIX_H_
 
 //Tested
-iPair *searchInRowColumnSortedMatrix(vector<vector<int> > userInput,int key){
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return null;
-	}
-	int rowIndex = 0,columnIndex = userInput[0].size()-1;
-	while(rowIndex >= 0 && rowIndex < (int)userInput.size() && columnIndex >= 0 && columnIndex < (int)userInput[0].size()){
-		if(userInput[rowIndex][columnIndex] == key){
-			return new iPair(rowIndex,columnIndex);
-		}else if(userInput[rowIndex][columnIndex] > key){
-			columnIndex--;
-		}else{
-			rowIndex++;
-		}
-	}
-	return null;
+iPair *searchInRowColumnSortedMatrix(vector<vector<int> > userInput,int key) {
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return null;
+    }
+    int rowIndex = 0,columnIndex = userInput[0].size()-1;
+    while(rowIndex >= 0 && rowIndex < (int)userInput.size() && columnIndex >= 0 && columnIndex < (int)userInput[0].size()) {
+        if(userInput[rowIndex][columnIndex] == key) {
+            return new iPair(rowIndex,columnIndex);
+        } else if(userInput[rowIndex][columnIndex] > key) {
+            columnIndex--;
+        } else {
+            rowIndex++;
+        }
+    }
+    return null;
 }
 
 #endif /* SEARCHINROWCOLUMNSORTEDMATRIX_H_ */

@@ -73,32 +73,32 @@ using namespace __gnu_cxx;
 #define BROKPHON_H_
 
 //Tested
-void printResults(){
-	long long int testCases,size,input,total,prevInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&size);
-		total = 0;
-		vector<bool> flag;
-		flag.assign(size,false);
-		for(long long int counter = 0;counter < size;counter++){
-			prevInput = input;
-			scanf("%lld",&input);
-			if(counter > 0){
-				if(prevInput != input){
-					if(!flag[counter]){
-						total++;
-						flag[counter] = true;
-					}
-					if(!flag[counter-1]){
-						total++;
-						flag[counter-1] = true;
-					}
-				}
-			}
-		}
-		printf("%lld\n",total);
-	}
+void printResults() {
+    long long int testCases,size,input,total,prevInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&size);
+        total = 0;
+        vector<bool> flag;
+        flag.assign(size,false);
+        for(long long int counter = 0; counter < size; counter++) {
+            prevInput = input;
+            scanf("%lld",&input);
+            if(counter > 0) {
+                if(prevInput != input) {
+                    if(!flag[counter]) {
+                        total++;
+                        flag[counter] = true;
+                    }
+                    if(!flag[counter-1]) {
+                        total++;
+                        flag[counter-1] = true;
+                    }
+                }
+            }
+        }
+        printf("%lld\n",total);
+    }
 }
 
 #endif /* BROKPHON_H_ */

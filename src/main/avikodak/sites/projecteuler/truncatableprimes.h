@@ -71,86 +71,86 @@ using namespace __gnu_cxx;
 #define TRUNCATABLEPRIMES_H_
 
 //Tested
-bool isNumberPrime(unsigned int userInput){
-	unsigned int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(unsigned int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(unsigned int userInput) {
+    unsigned int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(unsigned int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-unsigned int getRevNumber(unsigned int userInput){
-	unsigned int revNumber = 0;
-	while(userInput){
-		revNumber *= 10;
-		revNumber += userInput%10;
-		userInput /= 10;
-	}
-	return revNumber;
+unsigned int getRevNumber(unsigned int userInput) {
+    unsigned int revNumber = 0;
+    while(userInput) {
+        revNumber *= 10;
+        revNumber += userInput%10;
+        userInput /= 10;
+    }
+    return revNumber;
 }
 
 //Tested
-bool isTruncatablePrime(unsigned int userInput,map<unsigned int,bool> primeNumberMap){
-	if(userInput < 10){
-		return false;
-	}
-	unsigned int revNumber = getRevNumber(userInput);
-	while(userInput){
-		if(primeNumberMap.find(userInput) == primeNumberMap.end()){
-			return false;
-		}
-		userInput /= 10;
-	}
-	while(revNumber){
-		if(primeNumberMap.find(getRevNumber(revNumber)) == primeNumberMap.end()){
-			return false;
-		}
-		revNumber /= 10;
-	}
-	return true;
+bool isTruncatablePrime(unsigned int userInput,map<unsigned int,bool> primeNumberMap) {
+    if(userInput < 10) {
+        return false;
+    }
+    unsigned int revNumber = getRevNumber(userInput);
+    while(userInput) {
+        if(primeNumberMap.find(userInput) == primeNumberMap.end()) {
+            return false;
+        }
+        userInput /= 10;
+    }
+    while(revNumber) {
+        if(primeNumberMap.find(getRevNumber(revNumber)) == primeNumberMap.end()) {
+            return false;
+        }
+        revNumber /= 10;
+    }
+    return true;
 }
 
 //Tested
-bool hasValidDigits(unsigned int userInput){
-	while(userInput){
-		if(userInput!= 2 && userInput%2 == 0){
-			return false;
-		}
-		userInput /= 10;
-	}
-	return true;
+bool hasValidDigits(unsigned int userInput) {
+    while(userInput) {
+        if(userInput!= 2 && userInput%2 == 0) {
+            return false;
+        }
+        userInput /= 10;
+    }
+    return true;
 }
 
 //Tested
 //Ans : 748317
-void printSumTruncatablePrimes(){
-	map<unsigned int,bool> primeNumberMap;
-	map<unsigned int,bool>::iterator itToPrimeNumberMap;
-	primeNumberMap.insert(pair<unsigned int,bool>(2,true));
-	vector<unsigned int> validNumber;
-	validNumber.push_back(2);
-	for(unsigned int counter = 3;counter < 1000000;counter+=2){
-		if(isNumberPrime(counter)){
-			primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
-			if(hasValidDigits(counter)){
-				validNumber.push_back(counter);
-			}
-		}
-	}
-	unsigned int sum = 0,totalPrimeCount = 11;
-	for(unsigned int counter = 0;counter < validNumber.size() && totalPrimeCount;counter++){
-		if(isTruncatablePrime(validNumber[counter],primeNumberMap)){
-			sum += validNumber[counter];
-			totalPrimeCount--;
-		}
-	}
-	cout << sum << endl;
+void printSumTruncatablePrimes() {
+    map<unsigned int,bool> primeNumberMap;
+    map<unsigned int,bool>::iterator itToPrimeNumberMap;
+    primeNumberMap.insert(pair<unsigned int,bool>(2,true));
+    vector<unsigned int> validNumber;
+    validNumber.push_back(2);
+    for(unsigned int counter = 3; counter < 1000000; counter+=2) {
+        if(isNumberPrime(counter)) {
+            primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
+            if(hasValidDigits(counter)) {
+                validNumber.push_back(counter);
+            }
+        }
+    }
+    unsigned int sum = 0,totalPrimeCount = 11;
+    for(unsigned int counter = 0; counter < validNumber.size() && totalPrimeCount; counter++) {
+        if(isTruncatablePrime(validNumber[counter],primeNumberMap)) {
+            sum += validNumber[counter];
+            totalPrimeCount--;
+        }
+    }
+    cout << sum << endl;
 }
 
 #endif /* TRUNCATABLEPRIMES_H_ */

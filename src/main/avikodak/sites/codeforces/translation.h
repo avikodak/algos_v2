@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: translation.h 
+ *  File Name   		: translation.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\codeforces\translation.h
  *  Created on			: Mar 22, 2015 :: 9:11:19 PM
  *  Author				: avikodak
@@ -70,16 +70,16 @@ using namespace __gnu_cxx;
 #ifndef TRANSLATION_H_
 #define TRANSLATION_H_
 
-void areStringReverse(){
-	string firstInput,secondInput;
-	cin >> firstInput >> secondInput;
-	for(unsigned int counter = 0;counter < firstInput.size();counter++){
-		if(firstInput[counter] != secondInput[secondInput.size()-counter]){
-			printf("NO");
-			return;
-		}
-	}
-	printf("YES");
+void areStringReverse() {
+    string firstInput,secondInput;
+    cin >> firstInput >> secondInput;
+    for(unsigned int counter = 0; counter < firstInput.size(); counter++) {
+        if(firstInput[counter] != secondInput[secondInput.size()-counter]) {
+            printf("NO");
+            return;
+        }
+    }
+    printf("YES");
 }
 
 #endif /* TRANSLATION_H_ */

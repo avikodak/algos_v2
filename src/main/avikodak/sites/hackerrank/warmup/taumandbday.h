@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: taumandbday.h 
+ *  File Name   		: taumandbday.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\hackerrank\warmup\taumandbday.h
  *  Created on			: Mar 10, 2015 :: 9:39:03 PM
  *  Author				: avikodak
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define TAUMANDBDAY_H_
 
 //Tested
-void getMinAmountForGifts(){
-	unsigned int testCases;
-	long long int costOfBlackGift,costOfWhiteGift,transferCost,numberOfBlackGifts,numberOfWhiteGifts,totalCost;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> numberOfBlackGifts >> numberOfWhiteGifts >> costOfBlackGift >> costOfWhiteGift >> transferCost;
-		totalCost = 0;
-		if(costOfBlackGift < costOfWhiteGift){
-			totalCost += (numberOfBlackGifts * costOfBlackGift);
-			if(costOfWhiteGift < costOfBlackGift + transferCost){
-				totalCost += (numberOfWhiteGifts * costOfWhiteGift);
-			}else{
-				totalCost += (numberOfWhiteGifts * (costOfBlackGift+transferCost));
-			}
-		}else{
-			totalCost += numberOfWhiteGifts * costOfWhiteGift;
-			if(costOfBlackGift < costOfWhiteGift + transferCost){
-				totalCost += (numberOfBlackGifts * costOfBlackGift);
-			}else{
-				totalCost += (numberOfBlackGifts * (costOfWhiteGift+transferCost));
-			}
-		}
-		cout << totalCost << endl;
-	}
+void getMinAmountForGifts() {
+    unsigned int testCases;
+    long long int costOfBlackGift,costOfWhiteGift,transferCost,numberOfBlackGifts,numberOfWhiteGifts,totalCost;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> numberOfBlackGifts >> numberOfWhiteGifts >> costOfBlackGift >> costOfWhiteGift >> transferCost;
+        totalCost = 0;
+        if(costOfBlackGift < costOfWhiteGift) {
+            totalCost += (numberOfBlackGifts * costOfBlackGift);
+            if(costOfWhiteGift < costOfBlackGift + transferCost) {
+                totalCost += (numberOfWhiteGifts * costOfWhiteGift);
+            } else {
+                totalCost += (numberOfWhiteGifts * (costOfBlackGift+transferCost));
+            }
+        } else {
+            totalCost += numberOfWhiteGifts * costOfWhiteGift;
+            if(costOfBlackGift < costOfWhiteGift + transferCost) {
+                totalCost += (numberOfBlackGifts * costOfBlackGift);
+            } else {
+                totalCost += (numberOfBlackGifts * (costOfWhiteGift+transferCost));
+            }
+        }
+        cout << totalCost << endl;
+    }
 }
 
 #endif /* TAUMANDBDAY_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: wordcapitalization.h 
+ *  File Name   		: wordcapitalization.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\wordcapitalization.h
  *  Created on			: Mar 1, 2015 :: 9:35:24 AM
  *  Author				: AVINASH
@@ -72,13 +72,13 @@ using namespace __gnu_cxx;
 #define WORDCAPITALIZATION_H_
 
 //Tested
-void printWordCapitaization(){
-	char userInput[MAX_INPUT_SIZE];
-	scanf("%s",userInput);
-	if(userInput[0] >= 'a' && userInput[0] <= 'z'){
-		userInput[0] = userInput[0] - 'a' + 'A';
-	}
-	printf("%s",userInput);
+void printWordCapitaization() {
+    char userInput[MAX_INPUT_SIZE];
+    scanf("%s",userInput);
+    if(userInput[0] >= 'a' && userInput[0] <= 'z') {
+        userInput[0] = userInput[0] - 'a' + 'A';
+    }
+    printf("%s",userInput);
 }
 
 #endif /* WORDCAPITALIZATION_H_ */

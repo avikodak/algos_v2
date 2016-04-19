@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 //Locally Tested
 class TheTournamentDivTwo {
 public:
-	int find(vector<int> points){
-		int totalGames = 0;
-		int oneCount = 0;
-		for(unsigned int counter = 0;counter < points.size();counter++){
-			totalGames += (points[counter]/2);
-			oneCount += (points[counter]%2);
-		}
-		return oneCount%2 == 1?-1:(totalGames + (oneCount/2));
-	}
+    int find(vector<int> points) {
+        int totalGames = 0;
+        int oneCount = 0;
+        for(unsigned int counter = 0; counter < points.size(); counter++) {
+            totalGames += (points[counter]/2);
+            oneCount += (points[counter]%2);
+        }
+        return oneCount%2 == 1?-1:(totalGames + (oneCount/2));
+    }
 };
 
 #endif /* THETOURNAMENTDIVTWO_H_ */

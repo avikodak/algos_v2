@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 #ifndef AXR1P2_H_
 #define AXR1P2_H_
 
-void printResults(){
-	char userInputInStr[4];
-	unsigned int sum,userInput;
-	int remainders[]={0,1,6,1,6,5,6,1,6,1,0};
-	while(scanf("%s",userInputInStr) && userInputInStr[0] != '#'){
-		userInput = atoi(userInputInStr);
-		sum = 0;
-		for(unsigned int counter = 1;counter <= userInput;counter++){
-			if(counter > 3){
-				sum += remainders[counter%10];
-			}else{
-				sum += (counter*counter);
-			}
-			sum %= 10;
-		}
-		cout << sum << endl;
-	}
+void printResults() {
+    char userInputInStr[4];
+    unsigned int sum,userInput;
+    int remainders[]= {0,1,6,1,6,5,6,1,6,1,0};
+    while(scanf("%s",userInputInStr) && userInputInStr[0] != '#') {
+        userInput = atoi(userInputInStr);
+        sum = 0;
+        for(unsigned int counter = 1; counter <= userInput; counter++) {
+            if(counter > 3) {
+                sum += remainders[counter%10];
+            } else {
+                sum += (counter*counter);
+            }
+            sum %= 10;
+        }
+        cout << sum << endl;
+    }
 }
 
 #endif /* AXR1P2_H_ */

@@ -75,39 +75,41 @@ using namespace __gnu_cxx;
 
 //Tested
 inline unsigned int scan() {
-	unsigned int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+    unsigned int t=0,neg=0;
+    char c;
+    c=gc();
+    while((c<'0' || c>'9')&& c!='-')
+        c=gc();
+    if(c=='-') {
+        neg=1;
+        c=gc();
+    }
+    while(c>='0' && c<='9') {
+        t=(t<<3)+(t<<1)+c-'0';
+        c=gc();
+    }
+    if(neg) t=-t;
+    return(t);
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input,size;
-	vector<unsigned int> userInput;
-	testCases = scan();
-	while(testCases--){
-		size = scan();
-		userInput.clear();
-		while(size--){
-			input = scan();
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end());
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			printf("%u ",userInput[counter]);
-		}
-		printf("\n");
-	}
+void printResults() {
+    unsigned int testCases,input,size;
+    vector<unsigned int> userInput;
+    testCases = scan();
+    while(testCases--) {
+        size = scan();
+        userInput.clear();
+        while(size--) {
+            input = scan();
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end());
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            printf("%u ",userInput[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MRIU4_H_ */

@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef MICROSTRINGS_H_
 #define MICROSTRINGS_H_
 
-class MicroStrings{
+class MicroStrings {
 public:
-	string makeMicroString(int A,int D){
-		string result;
-		stringstream ss;
-		while(A >= 0){
-			ss << A;
-			result.append(ss.str());
-			ss.str("");
-			A = A-D;
-		}
-		return result;
-	}
+    string makeMicroString(int A,int D) {
+        string result;
+        stringstream ss;
+        while(A >= 0) {
+            ss << A;
+            result.append(ss.str());
+            ss.str("");
+            A = A-D;
+        }
+        return result;
+    }
 };
 
 #endif /* MICROSTRINGS_H_ */

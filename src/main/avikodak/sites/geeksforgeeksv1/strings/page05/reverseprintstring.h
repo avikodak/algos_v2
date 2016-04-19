@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reverseprintstring.h 
+ *  File Name   		: reverseprintstring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\reverseprintstring.h
  *  Created on			: Dec 3, 2014 :: 10:41:07 PM
  *  Author				: AVINASH
@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printReverseString(char *userInput){
-	if(*userInput == '\0'){
-		return;
-	}
-	printReverseString(userInput+1);
-	printf("%c",userInput[0]);
+void printReverseString(char *userInput) {
+    if(*userInput == '\0') {
+        return;
+    }
+    printReverseString(userInput+1);
+    printf("%c",userInput[0]);
 }
 
-void printReverseString(char *userInput){
-	if(*userInput == '\0'){
-		return;
-	}
-	stack<char> auxSpace;
-	while(*userInput == '\0'){
-		auxSpace.push(userInput[0]);
-		userInput += 1;
-	}
-	while(!auxSpace.empty()){
-		printf("%c",auxSpace.top());
-		auxSpace.pop();
-	}
+void printReverseString(char *userInput) {
+    if(*userInput == '\0') {
+        return;
+    }
+    stack<char> auxSpace;
+    while(*userInput == '\0') {
+        auxSpace.push(userInput[0]);
+        userInput += 1;
+    }
+    while(!auxSpace.empty()) {
+        printf("%c",auxSpace.top());
+        auxSpace.pop();
+    }
 }
 
 /****************************************************************************************************************************************************/

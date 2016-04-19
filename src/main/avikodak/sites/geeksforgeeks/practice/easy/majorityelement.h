@@ -76,43 +76,43 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAJORITYELEMENT_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		int index = 0;
-		unsigned int frequency = 1;
-		for(unsigned int counter = 1;counter < userInput.size();counter++){
-			if(userInput[counter] == userInput[index]){
-				frequency++;
-			}else{
-				if(frequency == 1){
-					index = counter;
-				}else{
-					frequency--;
-				}
-			}
-		}
-		frequency = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[index] == userInput[counter]){
-				frequency++;
-			}
-		}
-		if(frequency > userInput.size()/2){
-			printf("%lld\n",userInput[index]);
-		}else{
-			printf("NO Majority Element\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        int index = 0;
+        unsigned int frequency = 1;
+        for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+            if(userInput[counter] == userInput[index]) {
+                frequency++;
+            } else {
+                if(frequency == 1) {
+                    index = counter;
+                } else {
+                    frequency--;
+                }
+            }
+        }
+        frequency = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[index] == userInput[counter]) {
+                frequency++;
+            }
+        }
+        if(frequency > userInput.size()/2) {
+            printf("%lld\n",userInput[index]);
+        } else {
+            printf("NO Majority Element\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAJORITYELEMENT_H_ */

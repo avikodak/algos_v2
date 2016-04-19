@@ -79,50 +79,50 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void mergeSortedArray(int fUserInput[],int fSize,int sUserInput[],int sSize){
-	if(fSize == 0 || sSize == 0){
-		return;
-	}
-	int fillIndex = -1,fRearCrawler,sRearCrawler;
-	for(unsigned int counter = 0;counter < fSize;counter++){
-		if(fUserInput[counter] != NA){
-			fUserInput[++fillIndex] = fUserInput[counter];
-		}
-	}
-	fRearCrawler = fillIndex;
-	sRearCrawler = sSize-1;
-	fillIndex = fSize;
-	while(fRearCrawler >= 0 || sRearCrawler >= 0){
-		if(fRearCrawler < 0 || sRearCrawler < 0){
-			if(fRearCrawler >= 0){
-				fUserInput[--fillIndex] = fUserInput[fRearCrawler--];
-			}else{
-				fUserInput[--fillIndex] = sUserInput[sRearCrawler--];
-			}
-		}else{
-			if(fUserInput[fRearCrawler] > sUserInput[sRearCrawler]){
-				fUserInput[--fillIndex] = fUserInput[fRearCrawler--];
-			}else{
-				fUserInput[--fillIndex] = sUserInput[sRearCrawler--];
-			}
-		}
-	}
+void mergeSortedArray(int fUserInput[],int fSize,int sUserInput[],int sSize) {
+    if(fSize == 0 || sSize == 0) {
+        return;
+    }
+    int fillIndex = -1,fRearCrawler,sRearCrawler;
+    for(unsigned int counter = 0; counter < fSize; counter++) {
+        if(fUserInput[counter] != NA) {
+            fUserInput[++fillIndex] = fUserInput[counter];
+        }
+    }
+    fRearCrawler = fillIndex;
+    sRearCrawler = sSize-1;
+    fillIndex = fSize;
+    while(fRearCrawler >= 0 || sRearCrawler >= 0) {
+        if(fRearCrawler < 0 || sRearCrawler < 0) {
+            if(fRearCrawler >= 0) {
+                fUserInput[--fillIndex] = fUserInput[fRearCrawler--];
+            } else {
+                fUserInput[--fillIndex] = sUserInput[sRearCrawler--];
+            }
+        } else {
+            if(fUserInput[fRearCrawler] > sUserInput[sRearCrawler]) {
+                fUserInput[--fillIndex] = fUserInput[fRearCrawler--];
+            } else {
+                fUserInput[--fillIndex] = sUserInput[sRearCrawler--];
+            }
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
-void mergeSortedArrayONLOGN(int fUserInput[],int fSize,int sUserInput[],int sSize){
-	if(fSize == 0 || sSize == 0){
-		return;
-	}
-	unsigned int sFillIndex = 0;
-	for(unsigned int counter = 0;counter < fSize;counter++){
-		if(fUserInput[counter] == NA && sFillIndex < sSize){
-			fUserInput[counter] = sUserInput[sFillIndex++];
-		}
-	}
-	sort(fUserInput,fUserInput+fSize);
+void mergeSortedArrayONLOGN(int fUserInput[],int fSize,int sUserInput[],int sSize) {
+    if(fSize == 0 || sSize == 0) {
+        return;
+    }
+    unsigned int sFillIndex = 0;
+    for(unsigned int counter = 0; counter < fSize; counter++) {
+        if(fUserInput[counter] == NA && sFillIndex < sSize) {
+            fUserInput[counter] = sUserInput[sFillIndex++];
+        }
+    }
+    sort(fUserInput,fUserInput+fSize);
 }
 
 /****************************************************************************************************************************************************/

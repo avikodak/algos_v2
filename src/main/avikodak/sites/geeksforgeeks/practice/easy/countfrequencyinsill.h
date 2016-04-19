@@ -76,24 +76,24 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COUNTFREQUENCYINSILL_H_
 
 //Tested
-struct node{
-	int data;
-	struct node *next;
+struct node {
+    int data;
+    struct node *next;
 };
 
 //Tested
-int count(struct node* head, int search_for){
-	if(head == NULL){
-		return 0;
-	}
-	int frequency = 0;
-	while(head != NULL){
-		if(head->data == search_for){
-			frequency++;
-		}
-		head = head->next;
-	}
-	return frequency;
+int count(struct node* head, int search_for) {
+    if(head == NULL) {
+        return 0;
+    }
+    int frequency = 0;
+    while(head != NULL) {
+        if(head->data == search_for) {
+            frequency++;
+        }
+        head = head->next;
+    }
+    return frequency;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COUNTFREQUENCYINSILL_H_ */

@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define SORT_H_
 
 //Tested
-void printResults(){
-	unsigned int size,input;
-	vector<unsigned int> userInput;
-	scanf("%u",&size);
-	while(size--){
-		scanf("%u",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		printf("%u\n",userInput[counter]);
-	}
+void printResults() {
+    unsigned int size,input;
+    vector<unsigned int> userInput;
+    scanf("%u",&size);
+    while(size--) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        printf("%u\n",userInput[counter]);
+    }
 }
 
 #endif /* SORT_H_ */

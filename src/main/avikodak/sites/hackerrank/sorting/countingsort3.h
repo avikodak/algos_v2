@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countingsort3.h 
+ *  File Name   		: countingsort3.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\countingsort3.h
  *  Created on			: Feb 12, 2015 :: 8:24:47 PM
  *  Author				: AVINASH
@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define COUNTINGSORT3_H_
 
 //Tested
-void countingSort2(){
-	vector<long int> buckets(100,0);
-	long int size,input;
-	string userInput;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		cin >> userInput;
-		buckets[input]++;
-	}
-	long int cummulativeSum = 0;
-	for(unsigned int counter = 0;counter < buckets.size();counter++){
-		cummulativeSum += buckets[counter];
-		printf("%ld ",cummulativeSum);
+void countingSort2() {
+    vector<long int> buckets(100,0);
+    long int size,input;
+    string userInput;
+    scanf("%ld",&size);
+    while(size--) {
+        scanf("%ld",&input);
+        cin >> userInput;
+        buckets[input]++;
+    }
+    long int cummulativeSum = 0;
+    for(unsigned int counter = 0; counter < buckets.size(); counter++) {
+        cummulativeSum += buckets[counter];
+        printf("%ld ",cummulativeSum);
 
-	}
+    }
 }
 
 #endif /* COUNTINGSORT3_H_ */

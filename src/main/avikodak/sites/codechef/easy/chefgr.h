@@ -71,24 +71,24 @@ using namespace __gnu_cxx;
 #ifndef CHEFGR_H_
 #define CHEFGR_H_
 
-void printResults(){
-	unsigned int testCases,size,total,sum,input,maxVal;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u %u",&size,&total);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		sum = 0;
-		maxVal = *max_element(userInput.begin(),userInput.end());
-		for(unsigned int counter = 0;counter < size;counter++){
-			sum += (userInput[counter] - maxVal);
-		}
-		printf("%s\n",total >= sum?"Yes":"No");
-	}
+void printResults() {
+    unsigned int testCases,size,total,sum,input,maxVal;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u %u",&size,&total);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        sum = 0;
+        maxVal = *max_element(userInput.begin(),userInput.end());
+        for(unsigned int counter = 0; counter < size; counter++) {
+            sum += (userInput[counter] - maxVal);
+        }
+        printf("%s\n",total >= sum?"Yes":"No");
+    }
 }
 
 #endif /* CHEFGR_H_ */

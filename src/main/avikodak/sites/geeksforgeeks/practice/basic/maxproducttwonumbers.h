@@ -76,28 +76,28 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MAXPRODUCTTWONUMBERS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input,fMax,sMax;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			if(counter == 0){
-				fMax = input;
-				sMax = input;
-			}else{
-				if(input > fMax){
-					sMax = fMax;
-					fMax = input;
-				}else if(input > sMax){
-					sMax = input;
-				}
-			}
-		}
-		printf("%lld\n",fMax*sMax);
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input,fMax,sMax;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            if(counter == 0) {
+                fMax = input;
+                sMax = input;
+            } else {
+                if(input > fMax) {
+                    sMax = fMax;
+                    fMax = input;
+                } else if(input > sMax) {
+                    sMax = input;
+                }
+            }
+        }
+        printf("%lld\n",fMax*sMax);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_MAXPRODUCTTWONUMBERS_H_ */

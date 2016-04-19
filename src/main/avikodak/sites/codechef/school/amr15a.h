@@ -77,17 +77,17 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int size, evenCount;
-	long long int input;
-	scanf("%u", &size);
-	evenCount = 0;
-	for (unsigned int counter = 0; counter < size; counter++) {
-		scanf("%lld", &input);
-		if (!(input & 1)) {
-			evenCount++;
-		}
-	}
-	printf("%s\n", evenCount > (size - evenCount) ? "READY FOR BATTLE" : "NOT READY");
+    unsigned int size, evenCount;
+    long long int input;
+    scanf("%u", &size);
+    evenCount = 0;
+    for (unsigned int counter = 0; counter < size; counter++) {
+        scanf("%lld", &input);
+        if (!(input & 1)) {
+            evenCount++;
+        }
+    }
+    printf("%s\n", evenCount > (size - evenCount) ? "READY FOR BATTLE" : "NOT READY");
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_AMR15A_H_ */

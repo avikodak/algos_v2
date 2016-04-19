@@ -76,40 +76,40 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PYTHAGOREANTRIPLET_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input*input);
-		}
-		sort(userInput.begin(),userInput.end());
-		bool tripletFound = false;
-		unsigned int frontCrawler,rearCrawler;
-		for(int outerCrawler = userInput.size()-1;outerCrawler >= 2;outerCrawler--){
-			frontCrawler = 0;
-			rearCrawler = outerCrawler-1;
-			while(frontCrawler < rearCrawler){
-				if(userInput[frontCrawler]+userInput[rearCrawler] == userInput[outerCrawler]){
-					tripletFound = true;
-					break;
-				}else if(userInput[frontCrawler] + userInput[rearCrawler] < userInput[outerCrawler]){
-					frontCrawler++;
-				}else{
-					rearCrawler--;
-				}
-			}
-			if(tripletFound){
-				break;
-			}
-		}
-		printf("%s\n",tripletFound?"Yes":"No");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input*input);
+        }
+        sort(userInput.begin(),userInput.end());
+        bool tripletFound = false;
+        unsigned int frontCrawler,rearCrawler;
+        for(int outerCrawler = userInput.size()-1; outerCrawler >= 2; outerCrawler--) {
+            frontCrawler = 0;
+            rearCrawler = outerCrawler-1;
+            while(frontCrawler < rearCrawler) {
+                if(userInput[frontCrawler]+userInput[rearCrawler] == userInput[outerCrawler]) {
+                    tripletFound = true;
+                    break;
+                } else if(userInput[frontCrawler] + userInput[rearCrawler] < userInput[outerCrawler]) {
+                    frontCrawler++;
+                } else {
+                    rearCrawler--;
+                }
+            }
+            if(tripletFound) {
+                break;
+            }
+        }
+        printf("%s\n",tripletFound?"Yes":"No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PYTHAGOREANTRIPLET_H_ */

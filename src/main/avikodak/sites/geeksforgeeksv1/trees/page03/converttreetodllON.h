@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttreetodllON.h 
+ *  File Name   		: converttreetodllON.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\converttreetodllON.h
  *  Created on			: Nov 15, 2014 :: 5:15:52 PM
  *  Author				: AVINASH
@@ -71,32 +71,32 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void ctlConvertTreeToDllONMain(itNode *ptr,itNode **head){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	ctlConvertTreeToDllONMain(ptr->left,head);
-	ptr->left = prevNode;
-	if(prevNode != null){
-		prevNode->right = ptr;
-	}else{
-		(*head) = ptr;
-	}
-	prevNode = ptr;
-	ctlConvertTreeToDllONMain(ptr->right,head);
+void ctlConvertTreeToDllONMain(itNode *ptr,itNode **head) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    ctlConvertTreeToDllONMain(ptr->left,head);
+    ptr->left = prevNode;
+    if(prevNode != null) {
+        prevNode->right = ptr;
+    } else {
+        (*head) = ptr;
+    }
+    prevNode = ptr;
+    ctlConvertTreeToDllONMain(ptr->right,head);
 }
 
-void ctlConvertTreeToDllON(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *head = null;
-	ctlConvertTreeToDllON(ptr,&head);
-	while(head != null){
-		printf("%d\t",head->value);
-		head = head->right;
-	}
+void ctlConvertTreeToDllON(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *head = null;
+    ctlConvertTreeToDllON(ptr,&head);
+    while(head != null) {
+        printf("%d\t",head->value);
+        head = head->right;
+    }
 }
 
 #endif /* CONVERTTREETODLLON_H_ */

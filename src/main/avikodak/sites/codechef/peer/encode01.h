@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 #define ENCODE01_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput,result,temp;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		if(userInput%2 == 0){
-			temp = userInput - 1;
-			temp /= 2;
-			result = ((temp) * (temp+1));
-			result += (userInput/2);
-		}else{
-			userInput /= 2;
-			result = ((userInput)*(userInput+1));
-		}
-		cout << result << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput,result,temp;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        if(userInput%2 == 0) {
+            temp = userInput - 1;
+            temp /= 2;
+            result = ((temp) * (temp+1));
+            result += (userInput/2);
+        } else {
+            userInput /= 2;
+            result = ((userInput)*(userInput+1));
+        }
+        cout << result << endl;
+    }
 }
 
 #endif /* ENCODE01_H_ */

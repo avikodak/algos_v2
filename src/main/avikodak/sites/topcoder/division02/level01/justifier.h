@@ -70,30 +70,30 @@ using namespace __gnu_cxx;
 #ifndef JUSTIFIER_H_
 #define JUSTIFIER_H_
 
-class Justifier{
+class Justifier {
 public:
-	vector<string> justify(vector<string> textIn){
-		int maxSize = INT_MIN,spaceToBeFilled;
-		for(unsigned int counter = 0;counter < textIn.size();counter++){
-			maxSize = max(maxSize,textIn[counter].size());
-		}
-		vector<string> justifiedStrings;
-		for(unsigned int outerCounter = 0;outerCounter < textIn.size();outerCounter++){
-			if(textIn.size() != maxSize){
-				spaceToBeFilled = maxSize - textIn[outerCounter].size();
-				string result;
-				while(spaceToBeFilled--){
-					result.push_back(' ');
-				}
-				for(unsigned int innerCounter = 0;innerCounter < textIn[outerCounter].size();innerCounter++){
-					result.push_back(textIn[outerCounter][innerCounter]);
-				}
-				justifiedStrings.push_back(result);
-			}else{
-				justifiedStrings.push_back(textIn[outerCounter]);
-			}
-		}
-	}
+    vector<string> justify(vector<string> textIn) {
+        int maxSize = INT_MIN,spaceToBeFilled;
+        for(unsigned int counter = 0; counter < textIn.size(); counter++) {
+            maxSize = max(maxSize,textIn[counter].size());
+        }
+        vector<string> justifiedStrings;
+        for(unsigned int outerCounter = 0; outerCounter < textIn.size(); outerCounter++) {
+            if(textIn.size() != maxSize) {
+                spaceToBeFilled = maxSize - textIn[outerCounter].size();
+                string result;
+                while(spaceToBeFilled--) {
+                    result.push_back(' ');
+                }
+                for(unsigned int innerCounter = 0; innerCounter < textIn[outerCounter].size(); innerCounter++) {
+                    result.push_back(textIn[outerCounter][innerCounter]);
+                }
+                justifiedStrings.push_back(result);
+            } else {
+                justifiedStrings.push_back(textIn[outerCounter]);
+            }
+        }
+    }
 };
 
 #endif /* JUSTIFIER_H_ */

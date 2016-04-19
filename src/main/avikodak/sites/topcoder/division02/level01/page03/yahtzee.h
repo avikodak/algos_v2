@@ -72,15 +72,15 @@ using namespace __gnu_cxx;
 
 class Yahtzee {
 public:
-	int maxPoints(vector<int> toss){
-		int pointCount[6];
-		int maxPoint = 0;
-		for(unsigned int counter = 0;counter < toss.size();counter++){
-			pointCount[toss[counter]--]++;
-			maxPoint = max(maxPoint,(toss[counter]+1)*pointCount[toss[counter]--]);
-		}
-		return maxPoint;
-	}
+    int maxPoints(vector<int> toss) {
+        int pointCount[6];
+        int maxPoint = 0;
+        for(unsigned int counter = 0; counter < toss.size(); counter++) {
+            pointCount[toss[counter]--]++;
+            maxPoint = max(maxPoint,(toss[counter]+1)*pointCount[toss[counter]--]);
+        }
+        return maxPoint;
+    }
 };
 
 #endif /* YAHTZEE_H_ */

@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 #define CD202_H_
 
 //Tested
-bool isVowel(char ch){
-	if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch== 'u'){
-		return true;
-	}
-	return false;
+bool isVowel(char ch) {
+    if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch== 'u') {
+        return true;
+    }
+    return false;
 }
 
 //Tested
-void printDecodedSentence(){
-	string userInput;
-	getline(cin,userInput);
-	for(unsigned int counter = 0;counter < userInput.size();){
-		printf("%c",userInput[counter]);
-		counter++;
-		if(isVowel(userInput[counter])){
-			counter += 2;
-		}
-	}
+void printDecodedSentence() {
+    string userInput;
+    getline(cin,userInput);
+    for(unsigned int counter = 0; counter < userInput.size();) {
+        printf("%c",userInput[counter]);
+        counter++;
+        if(isVowel(userInput[counter])) {
+            counter += 2;
+        }
+    }
 }
 
 #endif /* CD202_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cuttingrod.h 
+ *  File Name   		: cuttingrod.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\cuttingrod.h
  *  Created on			: Dec 9, 2014 :: 8:02:41 PM
  *  Author				: AVINASH
@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define CUTTINGROD_H_
 
 //Tested
-int maxBenefitRodCuttingMemoization(vector<int> cuts,vector<int> benefits,int length){
-	if(length == 0 || cuts.size() == 0){
-		return 0;
-	}
-	vector<int> maxBenefits(length+1,0);
-	for(int counter = 1;counter <= length;counter++){
-		for(unsigned int cutCounter = 0;cutCounter < cuts.size();cutCounter++){
-			if(counter >= cuts[cutCounter]){
-				maxBenefits[counter] = max(maxBenefits[counter] ,benefits[cutCounter] + maxBenefits[counter - cuts[cutCounter]]);
-			}
-		}
-	}
-	return maxBenefits[maxBenefits.size()-1];
+int maxBenefitRodCuttingMemoization(vector<int> cuts,vector<int> benefits,int length) {
+    if(length == 0 || cuts.size() == 0) {
+        return 0;
+    }
+    vector<int> maxBenefits(length+1,0);
+    for(int counter = 1; counter <= length; counter++) {
+        for(unsigned int cutCounter = 0; cutCounter < cuts.size(); cutCounter++) {
+            if(counter >= cuts[cutCounter]) {
+                maxBenefits[counter] = max(maxBenefits[counter] ,benefits[cutCounter] + maxBenefits[counter - cuts[cutCounter]]);
+            }
+        }
+    }
+    return maxBenefits[maxBenefits.size()-1];
 }
 
 //Tested
-int maxCuttingRodBenefit(vector<int> cuts,vector<int> benefits,int length){
-	if(length <= 0){
-		return 0;
-	}
-	int maxBenefit = INT_MIN;
-	for(unsigned int counter = 0;counter < cuts.size();counter++){
-		if(cuts[counter] <= length){
-			maxBenefit = max(maxBenefit,benefits[counter] + maxCuttingRodBenefit(cuts,benefits,length-cuts[counter]));
-		}
-	}
-	return maxBenefit;
+int maxCuttingRodBenefit(vector<int> cuts,vector<int> benefits,int length) {
+    if(length <= 0) {
+        return 0;
+    }
+    int maxBenefit = INT_MIN;
+    for(unsigned int counter = 0; counter < cuts.size(); counter++) {
+        if(cuts[counter] <= length) {
+            maxBenefit = max(maxBenefit,benefits[counter] + maxCuttingRodBenefit(cuts,benefits,length-cuts[counter]));
+        }
+    }
+    return maxBenefit;
 }
 
 #endif /* CUTTINGROD_H_ */

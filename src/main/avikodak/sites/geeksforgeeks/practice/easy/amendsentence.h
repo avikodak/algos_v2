@@ -76,25 +76,25 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_AMENDSENTENCE_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string userInput,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		result.clear();
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-				if(counter != 0){
-					result.push_back(' ');
-				}
-				result.push_back(userInput[counter]-'A'+'a');
-			}else{
-				result.push_back(userInput[counter]);
-			}
-		}
-		cout << result << endl;
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string userInput,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        result.clear();
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+                if(counter != 0) {
+                    result.push_back(' ');
+                }
+                result.push_back(userInput[counter]-'A'+'a');
+            } else {
+                result.push_back(userInput[counter]);
+            }
+        }
+        cout << result << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_AMENDSENTENCE_H_ */

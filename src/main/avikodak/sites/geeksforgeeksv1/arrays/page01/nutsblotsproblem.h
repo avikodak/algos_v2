@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: nutsblotsproblem.h 
+ *  File Name   		: nutsblotsproblem.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\nutsblotsproblem.h
  *  Created on			: Jan 5, 2015 :: 10:26:12 AM
  *  Author				: AVINASH
@@ -74,46 +74,46 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int nabpDivideStep(vector<char> &userInput,char key,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return INT_MIN;
-	}
-	int initStartIndex = startIndex;
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			if(userInput[startIndex] == key){
-				swap(userInput[initStartIndex],userInput[startIndex]);
-			}
-			startIndex++;
-		}
-		while(userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[initStartIndex],userInput[endIndex]);
-	return endIndex;
+int nabpDivideStep(vector<char> &userInput,char key,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return INT_MIN;
+    }
+    int initStartIndex = startIndex;
+    while(startIndex < endIndex) {
+        while(userInput[startIndex] <= key) {
+            if(userInput[startIndex] == key) {
+                swap(userInput[initStartIndex],userInput[startIndex]);
+            }
+            startIndex++;
+        }
+        while(userInput[endIndex] > key) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    swap(userInput[initStartIndex],userInput[endIndex]);
+    return endIndex;
 }
 
 //Tested
-void nutsAndBoltsSortingMain(vector<char> &nuts,vector<char> &bolts,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int pivotIndex = nabpDivideStep(nuts,bolts[endIndex],startIndex,endIndex);
-	nabpDivideStep(bolts,nuts[pivotIndex],startIndex,endIndex);
-	nutsAndBoltsSortingMain(nuts,bolts,startIndex,pivotIndex-1);
-	nutsAndBoltsSortingMain(nuts,bolts,pivotIndex+1,endIndex);
+void nutsAndBoltsSortingMain(vector<char> &nuts,vector<char> &bolts,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int pivotIndex = nabpDivideStep(nuts,bolts[endIndex],startIndex,endIndex);
+    nabpDivideStep(bolts,nuts[pivotIndex],startIndex,endIndex);
+    nutsAndBoltsSortingMain(nuts,bolts,startIndex,pivotIndex-1);
+    nutsAndBoltsSortingMain(nuts,bolts,pivotIndex+1,endIndex);
 }
 
 //Tested
-void nutsAndBlotsProblem(vector<char> &nuts,vector<char> &bolts){
-	if(nuts.size() < 2){
-		return;
-	}
-	nutsAndBoltsSortingMain(nuts,bolts,0,nuts.size()-1);
+void nutsAndBlotsProblem(vector<char> &nuts,vector<char> &bolts) {
+    if(nuts.size() < 2) {
+        return;
+    }
+    nutsAndBoltsSortingMain(nuts,bolts,0,nuts.size()-1);
 }
 
 #endif /* NUTSBLOTSPROBLEM_H_ */

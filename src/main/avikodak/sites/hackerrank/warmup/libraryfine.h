@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define LIBRARYFINE_H_
 
 //Tested
-void getLibraryFine(){
-	unsigned int libDay,libMonth,libYear,userDay,userMonth,userYear;
-	cin >> userDay >> userMonth >> userYear;
-	cin >> libDay >> libMonth >> libYear;
-	unsigned int fineAmount = 0;
-	if(userYear >= libYear){
-		if(userYear > libYear){
-			fineAmount = 10000;
-		}else{
-			if(userMonth >= libMonth){
-				if(userMonth > libMonth){
-					fineAmount = 500 * (userMonth-libMonth);
-				}else{
-					if(userDay > libDay){
-						fineAmount = 15 * (userDay-libDay);
-					}
-				}
-			}
-		}
-	}
-	cout << fineAmount;
+void getLibraryFine() {
+    unsigned int libDay,libMonth,libYear,userDay,userMonth,userYear;
+    cin >> userDay >> userMonth >> userYear;
+    cin >> libDay >> libMonth >> libYear;
+    unsigned int fineAmount = 0;
+    if(userYear >= libYear) {
+        if(userYear > libYear) {
+            fineAmount = 10000;
+        } else {
+            if(userMonth >= libMonth) {
+                if(userMonth > libMonth) {
+                    fineAmount = 500 * (userMonth-libMonth);
+                } else {
+                    if(userDay > libDay) {
+                        fineAmount = 15 * (userDay-libDay);
+                    }
+                }
+            }
+        }
+    }
+    cout << fineAmount;
 }
 
 #endif /* LIBRARYFINE_H_ */

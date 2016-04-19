@@ -71,46 +71,46 @@ using namespace __gnu_cxx;
 #define DRAGNXOR_H_
 
 //Tested
-vector<long long int> generatePowersOf2(){
-	vector<long long int> powersOf2;
-	long long int result = 1;
-	for(long long int counter = 0;counter < 30;counter++){
-		powersOf2.push_back(result);
-		result *= 2;
-	}
-	return powersOf2;
+vector<long long int> generatePowersOf2() {
+    vector<long long int> powersOf2;
+    long long int result = 1;
+    for(long long int counter = 0; counter < 30; counter++) {
+        powersOf2.push_back(result);
+        result *= 2;
+    }
+    return powersOf2;
 }
 
 //Tested
-long long int countSetBits(long long int userInput){
-	long long int totalSetBits = 0;
-	while(userInput){
-		totalSetBits += userInput%2;
-		userInput /= 2;
-	}
-	return totalSetBits;
+long long int countSetBits(long long int userInput) {
+    long long int totalSetBits = 0;
+    while(userInput) {
+        totalSetBits += userInput%2;
+        userInput /= 2;
+    }
+    return totalSetBits;
 }
 
 //Tested
-void printResults(){
-	vector<long long int> powersOf2 = generatePowersOf2();
-	long long int testCases,nValue,firstInput,secondInput,result;
-	long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
-		firstSetBitCount = countSetBits(firstInput);
-		secondSetBitCount = countSetBits(secondInput);
-		firstClearBitCount = nValue - firstSetBitCount;
-		secondClearBitCount = nValue - secondSetBitCount;
-		totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
-		result = 0;
-		while(totalSetBitCount--){
-			result += powersOf2[nValue-1];
-			nValue--;
-		}
-		printf("%lld\n",result);
-	}
+void printResults() {
+    vector<long long int> powersOf2 = generatePowersOf2();
+    long long int testCases,nValue,firstInput,secondInput,result;
+    long long int firstSetBitCount,secondSetBitCount,firstClearBitCount,secondClearBitCount,totalSetBitCount;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld %lld %lld",&nValue,&firstInput,&secondInput);
+        firstSetBitCount = countSetBits(firstInput);
+        secondSetBitCount = countSetBits(secondInput);
+        firstClearBitCount = nValue - firstSetBitCount;
+        secondClearBitCount = nValue - secondSetBitCount;
+        totalSetBitCount = min(firstSetBitCount,secondClearBitCount) + min(secondSetBitCount,firstClearBitCount);
+        result = 0;
+        while(totalSetBitCount--) {
+            result += powersOf2[nValue-1];
+            nValue--;
+        }
+        printf("%lld\n",result);
+    }
 }
 
 #endif /* DRAGNXOR_H_ */

@@ -70,34 +70,34 @@ using namespace __gnu_cxx;
 #ifndef DIOPHANTINEEQUATION_H_
 #define DIOPHANTINEEQUATION_H_
 
-bool isPerfectSquare(unsigned long long int userInput){
-	unsigned long long int sqrtVal = sqrtl(userInput);
-	return sqrtVal*sqrtVal == userInput;
+bool isPerfectSquare(unsigned long long int userInput) {
+    unsigned long long int sqrtVal = sqrtl(userInput);
+    return sqrtVal*sqrtVal == userInput;
 }
 
-unsigned long long int findSolutionDiophantineEqu(unsigned long long int userInput){
-	unsigned long long int counter = 1;
-	unsigned long long int value;
-	while(true){
-		value = 1 + userInput*counter*counter;
-		if(isPerfectSquare(value)){
-			return sqrtl(value);
-		}
-		counter++;
-	}
+unsigned long long int findSolutionDiophantineEqu(unsigned long long int userInput) {
+    unsigned long long int counter = 1;
+    unsigned long long int value;
+    while(true) {
+        value = 1 + userInput*counter*counter;
+        if(isPerfectSquare(value)) {
+            return sqrtl(value);
+        }
+        counter++;
+    }
 }
 
-void printDValForMaxX(){
-	unsigned long long int maxX = 0,dValue,result;
-	for(unsigned long long int counter = 2;counter <= 1000;counter++){
-		cout << counter << endl;
-		result = findSolutionDiophantineEqu(counter);
-		if(maxX < result){
-			maxX = result;
-			dValue = counter;
-		}
-	}
-	cout << dValue << endl;
+void printDValForMaxX() {
+    unsigned long long int maxX = 0,dValue,result;
+    for(unsigned long long int counter = 2; counter <= 1000; counter++) {
+        cout << counter << endl;
+        result = findSolutionDiophantineEqu(counter);
+        if(maxX < result) {
+            maxX = result;
+            dValue = counter;
+        }
+    }
+    cout << dValue << endl;
 }
 
 #endif /* DIOPHANTINEEQUATION_H_ */

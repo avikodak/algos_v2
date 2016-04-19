@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define VANYAANDCUBES_H_
 
 //Tested
-void getMaxHeightPyramid(){
-	unsigned int userInput;
-	scanf("%u",&userInput);
-	unsigned int totalCubes = 1,levelCubes = 1,levelCounter = 1;
-	do{
-		if(totalCubes >= userInput){
-			if(totalCubes == userInput){
-				printf("%u",levelCounter);
-			}else{
-				printf("%u",levelCounter-1);
-			}
-			return;
-		}
-		levelCounter++;
-		levelCubes += levelCounter;
-		totalCubes += levelCubes;
-	}while(1);
+void getMaxHeightPyramid() {
+    unsigned int userInput;
+    scanf("%u",&userInput);
+    unsigned int totalCubes = 1,levelCubes = 1,levelCounter = 1;
+    do {
+        if(totalCubes >= userInput) {
+            if(totalCubes == userInput) {
+                printf("%u",levelCounter);
+            } else {
+                printf("%u",levelCounter-1);
+            }
+            return;
+        }
+        levelCounter++;
+        levelCubes += levelCounter;
+        totalCubes += levelCubes;
+    } while(1);
 }
 #endif /* VANYAANDCUBES_H_ */
 

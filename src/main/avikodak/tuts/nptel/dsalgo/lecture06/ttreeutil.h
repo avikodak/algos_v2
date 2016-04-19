@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ttreeutil.h 
+ *  File Name   		: ttreeutil.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture06\ttreeutil.h
  *  Created on			: Nov 17, 2014 :: 8:45:47 PM
  *  Author				: AVINASH
@@ -69,14 +69,14 @@ using namespace __gnu_cxx;
 #define TTREEUTIL_H_
 
 //Tested
-itNode *getTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0){
-	if(currentIndex >= userInput.size()){
-		return null;
-	}
-	itNode *node = new itNode(userInput[currentIndex]);
-	node->left = getTreeFromVector(userInput,2*currentIndex+1);
-	node->right = getTreeFromVector(userInput,2*currentIndex+2);
-	return node;
+itNode *getTreeFromVector(vector<int> userInput,unsigned int currentIndex = 0) {
+    if(currentIndex >= userInput.size()) {
+        return null;
+    }
+    itNode *node = new itNode(userInput[currentIndex]);
+    node->left = getTreeFromVector(userInput,2*currentIndex+1);
+    node->right = getTreeFromVector(userInput,2*currentIndex+2);
+    return node;
 }
 
 #endif /* TTREEUTIL_H_ */

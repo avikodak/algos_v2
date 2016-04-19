@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregateevenoddnumbers.h 
+ *  File Name   		: segregateevenoddnumbers.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregateevenoddnumbers.h
  *  Created on			: Nov 26, 2014 :: 12:40:07 AM
  *  Author				: AVINASH
@@ -72,88 +72,88 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int startIndex = 0,rearIndex = userInput.size() - 1;
-	while(startIndex < rearIndex){
-		while(userInput[startIndex]%2 == 0){
-			startIndex++;
-		}
-		while(userInput[rearIndex]%2 == 1){
-			rearIndex--;
-		}
-		if(startIndex < rearIndex){
-			swap(userInput[startIndex],userInput[rearIndex]);
-		}
-	}
+void segregateEvenOddNumberQuickDivideStep(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int startIndex = 0,rearIndex = userInput.size() - 1;
+    while(startIndex < rearIndex) {
+        while(userInput[startIndex]%2 == 0) {
+            startIndex++;
+        }
+        while(userInput[rearIndex]%2 == 1) {
+            rearIndex--;
+        }
+        if(startIndex < rearIndex) {
+            swap(userInput[startIndex],userInput[rearIndex]);
+        }
+    }
 }
 
 //Tested
-void segregateEvenOddNumbersAuxspace(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	queue<int> evenAuxspace,oddAuxspace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter]%2 == 0){
-			evenAuxspace.push(userInput[counter]);
-		}else{
-			oddAuxspace.push(userInput[counter]);
-		}
-	}
-	int fillCounter = -1;
-	while(!evenAuxspace.empty()){
-		userInput[++fillCounter] = evenAuxspace.front();
-		evenAuxspace.pop();
-	}
-	while(!oddAuxspace.empty()){
-		userInput[++fillCounter] = oddAuxspace.front();
-		oddAuxspace.pop();
-	}
+void segregateEvenOddNumbersAuxspace(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    queue<int> evenAuxspace,oddAuxspace;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter]%2 == 0) {
+            evenAuxspace.push(userInput[counter]);
+        } else {
+            oddAuxspace.push(userInput[counter]);
+        }
+    }
+    int fillCounter = -1;
+    while(!evenAuxspace.empty()) {
+        userInput[++fillCounter] = evenAuxspace.front();
+        evenAuxspace.pop();
+    }
+    while(!oddAuxspace.empty()) {
+        userInput[++fillCounter] = oddAuxspace.front();
+        oddAuxspace.pop();
+    }
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool seoSortFunc(int firstUserInput,int secondUserInput){
-	return firstUserInput%2 == 0?true:false;
+bool seoSortFunc(int firstUserInput,int secondUserInput) {
+    return firstUserInput%2 == 0?true:false;
 }
 
 //Tested
-void segregateEvenOddNumbers(vector<int> &userInput){
-	sort(userInput.begin(),userInput.end(),seoSortFunc);
+void segregateEvenOddNumbers(vector<int> &userInput) {
+    sort(userInput.begin(),userInput.end(),seoSortFunc);
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void segregateEvenOddNumbersON2(vector<int> &userInput){
-	if(userInput.size() == 0){
-		return;
-	}
-	unsigned int zeroInnerCrawler = 0,oneInnerCrawler;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();){
-		oneInnerCrawler = outerCrawler;
-		while(oneInnerCrawler < userInput.size() && userInput[oneInnerCrawler] % 2 == 0){
-			oneInnerCrawler++;
-		}
-		if(oneInnerCrawler >= userInput.size()){
-			return;
-		}
-		zeroInnerCrawler = oneInnerCrawler + 1;
-		while(zeroInnerCrawler < userInput.size() && userInput[zeroInnerCrawler]%2 == 1){
-			zeroInnerCrawler++;
-		}
-		if(zeroInnerCrawler >= userInput.size()){
-			return;
-		}
-		swap(userInput[zeroInnerCrawler],userInput[oneInnerCrawler]);
-		outerCrawler = oneInnerCrawler;
-	}
+void segregateEvenOddNumbersON2(vector<int> &userInput) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    unsigned int zeroInnerCrawler = 0,oneInnerCrawler;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size();) {
+        oneInnerCrawler = outerCrawler;
+        while(oneInnerCrawler < userInput.size() && userInput[oneInnerCrawler] % 2 == 0) {
+            oneInnerCrawler++;
+        }
+        if(oneInnerCrawler >= userInput.size()) {
+            return;
+        }
+        zeroInnerCrawler = oneInnerCrawler + 1;
+        while(zeroInnerCrawler < userInput.size() && userInput[zeroInnerCrawler]%2 == 1) {
+            zeroInnerCrawler++;
+        }
+        if(zeroInnerCrawler >= userInput.size()) {
+            return;
+        }
+        swap(userInput[zeroInnerCrawler],userInput[oneInnerCrawler]);
+        outerCrawler = oneInnerCrawler;
+    }
 }
 
 #endif /* SEGREGATEEVENODDNUMBERS_H_ */

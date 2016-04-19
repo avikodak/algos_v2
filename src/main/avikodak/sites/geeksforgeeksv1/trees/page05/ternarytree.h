@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ternarytree.h 
+ *  File Name   		: ternarytree.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\ternarytree.h
  *  Created on			: Nov 11, 2014 :: 6:03:18 PM
  *  Author				: AVINASH
@@ -68,56 +68,56 @@ using namespace __gnu_cxx;
 #ifndef TERNARYTREE_H_
 #define TERNARYTREE_H_
 
-void insertTernaryTree(cTernaryNode **ptr,char *userInput){
-	if(*ptr == null  && *userInput == '\0'){
-		return;
-	}
-	if(*userInput == '\0'){
-		(*ptr)->isEnd = true;
-		return;
-	}
-	if(*ptr == null){
-		(*ptr) = new cTernaryNode(*userInput);
-		insertTernaryTree(ptr,userInput+1);
-	}else{
-		if((*ptr)->ch == *userInput){
-			insertTernaryTree(&((*ptr)->equal),userInput+1);
-		}else if((*ptr)->ch > *userInput){
-			insertTernaryTree(&((*ptr)->left),userInput);
-		}else{
-			insertTernaryTree(&((*ptr)->right),userInput);
-		}
-	}
+void insertTernaryTree(cTernaryNode **ptr,char *userInput) {
+    if(*ptr == null  && *userInput == '\0') {
+        return;
+    }
+    if(*userInput == '\0') {
+        (*ptr)->isEnd = true;
+        return;
+    }
+    if(*ptr == null) {
+        (*ptr) = new cTernaryNode(*userInput);
+        insertTernaryTree(ptr,userInput+1);
+    } else {
+        if((*ptr)->ch == *userInput) {
+            insertTernaryTree(&((*ptr)->equal),userInput+1);
+        } else if((*ptr)->ch > *userInput) {
+            insertTernaryTree(&((*ptr)->left),userInput);
+        } else {
+            insertTernaryTree(&((*ptr)->right),userInput);
+        }
+    }
 }
 
-bool search(cTernaryNode *ptr,char *userInput){
-	if(ptr == null){
-		return false;
-	}
-	if(userInput == '\0'){
-		return ptr->isEnd;
-	}
-	char currentChar = *userInput;
-	if(ptr->ch == currentChar){
-		return search(ptr->equal,userInput+1);
-	}else if(ptr->ch > currentChar){
-		return search(ptr->left,userInput);
-	}else{
-		return search(ptr->right,userInput);
-	}
+bool search(cTernaryNode *ptr,char *userInput) {
+    if(ptr == null) {
+        return false;
+    }
+    if(userInput == '\0') {
+        return ptr->isEnd;
+    }
+    char currentChar = *userInput;
+    if(ptr->ch == currentChar) {
+        return search(ptr->equal,userInput+1);
+    } else if(ptr->ch > currentChar) {
+        return search(ptr->left,userInput);
+    } else {
+        return search(ptr->right,userInput);
+    }
 }
 
-void traverse(cTernaryNode *ptr,char *buffer,unsigned int depth){
-	if(ptr == null){
-		return;
-	}
-	traverse(ptr->left,buffer,depth);
-	buffer[depth] = ptr->ch;
-	if(ptr->isEnd){
-		printf("%s\n",buffer);
-	}
-	traverse(ptr->equal,buffer,depth+1);
-	traverse(ptr->right,buffer,depth);
+void traverse(cTernaryNode *ptr,char *buffer,unsigned int depth) {
+    if(ptr == null) {
+        return;
+    }
+    traverse(ptr->left,buffer,depth);
+    buffer[depth] = ptr->ch;
+    if(ptr->isEnd) {
+        printf("%s\n",buffer);
+    }
+    traverse(ptr->equal,buffer,depth+1);
+    traverse(ptr->right,buffer,depth);
 }
 
 #endif /* TERNARYTREE_H_ */

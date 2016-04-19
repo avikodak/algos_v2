@@ -71,40 +71,40 @@ using namespace __gnu_cxx;
 #define SPIRALPRIMES_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(long long int userInput) {
+    long long int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
 //Ans : 26241
-void getLengthOfSquare(){
-	unsigned long int totalNumbers = 1;
-	unsigned long int totalPrimesOnDiagonal = 0;
-	unsigned long int counter = 1,multiplier = 1,length=0;
-	while(true){
-		length++;
-		for(unsigned int innerCounter = 0;innerCounter < 4;innerCounter++){
-			counter = 2*multiplier+counter;
-			if(isNumberPrime(counter)){
-				totalPrimesOnDiagonal++;
-			}
-		}
-		totalNumbers+=4;
-		multiplier++;
-		if(((double(totalPrimesOnDiagonal)/double(totalNumbers))*100) < (double)10){
-			cout << 2*length+1 << endl;
-			return;
-		}
-	}
+void getLengthOfSquare() {
+    unsigned long int totalNumbers = 1;
+    unsigned long int totalPrimesOnDiagonal = 0;
+    unsigned long int counter = 1,multiplier = 1,length=0;
+    while(true) {
+        length++;
+        for(unsigned int innerCounter = 0; innerCounter < 4; innerCounter++) {
+            counter = 2*multiplier+counter;
+            if(isNumberPrime(counter)) {
+                totalPrimesOnDiagonal++;
+            }
+        }
+        totalNumbers+=4;
+        multiplier++;
+        if(((double(totalPrimesOnDiagonal)/double(totalNumbers))*100) < (double)10) {
+            cout << 2*length+1 << endl;
+            return;
+        }
+    }
 }
 
 #endif /* SPIRALPRIMES_H_ */

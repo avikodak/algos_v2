@@ -76,14 +76,14 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SUMOFSERIES_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%lld\n",((input)*(input+1))/2);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%lld\n",((input)*(input+1))/2);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SUMOFSERIES_H_ */

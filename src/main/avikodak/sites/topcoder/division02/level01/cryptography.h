@@ -73,16 +73,16 @@ using namespace __gnu_cxx;
 //Tested
 class Cryptography {
 public:
-	long long encrypt(vector<int> numbers){
-		long long maxProduct  = 0,productOfUserInput = 1;
-		for(unsigned int counter = 0;counter < numbers.size();counter++){
-			productOfUserInput *= numbers[counter];
-		}
-		for(unsigned int counter = 0;counter < numbers.size();counter++){
-			maxProduct = max(maxProduct,(productOfUserInput*(numbers[counter]+1)/numbers[counter]));
-		}
-		return maxProduct;
-	}
+    long long encrypt(vector<int> numbers) {
+        long long maxProduct  = 0,productOfUserInput = 1;
+        for(unsigned int counter = 0; counter < numbers.size(); counter++) {
+            productOfUserInput *= numbers[counter];
+        }
+        for(unsigned int counter = 0; counter < numbers.size(); counter++) {
+            maxProduct = max(maxProduct,(productOfUserInput*(numbers[counter]+1)/numbers[counter]));
+        }
+        return maxProduct;
+    }
 };
 
 #endif /* CRYPTOGRAPHY_H_ */

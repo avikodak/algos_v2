@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kiloman.h 
+ *  File Name   		: kiloman.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\kiloman.h
  *  Created on			: Mar 25, 2015 :: 11:25:49 PM
  *  Author				: avikodak
@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define KILOMAN_H_
 
 //Tested
-class KiloMan{
+class KiloMan {
 public:
-	int hitsTaken(vector<int> pattern,string jumps){
-		int hitCounter = 0;
-		for(unsigned int counter = 0;counter < pattern.size();counter++){
-			if(jumps[counter] == 'S'){
-				if(pattern[counter] <= 2){
-					hitCounter++;
-				}
-			}else{
-				if(pattern[counter] > 2){
-					hitCounter++;
-				}
-			}
-		}
-		return hitCounter;
-	}
+    int hitsTaken(vector<int> pattern,string jumps) {
+        int hitCounter = 0;
+        for(unsigned int counter = 0; counter < pattern.size(); counter++) {
+            if(jumps[counter] == 'S') {
+                if(pattern[counter] <= 2) {
+                    hitCounter++;
+                }
+            } else {
+                if(pattern[counter] > 2) {
+                    hitCounter++;
+                }
+            }
+        }
+        return hitCounter;
+    }
 };
 
 #endif /* KILOMAN_H_ */

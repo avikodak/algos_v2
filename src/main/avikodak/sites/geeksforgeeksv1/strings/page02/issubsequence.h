@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: issubsequence.h 
+ *  File Name   		: issubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page02\issubsequence.h
  *  Created on			: Jan 21, 2015 :: 8:18:24 AM
  *  Author				: AVINASH

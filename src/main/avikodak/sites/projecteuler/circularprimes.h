@@ -71,92 +71,92 @@ using namespace __gnu_cxx;
 #define CIRCULARPRIMES_H_
 
 //Tested
-bool isNumberPrime(unsigned int userInput){
-	unsigned int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(unsigned int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(unsigned int userInput) {
+    unsigned int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(unsigned int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-unsigned int totalDigitCount(unsigned int userInput,unsigned int &multiplier){
-	unsigned int digitCounter = 0;
-	while(userInput){
-		digitCounter++;
-		userInput /= 10;
-		multiplier *= 10;
-	}
-	return digitCounter;
+unsigned int totalDigitCount(unsigned int userInput,unsigned int &multiplier) {
+    unsigned int digitCounter = 0;
+    while(userInput) {
+        digitCounter++;
+        userInput /= 10;
+        multiplier *= 10;
+    }
+    return digitCounter;
 }
 
 //Tested
-unsigned int shiftRight(unsigned int userInput,unsigned int multiplier){
-	unsigned int lastDigit = userInput%10;
-	userInput/=10;
-	unsigned int sum = multiplier*lastDigit;
-	userInput = userInput + sum;
-	return userInput;
+unsigned int shiftRight(unsigned int userInput,unsigned int multiplier) {
+    unsigned int lastDigit = userInput%10;
+    userInput/=10;
+    unsigned int sum = multiplier*lastDigit;
+    userInput = userInput + sum;
+    return userInput;
 }
 
 //Tested
-bool isNumberCircular(unsigned int userInput,map<unsigned int,bool> primeNumberMap){
-	unsigned int multiplier = 1;
-	unsigned int digitCount = totalDigitCount(userInput,multiplier);
-	if(digitCount == 1){
-		return true;
-	}
-	for(unsigned int counter = 0;counter < digitCount;counter++){
-		userInput = shiftRight(userInput,multiplier/10);
-		if(primeNumberMap.find(userInput) == primeNumberMap.end()){
-			return false;
-		}
-	}
-	return true;
+bool isNumberCircular(unsigned int userInput,map<unsigned int,bool> primeNumberMap) {
+    unsigned int multiplier = 1;
+    unsigned int digitCount = totalDigitCount(userInput,multiplier);
+    if(digitCount == 1) {
+        return true;
+    }
+    for(unsigned int counter = 0; counter < digitCount; counter++) {
+        userInput = shiftRight(userInput,multiplier/10);
+        if(primeNumberMap.find(userInput) == primeNumberMap.end()) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-bool hasValidDigits(unsigned int userInput){
-	if(userInput == 5 || userInput == 2){
-		return true;
-	}
-	while(userInput){
-		if(userInput%2 == 0 || userInput%10 == 5){
-			return false;
-		}
-		userInput /= 10;
-	}
-	return true;
+bool hasValidDigits(unsigned int userInput) {
+    if(userInput == 5 || userInput == 2) {
+        return true;
+    }
+    while(userInput) {
+        if(userInput%2 == 0 || userInput%10 == 5) {
+            return false;
+        }
+        userInput /= 10;
+    }
+    return true;
 }
 
 //Tested
 //Ans : 55
-void getCircularPrimeCount(){
-	map<unsigned int,bool> primeNumberMap;
-	map<unsigned int,bool>::iterator itToPrimeNumberMap;
-	primeNumberMap.insert(pair<unsigned int,bool>(2,true));
-	vector<unsigned int> validNumber;
-	validNumber.push_back(2);
-	for(unsigned int counter = 3;counter < 1000000;counter+=2){
-		if(isNumberPrime(counter)){
-			primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
-			if(hasValidDigits(counter)){
-				validNumber.push_back(counter);
-			}
-		}
-	}
-	unsigned int totalCount = 0;
-	for(unsigned int counter = 0;counter < validNumber.size();counter++){
-		if(isNumberCircular(validNumber[counter],primeNumberMap)){
-			totalCount++;
-		}
-	}
-	cout << totalCount << endl;
+void getCircularPrimeCount() {
+    map<unsigned int,bool> primeNumberMap;
+    map<unsigned int,bool>::iterator itToPrimeNumberMap;
+    primeNumberMap.insert(pair<unsigned int,bool>(2,true));
+    vector<unsigned int> validNumber;
+    validNumber.push_back(2);
+    for(unsigned int counter = 3; counter < 1000000; counter+=2) {
+        if(isNumberPrime(counter)) {
+            primeNumberMap.insert(pair<unsigned int,bool>(counter,true));
+            if(hasValidDigits(counter)) {
+                validNumber.push_back(counter);
+            }
+        }
+    }
+    unsigned int totalCount = 0;
+    for(unsigned int counter = 0; counter < validNumber.size(); counter++) {
+        if(isNumberCircular(validNumber[counter],primeNumberMap)) {
+            totalCount++;
+        }
+    }
+    cout << totalCount << endl;
 }
 
 #endif /* CIRCULARPRIMES_H_ */

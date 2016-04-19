@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define CHEFSTLT_H_
 
 //Tested
-void maxMinDifference(string first,string second){
-	unsigned int minVal = 0,maxVal = 0;
-	for(unsigned int counter = 0;counter < first.size();counter++){
-		if(first[counter] == '?' ||  second[counter] == '?'){
-			maxVal++;
-		}else if(first[counter] != second[counter]){
-			minVal++;
-		}
-	}
-	cout << minVal << " " << minVal + maxVal << endl;
+void maxMinDifference(string first,string second) {
+    unsigned int minVal = 0,maxVal = 0;
+    for(unsigned int counter = 0; counter < first.size(); counter++) {
+        if(first[counter] == '?' ||  second[counter] == '?') {
+            maxVal++;
+        } else if(first[counter] != second[counter]) {
+            minVal++;
+        }
+    }
+    cout << minVal << " " << minVal + maxVal << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string first,second;
-	while(testCases--){
-		cin >> first >> second;
-		maxMinDifference(first,second);
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string first,second;
+    while(testCases--) {
+        cin >> first >> second;
+        maxMinDifference(first,second);
+    }
 }
 
 #endif /* CHEFSTLT_H_ */

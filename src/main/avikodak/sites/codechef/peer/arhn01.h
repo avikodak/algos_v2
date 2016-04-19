@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 #define ARHN01_H_
 
 //Tested
-void printResults(){
-	long int a,b,c;
-	while(true){
-		scanf("%ld %ld %ld",&a,&b,&c);
-		if(a == 0 && b == 0 && c == 0){
-			break;
-		}
-		if(b-a == c-b){
-			printf("AP %ld\n",c+c-b);
-		}else{
-			printf("GP %ld\n",(c*(c/b)));
-		}
-	}
+void printResults() {
+    long int a,b,c;
+    while(true) {
+        scanf("%ld %ld %ld",&a,&b,&c);
+        if(a == 0 && b == 0 && c == 0) {
+            break;
+        }
+        if(b-a == c-b) {
+            printf("AP %ld\n",c+c-b);
+        } else {
+            printf("GP %ld\n",(c*(c/b)));
+        }
+    }
 }
 
 #endif /* ARHN01_H_ */

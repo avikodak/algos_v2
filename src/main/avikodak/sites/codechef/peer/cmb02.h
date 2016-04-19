@@ -72,37 +72,37 @@ using namespace __gnu_cxx;
 #define CMB02_H_
 
 //Tested
-unsigned int reverse(unsigned int userInput){
-	unsigned int result = 0;
-	while(userInput){
-		result = (result << 3) + (result << 1) +(userInput%10);
-		userInput/=10;
-	}
-	return result;
+unsigned int reverse(unsigned int userInput) {
+    unsigned int result = 0;
+    while(userInput) {
+        result = (result << 3) + (result << 1) +(userInput%10);
+        userInput/=10;
+    }
+    return result;
 }
 
 //Tested
-bool isPalindrome(unsigned int userInput){
-	return reverse(userInput) == userInput;
+bool isPalindrome(unsigned int userInput) {
+    return reverse(userInput) == userInput;
 }
 
 //Tested
-void printSmallestPalindrome(unsigned int userInput){
-	userInput++;
-	while(!isPalindrome(userInput)){
-		userInput++;
-	}
-	cout << userInput << endl;
+void printSmallestPalindrome(unsigned int userInput) {
+    userInput++;
+    while(!isPalindrome(userInput)) {
+        userInput++;
+    }
+    cout << userInput << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printSmallestPalindrome(input);
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printSmallestPalindrome(input);
+    }
 }
 
 #endif /* CMB02_H_ */

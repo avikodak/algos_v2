@@ -75,39 +75,41 @@ using namespace __gnu_cxx;
 
 //Tested
 inline long long int scan() {
-	long long int t=0,neg=0;
-	char c;
-	c=gc();
-	while((c<'0' || c>'9')&& c!='-')
-		c=gc();
-	if(c=='-') {neg=1;c=gc();}
-	while(c>='0' && c<='9')
-	{
-		t=(t<<3)+(t<<1)+c-'0';
-		c=gc();
-	}
-	if(neg) t=-t;
-	return(t);
+    long long int t=0,neg=0;
+    char c;
+    c=gc();
+    while((c<'0' || c>'9')&& c!='-')
+        c=gc();
+    if(c=='-') {
+        neg=1;
+        c=gc();
+    }
+    while(c>='0' && c<='9') {
+        t=(t<<3)+(t<<1)+c-'0';
+        c=gc();
+    }
+    if(neg) t=-t;
+    return(t);
 }
 
 //Tested
-void printResults(){
-	long long int testCases,userInput,kValue;
-	testCases = scan();
-	while(testCases--){
-		userInput = scan();
-		kValue = scan();
-		if(kValue == 1){
-			cout << userInput << endl;
-		}else{
-			long long int sum = 0;
-			while(userInput){
-				sum += (userInput%kValue);
-				userInput /= kValue;
-			}
-			cout << sum << endl;
-		}
-	}
+void printResults() {
+    long long int testCases,userInput,kValue;
+    testCases = scan();
+    while(testCases--) {
+        userInput = scan();
+        kValue = scan();
+        if(kValue == 1) {
+            cout << userInput << endl;
+        } else {
+            long long int sum = 0;
+            while(userInput) {
+                sum += (userInput%kValue);
+                userInput /= kValue;
+            }
+            cout << sum << endl;
+        }
+    }
 }
 
 #endif /* IITK2P01_H_ */

@@ -70,46 +70,46 @@ using namespace __gnu_cxx;
 #ifndef EQUAL_H_
 #define EQUAL_H_
 
-unsigned int getMinNumberOperations(vector<unsigned int> userInput){
-	sort(userInput.begin(),userInput.end());
-	unsigned int prevIndex = 1;
-	while(prevIndex < userInput.size() && userInput[prevIndex] == userInput[0]){
-		prevIndex++;
-	}
-	unsigned int minOperations = 0;
-	if(prevIndex >= userInput.size()){
-		return minOperations;
-	}
-	unsigned int difference,crawler = prevIndex;
-	prevIndex = 0;
-	unsigned int cummulativeIncrement = 0;
-	while(crawler < userInput.size()){
-		difference = (cummulativeIncrement + userInput[crawler]) - userInput[prevIndex];
-		cummulativeIncrement = difference;
-		minOperations += difference/5;
-		difference = difference%5;
-		minOperations += difference/2;
-		difference = difference%2;
-		minOperations += difference;
-		prevIndex = crawler;
-		crawler++;
-	}
-	return minOperations;
+unsigned int getMinNumberOperations(vector<unsigned int> userInput) {
+    sort(userInput.begin(),userInput.end());
+    unsigned int prevIndex = 1;
+    while(prevIndex < userInput.size() && userInput[prevIndex] == userInput[0]) {
+        prevIndex++;
+    }
+    unsigned int minOperations = 0;
+    if(prevIndex >= userInput.size()) {
+        return minOperations;
+    }
+    unsigned int difference,crawler = prevIndex;
+    prevIndex = 0;
+    unsigned int cummulativeIncrement = 0;
+    while(crawler < userInput.size()) {
+        difference = (cummulativeIncrement + userInput[crawler]) - userInput[prevIndex];
+        cummulativeIncrement = difference;
+        minOperations += difference/5;
+        difference = difference%5;
+        minOperations += difference/2;
+        difference = difference%2;
+        minOperations += difference;
+        prevIndex = crawler;
+        crawler++;
+    }
+    return minOperations;
 }
 
-void printMinNumberOperations(){
-	unsigned int testCases,inputSize,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u",&inputSize);
-		userInput.clear();
-		while(inputSize--){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		cout << getMinNumberOperations(userInput) << endl;
-	}
+void printMinNumberOperations() {
+    unsigned int testCases,inputSize,input;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u",&inputSize);
+        userInput.clear();
+        while(inputSize--) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        cout << getMinNumberOperations(userInput) << endl;
+    }
 }
 
 

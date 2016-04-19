@@ -73,14 +73,14 @@ using namespace __gnu_cxx;
 #define CDWRS01_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	double radius;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lf",&radius);
-		printf("%.6f\n",(2*radius)/sqrt(2));
-	}
+void printResults() {
+    unsigned int testCases;
+    double radius;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lf",&radius);
+        printf("%.6f\n",(2*radius)/sqrt(2));
+    }
 }
 
 #endif /* CDWRS01_H_ */

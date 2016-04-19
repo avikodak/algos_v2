@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 #define LUCKY5_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	long long minOperations;
-	while(testCases--){
-		cin >> userInput;
-		minOperations = 0;
-		for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] != '4' && userInput[counter] != '7'){
-				minOperations++;
-			}
-		}
-		cout << minOperations << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    long long minOperations;
+    while(testCases--) {
+        cin >> userInput;
+        minOperations = 0;
+        for(unsigned long long int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] != '4' && userInput[counter] != '7') {
+                minOperations++;
+            }
+        }
+        cout << minOperations << endl;
+    }
 }
 
 #endif /* LUCKY5_H_ */

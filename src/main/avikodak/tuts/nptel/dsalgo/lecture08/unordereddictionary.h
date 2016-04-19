@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: unordereddictionary.h 
+ *  File Name   		: unordereddictionary.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\unordereddictionary.h
  *  Created on			: Nov 19, 2014 :: 12:55:04 AM
  *  Author				: AVINASH
@@ -70,78 +70,78 @@ using namespace __gnu_cxx;
 
 class unordereddict {
 private:
-	dillNode *head;
+    dillNode *head;
 public:
-	void insert(int value){
-		if(head == null){
-			head = new dillNode(value);
-			return;
-		}
-		dillNode *crawler = head;
-		while(crawler->next != null){
-			if(crawler->value == value){
-				return;
-			}
-			crawler = crawler->next;
-		}
-		crawler->next = new dillNode(value);
-	}
+    void insert(int value) {
+        if(head == null) {
+            head = new dillNode(value);
+            return;
+        }
+        dillNode *crawler = head;
+        while(crawler->next != null) {
+            if(crawler->value == value) {
+                return;
+            }
+            crawler = crawler->next;
+        }
+        crawler->next = new dillNode(value);
+    }
 
-	void remove(int value){
-		if(head == null){
-			return;
-		}
-		dillNode *nodeToBeDeleted,*crawler = head;
-		if(head->value == value){
-			nodeToBeDeleted = head;
-			head = head->next;
-			free(nodeToBeDeleted);
-			return;
-		}
-		while(crawler->next != null){
-			if(crawler->next->value == value){
-				nodeToBeDeleted = crawler->next;
-				crawler->next = crawler->next->next;
-				free(nodeToBeDeleted);
-				return;
-			}
-			crawler = crawler->next;
-		}
-	}
+    void remove(int value) {
+        if(head == null) {
+            return;
+        }
+        dillNode *nodeToBeDeleted,*crawler = head;
+        if(head->value == value) {
+            nodeToBeDeleted = head;
+            head = head->next;
+            free(nodeToBeDeleted);
+            return;
+        }
+        while(crawler->next != null) {
+            if(crawler->next->value == value) {
+                nodeToBeDeleted = crawler->next;
+                crawler->next = crawler->next->next;
+                free(nodeToBeDeleted);
+                return;
+            }
+            crawler = crawler->next;
+        }
+    }
 
-	bool search(int value){
-		dillNode *crawler = head;
-		while(crawler != null){
-			if(crawler->value == value){
-				return true;
-			}
-		}
-		return false;
-	}
+    bool search(int value) {
+        dillNode *crawler = head;
+        while(crawler != null) {
+            if(crawler->value == value) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	int predecessor(int value){
-		dillNode *crawler = head;
-		int predecessor = INT_MIN;
-		while(crawler != null){
-			if(crawler->value < value){
-				predecessor = max(predecessor,crawler->value);
-			}
-			crawler = crawler->next;
-		}
-		return predecessor;
-	}
+    int predecessor(int value) {
+        dillNode *crawler = head;
+        int predecessor = INT_MIN;
+        while(crawler != null) {
+            if(crawler->value < value) {
+                predecessor = max(predecessor,crawler->value);
+            }
+            crawler = crawler->next;
+        }
+        return predecessor;
+    }
 
-	int successor(int value){
-		dillNode *crawler = head;
-		int successor = INT_MAX;
-		while(crawler != null){
-			if(crawler->value > value){
-				successor = min(successor,crawler->value);
-			}
-			crawler = crawler->next;
-		}
-		return successor;
-	}
+    int successor(int value) {
+        dillNode *crawler = head;
+        int successor = INT_MAX;
+        while(crawler != null) {
+            if(crawler->value > value) {
+                successor = min(successor,crawler->value);
+            }
+            crawler = crawler->next;
+        }
+        return successor;
+    }
 };
 
 #endif /* UNORDEREDDICTIONARY_H_ */

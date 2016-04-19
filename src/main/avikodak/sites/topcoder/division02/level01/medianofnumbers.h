@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: medianofnumbers.h 
+ *  File Name   		: medianofnumbers.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\medianofnumbers.h
  *  Created on			: Mar 28, 2015 :: 11:41:09 PM
  *  Author				: avikodak
@@ -70,15 +70,15 @@ using namespace __gnu_cxx;
 #ifndef MEDIANOFNUMBERS_H_
 #define MEDIANOFNUMBERS_H_
 
-class MedianOfNumbers{
+class MedianOfNumbers {
 public:
-	int findMedian(vector<int> numbers){
-		if(numbers.size()%2 == 0){
-			return -1;
-		}
-		sort(numbers.begin(),numbers.end());
-		return numbers[numbers.size()/2];
-	}
+    int findMedian(vector<int> numbers) {
+        if(numbers.size()%2 == 0) {
+            return -1;
+        }
+        sort(numbers.begin(),numbers.end());
+        return numbers[numbers.size()/2];
+    }
 };
 
 #endif /* MEDIANOFNUMBERS_H_ */

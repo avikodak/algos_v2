@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: preordertraversal.h 
+ *  File Name   		: preordertraversal.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\preordertraversal.h
  *  Created on			: Nov 17, 2014 :: 11:06:58 PM
  *  Author				: AVINASH
@@ -72,61 +72,61 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void preOrderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	printf("%d\t",ptr->value);
-	preOrderTraversal(ptr->left);
-	preOrderTraversal(ptr->right);
+void preOrderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    printf("%d\t",ptr->value);
+    preOrderTraversal(ptr->left);
+    preOrderTraversal(ptr->right);
 }
 
 //Tested
-void preOrderTraversalIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode;
-	auxSpace.push(ptr);
-	while(!auxSpace.empty()){
-		currentNode = auxSpace.top();
-		auxSpace.pop();
-		printf("%d\t",currentNode->value);
-		if(currentNode->right != null){
-			auxSpace.push(currentNode->right);
-		}
-		if(currentNode->left != null){
-			auxSpace.push(currentNode->left);
-		}
-	}
+void preOrderTraversalIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode;
+    auxSpace.push(ptr);
+    while(!auxSpace.empty()) {
+        currentNode = auxSpace.top();
+        auxSpace.pop();
+        printf("%d\t",currentNode->value);
+        if(currentNode->right != null) {
+            auxSpace.push(currentNode->right);
+        }
+        if(currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+        }
+    }
 }
 
 //Tested
-void morrisPreorderTraversal(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *currentNode = ptr,*temp;
-	while(currentNode != null){
-		if(currentNode->left != null){
-			temp = currentNode->left;
-			while(temp->right != null && temp->right != currentNode){
-				temp = temp->right;
-			}
-			if(temp->right == null){
-				temp->right = currentNode;
-				printf("%d\t",currentNode->value);
-				currentNode = currentNode->left;
-			}else{
-				temp->right = null;
-				currentNode = currentNode->right;
-			}
-		}else{
-			printf("%d\t",currentNode->value);
-			currentNode = currentNode->right;
-		}
-	}
+void morrisPreorderTraversal(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *currentNode = ptr,*temp;
+    while(currentNode != null) {
+        if(currentNode->left != null) {
+            temp = currentNode->left;
+            while(temp->right != null && temp->right != currentNode) {
+                temp = temp->right;
+            }
+            if(temp->right == null) {
+                temp->right = currentNode;
+                printf("%d\t",currentNode->value);
+                currentNode = currentNode->left;
+            } else {
+                temp->right = null;
+                currentNode = currentNode->right;
+            }
+        } else {
+            printf("%d\t",currentNode->value);
+            currentNode = currentNode->right;
+        }
+    }
 }
 
 #endif /* PREORDERTRAVERSAL_H_ */

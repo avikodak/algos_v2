@@ -72,25 +72,25 @@ using namespace __gnu_cxx;
 #define VITC05_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size;
-	long long int input,minDifference;
-	scanf("%u",&testCases);
-	vector<long long int> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		minDifference = LONG_LONG_MAX;
-		sort(userInput.begin(),userInput.end());
-		for(unsigned int counter = 0;counter < userInput.size()-1;counter++){
-			minDifference = min(minDifference,userInput[counter+1]-userInput[counter]);
-		}
-		cout << minDifference << endl;
-	}
+void printResults() {
+    unsigned int testCases,size;
+    long long int input,minDifference;
+    scanf("%u",&testCases);
+    vector<long long int> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        minDifference = LONG_LONG_MAX;
+        sort(userInput.begin(),userInput.end());
+        for(unsigned int counter = 0; counter < userInput.size()-1; counter++) {
+            minDifference = min(minDifference,userInput[counter+1]-userInput[counter]);
+        }
+        cout << minDifference << endl;
+    }
 }
 
 #endif /* VITC05_H_ */

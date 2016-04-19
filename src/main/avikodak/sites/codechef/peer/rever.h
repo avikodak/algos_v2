@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 #define REVER_H_
 
 //Tested
-void printResults(){
-	long long int testCases;
-	string userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		printf("%s\n",(int((userInput[0])-'0'))%2 == 0?"EVEN":"ODD");
-	}
+void printResults() {
+    long long int testCases;
+    string userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        printf("%s\n",(int((userInput[0])-'0'))%2 == 0?"EVEN":"ODD");
+    }
 }
 
 #endif /* REVER_H_ */

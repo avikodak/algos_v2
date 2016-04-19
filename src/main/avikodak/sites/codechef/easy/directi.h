@@ -72,40 +72,40 @@ using namespace __gnu_cxx;
 #define DIRECTI_H_
 
 //Tested
-void reverseDirections(){
-	unsigned int size;
-	scanf("%u",&size);
-	string userInput;
-	getline(cin,userInput);
-	stack<string> place,direction;
-	while(size--){
-		getline(cin,userInput);
-		if(userInput[0] == 'B'||userInput[0] == 'b'){
-			place.push(userInput.substr(9));
-		}else if(userInput[0] == 'L' || userInput[0] == 'l'){
-			place.push(userInput.substr(8));
-			direction.push("Right on ");
-		}else if(userInput[0] == 'R' || userInput[0] == 'r'){
-			place.push(userInput.substr(9));
-			direction.push("Left on ");
-		}
-	}
-	cout << "Begin on " << place.top() << endl;
-	place.pop();
-	while(!place.empty()){
-		cout << direction.top() << place.top() << endl;
-		place.pop();
-		direction.pop();
-	}
+void reverseDirections() {
+    unsigned int size;
+    scanf("%u",&size);
+    string userInput;
+    getline(cin,userInput);
+    stack<string> place,direction;
+    while(size--) {
+        getline(cin,userInput);
+        if(userInput[0] == 'B'||userInput[0] == 'b') {
+            place.push(userInput.substr(9));
+        } else if(userInput[0] == 'L' || userInput[0] == 'l') {
+            place.push(userInput.substr(8));
+            direction.push("Right on ");
+        } else if(userInput[0] == 'R' || userInput[0] == 'r') {
+            place.push(userInput.substr(9));
+            direction.push("Left on ");
+        }
+    }
+    cout << "Begin on " << place.top() << endl;
+    place.pop();
+    while(!place.empty()) {
+        cout << direction.top() << place.top() << endl;
+        place.pop();
+        direction.pop();
+    }
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	while(testCases--){
-		reverseDirections();
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        reverseDirections();
+    }
 }
 
 #endif /* DIRECTI_H_ */

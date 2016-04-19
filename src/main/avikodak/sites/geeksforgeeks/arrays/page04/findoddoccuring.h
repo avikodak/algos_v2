@@ -78,82 +78,82 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int findOddOccuringVal(int userInput[],int size){
-	int xorValue = 0;
-	for(unsigned int counter = 0;counter < size;counter++){
-		xorValue ^= userInput[counter];
-	}
-	return xorValue;
+int findOddOccuringVal(int userInput[],int size) {
+    int xorValue = 0;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        xorValue ^= userInput[counter];
+    }
+    return xorValue;
 }
 
-int findOddOccuringValHashMap(int userInput[],int size){
-	if(size == 0){
-		return INT_MIN;
-	}
-	hash_map<int,unsigned int> frequencyMap;
-	hash_map<int,unsigned int>::iterator itToFrequencyMap;
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(frequencyMap.find(userInput[counter]) == frequencyMap.end()){
-			frequencyMap[userInput[counter]] = 1;
-		}else{
-			frequencyMap[userInput[counter]]++;
-		}
-	}
-	for(itToFrequencyMap = frequencyMap.begin();itToFrequencyMap != frequencyMap.end();itToFrequencyMap++){
-		if(itToFrequencyMap->second&1){
-			return itToFrequencyMap->first;
-		}
-	}
-	return INT_MIN;
+int findOddOccuringValHashMap(int userInput[],int size) {
+    if(size == 0) {
+        return INT_MIN;
+    }
+    hash_map<int,unsigned int> frequencyMap;
+    hash_map<int,unsigned int>::iterator itToFrequencyMap;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(frequencyMap.find(userInput[counter]) == frequencyMap.end()) {
+            frequencyMap[userInput[counter]] = 1;
+        } else {
+            frequencyMap[userInput[counter]]++;
+        }
+    }
+    for(itToFrequencyMap = frequencyMap.begin(); itToFrequencyMap != frequencyMap.end(); itToFrequencyMap++) {
+        if(itToFrequencyMap->second&1) {
+            return itToFrequencyMap->first;
+        }
+    }
+    return INT_MIN;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
-int findOddOccuringValONLOGN(int userInput[],int size){
-	if(size == 0){
-		return INT_MIN;
-	}
-	sort(userInput,userInput+size);
-	unsigned int outerCrawler = 0,innerCrawler,frequency = 0;
-	while(outerCrawler < size){
-		frequency = 0;
-		innerCrawler = outerCrawler;
-		while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]){
-			frequency++;
-		}
-		if(frequency&1){
-			return userInput[outerCrawler];
-		}
-		outerCrawler += frequency;
-	}
-	return INT_MIN;
+int findOddOccuringValONLOGN(int userInput[],int size) {
+    if(size == 0) {
+        return INT_MIN;
+    }
+    sort(userInput,userInput+size);
+    unsigned int outerCrawler = 0,innerCrawler,frequency = 0;
+    while(outerCrawler < size) {
+        frequency = 0;
+        innerCrawler = outerCrawler;
+        while(innerCrawler < size && userInput[innerCrawler] == userInput[outerCrawler]) {
+            frequency++;
+        }
+        if(frequency&1) {
+            return userInput[outerCrawler];
+        }
+        outerCrawler += frequency;
+    }
+    return INT_MIN;
 }
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-int findOddOccuringValON2(int userInput[],int size){
-	if(size == 0){
-		return INT_MIN;
-	}
-	hash_map<int,bool> valPresenceMap;
-	unsigned int frequency = 0;
-	for(unsigned int outerCrawler = 0;outerCrawler < size;outerCrawler++){
-		if(valPresenceMap.find(userInput[outerCrawler]) == valPresenceMap.end()){
-			frequency = 0;
-			for(unsigned int innerCrawler = outerCrawler;innerCrawler < size;innerCrawler++){
-				if(userInput[outerCrawler] == userInput[innerCrawler]){
-					frequency++;
-				}
-			}
-			if(frequency&2){
-				return userInput[outerCrawler];
-			}
-			valPresenceMap.insert(pair<int,bool>(userInput[outerCrawler],true));
-		}
-	}
-	return INT_MIN;
+int findOddOccuringValON2(int userInput[],int size) {
+    if(size == 0) {
+        return INT_MIN;
+    }
+    hash_map<int,bool> valPresenceMap;
+    unsigned int frequency = 0;
+    for(unsigned int outerCrawler = 0; outerCrawler < size; outerCrawler++) {
+        if(valPresenceMap.find(userInput[outerCrawler]) == valPresenceMap.end()) {
+            frequency = 0;
+            for(unsigned int innerCrawler = outerCrawler; innerCrawler < size; innerCrawler++) {
+                if(userInput[outerCrawler] == userInput[innerCrawler]) {
+                    frequency++;
+                }
+            }
+            if(frequency&2) {
+                return userInput[outerCrawler];
+            }
+            valPresenceMap.insert(pair<int,bool>(userInput[outerCrawler],true));
+        }
+    }
+    return INT_MIN;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_ARRAYS_PAGE04_FINDODDOCCURING_H_ */

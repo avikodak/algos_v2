@@ -76,32 +76,32 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MOVEALLZEROETOEND_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	vector<long long int> userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		while(size--){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		unsigned int fillIndex = 0;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(userInput[counter] != 0){
-				userInput[fillIndex++] = userInput[counter];
-			}
-		}
-		for(;fillIndex < userInput.size();fillIndex++){
-			userInput[fillIndex] = 0;
-		}
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			printf("%lld ",userInput[counter]);
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    vector<long long int> userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        while(size--) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        unsigned int fillIndex = 0;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(userInput[counter] != 0) {
+                userInput[fillIndex++] = userInput[counter];
+            }
+        }
+        for(; fillIndex < userInput.size(); fillIndex++) {
+            userInput[fillIndex] = 0;
+        }
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            printf("%lld ",userInput[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MOVEALLZEROETOEND_H_ */

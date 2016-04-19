@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: loveletter.h 
+ *  File Name   		: loveletter.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\warmup\loveletter.h
  *  Created on			: Jan 30, 2015 :: 9:19:14 AM
  *  Author				: AVINASH
@@ -74,19 +74,19 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int loveLetterMystery(char *userInput){
-	if(userInput == null || userInput == '\0'){
-		return 0;
-	}
-	int totalReductions = 0;
-	int lengthOfString = strlen(userInput);
-	int startCounter = 0,endCounter = lengthOfString-1;
-	while(startCounter < endCounter){
-		totalReductions += max(userInput[startCounter],userInput[endCounter]) - min(userInput[startCounter],userInput[endCounter]);
-		startCounter++;
-		endCounter--;
-	}
-	return totalReductions;
+int loveLetterMystery(char *userInput) {
+    if(userInput == null || userInput == '\0') {
+        return 0;
+    }
+    int totalReductions = 0;
+    int lengthOfString = strlen(userInput);
+    int startCounter = 0,endCounter = lengthOfString-1;
+    while(startCounter < endCounter) {
+        totalReductions += max(userInput[startCounter],userInput[endCounter]) - min(userInput[startCounter],userInput[endCounter]);
+        startCounter++;
+        endCounter--;
+    }
+    return totalReductions;
 }
 
 #endif /* LOVELETTER_H_ */

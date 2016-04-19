@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define MARKANDTOYS_H_
 
 //Tested
-void getTotalCountToys(){
+void getTotalCountToys() {
     unsigned int inputSize;
-	long long money,input;
-	vector<long long> userInput;
-	cin >> inputSize >> money;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		cin >> input;
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end());
-	unsigned int counter = 0,totalToys = 0;
-	while(counter < inputSize && money > 0 && userInput[counter] <= money){
-		money -= userInput[counter];
-		totalToys++;
-		counter++;
-	}
-	cout << totalToys;
+    long long money,input;
+    vector<long long> userInput;
+    cin >> inputSize >> money;
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        cin >> input;
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end());
+    unsigned int counter = 0,totalToys = 0;
+    while(counter < inputSize && money > 0 && userInput[counter] <= money) {
+        money -= userInput[counter];
+        totalToys++;
+        counter++;
+    }
+    cout << totalToys;
 }
 
 #endif /* MARKANDTOYS_H_ */

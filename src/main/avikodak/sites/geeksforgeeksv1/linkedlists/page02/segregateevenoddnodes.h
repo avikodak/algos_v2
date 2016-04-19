@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: segregateevenoddnodes.h 
+ *  File Name   		: segregateevenoddnodes.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\segregateevenoddnodes.h
  *  Created on			: Oct 30, 2014 :: 10:58:43 AM
  *  Author				: AVINASH
@@ -72,114 +72,114 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 
-void swapValue(sillNode *firstPtr,sillNode *secondPtr){
-	int temp = firstPtr->value;
-	firstPtr->value = secondPtr->value;
-	secondPtr->value = temp;
+void swapValue(sillNode *firstPtr,sillNode *secondPtr) {
+    int temp = firstPtr->value;
+    firstPtr->value = secondPtr->value;
+    secondPtr->value = temp;
 }
 
-void segregateEvenOddNodes(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *tail = (*ptr),*crawler = (*ptr),*ptrToFirstOddNode = null,*ptrToFirstEvenNode;
-	while(tail->next != null){
-		tail = tail->next;
-	}
-	while(crawler != ptrToFirstOddNode){
-		if(crawler->value % 2 == 0){
-			if(ptrToFirstEvenNode == null){
-				ptrToFirstEvenNode = crawler;
-			}
-			crawler = crawler->next;
-		}else{
-			if(ptrToFirstOddNode == null){
-				ptrToFirstOddNode = crawler;
-			}
-			if(crawler->next != null){
-				swapValue(crawler,crawler->next);
-				tail->next = crawler->next;
-				crawler->next = crawler->next->next;
-				tail = tail->next;
-				tail->next = null;
-			}
-		}
-	}
+void segregateEvenOddNodes(sillNode **ptr) {
+    if(*ptr == null || (*ptr)->next == null) {
+        return;
+    }
+    sillNode *tail = (*ptr),*crawler = (*ptr),*ptrToFirstOddNode = null,*ptrToFirstEvenNode;
+    while(tail->next != null) {
+        tail = tail->next;
+    }
+    while(crawler != ptrToFirstOddNode) {
+        if(crawler->value % 2 == 0) {
+            if(ptrToFirstEvenNode == null) {
+                ptrToFirstEvenNode = crawler;
+            }
+            crawler = crawler->next;
+        } else {
+            if(ptrToFirstOddNode == null) {
+                ptrToFirstOddNode = crawler;
+            }
+            if(crawler->next != null) {
+                swapValue(crawler,crawler->next);
+                tail->next = crawler->next;
+                crawler->next = crawler->next->next;
+                tail = tail->next;
+                tail->next = null;
+            }
+        }
+    }
 }
 
-void segregateEventOddNodesTwoPtrs(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	sillNode *evenHead = null,*oddHead = null,*evenCrawler = null,*oddCrawler = null,*crawler = (*ptr);
-	while(crawler != null){
-		if(crawler->value % 2 == 0){
-			if(evenHead == null){
-				evenHead = crawler;
-				evenCrawler = evenCrawler;
-			}else{
-				evenCrawler->next = crawler;
-				evenCrawler = evenCrawler->next;
-			}
-		}else{
-			if(oddHead == null){
-				oddHead = crawler;
-				oddCrawler = oddCrawler;
-			}else{
-				oddCrawler->next = crawler;
-				oddCrawler = oddCrawler->next;
-			}
-		}
-		crawler = crawler->next;
-	}
-	if(evenHead != null){
-		(*ptr) = evenHead;
-		evenCrawler->next = oddHead;
-		oddCrawler->next = null;
-	}else{
-		oddCrawler->next = null;
-		(*ptr) = oddHead;
-	}
+void segregateEventOddNodesTwoPtrs(sillNode **ptr) {
+    if(*ptr == null || (*ptr)->next == null) {
+        return;
+    }
+    sillNode *evenHead = null,*oddHead = null,*evenCrawler = null,*oddCrawler = null,*crawler = (*ptr);
+    while(crawler != null) {
+        if(crawler->value % 2 == 0) {
+            if(evenHead == null) {
+                evenHead = crawler;
+                evenCrawler = evenCrawler;
+            } else {
+                evenCrawler->next = crawler;
+                evenCrawler = evenCrawler->next;
+            }
+        } else {
+            if(oddHead == null) {
+                oddHead = crawler;
+                oddCrawler = oddCrawler;
+            } else {
+                oddCrawler->next = crawler;
+                oddCrawler = oddCrawler->next;
+            }
+        }
+        crawler = crawler->next;
+    }
+    if(evenHead != null) {
+        (*ptr) = evenHead;
+        evenCrawler->next = oddHead;
+        oddCrawler->next = null;
+    } else {
+        oddCrawler->next = null;
+        (*ptr) = oddHead;
+    }
 }
 
-void segregateEvenOddNodesAuxspace(sillNode **ptr){
-	if(*ptr == null || (*ptr)->next == null){
-		return;
-	}
-	queue<sillNode *> evenAuxspace,oddAuxspace;
-	sillNode *currentNode = *ptr,*prevNode = null;
-	while(currentNode != null){
-		if(currentNode->value % 2 == 0){
-			evenAuxspace.push(currentNode);
-		}else{
-			oddAuxspace.push(currentNode);
-		}
-	}
-	if(evenAuxspace.empty()){
-		(*ptr) = oddAuxspace.front();
-		prevNode = oddAuxspace.front();
-		oddAuxspace.pop();
-		while(!oddAuxspace.empty()){
-			prevNode->next = oddAuxspace.front();
-			oddAuxspace.pop();
-			prevNode = prevNode->next;
-		}
-		prevNode->next = null;
-	}else{
-		(*ptr) = evenAuxspace.front();
-		prevNode = evenAuxspace.front();
-		evenAuxspace.pop();
-		while(!evenAuxspace.empty()){
-			prevNode->next = evenAuxspace.front();
-			evenAuxspace.pop();
-			prevNode = prevNode->next;
-		}
-		while(!oddAuxspace.empty()){
-			prevNode->next = oddAuxspace.front();
-			oddAuxspace.pop();
-			prevNode = prevNode->next;
-		}
-	}
+void segregateEvenOddNodesAuxspace(sillNode **ptr) {
+    if(*ptr == null || (*ptr)->next == null) {
+        return;
+    }
+    queue<sillNode *> evenAuxspace,oddAuxspace;
+    sillNode *currentNode = *ptr,*prevNode = null;
+    while(currentNode != null) {
+        if(currentNode->value % 2 == 0) {
+            evenAuxspace.push(currentNode);
+        } else {
+            oddAuxspace.push(currentNode);
+        }
+    }
+    if(evenAuxspace.empty()) {
+        (*ptr) = oddAuxspace.front();
+        prevNode = oddAuxspace.front();
+        oddAuxspace.pop();
+        while(!oddAuxspace.empty()) {
+            prevNode->next = oddAuxspace.front();
+            oddAuxspace.pop();
+            prevNode = prevNode->next;
+        }
+        prevNode->next = null;
+    } else {
+        (*ptr) = evenAuxspace.front();
+        prevNode = evenAuxspace.front();
+        evenAuxspace.pop();
+        while(!evenAuxspace.empty()) {
+            prevNode->next = evenAuxspace.front();
+            evenAuxspace.pop();
+            prevNode = prevNode->next;
+        }
+        while(!oddAuxspace.empty()) {
+            prevNode->next = oddAuxspace.front();
+            oddAuxspace.pop();
+            prevNode = prevNode->next;
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/

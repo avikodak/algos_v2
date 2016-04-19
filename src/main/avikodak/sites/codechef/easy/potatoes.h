@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define POTATOES_H_
 
 //Tested
-vector<unsigned int> generatePrimeNumber(unsigned int limit){
-	vector<bool> flags;
-	vector<unsigned int> primes;
-	flags.assign(limit+2,true);
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			unsigned int innerCounter = 2;
-			while(counter*innerCounter <= limit){
-				flags[counter*innerCounter] = false;
-				innerCounter+=1;
-			}
-		}
-	}
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		if(flags[counter]){
-			primes.push_back(counter);
-		}
-	}
-	return primes;
+vector<unsigned int> generatePrimeNumber(unsigned int limit) {
+    vector<bool> flags;
+    vector<unsigned int> primes;
+    flags.assign(limit+2,true);
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            unsigned int innerCounter = 2;
+            while(counter*innerCounter <= limit) {
+                flags[counter*innerCounter] = false;
+                innerCounter+=1;
+            }
+        }
+    }
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        if(flags[counter]) {
+            primes.push_back(counter);
+        }
+    }
+    return primes;
 }
 
 //Tested
-void printResults(){
-	vector<unsigned int> primeNumbers = generatePrimeNumber(2500);
-	unsigned int testCases,x,y,z;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&x,&y);
-		z = primeNumbers[upper_bound(primeNumbers.begin(),primeNumbers.end(),x+y) - primeNumbers.begin()] - x -y;
-		if(z != 0){
-			cout << z << endl;
-		}else{
-			cout << primeNumbers[upper_bound(primeNumbers.begin(),primeNumbers.end(),x+y+1) - primeNumbers.begin()] - x -y << endl;
-		}
-	}
+void printResults() {
+    vector<unsigned int> primeNumbers = generatePrimeNumber(2500);
+    unsigned int testCases,x,y,z;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&x,&y);
+        z = primeNumbers[upper_bound(primeNumbers.begin(),primeNumbers.end(),x+y) - primeNumbers.begin()] - x -y;
+        if(z != 0) {
+            cout << z << endl;
+        } else {
+            cout << primeNumbers[upper_bound(primeNumbers.begin(),primeNumbers.end(),x+y+1) - primeNumbers.begin()] - x -y << endl;
+        }
+    }
 }
 
 #endif /* POTATOES_H_ */

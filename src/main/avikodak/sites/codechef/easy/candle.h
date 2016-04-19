@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: candle.h 
+ *  File Name   		: candle.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\candle.h
  *  Created on			: Feb 9, 2015 :: 3:54:27 PM
  *  Author				: AVINASH
@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 #define CANDLE_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,minVal,input,index;
-	scanf("%u",&testCases);
-	while(testCases--){
-		minVal = UINT_MAX;
-		index = 0;
-		for(unsigned int counter = 0;counter < 10;counter++){
-			scanf("%u",&input);
-			if(minVal > input || (index == 0 && minVal == input)){
-				minVal = input;
-				index = counter;
-			}
-		}
-		if(index == 0){
-			printf("1");
-		}
-		for(unsigned int counter = 0;counter <= minVal;counter++){
-			printf("%u",index);
-		}
-		printf("\n");
-	}
+void printResults() {
+    unsigned int testCases,size,minVal,input,index;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        minVal = UINT_MAX;
+        index = 0;
+        for(unsigned int counter = 0; counter < 10; counter++) {
+            scanf("%u",&input);
+            if(minVal > input || (index == 0 && minVal == input)) {
+                minVal = input;
+                index = counter;
+            }
+        }
+        if(index == 0) {
+            printf("1");
+        }
+        for(unsigned int counter = 0; counter <= minVal; counter++) {
+            printf("%u",index);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* CANDLE_H_ */

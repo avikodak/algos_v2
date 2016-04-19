@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: largestcontigoussubarray.h 
+ *  File Name   		: largestcontigoussubarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\largestcontigoussubarray.h
  *  Created on			: Jan 20, 2015 :: 11:02:25 AM
  *  Author				: AVINASH
@@ -74,23 +74,23 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int lengthOfLargestContigousSubArrayON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int maxVal,minVal,maxLength = INT_MIN;
-	for(int outerCounter = 0;outerCounter < (int)userInput.size()-1;outerCounter++){
-		maxVal = userInput[outerCounter];
-		minVal = userInput[outerCounter];
-		for(int innerCounter = outerCounter+1;innerCounter < (int)userInput.size();innerCounter++){
-			maxVal = max(maxVal,userInput[innerCounter]);
-			minVal = min(minVal,userInput[innerCounter]);
-			if(maxVal - minVal == innerCounter - outerCounter){
-				maxLength = max(maxLength,innerCounter - outerCounter + 1);
-			}
-		}
-	}
-	return maxLength;
+int lengthOfLargestContigousSubArrayON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int maxVal,minVal,maxLength = INT_MIN;
+    for(int outerCounter = 0; outerCounter < (int)userInput.size()-1; outerCounter++) {
+        maxVal = userInput[outerCounter];
+        minVal = userInput[outerCounter];
+        for(int innerCounter = outerCounter+1; innerCounter < (int)userInput.size(); innerCounter++) {
+            maxVal = max(maxVal,userInput[innerCounter]);
+            minVal = min(minVal,userInput[innerCounter]);
+            if(maxVal - minVal == innerCounter - outerCounter) {
+                maxLength = max(maxLength,innerCounter - outerCounter + 1);
+            }
+        }
+    }
+    return maxLength;
 }
 
 
@@ -98,36 +98,36 @@ int lengthOfLargestContigousSubArrayON2(vector<int> userInput){
 /* 																O(N^3) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isVectorContigous(vector<int> userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] - userInput[counter-1] != 1){
-			return false;
-		}
-	}
-	return true;
+bool isVectorContigous(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return true;
+    }
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] - userInput[counter-1] != 1) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-int lengthOfLargestContigousSubArray(vector<int> userInput){
-	if(userInput.size() < 2){
-		return userInput.size();
-	}
-	vector<int> auxSpace;
-	int maxLength = INT_MIN;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		auxSpace.clear();
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-			auxSpace.push_back(userInput[innerCrawler]);
-			sort(auxSpace.begin(),auxSpace.end());//Insertion sort works better
-			if(isVectorContigous(auxSpace)){
-				maxLength = max(maxLength,(int)auxSpace.size());
-			}
-		}
-	}
-	return maxLength;
+int lengthOfLargestContigousSubArray(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return userInput.size();
+    }
+    vector<int> auxSpace;
+    int maxLength = INT_MIN;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        auxSpace.clear();
+        for(unsigned int innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+            auxSpace.push_back(userInput[innerCrawler]);
+            sort(auxSpace.begin(),auxSpace.end());//Insertion sort works better
+            if(isVectorContigous(auxSpace)) {
+                maxLength = max(maxLength,(int)auxSpace.size());
+            }
+        }
+    }
+    return maxLength;
 }
 
 #endif /* LARGESTCONTIGOUSSUBARRAY_H_ */

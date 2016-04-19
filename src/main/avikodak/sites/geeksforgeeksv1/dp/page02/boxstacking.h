@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: boxstacking.h 
+ *  File Name   		: boxstacking.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\boxstacking.h
  *  Created on			: Dec 15, 2014 :: 3:13:45 PM
  *  Author				: AVINASH
@@ -70,60 +70,60 @@ using namespace __gnu_cxx;
 #ifndef BOXSTACKING_H_
 #define BOXSTACKING_H_
 
-int bsDivideStepQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MIN;
-	}
-	int pivotIndex = endIndex;
-	int key = userInput[pivotIndex]->depth * userInput[pivotIndex]->width;
-	while(startIndex < endIndex){
-		while(userInput[startIndex]->depth * userInput[startIndex]->width > key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex]->depth *userInput[endIndex]->width <= key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[endIndex],userInput[pivotIndex]);
-	return endIndex;
+int bsDivideStepQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MIN;
+    }
+    int pivotIndex = endIndex;
+    int key = userInput[pivotIndex]->depth * userInput[pivotIndex]->width;
+    while(startIndex < endIndex) {
+        while(userInput[startIndex]->depth * userInput[startIndex]->width > key) {
+            startIndex++;
+        }
+        while(startIndex < endIndex && userInput[endIndex]->depth *userInput[endIndex]->width <= key) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    swap(userInput[endIndex],userInput[pivotIndex]);
+    return endIndex;
 }
 
-void bsQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int dividingIndex = bsDivideStepQuickSort(userInput,startIndex,endIndex);
-	bsQuickSort(userInput,startIndex,dividingIndex-1);
-	bsQuickSort(userInput,dividingIndex+1,endIndex);
+void bsQuickSort(vector<dimensions *> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int dividingIndex = bsDivideStepQuickSort(userInput,startIndex,endIndex);
+    bsQuickSort(userInput,startIndex,dividingIndex-1);
+    bsQuickSort(userInput,dividingIndex+1,endIndex);
 }
 
-int getMaxHeightBoxStacking(vector<dimensions *> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<dimensions *> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		auxSpace.push_back(userInput[counter]);
-		auxSpace.push_back(new dimensions(userInput[counter]->width,min(userInput[counter]->height,userInput[counter]->depth),max(userInput[counter]->height,userInput[counter]->depth)));
-		auxSpace.push_back(new dimensions(userInput[counter]->depth,min(userInput[counter]->height,userInput[counter]->width),max(userInput[counter]->height,userInput[counter]->width)));
-	}
-	bsQuickSort(auxSpace,0,auxSpace.size()-1);
-	vector<int> maxHeights;
-	maxHeights.push_back(auxSpace[0]->height);
-	int height;
-	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
-		height = 0;
-		for(unsigned int innerCrawler = 0;innerCrawler < outerCrawler;innerCrawler++){
-			if(auxSpace[innerCrawler]->depth > auxSpace[outerCrawler]->depth && auxSpace[innerCrawler]->width > auxSpace[outerCrawler]->width){
-				height = max(height,maxHeights[innerCrawler]);
-			}
-		}
-		maxHeights.push_back(height+auxSpace[outerCrawler]->height);
-	}
-	return *max(maxHeights.begin(),maxHeights.end());
+int getMaxHeightBoxStacking(vector<dimensions *> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<dimensions *> auxSpace;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        auxSpace.push_back(userInput[counter]);
+        auxSpace.push_back(new dimensions(userInput[counter]->width,min(userInput[counter]->height,userInput[counter]->depth),max(userInput[counter]->height,userInput[counter]->depth)));
+        auxSpace.push_back(new dimensions(userInput[counter]->depth,min(userInput[counter]->height,userInput[counter]->width),max(userInput[counter]->height,userInput[counter]->width)));
+    }
+    bsQuickSort(auxSpace,0,auxSpace.size()-1);
+    vector<int> maxHeights;
+    maxHeights.push_back(auxSpace[0]->height);
+    int height;
+    for(unsigned int outerCrawler = 1; outerCrawler < auxSpace.size(); outerCrawler++) {
+        height = 0;
+        for(unsigned int innerCrawler = 0; innerCrawler < outerCrawler; innerCrawler++) {
+            if(auxSpace[innerCrawler]->depth > auxSpace[outerCrawler]->depth && auxSpace[innerCrawler]->width > auxSpace[outerCrawler]->width) {
+                height = max(height,maxHeights[innerCrawler]);
+            }
+        }
+        maxHeights.push_back(height+auxSpace[outerCrawler]->height);
+    }
+    return *max(maxHeights.begin(),maxHeights.end());
 }
 
 #endif /* BOXSTACKING_H_ */

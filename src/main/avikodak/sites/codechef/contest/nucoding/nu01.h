@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 #ifndef NU01_H_
 #define NU01_H_
 
-void printResults(){
-	unsigned int size,remainder,input,minVal = UINT_MAX,flag;
-	scanf("%u",&size);
-	vector<unsigned int> userInput;
-	for(unsigned int counter = 0;counter < size;counter++){
-		scanf("%u",&input);
-		userInput.push_back(input);
-		minVal = min(minVal,input);
-	}
-	for(unsigned int outerCounter = 2;outerCounter <= minVal;outerCounter++){
-		remainder = minVal%outerCounter;
-		flag = true;
-		for(unsigned int innerCounter = 0;innerCounter < size;innerCounter++){
-			if(userInput%outerCounter != remainder){
-				flag = false;
-				break;
-			}
-		}
-		if(flag){
-			printf("%u ",outerCounter);
-		}
-	}
+void printResults() {
+    unsigned int size,remainder,input,minVal = UINT_MAX,flag;
+    scanf("%u",&size);
+    vector<unsigned int> userInput;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        scanf("%u",&input);
+        userInput.push_back(input);
+        minVal = min(minVal,input);
+    }
+    for(unsigned int outerCounter = 2; outerCounter <= minVal; outerCounter++) {
+        remainder = minVal%outerCounter;
+        flag = true;
+        for(unsigned int innerCounter = 0; innerCounter < size; innerCounter++) {
+            if(userInput%outerCounter != remainder) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            printf("%u ",outerCounter);
+        }
+    }
 }
 
 #endif /* NU01_H_ */

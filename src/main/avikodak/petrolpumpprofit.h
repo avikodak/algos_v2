@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: petrolpumpprofit.h 
+ *  File Name   		: petrolpumpprofit.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\petrolpumpprofit.h
  *  Created on			: Feb 4, 2015 :: 12:56:22 PM
  *  Author				: AVINASH
@@ -72,14 +72,14 @@ using namespace __gnu_cxx;
 
 void calculateProfit(vector < int > prices) {
     int maxTillNow = prices.size() - 1,maxProfit = 0,buy,sell;
-    for(int counter = prices.size()-2;counter >= 0;counter--){
-        if(prices[counter] < prices[maxTillNow]){
-            if(maxProfit < prices[maxTillNow] - prices[counter]){
+    for(int counter = prices.size()-2; counter >= 0; counter--) {
+        if(prices[counter] < prices[maxTillNow]) {
+            if(maxProfit < prices[maxTillNow] - prices[counter]) {
                 maxProfit = prices[maxTillNow] - prices[counter];
                 buy = counter;
                 sell = maxTillNow;
             }
-        }else{
+        } else {
             maxTillNow = counter;
         }
     }

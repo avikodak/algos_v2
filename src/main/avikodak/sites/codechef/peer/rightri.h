@@ -73,39 +73,39 @@ using namespace __gnu_cxx;
 #define RIGHTRI_H_
 
 //Tested
-struct point{
+struct point {
 public:
-	unsigned int x;
-	unsigned int y;
+    unsigned int x;
+    unsigned int y;
 };
 
 //Tested
-unsigned int calDistance(point first,point second){
-	return (((first.x - second.x)*(first.x - second.x)) + ((first.y - second.y)*(first.y - second.y)));
+unsigned int calDistance(point first,point second) {
+    return (((first.x - second.x)*(first.x - second.x)) + ((first.y - second.y)*(first.y - second.y)));
 }
 
 //Tested
-bool isRightTriangle(point vertices[]){
-	unsigned int distance[3];
-	distance[0] = calDistance(vertices[0],vertices[1]);
-	distance[1] = calDistance(vertices[1],vertices[2]);
-	distance[2] = calDistance(vertices[0],vertices[2]);
-	sort(distance,distance+3);
-	return max(max(distance[0],distance[1]),distance[2])*2 == distance[0]+distance[1]+distance[2];
+bool isRightTriangle(point vertices[]) {
+    unsigned int distance[3];
+    distance[0] = calDistance(vertices[0],vertices[1]);
+    distance[1] = calDistance(vertices[1],vertices[2]);
+    distance[2] = calDistance(vertices[0],vertices[2]);
+    sort(distance,distance+3);
+    return max(max(distance[0],distance[1]),distance[2])*2 == distance[0]+distance[1]+distance[2];
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,sum = 0;
-	point vertices[3];
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u %u %u %u %u",&vertices[0].x,&vertices[0].y,&vertices[1].x,&vertices[1].y,&vertices[2].x,&vertices[2].y);
-		if(isRightTriangle(vertices)){
-			sum++;
-		}
-	}
-	printf("%u",sum);
+void printResults() {
+    unsigned int testCases,sum = 0;
+    point vertices[3];
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u %u %u %u %u",&vertices[0].x,&vertices[0].y,&vertices[1].x,&vertices[1].y,&vertices[2].x,&vertices[2].y);
+        if(isRightTriangle(vertices)) {
+            sum++;
+        }
+    }
+    printf("%u",sum);
 }
 
 #endif /* RIGHTRI_H_ */

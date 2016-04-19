@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestincseq.h 
+ *  File Name   		: longestincseq.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\longestincseq.h
  *  Created on			: Feb 12, 2015 :: 8:52:03 PM
  *  Author				: AVINASH
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define LONGESTINCSEQ_H_
 
 //Tested
-void printLengthLIS(){
-	long int input,size;
-	unsigned int counter;
-	vector<long int> auxSpace;
-	scanf("%ld",&size);
-	while(size--){
-		scanf("%ld",&input);
-		if(auxSpace.size() == 0 || auxSpace[0] > input){
-			if(auxSpace.size() == 0){
-				auxSpace.push_back(input);
-			}else{
-				auxSpace[0] = input;
-			}
-		}else if(auxSpace[auxSpace.size()-1] < input){
-			auxSpace.push_back(input);
-		}else{
-			counter = 0;
-			while(counter < auxSpace.size() && input > auxSpace[counter]){
-				counter++;
-			}
-			auxSpace[counter] = input;
-		}
-	}
-	printf("%u",auxSpace.size());
+void printLengthLIS() {
+    long int input,size;
+    unsigned int counter;
+    vector<long int> auxSpace;
+    scanf("%ld",&size);
+    while(size--) {
+        scanf("%ld",&input);
+        if(auxSpace.size() == 0 || auxSpace[0] > input) {
+            if(auxSpace.size() == 0) {
+                auxSpace.push_back(input);
+            } else {
+                auxSpace[0] = input;
+            }
+        } else if(auxSpace[auxSpace.size()-1] < input) {
+            auxSpace.push_back(input);
+        } else {
+            counter = 0;
+            while(counter < auxSpace.size() && input > auxSpace[counter]) {
+                counter++;
+            }
+            auxSpace[counter] = input;
+        }
+    }
+    printf("%u",auxSpace.size());
 }
 
 #endif /* LONGESTINCSEQ_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: parenthesismatching.h 
+ *  File Name   		: parenthesismatching.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\interviews\amazon\parenthesismatching.h
  *  Created on			: Jan 25, 2015 :: 10:50:02 AM
  *  Author				: AVINASH
@@ -73,20 +73,20 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool parenthesisMatching(string userInput){
-	if(userInput.size() == 0){
-		return true;
-	}
-	stack<char> auxSpace;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == '(' || userInput[counter] == '{' || userInput[counter] == '['){
+bool parenthesisMatching(string userInput) {
+    if(userInput.size() == 0) {
+        return true;
+    }
+    stack<char> auxSpace;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == '(' || userInput[counter] == '{' || userInput[counter] == '[') {
 
-		}else if(userInput[counter] == ')' || userInput[counter] == '{' || userInput[counter] == '['){
+        } else if(userInput[counter] == ')' || userInput[counter] == '{' || userInput[counter] == '[') {
 
-		}else{
-			throw "Invalid character";
-		}
-	}
+        } else {
+            throw "Invalid character";
+        }
+    }
 }
 
 #endif /* PARENTHESISMATCHING_H_ */

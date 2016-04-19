@@ -73,18 +73,18 @@ using namespace __gnu_cxx;
 //Locally Tested
 class SquareScoresDiv2 {
 public:
-	int getscore(string userInput){
-		int score = 0;
-		for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-			for(unsigned int innerCounter = outerCounter;innerCounter < userInput.size();innerCounter++){
-				if(userInput[outerCounter] != userInput[innerCounter]){
-					break;
-				}
-				score++;
-			}
-		}
-		return score;
-	}
+    int getscore(string userInput) {
+        int score = 0;
+        for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+            for(unsigned int innerCounter = outerCounter; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[outerCounter] != userInput[innerCounter]) {
+                    break;
+                }
+                score++;
+            }
+        }
+        return score;
+    }
 };
 
 #endif /* SQUARESCORESDIV2_H_ */

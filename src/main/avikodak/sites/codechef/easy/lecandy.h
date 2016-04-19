@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: lecandy.h 
+ *  File Name   		: lecandy.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\lecandy.h
  *  Created on			: Feb 9, 2015 :: 12:40:10 PM
  *  Author				: AVINASH
@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define LECANDY_H_
 
 //Tested
-void areElephantsHappy(){
-	int testCases,totalElephants,totalCandies,input;
-	scanf("%d",&testCases);
-	int sumCandies;
-	while(testCases--){
-		scanf("%d %d",&totalElephants,&totalCandies);
-		sumCandies = 0;
-		while(totalElephants--){
-			scanf("%d",&input);
-			sumCandies += input;
-		}
-		if(sumCandies <= totalCandies){
-			printf("Yes\n");
-		}else{
-			printf("No\n");
-		}
-	}
+void areElephantsHappy() {
+    int testCases,totalElephants,totalCandies,input;
+    scanf("%d",&testCases);
+    int sumCandies;
+    while(testCases--) {
+        scanf("%d %d",&totalElephants,&totalCandies);
+        sumCandies = 0;
+        while(totalElephants--) {
+            scanf("%d",&input);
+            sumCandies += input;
+        }
+        if(sumCandies <= totalCandies) {
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
 }
 
 #endif /* LECANDY_H_ */

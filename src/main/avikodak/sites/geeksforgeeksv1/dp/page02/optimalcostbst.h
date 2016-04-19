@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: optimalcostbst.h 
+ *  File Name   		: optimalcostbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\optimalcostbst.h
  *  Created on			: Jan 12, 2015 :: 4:46:32 PM
  *  Author				: AVINASH
@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define OPTIMALCOSTBST_H_
 
 //Tested
-int optimalCostBSTMain(vector<int> frequencies,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return 0;
-	}
-	if(startIndex == endIndex){
-		return frequencies[startIndex];
-	}
-	int sumFrequencies = 0,minCost = INT_MAX;
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		sumFrequencies += frequencies[counter];
-	}
-	for(int counter = startIndex;counter <= endIndex;counter++){
-		minCost = min(minCost,optimalCostBSTMain(frequencies,startIndex,counter-1) + optimalCostBSTMain(frequencies,counter+1,endIndex));
-	}
-	return sumFrequencies + minCost;
+int optimalCostBSTMain(vector<int> frequencies,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return 0;
+    }
+    if(startIndex == endIndex) {
+        return frequencies[startIndex];
+    }
+    int sumFrequencies = 0,minCost = INT_MAX;
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        sumFrequencies += frequencies[counter];
+    }
+    for(int counter = startIndex; counter <= endIndex; counter++) {
+        minCost = min(minCost,optimalCostBSTMain(frequencies,startIndex,counter-1) + optimalCostBSTMain(frequencies,counter+1,endIndex));
+    }
+    return sumFrequencies + minCost;
 }
 
 #endif /* OPTIMALCOSTBST_H_ */

@@ -71,11 +71,11 @@ using namespace __gnu_cxx;
 #define HEIGHTOFBINARYTREE_H_
 
 //Tested
-int height(node *root){
-	if(root == null){
-		return 0;
-	}
-	return 1 + max(height(root->left),height(root->right));
+int height(node *root) {
+    if(root == null) {
+        return 0;
+    }
+    return 1 + max(height(root->left),height(root->right));
 }
 
 #endif /* HEIGHTOFBINARYTREE_H_ */

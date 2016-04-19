@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 #define NOPC9_H_
 
 //Tested
-void printEncrypted(){
-	string userInput;
-	map<char,unsigned int> frequency;
-	map<char,unsigned int>::iterator itToFrequency;
-	cin >> userInput;
-	for(unsigned int counter = 0;counter < userInput.length();counter++){
-		if((itToFrequency = frequency.find(userInput[counter])) == frequency.end()){
-			frequency[userInput[counter]] = 1;
-		}else{
-			itToFrequency->second++;
-		}
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if((itToFrequency = frequency.find(userInput[counter])) != frequency.end()){
-			cout << itToFrequency->first << itToFrequency->second;
-			frequency.erase(userInput[counter]);
-		}
-	}
+void printEncrypted() {
+    string userInput;
+    map<char,unsigned int> frequency;
+    map<char,unsigned int>::iterator itToFrequency;
+    cin >> userInput;
+    for(unsigned int counter = 0; counter < userInput.length(); counter++) {
+        if((itToFrequency = frequency.find(userInput[counter])) == frequency.end()) {
+            frequency[userInput[counter]] = 1;
+        } else {
+            itToFrequency->second++;
+        }
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if((itToFrequency = frequency.find(userInput[counter])) != frequency.end()) {
+            cout << itToFrequency->first << itToFrequency->second;
+            frequency.erase(userInput[counter]);
+        }
+    }
 }
 
 #endif /* NOPC9_H_ */

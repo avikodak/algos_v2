@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arraystack.h 
+ *  File Name   		: arraystack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\arraystack.h
  *  Created on			: Oct 18, 2014 :: 1:15:59 PM
  *  Author				: AVINASH
@@ -70,62 +70,62 @@ using namespace __gnu_cxx;
 #define ARRAYSTACK_H_
 
 //Tested
-class arrayStack{
+class arrayStack {
 private:
-	int sizeOfStack;
-	int *stack;
-	int topIndex;
+    int sizeOfStack;
+    int *stack;
+    int topIndex;
 public:
-	arrayStack(){
-		sizeOfStack = 1024;
-		topIndex = -1;
-		this->stack = (int *)malloc(sizeof(int)*sizeOfStack);
-	}
+    arrayStack() {
+        sizeOfStack = 1024;
+        topIndex = -1;
+        this->stack = (int *)malloc(sizeof(int)*sizeOfStack);
+    }
 
-	arrayStack(unsigned int sizeOfStack){
-		this->sizeOfStack = sizeOfStack;
-		this->stack = (int *)malloc(sizeof(int)*sizeOfStack);
-	}
+    arrayStack(unsigned int sizeOfStack) {
+        this->sizeOfStack = sizeOfStack;
+        this->stack = (int *)malloc(sizeof(int)*sizeOfStack);
+    }
 
-	//Tested
-	bool isFull(){
-		return this->topIndex >= this->sizeOfStack;
-	}
+    //Tested
+    bool isFull() {
+        return this->topIndex >= this->sizeOfStack;
+    }
 
-	//Tested
-	bool isEmpty(){
-		return topIndex == -1;
-	}
+    //Tested
+    bool isEmpty() {
+        return topIndex == -1;
+    }
 
-	//Tested
-	void push(int value){
-		if(isFull()){
-			throw "Stack is full";
-		}
-		stack[++topIndex] = value;
-	}
+    //Tested
+    void push(int value) {
+        if(isFull()) {
+            throw "Stack is full";
+        }
+        stack[++topIndex] = value;
+    }
 
-	//Tested
-	int top(){
-		if(isEmpty()){
-			throw "Stack is empty";
-		}
-		return stack[this->topIndex];
-	}
+    //Tested
+    int top() {
+        if(isEmpty()) {
+            throw "Stack is empty";
+        }
+        return stack[this->topIndex];
+    }
 
-	//Tested
-	void pop(){
-		if(isEmpty()){
-			throw "Stack is empty";
-		}
-		stack[this->topIndex] = 0;
-		this->topIndex--;
-	}
+    //Tested
+    void pop() {
+        if(isEmpty()) {
+            throw "Stack is empty";
+        }
+        stack[this->topIndex] = 0;
+        this->topIndex--;
+    }
 
-	//Tested
-	unsigned int size(){
-		return this->topIndex + 1;
-	}
+    //Tested
+    unsigned int size() {
+        return this->topIndex + 1;
+    }
 };
 
 #endif /* ARRAYSTACK_H_ */

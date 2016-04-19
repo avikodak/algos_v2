@@ -72,21 +72,21 @@ using namespace __gnu_cxx;
 
 class SimpleWordGame {
 public:
-	int points(vector<string> player, vector<string> dictionary){
-		map<string,bool> strFlags;
-		map<string,bool>::iterator itToStrFlags;
-		for(unsigned int counter = 0;counter < dictionary.size();counter++){
-			strFlags.insert(pair<string,bool>(dictionary[counter],true));
-		}
-		int points = 0;
-		for(unsigned int counter = 0;counter < player.size();counter++){
-			if((itToStrFlags = strFlags.find(player[counter])) != strFlags.end()){
-				points += (player[counter].length()*player[counter].length());
-				strFlags.erase(player[counter]);
-			}
-		}
-		return points;
-	}
+    int points(vector<string> player, vector<string> dictionary) {
+        map<string,bool> strFlags;
+        map<string,bool>::iterator itToStrFlags;
+        for(unsigned int counter = 0; counter < dictionary.size(); counter++) {
+            strFlags.insert(pair<string,bool>(dictionary[counter],true));
+        }
+        int points = 0;
+        for(unsigned int counter = 0; counter < player.size(); counter++) {
+            if((itToStrFlags = strFlags.find(player[counter])) != strFlags.end()) {
+                points += (player[counter].length()*player[counter].length());
+                strFlags.erase(player[counter]);
+            }
+        }
+        return points;
+    }
 };
 
 #endif /* SIMPLEWORDGAME_H_ */

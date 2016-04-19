@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: countpairs.h 
+ *  File Name   		: countpairs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\search\countpairs.h
  *  Created on			: Jan 30, 2015 :: 9:00:30 AM
  *  Author				: AVINASH
@@ -75,22 +75,22 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 //Tested
 int pairs(vector < int > userInput,int difference) {
-   int result = 0;
-   sort(userInput.begin(),userInput.end());
-   int firstCrawler = 0,secoundCrawler = 1,currentDifference;
-   while(firstCrawler < userInput.size() && secoundCrawler < userInput.size()){
-       currentDifference = userInput[secoundCrawler] - userInput[firstCrawler];
-       if(currentDifference == difference){
-           result += 1;
-           firstCrawler++;
-           secoundCrawler++;
-       }else if(currentDifference > difference){
-           firstCrawler++;
-       }else{
-           secoundCrawler++;
-       }
-   }
-   return result;
+    int result = 0;
+    sort(userInput.begin(),userInput.end());
+    int firstCrawler = 0,secoundCrawler = 1,currentDifference;
+    while(firstCrawler < userInput.size() && secoundCrawler < userInput.size()) {
+        currentDifference = userInput[secoundCrawler] - userInput[firstCrawler];
+        if(currentDifference == difference) {
+            result += 1;
+            firstCrawler++;
+            secoundCrawler++;
+        } else if(currentDifference > difference) {
+            firstCrawler++;
+        } else {
+            secoundCrawler++;
+        }
+    }
+    return result;
 }
 
 #endif /* COUNTPAIRS_H_ */

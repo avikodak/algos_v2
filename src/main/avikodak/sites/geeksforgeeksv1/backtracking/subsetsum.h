@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: subsetsum.h 
+ *  File Name   		: subsetsum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\subsetsum.h
  *  Created on			: Jan 7, 2015 :: 8:03:09 PM
  *  Author				: AVINASH
@@ -71,39 +71,39 @@ using namespace __gnu_cxx;
 #define SUBSETSUM_H_
 
 //Tested
-bool findSubsetForSum(vector<int> userInput,vector<int> subset,int subsetSum,int target,unsigned int currentIndex){
-	if(userInput.size() == 0){
-		return target == 0;
-	}
-	if(subsetSum == target){
-		printIVector(subset);
-		return true;
-	}
-	if(currentIndex >= userInput.size()){
-		return false;
-	}
-	if(subsetSum + userInput[currentIndex] > target){
-		return false;
-	}
-	if(findSubsetForSum(userInput,subset,subsetSum,target,currentIndex+1)){
-		return true;
-	}
-	subset.push_back(userInput[currentIndex]);
-	if(findSubsetForSum(userInput,subset,subsetSum + userInput[currentIndex],target,currentIndex+1)){
-		return true;
-	}
-	subset.pop_back();
-	return false;
+bool findSubsetForSum(vector<int> userInput,vector<int> subset,int subsetSum,int target,unsigned int currentIndex) {
+    if(userInput.size() == 0) {
+        return target == 0;
+    }
+    if(subsetSum == target) {
+        printIVector(subset);
+        return true;
+    }
+    if(currentIndex >= userInput.size()) {
+        return false;
+    }
+    if(subsetSum + userInput[currentIndex] > target) {
+        return false;
+    }
+    if(findSubsetForSum(userInput,subset,subsetSum,target,currentIndex+1)) {
+        return true;
+    }
+    subset.push_back(userInput[currentIndex]);
+    if(findSubsetForSum(userInput,subset,subsetSum + userInput[currentIndex],target,currentIndex+1)) {
+        return true;
+    }
+    subset.pop_back();
+    return false;
 }
 
 //Tested
-void printSubsetForGivenSum(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return;
-	}
-	vector<int> subset;
-	sort(userInput.begin(),userInput.end());
-	findSubsetForSum(userInput,subset,0,sum,0);
+void printSubsetForGivenSum(vector<int> userInput,int sum) {
+    if(userInput.size() == 0) {
+        return;
+    }
+    vector<int> subset;
+    sort(userInput.begin(),userInput.end());
+    findSubsetForSum(userInput,subset,0,sum,0);
 }
 
 #endif /* SUBSETSUM_H_ */

@@ -71,15 +71,15 @@ using namespace __gnu_cxx;
 #define AVERYBIGSUM_H_
 
 //Tested
-void getVeryBigSum(){
-	unsigned int size;
-	long long int userInput,sum = 0;
-	scanf("%u",&size);
-	while(size--){
-		cin >> userInput;
-		sum += userInput;
-	}
-	cout << sum;
+void getVeryBigSum() {
+    unsigned int size;
+    long long int userInput,sum = 0;
+    scanf("%u",&size);
+    while(size--) {
+        cin >> userInput;
+        sum += userInput;
+    }
+    cout << sum;
 }
 
 #endif /* AVERYBIGSUM_H_ */

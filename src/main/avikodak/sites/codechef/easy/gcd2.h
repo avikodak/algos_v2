@@ -71,47 +71,47 @@ using namespace __gnu_cxx;
 #define GCD2_H_
 
 //Tested
-unsigned int gcd(unsigned int A,unsigned int B){
-	if(A == 1 || B == 1){
-		return 1;
-	}
-	if(B%A == 0){
-		return A;
-	}
-	return gcd(B%A,A);
+unsigned int gcd(unsigned int A,unsigned int B) {
+    if(A == 1 || B == 1) {
+        return 1;
+    }
+    if(B%A == 0) {
+        return A;
+    }
+    return gcd(B%A,A);
 }
 
 //Tested
-void printGCD(unsigned int userInput,string strInput){
-	unsigned int dividend = 0;
-	for(unsigned int counter = 0;counter < strInput.size();counter++){
-		dividend = (dividend << 3) + (dividend << 1) + strInput[counter]-'0';
-		dividend = dividend%userInput;
-	}
-	cout << gcd(userInput,dividend) << endl;
+void printGCD(unsigned int userInput,string strInput) {
+    unsigned int dividend = 0;
+    for(unsigned int counter = 0; counter < strInput.size(); counter++) {
+        dividend = (dividend << 3) + (dividend << 1) + strInput[counter]-'0';
+        dividend = dividend%userInput;
+    }
+    cout << gcd(userInput,dividend) << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	string strInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input >> strInput;
-		if(input == 0 || strInput.compare("0") == 0){
-			if(input == 0 && strInput.compare("0") == 0){
-				printf("0\n");
-			}else{
-				if(input == 0){
-					cout << strInput << endl;
-				}else{
-					printf("%u",input);
-				}
-			}
-		}else{
-			printGCD(input,strInput);
-		}
-	}
+void printResults() {
+    unsigned int testCases,input;
+    string strInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input >> strInput;
+        if(input == 0 || strInput.compare("0") == 0) {
+            if(input == 0 && strInput.compare("0") == 0) {
+                printf("0\n");
+            } else {
+                if(input == 0) {
+                    cout << strInput << endl;
+                } else {
+                    printf("%u",input);
+                }
+            }
+        } else {
+            printGCD(input,strInput);
+        }
+    }
 }
 
 #endif /* GCD2_H_ */

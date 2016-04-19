@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: pamcakesort.h 
+ *  File Name   		: pamcakesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\pamcakesort.h
  *  Created on			: Dec 25, 2014 :: 2:57:59 AM
  *  Author				: AVINASH
@@ -73,42 +73,42 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void flip(vector<int> &userInput,int endIndex){
-	if(userInput.size() == 0 || endIndex < 2){
-		return;
-	}
-	int startIndex = 0;
-	while(startIndex < endIndex){
-		swap(userInput[startIndex++],userInput[endIndex++]);
-	}
+void flip(vector<int> &userInput,int endIndex) {
+    if(userInput.size() == 0 || endIndex < 2) {
+        return;
+    }
+    int startIndex = 0;
+    while(startIndex < endIndex) {
+        swap(userInput[startIndex++],userInput[endIndex++]);
+    }
 }
 
-int getMaxIndex(vector<int> userInput,int endIndex){
-	if(endIndex < 0){
-		return INT_MIN;
-	}
-	if(endIndex == 0){
-		return 0;
-	}
-	int maxIndex = 0;
-	for(unsigned int counter = 1;counter <= endIndex;counter++){
-		if(userInput[maxIndex] < userInput[counter]){
-			maxIndex = counter;
-		}
-	}
-	return maxIndex;
+int getMaxIndex(vector<int> userInput,int endIndex) {
+    if(endIndex < 0) {
+        return INT_MIN;
+    }
+    if(endIndex == 0) {
+        return 0;
+    }
+    int maxIndex = 0;
+    for(unsigned int counter = 1; counter <= endIndex; counter++) {
+        if(userInput[maxIndex] < userInput[counter]) {
+            maxIndex = counter;
+        }
+    }
+    return maxIndex;
 }
 
-void pancakeSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	int maxIndex;
-	for(int counter = userInput.size()-1;counter >= 0;counter--){
-		maxIndex = getMaxIndex(userInput,counter);
-		flip(userInput,maxIndex);
-		flip(userInput,counter);
-	}
+void pancakeSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    int maxIndex;
+    for(int counter = userInput.size()-1; counter >= 0; counter--) {
+        maxIndex = getMaxIndex(userInput,counter);
+        flip(userInput,maxIndex);
+        flip(userInput,counter);
+    }
 }
 
 #endif /* PANCAKESORT_H_ */

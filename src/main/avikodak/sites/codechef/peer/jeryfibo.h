@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 #define JERYFIBO_H_
 
 //Tested
-vector<long long int> init(){
-	vector<long long int> fibonacciNumbers;
-	long long int currentTerm = 1,prevTerm = 1,nextTerm;
-	fibonacciNumbers.push_back(1);
-	while(currentTerm+prevTerm < 1000000001){
-		nextTerm = currentTerm + prevTerm;
-		prevTerm = currentTerm;
-		currentTerm = nextTerm;
-		fibonacciNumbers.push_back(currentTerm);
-	}
-	return fibonacciNumbers;
+vector<long long int> init() {
+    vector<long long int> fibonacciNumbers;
+    long long int currentTerm = 1,prevTerm = 1,nextTerm;
+    fibonacciNumbers.push_back(1);
+    while(currentTerm+prevTerm < 1000000001) {
+        nextTerm = currentTerm + prevTerm;
+        prevTerm = currentTerm;
+        currentTerm = nextTerm;
+        fibonacciNumbers.push_back(currentTerm);
+    }
+    return fibonacciNumbers;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int userInput;
-	vector<long long int> fibonacciNumbers = init();
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		printf("%s\n",binary_search(fibonacciNumbers.begin(),fibonacciNumbers.end(),userInput)?"is fibo":"not fibo");
-	}
+void printResults() {
+    unsigned int testCases;
+    long long int userInput;
+    vector<long long int> fibonacciNumbers = init();
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        printf("%s\n",binary_search(fibonacciNumbers.begin(),fibonacciNumbers.end(),userInput)?"is fibo":"not fibo");
+    }
 }
 
 #endif /* JERYFIBO_H_ */

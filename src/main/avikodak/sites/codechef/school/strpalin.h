@@ -77,25 +77,25 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int testCases, size;
-	string fUserInput, sUserInput;
-	scanf("%u", &testCases);
-	while (testCases--) {
-		scanf("%u", &size);
-		cin >> fUserInput >> sUserInput;
-		bool presenceMap[26] = { false };
-		bool commonCharPresent = false;
-		for (unsigned int counter = 0; counter < fUserInput.size(); counter++) {
-			presenceMap[fUserInput[counter] - 'a'] = true;
-		}
-		for (unsigned int counter = 0; counter < sUserInput.size(); counter++) {
-			if (presenceMap[sUserInput[counter] - 'a']) {
-				commonCharPresent = true;
-				break;
-			}
-		}
-		printf("%s\n", commonCharPresent ? "Yes" : "No");
-	}
+    unsigned int testCases, size;
+    string fUserInput, sUserInput;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        scanf("%u", &size);
+        cin >> fUserInput >> sUserInput;
+        bool presenceMap[26] = { false };
+        bool commonCharPresent = false;
+        for (unsigned int counter = 0; counter < fUserInput.size(); counter++) {
+            presenceMap[fUserInput[counter] - 'a'] = true;
+        }
+        for (unsigned int counter = 0; counter < sUserInput.size(); counter++) {
+            if (presenceMap[sUserInput[counter] - 'a']) {
+                commonCharPresent = true;
+                break;
+            }
+        }
+        printf("%s\n", commonCharPresent ? "Yes" : "No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_STRPALIN_H_ */

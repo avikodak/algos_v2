@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: tightstrategy.h 
+ *  File Name   		: tightstrategy.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\tightstrategy.h
  *  Created on			: Oct 19, 2014 :: 8:39:12 PM
  *  Author				: AVINASH
@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int incrementByTightStrategy(int **array,int size){
-	int *newArray = (int *)malloc(sizeof(int)*(size + TIGHT_STRATEGY_INCREMENT));
-	if(*array != null){
-		for(int counter = 0;counter < size;counter++){
-			newArray[counter] = (*array)[counter];
-		}
-	}
-	(*array) = newArray;
-	return size + TIGHT_STRATEGY_INCREMENT;
+unsigned int incrementByTightStrategy(int **array,int size) {
+    int *newArray = (int *)malloc(sizeof(int)*(size + TIGHT_STRATEGY_INCREMENT));
+    if(*array != null) {
+        for(int counter = 0; counter < size; counter++) {
+            newArray[counter] = (*array)[counter];
+        }
+    }
+    (*array) = newArray;
+    return size + TIGHT_STRATEGY_INCREMENT;
 }
 
 #endif /* TIGHTSTRATEGY_H_ */

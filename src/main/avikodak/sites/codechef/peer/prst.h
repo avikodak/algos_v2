@@ -73,21 +73,21 @@ using namespace __gnu_cxx;
 #define PRST_H_
 
 //Tested
-void printResults(){
-	unsigned int size;
-	long long int key,input;
-	bool isFound = false;
-	scanf("%u %lld",&size,&key);
-	for(unsigned int rowCounter = 0;rowCounter < size;rowCounter++){
-		for(unsigned int columnCounter = 0;columnCounter < size;columnCounter++){
-			scanf("%lld",&input);
-			if(input == key){
-				isFound = true;
-				break;
-			}
-		}
-	}
-	printf("%s",isFound?"YES":"NO");
+void printResults() {
+    unsigned int size;
+    long long int key,input;
+    bool isFound = false;
+    scanf("%u %lld",&size,&key);
+    for(unsigned int rowCounter = 0; rowCounter < size; rowCounter++) {
+        for(unsigned int columnCounter = 0; columnCounter < size; columnCounter++) {
+            scanf("%lld",&input);
+            if(input == key) {
+                isFound = true;
+                break;
+            }
+        }
+    }
+    printf("%s",isFound?"YES":"NO");
 }
 
 #endif /* PRST_H_ */

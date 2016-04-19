@@ -70,24 +70,24 @@ using namespace __gnu_cxx;
 #ifndef DELETEDUPSORTED_H_
 #define DELETEDUPSORTED_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-Node* RemoveDuplicates(Node *head){
-	Node *outerCrawler = head,*innerCrawler,*temp;
-	while(outerCrawler != null && outerCrawler->next != null){
-		while(outerCrawler->next != null && outerCrawler->data == outerCrawler->next->data){
-			innerCrawler = outerCrawler->next;
-			outerCrawler->next = outerCrawler->next->next;
-			free(innerCrawler);
-		}
-		outerCrawler = outerCrawler->next;
+Node* RemoveDuplicates(Node *head) {
+    Node *outerCrawler = head,*innerCrawler,*temp;
+    while(outerCrawler != null && outerCrawler->next != null) {
+        while(outerCrawler->next != null && outerCrawler->data == outerCrawler->next->data) {
+            innerCrawler = outerCrawler->next;
+            outerCrawler->next = outerCrawler->next->next;
+            free(innerCrawler);
+        }
+        outerCrawler = outerCrawler->next;
 
-	}
-	return head;
+    }
+    return head;
 }
 
 #endif /* DELETEDUPSORTED_H_ */

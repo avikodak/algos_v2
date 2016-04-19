@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: swapoddevenbits.h 
+ *  File Name   		: swapoddevenbits.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapoddevenbits.h
  *  Created on			: Jan 9, 2015 :: 5:04:16 PM
  *  Author				: AVINASH
@@ -70,12 +70,12 @@ using namespace __gnu_cxx;
 #ifndef SWAPODDEVENBITS_H_
 #define SWAPODDEVENBITS_H_
 
-int swapOddEvenBits(int userInput){
-	int evenUserInput = userInput & 0xAAAAAAAA;
-	int oddUserInput = userInput & 0x55555555;
-	evenUserInput >>= 1;
-	oddUserInput <<= 1;
-	return evenUserInput | oddUserInput;
+int swapOddEvenBits(int userInput) {
+    int evenUserInput = userInput & 0xAAAAAAAA;
+    int oddUserInput = userInput & 0x55555555;
+    evenUserInput >>= 1;
+    oddUserInput <<= 1;
+    return evenUserInput | oddUserInput;
 }
 
 #endif /* SWAPODDEVENBITS_H_ */

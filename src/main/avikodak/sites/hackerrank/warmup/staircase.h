@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define STAIRCASE_H_
 
 //Tested
-void printStairCase(){
-	int height;
-	scanf("%u",&height);
-	int rowMarker = 0,columnMarker = height-1;
-	for(int rowCounter = 0;rowCounter < height;rowCounter++){
-		for(int columnCounter = 0;columnCounter < height;columnCounter++){
-			if(rowCounter >= rowMarker && columnCounter >= columnMarker){
-				printf("#");
-			}else{
-				printf(" ");
-			}
-		}
-		rowMarker++;
-		columnMarker--;
-		printf("\n");
-	}
+void printStairCase() {
+    int height;
+    scanf("%u",&height);
+    int rowMarker = 0,columnMarker = height-1;
+    for(int rowCounter = 0; rowCounter < height; rowCounter++) {
+        for(int columnCounter = 0; columnCounter < height; columnCounter++) {
+            if(rowCounter >= rowMarker && columnCounter >= columnMarker) {
+                printf("#");
+            } else {
+                printf(" ");
+            }
+        }
+        rowMarker++;
+        columnMarker--;
+        printf("\n");
+    }
 }
 
 #endif /* STAIRCASE_H_ */

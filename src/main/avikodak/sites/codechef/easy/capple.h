@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 #define CAPPLE_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
-	map<unsigned int,bool> existenceMap;
-	while(testCases--){
-		scanf("%u",&size);
-		existenceMap.clear();
-		while(size--){
-			scanf("%u",&input);
-			existenceMap[input] = true;
-		}
-		cout << existenceMap.size() << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    scanf("%u",&testCases);
+    map<unsigned int,bool> existenceMap;
+    while(testCases--) {
+        scanf("%u",&size);
+        existenceMap.clear();
+        while(size--) {
+            scanf("%u",&input);
+            existenceMap[input] = true;
+        }
+        cout << existenceMap.size() << endl;
+    }
 }
 
 #endif /* CAPPLE_H_ */

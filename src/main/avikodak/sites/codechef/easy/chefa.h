@@ -72,30 +72,30 @@ using namespace __gnu_cxx;
 #define CHEFA_H_
 
 //Tested
-bool sortFunc(long long int first,long long int second){
-	return first > second;
+bool sortFunc(long long int first,long long int second) {
+    return first > second;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	vector<long long int> userInput;
-	long long int size,input,total;
-	while(testCases--){
-		scanf("%lld",&size);
-		userInput.clear();
-		for(long long int counter = 0;counter < size;counter++){
-			scanf("%lld",&input);
-			userInput.push_back(input);
-		}
-		sort(userInput.begin(),userInput.end(),sortFunc);
-		total = 0;
-		for(long long int counter = 0;counter < size;counter+=2){
-			total += userInput[counter];
-		}
-		cout << total << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    vector<long long int> userInput;
+    long long int size,input,total;
+    while(testCases--) {
+        scanf("%lld",&size);
+        userInput.clear();
+        for(long long int counter = 0; counter < size; counter++) {
+            scanf("%lld",&input);
+            userInput.push_back(input);
+        }
+        sort(userInput.begin(),userInput.end(),sortFunc);
+        total = 0;
+        for(long long int counter = 0; counter < size; counter+=2) {
+            total += userInput[counter];
+        }
+        cout << total << endl;
+    }
 }
 
 #endif /* CHEFA_H_ */

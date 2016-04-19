@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: marcha1.h 
+ *  File Name   		: marcha1.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\marcha1.h
  *  Created on			: Feb 9, 2015 :: 10:47:42 AM
  *  Author				: AVINASH
@@ -71,49 +71,49 @@ using namespace __gnu_cxx;
 #define MARCHA1_H_
 
 //Tested
-bool subsetForMoney(map<int,int> notesFrequency,int amount){
-	if(amount == 0){
-		return true;
-	}
-	map<int,int>::iterator itToNotesFrequency;
-	for(itToNotesFrequency = notesFrequency.begin();itToNotesFrequency != notesFrequency.end();itToNotesFrequency++){
-		if(itToNotesFrequency->first > amount){
-			return false;
-		}
-		if(itToNotesFrequency->second > 0){
-			itToNotesFrequency->second -= 1;
-			if(subsetForMoney(notesFrequency,amount - itToNotesFrequency->first)){
-				return true;
-			}
-			itToNotesFrequency->second += 1;
-		}
-	}
-	return false;
+bool subsetForMoney(map<int,int> notesFrequency,int amount) {
+    if(amount == 0) {
+        return true;
+    }
+    map<int,int>::iterator itToNotesFrequency;
+    for(itToNotesFrequency = notesFrequency.begin(); itToNotesFrequency != notesFrequency.end(); itToNotesFrequency++) {
+        if(itToNotesFrequency->first > amount) {
+            return false;
+        }
+        if(itToNotesFrequency->second > 0) {
+            itToNotesFrequency->second -= 1;
+            if(subsetForMoney(notesFrequency,amount - itToNotesFrequency->first)) {
+                return true;
+            }
+            itToNotesFrequency->second += 1;
+        }
+    }
+    return false;
 }
 
 //Tested
-void solveSubsetMoneyProblem(){
-	int testCases,note,amount,size;
-	map<int,int> notesFrequency;
-	map<int,int>::iterator itToNotesFrequency;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d %d",&size,&amount);
-		notesFrequency.clear();
-		while(size--){
-			scanf("%d",&note);
-			if((itToNotesFrequency = notesFrequency.find(note)) == notesFrequency.end()){
-				notesFrequency.insert(pair<int,int>(note,1));
-			}else{
-				notesFrequency[note] += 1;
-			}
-		}
-		if(subsetForMoney(notesFrequency,amount)){
-			printf("Yes\n");
-		}else{
-			printf("No\n");
-		}
-	}
+void solveSubsetMoneyProblem() {
+    int testCases,note,amount,size;
+    map<int,int> notesFrequency;
+    map<int,int>::iterator itToNotesFrequency;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d %d",&size,&amount);
+        notesFrequency.clear();
+        while(size--) {
+            scanf("%d",&note);
+            if((itToNotesFrequency = notesFrequency.find(note)) == notesFrequency.end()) {
+                notesFrequency.insert(pair<int,int>(note,1));
+            } else {
+                notesFrequency[note] += 1;
+            }
+        }
+        if(subsetForMoney(notesFrequency,amount)) {
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
 }
 
 #endif /* MARCHA1_H_ */

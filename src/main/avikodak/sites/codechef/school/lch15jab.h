@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define LCH15JAB_H_
 
 //Tested
-void areCharWithSameFrequency(string userInput){
-	sort(userInput.begin(),userInput.end());
-	unsigned int counter = 0,frequency,maxFrequency = 0;
-	while(counter < userInput.size()){
-		frequency = 1;
-		while(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]){
-			counter++;
-			frequency++;
-		}
-		counter++;
-		maxFrequency = max(maxFrequency,frequency);
-	}
-	printf("%s\n",maxFrequency == userInput.size()-maxFrequency?"YES":"NO");
+void areCharWithSameFrequency(string userInput) {
+    sort(userInput.begin(),userInput.end());
+    unsigned int counter = 0,frequency,maxFrequency = 0;
+    while(counter < userInput.size()) {
+        frequency = 1;
+        while(counter+1 < userInput.size() && userInput[counter] == userInput[counter+1]) {
+            counter++;
+            frequency++;
+        }
+        counter++;
+        maxFrequency = max(maxFrequency,frequency);
+    }
+    printf("%s\n",maxFrequency == userInput.size()-maxFrequency?"YES":"NO");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	cin >> testCases;
-	string userInput;
-	while(testCases--){
-		cin >> userInput;
-		areCharWithSameFrequency(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    cin >> testCases;
+    string userInput;
+    while(testCases--) {
+        cin >> userInput;
+        areCharWithSameFrequency(userInput);
+    }
 }
 
 #endif /* LCH15JAB_H_ */

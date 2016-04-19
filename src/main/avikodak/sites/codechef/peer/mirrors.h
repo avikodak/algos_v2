@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 #define MIRRORS_H_
 
 //Tested
-void printMirroredString(string userInput){
-	unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-	while(frontCrawler < rearCrawler){
-		swap(userInput[frontCrawler],userInput[rearCrawler]);
-		frontCrawler++;
-		rearCrawler--;
-	}
-	cout << userInput << endl;
+void printMirroredString(string userInput) {
+    unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+    while(frontCrawler < rearCrawler) {
+        swap(userInput[frontCrawler],userInput[rearCrawler]);
+        frontCrawler++;
+        rearCrawler--;
+    }
+    cout << userInput << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,rows,columns;
-	scanf("%u",&testCases);
-	string userInput;
-	while(testCases--){
-		scanf("%u %u",&rows,&columns);
-		while(rows--){
-			cin >> userInput;
-			printMirroredString(userInput);
-		}
-	}
+void printResults() {
+    unsigned int testCases,rows,columns;
+    scanf("%u",&testCases);
+    string userInput;
+    while(testCases--) {
+        scanf("%u %u",&rows,&columns);
+        while(rows--) {
+            cin >> userInput;
+            printMirroredString(userInput);
+        }
+    }
 }
 
 #endif /* MIRRORS_H_ */

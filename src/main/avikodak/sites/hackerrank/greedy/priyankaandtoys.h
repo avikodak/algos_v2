@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define PRIYANKAANDTOYS_H_
 
 //Tested
-void getMinimumUnits(){
-	unsigned int inputSize,input;
-	scanf("%u",&inputSize);
-	vector<unsigned int> weights;
-	for(unsigned int counter = 0;counter < inputSize;counter++){
-		scanf("%u",&input);
-		weights.push_back(input);
-	}
-	sort(weights.begin(),weights.end());
-	unsigned int minimumUnits = 0;
-	unsigned int outerCounter = 0,innerCounter;
-	while(outerCounter < weights.size()){
-		minimumUnits++;
+void getMinimumUnits() {
+    unsigned int inputSize,input;
+    scanf("%u",&inputSize);
+    vector<unsigned int> weights;
+    for(unsigned int counter = 0; counter < inputSize; counter++) {
+        scanf("%u",&input);
+        weights.push_back(input);
+    }
+    sort(weights.begin(),weights.end());
+    unsigned int minimumUnits = 0;
+    unsigned int outerCounter = 0,innerCounter;
+    while(outerCounter < weights.size()) {
+        minimumUnits++;
         innerCounter = outerCounter;
-		while(innerCounter < weights.size() && weights[outerCounter] <= weights[innerCounter] && weights[outerCounter]+4 >= weights[innerCounter]){
-			innerCounter++;
-		}
-		outerCounter = innerCounter;
-	}
-	cout << minimumUnits;
+        while(innerCounter < weights.size() && weights[outerCounter] <= weights[innerCounter] && weights[outerCounter]+4 >= weights[innerCounter]) {
+            innerCounter++;
+        }
+        outerCounter = innerCounter;
+    }
+    cout << minimumUnits;
 }
 
 #endif /* PRIYANKAANDTOYS_H_ */

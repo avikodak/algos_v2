@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: georgeandaccomdation.h 
+ *  File Name   		: georgeandaccomdation.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\georgeandaccomdation.h
  *  Created on			: Mar 1, 2015 :: 6:49:32 PM
  *  Author				: AVINASH
@@ -71,16 +71,16 @@ using namespace __gnu_cxx;
 #define GEORGEANDACCOMDATION_H_
 
 //Tested
-void roomsAvailableToAccomdate(){
-	unsigned int testCases,counter = 0,filled,available;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%d %d",&filled,&available);
-		if(available-filled >= 2){
-			counter++;
-		}
-	}
-	printf("%u",counter);
+void roomsAvailableToAccomdate() {
+    unsigned int testCases,counter = 0,filled,available;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%d %d",&filled,&available);
+        if(available-filled >= 2) {
+            counter++;
+        }
+    }
+    printf("%u",counter);
 }
 
 #endif /* GEORGEANDACCOMDATION_H_ */

@@ -72,7 +72,7 @@ using namespace __gnu_cxx;
 
 //Tested
 void Postorder(node *root) {
-    if(root == NULL){
+    if(root == NULL) {
         return;
     }
     Postorder(root->left);

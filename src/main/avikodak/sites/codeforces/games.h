@@ -71,45 +71,45 @@ using namespace __gnu_cxx;
 #define GAMES_H_
 
 //Tested
-struct uniforms{
+struct uniforms {
 public:
-	unsigned int home;
-	unsigned int guest;
+    unsigned int home;
+    unsigned int guest;
 
-	uniforms(){
+    uniforms() {
 
-	}
+    }
 
-	uniforms(unsigned int home,unsigned int guest){
-		this->home = home;
-		this->guest = guest;
-	}
+    uniforms(unsigned int home,unsigned int guest) {
+        this->home = home;
+        this->guest = guest;
+    }
 
 };
 
 //Tested
-void getTotalNumberOfHomeGuestUniform(){
-	unsigned int totalTeams,homeInput,guestInput;
-	scanf("%u",&totalTeams);
-	vector<uniforms *> userInput;
-	uniforms *teamInput;
-	for(unsigned int counter = 0;counter <totalTeams;counter++){
-		scanf("%u %u",&homeInput,&guestInput);
-		teamInput = new uniforms(homeInput,guestInput);
-		userInput.push_back(teamInput);
-	}
-	unsigned int totalCount = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[outerCounter]->home == userInput[innerCounter]->guest){
-				totalCount++;
-			}
-			if(userInput[innerCounter]->home == userInput[outerCounter]->guest){
-				totalCount++;
-			}
-		}
-	}
-	printf("%u",totalCount);
+void getTotalNumberOfHomeGuestUniform() {
+    unsigned int totalTeams,homeInput,guestInput;
+    scanf("%u",&totalTeams);
+    vector<uniforms *> userInput;
+    uniforms *teamInput;
+    for(unsigned int counter = 0; counter <totalTeams; counter++) {
+        scanf("%u %u",&homeInput,&guestInput);
+        teamInput = new uniforms(homeInput,guestInput);
+        userInput.push_back(teamInput);
+    }
+    unsigned int totalCount = 0;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[outerCounter]->home == userInput[innerCounter]->guest) {
+                totalCount++;
+            }
+            if(userInput[innerCounter]->home == userInput[outerCounter]->guest) {
+                totalCount++;
+            }
+        }
+    }
+    printf("%u",totalCount);
 }
 
 #endif /* GAMES_H_ */

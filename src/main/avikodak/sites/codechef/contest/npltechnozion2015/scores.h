@@ -73,24 +73,24 @@ using namespace __gnu_cxx;
 #define SCORES_H_
 
 //Tested
-void printResults(){
-	long long int size,input,firstMax,secondMax;
-	scanf("%lld",&size);
-	for(long long int counter = 0;counter < size;counter++){
-		scanf("%lld",&input);
-		if(counter == 0){
-			firstMax = input;
-			secondMax = input;
-		}else{
-			if(firstMax < input){
-				secondMax = firstMax;
-				firstMax = input;
-			}else if(secondMax < input){
-				secondMax = input;
-			}
-		}
-	}
-	printf("%lld %lld",firstMax,secondMax);
+void printResults() {
+    long long int size,input,firstMax,secondMax;
+    scanf("%lld",&size);
+    for(long long int counter = 0; counter < size; counter++) {
+        scanf("%lld",&input);
+        if(counter == 0) {
+            firstMax = input;
+            secondMax = input;
+        } else {
+            if(firstMax < input) {
+                secondMax = firstMax;
+                firstMax = input;
+            } else if(secondMax < input) {
+                secondMax = input;
+            }
+        }
+    }
+    printf("%lld %lld",firstMax,secondMax);
 }
 
 #endif /* SCORES_H_ */

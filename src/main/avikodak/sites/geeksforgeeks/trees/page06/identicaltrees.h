@@ -73,62 +73,62 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-bool areTreesIdenticalPreOrder(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	if(firstTreePtr->value != secondTreePtr->value){
-		return false;
-	}
-	return areTreesIdenticalPreOrder(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalPreOrder(firstTreePtr->right,secondTreePtr->right);
+bool areTreesIdenticalPreOrder(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    if(firstTreePtr->value != secondTreePtr->value) {
+        return false;
+    }
+    return areTreesIdenticalPreOrder(firstTreePtr->left,secondTreePtr->left) && areTreesIdenticalPreOrder(firstTreePtr->right,secondTreePtr->right);
 }
 
-bool areTreesIdenticalPreOrderIterative(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	stack<itNode *> firstAuxSpace,secondAuxSpace;
-	itNode *firstCurrentNode,*secondCurrentNode;
-	firstAuxSpace.push(firstTreePtr);
-	secondAuxSpace.push(secondTreePtr);
-	while(!firstAuxSpace.empty() && !secondAuxSpace.empty()){
-		firstCurrentNode = firstAuxSpace.top();
-		firstAuxSpace.pop();
-		secondCurrentNode = secondAuxSpace.top();
-		secondAuxSpace.pop();
-		if(firstCurrentNode->value != secondCurrentNode->value){
-			return false;
-		}
-		if(firstCurrentNode->left != null && secondCurrentNode->left != null){
-			firstAuxSpace.push(firstCurrentNode->left);
-			secondAuxSpace.push(secondCurrentNode->left);
-		}else if(firstCurrentNode->left != null || secondCurrentNode->left != null){
-			return false;
-		}
-		if(firstCurrentNode->right != null && secondCurrentNode->right != null){
-			firstAuxSpace.push(firstCurrentNode->right);
-			secondAuxSpace.push(secondCurrentNode->right);
-		}else if(firstCurrentNode->right != null || secondCurrentNode->right != null){
-			return false;
-		}
-	}
-	return firstAuxSpace.empty() && secondAuxSpace.empty();
+bool areTreesIdenticalPreOrderIterative(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    stack<itNode *> firstAuxSpace,secondAuxSpace;
+    itNode *firstCurrentNode,*secondCurrentNode;
+    firstAuxSpace.push(firstTreePtr);
+    secondAuxSpace.push(secondTreePtr);
+    while(!firstAuxSpace.empty() && !secondAuxSpace.empty()) {
+        firstCurrentNode = firstAuxSpace.top();
+        firstAuxSpace.pop();
+        secondCurrentNode = secondAuxSpace.top();
+        secondAuxSpace.pop();
+        if(firstCurrentNode->value != secondCurrentNode->value) {
+            return false;
+        }
+        if(firstCurrentNode->left != null && secondCurrentNode->left != null) {
+            firstAuxSpace.push(firstCurrentNode->left);
+            secondAuxSpace.push(secondCurrentNode->left);
+        } else if(firstCurrentNode->left != null || secondCurrentNode->left != null) {
+            return false;
+        }
+        if(firstCurrentNode->right != null && secondCurrentNode->right != null) {
+            firstAuxSpace.push(firstCurrentNode->right);
+            secondAuxSpace.push(secondCurrentNode->right);
+        } else if(firstCurrentNode->right != null || secondCurrentNode->right != null) {
+            return false;
+        }
+    }
+    return firstAuxSpace.empty() && secondAuxSpace.empty();
 }
 
-bool areTreesIdenticalInOrder(itNode *firstTreePtr,itNode *secondTreePtr){
-	if(firstTreePtr == null && secondTreePtr == null){
-		return true;
-	}
-	if(firstTreePtr == null || secondTreePtr == null){
-		return false;
-	}
-	return areTreesIdenticalInOrder(firstTreePtr->left,secondTreePtr->left) && firstTreePtr->value != secondTreePtr->value && areTreesIdenticalInOrder(firstTreePtr->right,secondTreePtr->right);
+bool areTreesIdenticalInOrder(itNode *firstTreePtr,itNode *secondTreePtr) {
+    if(firstTreePtr == null && secondTreePtr == null) {
+        return true;
+    }
+    if(firstTreePtr == null || secondTreePtr == null) {
+        return false;
+    }
+    return areTreesIdenticalInOrder(firstTreePtr->left,secondTreePtr->left) && firstTreePtr->value != secondTreePtr->value && areTreesIdenticalInOrder(firstTreePtr->right,secondTreePtr->right);
 }
 
 /****************************************************************************************************************************************************/

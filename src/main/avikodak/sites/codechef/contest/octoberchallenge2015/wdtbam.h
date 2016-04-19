@@ -73,36 +73,36 @@ using namespace __gnu_cxx;
 #define WDTBAM_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input,rightAnsCount;
-	scanf("%u",&testCases);
-	string rightAns,ans;
-	vector<unsigned int> weights;
-	unsigned int result;
-	while(testCases--){
-		scanf("%u",&size);
-		cin >> rightAns >> ans;
-		weights.clear();
-		for(unsigned int counter = 0;counter <= size;counter++){
-			scanf("%u",&input);
-			weights.push_back(input);
-		}
-		result = weights[0];
-		rightAnsCount = 0;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(ans[counter] == rightAns[counter]){
-				rightAnsCount++;
-			}
-		}
-		if(rightAnsCount == ans.length()){
-			result = weights[ans.length()];
-		}else{
-			for(unsigned int counter = 0;counter <= rightAnsCount;counter++){
-				result = max(result,weights[counter]);
-			}
-		}
-		printf("%u\n",result);
-	}
+void printResults() {
+    unsigned int testCases,size,input,rightAnsCount;
+    scanf("%u",&testCases);
+    string rightAns,ans;
+    vector<unsigned int> weights;
+    unsigned int result;
+    while(testCases--) {
+        scanf("%u",&size);
+        cin >> rightAns >> ans;
+        weights.clear();
+        for(unsigned int counter = 0; counter <= size; counter++) {
+            scanf("%u",&input);
+            weights.push_back(input);
+        }
+        result = weights[0];
+        rightAnsCount = 0;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(ans[counter] == rightAns[counter]) {
+                rightAnsCount++;
+            }
+        }
+        if(rightAnsCount == ans.length()) {
+            result = weights[ans.length()];
+        } else {
+            for(unsigned int counter = 0; counter <= rightAnsCount; counter++) {
+                result = max(result,weights[counter]);
+            }
+        }
+        printf("%u\n",result);
+    }
 }
 
 

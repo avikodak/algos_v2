@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: linearsearch.h 
+ *  File Name   		: linearsearch.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\linearsearch.h
  *  Created on			: Oct 22, 2014 :: 12:41:12 PM
  *  Author				: AVINASH
@@ -70,24 +70,24 @@ using namespace __gnu_cxx;
 #define LINEARSEARCH_H_
 
 //Tested
-unsigned int linearSearch(vector<int> userInput,int value,unsigned int index = 0){
-	if(index >= userInput.size()){
-		return UINT_MAX;
-	}
-	return userInput[index] == value?index:linearSearch(userInput,value,index+1);
+unsigned int linearSearch(vector<int> userInput,int value,unsigned int index = 0) {
+    if(index >= userInput.size()) {
+        return UINT_MAX;
+    }
+    return userInput[index] == value?index:linearSearch(userInput,value,index+1);
 }
 
 //Tested
-unsigned int linearSearchIterative(vector<int> userInput,int value){
-	if(userInput.size() == 0){
-		return UINT_MAX;
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == value){
-			return counter;
-		}
-	}
-	return UINT_MAX;
+unsigned int linearSearchIterative(vector<int> userInput,int value) {
+    if(userInput.size() == 0) {
+        return UINT_MAX;
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == value) {
+            return counter;
+        }
+    }
+    return UINT_MAX;
 }
 
 #endif /* LINEARSEARCH_H_ */

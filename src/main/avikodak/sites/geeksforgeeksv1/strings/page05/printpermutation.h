@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printpermutation.h 
+ *  File Name   		: printpermutation.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printpermutation.h
  *  Created on			: Dec 3, 2014 :: 10:41:24 PM
  *  Author				: AVINASH
@@ -68,16 +68,16 @@ using namespace __gnu_cxx;
 #ifndef PRINTPERMUTATION_H_
 #define PRINTPERMUTATION_H_
 
-void printPermutation(char *userInput,int startIndex,int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		return;
-	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
-	}
+void printPermutation(char *userInput,int startIndex,int endIndex) {
+    if(startIndex == endIndex) {
+        printf("%s",userInput);
+        return;
+    }
+    for(unsigned int counter = startIndex; counter <= endIndex; counter++) {
+        swap(userInput[startIndex],userInput[counter]);
+        printPermutation(userInput,startIndex+1,endIndex);
+        swap(userInput[startIndex],userInput[counter]);
+    }
 }
 
 

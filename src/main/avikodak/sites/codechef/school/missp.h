@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define MISSP_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,size,input,result;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		result = 0;
-		while(size--){
-			scanf("%u",&input);
-			result ^= input;
-		}
-		cout << result << endl;
-	}
+void printResults() {
+    unsigned int testCases,size,input,result;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        result = 0;
+        while(size--) {
+            scanf("%u",&input);
+            result ^= input;
+        }
+        cout << result << endl;
+    }
 }
 
 #endif /* MISSP_H_ */

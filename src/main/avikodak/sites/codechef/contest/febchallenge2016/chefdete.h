@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_
 
 //Tested
-void solveProblem(){
-	unsigned long long int testCases;
-	long long int input;
-	scanf("%llu",&testCases);
-	vector<bool> userInput;
-	userInput.assign(testCases,false);
-	while(testCases--){
-		scanf("%lld",&input);
-		if(input > 0){
-			userInput[input-1] = true;
-		}
-	}
-	for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-		if(!userInput[counter]){
-			printf("%llu\t",counter+1);
-		}
-	}
+void solveProblem() {
+    unsigned long long int testCases;
+    long long int input;
+    scanf("%llu",&testCases);
+    vector<bool> userInput;
+    userInput.assign(testCases,false);
+    while(testCases--) {
+        scanf("%lld",&input);
+        if(input > 0) {
+            userInput[input-1] = true;
+        }
+    }
+    for(unsigned long long int counter = 0; counter < userInput.size(); counter++) {
+        if(!userInput[counter]) {
+            printf("%llu\t",counter+1);
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_FEBCHALLENGE2016_CHEFDETE_H_ */

@@ -80,44 +80,44 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-void itDeleteSill(sillNode **head){
-	if(*head == null){
-		return;
-	}
-	sillNode *crawler = *head,*temp;
-	while(crawler != null){
-		temp = crawler;
-		crawler = crawler->next;
-		free(temp);
-	}
-	(*head) = null;
+void itDeleteSill(sillNode **head) {
+    if(*head == null) {
+        return;
+    }
+    sillNode *crawler = *head,*temp;
+    while(crawler != null) {
+        temp = crawler;
+        crawler = crawler->next;
+        free(temp);
+    }
+    (*head) = null;
 }
 
-void deleteSill(sillNode **head){
-	if(*head == null){
-		return;
-	}
-	deleteSill(&((*head)->next));
-	free(*head);
-	(*head) = null;
+void deleteSill(sillNode **head) {
+    if(*head == null) {
+        return;
+    }
+    deleteSill(&((*head)->next));
+    free(*head);
+    (*head) = null;
 }
 
-void deleteSillAuxSpace(sillNode **head){
-	if(*head == null){
-		return;
-	}
-	stack<sillNode *> auxSpace;
-	sillNode *crawler = *head;
-	while(crawler != null){
-		auxSpace.push(crawler);
-		crawler = crawler->next;
-	}
-	while(!auxSpace.empty()){
-		crawler = auxSpace.top();
-		auxSpace.pop();
-		free(crawler);
-	}
-	(*head) = null;
+void deleteSillAuxSpace(sillNode **head) {
+    if(*head == null) {
+        return;
+    }
+    stack<sillNode *> auxSpace;
+    sillNode *crawler = *head;
+    while(crawler != null) {
+        auxSpace.push(crawler);
+        crawler = crawler->next;
+    }
+    while(!auxSpace.empty()) {
+        crawler = auxSpace.top();
+        auxSpace.pop();
+        free(crawler);
+    }
+    (*head) = null;
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_LINKEDLISTS_PAGE04_DELETESILL_H_ */

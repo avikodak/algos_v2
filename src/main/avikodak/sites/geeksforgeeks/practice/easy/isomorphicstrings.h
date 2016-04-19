@@ -76,35 +76,35 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_ISOMORPHICSTRINGS_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	string firstInput,secondInput;
-	scanf("%u",&testCases);
-	map<char,char>::iterator itToFirstCharMapping,itToSecondCharMapping;
-	while(testCases--){
-		cin >> firstInput >> secondInput;
-		map<char,char> firstCharMapping,secondCharMapping;
-		firstCharMapping.clear();
-		secondCharMapping.clear();
-		bool isIsomorphic = true;
-		for(unsigned int counter = 0;counter < firstInput.size();counter++){
-			itToFirstCharMapping = firstCharMapping.find(firstInput[counter]);
-			itToSecondCharMapping = secondCharMapping.find(secondInput[counter]);
-			if(itToFirstCharMapping == firstCharMapping.end() && itToSecondCharMapping == secondCharMapping.end()){
-				firstCharMapping.insert(pair<char,char>(firstInput[counter],secondInput[counter]));
-				secondCharMapping.insert(pair<char,char>(secondInput[counter],firstInput[counter]));
-			}else if(itToFirstCharMapping != firstCharMapping.end() && itToSecondCharMapping != secondCharMapping.end()){
-				if(itToFirstCharMapping->second != secondInput[counter] || itToSecondCharMapping->second != firstInput[counter]){
-					isIsomorphic = false;
-					break;
-				}
-			}else{
-				isIsomorphic = false;
-				break;
-			}
-		}
-		printf("%d\n",isIsomorphic);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string firstInput,secondInput;
+    scanf("%u",&testCases);
+    map<char,char>::iterator itToFirstCharMapping,itToSecondCharMapping;
+    while(testCases--) {
+        cin >> firstInput >> secondInput;
+        map<char,char> firstCharMapping,secondCharMapping;
+        firstCharMapping.clear();
+        secondCharMapping.clear();
+        bool isIsomorphic = true;
+        for(unsigned int counter = 0; counter < firstInput.size(); counter++) {
+            itToFirstCharMapping = firstCharMapping.find(firstInput[counter]);
+            itToSecondCharMapping = secondCharMapping.find(secondInput[counter]);
+            if(itToFirstCharMapping == firstCharMapping.end() && itToSecondCharMapping == secondCharMapping.end()) {
+                firstCharMapping.insert(pair<char,char>(firstInput[counter],secondInput[counter]));
+                secondCharMapping.insert(pair<char,char>(secondInput[counter],firstInput[counter]));
+            } else if(itToFirstCharMapping != firstCharMapping.end() && itToSecondCharMapping != secondCharMapping.end()) {
+                if(itToFirstCharMapping->second != secondInput[counter] || itToSecondCharMapping->second != firstInput[counter]) {
+                    isIsomorphic = false;
+                    break;
+                }
+            } else {
+                isIsomorphic = false;
+                break;
+            }
+        }
+        printf("%d\n",isIsomorphic);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_ISOMORPHICSTRINGS_H_ */

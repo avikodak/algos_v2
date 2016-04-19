@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minelement.h 
+ *  File Name   		: minelement.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\minelement.h
  *  Created on			: Dec 12, 2014 :: 11:51:54 AM
  *  Author				: AVINASH
@@ -74,68 +74,68 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minElementON(vector<int> userInput,unsigned int currentIndex = 0){
-	if(currentIndex >= userInput.size()){
-		return INT_MAX;
-	}
-	return min(userInput[currentIndex],minElementON(userInput,currentIndex+1));
+int minElementON(vector<int> userInput,unsigned int currentIndex = 0) {
+    if(currentIndex >= userInput.size()) {
+        return INT_MAX;
+    }
+    return min(userInput[currentIndex],minElementON(userInput,currentIndex+1));
 }
 
 //Tested
-int minElementIterative(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MAX;
-	}
-	int minElement = INT_MAX;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		minElement = min(minElement,userInput[counter]);
-	}
-	return minElement;
+int minElementIterative(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MAX;
+    }
+    int minElement = INT_MAX;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        minElement = min(minElement,userInput[counter]);
+    }
+    return minElement;
 }
 
 //Tested
-int minElementDAD(vector<int> userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return INT_MAX;
-	}
-	if(startIndex  == endIndex){
-		return userInput[startIndex];
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	return min(minElementDAD(userInput,startIndex,middleIndex),minElementDAD(userInput,middleIndex+1,endIndex));
+int minElementDAD(vector<int> userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return INT_MAX;
+    }
+    if(startIndex  == endIndex) {
+        return userInput[startIndex];
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    return min(minElementDAD(userInput,startIndex,middleIndex),minElementDAD(userInput,middleIndex+1,endIndex));
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minElementONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	sort(userInput.begin(),userInput.end());
-	return userInput[0];
+int minElementONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    sort(userInput.begin(),userInput.end());
+    return userInput[0];
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int minElementON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MIN;
-	}
-	int minElement;
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		minElement = userInput[outerCrawler];
-		for(unsigned int innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			minElement = min(minElement,userInput[innerCrawler]);
-		}
-		if(minElement == userInput[outerCrawler]){
-			return minElement;
-		}
-	}
-	return INT_MIN;
+int minElementON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MIN;
+    }
+    int minElement;
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        minElement = userInput[outerCrawler];
+        for(unsigned int innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            minElement = min(minElement,userInput[innerCrawler]);
+        }
+        if(minElement == userInput[outerCrawler]) {
+            return minElement;
+        }
+    }
+    return INT_MIN;
 }
 
 #endif /* MINELEMENT_H_ */

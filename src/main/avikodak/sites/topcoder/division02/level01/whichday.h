@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 #define WHICHDAY_H_
 
 //Tested
-class WhichDay{
+class WhichDay {
 public:
-	string getDay(vector<string> notOnThisDay){
-		bool flags[7] = {false};
-		string days[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-		string input;
-		for(unsigned int counter = 0;counter < notOnThisDay.size();counter++){
-			input = notOnThisDay[counter];
-			if(input.compare("Sunday")){
-				flags[0] = true;
-			}else if(input.compare("Monday")){
-				flags[1] = true;
-			}else if(input.compare("Tuesday")){
-				flags[2] = true;
-			}else if(input.compare("Wednesday")){
-				flags[3] = true;
-			}else if(input.compare("Thursday")){
-				flags[4] = true;
-			}else if(input.compare("Friday")){
-				flags[5] = true;
-			}else if(input.compare("Saturday")){
-				flags[6] = true;
-			}
-		}
-		for(unsigned int counter = 0;counter < 7;counter++){
-			if(!flags[counter]){
-				return days[counter];
-			}
-		}
-	}
+    string getDay(vector<string> notOnThisDay) {
+        bool flags[7] = {false};
+        string days[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+        string input;
+        for(unsigned int counter = 0; counter < notOnThisDay.size(); counter++) {
+            input = notOnThisDay[counter];
+            if(input.compare("Sunday")) {
+                flags[0] = true;
+            } else if(input.compare("Monday")) {
+                flags[1] = true;
+            } else if(input.compare("Tuesday")) {
+                flags[2] = true;
+            } else if(input.compare("Wednesday")) {
+                flags[3] = true;
+            } else if(input.compare("Thursday")) {
+                flags[4] = true;
+            } else if(input.compare("Friday")) {
+                flags[5] = true;
+            } else if(input.compare("Saturday")) {
+                flags[6] = true;
+            }
+        }
+        for(unsigned int counter = 0; counter < 7; counter++) {
+            if(!flags[counter]) {
+                return days[counter];
+            }
+        }
+    }
 };
 
 #endif /* WHICHDAY_H_ */

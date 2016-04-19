@@ -75,27 +75,27 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PALINDROMICSTRING_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PALINDROMICSTRING_H_
 
-void solveProblem(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	unsigned int frontCrawler,rearCrawler;
-	bool isPalindrome;
-	while(testCases--){
-		cin >> userInput;
-		frontCrawler = 0;
-		rearCrawler = userInput.size() - 1;
-		isPalindrome = true;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				isPalindrome = false;
-				break;
-			}
-			frontCrawler++;
-			rearCrawler--;
-		}
-		printf("%s\n",isPalindrome?"Yes":"No");
-	}
+void solveProblem() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    unsigned int frontCrawler,rearCrawler;
+    bool isPalindrome;
+    while(testCases--) {
+        cin >> userInput;
+        frontCrawler = 0;
+        rearCrawler = userInput.size() - 1;
+        isPalindrome = true;
+        while(frontCrawler < rearCrawler) {
+            if(userInput[frontCrawler] != userInput[rearCrawler]) {
+                isPalindrome = false;
+                break;
+            }
+            frontCrawler++;
+            rearCrawler--;
+        }
+        printf("%s\n",isPalindrome?"Yes":"No");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_PALINDROMICSTRING_H_ */

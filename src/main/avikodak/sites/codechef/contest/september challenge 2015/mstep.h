@@ -72,49 +72,49 @@ using namespace __gnu_cxx;
 
 //Tested
 struct rowColumn {
-	int row;
-	int column;
+    int row;
+    int column;
 
-	rowColumn(){}
+    rowColumn() {}
 
-	rowColumn(int row,int column){
-		this->row = row;
-		this->column = column;
-	}
+    rowColumn(int row,int column) {
+        this->row = row;
+        this->column = column;
+    }
 };
 
 //Tested
-void calTotalSteps(map<unsigned int,rowColumn *> valuePositionMap,unsigned int size){
-	rowColumn *ptr = valuePositionMap.find(1)->second;
-	int rowCrawler = ptr->row,columnCrawler = ptr->column;
-	unsigned int totalSteps = 0;
-	unsigned int limit = size * size;
-	for(unsigned int counter = 2;counter <= limit;counter++){
-		ptr = valuePositionMap.find(counter)->second;
-		totalSteps += abs(rowCrawler - ptr->row) + abs(columnCrawler - ptr->column);
-		rowCrawler = ptr->row;
-		columnCrawler = ptr->column;
-	}
-	cout << totalSteps << endl;
+void calTotalSteps(map<unsigned int,rowColumn *> valuePositionMap,unsigned int size) {
+    rowColumn *ptr = valuePositionMap.find(1)->second;
+    int rowCrawler = ptr->row,columnCrawler = ptr->column;
+    unsigned int totalSteps = 0;
+    unsigned int limit = size * size;
+    for(unsigned int counter = 2; counter <= limit; counter++) {
+        ptr = valuePositionMap.find(counter)->second;
+        totalSteps += abs(rowCrawler - ptr->row) + abs(columnCrawler - ptr->column);
+        rowCrawler = ptr->row;
+        columnCrawler = ptr->column;
+    }
+    cout << totalSteps << endl;
 }
 
 //Tested
 void printResults() {
-	unsigned int testCases,input;
-	int size;
-	scanf("%u", &testCases);
-	map<unsigned int,rowColumn *> valuePositionMap;
-	while(testCases--) {
-		valuePositionMap.clear();
-		scanf("%u",&size);
-		for(int rowCounter = 1;rowCounter <= size;rowCounter++){
-			for(int columnCounter = 1;columnCounter <= size;columnCounter++){
-				scanf("%u",&input);
-				valuePositionMap.insert(pair<unsigned int,rowColumn *>(input,new rowColumn(rowCounter,columnCounter)));
-			}
-		}
-		calTotalSteps(valuePositionMap,size);
-	}
+    unsigned int testCases,input;
+    int size;
+    scanf("%u", &testCases);
+    map<unsigned int,rowColumn *> valuePositionMap;
+    while(testCases--) {
+        valuePositionMap.clear();
+        scanf("%u",&size);
+        for(int rowCounter = 1; rowCounter <= size; rowCounter++) {
+            for(int columnCounter = 1; columnCounter <= size; columnCounter++) {
+                scanf("%u",&input);
+                valuePositionMap.insert(pair<unsigned int,rowColumn *>(input,new rowColumn(rowCounter,columnCounter)));
+            }
+        }
+        calTotalSteps(valuePositionMap,size);
+    }
 }
 
 

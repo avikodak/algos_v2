@@ -76,17 +76,17 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_APOWERB_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	unsigned long long int a,b,result;
-	while(testCases--){
-		cin >> a >>b;
-		result = 1;
-		for(unsigned int counter = 0;counter < b;counter++){
-			result *= a;
-		}
-		cout << result << endl;
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    unsigned long long int a,b,result;
+    while(testCases--) {
+        cin >> a >>b;
+        result = 1;
+        for(unsigned int counter = 0; counter < b; counter++) {
+            result *= a;
+        }
+        cout << result << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_APOWERB_H_ */

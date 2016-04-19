@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: leftandrighthandeddiv2.h 
+ *  File Name   		: leftandrighthandeddiv2.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\leftandrighthandeddiv2.h
  *  Created on			: Mar 27, 2015 :: 8:55:32 PM
  *  Author				: avikodak
@@ -71,17 +71,17 @@ using namespace __gnu_cxx;
 #define LEFTANDRIGHTHANDEDDIV2_H_
 
 //Tested
-class LeftAndRightHandedDiv2{
+class LeftAndRightHandedDiv2 {
 public:
-	int count(string S){
-		int collisionCount = 0;
-		for(int counter = S.size()-2;counter >= 0;counter--){
-			if(S[counter] == 'R' && S[counter+1] == 'L'){
-				collisionCount++;
-			}
-		}
-		return collisionCount;
-	}
+    int count(string S) {
+        int collisionCount = 0;
+        for(int counter = S.size()-2; counter >= 0; counter--) {
+            if(S[counter] == 'R' && S[counter+1] == 'L') {
+                collisionCount++;
+            }
+        }
+        return collisionCount;
+    }
 };
 
 #endif /* LEFTANDRIGHTHANDEDDIV2_H_ */

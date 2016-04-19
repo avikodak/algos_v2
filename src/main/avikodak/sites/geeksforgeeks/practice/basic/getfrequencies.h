@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GETFREQUENCIES_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		vector<int> frequencies;
-		frequencies.assign(size+1,0);
-		while(size--){
-			scanf("%d",&input);
-			frequencies[input]++;
-		}
-		for(unsigned int counter = 1;counter < frequencies.size();counter++){
-			printf("%d ",frequencies[counter]);
-		}
-		printf("\n");
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        vector<int> frequencies;
+        frequencies.assign(size+1,0);
+        while(size--) {
+            scanf("%d",&input);
+            frequencies[input]++;
+        }
+        for(unsigned int counter = 1; counter < frequencies.size(); counter++) {
+            printf("%d ",frequencies[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GETFREQUENCIES_H_ */

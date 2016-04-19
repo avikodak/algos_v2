@@ -73,13 +73,13 @@ using namespace __gnu_cxx;
 #define POWER2_H_
 
 //Tested
-void printResults(){
-	long long int testCases,input;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		scanf("%lld",&input);
-		printf("%s\n",input%2==0&&input != 0?"Yes":"No");
-	}
+void printResults() {
+    long long int testCases,input;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        scanf("%lld",&input);
+        printf("%s\n",input%2==0&&input != 0?"Yes":"No");
+    }
 }
 
 #endif /* POWER2_H_ */

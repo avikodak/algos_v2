@@ -72,29 +72,29 @@ using namespace __gnu_cxx;
 #ifndef COMPILER_H_
 #define COMPILER_H_
 
-void getTotalValidPairs(string userInput){
-	long long int totalValidLength = 0,totalLessThanSymb = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] == '<'){
-			totalLessThanSymb++;
-		}else{
-			if(totalLessThanSymb > 0){
-				totalValidLength+=2;
-				totalLessThanSymb--;
-			}
-		}
-	}
-	printf("%lld\n",totalValidLength);
+void getTotalValidPairs(string userInput) {
+    long long int totalValidLength = 0,totalLessThanSymb = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] == '<') {
+            totalLessThanSymb++;
+        } else {
+            if(totalLessThanSymb > 0) {
+                totalValidLength+=2;
+                totalLessThanSymb--;
+            }
+        }
+    }
+    printf("%lld\n",totalValidLength);
 }
 
-void printResults(){
-	unsigned int testCases;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		getTotalValidPairs(userInput);
-	}
+void printResults() {
+    unsigned int testCases;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        getTotalValidPairs(userInput);
+    }
 }
 
 #endif /* COMPILER_H_ */

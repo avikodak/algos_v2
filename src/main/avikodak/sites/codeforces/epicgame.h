@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: epicgame.h 
+ *  File Name   		: epicgame.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\epicgame.h
  *  Created on			: Mar 1, 2015 :: 9:50:01 AM
  *  Author				: AVINASH
@@ -71,35 +71,35 @@ using namespace __gnu_cxx;
 #define EPICGAME_H_
 
 //Tested
-int gcd(int firstNumber,int secondNumber){
-	if(firstNumber == 1 || secondNumber == 1){
-		return 1;
-	}
-	if(secondNumber % firstNumber == 0){
-		return firstNumber;
-	}
-	return gcd(secondNumber%firstNumber,firstNumber);
+int gcd(int firstNumber,int secondNumber) {
+    if(firstNumber == 1 || secondNumber == 1) {
+        return 1;
+    }
+    if(secondNumber % firstNumber == 0) {
+        return firstNumber;
+    }
+    return gcd(secondNumber%firstNumber,firstNumber);
 }
 
 //Tested
-void epicGame(){
-	int a,b,n;
-	scanf("%d %d %d",&a,&b,&n);
-	bool flag = true;
-	while(n > 0){
-		if(flag){
-			n -= gcd(a,n);
-			if(n == 0){
-				printf("0");
-			}
-		}else{
-			n -= gcd(b,n);
-			if(n == 0){
-				printf("1");
-			}
-		}
-		flag = !flag;
-	}
+void epicGame() {
+    int a,b,n;
+    scanf("%d %d %d",&a,&b,&n);
+    bool flag = true;
+    while(n > 0) {
+        if(flag) {
+            n -= gcd(a,n);
+            if(n == 0) {
+                printf("0");
+            }
+        } else {
+            n -= gcd(b,n);
+            if(n == 0) {
+                printf("1");
+            }
+        }
+        flag = !flag;
+    }
 }
 
 #endif /* EPICGAME_H_ */

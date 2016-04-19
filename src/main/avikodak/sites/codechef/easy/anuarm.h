@@ -74,41 +74,43 @@ using namespace __gnu_cxx;
 #define ANUARM_H_
 
 //Tested
-void scanllint(long long int &x){
-	register int c = gc();
-	x = 0;
-	for(;(c<48 || c>57);c = gc());
-	for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+void scanllint(long long int &x) {
+    register int c = gc();
+    x = 0;
+    for(; (c<48 || c>57); c = gc());
+    for(; c>47 && c<58; c = gc()) {
+        x = (x<<1) + (x<<3) + c - 48;
+    }
 }
 
 //Tested
-void printResults(){
-	long long int testCases,soldiersCount,size;
-	long long int index,minIndex,maxIndex;
-	scanllint(testCases);
-	vector<long long int> indexesFlag;
-	while(testCases--){
-		scanllint(soldiersCount);
-		indexesFlag.assign(soldiersCount,0);
-		scanllint(size);
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanllint(index);
-			if(counter == 0){
-				minIndex = index;
-				maxIndex = index;
-			}else{
-				minIndex = min(minIndex,index);
-				maxIndex = max(maxIndex,index);
-			}
-		}
-		for(unsigned int counter = 0;counter < soldiersCount;counter++){
-			indexesFlag[counter] = max(abs(maxIndex-counter),abs(minIndex-counter));
-		}
-		for(unsigned int counter = 0;counter < soldiersCount;counter++){
-			printf("%lld ",indexesFlag[counter]);
-		}
-		printf("\n");
-	}
+void printResults() {
+    long long int testCases,soldiersCount,size;
+    long long int index,minIndex,maxIndex;
+    scanllint(testCases);
+    vector<long long int> indexesFlag;
+    while(testCases--) {
+        scanllint(soldiersCount);
+        indexesFlag.assign(soldiersCount,0);
+        scanllint(size);
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanllint(index);
+            if(counter == 0) {
+                minIndex = index;
+                maxIndex = index;
+            } else {
+                minIndex = min(minIndex,index);
+                maxIndex = max(maxIndex,index);
+            }
+        }
+        for(unsigned int counter = 0; counter < soldiersCount; counter++) {
+            indexesFlag[counter] = max(abs(maxIndex-counter),abs(minIndex-counter));
+        }
+        for(unsigned int counter = 0; counter < soldiersCount; counter++) {
+            printf("%lld ",indexesFlag[counter]);
+        }
+        printf("\n");
+    }
 }
 
 #endif /* ANUARM_H_ */

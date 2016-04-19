@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: babywords.h 
+ *  File Name   		: babywords.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\babywords.h
  *  Created on			: Feb 4, 2015 :: 12:56:40 PM
  *  Author				: AVINASH
@@ -70,29 +70,29 @@ using namespace __gnu_cxx;
 #ifndef BABYWORDS_H_
 #define BABYWORDS_H_
 
-bool existsInDictionary(vector<string> baby_words,string userInput){
-    for(unsigned int counter = 0;counter < baby_words.size();counter++){
-        if(baby_words[counter].compare(userInput) == 0){
+bool existsInDictionary(vector<string> baby_words,string userInput) {
+    for(unsigned int counter = 0; counter < baby_words.size(); counter++) {
+        if(baby_words[counter].compare(userInput) == 0) {
             return true;
         }
     }
     return false;
 }
 
-bool doesExists(vector<string> baby_words,queue<string> breakedWords,string garbled_text){
-    if(garbled_text.size() == 0){
-        while(!breakedWords.empty()){
+bool doesExists(vector<string> baby_words,queue<string> breakedWords,string garbled_text) {
+    if(garbled_text.size() == 0) {
+        while(!breakedWords.empty()) {
             cout << breakedWords.front() + " ";
             breakedWords.pop();
         }
         return true;
     }
     int counter = 1;
-    while(counter <= garbled_text.size()){
+    while(counter <= garbled_text.size()) {
         string subString = garbled_text.substr(0,counter);
-        if(existsInDictionary(baby_words,subString)){
+        if(existsInDictionary(baby_words,subString)) {
             breakedWords.push(subString);
-            if(doesExists(baby_words,breakedWords,garbled_text.substr(counter,garbled_text.size() - (counter)))){
+            if(doesExists(baby_words,breakedWords,garbled_text.substr(counter,garbled_text.size() - (counter)))) {
                 return true;
             }
             breakedWords.pop();

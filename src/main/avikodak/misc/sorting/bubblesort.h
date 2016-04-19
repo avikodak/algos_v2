@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: bubblesort.h 
+ *  File Name   		: bubblesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\bubblesort.h
  *  Created on			: Dec 11, 2014 :: 1:01:17 PM
  *  Author				: AVINASH
@@ -74,17 +74,17 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void bubbleSort(vector<int> &userInput){
-	if(userInput.size() < 2){
-		return;
-	}
-	for(unsigned int outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		for(unsigned int innerCrawler = 0;innerCrawler < userInput.size()-1;innerCrawler++){
-			if(userInput[innerCrawler] > userInput[innerCrawler+1]){
-				swap(userInput[innerCrawler],userInput[innerCrawler+1]);
-			}
-		}
-	}
+void bubbleSort(vector<int> &userInput) {
+    if(userInput.size() < 2) {
+        return;
+    }
+    for(unsigned int outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = 0; innerCrawler < userInput.size()-1; innerCrawler++) {
+            if(userInput[innerCrawler] > userInput[innerCrawler+1]) {
+                swap(userInput[innerCrawler],userInput[innerCrawler+1]);
+            }
+        }
+    }
 }
 
 #endif /* BUBBLESORT_H_ */

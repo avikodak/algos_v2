@@ -71,21 +71,21 @@ using namespace __gnu_cxx;
 #define ANTONANDLETTERS_H_
 
 //Tested
-void getDistinctLetters(){
-	string userInput;
-	getline(cin,userInput);
-	bool flags[26] = {false};
+void getDistinctLetters() {
+    string userInput;
+    getline(cin,userInput);
+    bool flags[26] = {false};
 
-	for(unsigned int counter = 1;counter < userInput.size();counter+=3){
-		flags[userInput[counter]-'a'] = true;
-	}
-	unsigned int distinctCounter = 0;
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(flags[counter]){
-			distinctCounter++;
-		}
-	}
-	printf("%u",distinctCounter);
+    for(unsigned int counter = 1; counter < userInput.size(); counter+=3) {
+        flags[userInput[counter]-'a'] = true;
+    }
+    unsigned int distinctCounter = 0;
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(flags[counter]) {
+            distinctCounter++;
+        }
+    }
+    printf("%u",distinctCounter);
 }
 
 #endif /* ANTONANDLETTERS_H_ */

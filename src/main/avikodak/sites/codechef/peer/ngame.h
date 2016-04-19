@@ -72,13 +72,13 @@ using namespace __gnu_cxx;
 #define NGAME_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&input);
-		printf("%s\n",input%4 == 0?"Second":"First");
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&input);
+        printf("%s\n",input%4 == 0?"Second":"First");
+    }
 }
 
 #endif /* NGAME_H_ */

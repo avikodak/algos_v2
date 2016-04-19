@@ -72,7 +72,7 @@ using namespace __gnu_cxx;
 
 //Tested
 void Inorder(node *root) {
-    if(root == NULL){
+    if(root == NULL) {
         return;
     }
     Inorder(root->left);

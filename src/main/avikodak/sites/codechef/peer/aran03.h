@@ -72,24 +72,24 @@ using namespace __gnu_cxx;
 #define ARAN03_H_
 
 //Tested
-long long int sum(long long int userInput){
-	long long int result = 0;
-	while(userInput){
-		result += (userInput%10);
-		userInput /= 10;
-	}
-	return result;
+long long int sum(long long int userInput) {
+    long long int result = 0;
+    while(userInput) {
+        result += (userInput%10);
+        userInput /= 10;
+    }
+    return result;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	long long int input;
-	while(testCases--){
-		scanf("%lld",&input);
-		cout << input%sum(input) << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    long long int input;
+    while(testCases--) {
+        scanf("%lld",&input);
+        cout << input%sum(input) << endl;
+    }
 }
 
 #endif /* ARAN03_H_ */

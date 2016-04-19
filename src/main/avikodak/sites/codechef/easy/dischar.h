@@ -73,19 +73,19 @@ using namespace __gnu_cxx;
 #define DISCHAR_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string userInput;
-	map<char,bool> existenceMap;
-	while(testCases--){
-		cin >> userInput;
-		existenceMap.clear();
-		for(unsigned long long int counter = 0;counter < userInput.size();counter++){
-			existenceMap[userInput[counter]] = true;
-		}
-		cout << existenceMap.size() << endl;
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string userInput;
+    map<char,bool> existenceMap;
+    while(testCases--) {
+        cin >> userInput;
+        existenceMap.clear();
+        for(unsigned long long int counter = 0; counter < userInput.size(); counter++) {
+            existenceMap[userInput[counter]] = true;
+        }
+        cout << existenceMap.size() << endl;
+    }
 }
 
 #endif /* DISCHAR_H_ */

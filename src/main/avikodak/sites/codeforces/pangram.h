@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define PANGRAM_H_
 
 //Tested
-void isStringPangram(){
-	unsigned int size;
-	scanf("%u",&size);
-	string userInput;
-	cin >> userInput;
-	bool flags[26] = {false};
-	for(unsigned int counter = 0;counter < size;counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			flags[userInput[counter]-'a'] = true;
-		}else{
-			flags[userInput[counter]-'A'] = true;
-		}
-	}
-	for(unsigned int counter = 0;counter < 26;counter++){
-		if(!flags[counter]){
-			printf("NO");
-			return;
-		}
-	}
-	printf("YES");
+void isStringPangram() {
+    unsigned int size;
+    scanf("%u",&size);
+    string userInput;
+    cin >> userInput;
+    bool flags[26] = {false};
+    for(unsigned int counter = 0; counter < size; counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            flags[userInput[counter]-'a'] = true;
+        } else {
+            flags[userInput[counter]-'A'] = true;
+        }
+    }
+    for(unsigned int counter = 0; counter < 26; counter++) {
+        if(!flags[counter]) {
+            printf("NO");
+            return;
+        }
+    }
+    printf("YES");
 }
 
 #endif /* PANGRAM_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: primefactorization.h 
+ *  File Name   		: primefactorization.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\primefactorization.h
  *  Created on			: Jan 3, 2015 :: 7:29:55 PM
  *  Author				: AVINASH

@@ -71,22 +71,22 @@ using namespace __gnu_cxx;
 #define PLUSMINUS_H_
 
 //Tested
-void getFractionOfNumbers(){
-	unsigned int size;
-	int input;
-	scanf("%u",&size);
-	unsigned int positiveCount=0,negativeCount=0,zeroCount=0;
-	for(unsigned int counter = 0;counter < size;counter++){
-		scanf("%d",&input);
-		if(input > 0){
-			positiveCount++;
-		}else if(input < 0){
-			negativeCount++;
-		}else{
-			zeroCount++;
-		}
-	}
-	printf("%.3f\n%.3f\n%.3f",((double)positiveCount/(double)(size)),((double)negativeCount/(double)(size)),((double)zeroCount/(double)(size)));
+void getFractionOfNumbers() {
+    unsigned int size;
+    int input;
+    scanf("%u",&size);
+    unsigned int positiveCount=0,negativeCount=0,zeroCount=0;
+    for(unsigned int counter = 0; counter < size; counter++) {
+        scanf("%d",&input);
+        if(input > 0) {
+            positiveCount++;
+        } else if(input < 0) {
+            negativeCount++;
+        } else {
+            zeroCount++;
+        }
+    }
+    printf("%.3f\n%.3f\n%.3f",((double)positiveCount/(double)(size)),((double)negativeCount/(double)(size)),((double)zeroCount/(double)(size)));
 }
 
 #endif /* PLUSMINUS_H_ */

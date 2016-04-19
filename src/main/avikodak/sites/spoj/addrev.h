@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: addrev.h 
+ *  File Name   		: addrev.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\spoj\addrev.h
  *  Created on			: Feb 3, 2015 :: 11:01:42 AM
  *  Author				: AVINASH
@@ -71,23 +71,23 @@ using namespace __gnu_cxx;
 #define ADDREV_H_
 
 //Tested
-int reverseNumber(int userInput){
-	int reversedNumber = 0;
-	while(userInput > 0 && userInput%10 == 0){
-		userInput /= 10;
-	}
-	while(userInput > 0){
-		reversedNumber = (((reversedNumber << 3) + (reversedNumber << 1)) + userInput%10);
-		userInput /= 10;
-	}
-	return reversedNumber;
+int reverseNumber(int userInput) {
+    int reversedNumber = 0;
+    while(userInput > 0 && userInput%10 == 0) {
+        userInput /= 10;
+    }
+    while(userInput > 0) {
+        reversedNumber = (((reversedNumber << 3) + (reversedNumber << 1)) + userInput%10);
+        userInput /= 10;
+    }
+    return reversedNumber;
 }
 
 //Tested
-void printAddRev(int firstUserInput,int secondUserInput){
-	firstUserInput = reverseNumber(firstUserInput);
-	secondUserInput = reverseNumber(secondUserInput);
-	printf("%d\n",reverseNumber(firstUserInput+secondUserInput));
+void printAddRev(int firstUserInput,int secondUserInput) {
+    firstUserInput = reverseNumber(firstUserInput);
+    secondUserInput = reverseNumber(secondUserInput);
+    printf("%d\n",reverseNumber(firstUserInput+secondUserInput));
 }
 
 

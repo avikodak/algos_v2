@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef THIMBLES_H_
 #define THIMBLES_H_
 
-class Thimbles{
+class Thimbles {
 public:
-	int thimbleWithBall(vector<string> swaps){
-		int ballPresentIn = 1,first,second;
-		for(unsigned int counter = 0;counter < swaps.size();counter++){
-			first = swaps[counter][0] - '0';
-			second = swaps[counter][2] - '0';
-			if(ballPresentIn == first || ballPresentIn == second){
-				ballPresentIn = ballPresentIn ^ first ^ second;
-			}
-		}
-		return ballPresentIn;
-	}
+    int thimbleWithBall(vector<string> swaps) {
+        int ballPresentIn = 1,first,second;
+        for(unsigned int counter = 0; counter < swaps.size(); counter++) {
+            first = swaps[counter][0] - '0';
+            second = swaps[counter][2] - '0';
+            if(ballPresentIn == first || ballPresentIn == second) {
+                ballPresentIn = ballPresentIn ^ first ^ second;
+            }
+        }
+        return ballPresentIn;
+    }
 };
 
 #endif /* THIMBLES_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttreetochildrensumproperty.h 
+ *  File Name   		: converttreetochildrensumproperty.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\converttreetochildrensumproperty.h
  *  Created on			: Oct 16, 2014 :: 1:48:16 PM
  *  Author				: AVINASH
@@ -72,39 +72,39 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void incrementValueInSubTree(itNode *ptr,int value){
-	if(ptr == null){
-		return;
-	}
-	ptr->value += value;
-	if(ptr->left != null){
-		incrementValueInSubTree(ptr->left,value);
-	}else{
-		incrementValueInSubTree(ptr->right,value);
-	}
+void incrementValueInSubTree(itNode *ptr,int value) {
+    if(ptr == null) {
+        return;
+    }
+    ptr->value += value;
+    if(ptr->left != null) {
+        incrementValueInSubTree(ptr->left,value);
+    } else {
+        incrementValueInSubTree(ptr->right,value);
+    }
 }
 
 //Tested
-int convertTreeToChildrenSumProperty(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	if(ptr->left == null && ptr->right == null){
-		return ptr->value;
-	}
-	int leftSum = convertTreeToChildrenSumProperty(ptr->left);
-	int rightSum = convertTreeToChildrenSumProperty(ptr->right);
-	int sumOfChildren = leftSum + rightSum;
-	if(ptr->value < sumOfChildren){
-		ptr->value += (sumOfChildren - ptr->value);
-	}else if(ptr->value > sumOfChildren){
-		if(ptr->left != null){
-			incrementValueInSubTree(ptr->left,ptr->value - sumOfChildren);
-		}else{
-			incrementValueInSubTree(ptr->right,ptr->value - sumOfChildren);
-		}
-	}
-	return ptr->value;
+int convertTreeToChildrenSumProperty(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        return ptr->value;
+    }
+    int leftSum = convertTreeToChildrenSumProperty(ptr->left);
+    int rightSum = convertTreeToChildrenSumProperty(ptr->right);
+    int sumOfChildren = leftSum + rightSum;
+    if(ptr->value < sumOfChildren) {
+        ptr->value += (sumOfChildren - ptr->value);
+    } else if(ptr->value > sumOfChildren) {
+        if(ptr->left != null) {
+            incrementValueInSubTree(ptr->left,ptr->value - sumOfChildren);
+        } else {
+            incrementValueInSubTree(ptr->right,ptr->value - sumOfChildren);
+        }
+    }
+    return ptr->value;
 }
 
 #endif /* CONVERTTREETOCHILDRENSUMPROPERTY_H_ */

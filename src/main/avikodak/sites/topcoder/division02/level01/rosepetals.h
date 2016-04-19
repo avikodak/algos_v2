@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rosepetals.h 
+ *  File Name   		: rosepetals.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\rosepetals.h
  *  Created on			: Mar 26, 2015 :: 12:24:11 AM
  *  Author				: avikodak
@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef ROSEPETALS_H_
 #define ROSEPETALS_H_
 
-class RosePetals{
+class RosePetals {
 public:
-	int getScore(vector<int> dice){
-		int totalPetals = 0;
-		for(unsigned int counter = 0;counter < dice.size();counter++){
-			if(dice[counter] ==3){
-				totalPetals += 2;
-			}else if(dice[counter] == 5){
-				totalPetals += 4;
-			}
-		}
-		return totalPetals;
-	}
+    int getScore(vector<int> dice) {
+        int totalPetals = 0;
+        for(unsigned int counter = 0; counter < dice.size(); counter++) {
+            if(dice[counter] ==3) {
+                totalPetals += 2;
+            } else if(dice[counter] == 5) {
+                totalPetals += 4;
+            }
+        }
+        return totalPetals;
+    }
 };
 
 #endif /* ROSEPETALS_H_ */

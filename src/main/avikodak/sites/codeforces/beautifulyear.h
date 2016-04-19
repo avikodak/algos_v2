@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: beautifulyear.h 
+ *  File Name   		: beautifulyear.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\beautifulyear.h
  *  Created on			: Mar 1, 2015 :: 6:28:54 PM
  *  Author				: AVINASH
@@ -71,30 +71,30 @@ using namespace __gnu_cxx;
 #define BEAUTIFULYEAR_H_
 
 //Tested
-bool doesNumberHasUniqueDigits(int userInput){
-	bool flags[10] = {false};
-	int lastDigit;
-	while(userInput > 0){
-		lastDigit = userInput%10;
-		if(flags[lastDigit]){
-			return false;
-		}
-		flags[lastDigit] = true;
-		userInput /= 10;
-	}
-	return true;
+bool doesNumberHasUniqueDigits(int userInput) {
+    bool flags[10] = {false};
+    int lastDigit;
+    while(userInput > 0) {
+        lastDigit = userInput%10;
+        if(flags[lastDigit]) {
+            return false;
+        }
+        flags[lastDigit] = true;
+        userInput /= 10;
+    }
+    return true;
 }
 
 //Tested
-void getMinUniqueDigitNumber(){
-	int userInput;
-	scanf("%d",&userInput);
-	for(int counter = userInput+1;counter < 9500;counter++){
-		if(doesNumberHasUniqueDigits(counter)){
-			printf("%d",counter);
-			break;
-		}
-	}
+void getMinUniqueDigitNumber() {
+    int userInput;
+    scanf("%d",&userInput);
+    for(int counter = userInput+1; counter < 9500; counter++) {
+        if(doesNumberHasUniqueDigits(counter)) {
+            printf("%d",counter);
+            break;
+        }
+    }
 }
 
 #endif /* BEAUTIFULYEAR_H_ */

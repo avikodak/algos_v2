@@ -71,33 +71,33 @@ using namespace __gnu_cxx;
 #define PR01_H_
 
 //Tested
-bool isNumberPrime(long long int userInput){
-	if(userInput == 1){
-		return false;
-	}
-	if(userInput == 2){
-		return true;
-	}
-	long long int squareRoot = sqrtl(userInput);
-	if(!(userInput&1)){
-		return false;
-	}
-	for(long long int counter = 3;counter <= squareRoot;counter+=2){
-		if(userInput%counter == 0){
-			return false;
-		}
-	}
-	return true;
+bool isNumberPrime(long long int userInput) {
+    if(userInput == 1) {
+        return false;
+    }
+    if(userInput == 2) {
+        return true;
+    }
+    long long int squareRoot = sqrtl(userInput);
+    if(!(userInput&1)) {
+        return false;
+    }
+    for(long long int counter = 3; counter <= squareRoot; counter+=2) {
+        if(userInput%counter == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	cin >> testCases;
-	while(testCases--){
-		cin >> input;
-		printf("%s\n",isNumberPrime(input)?"yes":"no");
-	}
+void printResults() {
+    unsigned int testCases,input;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> input;
+        printf("%s\n",isNumberPrime(input)?"yes":"no");
+    }
 }
 
 #endif /* PR01_H_ */

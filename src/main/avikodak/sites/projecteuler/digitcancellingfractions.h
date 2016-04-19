@@ -71,88 +71,88 @@ using namespace __gnu_cxx;
 #define DIGITCANCELLINGFRACTIONS_H_
 
 //Tested
-struct fraction{
-	unsigned int numerator;
-	unsigned int denominator;
+struct fraction {
+    unsigned int numerator;
+    unsigned int denominator;
 
-	fraction(){};
-	fraction(unsigned int numerator,unsigned int denominator){
-		this->numerator = numerator;
-		this->denominator = denominator;
-	}
+    fraction() {};
+    fraction(unsigned int numerator,unsigned int denominator) {
+        this->numerator = numerator;
+        this->denominator = denominator;
+    }
 };
 
 //Tested
-unsigned int reverseNumber(unsigned int userInput){
-	unsigned int reverse = 0;
-	while(userInput){
-		reverse = (reverse << 1)+(reverse << 3)+userInput%10;
-		userInput /= 10;
-	}
-	return reverse;
+unsigned int reverseNumber(unsigned int userInput) {
+    unsigned int reverse = 0;
+    while(userInput) {
+        reverse = (reverse << 1)+(reverse << 3)+userInput%10;
+        userInput /= 10;
+    }
+    return reverse;
 }
 
 //Tested
-fraction * reduceFraction(unsigned int numerator,unsigned int denominator){
-	unsigned flags[10] ={0};
-	unsigned int temp = numerator;
-	while(temp){
-		flags[temp%10]++;
-		temp /= 10;
-	}
-	unsigned int reducedDenominator = 0;
-	denominator = reverseNumber(denominator);
-	while(denominator){
-		if(flags[denominator%10] > 0){
-			flags[denominator%10]--;
-		}else{
-			reducedDenominator *= 10;
-			reducedDenominator += denominator%10;
-		}
-		denominator /= 10;
-	}
-	unsigned int reducedNumerator = 0;
-	temp = reverseNumber(numerator);
-	while(temp){
-		if(flags[temp%10] > 0){
-			reducedNumerator *= 10;
-			reducedNumerator += temp%10;
-			flags[temp%10]--;
-		}
-		temp /= 10;
-	}
-	return new fraction(reducedNumerator,reducedDenominator);
+fraction * reduceFraction(unsigned int numerator,unsigned int denominator) {
+    unsigned flags[10] = {0};
+    unsigned int temp = numerator;
+    while(temp) {
+        flags[temp%10]++;
+        temp /= 10;
+    }
+    unsigned int reducedDenominator = 0;
+    denominator = reverseNumber(denominator);
+    while(denominator) {
+        if(flags[denominator%10] > 0) {
+            flags[denominator%10]--;
+        } else {
+            reducedDenominator *= 10;
+            reducedDenominator += denominator%10;
+        }
+        denominator /= 10;
+    }
+    unsigned int reducedNumerator = 0;
+    temp = reverseNumber(numerator);
+    while(temp) {
+        if(flags[temp%10] > 0) {
+            reducedNumerator *= 10;
+            reducedNumerator += temp%10;
+            flags[temp%10]--;
+        }
+        temp /= 10;
+    }
+    return new fraction(reducedNumerator,reducedDenominator);
 }
 
 //Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	if(a == 1 || b == 1){
-		return 1;
-	}
-	if(b%a == 0){
-		return a;
-	}
-	return gcd(a%b,a);
+unsigned int gcd(unsigned int a,unsigned int b) {
+    if(a == 1 || b == 1) {
+        return 1;
+    }
+    if(b%a == 0) {
+        return a;
+    }
+    return gcd(a%b,a);
 }
 
 //Tested
 //Ans : 100
-void getProductDenominator(){
-	fraction *reducedResult;
-	unsigned int productOfDenominator = 1,productNumerator = 1;
-	for(unsigned int numerator = 11;numerator < 100;numerator++){
-		for(unsigned int denominator = numerator+1;denominator < 100;denominator++){
-			if(denominator %10 ==0 || (numerator%10 == numerator/10)){
-				continue;
-			}
-			reducedResult = reduceFraction(numerator,denominator);
-			if(reducedResult->numerator  != numerator && (double)reducedResult->numerator/(double)reducedResult->denominator == ((double)(numerator)/(double)(denominator))){
-				productNumerator *= reducedResult->numerator;
-				productOfDenominator *= reducedResult->denominator;
-			}
-		}
-	}
-	cout << productOfDenominator/(gcd(productNumerator,productOfDenominator)) << endl;
+void getProductDenominator() {
+    fraction *reducedResult;
+    unsigned int productOfDenominator = 1,productNumerator = 1;
+    for(unsigned int numerator = 11; numerator < 100; numerator++) {
+        for(unsigned int denominator = numerator+1; denominator < 100; denominator++) {
+            if(denominator %10 ==0 || (numerator%10 == numerator/10)) {
+                continue;
+            }
+            reducedResult = reduceFraction(numerator,denominator);
+            if(reducedResult->numerator  != numerator && (double)reducedResult->numerator/(double)reducedResult->denominator == ((double)(numerator)/(double)(denominator))) {
+                productNumerator *= reducedResult->numerator;
+                productOfDenominator *= reducedResult->denominator;
+            }
+        }
+    }
+    cout << productOfDenominator/(gcd(productNumerator,productOfDenominator)) << endl;
 }
 
 #endif /* DIGITCANCELLINGFRACTIONS_H_ */

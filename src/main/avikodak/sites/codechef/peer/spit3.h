@@ -73,28 +73,28 @@ using namespace __gnu_cxx;
 #define SPIT3_H_
 
 //Tested
-void printResults(){
-	string userInput;
-	getline(cin,userInput);
-	if(userInput.size() < 5){
-		printf("NO");
-		return;
-	}
-	bool smallFlag = false,capitalFlag = false,numFlag = false,isValid = false;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter] >= 'a' && userInput[counter] <= 'z'){
-			smallFlag = true;
-		}else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z'){
-			capitalFlag = true;
-		}else if(userInput[counter] >= '0' && userInput[counter] <= '9'){
-			numFlag = true;
-		}
-		if(smallFlag && numFlag && capitalFlag){
-			isValid = true;
-			break;
-		}
-	}
-	printf("%s\n",isValid?"YES":"NO");
+void printResults() {
+    string userInput;
+    getline(cin,userInput);
+    if(userInput.size() < 5) {
+        printf("NO");
+        return;
+    }
+    bool smallFlag = false,capitalFlag = false,numFlag = false,isValid = false;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter] >= 'a' && userInput[counter] <= 'z') {
+            smallFlag = true;
+        } else if(userInput[counter] >= 'A' && userInput[counter] <= 'Z') {
+            capitalFlag = true;
+        } else if(userInput[counter] >= '0' && userInput[counter] <= '9') {
+            numFlag = true;
+        }
+        if(smallFlag && numFlag && capitalFlag) {
+            isValid = true;
+            break;
+        }
+    }
+    printf("%s\n",isValid?"YES":"NO");
 }
 
 #endif /* SPIT3_H_ */

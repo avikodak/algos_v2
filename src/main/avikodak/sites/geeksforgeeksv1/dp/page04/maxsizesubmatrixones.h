@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxsizesubmatrixones.h 
+ *  File Name   		: maxsizesubmatrixones.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\maxsizesubmatrixones.h
  *  Created on			: Dec 9, 2014 :: 7:39:11 PM
  *  Author				: AVINASH
@@ -74,38 +74,38 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int maxSizesubMatrixOnes(vector<vector<int> > userInput){
-	if(userInput.size() == 0 || userInput[0].size() == 0){
-		return 0;
-	}
-	vector<vector<int> > auxSpace(userInput.size());
-	int maxSize = INT_MIN;
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].resize(userInput[0].size());
-	}
-	for(unsigned int rowCounter = 0;rowCounter < userInput.size();rowCounter++){
-		auxSpace[rowCounter][0] = userInput[rowCounter][0];
-	}
-	for(unsigned int columnCounter = 0;columnCounter < userInput[0].size();columnCounter++){
-		auxSpace[0][columnCounter] = userInput[0][columnCounter];
-	}
-	for(unsigned int rowCounter = 1;rowCounter < userInput.size();rowCounter++){
-		for(unsigned int columnCounter = 1;columnCounter < userInput[0].size();columnCounter++){
-			if(userInput[rowCounter][columnCounter] == 1){
-				auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter-1][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]));
-				maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
-			}
-		}
-	}
-	printIVector(auxSpace);
-	return maxSize;
+int maxSizesubMatrixOnes(vector<vector<int> > userInput) {
+    if(userInput.size() == 0 || userInput[0].size() == 0) {
+        return 0;
+    }
+    vector<vector<int> > auxSpace(userInput.size());
+    int maxSize = INT_MIN;
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        auxSpace[counter].resize(userInput[0].size());
+    }
+    for(unsigned int rowCounter = 0; rowCounter < userInput.size(); rowCounter++) {
+        auxSpace[rowCounter][0] = userInput[rowCounter][0];
+    }
+    for(unsigned int columnCounter = 0; columnCounter < userInput[0].size(); columnCounter++) {
+        auxSpace[0][columnCounter] = userInput[0][columnCounter];
+    }
+    for(unsigned int rowCounter = 1; rowCounter < userInput.size(); rowCounter++) {
+        for(unsigned int columnCounter = 1; columnCounter < userInput[0].size(); columnCounter++) {
+            if(userInput[rowCounter][columnCounter] == 1) {
+                auxSpace[rowCounter][columnCounter] = 1 + min(auxSpace[rowCounter-1][columnCounter-1],min(auxSpace[rowCounter-1][columnCounter],auxSpace[rowCounter][columnCounter-1]));
+                maxSize = max(maxSize,auxSpace[rowCounter][columnCounter]);
+            }
+        }
+    }
+    printIVector(auxSpace);
+    return maxSize;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool isMatrixUnitMatrix(vector<vector<int> > userInput,int startRowIndex,int startColumnColumnIndex,int size){
-	return false;
+bool isMatrixUnitMatrix(vector<vector<int> > userInput,int startRowIndex,int startColumnColumnIndex,int size) {
+    return false;
 }
 
 

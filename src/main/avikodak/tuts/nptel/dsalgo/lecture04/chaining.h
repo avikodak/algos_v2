@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: chaining.h 
+ *  File Name   		: chaining.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\chaining.h
  *  Created on			: Oct 22, 2014 :: 12:51:59 PM
  *  Author				: AVINASH
@@ -70,70 +70,70 @@ using namespace __gnu_cxx;
 #define CHAINING_H_
 
 //Tested
-class iHashmap{
+class iHashmap {
 private:
-	sillNode *headPtr[SIZE_OF_HASHMAP];
+    sillNode *headPtr[SIZE_OF_HASHMAP];
 
-	//Tested
-	int getHashValue(int userInput){
-		return userInput % SIZE_OF_HASHMAP;
-	}
+    //Tested
+    int getHashValue(int userInput) {
+        return userInput % SIZE_OF_HASHMAP;
+    }
 public:
-	//Tested
-	void insert(int userInput){
-		int hashVal = getHashValue(userInput);
-		sillNode *crawler = headPtr[hashVal];
-		if(crawler == null){
-			headPtr[hashVal] = new sillNode(userInput);
-			return;
-		}else{
-			while(crawler->next != null){
-				if(crawler->value == userInput){
-					return;
-				}
-				crawler = crawler->next;
-			}
-			if(crawler->value != userInput){
-				crawler->next = new sillNode(userInput);
-			}
-		}
-	}
+    //Tested
+    void insert(int userInput) {
+        int hashVal = getHashValue(userInput);
+        sillNode *crawler = headPtr[hashVal];
+        if(crawler == null) {
+            headPtr[hashVal] = new sillNode(userInput);
+            return;
+        } else {
+            while(crawler->next != null) {
+                if(crawler->value == userInput) {
+                    return;
+                }
+                crawler = crawler->next;
+            }
+            if(crawler->value != userInput) {
+                crawler->next = new sillNode(userInput);
+            }
+        }
+    }
 
-	//Tested
-	bool search(int userInput){
-		int hashVal = getHashValue(userInput);
-		sillNode *crawler = headPtr[hashVal];
-		while(crawler != null){
-			if(crawler->value == userInput){
-				return true;
-			}
-			crawler = crawler->next;
-		}
-		return false;
-	}
+    //Tested
+    bool search(int userInput) {
+        int hashVal = getHashValue(userInput);
+        sillNode *crawler = headPtr[hashVal];
+        while(crawler != null) {
+            if(crawler->value == userInput) {
+                return true;
+            }
+            crawler = crawler->next;
+        }
+        return false;
+    }
 
-	//Tested
-	void remove(int userInput){
-		int hashVal = getHashValue(userInput);
-		sillNode *crawler = headPtr[hashVal],*nodeToBeDeleted = null;
-		if(crawler == null){
-			throw "Value not found";
-		}
-		if(crawler->value == userInput){
-			nodeToBeDeleted = crawler;
-			crawler->next = crawler->next->next;
-			free(nodeToBeDeleted);
-		}else{
-			while(crawler->next != null){
-				if(crawler->next->value == userInput){
-					nodeToBeDeleted = crawler->next;
-					crawler->next = crawler->next->next;
-					break;
-				}
-				crawler = crawler->next;
-			}
-		}
-	}
+    //Tested
+    void remove(int userInput) {
+        int hashVal = getHashValue(userInput);
+        sillNode *crawler = headPtr[hashVal],*nodeToBeDeleted = null;
+        if(crawler == null) {
+            throw "Value not found";
+        }
+        if(crawler->value == userInput) {
+            nodeToBeDeleted = crawler;
+            crawler->next = crawler->next->next;
+            free(nodeToBeDeleted);
+        } else {
+            while(crawler->next != null) {
+                if(crawler->next->value == userInput) {
+                    nodeToBeDeleted = crawler->next;
+                    crawler->next = crawler->next->next;
+                    break;
+                }
+                crawler = crawler->next;
+            }
+        }
+    }
 };
 
 #endif /* CHAINING_H_ */

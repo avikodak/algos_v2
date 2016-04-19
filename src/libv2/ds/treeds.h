@@ -53,63 +53,63 @@ using namespace __gnu_cxx;
 #ifndef LIBV2_DS_TREEDS_H_
 #define LIBV2_DS_TREEDS_H_
 
-struct itNode{
-	int value;
-	itNode *left;
-	itNode *right;
+struct itNode {
+    int value;
+    itNode *left;
+    itNode *right;
 
-	itNode(){
-		this->value = 0;
-		this->left = null;
-		this->right = null;
-	}
+    itNode() {
+        this->value = 0;
+        this->left = null;
+        this->right = null;
+    }
 
-	itNode(int value){
-		this->value = value;
-		this->left = null;
-		this->right = null;
-	}
+    itNode(int value) {
+        this->value = value;
+        this->left = null;
+        this->right = null;
+    }
 };
 
-struct itnrNode{
-	int value;
-	itnrNode *left;
-	itnrNode *right;
-	itnrNode *nextRight;
+struct itnrNode {
+    int value;
+    itnrNode *left;
+    itnrNode *right;
+    itnrNode *nextRight;
 
-	itnrNode(){
-		this->value = 0;
-		this->left = null;
-		this->right = null;
-		this->nextRight = null;
-	}
+    itnrNode() {
+        this->value = 0;
+        this->left = null;
+        this->right = null;
+        this->nextRight = null;
+    }
 
-	itnrNode(int value){
-		this->value = value;
-		this->left = null;
-		this->right = null;
-		this->nextRight = null;
-	}
+    itnrNode(int value) {
+        this->value = value;
+        this->left = null;
+        this->right = null;
+        this->nextRight = null;
+    }
 };
 
-struct itHashMap{
-	hash_map<unsigned int,itNode *> indexNodeMap;
-	hash_map<intptr_t,unsigned int> nodeIndexMap;
+struct itHashMap {
+    hash_map<unsigned int,itNode *> indexNodeMap;
+    hash_map<intptr_t,unsigned int> nodeIndexMap;
 
-	itHashMap(hash_map<unsigned int,itNode *> indexNodeMap,hash_map<intptr_t,unsigned int> nodeIndexMap){
-		this->indexNodeMap = indexNodeMap;
-		this->nodeIndexMap = nodeIndexMap;
-	}
+    itHashMap(hash_map<unsigned int,itNode *> indexNodeMap,hash_map<intptr_t,unsigned int> nodeIndexMap) {
+        this->indexNodeMap = indexNodeMap;
+        this->nodeIndexMap = nodeIndexMap;
+    }
 };
 
-struct itMap{
-	map<unsigned int,itNode *> indexNodeMap;
-	map<intptr_t,unsigned int> nodeIndexMap;
+struct itMap {
+    map<unsigned int,itNode *> indexNodeMap;
+    map<intptr_t,unsigned int> nodeIndexMap;
 
-	itMap(map<unsigned int,itNode *> indexNodeMap,map<intptr_t,unsigned int> nodeIndexMap){
-		this->indexNodeMap = indexNodeMap;
-		this->nodeIndexMap = nodeIndexMap;
-	}
+    itMap(map<unsigned int,itNode *> indexNodeMap,map<intptr_t,unsigned int> nodeIndexMap) {
+        this->indexNodeMap = indexNodeMap;
+        this->nodeIndexMap = nodeIndexMap;
+    }
 };
 
 #endif /* LIBV2_DS_TREEDS_H_ */

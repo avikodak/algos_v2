@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: convertTreeToDllON.h 
+ *  File Name   		: convertTreeToDllON.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\convertTreeToDllON.h
  *  Created on			: Nov 13, 2014 :: 9:19:24 PM
  *  Author				: AVINASH
@@ -72,75 +72,75 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void oFixLeftPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	oFixLeftPtr(ptr->left);
-	ptr->left = prevNode;
-	prevNode = ptr;
-	oFixLeftPtr(ptr->right);
+void oFixLeftPtr(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    oFixLeftPtr(ptr->left);
+    ptr->left = prevNode;
+    prevNode = ptr;
+    oFixLeftPtr(ptr->right);
 }
 
 //Tested
-void oFixRightPtr(itNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	itNode *currentNode = *ptr,*prevNode = null;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	while(currentNode != null){
-		currentNode->right = prevNode;
-		prevNode = currentNode;
-		currentNode = currentNode->left;
-	}
-	(*ptr) = prevNode;
+void oFixRightPtr(itNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    itNode *currentNode = *ptr,*prevNode = null;
+    while(currentNode->right != null) {
+        currentNode = currentNode->right;
+    }
+    while(currentNode != null) {
+        currentNode->right = prevNode;
+        prevNode = currentNode;
+        currentNode = currentNode->left;
+    }
+    (*ptr) = prevNode;
 }
 
 //Tested
-void oConvertTreeToDLLONFixing(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	oFixLeftPtr(ptr);
-	oFixRightPtr(&ptr);
-	while(ptr !=null){
-		printf("%d\t",ptr->value);
-		ptr = ptr->right;
-	}
+void oConvertTreeToDLLONFixing(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    oFixLeftPtr(ptr);
+    oFixRightPtr(&ptr);
+    while(ptr !=null) {
+        printf("%d\t",ptr->value);
+        ptr = ptr->right;
+    }
 }
 
 //Tested
-void oConvertTreeToDLLONMain(itNode *ptr,itNode **head){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	oConvertTreeToDLLONMain(ptr->left,head);
-	ptr->left = prevNode;
-	if(prevNode == null){
-		(*head) = ptr;
-	}else{
-		prevNode->right = ptr;
-	}
-	prevNode = ptr;
-	oConvertTreeToDLLONMain(ptr->right,head);
+void oConvertTreeToDLLONMain(itNode *ptr,itNode **head) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    oConvertTreeToDLLONMain(ptr->left,head);
+    ptr->left = prevNode;
+    if(prevNode == null) {
+        (*head) = ptr;
+    } else {
+        prevNode->right = ptr;
+    }
+    prevNode = ptr;
+    oConvertTreeToDLLONMain(ptr->right,head);
 }
 
 //Tested
-void oConvertTreeToDll(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	itNode *head =  null;
-	oConvertTreeToDLLONMain(ptr,&head);
-	while(head != null){
-		printf("%d\t",head->value);
-		head = head->right;
-	}
+void oConvertTreeToDll(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    itNode *head =  null;
+    oConvertTreeToDLLONMain(ptr,&head);
+    while(head != null) {
+        printf("%d\t",head->value);
+        head = head->right;
+    }
 }
 
 #endif /* CONVERTTREETODLLON_H_ */

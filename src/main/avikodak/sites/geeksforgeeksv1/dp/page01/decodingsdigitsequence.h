@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: decodingsdigitsequence.h 
+ *  File Name   		: decodingsdigitsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\decodingsdigitsequence.h
  *  Created on			: Jan 12, 2015 :: 11:11:56 PM
  *  Author				: AVINASH
@@ -71,40 +71,40 @@ using namespace __gnu_cxx;
 #define DECODINGSDIGITSEQUENCE_H_
 
 //Tested
-int noOfDecodingsDigitSequence(char *userInput,int length){
-	if(length <= 1){
-		return 1;
-	}
-	int counter = 0;
-	if(userInput[length-1] != '0'){
-		counter += noOfDecodingsDigitSequence(userInput,length-1);
-	}
-	if(userInput[length-2] < '2' || (userInput[length-2] == '2' && userInput[length-1] <'7')){
-		counter += noOfDecodingsDigitSequence(userInput,length-2);
-	}
-	return counter;
+int noOfDecodingsDigitSequence(char *userInput,int length) {
+    if(length <= 1) {
+        return 1;
+    }
+    int counter = 0;
+    if(userInput[length-1] != '0') {
+        counter += noOfDecodingsDigitSequence(userInput,length-1);
+    }
+    if(userInput[length-2] < '2' || (userInput[length-2] == '2' && userInput[length-1] <'7')) {
+        counter += noOfDecodingsDigitSequence(userInput,length-2);
+    }
+    return counter;
 }
 
 //Tested
-int noOfDecodingsDigitSequenceMemoization(char *userInput,int length){
-	if(length <= 1){
-		return 1;
-	}
-	vector<int> auxSpace;
-	auxSpace.push_back(1);
-	auxSpace.push_back(1);
-	int total = 0;
-	for(int counter = 2;counter <= length;counter++){
-		total = 0;
-		if(userInput[counter-1] != '0'){
-			total += auxSpace[counter-1];
-		}
-		if(userInput[counter-2] < '2' || (userInput[counter-2] == '2' && userInput[counter-1] < '7')){
-			total += auxSpace[counter-2];
-		}
-		auxSpace.push_back(total);
-	}
-	return auxSpace[auxSpace.size()-1];
+int noOfDecodingsDigitSequenceMemoization(char *userInput,int length) {
+    if(length <= 1) {
+        return 1;
+    }
+    vector<int> auxSpace;
+    auxSpace.push_back(1);
+    auxSpace.push_back(1);
+    int total = 0;
+    for(int counter = 2; counter <= length; counter++) {
+        total = 0;
+        if(userInput[counter-1] != '0') {
+            total += auxSpace[counter-1];
+        }
+        if(userInput[counter-2] < '2' || (userInput[counter-2] == '2' && userInput[counter-1] < '7')) {
+            total += auxSpace[counter-2];
+        }
+        auxSpace.push_back(total);
+    }
+    return auxSpace[auxSpace.size()-1];
 }
 
 #endif /* DECODINGSDIGITSEQUENCE_H_ */

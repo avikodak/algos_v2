@@ -70,19 +70,19 @@ using namespace __gnu_cxx;
 #ifndef PRIMALUNLICENSEDCREATURES_H_
 #define PRIMALUNLICENSEDCREATURES_H_
 
-class PrimalUnlicensedCreatures{
+class PrimalUnlicensedCreatures {
 public:
-	int maxWins(int initialLevel,vector<int> grezPower){
-		sort(grezPower.begin(),grezPower.end());
-		unsigned int counter = 0;
-		for(;counter < grezPower.size();counter++){
-			if(initialLevel <= grezPower[counter]){
-				break;
-			}
-			initialLevel += (grezPower[counter]/2);
-		}
-		return counter;
-	}
+    int maxWins(int initialLevel,vector<int> grezPower) {
+        sort(grezPower.begin(),grezPower.end());
+        unsigned int counter = 0;
+        for(; counter < grezPower.size(); counter++) {
+            if(initialLevel <= grezPower[counter]) {
+                break;
+            }
+            initialLevel += (grezPower[counter]/2);
+        }
+        return counter;
+    }
 };
 
 

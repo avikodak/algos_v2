@@ -76,20 +76,20 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_BINARYTODECIMAL_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,result,twoPowers;
-	string userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		result = 0;
-		twoPowers = 1;
-		for(int counter = userInput.size()-1;counter >= 0;counter--){
-			result += twoPowers*(userInput[counter]-'0');
-			twoPowers = twoPowers << 1;
-		}
-		printf("%u\n",result);
-	}
+void solveProblem() {
+    unsigned int testCases,result,twoPowers;
+    string userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        result = 0;
+        twoPowers = 1;
+        for(int counter = userInput.size()-1; counter >= 0; counter--) {
+            result += twoPowers*(userInput[counter]-'0');
+            twoPowers = twoPowers << 1;
+        }
+        printf("%u\n",result);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_BINARYTODECIMAL_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dfs.h 
+ *  File Name   		: dfs.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture27\dfs.h
  *  Created on			: Dec 5, 2014 :: 11:08:22 AM
  *  Author				: AVINASH
@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void setDfstimes(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes){
-	if(adjacencyList.size() == 0){
-		return arrivalDepartureTimes;
-	}
-	static int timeCounter = -1;
-	arrivalDepartureTimes[sourceVertex]->arrivalTimes  = ++timeCounter;
-	for(unsigned int counter = 0;counter < adjacencyList[sourceVertex].size();counter++){
-		if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX){
-			setDfstimes(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
-		}
-	}
-	arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
+void setDfstimes(vector<vector<int> > adjacencyList,int sourceVertex,vector<dfsTimes *> &arrivalDepartureTimes) {
+    if(adjacencyList.size() == 0) {
+        return arrivalDepartureTimes;
+    }
+    static int timeCounter = -1;
+    arrivalDepartureTimes[sourceVertex]->arrivalTimes  = ++timeCounter;
+    for(unsigned int counter = 0; counter < adjacencyList[sourceVertex].size(); counter++) {
+        if(arrivalDepartureTimes[adjacencyList[sourceVertex][counter]]->arrivalTimes == INT_MAX) {
+            setDfstimes(adjacencyList,adjacencyList[sourceVertex][counter],arrivalDepartureTimes);
+        }
+    }
+    arrivalDepartureTimes[sourceVertex]->departureTimes = ++timeCounter;
 }
 
-vector<dfsTimes *> getDfsTimes(vector<vector<int> > adjacencyList){
-	vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
-	if(adjacencyList.size() == 0){
-		return arrivalDepartureTimes;
-	}
-	setDfstimes(adjacencyList,0,arrivalDepartureTimes);
-	return arrivalDepartureTimes;
+vector<dfsTimes *> getDfsTimes(vector<vector<int> > adjacencyList) {
+    vector<dfsTimes *> arrivalDepartureTimes(adjacencyList.size());
+    if(adjacencyList.size() == 0) {
+        return arrivalDepartureTimes;
+    }
+    setDfstimes(adjacencyList,0,arrivalDepartureTimes);
+    return arrivalDepartureTimes;
 }
 
 #endif /* DFS_H_ */

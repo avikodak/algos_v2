@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: permutationrepeating.h 
+ *  File Name   		: permutationrepeating.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\permutationrepeating.h
  *  Created on			: Jan 16, 2015 :: 11:13:11 AM
  *  Author				: AVINASH
@@ -71,26 +71,26 @@ using namespace __gnu_cxx;
 #define PERMUTATIONREPEATING_H_
 
 //Tested
-void printPermutationRepeatingMain(char *userInput,char *result,int length,int index){
-	if(index == length){
-		printf("%s\n",result);
-		return;
-	}
-	char *crawler = userInput;
-	for(int counter = 0;counter < length;counter++){
-		result[index] = crawler[counter];
-		printPermutationRepeatingMain(userInput,result,length,index+1);
-	}
+void printPermutationRepeatingMain(char *userInput,char *result,int length,int index) {
+    if(index == length) {
+        printf("%s\n",result);
+        return;
+    }
+    char *crawler = userInput;
+    for(int counter = 0; counter < length; counter++) {
+        result[index] = crawler[counter];
+        printPermutationRepeatingMain(userInput,result,length,index+1);
+    }
 }
 
 //Tested
-void printPermutationRepeating(char *userInput,int length){
-	if(userInput == null || userInput[0] == '\0'){
-		return;
-	}
-	char *result = (char *)malloc(sizeof(char) * (length+1));
-	result[length] = '\0';
-	printPermutationRepeatingMain(userInput,result,length,0);
+void printPermutationRepeating(char *userInput,int length) {
+    if(userInput == null || userInput[0] == '\0') {
+        return;
+    }
+    char *result = (char *)malloc(sizeof(char) * (length+1));
+    result[length] = '\0';
+    printPermutationRepeatingMain(userInput,result,length,0);
 }
 
 #endif /* PERMUTATIONREPEATING_H_ */

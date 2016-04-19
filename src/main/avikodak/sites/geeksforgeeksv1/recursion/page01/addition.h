@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: addition.h 
+ *  File Name   		: addition.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\addition.h
  *  Created on			: Oct 13, 2014 :: 11:59:14 AM
  *  Author				: AVINASH
@@ -69,11 +69,11 @@ using namespace __gnu_cxx;
 #ifndef ADDITION_H_
 #define ADDITION_H_
 
-unsigned int add(unsigned int a,unsigned int b){
-	if(a == 0){
-		return b;
-	}
-	return add(a-1,b+1);
+unsigned int add(unsigned int a,unsigned int b) {
+    if(a == 0) {
+        return b;
+    }
+    return add(a-1,b+1);
 }
 
 #endif /* ADDITION_H_ */

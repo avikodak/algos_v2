@@ -72,9 +72,9 @@ using namespace __gnu_cxx;
 
 class KeyDungeonDiv2 {
 public:
-	int countDoors(vector<int> doorR,vector<int> doorG, vector<int> keys){
+    int countDoors(vector<int> doorR,vector<int> doorG, vector<int> keys) {
 
-	}
+    }
 };
 
 #endif /* KEYDUNGEONDIV2_H_ */

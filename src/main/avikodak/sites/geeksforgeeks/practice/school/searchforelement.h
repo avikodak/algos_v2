@@ -79,30 +79,30 @@ using namespace __gnu_cxx;
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
 //Tested
-void printResults(){
-	unsigned int testCases,size,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u",&size);
-		userInput.clear();
-		for(unsigned int counter = 0;counter < size;counter++){
-			scanf("%u",&input);
-			userInput.push_back(input);
-		}
-		scanf("%u",&input);
-		bool flag = false;
-		for(unsigned int counter = 0;counter < size;counter++){
-			if(input == userInput[counter]){
-				printf("%u\n",counter);
-				flag = true;
-				break;
-			}
-		}
-		if(!flag){
-			printf("-1\n");
-		}
-	}
+void printResults() {
+    unsigned int testCases,size,input;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u",&size);
+        userInput.clear();
+        for(unsigned int counter = 0; counter < size; counter++) {
+            scanf("%u",&input);
+            userInput.push_back(input);
+        }
+        scanf("%u",&input);
+        bool flag = false;
+        for(unsigned int counter = 0; counter < size; counter++) {
+            if(input == userInput[counter]) {
+                printf("%u\n",counter);
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            printf("-1\n");
+        }
+    }
 }
 
 /****************************************************************************************************************************************************/

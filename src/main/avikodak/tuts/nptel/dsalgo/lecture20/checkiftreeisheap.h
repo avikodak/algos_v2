@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkiftreeisheap.h 
+ *  File Name   		: checkiftreeisheap.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture20\checkiftreeisheap.h
  *  Created on			: Nov 26, 2014 :: 1:28:54 PM
  *  Author				: AVINASH

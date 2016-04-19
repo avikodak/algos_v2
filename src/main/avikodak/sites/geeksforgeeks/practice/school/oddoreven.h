@@ -76,14 +76,14 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_ODDOREVEN_H_
 
 //Tested
-void printResult(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	vector<unsigned int> userInput;
-	while(testCases--){
-		scanf("%u",&input);
-		printf("%s\n",input&1?"odd":"even");
-	}
+void printResult() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    vector<unsigned int> userInput;
+    while(testCases--) {
+        scanf("%u",&input);
+        printf("%s\n",input&1?"odd":"even");
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_ODDOREVEN_H_ */

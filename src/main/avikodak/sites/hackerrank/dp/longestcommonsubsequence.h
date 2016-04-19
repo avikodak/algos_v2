@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: longestcommonsubsequence.h 
+ *  File Name   		: longestcommonsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\dp\longestcommonsubsequence.h
  *  Created on			: Feb 13, 2015 :: 9:35:50 AM
  *  Author				: AVINASH
@@ -71,49 +71,49 @@ using namespace __gnu_cxx;
 #define LONGESTCOMMONSUBSEQUENCE_H_
 
 //Tested
-void printLongestCommonSubsequence(){
-	int firstInputSize = 5,secondInputSize = 6;
-	int input;
-	scanf("%d %d",&firstInputSize,&secondInputSize);
-	vector<int> firstUserInput,secondUserInput;
-	vector<vector<int> > auxSpace(firstInputSize+1);
-	for(int counter = 0;counter < firstInputSize+1;counter++){
-		auxSpace[counter].assign(secondInputSize+1,0);
-	}
-	while(firstInputSize--){
-		scanf("%d",&input);
-		firstUserInput.push_back(input);
-	}
-	while(secondInputSize--){
-		scanf("%d",&input);
-		secondUserInput.push_back(input);
-	}
-	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < auxSpace[0].size();innerCrawler++){
-			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
-				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
-			}
-		}
-	}
-	int rowCounter = auxSpace.size()-1,columnCounter = auxSpace[0].size()-1;
-	stack<int> sequence;
-	while(rowCounter > 0 && columnCounter > 0){
-		if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]){
-			sequence.push(firstUserInput[rowCounter-1]);
-			rowCounter -= 1;
-			columnCounter -= 1;
-		}else if(auxSpace[rowCounter-1][columnCounter] > auxSpace[rowCounter][columnCounter-1]){
-			rowCounter -= 1;
-		}else{
-			columnCounter -= 1;
-		}
-	}
-	while(!sequence.empty()){
-		printf("%d ",sequence.top());
-		sequence.pop();
-	}
+void printLongestCommonSubsequence() {
+    int firstInputSize = 5,secondInputSize = 6;
+    int input;
+    scanf("%d %d",&firstInputSize,&secondInputSize);
+    vector<int> firstUserInput,secondUserInput;
+    vector<vector<int> > auxSpace(firstInputSize+1);
+    for(int counter = 0; counter < firstInputSize+1; counter++) {
+        auxSpace[counter].assign(secondInputSize+1,0);
+    }
+    while(firstInputSize--) {
+        scanf("%d",&input);
+        firstUserInput.push_back(input);
+    }
+    while(secondInputSize--) {
+        scanf("%d",&input);
+        secondUserInput.push_back(input);
+    }
+    for(unsigned int outerCrawler = 1; outerCrawler < auxSpace.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = 1; innerCrawler < auxSpace[0].size(); innerCrawler++) {
+            if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]) {
+                auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
+            } else {
+                auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+            }
+        }
+    }
+    int rowCounter = auxSpace.size()-1,columnCounter = auxSpace[0].size()-1;
+    stack<int> sequence;
+    while(rowCounter > 0 && columnCounter > 0) {
+        if(firstUserInput[rowCounter-1] == secondUserInput[columnCounter-1]) {
+            sequence.push(firstUserInput[rowCounter-1]);
+            rowCounter -= 1;
+            columnCounter -= 1;
+        } else if(auxSpace[rowCounter-1][columnCounter] > auxSpace[rowCounter][columnCounter-1]) {
+            rowCounter -= 1;
+        } else {
+            columnCounter -= 1;
+        }
+    }
+    while(!sequence.empty()) {
+        printf("%d ",sequence.top());
+        sequence.pop();
+    }
 }
 
 

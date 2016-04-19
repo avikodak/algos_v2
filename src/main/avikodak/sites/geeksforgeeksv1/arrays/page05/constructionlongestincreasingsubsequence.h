@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructionlongestincreasingsubsequence.h 
+ *  File Name   		: constructionlongestincreasingsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\constructionlongestincreasingsubsequence.h
  *  Created on			: Jan 3, 2015 :: 11:55:12 PM
  *  Author				: AVINASH
@@ -73,24 +73,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
-vector<int> constructionOfLongestIncreasingSubsequence(vector<int> userInput){
-	vector<int> incSubSequence;
-	if(userInput.size() == 0){
-		return incSubSequence;
-	}
-	vector<int> activeLists;
-	activeLists.push_back(userInput[0]);
-	incSubSequence.push_back(userInput[0]);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(activeLists[0] > userInput[counter]){
-			activeLists[0] = userInput[counter];
-		}else if(activeLists[activeLists.size()-1] < userInput[counter]){
-			incSubSequence.push_back(userInput[counter]);
-			activeLists.push_back(userInput[counter]);
-		}else{
+vector<int> constructionOfLongestIncreasingSubsequence(vector<int> userInput) {
+    vector<int> incSubSequence;
+    if(userInput.size() == 0) {
+        return incSubSequence;
+    }
+    vector<int> activeLists;
+    activeLists.push_back(userInput[0]);
+    incSubSequence.push_back(userInput[0]);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(activeLists[0] > userInput[counter]) {
+            activeLists[0] = userInput[counter];
+        } else if(activeLists[activeLists.size()-1] < userInput[counter]) {
+            incSubSequence.push_back(userInput[counter]);
+            activeLists.push_back(userInput[counter]);
+        } else {
 
-		}
-	}
+        }
+    }
 
 }
 

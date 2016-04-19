@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: runlengthencoding.h 
+ *  File Name   		: runlengthencoding.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\runlengthencoding.h
  *  Created on			: Dec 4, 2014 :: 6:36:08 PM
  *  Author				: AVINASH
@@ -73,29 +73,29 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-char *runLengthEncoding(char *userInput){
-	if(userInput == null){
-		return null;
-	}
-	char *encodedString = (char *)malloc(sizeof(char)*(2*strlen(userInput)+1));
-	int frequency;
-	int fillCounter = -1;
-	int innerCounter = 0;
-	char countInChar[RUN_LENGTH_ENCODING_MAX_DIGIT_COUNT];
-	while(*userInput != '\0'){
-		frequency = 1;
-		while(userInput[1] != '\0' && userInput[0] == userInput[1]){
-			frequency++;
-			userInput++;
-		}
-		encodedString[++fillCounter] = userInput[0];
-		sprintf(countInChar,"%d",frequency);
-		for(innerCounter = 0;countInChar[innerCounter] != '\0';innerCounter++){
-			encodedString[++fillCounter] = countInChar[innerCounter];
-		}
-		userInput++;
-	}
-	return encodedString;
+char *runLengthEncoding(char *userInput) {
+    if(userInput == null) {
+        return null;
+    }
+    char *encodedString = (char *)malloc(sizeof(char)*(2*strlen(userInput)+1));
+    int frequency;
+    int fillCounter = -1;
+    int innerCounter = 0;
+    char countInChar[RUN_LENGTH_ENCODING_MAX_DIGIT_COUNT];
+    while(*userInput != '\0') {
+        frequency = 1;
+        while(userInput[1] != '\0' && userInput[0] == userInput[1]) {
+            frequency++;
+            userInput++;
+        }
+        encodedString[++fillCounter] = userInput[0];
+        sprintf(countInChar,"%d",frequency);
+        for(innerCounter = 0; countInChar[innerCounter] != '\0'; innerCounter++) {
+            encodedString[++fillCounter] = countInChar[innerCounter];
+        }
+        userInput++;
+    }
+    return encodedString;
 }
 
 #endif /* RUNLENGTHENCODING_H_ */

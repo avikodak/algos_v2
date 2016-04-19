@@ -73,30 +73,30 @@ using namespace __gnu_cxx;
 #define LINCAN_H_
 
 //Tested
-void printResults(){
-	int testCases,size,input,sum;
-	vector<int> userInput;
-	scanf("%d",&testCases);
-	while(testCases--){
-		scanf("%d",&size);
-		userInput.clear();
-		sum = 0;
-		for(int counter = 0;counter < size;counter++){
-			scanf("%d",&input);
-			sum += input;
-			userInput.push_back(input);
-		}
-		if(sum%size == 0){
-			unsigned int total = 0;
-			sum /= size;
-			for(int counter = 0;counter < size;counter++){
-				total += abs(userInput[counter]-sum);
-			}
-			cout << total << endl;
-		}else{
-			cout << "-1" << endl;
-		}
-	}
+void printResults() {
+    int testCases,size,input,sum;
+    vector<int> userInput;
+    scanf("%d",&testCases);
+    while(testCases--) {
+        scanf("%d",&size);
+        userInput.clear();
+        sum = 0;
+        for(int counter = 0; counter < size; counter++) {
+            scanf("%d",&input);
+            sum += input;
+            userInput.push_back(input);
+        }
+        if(sum%size == 0) {
+            unsigned int total = 0;
+            sum /= size;
+            for(int counter = 0; counter < size; counter++) {
+                total += abs(userInput[counter]-sum);
+            }
+            cout << total << endl;
+        } else {
+            cout << "-1" << endl;
+        }
+    }
 }
 
 #endif /* LINCAN_H_ */

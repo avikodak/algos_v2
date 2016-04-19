@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: reversewordsstring.h 
+ *  File Name   		: reversewordsstring.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\reversewordsstring.h
  *  Created on			: Dec 4, 2014 :: 6:33:02 PM
  *  Author				: AVINASH
@@ -72,38 +72,38 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void reverseWord(char *startPtr,char *endPtr){
-	char tempch;
-	while(startPtr != endPtr){
-		tempch = startPtr[0];
-		startPtr[0] = endPtr[0];
-		endPtr[0] = tempch;
-		if(startPtr + 1 == endPtr){
-			break;
-		}
-		startPtr++;
-		endPtr--;
-	}
+void reverseWord(char *startPtr,char *endPtr) {
+    char tempch;
+    while(startPtr != endPtr) {
+        tempch = startPtr[0];
+        startPtr[0] = endPtr[0];
+        endPtr[0] = tempch;
+        if(startPtr + 1 == endPtr) {
+            break;
+        }
+        startPtr++;
+        endPtr--;
+    }
 }
 
 //Tested
-void reverseWordsInString(char *userInput){
-	if(userInput == null){
-		return;
-	}
-	char *startCrawler = userInput,*rearCrawler;
-	while(*startCrawler != '\0'){
-		while(startCrawler[0] == ' '){
-			startCrawler++;
-		}
-		rearCrawler = startCrawler;
-		while(rearCrawler[1] != ' ' && rearCrawler[1] != '\0'){
-			rearCrawler++;
-		}
-		reverseWord(startCrawler,rearCrawler);
-		startCrawler = rearCrawler+1;
-	}
-	reverseWord(userInput,rearCrawler);
+void reverseWordsInString(char *userInput) {
+    if(userInput == null) {
+        return;
+    }
+    char *startCrawler = userInput,*rearCrawler;
+    while(*startCrawler != '\0') {
+        while(startCrawler[0] == ' ') {
+            startCrawler++;
+        }
+        rearCrawler = startCrawler;
+        while(rearCrawler[1] != ' ' && rearCrawler[1] != '\0') {
+            rearCrawler++;
+        }
+        reverseWord(startCrawler,rearCrawler);
+        startCrawler = rearCrawler+1;
+    }
+    reverseWord(userInput,rearCrawler);
 }
 
 /****************************************************************************************************************************************************/

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: ivector.h 
+ *  File Name   		: ivector.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\ivector.h
  *  Created on			: Oct 20, 2014 :: 2:08:23 PM
  *  Author				: AVINASH
@@ -71,27 +71,27 @@ using namespace __gnu_cxx;
 
 class ivector {
 private:
-	int *userInput;
-	unsigned int maxSize;
-	int index;
+    int *userInput;
+    unsigned int maxSize;
+    int index;
 public:
-	ivector(){
-		maxSize = 1;
-		index = -1;
-		userInput = (int *)malloc(sizeof(int)*maxSize);
-	}
+    ivector() {
+        maxSize = 1;
+        index = -1;
+        userInput = (int *)malloc(sizeof(int)*maxSize);
+    }
 
-	void push_back(int value){
+    void push_back(int value) {
 
-	}
+    }
 
-	void deleteVal(int value){
+    void deleteVal(int value) {
 
-	}
+    }
 
-	unsigned int size(){
+    unsigned int size() {
 
-	}
+    }
 };
 
 

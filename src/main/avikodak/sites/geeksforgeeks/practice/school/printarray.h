@@ -75,17 +75,17 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_PRINTARRAY_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_PRINTARRAY_H_
 
-void solveProblem(){
-	unsigned int testCases,size;
-	long long int input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		while(size--){
-			scanf("%lld",&input);
-			printf("%lld\n",input);
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    long long int input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        while(size--) {
+            scanf("%lld",&input);
+            printf("%lld\n",input);
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_PRINTARRAY_H_ */

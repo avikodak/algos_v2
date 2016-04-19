@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: addgreatervaluesbst.h 
+ *  File Name   		: addgreatervaluesbst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\addgreatervaluesbst.h
  *  Created on			: Nov 14, 2014 :: 8:22:36 PM
  *  Author				: AVINASH
@@ -72,77 +72,77 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void addGreaterValuesBST(itNode *ptr){
-	static int prevValue = 0;
-	if(ptr == null){
-		return;
-	}
-	addGreaterValuesBST(ptr->right);
-	ptr->value += prevValue;
-	prevValue = ptr->value;
-	addGreaterValuesBST(ptr->left);
+void addGreaterValuesBST(itNode *ptr) {
+    static int prevValue = 0;
+    if(ptr == null) {
+        return;
+    }
+    addGreaterValuesBST(ptr->right);
+    ptr->value += prevValue;
+    prevValue = ptr->value;
+    addGreaterValuesBST(ptr->left);
 }
 
 //Tested
-void addGreaterValueBSTIterative(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	stack<itNode *> auxSpace;
-	itNode *currentNode = ptr;
-	int prevValue = 0;
-	while(!auxSpace.empty() || currentNode != null){
-		if(currentNode != null){
-			auxSpace.push(currentNode);
-			currentNode = currentNode->right;
-		}else{
-			currentNode = auxSpace.top();
-			auxSpace.pop();
-			prevValue = currentNode->value += prevValue;
-			currentNode = currentNode->left;
-		}
-	}
+void addGreaterValueBSTIterative(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    stack<itNode *> auxSpace;
+    itNode *currentNode = ptr;
+    int prevValue = 0;
+    while(!auxSpace.empty() || currentNode != null) {
+        if(currentNode != null) {
+            auxSpace.push(currentNode);
+            currentNode = currentNode->right;
+        } else {
+            currentNode = auxSpace.top();
+            auxSpace.pop();
+            prevValue = currentNode->value += prevValue;
+            currentNode = currentNode->left;
+        }
+    }
 }
 
-void gFixLeftPtr(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = null;
-	gFixLeftPtr(ptr->left);
-	ptr->left = prevNode;
-	prevNode = ptr;
-	gFixLeftPtr(ptr->right);
+void gFixLeftPtr(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = null;
+    gFixLeftPtr(ptr->left);
+    ptr->left = prevNode;
+    prevNode = ptr;
+    gFixLeftPtr(ptr->right);
 }
 
-void gFixRightPtr(itNode **ptr){
-	if(*ptr == null){
-		return;
-	}
-	itNode *currentNode = *ptr,*prevNode = null;
-	while(currentNode->right != null){
-		currentNode = currentNode->right;
-	}
-	while(currentNode != null){
-		currentNode->right = prevNode;
-		prevNode = currentNode;
-		currentNode = currentNode->left;
-	}
-	(*ptr) = prevNode;
+void gFixRightPtr(itNode **ptr) {
+    if(*ptr == null) {
+        return;
+    }
+    itNode *currentNode = *ptr,*prevNode = null;
+    while(currentNode->right != null) {
+        currentNode = currentNode->right;
+    }
+    while(currentNode != null) {
+        currentNode->right = prevNode;
+        prevNode = currentNode;
+        currentNode = currentNode->left;
+    }
+    (*ptr) = prevNode;
 }
 
-void agConvertTreeToDLLON(itNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	static itNode *prevNode = ptr;
-	agConvertTreeToDLLON(ptr->left);
-	ptr->left = prevNode;
-	if(prevNode != null){
-		prevNode->right = ptr;
-	}
-	prevNode = ptr;
-	agConvertTreeToDLLON(ptr->right);
+void agConvertTreeToDLLON(itNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    static itNode *prevNode = ptr;
+    agConvertTreeToDLLON(ptr->left);
+    ptr->left = prevNode;
+    if(prevNode != null) {
+        prevNode->right = ptr;
+    }
+    prevNode = ptr;
+    agConvertTreeToDLLON(ptr->right);
 }
 
 /****************************************************************************************************************************************************/
@@ -152,28 +152,28 @@ void agConvertTreeToDLLON(itNode *ptr){
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-itNode *agConvertTreeToDLLON2(itNode *ptr){
-	if(ptr == null){
-		return null;
-	}
-	itNode *temp;
-	if(ptr->left != null){
-		temp = agConvertTreeToDLLON2(ptr->left);
-		while(temp->right != null){
-			temp = temp->right;
-		}
-		temp->right = ptr;
-		ptr->left = temp;
-	}
-	if(ptr->right != null){
-		temp = agConvertTreeToDLLON2(ptr->right);
-		while(temp->left != null){
-			temp = temp->left;
-		}
-		temp->left = ptr;
-		ptr->right = temp;
-	}
-	return ptr;
+itNode *agConvertTreeToDLLON2(itNode *ptr) {
+    if(ptr == null) {
+        return null;
+    }
+    itNode *temp;
+    if(ptr->left != null) {
+        temp = agConvertTreeToDLLON2(ptr->left);
+        while(temp->right != null) {
+            temp = temp->right;
+        }
+        temp->right = ptr;
+        ptr->left = temp;
+    }
+    if(ptr->right != null) {
+        temp = agConvertTreeToDLLON2(ptr->right);
+        while(temp->left != null) {
+            temp = temp->left;
+        }
+        temp->left = ptr;
+        ptr->right = temp;
+    }
+    return ptr;
 }
 
 #endif /* ADDGREATERVALUESBST_H_ */

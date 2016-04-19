@@ -71,41 +71,41 @@ using namespace __gnu_cxx;
 #define INVERT_H_
 
 //Tested
-void printInversions(vector<int> userInput){
-	unsigned int total = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size()-1;outerCounter++){
-		for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-			if(userInput[innerCounter] < userInput[outerCounter]){
-				total++;
-			}
-		}
-	}
-	cout << total << endl;
+void printInversions(vector<int> userInput) {
+    unsigned int total = 0;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size()-1; outerCounter++) {
+        for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+            if(userInput[innerCounter] < userInput[outerCounter]) {
+                total++;
+            }
+        }
+    }
+    cout << total << endl;
 }
 
 //Tested
-void performOperation(vector<int> userInput,unsigned int testCases){
-	vector<int> madeUserInput;
-	unsigned int start,end,insertAt;
-	while(testCases--){
-		cin >> start >> end >> insertAt;
-		madeUserInput.insert(madeUserInput.begin()+insertAt-1,userInput.begin()+start-1,userInput.begin()+end);
-		userInput.erase(userInput.begin()+start-1,userInput.begin()+end);
-		printInversions(madeUserInput);
-	}
+void performOperation(vector<int> userInput,unsigned int testCases) {
+    vector<int> madeUserInput;
+    unsigned int start,end,insertAt;
+    while(testCases--) {
+        cin >> start >> end >> insertAt;
+        madeUserInput.insert(madeUserInput.begin()+insertAt-1,userInput.begin()+start-1,userInput.begin()+end);
+        userInput.erase(userInput.begin()+start-1,userInput.begin()+end);
+        printInversions(madeUserInput);
+    }
 }
 
 //Tested but slow
-void printResults(){
-	unsigned int size,testCases;
-	vector<int> userInput;
-	int input;
-	cin >> size >> testCases;
-	while(size--){
-		scanf("%d",&input);
-		userInput.push_back(input);
-	}
-	performOperation(userInput,testCases);
+void printResults() {
+    unsigned int size,testCases;
+    vector<int> userInput;
+    int input;
+    cin >> size >> testCases;
+    while(size--) {
+        scanf("%d",&input);
+        userInput.push_back(input);
+    }
+    performOperation(userInput,testCases);
 }
 
 #endif /* INVERT_H_ */

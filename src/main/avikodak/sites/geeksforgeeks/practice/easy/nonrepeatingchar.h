@@ -76,31 +76,31 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_NONREPEATINGCHAR_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	string userInput;
-	bool nonRepeatFound;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		cin >> userInput;
-		vector<int> frequency;
-		frequency.assign(26,0);
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			frequency[userInput[counter]-'a']++;
-		}
-		nonRepeatFound = false;
-		for(unsigned int counter = 0;counter < userInput.size();counter++){
-			if(frequency[userInput[counter]-'a'] == 1){
-				printf("%c\n",userInput[counter]);
-				nonRepeatFound = true;
-				break;
-			}
-		}
-		if(!nonRepeatFound){
-			printf("-1\n");
-		}
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    string userInput;
+    bool nonRepeatFound;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        cin >> userInput;
+        vector<int> frequency;
+        frequency.assign(26,0);
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            frequency[userInput[counter]-'a']++;
+        }
+        nonRepeatFound = false;
+        for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+            if(frequency[userInput[counter]-'a'] == 1) {
+                printf("%c\n",userInput[counter]);
+                nonRepeatFound = true;
+                break;
+            }
+        }
+        if(!nonRepeatFound) {
+            printf("-1\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_NONREPEATINGCHAR_H_ */

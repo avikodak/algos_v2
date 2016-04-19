@@ -1,6 +1,6 @@
 
 /****************************************************************************************************************************************************
- *  File Name   		: permutation.h 
+ *  File Name   		: permutation.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\permutation.h
  *  Created on			: Oct 29, 2014 :: 10:22:41 AM
  *  Author				: AVINASH
@@ -70,31 +70,31 @@ using namespace __gnu_cxx;
 #define PERMUTATION_H_
 
 //Tested
-void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex){
-	if(startIndex == endIndex){
-		printf("%s",userInput);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = startIndex;counter <= endIndex;counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		printPermutation(userInput,startIndex+1,endIndex);
-		swap(userInput[startIndex],userInput[counter]);
-	}
+void printPermutation(char *userInput,unsigned int startIndex,unsigned int endIndex) {
+    if(startIndex == endIndex) {
+        printf("%s",userInput);
+        PRINT_NEW_LINE;
+        return;
+    }
+    for(unsigned int counter = startIndex; counter <= endIndex; counter++) {
+        swap(userInput[startIndex],userInput[counter]);
+        printPermutation(userInput,startIndex+1,endIndex);
+        swap(userInput[startIndex],userInput[counter]);
+    }
 }
 
 //Tested
-void permutationOfVector(vector<int> userInput,unsigned int startIndex){
-	if(startIndex == userInput.size()){
-		printIVector(userInput,false);
-		PRINT_NEW_LINE;
-		return;
-	}
-	for(unsigned int counter = startIndex;counter < userInput.size();counter++){
-		swap(userInput[startIndex],userInput[counter]);
-		permutationOfVector(userInput,startIndex+1);
-		swap(userInput[startIndex],userInput[counter]);
-	}
+void permutationOfVector(vector<int> userInput,unsigned int startIndex) {
+    if(startIndex == userInput.size()) {
+        printIVector(userInput,false);
+        PRINT_NEW_LINE;
+        return;
+    }
+    for(unsigned int counter = startIndex; counter < userInput.size(); counter++) {
+        swap(userInput[startIndex],userInput[counter]);
+        permutationOfVector(userInput,startIndex+1);
+        swap(userInput[startIndex],userInput[counter]);
+    }
 }
 
 #endif /* PERMUTATION_H_ */

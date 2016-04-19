@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortness.h 
+ *  File Name   		: sortness.h
  *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sortness.h
  *  Created on			: Mar 25, 2015 :: 11:41:16 PM
  *  Author				: avikodak
@@ -70,25 +70,25 @@ using namespace __gnu_cxx;
 #ifndef SORTNESS_H_
 #define SORTNESS_H_
 
-class Sortness{
+class Sortness {
 public:
-	double getSortness(vector<int> a){
-		int sum = 0;
-		for(unsigned int outerCounter = 0;outerCounter < a.size();outerCounter++){
-			for(unsigned int innerCounter = 0;innerCounter < outerCounter;innerCounter++){
-				if(a[innerCounter] > outerCounter){
-					sum++;
-				}
-			}
-			for(unsigned int innerCounter = outerCounter+1;innerCounter < a.size();innerCounter++){
-				if(a[innerCounter] < outerCounter){
-					sum++;
-				}
-			}
-		}
-		double avg = ((double)sum/(double)a.size());
-		return avg;
-	}
+    double getSortness(vector<int> a) {
+        int sum = 0;
+        for(unsigned int outerCounter = 0; outerCounter < a.size(); outerCounter++) {
+            for(unsigned int innerCounter = 0; innerCounter < outerCounter; innerCounter++) {
+                if(a[innerCounter] > outerCounter) {
+                    sum++;
+                }
+            }
+            for(unsigned int innerCounter = outerCounter+1; innerCounter < a.size(); innerCounter++) {
+                if(a[innerCounter] < outerCounter) {
+                    sum++;
+                }
+            }
+        }
+        double avg = ((double)sum/(double)a.size());
+        return avg;
+    }
 };
 
 #endif /* SORTNESS_H_ */

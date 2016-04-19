@@ -75,24 +75,24 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ZCOPRACTICECONTEST_ZCO14003_H_
 #define MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ZCOPRACTICECONTEST_ZCO14003_H_
 
-bool sortFunc(long long int fUserInput,long long int sUserInput){
-	return fUserInput > sUserInput;
+bool sortFunc(long long int fUserInput,long long int sUserInput) {
+    return fUserInput > sUserInput;
 }
 
-void solveProblem(){
-	long long int input,size;
-	vector<long long int> userInput;
-	scanf("%lld",&size);
-	for(unsigned int counter = 0;counter < size;counter++){
-		scanf("%lld",&input);
-		userInput.push_back(input);
-	}
-	sort(userInput.begin(),userInput.end(),sortFunc);
-	long long int maxProfit = userInput[0];
-	for(unsigned int counter = 1;counter < size;counter++){
-		maxProfit = max(maxProfit,(counter+1)*userInput[counter]);
-	}
-	printf("%lld",maxProfit);
+void solveProblem() {
+    long long int input,size;
+    vector<long long int> userInput;
+    scanf("%lld",&size);
+    for(unsigned int counter = 0; counter < size; counter++) {
+        scanf("%lld",&input);
+        userInput.push_back(input);
+    }
+    sort(userInput.begin(),userInput.end(),sortFunc);
+    long long int maxProfit = userInput[0];
+    for(unsigned int counter = 1; counter < size; counter++) {
+        maxProfit = max(maxProfit,(counter+1)*userInput[counter]);
+    }
+    printf("%lld",maxProfit);
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_CONTEST_ZCOPRACTICECONTEST_ZCO14003_H_ */

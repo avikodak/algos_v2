@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getmaxelement.h 
+ *  File Name   		: getmaxelement.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture01\getmaxelement.h
  *  Created on			: Oct 17, 2014 :: 2:59:35 PM
  *  Author				: AVINASH
@@ -73,62 +73,62 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getMaxElement(vector<int> userInput,unsigned int currentIndex = 0){
-	if(currentIndex == userInput.size()-1){
-		return userInput[currentIndex];
-	}
-	int temp;
-	return userInput[currentIndex] > (temp = getMaxElement(userInput,currentIndex+1))?userInput[currentIndex]:temp;
+int getMaxElement(vector<int> userInput,unsigned int currentIndex = 0) {
+    if(currentIndex == userInput.size()-1) {
+        return userInput[currentIndex];
+    }
+    int temp;
+    return userInput[currentIndex] > (temp = getMaxElement(userInput,currentIndex+1))?userInput[currentIndex]:temp;
 }
 
 //Tested
-int getMaxElementIterative(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MAX;
-	}
-	int max = userInput[0];
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(max < userInput[counter]){
-			max = userInput[counter];
-		}
-	}
-	return max;
+int getMaxElementIterative(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MAX;
+    }
+    int max = userInput[0];
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(max < userInput[counter]) {
+            max = userInput[counter];
+        }
+    }
+    return max;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getMaxElementONLOGN(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MAX;
-	}
-	sort(userInput.begin(),userInput.end());
-	return userInput[userInput.size()-1];
+int getMaxElementONLOGN(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MAX;
+    }
+    sort(userInput.begin(),userInput.end());
+    return userInput[userInput.size()-1];
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getMaxElementON2(vector<int> userInput){
-	if(userInput.size() == 0){
-		return INT_MAX;
-	}
-	unsigned int outerCrawler = 0,innerCrawler;
-	bool isMaxElement;
-	for(outerCrawler = 0;outerCrawler < userInput.size();outerCrawler++){
-		isMaxElement = true;
-		for(innerCrawler = outerCrawler+1;innerCrawler < userInput.size();innerCrawler++){
-			if(userInput[innerCrawler] > userInput[outerCrawler]){
-				isMaxElement = false;
-			}
-		}
-		if(isMaxElement){
-			return userInput[outerCrawler];
-		}
-	}
-	return INT_MAX;
+int getMaxElementON2(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return INT_MAX;
+    }
+    unsigned int outerCrawler = 0,innerCrawler;
+    bool isMaxElement;
+    for(outerCrawler = 0; outerCrawler < userInput.size(); outerCrawler++) {
+        isMaxElement = true;
+        for(innerCrawler = outerCrawler+1; innerCrawler < userInput.size(); innerCrawler++) {
+            if(userInput[innerCrawler] > userInput[outerCrawler]) {
+                isMaxElement = false;
+            }
+        }
+        if(isMaxElement) {
+            return userInput[outerCrawler];
+        }
+    }
+    return INT_MAX;
 }
 
 #endif /* GETMAXELEMENT_H_ */

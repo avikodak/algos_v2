@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: mergesort.h 
+ *  File Name   		: mergesort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\mergesort.h
  *  Created on			: Dec 11, 2014 :: 1:00:12 PM
  *  Author				: AVINASH
@@ -74,41 +74,41 @@ using namespace __gnu_cxx;
 /* 																O(NLOGN) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void msortMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	vector<int> auxSpace;
-	int firstCrawler = startIndex,secondCrawler = middleIndex+1;
-	while(firstCrawler <= middleIndex || secondCrawler <= endIndex){
-		if(firstCrawler > middleIndex || secondCrawler > endIndex){
-			if(firstCrawler <= middleIndex){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}else{
-			if(userInput[firstCrawler] < userInput[secondCrawler]){
-				auxSpace.push_back(userInput[firstCrawler++]);
-			}else{
-				auxSpace.push_back(userInput[secondCrawler++]);
-			}
-		}
-	}
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		userInput[startIndex + counter] = auxSpace[counter];
-	}
+void msortMerge(vector<int> &userInput,int startIndex,int middleIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return;
+    }
+    vector<int> auxSpace;
+    int firstCrawler = startIndex,secondCrawler = middleIndex+1;
+    while(firstCrawler <= middleIndex || secondCrawler <= endIndex) {
+        if(firstCrawler > middleIndex || secondCrawler > endIndex) {
+            if(firstCrawler <= middleIndex) {
+                auxSpace.push_back(userInput[firstCrawler++]);
+            } else {
+                auxSpace.push_back(userInput[secondCrawler++]);
+            }
+        } else {
+            if(userInput[firstCrawler] < userInput[secondCrawler]) {
+                auxSpace.push_back(userInput[firstCrawler++]);
+            } else {
+                auxSpace.push_back(userInput[secondCrawler++]);
+            }
+        }
+    }
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        userInput[startIndex + counter] = auxSpace[counter];
+    }
 }
 
 //Tested
-void msortMergeSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex >= endIndex){
-		return;
-	}
-	int middleIndex = (startIndex + endIndex)/2;
-	msortMergeSort(userInput,startIndex,middleIndex);
-	msortMergeSort(userInput,middleIndex+1,endIndex);
-	msortMerge(userInput,startIndex,middleIndex,endIndex);
+void msortMergeSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex >= endIndex) {
+        return;
+    }
+    int middleIndex = (startIndex + endIndex)/2;
+    msortMergeSort(userInput,startIndex,middleIndex);
+    msortMergeSort(userInput,middleIndex+1,endIndex);
+    msortMerge(userInput,startIndex,middleIndex,endIndex);
 }
 
 #endif /* MERGESORTV3_H_ */

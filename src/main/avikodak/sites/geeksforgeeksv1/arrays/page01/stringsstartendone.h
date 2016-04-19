@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: stringsstartendone.h 
+ *  File Name   		: stringsstartendone.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\stringsstartendone.h
  *  Created on			: Jan 5, 2015 :: 1:55:10 PM
  *  Author				: AVINASH
@@ -74,38 +74,38 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int countStringsStartEndOnesON(vector<bool> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int setBitCounter = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		if(userInput[counter]){
-			setBitCounter++;
-		}
-	}
-	return ((setBitCounter) * (setBitCounter-1))/2;
+int countStringsStartEndOnesON(vector<bool> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int setBitCounter = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if(userInput[counter]) {
+            setBitCounter++;
+        }
+    }
+    return ((setBitCounter) * (setBitCounter-1))/2;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int stringStartEndOnesON2(vector<bool> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	int totalStrings = 0;
-	for(unsigned int outerCounter = 0;outerCounter < userInput.size();outerCounter++){
-		if(userInput[outerCounter]){
-			for(unsigned int innerCounter = outerCounter+1;innerCounter < userInput.size();innerCounter++){
-				if(userInput[innerCounter]){
-					totalStrings++;
-				}
-			}
-		}
-	}
-	return totalStrings;
+int stringStartEndOnesON2(vector<bool> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    int totalStrings = 0;
+    for(unsigned int outerCounter = 0; outerCounter < userInput.size(); outerCounter++) {
+        if(userInput[outerCounter]) {
+            for(unsigned int innerCounter = outerCounter+1; innerCounter < userInput.size(); innerCounter++) {
+                if(userInput[innerCounter]) {
+                    totalStrings++;
+                }
+            }
+        }
+    }
+    return totalStrings;
 }
 
 #endif /* STRINGSSTARTENDONE_H_ */

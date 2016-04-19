@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printsillreverseorder.h 
+ *  File Name   		: printsillreverseorder.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\printsillreverseorder.h
  *  Created on			: Oct 13, 2014 :: 11:52:51 AM
  *  Author				: AVINASH
@@ -72,12 +72,12 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void printSillReverseOrder(sillNode *ptr){
-	if(ptr == null){
-		return;
-	}
-	printSillReverseOrder(ptr->next);
-	printf("%d\t",ptr->value);
+void printSillReverseOrder(sillNode *ptr) {
+    if(ptr == null) {
+        return;
+    }
+    printSillReverseOrder(ptr->next);
+    printf("%d\t",ptr->value);
 }
 
 #endif /* PRINTSILLREVERSEORDER_H_ */

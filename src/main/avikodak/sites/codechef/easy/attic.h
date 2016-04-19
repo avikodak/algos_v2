@@ -72,35 +72,35 @@ using namespace __gnu_cxx;
 #define ATTIC_H_
 
 //Tested
-void getMaxDays(string userInput){
-	long int totalDays = 0,maxJumps = 0;
-	unsigned int outerCounter = 0,innerCounter;
-	while(outerCounter < userInput.size()){
-		if(userInput[outerCounter] != '#'){
-			innerCounter = outerCounter;
-			while(innerCounter < userInput.size() && userInput[innerCounter] == '.'){
-				innerCounter++;
-			}
-			if(innerCounter - outerCounter > maxJumps){
-				totalDays++;
-				maxJumps = innerCounter - outerCounter;
-			}
-			outerCounter = innerCounter;
-		}
-		outerCounter++;
-	}
-	cout << totalDays << endl;
+void getMaxDays(string userInput) {
+    long int totalDays = 0,maxJumps = 0;
+    unsigned int outerCounter = 0,innerCounter;
+    while(outerCounter < userInput.size()) {
+        if(userInput[outerCounter] != '#') {
+            innerCounter = outerCounter;
+            while(innerCounter < userInput.size() && userInput[innerCounter] == '.') {
+                innerCounter++;
+            }
+            if(innerCounter - outerCounter > maxJumps) {
+                totalDays++;
+                maxJumps = innerCounter - outerCounter;
+            }
+            outerCounter = innerCounter;
+        }
+        outerCounter++;
+    }
+    cout << totalDays << endl;
 }
 
 //Tested
-void printResults(){
-	long int testCases;
-	string userInput;
-	cin >> testCases;
-	while(testCases--){
-		cin >> userInput;
-		getMaxDays(userInput);
-	}
+void printResults() {
+    long int testCases;
+    string userInput;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> userInput;
+        getMaxDays(userInput);
+    }
 }
 
 #endif /* ATTIC_H_ */

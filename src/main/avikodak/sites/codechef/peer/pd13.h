@@ -72,32 +72,32 @@ using namespace __gnu_cxx;
 #define PD13_H_
 
 //Tested
-void printSumOfDivisors(unsigned int userInput){
-	if(userInput == 1){
-		cout << "0" << endl;
-		return;
-	}
-	unsigned int sumOfDivisors = 1;
-	unsigned int squareRoot = sqrt(userInput);
-	for(unsigned int counter = 2;counter <= squareRoot;counter++){
-		if(userInput%counter == 0){
-			sumOfDivisors += counter;
-			if(userInput/counter != counter){
-				sumOfDivisors += (userInput/counter);
-			}
-		}
-	}
-	cout << sumOfDivisors << endl;
+void printSumOfDivisors(unsigned int userInput) {
+    if(userInput == 1) {
+        cout << "0" << endl;
+        return;
+    }
+    unsigned int sumOfDivisors = 1;
+    unsigned int squareRoot = sqrt(userInput);
+    for(unsigned int counter = 2; counter <= squareRoot; counter++) {
+        if(userInput%counter == 0) {
+            sumOfDivisors += counter;
+            if(userInput/counter != counter) {
+                sumOfDivisors += (userInput/counter);
+            }
+        }
+    }
+    cout << sumOfDivisors << endl;
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases,input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input;
-		printSumOfDivisors(input);
-	}
+void printResults() {
+    unsigned int testCases,input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input;
+        printSumOfDivisors(input);
+    }
 }
 
 #endif /* PD13_H_ */

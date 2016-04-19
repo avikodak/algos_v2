@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: football.h 
+ *  File Name   		: football.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codeforces\football.h
  *  Created on			: Feb 28, 2015 :: 1:11:19 PM
  *  Author				: AVINASH
@@ -72,28 +72,28 @@ using namespace __gnu_cxx;
 #define FOOTBALL_H_
 
 //Tested
-void isCombinationDangerous(){
-	char *ptrToUserInput,userInput[MAX_INPUT_SIZE];
-	scanf("%s",userInput);
-	unsigned int frequency;
-	bool isDangerous = false;
-	ptrToUserInput = userInput;
-	while(ptrToUserInput[0] != '\0'){
-		frequency = 1;
-		while(ptrToUserInput[1] != '\0' && ptrToUserInput[0] == ptrToUserInput[1]){
-			ptrToUserInput++;
-			frequency++;
-			if(frequency >= 7){
-				isDangerous = true;
-				break;
-			}
-		}
-		if(isDangerous){
-			break;
-		}
-		ptrToUserInput++;
-	}
-	printf("%s",isDangerous?"YES":"NO");
+void isCombinationDangerous() {
+    char *ptrToUserInput,userInput[MAX_INPUT_SIZE];
+    scanf("%s",userInput);
+    unsigned int frequency;
+    bool isDangerous = false;
+    ptrToUserInput = userInput;
+    while(ptrToUserInput[0] != '\0') {
+        frequency = 1;
+        while(ptrToUserInput[1] != '\0' && ptrToUserInput[0] == ptrToUserInput[1]) {
+            ptrToUserInput++;
+            frequency++;
+            if(frequency >= 7) {
+                isDangerous = true;
+                break;
+            }
+        }
+        if(isDangerous) {
+            break;
+        }
+        ptrToUserInput++;
+    }
+    printf("%s",isDangerous?"YES":"NO");
 }
 
 #endif /* FOOTBALL_H_ */

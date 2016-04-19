@@ -76,16 +76,16 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_
 
 //Tested
-void solveProblem(){
-	unsigned int testCases,size;
-	string input;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u",&size);
-		cin >> input;
-		sort(input.begin(),input.end());
-		cout << input << endl;
-	}
+void solveProblem() {
+    unsigned int testCases,size;
+    string input;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u",&size);
+        cin >> input;
+        sort(input.begin(),input.end());
+        cout << input << endl;
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_SORTSTRING_H_ */

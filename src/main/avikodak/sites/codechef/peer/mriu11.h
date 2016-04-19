@@ -73,15 +73,15 @@ using namespace __gnu_cxx;
 #define MRIU11_H_
 
 //Tested
-void printResults(){
-	unsigned int withDrawAmount;
-	double balance;
-	cin >> withDrawAmount >> balance;
-	if(withDrawAmount%5 == 0 && balance >= (withDrawAmount + 0.5)){
-		cout << setprecision(2) << fixed << (balance - withDrawAmount - 0.5) << endl;
-	}else{
-		cout << setprecision(2) << fixed << balance << endl;
-	}
+void printResults() {
+    unsigned int withDrawAmount;
+    double balance;
+    cin >> withDrawAmount >> balance;
+    if(withDrawAmount%5 == 0 && balance >= (withDrawAmount + 0.5)) {
+        cout << setprecision(2) << fixed << (balance - withDrawAmount - 0.5) << endl;
+    } else {
+        cout << setprecision(2) << fixed << balance << endl;
+    }
 }
 
 #endif /* MRIU11_H_ */

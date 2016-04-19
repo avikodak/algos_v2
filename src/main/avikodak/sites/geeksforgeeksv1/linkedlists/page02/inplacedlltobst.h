@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: inplacedlltobst.h 
+ *  File Name   		: inplacedlltobst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\inplacedlltobst.h
  *  Created on			: Oct 31, 2014 :: 6:14:12 PM
  *  Author				: AVINASH
@@ -68,16 +68,16 @@ using namespace __gnu_cxx;
 #ifndef INPLACEDLLTOBST_H_
 #define INPLACEDLLTOBST_H_
 
-dillNode *inplacedllToBst(dillNode **ptr,int nValue){
-	if(nValue <= 0){
-		return;
-	}
-	dillNode *left = inplacedllToBst(ptr,nValue/2);
-	dillNode *root = (*ptr);
-	root->prev = left;
-	(*ptr) = (*ptr)->next;
-	root->next = inplacedllToBst(ptr,nValue - nValue/2 -1);
-	return root;
+dillNode *inplacedllToBst(dillNode **ptr,int nValue) {
+    if(nValue <= 0) {
+        return;
+    }
+    dillNode *left = inplacedllToBst(ptr,nValue/2);
+    dillNode *root = (*ptr);
+    root->prev = left;
+    (*ptr) = (*ptr)->next;
+    root->next = inplacedllToBst(ptr,nValue - nValue/2 -1);
+    return root;
 }
 
 #endif /* INPLACEDLLTOBST_H_ */

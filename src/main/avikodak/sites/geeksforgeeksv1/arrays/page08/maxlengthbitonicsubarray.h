@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maxlengthbitonicsubarray.h 
+ *  File Name   		: maxlengthbitonicsubarray.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maxlengthbitonicsubarray.h
  *  Created on			: Nov 28, 2014 :: 1:48:16 AM
  *  Author				: AVINASH
@@ -72,49 +72,49 @@ using namespace __gnu_cxx;
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-vector<int> getIncreasingLengthSubArrays(vector<int> userInput){
-	vector<int> increasingSubArraysLength;
-	increasingSubArraysLength.push_back(1);
-	for(unsigned int counter = 1;counter < userInput.size();counter++){
-		if(userInput[counter] > userInput[counter-1]){
-			increasingSubArraysLength.push_back(increasingSubArraysLength[counter-1]+1);
-		}else{
-			increasingSubArraysLength.push_back(1);
-		}
-	}
-	return increasingSubArraysLength;
+vector<int> getIncreasingLengthSubArrays(vector<int> userInput) {
+    vector<int> increasingSubArraysLength;
+    increasingSubArraysLength.push_back(1);
+    for(unsigned int counter = 1; counter < userInput.size(); counter++) {
+        if(userInput[counter] > userInput[counter-1]) {
+            increasingSubArraysLength.push_back(increasingSubArraysLength[counter-1]+1);
+        } else {
+            increasingSubArraysLength.push_back(1);
+        }
+    }
+    return increasingSubArraysLength;
 }
 
 //Tested
-vector<int> getDecreasingLengthSubArrays(vector<int> userInput){
-	vector<int> decreasingSubArraysLength;
-	if(userInput.size() == 0){
-		return decreasingSubArraysLength;
-	}
-	decreasingSubArraysLength.assign(userInput.size(),0);
-	decreasingSubArraysLength[userInput.size() - 1] = 1;
-	for(int counter = userInput.size()-2;counter >= 0;counter--){
-		if(userInput[counter] > userInput[counter+1]){
-			decreasingSubArraysLength[counter] = decreasingSubArraysLength[counter+1] + 1;
-		}else{
-			decreasingSubArraysLength[counter] = 1;
-		}
-	}
-	return decreasingSubArraysLength;
+vector<int> getDecreasingLengthSubArrays(vector<int> userInput) {
+    vector<int> decreasingSubArraysLength;
+    if(userInput.size() == 0) {
+        return decreasingSubArraysLength;
+    }
+    decreasingSubArraysLength.assign(userInput.size(),0);
+    decreasingSubArraysLength[userInput.size() - 1] = 1;
+    for(int counter = userInput.size()-2; counter >= 0; counter--) {
+        if(userInput[counter] > userInput[counter+1]) {
+            decreasingSubArraysLength[counter] = decreasingSubArraysLength[counter+1] + 1;
+        } else {
+            decreasingSubArraysLength[counter] = 1;
+        }
+    }
+    return decreasingSubArraysLength;
 }
 
 //Tested
-int maxLengthBitonicSubArrays(vector<int> userInput){
-	if(userInput.size() == 0){
-		return 0;
-	}
-	vector<int> incSubArrayLen = getIncreasingLengthSubArrays(userInput);
-	vector<int> decSubArrayLen = getDecreasingLengthSubArrays(userInput);
-	int maxLen = INT_MIN;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		maxLen = max(maxLen,incSubArrayLen[counter] + decSubArrayLen[counter] - 1);
-	}
-	return maxLen;
+int maxLengthBitonicSubArrays(vector<int> userInput) {
+    if(userInput.size() == 0) {
+        return 0;
+    }
+    vector<int> incSubArrayLen = getIncreasingLengthSubArrays(userInput);
+    vector<int> decSubArrayLen = getDecreasingLengthSubArrays(userInput);
+    int maxLen = INT_MIN;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        maxLen = max(maxLen,incSubArrayLen[counter] + decSubArrayLen[counter] - 1);
+    }
+    return maxLen;
 }
 
 #endif /* MAXLENGTHBITONICSUBARRAY_H_ */

@@ -72,20 +72,20 @@ using namespace __gnu_cxx;
 #define ARAN07_H_
 
 //Tested
-void printResults(){
-	int testCases,input,sum,temp;
-	cin >> testCases;
-	while(testCases--){
-		cin >> input;
-		temp = input;
-		sum = 0;
-		while(temp){
-			sum += temp%10;
-			temp /= 10;
-		}
-		unsigned long long int result = input * pow(2,sum);
-		cout << result << endl;
-	}
+void printResults() {
+    int testCases,input,sum,temp;
+    cin >> testCases;
+    while(testCases--) {
+        cin >> input;
+        temp = input;
+        sum = 0;
+        while(temp) {
+            sum += temp%10;
+            temp /= 10;
+        }
+        unsigned long long int result = input * pow(2,sum);
+        cout << result << endl;
+    }
 }
 
 #endif /* ARAN07_H_ */

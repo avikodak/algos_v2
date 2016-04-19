@@ -70,29 +70,29 @@ using namespace __gnu_cxx;
 #ifndef EULER004_H_
 #define EULER004_H_
 
-bool isPalindrome(unsigned int number){
-	unsigned int originalNumber = number,revNumber = 0;
-	while(number){
-		revNumber *= 10;
-		revNumber += (number%10);
-		number /= 10;
-	}
-	return originalNumber == revNumber;
+bool isPalindrome(unsigned int number) {
+    unsigned int originalNumber = number,revNumber = 0;
+    while(number) {
+        revNumber *= 10;
+        revNumber += (number%10);
+        number /= 10;
+    }
+    return originalNumber == revNumber;
 }
 
-void getLargestPalindromicProduct(long long int number){
-	long long int maxProduct = 1,result;
-	for(long long int outerCounter = 100;outerCounter < 1000;outerCounter++){
-		for(long long int innerCounter = 100;innerCounter < 1000;innerCounter++){
-			result = outerCounter * innerCounter;
-			if(isPalindrome(result)){
-				if(result < number){
-					maxProduct = max(maxProduct,outerCounter*innerCounter);
-				}
-			}
-		}
-	}
-	cout << maxProduct << endl;
+void getLargestPalindromicProduct(long long int number) {
+    long long int maxProduct = 1,result;
+    for(long long int outerCounter = 100; outerCounter < 1000; outerCounter++) {
+        for(long long int innerCounter = 100; innerCounter < 1000; innerCounter++) {
+            result = outerCounter * innerCounter;
+            if(isPalindrome(result)) {
+                if(result < number) {
+                    maxProduct = max(maxProduct,outerCounter*innerCounter);
+                }
+            }
+        }
+    }
+    cout << maxProduct << endl;
 }
 #endif /* EULER004_H_ */
 

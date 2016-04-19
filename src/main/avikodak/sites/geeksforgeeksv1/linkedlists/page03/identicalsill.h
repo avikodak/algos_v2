@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: identicalsill.h 
+ *  File Name   		: identicalsill.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\identicalsill.h
  *  Created on			: Oct 23, 2014 :: 9:27:38 AM
  *  Author				: AVINASH
@@ -72,54 +72,54 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null && secondPtr == null){
-		return true;
-	}
-	if(firstPtr == null || secondPtr == null){
-		return false;
-	}
-	return firstPtr->value == secondPtr->value && areSillsIdentical(firstPtr->next,secondPtr->next);
+bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null && secondPtr == null) {
+        return true;
+    }
+    if(firstPtr == null || secondPtr == null) {
+        return false;
+    }
+    return firstPtr->value == secondPtr->value && areSillsIdentical(firstPtr->next,secondPtr->next);
 }
 
-bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null && secondPtr == null){
-		return true;
-	}
-	if(firstPtr == null || secondPtr == null){
-		return false;
-	}
-	while(firstPtr != null && secondPtr != null){
-		if(firstPtr->value != secondPtr->value){
-			return false;
-		}
-		firstPtr = firstPtr->next;
-		secondPtr = secondPtr->next;
-	}
-	return firstPtr == null && secondPtr == null;
+bool areSillsIdentical(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null && secondPtr == null) {
+        return true;
+    }
+    if(firstPtr == null || secondPtr == null) {
+        return false;
+    }
+    while(firstPtr != null && secondPtr != null) {
+        if(firstPtr->value != secondPtr->value) {
+            return false;
+        }
+        firstPtr = firstPtr->next;
+        secondPtr = secondPtr->next;
+    }
+    return firstPtr == null && secondPtr == null;
 }
 
-bool areSillsIdenticalHashmap(sillNode *firstPtr,sillNode *secondPtr){
-	if(firstPtr == null && secondPtr == null){
-		return true;
-	}
-	if(firstPtr == null || secondPtr == null){
-		return false;
-	}
-	sillutils *utils = new sillutils();
-	hash_map<unsigned int,sillNode *> indexNodeMapFirstSill = utils->getSillAsHashmap(firstPtr,1);
-	hash_map<unsigned int,sillNode *> indexNodeMapSecondSill = utils->getSillAsHashmap(secondPtr,1);
-	if(indexNodeMapFirstSill.size() != indexNodeMapSecondSill.size()){
-		return false;
-	}
-	hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMapFirstSill,itToIndexNodeMapSecondSill;
-	for(itToIndexNodeMapFirstSill = indexNodeMapFirstSill.begin();itToIndexNodeMapFirstSill != indexNodeMapFirstSill.end();itToIndexNodeMapFirstSill++){
-		itToIndexNodeMapSecondSill = indexNodeMapSecondSill.find(itToIndexNodeMapFirstSill->first);
-		if(itToIndexNodeMapFirstSill == indexNodeMapSecondSill.end() || itToIndexNodeMapSecondSill->second->value != itToIndexNodeMapFirstSill->second->value){
-			return false;
-		}
-	}
-	return true;
+bool areSillsIdenticalHashmap(sillNode *firstPtr,sillNode *secondPtr) {
+    if(firstPtr == null && secondPtr == null) {
+        return true;
+    }
+    if(firstPtr == null || secondPtr == null) {
+        return false;
+    }
+    sillutils *utils = new sillutils();
+    hash_map<unsigned int,sillNode *> indexNodeMapFirstSill = utils->getSillAsHashmap(firstPtr,1);
+    hash_map<unsigned int,sillNode *> indexNodeMapSecondSill = utils->getSillAsHashmap(secondPtr,1);
+    if(indexNodeMapFirstSill.size() != indexNodeMapSecondSill.size()) {
+        return false;
+    }
+    hash_map<unsigned int,sillNode *>::iterator itToIndexNodeMapFirstSill,itToIndexNodeMapSecondSill;
+    for(itToIndexNodeMapFirstSill = indexNodeMapFirstSill.begin(); itToIndexNodeMapFirstSill != indexNodeMapFirstSill.end(); itToIndexNodeMapFirstSill++) {
+        itToIndexNodeMapSecondSill = indexNodeMapSecondSill.find(itToIndexNodeMapFirstSill->first);
+        if(itToIndexNodeMapFirstSill == indexNodeMapSecondSill.end() || itToIndexNodeMapSecondSill->second->value != itToIndexNodeMapFirstSill->second->value) {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif /* IDENTICALSILL_H_ */

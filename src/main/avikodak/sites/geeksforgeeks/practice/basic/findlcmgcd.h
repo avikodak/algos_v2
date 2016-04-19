@@ -76,23 +76,23 @@ using namespace __gnu_cxx;
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDLCMGCD_H_
 
 //Tested
-unsigned int gcd(unsigned int a,unsigned int b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b,a%b);
+unsigned int gcd(unsigned int a,unsigned int b) {
+    if(b==0) {
+        return a;
+    }
+    return gcd(b,a%b);
 }
 
 //Tested
-void solveProblem(){
-	unsigned int testCases;
-	unsigned int fInput,sInput,gcdResult;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%u %u",&fInput,&sInput);
-		gcdResult = gcd(fInput,sInput);
-		printf("%u %u\n",(fInput*sInput)/gcdResult,gcdResult);
-	}
+void solveProblem() {
+    unsigned int testCases;
+    unsigned int fInput,sInput,gcdResult;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%u %u",&fInput,&sInput);
+        gcdResult = gcd(fInput,sInput);
+        printf("%u %u\n",(fInput*sInput)/gcdResult,gcdResult);
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_FINDLCMGCD_H_ */

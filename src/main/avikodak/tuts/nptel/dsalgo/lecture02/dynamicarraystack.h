@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: dynamicarraystack.h 
+ *  File Name   		: dynamicarraystack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicarraystack.h
  *  Created on			: Oct 19, 2014 :: 8:17:55 PM
  *  Author				: AVINASH
@@ -72,58 +72,58 @@ using namespace __gnu_cxx;
 #define DYNAMICARRAYSTACK_H_
 
 //Tested
-class dynamicarraystack{
+class dynamicarraystack {
 private:
-	int maxSize;
-	int *dynStack;
-	int topIndex;
+    int maxSize;
+    int *dynStack;
+    int topIndex;
 public:
-	dynamicarraystack(){
-		dynStack = (int *)malloc(sizeof(int));
-		maxSize = 1;
-		topIndex  = -1;
-	}
+    dynamicarraystack() {
+        dynStack = (int *)malloc(sizeof(int));
+        maxSize = 1;
+        topIndex  = -1;
+    }
 
-	//Tested
-	void push(int value){
-		if(topIndex+1 == maxSize){
-			maxSize = incrementByDoublingStrategy(&dynStack,maxSize);
-		}
-		dynStack[++topIndex] = value;
+    //Tested
+    void push(int value) {
+        if(topIndex+1 == maxSize) {
+            maxSize = incrementByDoublingStrategy(&dynStack,maxSize);
+        }
+        dynStack[++topIndex] = value;
 
-	}
+    }
 
-	//Tested
-	void pop(){
-		if(topIndex == -1){
-			throw "Stack is empty";
-		}
-		dynStack[topIndex] = 0;
-		topIndex--;
-	}
+    //Tested
+    void pop() {
+        if(topIndex == -1) {
+            throw "Stack is empty";
+        }
+        dynStack[topIndex] = 0;
+        topIndex--;
+    }
 
-	//Tested
-	unsigned int size(){
-		return topIndex+1;
-	}
+    //Tested
+    unsigned int size() {
+        return topIndex+1;
+    }
 
-	//Tested
-	int top(){
-		if(topIndex == -1){
-			throw "Stack is empty";
-		}
-		return dynStack[topIndex];
-	}
+    //Tested
+    int top() {
+        if(topIndex == -1) {
+            throw "Stack is empty";
+        }
+        return dynStack[topIndex];
+    }
 
-	//Tested
-	int getMaxsize(){
-		return maxSize;
-	}
+    //Tested
+    int getMaxsize() {
+        return maxSize;
+    }
 
-	//Tested
-	bool isEmpty(){
-		return topIndex == -1;
-	}
+    //Tested
+    bool isEmpty() {
+        return topIndex == -1;
+    }
 };
 
 #endif /* DYNAMICARRAYSTACK_H_ */

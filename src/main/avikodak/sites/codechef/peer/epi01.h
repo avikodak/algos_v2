@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define EPI01_H_
 
 //Tested
-unsigned int totalSetBits(unsigned int userInput){
-	if(userInput < 2){
-		return userInput;
-	}
-	return (userInput%2) + totalSetBits(userInput/2);
+unsigned int totalSetBits(unsigned int userInput) {
+    if(userInput < 2) {
+        return userInput;
+    }
+    return (userInput%2) + totalSetBits(userInput/2);
 }
 
 //Tested
-void printResults(){
-	unsigned int input;
-	scanf("%u",&input);
-	printf("%u\n",totalSetBits(input));
+void printResults() {
+    unsigned int input;
+    scanf("%u",&input);
+    printf("%u\n",totalSetBits(input));
 }
 
 #endif /* EPI01_H_ */

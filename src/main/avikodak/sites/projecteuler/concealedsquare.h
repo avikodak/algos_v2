@@ -71,31 +71,31 @@ using namespace __gnu_cxx;
 #define CONCEALEDSQUARE_H_
 
 //Tested
-bool hasPattern(unsigned long long int userInput){
-	unsigned int pattern[]={0,9,8,7,6,5,4,3,2,1};
-	unsigned int counter = 0;
-	while(userInput){
-		if(userInput%10 != pattern[counter]){
-			return false;
-		}
-		userInput /= 100;
-		counter++;
-	}
-	if(counter < 9){
-		return false;
-	}
-	return true;
+bool hasPattern(unsigned long long int userInput) {
+    unsigned int pattern[]= {0,9,8,7,6,5,4,3,2,1};
+    unsigned int counter = 0;
+    while(userInput) {
+        if(userInput%10 != pattern[counter]) {
+            return false;
+        }
+        userInput /= 100;
+        counter++;
+    }
+    if(counter < 9) {
+        return false;
+    }
+    return true;
 }
 
 //Tested
 //Ans : 1389019170
-void getConcealedSquare(){
-	for(unsigned long long int counter = 1010101010;counter <= 1389026623;counter+=10){
-		if(hasPattern(counter*counter)){
-			cout << counter << endl;
-			return;
-		}
-	}
+void getConcealedSquare() {
+    for(unsigned long long int counter = 1010101010; counter <= 1389026623; counter+=10) {
+        if(hasPattern(counter*counter)) {
+            cout << counter << endl;
+            return;
+        }
+    }
 }
 
 #endif /* CONCEALEDSQUARE_H_ */

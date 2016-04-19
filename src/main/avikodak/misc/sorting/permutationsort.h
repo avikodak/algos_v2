@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: permutationsort.h 
+ *  File Name   		: permutationsort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\misc\sorting\permutationsort.h
  *  Created on			: Dec 11, 2014 :: 12:45:14 PM
  *  Author				: AVINASH
@@ -74,19 +74,19 @@ using namespace __gnu_cxx;
 /* 																O(N!) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-void  permutationSort(vector<int> userInput,unsigned int currentIndex = 0){
-	if(currentIndex == userInput.size()){
-		if(isVectorSorted(userInput)){
-			printIVector(userInput);
-		}
-	}
-	vector<int> result;
-	for(unsigned int counter = currentIndex;counter < userInput.size();counter++){
-		swap(userInput[currentIndex],userInput[counter]);
-		permutationSort(userInput,currentIndex+1);
-		swap(userInput[currentIndex],userInput[counter]);
-	}
-	return;
+void  permutationSort(vector<int> userInput,unsigned int currentIndex = 0) {
+    if(currentIndex == userInput.size()) {
+        if(isVectorSorted(userInput)) {
+            printIVector(userInput);
+        }
+    }
+    vector<int> result;
+    for(unsigned int counter = currentIndex; counter < userInput.size(); counter++) {
+        swap(userInput[currentIndex],userInput[counter]);
+        permutationSort(userInput,currentIndex+1);
+        swap(userInput[currentIndex],userInput[counter]);
+    }
+    return;
 }
 
 #endif /* PERMUTATIONSORT_H_ */

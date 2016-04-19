@@ -70,64 +70,64 @@ using namespace __gnu_cxx;
 #ifndef MERGELISTS_H_
 #define MERGELISTS_H_
 
-struct Node{
-	int data;
-	struct Node *next;
+struct Node {
+    int data;
+    struct Node *next;
 };
 
 //Tested
-Node *createNode(int data){
-	Node *nHead = (Node *)malloc(sizeof(Node));
-	nHead->data = data;
-	nHead->next = null;
-	return nHead;
+Node *createNode(int data) {
+    Node *nHead = (Node *)malloc(sizeof(Node));
+    nHead->data = data;
+    nHead->next = null;
+    return nHead;
 }
 
 //Tested
-Node* MergeLists(Node *headA, Node* headB){
-	Node *head = null,*crawler;
-	if(headA == null || headB == null){
-		if(headA != null){
-			head = createNode(headA->data);
-			headA = headA->next;
-		}else{
-			head = createNode(headB->data);
-			headB = headB->next;
-		}
-	}else{
-		if(headA->data < headB->data){
-			head = createNode(headA->data);
-			headA = headA->next;
-		}else{
-			head = createNode(headB->data);
-			headB = headB->next;
-		}
-	}
-	crawler = head;
-	while(headA != null || headB != null){
-		if(headA == null || headB == null){
-			if(headA != null){
-				crawler->next = createNode(headA->data);
-				crawler = crawler->next;
-				headA = headA->next;
-			}else{
-				crawler->next = createNode(headB->data);
-				crawler = crawler->next;
-				headB = headB->next;
-			}
-		}else{
-			if(headA->data < headB->data){
-				crawler->next = createNode(headA->data);
-				crawler = crawler->next;
-				headA = headA->next;
-			}else{
-				crawler->next = createNode(headB->data);
-				crawler = crawler->next;
-				headB = headB->next;
-			}
-		}
-	}
-	return head;
+Node* MergeLists(Node *headA, Node* headB) {
+    Node *head = null,*crawler;
+    if(headA == null || headB == null) {
+        if(headA != null) {
+            head = createNode(headA->data);
+            headA = headA->next;
+        } else {
+            head = createNode(headB->data);
+            headB = headB->next;
+        }
+    } else {
+        if(headA->data < headB->data) {
+            head = createNode(headA->data);
+            headA = headA->next;
+        } else {
+            head = createNode(headB->data);
+            headB = headB->next;
+        }
+    }
+    crawler = head;
+    while(headA != null || headB != null) {
+        if(headA == null || headB == null) {
+            if(headA != null) {
+                crawler->next = createNode(headA->data);
+                crawler = crawler->next;
+                headA = headA->next;
+            } else {
+                crawler->next = createNode(headB->data);
+                crawler = crawler->next;
+                headB = headB->next;
+            }
+        } else {
+            if(headA->data < headB->data) {
+                crawler->next = createNode(headA->data);
+                crawler = crawler->next;
+                headA = headA->next;
+            } else {
+                crawler->next = createNode(headB->data);
+                crawler = crawler->next;
+                headB = headB->next;
+            }
+        }
+    }
+    return head;
 }
 #endif /* MERGELISTS_H_ */
 

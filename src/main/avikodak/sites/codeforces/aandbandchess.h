@@ -71,56 +71,56 @@ using namespace __gnu_cxx;
 #define AANDBANDCHESS_H_
 
 //Tested
-void printMaxScore(){
-	unsigned int whiteScore = 0,blackScore = 0;
-	string userInput;
-	char currentChar;
-	for(unsigned int rowCounter = 0;rowCounter < 8;rowCounter++){
-		cin >> userInput;
-		for(unsigned int columnCounter = 0;columnCounter < userInput.size();columnCounter++){
-			currentChar = userInput[columnCounter];
-			if(currentChar != '.'){
-				if(currentChar == 'Q' || currentChar == 'q'){
-					if(currentChar == 'Q'){
-						whiteScore += 9;
-					}else{
-						blackScore += 9;
-					}
-				}else if(currentChar == 'R' || currentChar == 'r'){
-					if(currentChar == 'R'){
-						whiteScore += 5;
-					}else{
-						blackScore += 5;
-					}
-				}else if(currentChar == 'B' || currentChar == 'b'){
-					if(currentChar == 'B'){
-						whiteScore += 3;
-					}else{
-						blackScore += 3;
-					}
-				}else if(currentChar == 'N' || currentChar == 'n'){
-					if(currentChar == 'N'){
-						whiteScore += 3;
-					}else{
-						blackScore += 3;
-					}
-				}else if(currentChar == 'P' || currentChar == 'p'){
-					if(currentChar == 'P'){
-						whiteScore += 1;
-					}else{
-						blackScore += 1;
-					}
-				}
-			}
-		}
-	}
-	if(whiteScore == blackScore){
-		printf("Draw");
-	}else if(whiteScore > blackScore){
-		printf("White");
-	}else{
-		printf("Black");
-	}
+void printMaxScore() {
+    unsigned int whiteScore = 0,blackScore = 0;
+    string userInput;
+    char currentChar;
+    for(unsigned int rowCounter = 0; rowCounter < 8; rowCounter++) {
+        cin >> userInput;
+        for(unsigned int columnCounter = 0; columnCounter < userInput.size(); columnCounter++) {
+            currentChar = userInput[columnCounter];
+            if(currentChar != '.') {
+                if(currentChar == 'Q' || currentChar == 'q') {
+                    if(currentChar == 'Q') {
+                        whiteScore += 9;
+                    } else {
+                        blackScore += 9;
+                    }
+                } else if(currentChar == 'R' || currentChar == 'r') {
+                    if(currentChar == 'R') {
+                        whiteScore += 5;
+                    } else {
+                        blackScore += 5;
+                    }
+                } else if(currentChar == 'B' || currentChar == 'b') {
+                    if(currentChar == 'B') {
+                        whiteScore += 3;
+                    } else {
+                        blackScore += 3;
+                    }
+                } else if(currentChar == 'N' || currentChar == 'n') {
+                    if(currentChar == 'N') {
+                        whiteScore += 3;
+                    } else {
+                        blackScore += 3;
+                    }
+                } else if(currentChar == 'P' || currentChar == 'p') {
+                    if(currentChar == 'P') {
+                        whiteScore += 1;
+                    } else {
+                        blackScore += 1;
+                    }
+                }
+            }
+        }
+    }
+    if(whiteScore == blackScore) {
+        printf("Draw");
+    } else if(whiteScore > blackScore) {
+        printf("White");
+    } else {
+        printf("Black");
+    }
 }
 
 

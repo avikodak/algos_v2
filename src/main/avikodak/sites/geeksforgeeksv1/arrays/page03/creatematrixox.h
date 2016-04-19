@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: creatematrixox.h 
+ *  File Name   		: creatematrixox.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\creatematrixox.h
  *  Created on			: Jan 4, 2015 :: 6:16:55 PM
  *  Author				: AVINASH
@@ -73,40 +73,40 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-void spiralOrderOsXs(vector<vector<bool> > &userInput,bool fill,int startRow,int startColumn,int endRow,int endColumn){
-	if(userInput.size() == 0 || userInput[0].size() == 0 || startRow > endRow || startColumn > endColumn){
-		return;
-	}
-	for(unsigned int columnCounter = startColumn;columnCounter <= endColumn;columnCounter++){
-		userInput[startRow][columnCounter] = fill;
-	}
-	for(unsigned int rowCounter = startRow + 1;rowCounter <= endRow;rowCounter++){
-		userInput[rowCounter][endColumn] = fill;
-	}
-	if(startRow < endRow){
-		for(int columnCounter;columnCounter >= startColumn;columnCounter--){
-			userInput[endRow][columnCounter] = fill;
-		}
-	}
-	if(startColumn < endColumn){
-		for(int rowCounter = endRow - 1;rowCounter > startRow;rowCounter--){
-			userInput[rowCounter][startColumn] = fill;
-		}
-	}
-	spiralOrderOsXs(userInput,!fill,startRow+1,startColumn+1,endRow-1,endColumn-1);
+void spiralOrderOsXs(vector<vector<bool> > &userInput,bool fill,int startRow,int startColumn,int endRow,int endColumn) {
+    if(userInput.size() == 0 || userInput[0].size() == 0 || startRow > endRow || startColumn > endColumn) {
+        return;
+    }
+    for(unsigned int columnCounter = startColumn; columnCounter <= endColumn; columnCounter++) {
+        userInput[startRow][columnCounter] = fill;
+    }
+    for(unsigned int rowCounter = startRow + 1; rowCounter <= endRow; rowCounter++) {
+        userInput[rowCounter][endColumn] = fill;
+    }
+    if(startRow < endRow) {
+        for(int columnCounter; columnCounter >= startColumn; columnCounter--) {
+            userInput[endRow][columnCounter] = fill;
+        }
+    }
+    if(startColumn < endColumn) {
+        for(int rowCounter = endRow - 1; rowCounter > startRow; rowCounter--) {
+            userInput[rowCounter][startColumn] = fill;
+        }
+    }
+    spiralOrderOsXs(userInput,!fill,startRow+1,startColumn+1,endRow-1,endColumn-1);
 }
 
-vector<vector<bool> > createMatrixOsXs(int rows,int columns){
-	vector<vector<bool> > matrix(rows);
-	if(rows == 0 || columns == 0){
-		return matrix;
-	}
-	for(unsigned int counter = 0;counter < columns;counter++){
-		matrix[counter].assign(columns,false);
-	}
-	bool fill = true;
-	spiralOrderOsXs(matrix,fill,0,0,rows-1,columns-1);
-	return matrix;
+vector<vector<bool> > createMatrixOsXs(int rows,int columns) {
+    vector<vector<bool> > matrix(rows);
+    if(rows == 0 || columns == 0) {
+        return matrix;
+    }
+    for(unsigned int counter = 0; counter < columns; counter++) {
+        matrix[counter].assign(columns,false);
+    }
+    bool fill = true;
+    spiralOrderOsXs(matrix,fill,0,0,rows-1,columns-1);
+    return matrix;
 }
 
 #endif /* CREATEMATRIXOX_H_ */

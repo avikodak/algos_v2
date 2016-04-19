@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: cleanup.h 
+ *  File Name   		: cleanup.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\easy\cleanup.h
  *  Created on			: Feb 9, 2015 :: 11:16:01 AM
  *  Author				: AVINASH
@@ -71,56 +71,56 @@ using namespace __gnu_cxx;
 #define CLEANUP_H_
 
 //Tested
-void printVector(vector<int> jobs){
-	for(unsigned int counter = 0;counter < jobs.size();counter++){
-		printf("%d ",jobs[counter]);
-	}
-	PRINT_NEW_LINE;
+void printVector(vector<int> jobs) {
+    for(unsigned int counter = 0; counter < jobs.size(); counter++) {
+        printf("%d ",jobs[counter]);
+    }
+    PRINT_NEW_LINE;
 }
 
 //Tested
-void assignJobs(){
-	int testCases,totalJobs,jobsCount,jobIndex;
-	unsigned int finishedJobIndex;
-	scanf("%d",&testCases);
-	bool flag;
-	vector<int> finishedJobs,chefJobs,assistantJobs;
-	while(testCases--){
-		finishedJobs.clear();
-		chefJobs.clear();
-		assistantJobs.clear();
-		scanf("%d %d",totalJobs,jobsCount);
-		while(jobsCount--){
-			scanf("%d",jobIndex);
-			finishedJobs.push_back(jobIndex);
-		}
-		sort(finishedJobs.begin(),finishedJobs.end());
-		finishedJobIndex = 0;
-		flag = true;
-		int counter = 1;
-		for(;counter <= totalJobs && finishedJobIndex < finishedJobs.size();counter++){
-			if(counter != finishedJobs[finishedJobIndex]){
-				if(flag){
-					chefJobs.push_back(counter);
-				}else{
-					assistantJobs.push_back(counter);
-				}
-				flag = !flag;
-			}else{
-				finishedJobIndex++;
-			}
-		}
-		for(;counter <= totalJobs;counter++){
-			if(flag){
-				chefJobs.push_back(counter);
-			}else{
-				assistantJobs.push_back(counter);
-			}
-			flag = !flag;
-		}
-		printVector(chefJobs);
-		printVector(assistantJobs);
-	}
+void assignJobs() {
+    int testCases,totalJobs,jobsCount,jobIndex;
+    unsigned int finishedJobIndex;
+    scanf("%d",&testCases);
+    bool flag;
+    vector<int> finishedJobs,chefJobs,assistantJobs;
+    while(testCases--) {
+        finishedJobs.clear();
+        chefJobs.clear();
+        assistantJobs.clear();
+        scanf("%d %d",totalJobs,jobsCount);
+        while(jobsCount--) {
+            scanf("%d",jobIndex);
+            finishedJobs.push_back(jobIndex);
+        }
+        sort(finishedJobs.begin(),finishedJobs.end());
+        finishedJobIndex = 0;
+        flag = true;
+        int counter = 1;
+        for(; counter <= totalJobs && finishedJobIndex < finishedJobs.size(); counter++) {
+            if(counter != finishedJobs[finishedJobIndex]) {
+                if(flag) {
+                    chefJobs.push_back(counter);
+                } else {
+                    assistantJobs.push_back(counter);
+                }
+                flag = !flag;
+            } else {
+                finishedJobIndex++;
+            }
+        }
+        for(; counter <= totalJobs; counter++) {
+            if(flag) {
+                chefJobs.push_back(counter);
+            } else {
+                assistantJobs.push_back(counter);
+            }
+            flag = !flag;
+        }
+        printVector(chefJobs);
+        printVector(assistantJobs);
+    }
 }
 
 #endif /* CLEANUP_H_ */

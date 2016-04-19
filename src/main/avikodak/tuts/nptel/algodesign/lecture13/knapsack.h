@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: knapsack.h 
+ *  File Name   		: knapsack.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture13\knapsack.h
  *  Created on			: Dec 17, 2014 :: 9:11:23 AM
  *  Author				: AVINASH
@@ -70,49 +70,49 @@ using namespace __gnu_cxx;
 #ifndef KNAPSACK_H_
 #define KNAPSACK_H_
 
-int zeroOneKnapSackBruteForce(vector<int> weights,vector<int> benefits,int maxWeight,int currentIndex){
-	if(currentIndex > weights.size()){
-		return INT_MIN;
-	}
-	if(currentIndex == weights.size()){
-		return 0;
-	}
-	if(weights[currentIndex] > maxWeight){
-		return zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1);
-	}else{
-		return max(zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1),benefits[currentIndex] + zeroOneKnapSackBruteForce(weights,benefits,maxWeight - weights[currentIndex],currentIndex+1));
-	}
+int zeroOneKnapSackBruteForce(vector<int> weights,vector<int> benefits,int maxWeight,int currentIndex) {
+    if(currentIndex > weights.size()) {
+        return INT_MIN;
+    }
+    if(currentIndex == weights.size()) {
+        return 0;
+    }
+    if(weights[currentIndex] > maxWeight) {
+        return zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1);
+    } else {
+        return max(zeroOneKnapSackBruteForce(weights,benefits,maxWeight,currentIndex+1),benefits[currentIndex] + zeroOneKnapSackBruteForce(weights,benefits,maxWeight - weights[currentIndex],currentIndex+1));
+    }
 }
 
-int zeroOneKnapSackBranchAndBoundMain(vector<int> weights,vector<int> benefits,int rejectedValue,int maxWeight,int currentIndex){
-	static int minRejectedValue = INT_MAX;
-	if(currentIndex > weights.size()){
-		return INT_MIN;
-	}
-	if(currentIndex == weights.size()){
-		minRejectedValue = min(minRejectedValue,rejectedValue);
-		return 0;
-	}
-	if(weights[currentIndex] >= maxWeight){
-		if(rejectedValue + benefits[currentIndex] < minRejectedValue){
-			return zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue + benefits[currentIndex],maxWeight,currentIndex+1);
-		}
-	}else{
-		int minValue = INT_MAX;
-		minValue = min(minValue,benefits[currentIndex] + zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue,maxWeight - weights[currentIndex],currentIndex+1));
-		if(rejectedValue + benefits[currentIndex] < minRejectedValue){
-			minValue = min(minValue,zeroOneKnapSackBranchAndBoundMain(weights,benefits,benefits[currentIndex] + rejectedValue,maxWeight,currentIndex+1));
-		}
-		return minValue;
-	}
+int zeroOneKnapSackBranchAndBoundMain(vector<int> weights,vector<int> benefits,int rejectedValue,int maxWeight,int currentIndex) {
+    static int minRejectedValue = INT_MAX;
+    if(currentIndex > weights.size()) {
+        return INT_MIN;
+    }
+    if(currentIndex == weights.size()) {
+        minRejectedValue = min(minRejectedValue,rejectedValue);
+        return 0;
+    }
+    if(weights[currentIndex] >= maxWeight) {
+        if(rejectedValue + benefits[currentIndex] < minRejectedValue) {
+            return zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue + benefits[currentIndex],maxWeight,currentIndex+1);
+        }
+    } else {
+        int minValue = INT_MAX;
+        minValue = min(minValue,benefits[currentIndex] + zeroOneKnapSackBranchAndBoundMain(weights,benefits,rejectedValue,maxWeight - weights[currentIndex],currentIndex+1));
+        if(rejectedValue + benefits[currentIndex] < minRejectedValue) {
+            minValue = min(minValue,zeroOneKnapSackBranchAndBoundMain(weights,benefits,benefits[currentIndex] + rejectedValue,maxWeight,currentIndex+1));
+        }
+        return minValue;
+    }
 }
 
-int zeroOneKnapSackBranchAndBound(vector<int> weights,vector<int> benefits,int maxWeight){
-	if(weights.size() == 0){
-		return INT_MIN;
-	}
-	quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
-	return zeroOneKnapSackBranchAndBoundMain(weights,benefits,0,maxWeight,0);
+int zeroOneKnapSackBranchAndBound(vector<int> weights,vector<int> benefits,int maxWeight) {
+    if(weights.size() == 0) {
+        return INT_MIN;
+    }
+    quickSortWeightsAndBenefits(weights,benefits,0,weights.size()-1);
+    return zeroOneKnapSackBranchAndBoundMain(weights,benefits,0,maxWeight,0);
 }
 
 #endif /* KNAPSACK_H_ */

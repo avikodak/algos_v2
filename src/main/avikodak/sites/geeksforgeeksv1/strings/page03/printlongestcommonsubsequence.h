@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: printlongestcommonsubsequence.h 
+ *  File Name   		: printlongestcommonsubsequence.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\printlongestcommonsubsequence.h
  *  Created on			: Jan 20, 2015 :: 7:32:09 PM
  *  Author				: AVINASH
@@ -75,37 +75,37 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 //Tested
 //This prints the subsequence in reverse
-void printLongestCommonSubsequence(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength){
-	if(firstStringLength == 0 || secondStringLength == 0){
-		return;
-	}
-	vector<vector<int> > auxSpace(firstStringLength+1);
-	for(unsigned int counter = 0;counter < auxSpace.size();counter++){
-		auxSpace[counter].assign(secondStringLength+1,0);
-	}
-	for(unsigned int outerCrawler = 1;outerCrawler < auxSpace.size();outerCrawler++){
-		for(unsigned int innerCrawler = 1;innerCrawler < auxSpace[0].size();innerCrawler++){
-			if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]){
-				auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
-			}else{
-				auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
-			}
-		}
-	}
-	int firstCrawler = auxSpace.size()-1,secondCrawler = auxSpace[0].size()-1;
-	while(firstCrawler > 0 && secondCrawler > 0 && auxSpace[firstCrawler][secondCrawler] > 0){
-		if(firstUserInput[firstCrawler-1] == secondUserInput[secondCrawler-1]){
-			printf("%c",firstUserInput[firstCrawler-1]);
-			firstCrawler -= 1;
-			secondCrawler -= 1;
-		}else{
-			if(auxSpace[firstCrawler-1][secondCrawler] > auxSpace[firstCrawler][secondCrawler-1]){
-				firstCrawler -= 1;
-			}else{
-				secondCrawler -= 1;
-			}
-		}
-	}
+void printLongestCommonSubsequence(char *firstUserInput,char *secondUserInput,int firstStringLength,int secondStringLength) {
+    if(firstStringLength == 0 || secondStringLength == 0) {
+        return;
+    }
+    vector<vector<int> > auxSpace(firstStringLength+1);
+    for(unsigned int counter = 0; counter < auxSpace.size(); counter++) {
+        auxSpace[counter].assign(secondStringLength+1,0);
+    }
+    for(unsigned int outerCrawler = 1; outerCrawler < auxSpace.size(); outerCrawler++) {
+        for(unsigned int innerCrawler = 1; innerCrawler < auxSpace[0].size(); innerCrawler++) {
+            if(firstUserInput[outerCrawler-1] == secondUserInput[innerCrawler-1]) {
+                auxSpace[outerCrawler][innerCrawler] = 1 + auxSpace[outerCrawler-1][innerCrawler-1];
+            } else {
+                auxSpace[outerCrawler][innerCrawler] = max(auxSpace[outerCrawler-1][innerCrawler],auxSpace[outerCrawler][innerCrawler-1]);
+            }
+        }
+    }
+    int firstCrawler = auxSpace.size()-1,secondCrawler = auxSpace[0].size()-1;
+    while(firstCrawler > 0 && secondCrawler > 0 && auxSpace[firstCrawler][secondCrawler] > 0) {
+        if(firstUserInput[firstCrawler-1] == secondUserInput[secondCrawler-1]) {
+            printf("%c",firstUserInput[firstCrawler-1]);
+            firstCrawler -= 1;
+            secondCrawler -= 1;
+        } else {
+            if(auxSpace[firstCrawler-1][secondCrawler] > auxSpace[firstCrawler][secondCrawler-1]) {
+                firstCrawler -= 1;
+            } else {
+                secondCrawler -= 1;
+            }
+        }
+    }
 }
 
 #endif /* PRINTLONGESTCOMMONSUBSEQUENCE_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: equilibriumindex.h 
+ *  File Name   		: equilibriumindex.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\careercup\amazon\equilibriumindex.h
  *  Created on			: Jan 20, 2015 :: 2:17:09 PM
  *  Author				: AVINASH
@@ -73,22 +73,22 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int getEquilibriumIndex(vector<int> userInput){
-	if(userInput.size() < 2){
-		return userInput.size();
-	}
-	int sum = 0,lSum = 0,rSum = 0;
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		sum += userInput[counter];
-	}
-	for(unsigned int counter = 0;counter < userInput.size();counter++){
-		rSum = sum  - lSum - userInput[counter];
-		if(lSum == rSum){
-			return counter;
-		}
-		lSum += userInput[counter];
-	}
-	return INT_MIN;
+int getEquilibriumIndex(vector<int> userInput) {
+    if(userInput.size() < 2) {
+        return userInput.size();
+    }
+    int sum = 0,lSum = 0,rSum = 0;
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        sum += userInput[counter];
+    }
+    for(unsigned int counter = 0; counter < userInput.size(); counter++) {
+        rSum = sum  - lSum - userInput[counter];
+        if(lSum == rSum) {
+            return counter;
+        }
+        lSum += userInput[counter];
+    }
+    return INT_MIN;
 }
 
 #endif /* EQUILIBRIUMINDEX_H_ */

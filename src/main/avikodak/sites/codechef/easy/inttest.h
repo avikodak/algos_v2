@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: inttest.h 
+ *  File Name   		: inttest.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\codechef\inttest.h
  *  Created on			: Feb 3, 2015 :: 12:16:00 PM
  *  Author				: AVINASH
@@ -71,18 +71,18 @@ using namespace __gnu_cxx;
 #define INTTEST_H_
 
 //Tested
-void largeIOTest(){
-	int testCases;
-	int kValue,userInput;
-	scanf("%d %d",&testCases,&kValue);
-	int counter = 0;
-	while(testCases--){
-		scanf("%d",&userInput);
-		if(userInput%kValue == 0){
-			counter++;
-		}
-	}
-	printf("%d",counter);
+void largeIOTest() {
+    int testCases;
+    int kValue,userInput;
+    scanf("%d %d",&testCases,&kValue);
+    int counter = 0;
+    while(testCases--) {
+        scanf("%d",&userInput);
+        if(userInput%kValue == 0) {
+            counter++;
+        }
+    }
+    printf("%d",counter);
 }
 
 #endif /* INTTEST_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: runningtimealgo.h 
+ *  File Name   		: runningtimealgo.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\hackerrank\sorting\runningtimealgo.h
  *  Created on			: Feb 12, 2015 :: 1:40:24 PM
  *  Author				: AVINASH
@@ -71,25 +71,25 @@ using namespace __gnu_cxx;
 #define RUNNINGTIMEALGO_H_
 
 //Tested
-void analysisInsertionSort(){
-	int size,input;
-	scanf("%d",&size);
-	vector<int> userInput;
-	int counter = 0;
-	while(size--){
-		scanf("%d",&input);
-		userInput.push_back(input);
-	}
-	for(unsigned int outerCrawler = 1;outerCrawler < userInput.size();outerCrawler++){
-		int key = userInput[outerCrawler],crawler = outerCrawler-1;
-		while(crawler >= 0 && userInput[crawler] > key){
-			userInput[crawler+1] = userInput[crawler];
-			crawler--;
-			counter++;
-		}
-		userInput[crawler+1] = key;
-	}
-	printf("%d",counter);
+void analysisInsertionSort() {
+    int size,input;
+    scanf("%d",&size);
+    vector<int> userInput;
+    int counter = 0;
+    while(size--) {
+        scanf("%d",&input);
+        userInput.push_back(input);
+    }
+    for(unsigned int outerCrawler = 1; outerCrawler < userInput.size(); outerCrawler++) {
+        int key = userInput[outerCrawler],crawler = outerCrawler-1;
+        while(crawler >= 0 && userInput[crawler] > key) {
+            userInput[crawler+1] = userInput[crawler];
+            crawler--;
+            counter++;
+        }
+        userInput[crawler+1] = key;
+    }
+    printf("%d",counter);
 }
 
 #endif /* RUNNINGTIMEALGO_H_ */

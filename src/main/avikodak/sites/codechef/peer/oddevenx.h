@@ -72,19 +72,19 @@ using namespace __gnu_cxx;
 #define ODDEVENX_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	long long int oddSum = 0,evenSum = 0,userInput;
-	scanf("%u",&testCases);
-	while(testCases--){
-		scanf("%lld",&userInput);
-		if(userInput&1){
-			oddSum += 1;
-		}else{
-			evenSum += 1;
-		}
-	}
-	cout << abs(oddSum - evenSum) << endl;
+void printResults() {
+    unsigned int testCases;
+    long long int oddSum = 0,evenSum = 0,userInput;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        scanf("%lld",&userInput);
+        if(userInput&1) {
+            oddSum += 1;
+        } else {
+            evenSum += 1;
+        }
+    }
+    cout << abs(oddSum - evenSum) << endl;
 }
 
 #endif /* ODDEVENX_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findsubarraywithsum.h 
+ *  File Name   		: findsubarraywithsum.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\findsubarraywithsum.h
  *  Created on			: Nov 27, 2014 :: 7:52:05 PM
  *  Author				: AVINASH
@@ -72,43 +72,43 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getSubArrayForSumON(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	int runningSum = userInput[0],startIndex = 0;
-	for(int counter = 1;counter < (int)userInput.size();counter++){
-		while(runningSum > sum && startIndex < counter-1){
-			runningSum -= userInput[startIndex++];
-		}
-		if(runningSum+userInput[counter] == sum){
-			return new iPair(startIndex,counter);
-		}else{
-			runningSum += userInput[counter];
-		}
-	}
-	return null;
+iPair *getSubArrayForSumON(vector<int> userInput,int sum) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    int runningSum = userInput[0],startIndex = 0;
+    for(int counter = 1; counter < (int)userInput.size(); counter++) {
+        while(runningSum > sum && startIndex < counter-1) {
+            runningSum -= userInput[startIndex++];
+        }
+        if(runningSum+userInput[counter] == sum) {
+            return new iPair(startIndex,counter);
+        } else {
+            runningSum += userInput[counter];
+        }
+    }
+    return null;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-iPair *getSubarrayForSumON2(vector<int> userInput,int sum){
-	if(userInput.size() == 0){
-		return null;
-	}
-	int runningSum;
-	for(unsigned int outerCrawler = 0;outerCrawler <userInput.size();outerCrawler++){
-		runningSum = 0;
-		for(unsigned int innerCrawler = outerCrawler;innerCrawler < userInput.size();innerCrawler++){
-			runningSum += userInput[innerCrawler];
-			if(runningSum == sum){
-				return new iPair(outerCrawler,innerCrawler);
-			}
-		}
-	}
-	return null;
+iPair *getSubarrayForSumON2(vector<int> userInput,int sum) {
+    if(userInput.size() == 0) {
+        return null;
+    }
+    int runningSum;
+    for(unsigned int outerCrawler = 0; outerCrawler <userInput.size(); outerCrawler++) {
+        runningSum = 0;
+        for(unsigned int innerCrawler = outerCrawler; innerCrawler < userInput.size(); innerCrawler++) {
+            runningSum += userInput[innerCrawler];
+            if(runningSum == sum) {
+                return new iPair(outerCrawler,innerCrawler);
+            }
+        }
+    }
+    return null;
 }
 
 #endif /* FINDSUBARRAYWITHSUM_H_ */

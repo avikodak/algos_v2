@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: depthofoddleafnode.h 
+ *  File Name   		: depthofoddleafnode.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\depthofoddleafnode.h
  *  Created on			: Nov 14, 2014 :: 12:04:40 AM
  *  Author				: AVINASH
@@ -72,76 +72,76 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-unsigned int depthOfOddLeafNode(itNode *ptr,unsigned int currentLevel = 1){
-	if(ptr == null){
-		return 0;
-	}
-	if(ptr->left == null && ptr->right == null){
-		return currentLevel&1?currentLevel:0;
-	}
-	return max(depthOfOddLeafNode(ptr->left,currentLevel+1),depthOfOddLeafNode(ptr->right,currentLevel+1));
+unsigned int depthOfOddLeafNode(itNode *ptr,unsigned int currentLevel = 1) {
+    if(ptr == null) {
+        return 0;
+    }
+    if(ptr->left == null && ptr->right == null) {
+        return currentLevel&1?currentLevel:0;
+    }
+    return max(depthOfOddLeafNode(ptr->left,currentLevel+1),depthOfOddLeafNode(ptr->right,currentLevel+1));
 }
 
 //Tested
-unsigned int depthOfOddLeafNodeIterative(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	queue<itNode *> auxSpace;
-	unsigned int levelCounter = 0,nodeCounter,oddLevel = 0;
-	auxSpace.push(ptr);
-	itNode *currentNode = ptr;
-	while(!auxSpace.empty()){
-		nodeCounter = auxSpace.size();
-		levelCounter++;
-		while(nodeCounter--){
-			currentNode = auxSpace.front();
-			auxSpace.pop();
-			if(currentNode->left == null && currentNode->right == null){
-				if(levelCounter%2){
-					oddLevel = max(oddLevel,levelCounter);
-				}
-			}else{
-				if(currentNode->left != null){
-					auxSpace.push(currentNode->left);
-				}
-				if(currentNode->right != null){
-					auxSpace.push(currentNode->right);
-				}
-			}
-		}
-	}
-	return oddLevel;
+unsigned int depthOfOddLeafNodeIterative(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    queue<itNode *> auxSpace;
+    unsigned int levelCounter = 0,nodeCounter,oddLevel = 0;
+    auxSpace.push(ptr);
+    itNode *currentNode = ptr;
+    while(!auxSpace.empty()) {
+        nodeCounter = auxSpace.size();
+        levelCounter++;
+        while(nodeCounter--) {
+            currentNode = auxSpace.front();
+            auxSpace.pop();
+            if(currentNode->left == null && currentNode->right == null) {
+                if(levelCounter%2) {
+                    oddLevel = max(oddLevel,levelCounter);
+                }
+            } else {
+                if(currentNode->left != null) {
+                    auxSpace.push(currentNode->left);
+                }
+                if(currentNode->right != null) {
+                    auxSpace.push(currentNode->right);
+                }
+            }
+        }
+    }
+    return oddLevel;
 }
 
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-bool isLeafPresentInLevel(itNode *ptr,unsigned int level){
-	if(ptr == null){
-		return false;
-	}
-	if(level == 0){
-		return ptr->left == null && ptr->right == null;
-	}
-	return isLeafPresentInLevel(ptr->left,level-1) || isLeafPresentInLevel(ptr->right,level-1);
+bool isLeafPresentInLevel(itNode *ptr,unsigned int level) {
+    if(ptr == null) {
+        return false;
+    }
+    if(level == 0) {
+        return ptr->left == null && ptr->right == null;
+    }
+    return isLeafPresentInLevel(ptr->left,level-1) || isLeafPresentInLevel(ptr->right,level-1);
 }
 
 //Tested
-unsigned int getDepthOfOddLeafNode(itNode *ptr){
-	if(ptr == null){
-		return 0;
-	}
-	treeutils *utils = new treeutils();
-	unsigned int height = utils->getHeightOfTree(ptr);
-	unsigned int oddLevel = 0;
-	for(unsigned int counter = 0;counter < height;counter += 2){
-		if(isLeafPresentInLevel(ptr,counter)){
-			oddLevel = max(oddLevel,counter+1);
-		}
-	}
-	return oddLevel;
+unsigned int getDepthOfOddLeafNode(itNode *ptr) {
+    if(ptr == null) {
+        return 0;
+    }
+    treeutils *utils = new treeutils();
+    unsigned int height = utils->getHeightOfTree(ptr);
+    unsigned int oddLevel = 0;
+    for(unsigned int counter = 0; counter < height; counter += 2) {
+        if(isLeafPresentInLevel(ptr,counter)) {
+            oddLevel = max(oddLevel,counter+1);
+        }
+    }
+    return oddLevel;
 }
 
 #endif /* DEPTHOFODDLEAFNODE_H_ */

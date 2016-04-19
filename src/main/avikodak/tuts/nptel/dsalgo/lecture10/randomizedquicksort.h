@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: randomizedquicksort.h 
+ *  File Name   		: randomizedquicksort.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture10\randomizedquicksort.h
  *  Created on			: Nov 18, 2014 :: 2:48:58 PM
  *  Author				: AVINASH
@@ -71,36 +71,36 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /* 																O(N^2) Algorithm 																    */
 /****************************************************************************************************************************************************/
-int dividingStepRandomizedQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return -1;
-	}
-	srand(time(NULL));
-	int pivotIndex = rand() % endIndex + startIndex;
-	int key = userInput[pivotIndex];
-	while(startIndex < endIndex){
-		while(userInput[startIndex] <= key){
-			startIndex++;
-		}
-		while(startIndex < endIndex && userInput[endIndex] > key){
-			endIndex--;
-		}
-		if(startIndex < endIndex){
-			swap(userInput[startIndex],userInput[endIndex]);
-		}
-	}
-	swap(userInput[pivotIndex],userInput[endIndex]);
-	return endIndex;
+int dividingStepRandomizedQuickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return -1;
+    }
+    srand(time(NULL));
+    int pivotIndex = rand() % endIndex + startIndex;
+    int key = userInput[pivotIndex];
+    while(startIndex < endIndex) {
+        while(userInput[startIndex] <= key) {
+            startIndex++;
+        }
+        while(startIndex < endIndex && userInput[endIndex] > key) {
+            endIndex--;
+        }
+        if(startIndex < endIndex) {
+            swap(userInput[startIndex],userInput[endIndex]);
+        }
+    }
+    swap(userInput[pivotIndex],userInput[endIndex]);
+    return endIndex;
 }
 
 
-void randomizedQuickSort(vector<int> &userInput,int startIndex,int endIndex){
-	if(startIndex > endIndex){
-		return;
-	}
-	int dividingIndex = dividingStepRandomizedQuickSort(userInput,startIndex,endIndex);
-	randomizedQuickSort(userInput,startIndex,dividingIndex-1);
-	randomizedQuickSort(userInput,dividingIndex+1,endIndex);
+void randomizedQuickSort(vector<int> &userInput,int startIndex,int endIndex) {
+    if(startIndex > endIndex) {
+        return;
+    }
+    int dividingIndex = dividingStepRandomizedQuickSort(userInput,startIndex,endIndex);
+    randomizedQuickSort(userInput,startIndex,dividingIndex-1);
+    randomizedQuickSort(userInput,dividingIndex+1,endIndex);
 }
 
 #endif /* RANDOMIZEDQUICKSORT_H_ */

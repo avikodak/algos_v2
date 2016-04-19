@@ -73,34 +73,34 @@ using namespace __gnu_cxx;
 //Tested
 class GroupedWordChecker {
 private:
-	bool isGroupedWord(string word){
-		unsigned int counter = 0;
-		bool flags[26] = {false};
-		while(counter < word.size()){
-			if(flags[word[counter]-'a']){
-				return false;
-			}
-			while(counter+1 < word.size() && word[counter] == word[counter+1]){
-				counter++;
-			}
-			flags[word[counter]-'a'] = true;
-			counter++;
-		}
-		return true;
-	}
+    bool isGroupedWord(string word) {
+        unsigned int counter = 0;
+        bool flags[26] = {false};
+        while(counter < word.size()) {
+            if(flags[word[counter]-'a']) {
+                return false;
+            }
+            while(counter+1 < word.size() && word[counter] == word[counter+1]) {
+                counter++;
+            }
+            flags[word[counter]-'a'] = true;
+            counter++;
+        }
+        return true;
+    }
 public:
-	int howMany(vector<string> words){
-		if(words.size() == 0){
-			return 0;
-		}
-		int groupedWordCount = 0;
-		for(unsigned int counter = 0;counter < words.size();counter++){
-			if(isGroupedWord(words[counter])){
-				groupedWordCount++;
-			}
-		}
-		return groupedWordCount;
-	}
+    int howMany(vector<string> words) {
+        if(words.size() == 0) {
+            return 0;
+        }
+        int groupedWordCount = 0;
+        for(unsigned int counter = 0; counter < words.size(); counter++) {
+            if(isGroupedWord(words[counter])) {
+                groupedWordCount++;
+            }
+        }
+        return groupedWordCount;
+    }
 };
 
 

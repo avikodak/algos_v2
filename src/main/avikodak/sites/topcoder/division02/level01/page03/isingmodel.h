@@ -72,23 +72,23 @@ using namespace __gnu_cxx;
 
 class IsingModel {
 public:
-	int energy(vector<string> spins){
-		int total = 0;
-		for(unsigned int rowCounter =0;rowCounter < spins.size()-1;rowCounter++){
-			for(unsigned int columnCounter = 0;columnCounter < spins[0].size()-1;columnCounter++){
-				if(spins[rowCounter][columnCounter] != spins[rowCounter][columnCounter+1]){
-					total++;
-				}else{
-					total--;
-				}
-				if(spins[rowCounter][columnCounter] != spins[rowCounter+1][columnCounter]){
-					total++;
-				}else{
-					total--;
-				}
-			}
-		}
-	}
+    int energy(vector<string> spins) {
+        int total = 0;
+        for(unsigned int rowCounter =0; rowCounter < spins.size()-1; rowCounter++) {
+            for(unsigned int columnCounter = 0; columnCounter < spins[0].size()-1; columnCounter++) {
+                if(spins[rowCounter][columnCounter] != spins[rowCounter][columnCounter+1]) {
+                    total++;
+                } else {
+                    total--;
+                }
+                if(spins[rowCounter][columnCounter] != spins[rowCounter+1][columnCounter]) {
+                    total++;
+                } else {
+                    total--;
+                }
+            }
+        }
+    }
 };
 
 #endif /* ISINGMODEL_H_ */

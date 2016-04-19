@@ -73,27 +73,27 @@ using namespace __gnu_cxx;
 #define CLCO06_H_
 
 //Tested
-void isRightAns(string userInput,string ans){
-	sort(userInput.begin(),userInput.end());
-	unsigned int counter = 0;
-	while(counter < userInput.size() && userInput[counter] == '0'){
-		counter++;
-	}
-	if(counter < userInput.size()){
-		swap(userInput[0],userInput[counter]);
-	}
-	printf("%s\n",userInput.compare(ans)==0?"AC":"WA");
+void isRightAns(string userInput,string ans) {
+    sort(userInput.begin(),userInput.end());
+    unsigned int counter = 0;
+    while(counter < userInput.size() && userInput[counter] == '0') {
+        counter++;
+    }
+    if(counter < userInput.size()) {
+        swap(userInput[0],userInput[counter]);
+    }
+    printf("%s\n",userInput.compare(ans)==0?"AC":"WA");
 }
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	string input,ans;
-	scanf("%u",&testCases);
-	while(testCases--){
-		cin >> input >>  ans;
-		isRightAns(input,ans);
-	}
+void printResults() {
+    unsigned int testCases;
+    string input,ans;
+    scanf("%u",&testCases);
+    while(testCases--) {
+        cin >> input >>  ans;
+        isRightAns(input,ans);
+    }
 }
 
 #endif /* CLCO06_H_ */

@@ -1,5 +1,5 @@
 /****************************************************************************************************************************************************
- *  File Name   		: minimumvaluebst.h 
+ *  File Name   		: minimumvaluebst.h
  *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\minimumvaluebst.h
  *  Created on			: Oct 14, 2014 :: 1:10:30 PM
  *  Author				: AVINASH
@@ -72,46 +72,46 @@ using namespace __gnu_cxx;
 /* 																	O(N) Algorithm 																    */
 /****************************************************************************************************************************************************/
 //Tested
-int getMinimumValueFromBST(itNode *ptr){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	if(ptr->left == null){
-		return ptr->value;
-	}else{
-		return getMinimumValueFromBST(ptr->left);
-	}
+int getMinimumValueFromBST(itNode *ptr) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    if(ptr->left == null) {
+        return ptr->value;
+    } else {
+        return getMinimumValueFromBST(ptr->left);
+    }
 }
 
 //Tested
-int getMinimumValueFromBSTIterative(itNode *ptr){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	while(ptr->left != null){
-		ptr = ptr->left;
-	}
-	return ptr->value;
+int getMinimumValueFromBSTIterative(itNode *ptr) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    while(ptr->left != null) {
+        ptr = ptr->left;
+    }
+    return ptr->value;
 }
 
 //Tested
-void setMinimumValue(itNode *ptr,int &minValue){
-	if(ptr == null){
-		return;
-	}
-	minValue = min(minValue,ptr->value);
-	setMinimumValue(ptr->left,minValue);
-	setMinimumValue(ptr->right,minValue);
+void setMinimumValue(itNode *ptr,int &minValue) {
+    if(ptr == null) {
+        return;
+    }
+    minValue = min(minValue,ptr->value);
+    setMinimumValue(ptr->left,minValue);
+    setMinimumValue(ptr->right,minValue);
 }
 
 //Tested
-int getMinimumValueFromBSTON(itNode *ptr){
-	if(ptr == null){
-		return INT_MIN;
-	}
-	int minValue = INT_MAX;
-	setMinimumValue(ptr,minValue);
-	return minValue;
+int getMinimumValueFromBSTON(itNode *ptr) {
+    if(ptr == null) {
+        return INT_MIN;
+    }
+    int minValue = INT_MAX;
+    setMinimumValue(ptr,minValue);
+    return minValue;
 }
 
 #endif /* MINIMUMVALUEBST_H_ */

@@ -72,18 +72,18 @@ using namespace __gnu_cxx;
 #define CMB03_H_
 
 //Tested
-void printResults(){
-	unsigned int testCases;
-	scanf("%u",&testCases);
-	string firstUserInput,secondUserInput;
-	while(testCases--){
-		cin >> firstUserInput >> secondUserInput;
-		if(firstUserInput.find(secondUserInput) == string::npos){
-			cout << "0" << endl;
-		}else{
-			cout << "1" << endl;
-		}
-	}
+void printResults() {
+    unsigned int testCases;
+    scanf("%u",&testCases);
+    string firstUserInput,secondUserInput;
+    while(testCases--) {
+        cin >> firstUserInput >> secondUserInput;
+        if(firstUserInput.find(secondUserInput) == string::npos) {
+            cout << "0" << endl;
+        } else {
+            cout << "1" << endl;
+        }
+    }
 }
 
 #endif /* CMB03_H_ */

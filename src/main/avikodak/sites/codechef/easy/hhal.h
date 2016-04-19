@@ -73,24 +73,24 @@ using namespace __gnu_cxx;
 #define HHAL_H_
 
 //Tested
-void printResults(){
-	long long testCases;
-	string userInput;
-	scanf("%lld",&testCases);
-	while(testCases--){
-		cin >> userInput;
-		unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
-		unsigned int result = 1;
-		while(frontCrawler < rearCrawler){
-			if(userInput[frontCrawler] != userInput[rearCrawler]){
-				result = 2;
-				break;
-			}
-			frontCrawler++;
-			rearCrawler--;
-		}
-		printf("%u\n",result);
-	}
+void printResults() {
+    long long testCases;
+    string userInput;
+    scanf("%lld",&testCases);
+    while(testCases--) {
+        cin >> userInput;
+        unsigned int frontCrawler = 0,rearCrawler = userInput.size()-1;
+        unsigned int result = 1;
+        while(frontCrawler < rearCrawler) {
+            if(userInput[frontCrawler] != userInput[rearCrawler]) {
+                result = 2;
+                break;
+            }
+            frontCrawler++;
+            rearCrawler--;
+        }
+        printf("%u\n",result);
+    }
 }
 
 #endif /* HHAL_H_ */
