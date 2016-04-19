@@ -77,18 +77,18 @@ using namespace __gnu_cxx;
 
 //Tested
 void solveProblem() {
-	unsigned int testCases;
-	long long int apples, oranges, goldCoins, difference;
-	scanf("%u", &testCases);
-	while (testCases--) {
-		scanf("%lld %lld %lld", &apples, &oranges, &goldCoins);
-		difference = abs(apples - oranges);
-		if (difference >= goldCoins) {
-			printf("%lld\n", difference - goldCoins);
-		} else {
-			printf("0\n");
-		}
-	}
+    unsigned int testCases;
+    long long int apples, oranges, goldCoins, difference;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        scanf("%lld %lld %lld", &apples, &oranges, &goldCoins);
+        difference = abs(apples - oranges);
+        if (difference >= goldCoins) {
+            printf("%lld\n", difference - goldCoins);
+        } else {
+            printf("0\n");
+        }
+    }
 }
 
 #endif /* MAIN_AVIKODAK_SITES_CODECHEF_SCHOOL_FRUITS_H_ */
