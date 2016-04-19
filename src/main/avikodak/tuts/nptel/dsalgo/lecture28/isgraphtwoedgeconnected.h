@@ -2,7 +2,7 @@
  *  File Name                   : isgraphtwoedgeconnected.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture28\isgraphtwoedgeconnected.h
  *  Created on                  : Dec 5, 2014 :: 11:32:34 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

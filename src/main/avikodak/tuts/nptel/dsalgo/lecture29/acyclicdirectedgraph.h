@@ -2,7 +2,7 @@
  *  File Name                   : acyclicdirectedgraph.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture29\acyclicdirectedgraph.h
  *  Created on                  : Dec 5, 2014 :: 1:14:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

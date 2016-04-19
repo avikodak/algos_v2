@@ -2,7 +2,7 @@
  *  File Name                   : hamiltoniancycle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\hamiltoniancycle.h
  *  Created on                  : Jan 12, 2015 :: 9:59:32 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : dostringsinterleave.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\dostringsinterleave.h
  *  Created on                  : Jan 16, 2015 :: 9:31:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : bplustreeutil.h
  *  File Location               : \algos_v2\src\lib\utils\bplustreeutil.h
  *  Created on                  : Oct 9, 2014 :: 12:38:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

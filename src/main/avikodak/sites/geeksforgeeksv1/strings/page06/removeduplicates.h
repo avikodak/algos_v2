@@ -2,7 +2,7 @@
  *  File Name                   : removeduplicates.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\removeduplicates.h
  *  Created on                  : Dec 3, 2014 :: 7:50:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

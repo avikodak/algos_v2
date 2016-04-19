@@ -2,7 +2,7 @@
  *  File Name                   : searchinrowcolumnsortedmatrix.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\searchinrowcolumnsortedmatrix.h
  *  Created on                  : Dec 1, 2014 :: 12:31:00 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/search-in-row-wise-and-column-wise-sorted-matrix/
 ****************************************************************************************************************************************************/

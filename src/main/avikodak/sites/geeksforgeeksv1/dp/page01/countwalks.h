@@ -2,7 +2,7 @@
  *  File Name                   : countwalks.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countwalks.h
  *  Created on                  : Jan 12, 2015 :: 8:25:00 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-possible-paths-source-destination-exactly-k-edges/
  ****************************************************************************************************************************************************/

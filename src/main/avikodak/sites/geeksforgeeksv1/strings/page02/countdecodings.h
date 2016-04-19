@@ -2,7 +2,7 @@
  *  File Name                   : countdecodings.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page02\countdecodings.h
  *  Created on                  : Jan 21, 2015 :: 8:19:05 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : missingarithmaticnumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\missingarithmaticnumber.h
  *  Created on                  : Jan 21, 2015 :: 6:09:32 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-missing-number-arithmetic-progression/
 ****************************************************************************************************************************************************/

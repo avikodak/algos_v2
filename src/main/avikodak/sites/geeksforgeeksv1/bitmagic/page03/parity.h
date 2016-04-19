@@ -2,7 +2,7 @@
  *  File Name                   : parity.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\parity.h
  *  Created on                  : Jan 8, 2015 :: 10:25:01 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-find-the-parity-of-an-unsigned-integer/
 ****************************************************************************************************************************************************/

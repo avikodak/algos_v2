@@ -2,7 +2,7 @@
  *  File Name                   : printnodesatkdistancefromleaf.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printnodesatkdistancefromleaf.h
  *  Created on                  : Nov 15, 2014 :: 7:44:59 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-nodes-distance-k-leaf-node/
  ****************************************************************************************************************************************************/

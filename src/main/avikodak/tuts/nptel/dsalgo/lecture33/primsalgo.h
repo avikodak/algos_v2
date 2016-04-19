@@ -2,7 +2,7 @@
  *  File Name                   : primsalgo.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture33\primsalgo.h
  *  Created on                  : Dec 9, 2014 :: 1:18:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : rearragestringddistanceaway.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\rearragestringddistanceaway.h
  *  Created on                  : Jan 16, 2015 :: 12:07:25 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

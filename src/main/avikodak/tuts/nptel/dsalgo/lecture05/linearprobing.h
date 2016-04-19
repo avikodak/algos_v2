@@ -2,7 +2,7 @@
  *  File Name                   : linearprobing.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture05\linearprobing.h
  *  Created on                  : Nov 17, 2014 :: 7:34:56 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

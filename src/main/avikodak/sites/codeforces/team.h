@@ -2,7 +2,7 @@
  *  File Name                   : team.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\team.h
  *  Created on                  : Feb 28, 2015 :: 1:59:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/231/A
 ****************************************************************************************************************************************************/

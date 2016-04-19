@@ -2,7 +2,7 @@
  *  File Name                   : timessortedarrayrotated.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\timessortedarrayrotated.h
  *  Created on                  : Jan 3, 2015 :: 7:28:59 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : https://www.youtube.com/watch?v=4qjprDkJrjY
 ****************************************************************************************************************************************************/

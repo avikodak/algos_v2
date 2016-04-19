@@ -2,7 +2,7 @@
  *  File Name                   : runningtimealgo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\runningtimealgo.h
  *  Created on                  : Feb 12, 2015 :: 1:40:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

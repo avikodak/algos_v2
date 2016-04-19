@@ -2,7 +2,7 @@
  *  File Name                   : doublingstrategy.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\doublingstrategy.h
  *  Created on                  : Oct 19, 2014 :: 8:39:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

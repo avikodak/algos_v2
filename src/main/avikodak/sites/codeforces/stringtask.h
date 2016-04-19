@@ -2,7 +2,7 @@
  *  File Name                   : stringtask.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\stringtask.h
  *  Created on                  : Feb 2, 2015 :: 8:30:00 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/118/A
 ****************************************************************************************************************************************************/

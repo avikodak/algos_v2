@@ -2,7 +2,7 @@
  *  File Name                   : maximumproductsubarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumproductsubarray.h
  *  Created on                  : Jan 2, 2015 :: 12:33:38 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-product-subarray/
 ****************************************************************************************************************************************************/

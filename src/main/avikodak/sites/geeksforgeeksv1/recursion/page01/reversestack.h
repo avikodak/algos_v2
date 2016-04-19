@@ -2,7 +2,7 @@
  *  File Name                   : reversestack.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\reversestack.h
  *  Created on                  : Oct 13, 2014 :: 11:58:07 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

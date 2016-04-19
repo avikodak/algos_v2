@@ -2,7 +2,7 @@
  *  File Name                   : treeds.h
  *  File Location               : \algos_v2\src\lib\ds\treeds.h
  *  Created on                  : Oct 9, 2014 :: 12:29:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

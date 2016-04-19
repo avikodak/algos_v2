@@ -2,7 +2,7 @@
  *  File Name                   : cycleunionfind.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\cycleunionfind.h
  *  Created on                  : Dec 15, 2014 :: 9:09:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

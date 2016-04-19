@@ -2,7 +2,7 @@
  *  File Name                   : quicksort1partition.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksort1partition.h
  *  Created on                  : Feb 12, 2015 :: 1:45:39 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

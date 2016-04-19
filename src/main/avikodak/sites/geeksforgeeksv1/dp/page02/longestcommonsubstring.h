@@ -2,7 +2,7 @@
  *  File Name                   : longestcommonsubstring.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\longestcommonsubstring.h
  *  Created on                  : Jan 12, 2015 :: 4:08:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

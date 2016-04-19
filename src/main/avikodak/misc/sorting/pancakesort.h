@@ -2,7 +2,7 @@
  *  File Name                   : pamcakesort.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\sorting\pamcakesort.h
  *  Created on                  : Dec 25, 2014 :: 2:57:59 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

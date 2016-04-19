@@ -2,7 +2,7 @@
  *  File Name                   : stonesontable.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\stonesontable.h
  *  Created on                  : Feb 28, 2015 :: 7:39:48 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/266/A
 ****************************************************************************************************************************************************/

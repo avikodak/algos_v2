@@ -2,7 +2,7 @@
  *  File Name                   : trieutil.h
  *  File Location               : \algos_v2\src\lib\utils\trieutil.h
  *  Created on                  : Oct 24, 2014 :: 11:00:25 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

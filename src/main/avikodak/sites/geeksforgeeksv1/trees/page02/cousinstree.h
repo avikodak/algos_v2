@@ -2,7 +2,7 @@
  *  File Name                   : cousinstree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\cousinstree.h
  *  Created on                  : Jan 24, 2015 :: 12:39:27 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

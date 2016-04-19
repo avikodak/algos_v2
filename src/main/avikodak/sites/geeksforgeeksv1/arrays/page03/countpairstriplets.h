@@ -2,7 +2,7 @@
  *  File Name                   : countpairstriplets.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\countpairstriplets.h
  *  Created on                  : Jan 18, 2015 :: 9:23:47 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-possible-groups-size-2-3-sum-multiple-3/
  ****************************************************************************************************************************************************/

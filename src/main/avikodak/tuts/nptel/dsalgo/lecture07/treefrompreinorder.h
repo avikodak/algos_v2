@@ -2,7 +2,7 @@
  *  File Name                   : treefrompreinorder.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\treefrompreinorder.h
  *  Created on                  : Nov 18, 2014 :: 12:13:47 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

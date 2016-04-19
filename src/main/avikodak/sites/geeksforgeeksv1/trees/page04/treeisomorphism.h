@@ -2,7 +2,7 @@
  *  File Name                   : treeisomorphism.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\treeisomorphism.h
  *  Created on                  : Nov 14, 2014 :: 12:07:06 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : inttest.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\inttest.h
  *  Created on                  : Feb 3, 2015 :: 12:16:00 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.codechef.com/problems/INTEST
 ****************************************************************************************************************************************************/

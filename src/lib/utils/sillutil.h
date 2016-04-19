@@ -2,7 +2,7 @@
  *  File Name                   : sillutil.h
  *  File Location               : \algos_v2\src\lib\utils\sillutil.h
  *  Created on                  : Oct 9, 2014 :: 12:36:41 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

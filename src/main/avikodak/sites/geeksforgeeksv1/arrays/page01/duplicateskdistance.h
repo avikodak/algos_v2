@@ -2,7 +2,7 @@
  *  File Name                   : duplicateskdistance.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\duplicateskdistance.h
  *  Created on                  : Jan 5, 2015 :: 10:23:53 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-given-array-contains-duplicate-elements-within-k-distance/
  ****************************************************************************************************************************************************/

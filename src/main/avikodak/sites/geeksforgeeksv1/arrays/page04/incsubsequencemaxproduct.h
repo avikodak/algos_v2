@@ -2,7 +2,7 @@
  *  File Name                   : incsubsequencemaxproduct.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\incsubsequencemaxproduct.h
  *  Created on                  : Jan 19, 2015 :: 10:58:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

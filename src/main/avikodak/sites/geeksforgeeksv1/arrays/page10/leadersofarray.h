@@ -2,7 +2,7 @@
  *  File Name                   : leadersofarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\leadersofarray.h
  *  Created on                  : Nov 25, 2014 :: 12:03:29 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/leaders-in-an-array/
 ****************************************************************************************************************************************************/

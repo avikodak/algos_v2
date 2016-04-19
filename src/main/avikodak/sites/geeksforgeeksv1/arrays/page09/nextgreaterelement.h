@@ -2,7 +2,7 @@
  *  File Name                   : nextgreaterelement.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\nextgreaterelement.h
  *  Created on                  : Nov 26, 2014 :: 6:27:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/next-greater-element/
 ****************************************************************************************************************************************************/

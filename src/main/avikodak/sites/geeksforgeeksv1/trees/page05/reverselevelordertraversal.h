@@ -2,7 +2,7 @@
  *  File Name                   : reverselevelordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\reverselevelordertraversal.h
  *  Created on                  : Nov 21, 2014 :: 9:23:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

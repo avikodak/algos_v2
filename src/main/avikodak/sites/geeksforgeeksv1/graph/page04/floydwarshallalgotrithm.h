@@ -2,7 +2,7 @@
  *  File Name                   : floydwarshallalgotrithm.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\floydwarshallalgotrithm.h
  *  Created on                  : Dec 26, 2014 :: 9:14:13 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-16-floyd-warshall-algorithm/
 ****************************************************************************************************************************************************/

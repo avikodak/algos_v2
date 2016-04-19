@@ -2,7 +2,7 @@
  *  File Name                   : graphutil.h
  *  File Location               : \algos_v2\src\lib\utils\graphutil.h
  *  Created on                  : Dec 5, 2014 :: 9:00:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

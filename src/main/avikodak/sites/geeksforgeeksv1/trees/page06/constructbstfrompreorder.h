@@ -2,7 +2,7 @@
  *  File Name                   : constructbstfrompreorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructbstfrompreorder.h
  *  Created on                  : Nov 13, 2014 :: 10:47:11 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
  *                        http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversal-set-2/

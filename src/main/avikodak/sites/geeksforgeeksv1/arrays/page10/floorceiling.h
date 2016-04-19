@@ -2,7 +2,7 @@
  *  File Name                   : floorceiling.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\floorceiling.h
  *  Created on                  : Nov 26, 2014 :: 4:07:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/search-floor-and-ceil-in-a-sorted-array/
 ****************************************************************************************************************************************************/

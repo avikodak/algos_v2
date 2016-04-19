@@ -2,7 +2,7 @@
  *  File Name                   : kthsmallest.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\kthsmallest.h
  *  Created on                  : Nov 26, 2014 :: 1:06:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : redblacktreeutil.h
  *  File Location               : \algos_v2\src\lib\utils\redblacktreeutil.h
  *  Created on                  : Oct 9, 2014 :: 12:38:08 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : oddfrequency.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\oddfrequency.h
  *  Created on                  : Jan 9, 2015 :: 9:13:16 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
 ****************************************************************************************************************************************************/

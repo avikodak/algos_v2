@@ -2,7 +2,7 @@
  *  File Name                   : atoi.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\atoi.h
  *  Created on                  : Jan 16, 2015 :: 11:47:34 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-your-own-atoi/
 ****************************************************************************************************************************************************/

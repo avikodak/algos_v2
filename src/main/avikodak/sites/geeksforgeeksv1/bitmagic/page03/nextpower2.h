@@ -2,7 +2,7 @@
  *  File Name                   : nextpower2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\nextpower2.h
  *  Created on                  : Jan 8, 2015 :: 7:12:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/next-power-of-2/
  ****************************************************************************************************************************************************/

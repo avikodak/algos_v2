@@ -2,7 +2,7 @@
  *  File Name                   : detectcycleinundirectedgraph.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\detectcycleinundirectedgraph.h
  *  Created on                  : Dec 26, 2014 :: 7:39:19 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

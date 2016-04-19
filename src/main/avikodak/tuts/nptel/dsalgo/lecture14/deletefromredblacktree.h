@@ -2,7 +2,7 @@
  *  File Name                   : deletefromredblacktree.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture14\deletefromredblacktree.h
  *  Created on                  : Nov 20, 2014 :: 1:18:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

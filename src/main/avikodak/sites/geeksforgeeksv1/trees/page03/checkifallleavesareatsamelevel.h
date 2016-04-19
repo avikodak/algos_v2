@@ -2,7 +2,7 @@
  *  File Name                   : checkifallleavesareatsamelevel.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\checkifallleavesareatsamelevel.h
  *  Created on                  : Nov 14, 2014 :: 7:21:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-leaves-level/
 ****************************************************************************************************************************************************/

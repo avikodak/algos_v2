@@ -2,7 +2,7 @@
  *  File Name                   : countbitstoflippedatob.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\countbitstoflippedatob.h
  *  Created on                  : Jan 9, 2015 :: 9:36:55 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-number-of-bits-to-be-flipped-to-convert-a-to-b/
  ****************************************************************************************************************************************************/

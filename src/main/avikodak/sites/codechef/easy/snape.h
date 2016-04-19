@@ -2,7 +2,7 @@
  *  File Name                   : snape.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\snape.h
  *  Created on                  : Feb 9, 2015 :: 9:40:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/SNAPE/
 ****************************************************************************************************************************************************/

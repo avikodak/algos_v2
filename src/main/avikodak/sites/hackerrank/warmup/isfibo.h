@@ -2,7 +2,7 @@
  *  File Name                   : isfibo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\isfibo.h
  *  Created on                  : Feb 10, 2015 :: 9:39:28 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/is-fibo
  ****************************************************************************************************************************************************/

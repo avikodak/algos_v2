@@ -2,7 +2,7 @@
  *  File Name                   : partitionedgesbfs.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\partitionedgesbfs.h
  *  Created on                  : Dec 5, 2014 :: 12:31:02 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

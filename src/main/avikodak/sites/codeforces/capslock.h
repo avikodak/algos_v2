@@ -2,7 +2,7 @@
  *  File Name                   : capslock.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\capslock.h
  *  Created on                  : Feb 28, 2015 :: 12:43:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/131/A
 ****************************************************************************************************************************************************/

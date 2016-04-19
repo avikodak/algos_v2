@@ -2,7 +2,7 @@
  *  File Name                   : equilibriumindex.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\careercup\amazon\equilibriumindex.h
  *  Created on                  : Jan 20, 2015 :: 2:17:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.careercup.com/question?id=5680651472732160
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : carvans.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\carvans.h
  *  Created on                  : Feb 9, 2015 :: 8:42:56 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/CARVANS
 ****************************************************************************************************************************************************/

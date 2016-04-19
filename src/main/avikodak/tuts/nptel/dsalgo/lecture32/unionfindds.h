@@ -2,7 +2,7 @@
  *  File Name                   : unionfindds.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture32\unionfindds.h
  *  Created on                  : Dec 9, 2014 :: 1:18:25 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

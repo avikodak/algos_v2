@@ -2,7 +2,7 @@
  *  File Name                   : countingsort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\countingsort.h
  *  Created on                  : Dec 22, 2014 :: 8:14:05 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

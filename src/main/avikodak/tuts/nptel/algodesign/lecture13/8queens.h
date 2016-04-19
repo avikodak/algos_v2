@@ -2,7 +2,7 @@
  *  File Name                   : 8queens.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture13\8queens.h
  *  Created on                  : Dec 17, 2014 :: 9:07:53 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

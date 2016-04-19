@@ -2,7 +2,7 @@
  *  File Name                   : treetodll.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\treetodll.h
  *  Created on                  : Oct 14, 2014 :: 12:45:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/the-great-tree-list-recursion-problem/
  ****************************************************************************************************************************************************/

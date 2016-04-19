@@ -2,7 +2,7 @@
  *  File Name                   : topview.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\topview.h
  *  Created on                  : Jan 22, 2015 :: 7:40:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-nodes-top-view-binary-tree/
  ****************************************************************************************************************************************************/

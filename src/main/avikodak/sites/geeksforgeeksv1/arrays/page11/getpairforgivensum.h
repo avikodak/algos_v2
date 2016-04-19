@@ -2,7 +2,7 @@
  *  File Name                   : getpairforgivensum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\getpairforgivensum.h
  *  Created on                  : Oct 10, 2014 :: 4:13:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
  ****************************************************************************************************************************************************/

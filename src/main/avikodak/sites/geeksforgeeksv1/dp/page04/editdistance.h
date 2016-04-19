@@ -2,7 +2,7 @@
  *  File Name                   : editdistance.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\editdistance.h
  *  Created on                  : Dec 15, 2014 :: 9:18:43 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-5-edit-distance/
 ****************************************************************************************************************************************************/

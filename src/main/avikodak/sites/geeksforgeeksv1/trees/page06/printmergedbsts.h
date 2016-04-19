@@ -2,7 +2,7 @@
  *  File Name                   : printmergedbsts.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\printmergedbsts.h
  *  Created on                  : Nov 1, 2014 :: 11:09:17 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/merge-two-bsts-with-limited-extra-space/
  ****************************************************************************************************************************************************/

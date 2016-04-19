@@ -2,7 +2,7 @@
  *  File Name                   : sherlockandpairs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\sherlockandpairs.h
  *  Created on                  : Feb 12, 2015 :: 3:13:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

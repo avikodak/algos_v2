@@ -2,7 +2,7 @@
  *  File Name                   : findmedian.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\findmedian.h
  *  Created on                  : Feb 12, 2015 :: 8:43:51 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

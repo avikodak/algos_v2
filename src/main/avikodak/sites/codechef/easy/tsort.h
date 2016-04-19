@@ -2,7 +2,7 @@
  *  File Name                   : tsort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\tsort.h
  *  Created on                  : Feb 3, 2015 :: 12:48:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.codechef.com/problems/TSORT
  ****************************************************************************************************************************************************/

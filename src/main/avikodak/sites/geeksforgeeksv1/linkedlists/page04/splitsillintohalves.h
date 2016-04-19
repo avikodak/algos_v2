@@ -2,7 +2,7 @@
  *  File Name                   : splitsillintohalves.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\splitsillintohalves.h
  *  Created on                  : Oct 17, 2014 :: 1:45:01 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

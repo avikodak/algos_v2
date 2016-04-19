@@ -2,7 +2,7 @@
  *  File Name                   : wordcapitalization.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\wordcapitalization.h
  *  Created on                  : Mar 1, 2015 :: 9:35:24 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/281/A
 ****************************************************************************************************************************************************/

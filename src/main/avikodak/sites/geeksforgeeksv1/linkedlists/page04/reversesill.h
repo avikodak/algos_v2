@@ -2,7 +2,7 @@
  *  File Name                   : reversesill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\reversesill.h
  *  Created on                  : Oct 14, 2014 :: 12:12:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

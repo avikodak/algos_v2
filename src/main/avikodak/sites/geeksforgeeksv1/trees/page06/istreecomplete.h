@@ -2,7 +2,7 @@
  *  File Name                   : istreecomplete.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\istreecomplete.h
  *  Created on                  : Nov 1, 2014 :: 8:53:11 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-complete-tree-or-not/
 ****************************************************************************************************************************************************/

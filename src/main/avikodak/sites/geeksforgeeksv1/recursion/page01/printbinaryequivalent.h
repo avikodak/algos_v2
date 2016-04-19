@@ -2,7 +2,7 @@
  *  File Name                   : printbinaryequivalent.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\printbinaryequivalent.h
  *  Created on                  : Oct 14, 2014 :: 1:01:47 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

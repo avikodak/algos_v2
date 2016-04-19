@@ -2,7 +2,7 @@
  *  File Name                   : petyaandstrings.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\petyaandstrings.h
  *  Created on                  : Feb 28, 2015 :: 8:59:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/112/A
 ****************************************************************************************************************************************************/

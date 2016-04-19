@@ -2,7 +2,7 @@
  *  File Name                   : checkiftreesubtree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreesubtree.h
  *  Created on                  : Oct 23, 2014 :: 10:15:35 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-if-a-binary-tree-is-subtree-of-another-binary-tree/
  ****************************************************************************************************************************************************/

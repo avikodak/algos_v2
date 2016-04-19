@@ -2,7 +2,7 @@
  *  File Name                   : fourelementsforsum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsum.h
  *  Created on                  : Nov 27, 2014 :: 8:00:32 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-four-numbers-with-sum-equal-to-given-sum/
 ****************************************************************************************************************************************************/

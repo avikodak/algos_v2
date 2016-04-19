@@ -2,7 +2,7 @@
  *  File Name                   : arestringsanagrams.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\arestringsanagrams.h
  *  Created on                  : Jan 16, 2015 :: 10:06:56 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

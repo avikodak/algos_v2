@@ -2,7 +2,7 @@
  *  File Name                   : boxstacking.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\boxstacking.h
  *  Created on                  : Dec 15, 2014 :: 3:13:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-21-box-stacking-problem/
 ****************************************************************************************************************************************************/

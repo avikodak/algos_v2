@@ -2,7 +2,7 @@
  *  File Name                   : angrychildren.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\angrychildren.h
  *  Created on                  : Feb 5, 2015 :: 8:32:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/angry-children
 ****************************************************************************************************************************************************/

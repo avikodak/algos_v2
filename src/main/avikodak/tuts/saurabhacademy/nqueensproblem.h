@@ -2,7 +2,7 @@
  *  File Name                   : nqueensproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\nqueensproblem.h
  *  Created on                  : Dec 19, 2014 :: 12:19:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

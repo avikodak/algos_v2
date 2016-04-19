@@ -2,7 +2,7 @@
  *  File Name                   : dijikstrasshortestpath.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture34\dijikstrasshortestpath.h
  *  Created on                  : Dec 9, 2014 :: 6:07:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

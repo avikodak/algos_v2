@@ -2,7 +2,7 @@
  *  File Name                   : nearlyluckynumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\nearlyluckynumber.h
  *  Created on                  : Mar 1, 2015 :: 10:39:07 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/110/A
 ****************************************************************************************************************************************************/

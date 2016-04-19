@@ -2,7 +2,7 @@
  *  File Name                   : printpermutations.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\printpermutations.h
  *  Created on                  : Dec 5, 2014 :: 12:34:57 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
 ****************************************************************************************************************************************************/

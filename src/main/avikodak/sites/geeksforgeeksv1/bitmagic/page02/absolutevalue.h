@@ -2,7 +2,7 @@
  *  File Name                   : absolutevalue.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\absolutevalue.h
  *  Created on                  : Jan 9, 2015 :: 10:58:19 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/compute-the-integer-absolute-value-abs-without-branching/
 ****************************************************************************************************************************************************/

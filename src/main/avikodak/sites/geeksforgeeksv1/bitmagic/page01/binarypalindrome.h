@@ -2,7 +2,7 @@
  *  File Name                   : binarypalindrome.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binarypalindrome.h
  *  Created on                  : Jan 9, 2015 :: 4:57:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

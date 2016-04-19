@@ -2,7 +2,7 @@
  *  File Name                   : multiplication.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\multiplication.h
  *  Created on                  : Oct 13, 2014 :: 2:39:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : sortnearlysortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\sortnearlysortedarray.h
  *  Created on                  : Jan 3, 2015 :: 10:07:58 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/nearly-sorted-algorithm/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : primefactorization.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\primefactorization.h
  *  Created on                  : Jan 3, 2015 :: 7:29:55 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : www.youtube.com/watch?v=6PDtgHhpCHo
 ****************************************************************************************************************************************************/

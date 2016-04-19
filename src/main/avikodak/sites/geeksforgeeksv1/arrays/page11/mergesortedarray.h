@@ -2,7 +2,7 @@
  *  File Name                   : mergesortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\mergesortedarray.h
  *  Created on                  : Oct 17, 2014 :: 6:47:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/merge-one-array-of-size-n-into-another-one-of-size-mn/
  ****************************************************************************************************************************************************/

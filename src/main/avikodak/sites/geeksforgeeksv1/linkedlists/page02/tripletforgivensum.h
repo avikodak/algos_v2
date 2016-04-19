@@ -2,7 +2,7 @@
  *  File Name                   : tripletforgivensum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\tripletforgivensum.h
  *  Created on                  : Oct 31, 2014 :: 12:08:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

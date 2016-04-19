@@ -2,7 +2,7 @@
  *  File Name                   : avltreeutil.h
  *  File Location               : \algos_v2\src\lib\utils\avltreeutil.h
  *  Created on                  : Oct 9, 2014 :: 12:37:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

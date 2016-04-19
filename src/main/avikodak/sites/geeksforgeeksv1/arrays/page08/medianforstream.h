@@ -2,7 +2,7 @@
  *  File Name                   : medianforstream.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\medianforstream.h
  *  Created on                  : Dec 29, 2014 :: 12:01:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

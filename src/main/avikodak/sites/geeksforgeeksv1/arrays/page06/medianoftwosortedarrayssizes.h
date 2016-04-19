@@ -2,7 +2,7 @@
  *  File Name                   : medianoftwosortedarrayssizes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\medianoftwosortedarrayssizes.h
  *  Created on                  : Jan 3, 2015 :: 10:08:46 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

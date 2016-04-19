@@ -2,7 +2,7 @@
  *  File Name                   : depthofoddleafnode.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\depthofoddleafnode.h
  *  Created on                  : Nov 14, 2014 :: 12:04:40 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-depth-of-the-deepest-odd-level-node/
  ****************************************************************************************************************************************************/

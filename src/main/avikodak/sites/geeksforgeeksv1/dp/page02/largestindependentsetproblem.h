@@ -2,7 +2,7 @@
  *  File Name                   : largestindependentsetproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\largestindependentsetproblem.h
  *  Created on                  : Jan 12, 2015 :: 4:54:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/largest-independent-set-problem/
 ****************************************************************************************************************************************************/

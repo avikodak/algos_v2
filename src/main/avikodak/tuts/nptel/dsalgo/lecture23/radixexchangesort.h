@@ -2,7 +2,7 @@
  *  File Name                   : radixexchangesort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\radixexchangesort.h
  *  Created on                  : Dec 2, 2014 :: 12:21:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

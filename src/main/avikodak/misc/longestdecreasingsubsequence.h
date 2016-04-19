@@ -2,7 +2,7 @@
  *  File Name                   : longestdecreasingsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\longestdecreasingsubsequence.h
  *  Created on                  : Nov 29, 2014 :: 10:16:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

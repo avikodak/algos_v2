@@ -2,7 +2,7 @@
  *  File Name                   : mergeksortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\mergeksortedarray.h
  *  Created on                  : Dec 22, 2014 :: 9:26:52 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/merge-k-sorted-arrays/
  ****************************************************************************************************************************************************/

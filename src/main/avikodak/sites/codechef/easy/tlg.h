@@ -2,7 +2,7 @@
  *  File Name                   : tlg.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\tlg.h
  *  Created on                  : Feb 3, 2015 :: 6:55:31 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/TLG
 ****************************************************************************************************************************************************/

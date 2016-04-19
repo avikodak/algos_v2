@@ -2,7 +2,7 @@
  *  File Name                   : printnodeswithnosibling.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printnodeswithnosibling.h
  *  Created on                  : Nov 15, 2014 :: 5:45:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-nodes-dont-sibling-binary-tree/
  ****************************************************************************************************************************************************/

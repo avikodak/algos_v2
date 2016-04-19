@@ -2,7 +2,7 @@
  *  File Name                   : floorceilbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\floorceilbst.h
  *  Created on                  : Nov 13, 2014 :: 12:20:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/floor-and-ceil-from-a-bst/
 ****************************************************************************************************************************************************/

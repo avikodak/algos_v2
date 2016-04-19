@@ -2,7 +2,7 @@
  *  File Name                   : pairforgivendifference.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\pairforgivendifference.h
  *  Created on                  : Nov 30, 2014 :: 10:39:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/
 ****************************************************************************************************************************************************/

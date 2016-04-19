@@ -2,7 +2,7 @@
  *  File Name                   : mergeoverlappinginterval.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\mergeoverlappinginterval.h
  *  Created on                  : Dec 22, 2014 :: 8:22:37 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/merging-intervals/
  ****************************************************************************************************************************************************/

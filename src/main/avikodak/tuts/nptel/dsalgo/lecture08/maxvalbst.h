@@ -2,7 +2,7 @@
  *  File Name                   : maxvalbst.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\maxvalbst.h
  *  Created on                  : Nov 18, 2014 :: 7:40:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

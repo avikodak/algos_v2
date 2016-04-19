@@ -2,7 +2,7 @@
  *  File Name                   : linearsearch.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\linearsearch.h
  *  Created on                  : Oct 22, 2014 :: 12:41:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

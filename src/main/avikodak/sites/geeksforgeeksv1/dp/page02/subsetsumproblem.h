@@ -2,7 +2,7 @@
  *  File Name                   : subsetsumproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\subsetsumproblem.h
  *  Created on                  : Jan 12, 2015 :: 4:10:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-subset-sum-problem/
 ****************************************************************************************************************************************************/

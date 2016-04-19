@@ -2,7 +2,7 @@
  *  File Name                   : sortbyfrequency.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\sortbyfrequency.h
  *  Created on                  : Nov 24, 2014 :: 11:28:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sort-elements-by-frequency/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : graphrep.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\graphrep.h
  *  Created on                  : Dec 26, 2014 :: 10:32:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

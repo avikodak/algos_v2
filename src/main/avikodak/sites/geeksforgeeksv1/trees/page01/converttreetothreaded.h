@@ -2,7 +2,7 @@
  *  File Name                   : converttreetothreaded.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\converttreetothreaded.h
  *  Created on                  : Jan 22, 2015 :: 7:40:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

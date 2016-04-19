@@ -2,7 +2,7 @@
  *  File Name                   : alternatingchar.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\alternatingchar.h
  *  Created on                  : Jan 30, 2015 :: 9:11:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : https://www.hackerrank.com/challenges/alternating-characters
 ****************************************************************************************************************************************************/

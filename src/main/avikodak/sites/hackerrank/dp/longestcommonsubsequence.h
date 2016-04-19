@@ -2,7 +2,7 @@
  *  File Name                   : longestcommonsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\dp\longestcommonsubsequence.h
  *  Created on                  : Feb 13, 2015 :: 9:35:50 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

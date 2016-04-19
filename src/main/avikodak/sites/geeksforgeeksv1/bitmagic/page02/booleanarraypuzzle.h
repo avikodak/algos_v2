@@ -2,7 +2,7 @@
  *  File Name                   : booleanarraypuzzle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\booleanarraypuzzle.h
  *  Created on                  : Jan 9, 2015 :: 11:38:47 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : parenthesismatching.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\interviews\amazon\parenthesismatching.h
  *  Created on                  : Jan 25, 2015 :: 10:50:02 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

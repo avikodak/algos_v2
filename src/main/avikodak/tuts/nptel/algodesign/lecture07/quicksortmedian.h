@@ -2,7 +2,7 @@
  *  File Name                   : quicksortmedian.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture07\quicksortmedian.h
  *  Created on                  : Dec 12, 2014 :: 8:13:41 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

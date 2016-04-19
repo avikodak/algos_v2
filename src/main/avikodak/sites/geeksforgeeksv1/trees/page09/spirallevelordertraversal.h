@@ -2,7 +2,7 @@
  *  File Name                   : spirallevelordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\spirallevelordertraversal.h
  *  Created on                  : Oct 16, 2014 :: 11:05:54 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/level-order-traversal-in-spiral-form/
  ****************************************************************************************************************************************************/

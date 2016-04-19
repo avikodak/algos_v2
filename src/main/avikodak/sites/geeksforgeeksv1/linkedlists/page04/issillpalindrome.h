@@ -2,7 +2,7 @@
  *  File Name                   : issillpalindrome.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\issillpalindrome.h
  *  Created on                  : Oct 14, 2014 :: 12:58:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

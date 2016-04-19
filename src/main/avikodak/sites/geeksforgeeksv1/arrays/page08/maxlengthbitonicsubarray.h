@@ -2,7 +2,7 @@
  *  File Name                   : maxlengthbitonicsubarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maxlengthbitonicsubarray.h
  *  Created on                  : Nov 28, 2014 :: 1:48:16 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-length-bitonic-subarray/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : stringrotationofeachother.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\stringrotationofeachother.h
  *  Created on                  : Dec 3, 2014 :: 11:23:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

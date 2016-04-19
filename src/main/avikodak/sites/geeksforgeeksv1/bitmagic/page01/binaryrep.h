@@ -2,7 +2,7 @@
  *  File Name                   : binaryrep.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\binaryrep.h
  *  Created on                  : Jan 9, 2015 :: 1:44:31 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : segregate0s1s.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregate0s1s.h
  *  Created on                  : Nov 25, 2014 :: 11:42:21 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/segregate-0s-and-1s-in-an-array-by-traversing-array-once/
  ****************************************************************************************************************************************************/

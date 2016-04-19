@@ -2,7 +2,7 @@
  *  File Name                   : selectionsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture22\selectionsort.h
  *  Created on                  : Dec 1, 2014 :: 9:48:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

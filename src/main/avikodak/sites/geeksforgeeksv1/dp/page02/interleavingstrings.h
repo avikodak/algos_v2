@@ -2,7 +2,7 @@
  *  File Name                   : interleavingstrings.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
  *  Created on                  : Jan 12, 2015 :: 4:09:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-whether-a-given-string-is-an-interleaving-of-two-other-given-strings-set-2/
  ****************************************************************************************************************************************************/

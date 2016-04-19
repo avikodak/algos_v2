@@ -2,7 +2,7 @@
  *  File Name                   : minelement.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\minelement.h
  *  Created on                  : Dec 12, 2014 :: 11:51:54 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

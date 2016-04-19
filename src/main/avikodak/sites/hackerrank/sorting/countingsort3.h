@@ -2,7 +2,7 @@
  *  File Name                   : countingsort3.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\countingsort3.h
  *  Created on                  : Feb 12, 2015 :: 8:24:47 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

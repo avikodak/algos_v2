@@ -2,7 +2,7 @@
  *  File Name                   : kthsmallestmedian.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\kthsmallestmedian.h
  *  Created on                  : Jan 5, 2015 :: 10:40:57 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

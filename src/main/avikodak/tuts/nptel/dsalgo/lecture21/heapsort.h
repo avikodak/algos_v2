@@ -2,7 +2,7 @@
  *  File Name                   : heapsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\heapsort.h
  *  Created on                  : Dec 1, 2014 :: 10:14:57 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

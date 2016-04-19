@@ -2,7 +2,7 @@
  *  File Name                   : printleftview.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\printleftview.h
  *  Created on                  : Nov 14, 2014 :: 7:43:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-left-view-binary-tree/
 ****************************************************************************************************************************************************/

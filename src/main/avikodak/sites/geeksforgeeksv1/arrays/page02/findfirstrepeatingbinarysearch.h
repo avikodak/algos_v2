@@ -2,7 +2,7 @@
  *  File Name                   : findfirstrepeatingbinarysearch.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeatingbinarysearch.h
  *  Created on                  : Jan 5, 2015 :: 11:24:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  ****************************************************************************************************************************************************/

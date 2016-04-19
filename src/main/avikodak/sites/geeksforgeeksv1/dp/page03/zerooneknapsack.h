@@ -2,7 +2,7 @@
  *  File Name                   : zerooneknapsack.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\zerooneknapsack.h
  *  Created on                  : Dec 9, 2014 :: 8:02:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

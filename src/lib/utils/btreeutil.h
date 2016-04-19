@@ -2,7 +2,7 @@
  *  File Name                   : btreeutil.h
  *  File Location               : \algos_v2\src\lib\utils\btreeutil.h
  *  Created on                  : Oct 9, 2014 :: 12:38:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

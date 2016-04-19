@@ -2,7 +2,7 @@
  *  File Name                   : sherlockwatson.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\sherlockwatson.h
  *  Created on                  : Feb 12, 2015 :: 4:41:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

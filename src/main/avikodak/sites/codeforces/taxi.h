@@ -2,7 +2,7 @@
  *  File Name                   : taxi.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\taxi.h
  *  Created on                  : Feb 3, 2015 :: 12:39:04 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/158/B
 ****************************************************************************************************************************************************/

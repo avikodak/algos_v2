@@ -2,7 +2,7 @@
  *  File Name                   : reversealternatelevels.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\reversealternatelevels.h
  *  Created on                  : Nov 16, 2014 :: 11:27:58 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/reverse-alternate-levels-binary-tree/
 ****************************************************************************************************************************************************/

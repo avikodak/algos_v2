@@ -2,7 +2,7 @@
  *  File Name                   : sortusingdifferentarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\sortusingdifferentarray.h
  *  Created on                  : Jan 6, 2015 :: 10:19:29 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sort-array-according-order-defined-another-array/
 ****************************************************************************************************************************************************/

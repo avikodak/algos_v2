@@ -2,7 +2,7 @@
  *  File Name                   : bellmanfordalgo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\bellmanfordalgo.h
  *  Created on                  : Dec 26, 2014 :: 10:31:58 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

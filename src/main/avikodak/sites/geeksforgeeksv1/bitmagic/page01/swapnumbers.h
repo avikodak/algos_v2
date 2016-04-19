@@ -2,7 +2,7 @@
  *  File Name                   : swapnumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapnumbers.h
  *  Created on                  : Jan 9, 2015 :: 1:45:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

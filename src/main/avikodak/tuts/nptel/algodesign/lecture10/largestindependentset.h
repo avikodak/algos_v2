@@ -2,7 +2,7 @@
  *  File Name                   : largestindependentset.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture10\largestindependentset.h
  *  Created on                  : Dec 16, 2014 :: 6:06:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : icecreamparlour.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\search\icecreamparlour.h
  *  Created on                  : Feb 11, 2015 :: 12:32:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/icecream-parlor
  ****************************************************************************************************************************************************/

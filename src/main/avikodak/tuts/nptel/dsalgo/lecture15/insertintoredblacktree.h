@@ -2,7 +2,7 @@
  *  File Name                   : insertintoredblacktree.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture15\insertintoredblacktree.h
  *  Created on                  : Nov 20, 2014 :: 5:09:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

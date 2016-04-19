@@ -2,7 +2,7 @@
  *  File Name                   : lexicographicrank.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\lexicographicrank.h
  *  Created on                  : Jan 16, 2015 :: 11:42:58 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

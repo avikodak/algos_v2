@@ -2,7 +2,7 @@
  *  File Name                   : turnoffrightmostbit.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\turnoffrightmostbit.h
  *  Created on                  : Jan 9, 2015 :: 10:45:37 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

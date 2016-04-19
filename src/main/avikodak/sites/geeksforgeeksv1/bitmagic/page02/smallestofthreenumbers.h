@@ -2,7 +2,7 @@
  *  File Name                   : smallestofthreenumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\smallestofthreenumbers.h
  *  Created on                  : Jan 9, 2015 :: 12:00:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

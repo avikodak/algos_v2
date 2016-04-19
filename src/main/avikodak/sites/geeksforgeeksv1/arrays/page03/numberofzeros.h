@@ -2,7 +2,7 @@
  *  File Name                   : numberofzeros.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\numberofzeros.h
  *  Created on                  : Dec 22, 2014 :: 3:40:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

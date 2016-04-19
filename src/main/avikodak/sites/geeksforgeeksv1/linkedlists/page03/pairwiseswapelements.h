@@ -2,7 +2,7 @@
  *  File Name                   : pairwiseswapelements.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\pairwiseswapelements.h
  *  Created on                  : Oct 19, 2014 :: 1:01:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

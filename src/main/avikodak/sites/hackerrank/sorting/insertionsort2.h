@@ -2,7 +2,7 @@
  *  File Name                   : insertionsort2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\insertionsort2.h
  *  Created on                  : Feb 12, 2015 :: 1:39:25 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

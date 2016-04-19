@@ -2,7 +2,7 @@
  *  File Name                   : counttriangles.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\counttriangles.h
  *  Created on                  : Jan 3, 2015 :: 10:09:48 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-number-of-triangles-possible/
 ****************************************************************************************************************************************************/

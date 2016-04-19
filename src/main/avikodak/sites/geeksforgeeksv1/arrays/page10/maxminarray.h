@@ -2,7 +2,7 @@
  *  File Name                   : maxminarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\maxminarray.h
  *  Created on                  : Nov 26, 2014 :: 10:53:30 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
  ****************************************************************************************************************************************************/

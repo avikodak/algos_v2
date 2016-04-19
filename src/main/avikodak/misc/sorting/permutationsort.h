@@ -2,7 +2,7 @@
  *  File Name                   : permutationsort.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\sorting\permutationsort.h
  *  Created on                  : Dec 11, 2014 :: 12:45:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : getmaxelement.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture01\getmaxelement.h
  *  Created on                  : Oct 17, 2014 :: 2:59:35 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

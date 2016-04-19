@@ -2,7 +2,7 @@
  *  File Name                   : add1togivennumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\add1togivennumber.h
  *  Created on                  : Jan 9, 2015 :: 1:30:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

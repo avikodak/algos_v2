@@ -2,7 +2,7 @@
  *  File Name                   : preordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\preordertraversal.h
  *  Created on                  : Nov 17, 2014 :: 11:06:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

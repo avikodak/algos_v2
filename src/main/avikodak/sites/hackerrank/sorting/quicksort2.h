@@ -2,7 +2,7 @@
  *  File Name                   : quicksort2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksort2.h
  *  Created on                  : Feb 12, 2015 :: 2:08:25 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

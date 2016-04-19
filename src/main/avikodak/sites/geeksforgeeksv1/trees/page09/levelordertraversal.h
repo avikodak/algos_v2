@@ -2,7 +2,7 @@
  *  File Name                   : levelordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\levelordertraversal.h
  *  Created on                  : Oct 14, 2014 :: 1:25:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/level-order-tree-traversal/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : transitiveclosureofgraph.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\transitiveclosureofgraph.h
  *  Created on                  : Dec 26, 2014 :: 11:05:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

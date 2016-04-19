@@ -2,7 +2,7 @@
  *  File Name                   : bottomview.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\bottomview.h
  *  Created on                  : Jan 22, 2015 :: 7:39:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/bottom-view-binary-tree/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : biconnectedgraph.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\biconnectedgraph.h
  *  Created on                  : Dec 26, 2014 :: 7:29:51 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

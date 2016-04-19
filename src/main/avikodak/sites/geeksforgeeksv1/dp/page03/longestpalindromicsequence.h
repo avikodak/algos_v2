@@ -2,7 +2,7 @@
  *  File Name                   : longestpalindromicsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\longestpalindromicsequence.h
  *  Created on                  : Dec 15, 2014 :: 9:20:31 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
  ****************************************************************************************************************************************************/

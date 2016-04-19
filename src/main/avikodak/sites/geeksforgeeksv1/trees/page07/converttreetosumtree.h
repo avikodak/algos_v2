@@ -2,7 +2,7 @@
  *  File Name                   : converttreetosumtree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\converttreetosumtree.h
  *  Created on                  : Oct 23, 2014 :: 5:11:35 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/convert-a-given-tree-to-sum-tree/
  ****************************************************************************************************************************************************/

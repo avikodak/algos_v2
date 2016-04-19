@@ -2,7 +2,7 @@
  *  File Name                   : nextgreaternumbersetdigits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\nextgreaternumbersetdigits.h
  *  Created on                  : Jan 18, 2015 :: 9:53:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-next-greater-number-set-digits/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : boyorgirl.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\boyorgirl.h
  *  Created on                  : Mar 1, 2015 :: 9:52:09 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/236/A
 ****************************************************************************************************************************************************/

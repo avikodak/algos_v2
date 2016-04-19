@@ -2,7 +2,7 @@
  *  File Name                   : positiveinfunction.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\positiveinfunction.h
  *  Created on                  : Dec 22, 2014 :: 6:07:04 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-point-where-a-function-becomes-negative/
 ****************************************************************************************************************************************************/

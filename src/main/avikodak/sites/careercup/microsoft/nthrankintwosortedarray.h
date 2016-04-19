@@ -2,7 +2,7 @@
  *  File Name                   : nthrankintwosortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\careercup\microsoft\nthrankintwosortedarray.h
  *  Created on                  : Dec 22, 2014 :: 10:21:56 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.careercup.com/question?id=5195485440638976
 ****************************************************************************************************************************************************/

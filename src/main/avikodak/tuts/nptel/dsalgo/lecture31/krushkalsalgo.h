@@ -2,7 +2,7 @@
  *  File Name                   : krushkalsalgo.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture31\krushkalsalgo.h
  *  Created on                  : Dec 9, 2014 :: 12:32:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

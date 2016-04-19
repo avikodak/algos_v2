@@ -2,7 +2,7 @@
  *  File Name                   : heightoftree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\heightoftree.h
  *  Created on                  : Oct 12, 2014 :: 12:50:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/
  ****************************************************************************************************************************************************/

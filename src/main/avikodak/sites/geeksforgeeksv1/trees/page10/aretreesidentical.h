@@ -2,7 +2,7 @@
  *  File Name                   : aretreesidentical.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page10\aretreesidentical.h
  *  Created on                  : Oct 11, 2014 :: 12:20:22 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-c-code-to-determine-if-two-trees-are-identical/
  ****************************************************************************************************************************************************/

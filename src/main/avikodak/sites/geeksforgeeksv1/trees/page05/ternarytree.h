@@ -2,7 +2,7 @@
  *  File Name                   : ternarytree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\ternarytree.h
  *  Created on                  : Nov 11, 2014 :: 6:03:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

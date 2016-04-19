@@ -2,7 +2,7 @@
  *  File Name                   : gettreefromspecialinorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\gettreefromspecialinorder.h
  *  Created on                  : Oct 23, 2014 :: 6:42:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/construct-binary-tree-from-inorder-traversal/
 ****************************************************************************************************************************************************/

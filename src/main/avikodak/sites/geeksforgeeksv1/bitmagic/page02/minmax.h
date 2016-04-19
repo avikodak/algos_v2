@@ -2,7 +2,7 @@
  *  File Name                   : minmax.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\minmax.h
  *  Created on                  : Jan 9, 2015 :: 10:31:14 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : finddigits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\finddigits.h
  *  Created on                  : Feb 10, 2015 :: 9:56:52 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/find-digits
 ****************************************************************************************************************************************************/

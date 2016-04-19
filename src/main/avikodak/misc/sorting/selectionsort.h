@@ -2,7 +2,7 @@
  *  File Name                   : selectionsort.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\sorting\selectionsort.h
  *  Created on                  : Dec 11, 2014 :: 1:00:36 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

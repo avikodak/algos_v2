@@ -2,7 +2,7 @@
  *  File Name                   : knighttourprolem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\knighttourprolem.h
  *  Created on                  : Dec 5, 2014 :: 12:35:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : factorial.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\factorial.h
  *  Created on                  : Jan 20, 2015 :: 10:42:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/factorial-large-number/
 ****************************************************************************************************************************************************/

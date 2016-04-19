@@ -2,7 +2,7 @@
  *  File Name                   : printmatrixinspiralorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\printmatrixinspiralorder.h
  *  Created on                  : Nov 27, 2014 :: 7:42:39 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-a-given-matrix-in-spiral-form/
  ****************************************************************************************************************************************************/

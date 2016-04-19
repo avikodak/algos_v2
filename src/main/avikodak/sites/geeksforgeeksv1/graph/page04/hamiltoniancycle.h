@@ -2,7 +2,7 @@
  *  File Name                   : hamiltoniancycle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\hamiltoniancycle.h
  *  Created on                  : Jan 12, 2015 :: 8:30:16 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

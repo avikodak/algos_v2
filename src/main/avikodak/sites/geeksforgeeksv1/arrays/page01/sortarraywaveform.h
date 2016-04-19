@@ -2,7 +2,7 @@
  *  File Name                   : sortarraywaveform.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\sortarraywaveform.h
  *  Created on                  : Jan 5, 2015 :: 10:24:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sort-array-wave-form-2/
  ****************************************************************************************************************************************************/

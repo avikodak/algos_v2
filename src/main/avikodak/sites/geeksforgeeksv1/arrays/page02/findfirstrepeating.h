@@ -2,7 +2,7 @@
  *  File Name                   : findfirstrepeating.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeating.h
  *  Created on                  : Jan 5, 2015 :: 8:50:09 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  ****************************************************************************************************************************************************/

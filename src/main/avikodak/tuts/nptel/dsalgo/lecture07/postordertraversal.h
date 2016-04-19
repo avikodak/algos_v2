@@ -2,7 +2,7 @@
  *  File Name                   : postordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\postordertraversal.h
  *  Created on                  : Nov 17, 2014 :: 11:30:59 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

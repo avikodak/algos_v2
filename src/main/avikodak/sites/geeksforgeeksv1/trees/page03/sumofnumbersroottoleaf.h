@@ -2,7 +2,7 @@
  *  File Name                   : sumofnumbersroottoleaf.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\sumofnumbersroottoleaf.h
  *  Created on                  : Nov 15, 2014 :: 5:10:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sum-numbers-formed-root-leaf-paths/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : minmax.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\minmax.h
  *  Created on                  : Dec 12, 2014 :: 12:18:49 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

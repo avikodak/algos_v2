@@ -2,7 +2,7 @@
  *  File Name                   : lowestcommonancestors.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\lowestcommonancestors.h
  *  Created on                  : Dec 19, 2014 :: 11:12:39 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

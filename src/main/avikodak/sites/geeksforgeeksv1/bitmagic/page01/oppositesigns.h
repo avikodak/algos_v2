@@ -2,7 +2,7 @@
  *  File Name                   : oppositesigns.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\oppositesigns.h
  *  Created on                  : Jan 9, 2015 :: 5:25:15 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

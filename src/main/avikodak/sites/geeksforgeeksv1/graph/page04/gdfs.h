@@ -2,7 +2,7 @@
  *  File Name                   : gdfs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\gdfs.h
  *  Created on                  : Dec 15, 2014 :: 5:48:57 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/
 ****************************************************************************************************************************************************/

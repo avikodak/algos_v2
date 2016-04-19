@@ -2,7 +2,7 @@
  *  File Name                   : doublecola.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\doublecola.h
  *  Created on                  : Feb 28, 2015 :: 10:29:08 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/82/A
 ****************************************************************************************************************************************************/

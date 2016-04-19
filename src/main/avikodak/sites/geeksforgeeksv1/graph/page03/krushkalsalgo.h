@@ -2,7 +2,7 @@
  *  File Name                   : krushkalsalgo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\krushkalsalgo.h
  *  Created on                  : Dec 26, 2014 :: 9:52:27 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

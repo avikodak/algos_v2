@@ -2,7 +2,7 @@
  *  File Name                   : recipe.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\recipe.h
  *  Created on                  : Feb 9, 2015 :: 10:13:41 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/RECIPE
 ****************************************************************************************************************************************************/

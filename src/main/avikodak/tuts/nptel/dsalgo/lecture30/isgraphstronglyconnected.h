@@ -2,7 +2,7 @@
  *  File Name                   : isgraphstronglyconnected.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture30\isgraphstronglyconnected.h
  *  Created on                  : Dec 9, 2014 :: 11:22:18 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

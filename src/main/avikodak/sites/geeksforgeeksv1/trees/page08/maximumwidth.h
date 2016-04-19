@@ -2,7 +2,7 @@
  *  File Name                   : maximumwidth.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\maximumwidth.h
  *  Created on                  : Oct 18, 2014 :: 2:21:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
  ****************************************************************************************************************************************************/

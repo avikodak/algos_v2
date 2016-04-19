@@ -2,7 +2,7 @@
  *  File Name                   : findrepeatingmissing.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\findrepeatingmissing.h
  *  Created on                  : Nov 27, 2014 :: 7:47:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/
  ****************************************************************************************************************************************************/

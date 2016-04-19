@@ -2,7 +2,7 @@
  *  File Name                   : equilibriumindex.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\equilibriumindex.h
  *  Created on                  : Nov 26, 2014 :: 5:31:48 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/equilibrium-index-of-an-array/
  ****************************************************************************************************************************************************/

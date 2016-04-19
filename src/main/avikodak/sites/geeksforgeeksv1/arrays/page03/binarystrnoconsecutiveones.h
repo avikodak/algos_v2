@@ -2,7 +2,7 @@
  *  File Name                   : binarystrnoconsecutiveones.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\binarystrnoconsecutiveones.h
  *  Created on                  : Jan 19, 2015 :: 8:47:30 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-number-binary-strings-without-consecutive-1s/
 ****************************************************************************************************************************************************/

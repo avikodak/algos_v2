@@ -2,7 +2,7 @@
  *  File Name                   : findsubarraywithsum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\findsubarraywithsum.h
  *  Created on                  : Nov 27, 2014 :: 7:52:05 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-subarray-with-given-sum/
 ****************************************************************************************************************************************************/

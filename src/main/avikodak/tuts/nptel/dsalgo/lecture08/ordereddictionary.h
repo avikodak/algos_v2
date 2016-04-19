@@ -2,7 +2,7 @@
  *  File Name                   : ordereddictionary.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\ordereddictionary.h
  *  Created on                  : Nov 19, 2014 :: 12:55:14 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

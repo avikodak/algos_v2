@@ -2,7 +2,7 @@
  *  File Name                   : dicethrow.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\dicethrow.h
  *  Created on                  : Dec 15, 2014 :: 11:44:40 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : countsetbits.h
  *  File Location               : \algos_v2\src\main\avikodak\countsetbits.h
  *  Created on                  : Feb 11, 2015 :: 10:25:08 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

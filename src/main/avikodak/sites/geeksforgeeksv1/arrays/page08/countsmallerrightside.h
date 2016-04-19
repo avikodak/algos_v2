@@ -2,7 +2,7 @@
  *  File Name                   : countsmallerrightside.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\countsmallerrightside.h
  *  Created on                  : Nov 27, 2014 :: 7:51:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/count-smaller-elements-on-right-side/
  ****************************************************************************************************************************************************/

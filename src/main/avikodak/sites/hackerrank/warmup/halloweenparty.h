@@ -2,7 +2,7 @@
  *  File Name                   : halloweenparty.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\halloweenparty.h
  *  Created on                  : Feb 6, 2015 :: 11:37:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/halloween-party
  ****************************************************************************************************************************************************/

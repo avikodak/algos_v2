@@ -2,7 +2,7 @@
  *  File Name                   : checkformajorityelement.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\checkformajorityelement.h
  *  Created on                  : Nov 26, 2014 :: 1:19:34 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-for-majority-element-in-a-sorted-array/
 ****************************************************************************************************************************************************/

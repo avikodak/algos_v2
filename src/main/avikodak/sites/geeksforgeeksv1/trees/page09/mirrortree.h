@@ -2,7 +2,7 @@
  *  File Name                   : mirrortree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\mirrortree.h
  *  Created on                  : Oct 12, 2014 :: 7:06:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-an-efficient-c-function-to-convert-a-tree-into-its-mirror-tree/
  ****************************************************************************************************************************************************/

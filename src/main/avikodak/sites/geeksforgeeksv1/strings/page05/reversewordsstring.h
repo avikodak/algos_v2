@@ -2,7 +2,7 @@
  *  File Name                   : reversewordsstring.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\reversewordsstring.h
  *  Created on                  : Dec 4, 2014 :: 6:33:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

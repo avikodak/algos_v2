@@ -2,7 +2,7 @@
  *  File Name                   : longestarithmeticprogression.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\longestarithmeticprogression.h
  *  Created on                  : Jan 12, 2015 :: 8:01:30 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

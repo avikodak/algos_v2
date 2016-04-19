@@ -2,7 +2,7 @@
  *  File Name                   : lcs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\lcs.h
  *  Created on                  : Jan 16, 2015 :: 11:59:06 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

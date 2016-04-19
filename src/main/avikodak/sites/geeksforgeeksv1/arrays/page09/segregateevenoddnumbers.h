@@ -2,7 +2,7 @@
  *  File Name                   : segregateevenoddnumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\segregateevenoddnumbers.h
  *  Created on                  : Nov 26, 2014 :: 12:40:07 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/segregate-even-and-odd-numbers/
 ****************************************************************************************************************************************************/

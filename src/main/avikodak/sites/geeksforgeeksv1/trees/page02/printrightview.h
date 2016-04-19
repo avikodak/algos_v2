@@ -2,7 +2,7 @@
  *  File Name                   : printrightview.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printrightview.h
  *  Created on                  : Nov 16, 2014 :: 12:11:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-right-view-binary-tree-2/
 ****************************************************************************************************************************************************/

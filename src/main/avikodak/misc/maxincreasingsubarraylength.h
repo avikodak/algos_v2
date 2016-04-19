@@ -2,7 +2,7 @@
  *  File Name                   : maxincreasingsubarraylength.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\maxincreasingsubarraylength.h
  *  Created on                  : Nov 28, 2014 :: 12:35:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

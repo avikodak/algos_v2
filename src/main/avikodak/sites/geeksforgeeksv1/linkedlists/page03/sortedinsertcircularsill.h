@@ -2,7 +2,7 @@
  *  File Name                   : sortedinsertcircularsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\sortedinsertcircularsill.h
  *  Created on                  : Oct 23, 2014 :: 5:20:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

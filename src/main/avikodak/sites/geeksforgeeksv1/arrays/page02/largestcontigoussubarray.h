@@ -2,7 +2,7 @@
  *  File Name                   : largestcontigoussubarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\largestcontigoussubarray.h
  *  Created on                  : Jan 20, 2015 :: 11:02:25 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/length-largest-subarray-contiguous-elements-set-1/
 ****************************************************************************************************************************************************/

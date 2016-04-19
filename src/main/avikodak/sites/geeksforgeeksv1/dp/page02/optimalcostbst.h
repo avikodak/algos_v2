@@ -2,7 +2,7 @@
  *  File Name                   : optimalcostbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\optimalcostbst.h
  *  Created on                  : Jan 12, 2015 :: 4:46:32 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-24-optimal-binary-search-tree/
 ****************************************************************************************************************************************************/

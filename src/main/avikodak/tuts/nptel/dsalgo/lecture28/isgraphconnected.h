@@ -2,7 +2,7 @@
  *  File Name                   : isgraphconnected.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture28\isgraphconnected.h
  *  Created on                  : Dec 5, 2014 :: 11:30:13 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

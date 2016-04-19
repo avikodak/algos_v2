@@ -2,7 +2,7 @@
  *  File Name                   : holes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\holes.h
  *  Created on                  : Feb 3, 2015 :: 12:36:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/HOLES
 ****************************************************************************************************************************************************/

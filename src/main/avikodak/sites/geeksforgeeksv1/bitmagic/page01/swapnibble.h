@@ -2,7 +2,7 @@
  *  File Name                   : swapnibble.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\swapnibble.h
  *  Created on                  : Jan 9, 2015 :: 5:14:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : insertionheapon.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture21\insertionheapon.h
  *  Created on                  : Dec 1, 2014 :: 10:15:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

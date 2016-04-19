@@ -2,7 +2,7 @@
  *  File Name                   : specificlevelorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\specificlevelorder.h
  *  Created on                  : Jan 22, 2015 :: 7:44:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/perfect-binary-tree-specific-level-order-traversal/
  ****************************************************************************************************************************************************/

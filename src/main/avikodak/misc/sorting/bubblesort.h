@@ -2,7 +2,7 @@
  *  File Name                   : bubblesort.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\sorting\bubblesort.h
  *  Created on                  : Dec 11, 2014 :: 1:01:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

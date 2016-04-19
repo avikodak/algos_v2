@@ -2,7 +2,7 @@
  *  File Name                   : bucketsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\bucketsort.h
  *  Created on                  : Dec 2, 2014 :: 12:19:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

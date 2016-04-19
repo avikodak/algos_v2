@@ -2,7 +2,7 @@
  *  File Name                   : commonds.h
  *  File Location               : \algos_v2\src\lib\ds\commonds.h
  *  Created on                  : Oct 9, 2014 :: 12:38:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

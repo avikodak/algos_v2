@@ -2,7 +2,7 @@
  *  File Name                   : verticalsumtree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\verticalsumtree.h
  *  Created on                  : Oct 23, 2014 :: 6:13:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/vertical-sum-in-a-given-binary-tree/
 ****************************************************************************************************************************************************/

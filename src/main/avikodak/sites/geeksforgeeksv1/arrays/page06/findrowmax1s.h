@@ -2,7 +2,7 @@
  *  File Name                   : findrowmax1s.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\findrowmax1s.h
  *  Created on                  : Dec 1, 2014 :: 3:45:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

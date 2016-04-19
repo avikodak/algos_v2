@@ -2,7 +2,7 @@
  *  File Name                   : football.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\football.h
  *  Created on                  : Feb 28, 2015 :: 1:11:19 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/96/A
 ****************************************************************************************************************************************************/

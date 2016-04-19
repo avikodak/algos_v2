@@ -2,7 +2,7 @@
  *  File Name                   : deletetree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\deletetree.h
  *  Created on                  : Oct 12, 2014 :: 7:06:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : PARTIALLY TESTED // SHOULD CHECK VIA PTRS
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-delete-a-tree/
 ****************************************************************************************************************************************************/

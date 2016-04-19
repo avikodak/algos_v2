@@ -2,7 +2,7 @@
  *  File Name                   : dacmaxsubarraysum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\dacmaxsubarraysum.h
  *  Created on                  : Dec 25, 2014 :: 12:20:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : mergetwosortedsills.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\mergetwosortedsills.h
  *  Created on                  : Oct 23, 2014 :: 10:16:30 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

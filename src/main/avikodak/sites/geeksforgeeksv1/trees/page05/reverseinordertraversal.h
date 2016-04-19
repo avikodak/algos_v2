@@ -2,7 +2,7 @@
  *  File Name                   : reverseinordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\reverseinordertraversal.h
  *  Created on                  : Nov 11, 2014 :: 5:35:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : insertintosortedsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\insertintosortedsill.h
  *  Created on                  : Oct 15, 2014 :: 12:23:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

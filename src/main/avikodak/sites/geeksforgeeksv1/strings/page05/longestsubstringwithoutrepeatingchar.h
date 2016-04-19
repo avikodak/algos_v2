@@ -2,7 +2,7 @@
  *  File Name                   : longestsubstringwithoutrepeatingchar.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\longestsubstringwithoutrepeatingchar.h
  *  Created on                  : Jan 16, 2015 :: 9:05:23 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/length-of-the-longest-substring-without-repeating-characters/
 ****************************************************************************************************************************************************/

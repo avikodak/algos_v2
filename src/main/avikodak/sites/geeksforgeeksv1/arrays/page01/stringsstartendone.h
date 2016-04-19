@@ -2,7 +2,7 @@
  *  File Name                   : stringsstartendone.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\stringsstartendone.h
  *  Created on                  : Jan 5, 2015 :: 1:55:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-binary-string-count-number-substrings-start-end-1/
  ****************************************************************************************************************************************************/

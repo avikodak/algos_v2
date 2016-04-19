@@ -2,7 +2,7 @@
  *  File Name                   : powxypowyx.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\powxypowyx.h
  *  Created on                  : Dec 22, 2014 :: 10:03:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

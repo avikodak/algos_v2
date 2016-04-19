@@ -2,7 +2,7 @@
  *  File Name                   : isnumberpalindrome.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\isnumberpalindrome.h
  *  Created on                  : Dec 3, 2014 :: 11:08:37 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

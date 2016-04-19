@@ -2,7 +2,7 @@
  *  File Name                   : remiss.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\remiss.h
  *  Created on                  : Feb 9, 2015 :: 9:59:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/REMISS
 ****************************************************************************************************************************************************/

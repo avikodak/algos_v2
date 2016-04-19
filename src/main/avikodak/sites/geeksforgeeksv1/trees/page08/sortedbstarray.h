@@ -2,7 +2,7 @@
  *  File Name                   : sortedbstarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\sortedbstarray.h
  *  Created on                  : Oct 20, 2014 :: 3:14:48 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sorted-order-printing-of-an-array-that-represents-a-bst/
 ****************************************************************************************************************************************************/

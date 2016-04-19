@@ -2,7 +2,7 @@
  *  File Name                   : longestpathdag.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\longestpathdag.h
  *  Created on                  : Jan 22, 2015 :: 7:14:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

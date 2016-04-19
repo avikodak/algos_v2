@@ -2,7 +2,7 @@
  *  File Name                   : findconflictingappointments.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\findconflictingappointments.h
  *  Created on                  : Jan 22, 2015 :: 9:05:31 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

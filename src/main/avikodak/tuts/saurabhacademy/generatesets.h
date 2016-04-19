@@ -2,7 +2,7 @@
  *  File Name                   : generatesets.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\generatesets.h
  *  Created on                  : Oct 29, 2014 :: 9:25:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : minnoofplatforms.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\minnoofplatforms.h
  *  Created on                  : Jan 6, 2015 :: 2:13:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

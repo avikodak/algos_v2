@@ -2,7 +2,7 @@
  *  File Name                   : searchinalmostsortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\searchinalmostsortedarray.h
  *  Created on                  : Jan 6, 2015 :: 10:20:47 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/search-almost-sorted-array/
 ****************************************************************************************************************************************************/

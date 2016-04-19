@@ -2,7 +2,7 @@
  *  File Name                   : gemstones.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\strings\gemstones.h
  *  Created on                  : Feb 13, 2015 :: 9:17:08 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

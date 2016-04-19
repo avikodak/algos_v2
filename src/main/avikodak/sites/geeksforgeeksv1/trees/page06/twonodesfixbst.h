@@ -2,7 +2,7 @@
  *  File Name                   : twonodesfixbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\twonodesfixbst.h
  *  Created on                  : Nov 13, 2014 :: 10:24:20 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

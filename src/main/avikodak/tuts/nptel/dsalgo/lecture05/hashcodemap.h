@@ -2,7 +2,7 @@
  *  File Name                   : hashcodemap.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture05\hashcodemap.h
  *  Created on                  : Nov 17, 2014 :: 7:34:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

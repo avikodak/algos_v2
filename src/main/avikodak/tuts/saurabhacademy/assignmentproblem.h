@@ -2,7 +2,7 @@
  *  File Name                   : assignmentproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\assignmentproblem.h
  *  Created on                  : Dec 18, 2014 :: 8:19:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

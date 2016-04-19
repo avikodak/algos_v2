@@ -2,7 +2,7 @@
  *  File Name                   : tripletfrombstforvalue.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\tripletfrombstforvalue.h
  *  Created on                  : Nov 13, 2014 :: 7:47:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : heightparentarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\heightparentarray.h
  *  Created on                  : Jan 24, 2015 :: 9:40:18 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

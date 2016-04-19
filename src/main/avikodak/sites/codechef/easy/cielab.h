@@ -2,7 +2,7 @@
  *  File Name                   : cielab.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\cielab.h
  *  Created on                  : Feb 9, 2015 :: 9:02:37 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/CIELAB
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : sumtrian.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\sumtrian.h
  *  Created on                  : Feb 5, 2015 :: 10:33:39 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/SUMTRIAN
  ****************************************************************************************************************************************************/

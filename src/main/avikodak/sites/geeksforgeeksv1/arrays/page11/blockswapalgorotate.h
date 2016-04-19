@@ -2,7 +2,7 @@
  *  File Name                   : blockswapalgorotate.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\blockswapalgorotate.h
  *  Created on                  : Nov 25, 2014 :: 7:09:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/block-swap-algorithm-for-array-rotation/
  ****************************************************************************************************************************************************/

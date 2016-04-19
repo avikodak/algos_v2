@@ -2,7 +2,7 @@
  *  File Name                   : differencebetweenindexes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\differencebetweenindexes.h
  *  Created on                  : Dec 1, 2014 :: 11:14:19 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
 ****************************************************************************************************************************************************/

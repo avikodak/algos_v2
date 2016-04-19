@@ -2,7 +2,7 @@
  *  File Name                   : maximumrepeatingnumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\maximumrepeatingnumber.h
  *  Created on                  : Dec 22, 2014 :: 11:12:57 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-the-maximum-repeating-number-in-ok-time/
  ****************************************************************************************************************************************************/

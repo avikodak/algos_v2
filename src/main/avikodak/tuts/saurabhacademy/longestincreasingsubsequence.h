@@ -2,7 +2,7 @@
  *  File Name                   : longestincreasingsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\longestincreasingsubsequence.h
  *  Created on                  : Oct 29, 2014 :: 4:11:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

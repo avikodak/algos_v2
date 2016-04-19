@@ -2,7 +2,7 @@
  *  File Name                   : pairsfordifference.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\pairsfordifference.h
  *  Created on                  : Dec 22, 2014 :: 8:16:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-pairs-difference-equal-k/
  ****************************************************************************************************************************************************/

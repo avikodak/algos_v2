@@ -2,7 +2,7 @@
  *  File Name                   : deletesill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deletesill.h
  *  Created on                  : Oct 12, 2014 :: 5:58:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

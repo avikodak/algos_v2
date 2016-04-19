@@ -2,7 +2,7 @@
  *  File Name                   : minimumvaluebst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\minimumvaluebst.h
  *  Created on                  : Oct 14, 2014 :: 1:10:30 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-minimum-element-in-a-binary-search-tree/
 ****************************************************************************************************************************************************/

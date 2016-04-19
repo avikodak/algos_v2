@@ -2,7 +2,7 @@
  *  File Name                   : lowestcommonancestorsbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\lowestcommonancestorsbst.h
  *  Created on                  : Oct 14, 2014 :: 11:36:49 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/
 ****************************************************************************************************************************************************/

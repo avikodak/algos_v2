@@ -2,7 +2,7 @@
  *  File Name                   : acmicpcteam.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\acmicpcteam.h
  *  Created on                  : Feb 5, 2015 :: 9:06:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

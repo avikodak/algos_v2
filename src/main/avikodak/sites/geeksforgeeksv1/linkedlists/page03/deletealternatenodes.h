@@ -2,7 +2,7 @@
  *  File Name                   : deletealternatenodes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletealternatenodes.h
  *  Created on                  : Oct 21, 2014 :: 12:44:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

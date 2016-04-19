@@ -2,7 +2,7 @@
  *  File Name                   : arrangebignumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\arrangebignumber.h
  *  Created on                  : Jan 3, 2015 :: 11:55:38 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/given-an-array-of-numbers-arrange-the-numbers-to-form-the-biggest-number/
 ****************************************************************************************************************************************************/

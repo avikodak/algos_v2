@@ -2,7 +2,7 @@
  *  File Name                   : linkedlistds.h
  *  File Location               : \algos_v2\src\lib\ds\linkedlistds.h
  *  Created on                  : Oct 9, 2014 :: 12:36:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

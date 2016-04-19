@@ -2,7 +2,7 @@
  *  File Name                   : segregateevenoddnodes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\segregateevenoddnodes.h
  *  Created on                  : Oct 30, 2014 :: 10:58:43 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

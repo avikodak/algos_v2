@@ -2,7 +2,7 @@
  *  File Name                   : alternatingsplit.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\alternatingsplit.h
  *  Created on                  : Oct 21, 2014 :: 12:44:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

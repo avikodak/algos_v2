@@ -2,7 +2,7 @@
  *  File Name                   : gameofthrones.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\gameofthrones.h
  *  Created on                  : Feb 5, 2015 :: 8:48:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/game-of-thrones
 ****************************************************************************************************************************************************/

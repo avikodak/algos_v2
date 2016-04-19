@@ -2,7 +2,7 @@
  *  File Name                   : beautifulyear.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\beautifulyear.h
  *  Created on                  : Mar 1, 2015 :: 6:28:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/271/A
 ****************************************************************************************************************************************************/

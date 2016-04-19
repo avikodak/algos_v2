@@ -2,7 +2,7 @@
  *  File Name                   : removeelements.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\removeelements.h
  *  Created on                  : Jan 4, 2015 :: 8:12:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

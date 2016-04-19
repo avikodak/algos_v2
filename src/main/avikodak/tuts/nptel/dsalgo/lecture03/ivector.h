@@ -2,7 +2,7 @@
  *  File Name                   : ivector.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\ivector.h
  *  Created on                  : Oct 20, 2014 :: 2:08:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

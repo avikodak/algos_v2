@@ -2,7 +2,7 @@
  *  File Name                   : hs08test.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\hs08test.h
  *  Created on                  : Feb 3, 2015 :: 10:53:07 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/HS08TEST/
 ****************************************************************************************************************************************************/

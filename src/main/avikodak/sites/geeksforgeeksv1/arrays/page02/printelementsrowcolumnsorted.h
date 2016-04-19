@@ -2,7 +2,7 @@
  *  File Name                   : printelementsrowcolumnsorted.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\printelementsrowcolumnsorted.h
  *  Created on                  : Jan 5, 2015 :: 11:21:49 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-elements-sorted-order-row-column-wise-sorted-matrix/
  ****************************************************************************************************************************************************/

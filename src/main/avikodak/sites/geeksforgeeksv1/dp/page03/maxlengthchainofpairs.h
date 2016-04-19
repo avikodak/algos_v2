@@ -2,7 +2,7 @@
  *  File Name                   : maxlengthchainofpairs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\maxlengthchainofpairs.h
  *  Created on                  : Dec 15, 2014 :: 11:43:32 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-20-maximum-length-chain-of-pairs/
 ****************************************************************************************************************************************************/

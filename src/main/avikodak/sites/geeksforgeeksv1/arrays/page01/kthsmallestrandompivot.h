@@ -2,7 +2,7 @@
  *  File Name                   : kthsmallestrandompivot.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\kthsmallestrandompivot.h
  *  Created on                  : Jan 5, 2015 :: 10:40:47 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
 ****************************************************************************************************************************************************/

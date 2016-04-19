@@ -2,7 +2,7 @@
  *  File Name                   : predecessor.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\predecessor.h
  *  Created on                  : Nov 18, 2014 :: 8:40:33 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

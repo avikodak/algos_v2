@@ -2,7 +2,7 @@
  *  File Name                   : classifyedges.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture29\classifyedges.h
  *  Created on                  : Dec 5, 2014 :: 12:03:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

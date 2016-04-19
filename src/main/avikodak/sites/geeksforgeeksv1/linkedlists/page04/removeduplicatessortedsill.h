@@ -2,7 +2,7 @@
  *  File Name                   : removeduplicatessortedsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\removeduplicatessortedsill.h
  *  Created on                  : Oct 17, 2014 :: 1:08:55 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : heapify.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture20\heapify.h
  *  Created on                  : Nov 26, 2014 :: 1:39:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : balancedbstfromsortedvector.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture08\balancedbstfromsortedvector.h
  *  Created on                  : Nov 18, 2014 :: 7:39:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

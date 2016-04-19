@@ -2,7 +2,7 @@
  *  File Name                   : transformbsttosumtree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\transformbsttosumtree.h
  *  Created on                  : Nov 16, 2014 :: 8:58:25 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

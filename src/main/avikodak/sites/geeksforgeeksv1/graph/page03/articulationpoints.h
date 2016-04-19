@@ -2,7 +2,7 @@
  *  File Name                   : articulationpoints.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\articulationpoints.h
  *  Created on                  : Dec 26, 2014 :: 5:46:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

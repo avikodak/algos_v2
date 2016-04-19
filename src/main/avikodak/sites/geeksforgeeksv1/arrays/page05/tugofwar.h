@@ -2,7 +2,7 @@
  *  File Name                   : tugofwar.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\tugofwar.h
  *  Created on                  : Dec 25, 2014 :: 12:37:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

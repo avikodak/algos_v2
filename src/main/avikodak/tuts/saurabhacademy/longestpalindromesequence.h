@@ -2,7 +2,7 @@
  *  File Name                   : longestpalindromesequence.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\longestpalindromesequence.h
  *  Created on                  : Dec 11, 2014 :: 12:29:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

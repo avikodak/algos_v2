@@ -2,7 +2,7 @@
  *  File Name                   : waytoolongwords.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\waytoolongwords.h
  *  Created on                  : Feb 2, 2015 :: 8:11:50 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/71/A
 ****************************************************************************************************************************************************/

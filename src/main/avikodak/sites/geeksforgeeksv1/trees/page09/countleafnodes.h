@@ -2,7 +2,7 @@
  *  File Name                   : countleafnodes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\countleafnodes.h
  *  Created on                  : Oct 15, 2014 :: 12:25:08 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-to-get-count-of-leaf-nodes-in-a-binary-tree/
  ****************************************************************************************************************************************************/

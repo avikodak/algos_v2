@@ -2,7 +2,7 @@
  *  File Name                   : pangrams.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\strings\pangrams.h
  *  Created on                  : Feb 12, 2015 :: 8:51:55 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

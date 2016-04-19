@@ -2,7 +2,7 @@
  *  File Name                   : kthsortedmatrix.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\kthsortedmatrix.h
  *  Created on                  : Dec 22, 2014 :: 8:00:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
  ****************************************************************************************************************************************************/

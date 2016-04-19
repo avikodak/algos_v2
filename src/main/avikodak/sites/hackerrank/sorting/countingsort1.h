@@ -2,7 +2,7 @@
  *  File Name                   : countingsort1.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\countingsort1.h
  *  Created on                  : Jan 30, 2015 :: 9:03:56 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/countingsort1
  ****************************************************************************************************************************************************/

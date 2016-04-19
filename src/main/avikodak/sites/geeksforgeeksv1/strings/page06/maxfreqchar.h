@@ -2,7 +2,7 @@
  *  File Name                   : maxfreqchar.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\maxfreqchar.h
  *  Created on                  : Dec 3, 2014 :: 11:24:44 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : countsetbits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\countsetbits.h
  *  Created on                  : Jan 9, 2015 :: 9:18:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/count-set-bits-in-an-integer/
 ****************************************************************************************************************************************************/

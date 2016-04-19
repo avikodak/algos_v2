@@ -2,7 +2,7 @@
  *  File Name                   : maximizingxor.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\maximizingxor.h
  *  Created on                  : Jan 30, 2015 :: 8:59:31 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/maximizing-xor
 ****************************************************************************************************************************************************/

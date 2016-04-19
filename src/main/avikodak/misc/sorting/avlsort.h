@@ -2,7 +2,7 @@
  *  File Name                   : avlsort.h
  *  File Location               : \algos_v2\src\main\avikodak\misc\sorting\avlsort.h
  *  Created on                  : Dec 11, 2014 :: 1:01:33 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : moveallzeros.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\moveallzeros.h
  *  Created on                  : Dec 22, 2014 :: 3:39:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/move-zeroes-end-array/
 ****************************************************************************************************************************************************/

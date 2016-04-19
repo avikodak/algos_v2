@@ -2,7 +2,7 @@
  *  File Name                   : condensestring.h
  *  File Location               : \algos_v2\src\main\avikodak\condensestring.h
  *  Created on                  : Feb 4, 2015 :: 12:58:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

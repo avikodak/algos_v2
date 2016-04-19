@@ -2,7 +2,7 @@
  *  File Name                   : printpermutation.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printpermutation.h
  *  Created on                  : Dec 3, 2014 :: 10:41:24 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

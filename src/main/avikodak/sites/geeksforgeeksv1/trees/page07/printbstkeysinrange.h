@@ -2,7 +2,7 @@
  *  File Name                   : printbstkeysinrange.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printbstkeysinrange.h
  *  Created on                  : Oct 20, 2014 :: 8:38:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-bst-keys-in-the-given-range/
  ****************************************************************************************************************************************************/

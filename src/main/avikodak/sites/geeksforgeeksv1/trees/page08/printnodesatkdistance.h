@@ -2,7 +2,7 @@
  *  File Name                   : printnodesatkdistance.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\printnodesatkdistance.h
  *  Created on                  : Oct 20, 2014 :: 1:56:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-nodes-at-k-distance-from-root/
 ****************************************************************************************************************************************************/

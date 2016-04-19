@@ -2,7 +2,7 @@
  *  File Name                   : printancestors.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\printancestors.h
  *  Created on                  : Oct 20, 2014 :: 8:38:49 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-ancestors-of-a-given-node-in-binary-tree/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : 01knapsack.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\01knapsack.h
  *  Created on                  : Oct 28, 2014 :: 7:32:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

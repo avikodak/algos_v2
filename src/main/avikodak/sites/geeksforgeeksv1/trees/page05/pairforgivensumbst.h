@@ -2,7 +2,7 @@
  *  File Name                   : pairforgivensumbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\pairforgivensumbst.h
  *  Created on                  : Nov 13, 2014 :: 6:57:00 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-a-pair-with-given-sum-in-bst/
  ****************************************************************************************************************************************************/

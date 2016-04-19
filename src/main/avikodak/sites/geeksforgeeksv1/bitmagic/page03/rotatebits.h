@@ -2,7 +2,7 @@
  *  File Name                   : rotatebits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\rotatebits.h
  *  Created on                  : Jan 9, 2015 :: 12:13:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/rotate-bits-of-an-integer/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : stringmatching.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page03\stringmatching.h
  *  Created on                  : Jan 16, 2015 :: 11:47:00 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

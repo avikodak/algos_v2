@@ -2,7 +2,7 @@
  *  File Name                   : creatematrixox.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\creatematrixox.h
  *  Created on                  : Jan 4, 2015 :: 6:16:55 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

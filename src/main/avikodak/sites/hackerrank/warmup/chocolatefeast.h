@@ -2,7 +2,7 @@
  *  File Name                   : chocolatefeast.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\chocolatefeast.h
  *  Created on                  : Feb 6, 2015 :: 9:06:34 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/chocolate-feast
 ****************************************************************************************************************************************************/

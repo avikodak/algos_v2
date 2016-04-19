@@ -2,7 +2,7 @@
  *  File Name                   : addgreatervaluesbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page03\addgreatervaluesbst.h
  *  Created on                  : Nov 14, 2014 :: 8:22:36 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/add-greater-values-every-node-given-bst/
 ****************************************************************************************************************************************************/

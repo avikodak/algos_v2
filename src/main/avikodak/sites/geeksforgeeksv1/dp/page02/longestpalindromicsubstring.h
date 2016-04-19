@@ -2,7 +2,7 @@
  *  File Name                   : longestpalindromicsubstring.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\longestpalindromicsubstring.h
  *  Created on                  : Dec 15, 2014 :: 3:23:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/longest-palindrome-substring-set-1/
  ****************************************************************************************************************************************************/

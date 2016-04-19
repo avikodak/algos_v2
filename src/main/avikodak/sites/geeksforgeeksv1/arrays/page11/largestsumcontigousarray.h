@@ -2,7 +2,7 @@
  *  File Name                   : largestsumcontigousarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\largestsumcontigousarray.h
  *  Created on                  : Oct 17, 2014 :: 6:26:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 ****************************************************************************************************************************************************/

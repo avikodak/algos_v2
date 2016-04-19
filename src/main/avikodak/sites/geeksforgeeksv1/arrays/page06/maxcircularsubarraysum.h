@@ -2,7 +2,7 @@
  *  File Name                   : maxcircularsubarraysum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\maxcircularsubarraysum.h
  *  Created on                  : Jan 3, 2015 :: 10:59:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-contiguous-circular-sum/
 ****************************************************************************************************************************************************/

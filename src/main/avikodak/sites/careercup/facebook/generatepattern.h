@@ -2,7 +2,7 @@
  *  File Name                   : generatepattern.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\careercup\facebook\generatepattern.h
  *  Created on                  : Jan 20, 2015 :: 3:03:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.careercup.com/question?id=5146925198213120
 ****************************************************************************************************************************************************/

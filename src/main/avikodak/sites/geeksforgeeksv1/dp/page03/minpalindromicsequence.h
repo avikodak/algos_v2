@@ -2,7 +2,7 @@
  *  File Name                   : minpalindromicsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\minpalindromicsequence.h
  *  Created on                  : Jan 14, 2015 :: 1:26:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-17-palindrome-partitioning/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : inplacetranpose.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\inplacetranpose.h
  *  Created on                  : Jan 3, 2015 :: 10:09:36 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

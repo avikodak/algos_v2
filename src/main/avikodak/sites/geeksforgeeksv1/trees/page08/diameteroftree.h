@@ -2,7 +2,7 @@
  *  File Name                   : diameteroftree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\diameteroftree.h
  *  Created on                  : Oct 17, 2014 :: 10:29:02 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/diameter-of-a-binary-tree/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : xorsillutils.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\xorsillutils.h
  *  Created on                  : Oct 16, 2014 :: 10:59:59 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

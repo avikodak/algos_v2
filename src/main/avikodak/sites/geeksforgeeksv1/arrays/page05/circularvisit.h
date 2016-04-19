@@ -2,7 +2,7 @@
  *  File Name                   : circularvisit.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\circularvisit.h
  *  Created on                  : Jan 3, 2015 :: 11:55:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

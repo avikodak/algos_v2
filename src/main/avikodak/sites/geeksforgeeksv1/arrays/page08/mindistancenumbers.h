@@ -2,7 +2,7 @@
  *  File Name                   : mindistancenumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\mindistancenumbers.h
  *  Created on                  : Dec 28, 2014 :: 11:39:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-minimum-distance-between-two-numbers/
 ****************************************************************************************************************************************************/

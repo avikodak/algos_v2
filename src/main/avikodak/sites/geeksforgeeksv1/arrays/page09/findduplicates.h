@@ -2,7 +2,7 @@
  *  File Name                   : findduplicates.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findduplicates.h
  *  Created on                  : Nov 26, 2014 :: 4:50:48 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
  ****************************************************************************************************************************************************/

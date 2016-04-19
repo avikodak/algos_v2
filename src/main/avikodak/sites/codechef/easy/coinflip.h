@@ -2,7 +2,7 @@
  *  File Name                   : coinflip.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\coinflip.h
  *  Created on                  : Feb 9, 2015 :: 9:01:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/CONFLIP
 ****************************************************************************************************************************************************/

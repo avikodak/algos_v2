@@ -2,7 +2,7 @@
  *  File Name                   : utopiantree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\utopiantree.h
  *  Created on                  : Jan 30, 2015 :: 8:58:10 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/utopian-tree
 ****************************************************************************************************************************************************/

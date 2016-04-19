@@ -2,7 +2,7 @@
  *  File Name                   : deletenodedll.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\deletenodedll.h
  *  Created on                  : Oct 19, 2014 :: 1:02:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

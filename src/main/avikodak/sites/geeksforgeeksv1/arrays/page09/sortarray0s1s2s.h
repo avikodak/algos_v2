@@ -2,7 +2,7 @@
  *  File Name                   : sortarray0s1s2s.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\sortarray0s1s2s.h
  *  Created on                  : Nov 26, 2014 :: 12:55:15 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/
  ****************************************************************************************************************************************************/

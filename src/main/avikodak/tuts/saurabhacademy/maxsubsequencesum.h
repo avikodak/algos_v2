@@ -2,7 +2,7 @@
  *  File Name                   : maxsubsequencesum.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\maxsubsequencesum.h
  *  Created on                  : Dec 19, 2014 :: 12:16:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : almostsorted.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\almostsorted.h
  *  Created on                  : Feb 13, 2015 :: 1:34:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

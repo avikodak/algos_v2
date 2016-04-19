@@ -2,7 +2,7 @@
  *  File Name                   : longestevenlengthsubstringleftright.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\longestevenlengthsubstringleftright.h
  *  Created on                  : Jan 13, 2015 :: 9:06:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

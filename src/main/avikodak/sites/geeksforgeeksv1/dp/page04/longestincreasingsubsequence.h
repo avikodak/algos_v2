@@ -2,7 +2,7 @@
  *  File Name                   : longestincreasingsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\longestincreasingsubsequence.h
  *  Created on                  : Dec 5, 2014 :: 6:18:35 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
  ****************************************************************************************************************************************************/

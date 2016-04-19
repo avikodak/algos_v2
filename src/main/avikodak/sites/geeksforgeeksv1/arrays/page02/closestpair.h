@@ -2,7 +2,7 @@
  *  File Name                   : closestpair.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\closestpair.h
  *  Created on                  : Jan 5, 2015 :: 11:29:13 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-two-sorted-arrays-number-x-find-pair-whose-sum-closest-x/
 ****************************************************************************************************************************************************/

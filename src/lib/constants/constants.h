@@ -2,7 +2,7 @@
  *  File Name                   : constants.h
  *  File Location               : \algos_v2\src\lib\constants\constants.h
  *  Created on                  : Oct 9, 2014 :: 12:39:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

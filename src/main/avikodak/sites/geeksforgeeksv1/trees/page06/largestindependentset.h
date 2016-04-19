@@ -2,7 +2,7 @@
  *  File Name                   : largestindependentset.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\largestindependentset.h
  *  Created on                  : Jan 16, 2015 :: 9:01:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

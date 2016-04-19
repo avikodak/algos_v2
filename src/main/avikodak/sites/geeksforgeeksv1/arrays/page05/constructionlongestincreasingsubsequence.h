@@ -2,7 +2,7 @@
  *  File Name                   : constructionlongestincreasingsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\constructionlongestincreasingsubsequence.h
  *  Created on                  : Jan 3, 2015 :: 11:55:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/construction-of-longest-monotonically-increasing-subsequence-n-log-n/
 ****************************************************************************************************************************************************/

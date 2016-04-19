@@ -2,7 +2,7 @@
  *  File Name                   : fctrl.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\spoj\fctrl.h
  *  Created on                  : Feb 3, 2015 :: 12:25:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.spoj.com/problems/FCTRL/
  ****************************************************************************************************************************************************/

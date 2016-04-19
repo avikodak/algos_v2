@@ -2,7 +2,7 @@
  *  File Name                   : printprefrompostinorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\printprefrompostinorder.h
  *  Created on                  : Nov 13, 2014 :: 11:55:39 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/print-postorder-from-given-inorder-and-preorder-traversals/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : fillingjars.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\fillingjars.h
  *  Created on                  : Feb 6, 2015 :: 8:52:09 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/filling-jars
 ****************************************************************************************************************************************************/

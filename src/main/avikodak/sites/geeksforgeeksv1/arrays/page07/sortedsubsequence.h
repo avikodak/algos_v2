@@ -2,7 +2,7 @@
  *  File Name                   : sortedsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\sortedsubsequence.h
  *  Created on                  : Nov 27, 2014 :: 7:59:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-a-sorted-subsequence-of-size-3-in-linear-time/
 ****************************************************************************************************************************************************/

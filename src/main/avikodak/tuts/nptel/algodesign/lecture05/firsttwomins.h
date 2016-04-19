@@ -2,7 +2,7 @@
  *  File Name                   : firsttwomins.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture05\firsttwomins.h
  *  Created on                  : Dec 12, 2014 :: 12:27:23 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

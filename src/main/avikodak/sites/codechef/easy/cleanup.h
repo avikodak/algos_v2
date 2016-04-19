@@ -2,7 +2,7 @@
  *  File Name                   : cleanup.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\cleanup.h
  *  Created on                  : Feb 9, 2015 :: 11:16:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/CLEANUP
  ****************************************************************************************************************************************************/

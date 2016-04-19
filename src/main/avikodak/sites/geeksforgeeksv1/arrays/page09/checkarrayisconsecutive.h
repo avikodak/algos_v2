@@ -2,7 +2,7 @@
  *  File Name                   : checkarrayisconsecutive.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\checkarrayisconsecutive.h
  *  Created on                  : Nov 26, 2014 :: 9:06:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-if-array-elements-are-consecutive/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : productarraypuzzle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\productarraypuzzle.h
  *  Created on                  : Nov 26, 2014 :: 1:12:53 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/a-product-array-puzzle/
 ****************************************************************************************************************************************************/

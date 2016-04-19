@@ -2,7 +2,7 @@
  *  File Name                   : getnthnodesill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodesill.h
  *  Created on                  : Oct 10, 2014 :: 3:41:31 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
  ****************************************************************************************************************************************************/

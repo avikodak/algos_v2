@@ -2,7 +2,7 @@
  *  File Name                   : findfirstcirculartour.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\findfirstcirculartour.h
  *  Created on                  : Jan 21, 2015 :: 9:29:44 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-a-tour-that-visits-all-stations/
 ****************************************************************************************************************************************************/

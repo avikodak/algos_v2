@@ -2,7 +2,7 @@
  *  File Name                   : smallestsubarraygreatersum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\smallestsubarraygreatersum.h
  *  Created on                  : Jan 5, 2015 :: 8:05:45 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

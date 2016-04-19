@@ -2,7 +2,7 @@
  *  File Name                   : stronglyconnectedcomponents.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\stronglyconnectedcomponents.h
  *  Created on                  : Dec 26, 2014 :: 9:55:45 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : lapin.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\lapin.h
  *  Created on                  : Feb 9, 2015 :: 10:06:30 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/LAPIN
 ****************************************************************************************************************************************************/

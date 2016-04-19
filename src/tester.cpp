@@ -2,7 +2,7 @@
  *  File Name                   : tester.cpp 
  *  File Location               : \algos_v2\src\tester.cpp
  *  Created on                  : Oct 9, 2014 :: 12:55:16 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

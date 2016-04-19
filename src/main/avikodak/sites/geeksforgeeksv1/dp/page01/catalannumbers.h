@@ -2,7 +2,7 @@
  *  File Name                   : catalannumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\catalannumbers.h
  *  Created on                  : Jan 13, 2015 :: 12:40:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/program-nth-catalan-number/
 ****************************************************************************************************************************************************/

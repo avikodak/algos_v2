@@ -2,7 +2,7 @@
  *  File Name                   : numberoddtimes.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\numberoddtimes.h
  *  Created on                  : Oct 17, 2014 :: 4:29:56 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-number-occurring-odd-number-of-times/
  ****************************************************************************************************************************************************/

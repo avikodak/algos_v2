@@ -2,7 +2,7 @@
  *  File Name                   : minhorsemovesinchess.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\careercup\microsoft\minhorsemovesinchess.h
  *  Created on                  : Dec 22, 2014 :: 10:22:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.careercup.com/question?id=5657515507318784
  ****************************************************************************************************************************************************/

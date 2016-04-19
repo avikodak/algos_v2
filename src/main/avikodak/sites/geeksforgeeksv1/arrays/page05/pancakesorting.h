@@ -2,7 +2,7 @@
  *  File Name                   : pancakesorting.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\pancakesorting.h
  *  Created on                  : Dec 25, 2014 :: 2:42:19 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

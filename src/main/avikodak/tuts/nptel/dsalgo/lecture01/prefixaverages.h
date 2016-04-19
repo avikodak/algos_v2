@@ -2,7 +2,7 @@
  *  File Name                   : prefixaverages.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture01\prefixaverages.h
  *  Created on                  : Oct 18, 2014 :: 12:38:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : printroottoleafpaths.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\printroottoleafpaths.h
  *  Created on                  : Oct 14, 2014 :: 11:36:28 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-a-binary-tree-print-out-all-of-its-root-to-leaf-paths-one-per-line/
  ****************************************************************************************************************************************************/

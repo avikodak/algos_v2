@@ -2,7 +2,7 @@
  *  File Name                   : positionofrightmostbit.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\positionofrightmostbit.h
  *  Created on                  : Jan 9, 2015 :: 9:10:33 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/position-of-rightmost-set-bit/
 ****************************************************************************************************************************************************/

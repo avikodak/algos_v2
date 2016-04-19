@@ -2,7 +2,7 @@
  *  File Name                   : servicelane.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\implementation\servicelane.h
  *  Created on                  : Feb 11, 2015 :: 10:25:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

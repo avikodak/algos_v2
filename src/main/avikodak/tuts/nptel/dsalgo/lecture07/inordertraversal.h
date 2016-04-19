@@ -2,7 +2,7 @@
  *  File Name                   : inordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture07\inordertraversal.h
  *  Created on                  : Nov 17, 2014 :: 11:15:04 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

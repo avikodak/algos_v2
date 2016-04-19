@@ -2,7 +2,7 @@
  *  File Name                   : unionintersectionsortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\unionintersectionsortedarray.h
  *  Created on                  : Nov 26, 2014 :: 1:30:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : maxsumpatharrays.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\maxsumpatharrays.h
  *  Created on                  : Jan 5, 2015 :: 11:38:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-sum-path-across-two-arrays/
 ****************************************************************************************************************************************************/

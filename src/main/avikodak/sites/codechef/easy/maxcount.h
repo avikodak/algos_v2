@@ -2,7 +2,7 @@
  *  File Name                   : maxcount.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\maxcount.h
  *  Created on                  : Feb 8, 2015 :: 7:07:41 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.codechef.com/problems/MAXCOUNT
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : fctrl2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\fctrl2.h
  *  Created on                  : Feb 3, 2015 :: 12:47:38 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

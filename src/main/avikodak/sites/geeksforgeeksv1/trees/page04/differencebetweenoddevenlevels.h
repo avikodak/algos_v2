@@ -2,7 +2,7 @@
  *  File Name                   : differencebetweenoddevenlevels.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\differencebetweenoddevenlevels.h
  *  Created on                  : Nov 14, 2014 :: 5:26:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/difference-between-sums-of-odd-and-even-levels/
 ****************************************************************************************************************************************************/

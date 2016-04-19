@@ -2,7 +2,7 @@
  *  File Name                   : divisibilityby3.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\divisibilityby3.h
  *  Created on                  : Jan 9, 2015 :: 9:06:44 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-an-efficient-method-to-check-if-a-number-is-multiple-of-3/
 ****************************************************************************************************************************************************/

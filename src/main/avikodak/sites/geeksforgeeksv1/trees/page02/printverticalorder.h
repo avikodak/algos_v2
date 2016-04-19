@@ -2,7 +2,7 @@
  *  File Name                   : printverticalorder.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printverticalorder.h
  *  Created on                  : Nov 15, 2014 :: 11:38:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
 ****************************************************************************************************************************************************/

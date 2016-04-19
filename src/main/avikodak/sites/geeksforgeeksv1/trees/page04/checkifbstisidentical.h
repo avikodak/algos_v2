@@ -2,7 +2,7 @@
  *  File Name                   : checkifbstisidentical.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\checkifbstisidentical.h
  *  Created on                  : Nov 14, 2014 :: 7:11:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

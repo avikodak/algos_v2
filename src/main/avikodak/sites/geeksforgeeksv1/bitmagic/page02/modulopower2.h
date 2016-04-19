@@ -2,7 +2,7 @@
  *  File Name                   : modulopower2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page02\modulopower2.h
  *  Created on                  : Jan 9, 2015 :: 10:43:50 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : addrev.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\spoj\addrev.h
  *  Created on                  : Feb 3, 2015 :: 11:01:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.spoj.com/problems/ADDREV/
 ****************************************************************************************************************************************************/

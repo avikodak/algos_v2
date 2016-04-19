@@ -2,7 +2,7 @@
  *  File Name                   : helpfulmaths.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\helpfulmaths.h
  *  Created on                  : Feb 28, 2015 :: 11:22:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/339/A
 ****************************************************************************************************************************************************/

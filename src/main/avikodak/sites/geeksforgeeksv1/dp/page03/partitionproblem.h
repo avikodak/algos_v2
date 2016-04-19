@@ -2,7 +2,7 @@
  *  File Name                   : partitionproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\partitionproblem.h
  *  Created on                  : Jan 14, 2015 :: 2:28:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-18-partition-problem/
 ****************************************************************************************************************************************************/

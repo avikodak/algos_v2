@@ -2,7 +2,7 @@
  *  File Name                   : chainmatrixmultiplication.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\chainmatrixmultiplication.h
  *  Created on                  : Dec 11, 2014 :: 12:51:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : insertintoavltree.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture12\insertintoavltree.h
  *  Created on                  : Nov 18, 2014 :: 10:41:00 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

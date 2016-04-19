@@ -2,7 +2,7 @@
  *  File Name                   : fibonnacinumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\fibonnacinumbers.h
  *  Created on                  : Dec 9, 2014 :: 7:38:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
  ****************************************************************************************************************************************************/

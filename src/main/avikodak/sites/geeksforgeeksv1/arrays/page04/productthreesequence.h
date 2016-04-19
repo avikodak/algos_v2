@@ -2,7 +2,7 @@
  *  File Name                   : productthreesequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\productthreesequence.h
  *  Created on                  : Dec 22, 2014 :: 2:47:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/increasing-subsequence-of-length-three-with-maximum-product/
  ****************************************************************************************************************************************************/

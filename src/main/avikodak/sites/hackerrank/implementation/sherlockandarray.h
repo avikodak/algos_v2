@@ -2,7 +2,7 @@
  *  File Name                   : sherlockandarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\implementation\sherlockandarray.h
  *  Created on                  : Feb 10, 2015 :: 6:45:22 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/sherlock-and-array
 ****************************************************************************************************************************************************/

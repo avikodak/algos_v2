@@ -2,7 +2,7 @@
  *  File Name                   : flippingbits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\flippingbits.h
  *  Created on                  : Jan 30, 2015 :: 8:56:22 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/flipping-bits
 ****************************************************************************************************************************************************/

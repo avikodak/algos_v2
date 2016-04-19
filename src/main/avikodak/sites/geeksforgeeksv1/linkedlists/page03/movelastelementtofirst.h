@@ -2,7 +2,7 @@
  *  File Name                   : movelastelementtofirst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\movelastelementtofirst.h
  *  Created on                  : Oct 19, 2014 :: 1:01:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

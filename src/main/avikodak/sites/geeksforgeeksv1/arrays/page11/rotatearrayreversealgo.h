@@ -2,7 +2,7 @@
  *  File Name                   : rotatearrayreversealgo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\rotatearrayreversealgo.h
  *  Created on                  : Nov 25, 2014 :: 7:09:28 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/program-for-array-rotation-continued-reversal-algorithm/
 ****************************************************************************************************************************************************/

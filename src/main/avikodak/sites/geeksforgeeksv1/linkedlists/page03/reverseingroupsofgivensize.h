@@ -2,7 +2,7 @@
  *  File Name                   : reverseingroupsofgivensize.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\reverseingroupsofgivensize.h
  *  Created on                  : Oct 23, 2014 :: 5:24:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : sherlockgcd.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\sherlockgcd.h
  *  Created on                  : Feb 10, 2015 :: 10:19:28 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/sherlock-and-gcd
 ****************************************************************************************************************************************************/

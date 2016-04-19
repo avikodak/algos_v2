@@ -2,7 +2,7 @@
  *  File Name                   : largestsubarray0s1s.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\largestsubarray0s1s.h
  *  Created on                  : Dec 29, 2014 :: 4:21:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/largest-subarray-with-equal-number-of-0s-and-1s/
  ****************************************************************************************************************************************************/

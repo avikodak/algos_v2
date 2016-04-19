@@ -2,7 +2,7 @@
  *  File Name                   : identicalsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page03\identicalsill.h
  *  Created on                  : Oct 23, 2014 :: 9:27:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

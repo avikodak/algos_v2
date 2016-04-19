@@ -2,7 +2,7 @@
  *  File Name                   : maxofallsubarrayssizek.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\maxofallsubarrayssizek.h
  *  Created on                  : Dec 1, 2014 :: 11:50:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/maximum-of-all-subarrays-of-size-k/
 ****************************************************************************************************************************************************/

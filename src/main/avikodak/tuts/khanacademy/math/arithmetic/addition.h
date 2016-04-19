@@ -2,7 +2,7 @@
  *  File Name                   : addition.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\khanacademy\math\arithmetic\addition.h
  *  Created on                  : Oct 17, 2014 :: 2:57:35 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

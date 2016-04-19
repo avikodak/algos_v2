@@ -2,7 +2,7 @@
  *  File Name                   : mincostpath.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\mincostpath.h
  *  Created on                  : Dec 5, 2014 :: 12:41:46 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-6-min-cost-path/
  ****************************************************************************************************************************************************/

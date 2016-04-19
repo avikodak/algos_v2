@@ -2,7 +2,7 @@
  *  File Name                   : tricount.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\spoj\tricount.h
  *  Created on                  : Feb 3, 2015 :: 1:03:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.spoj.com/problems/TRICOUNT/
 ****************************************************************************************************************************************************/

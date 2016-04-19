@@ -2,7 +2,7 @@
  *  File Name                   : solvecryptarthimeticpuzzle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\solvecryptarthimeticpuzzle.h
  *  Created on                  : Jan 7, 2015 :: 8:12:56 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

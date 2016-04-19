@@ -2,7 +2,7 @@
  *  File Name                   : lowestancestorstree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\lowestancestorstree.h
  *  Created on                  : Nov 15, 2014 :: 7:08:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
  ****************************************************************************************************************************************************/

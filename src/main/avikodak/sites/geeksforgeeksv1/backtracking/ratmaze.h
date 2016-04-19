@@ -2,7 +2,7 @@
  *  File Name                   : ratmaze.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\ratmaze.h
  *  Created on                  : Dec 5, 2014 :: 12:35:23 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/backttracking-set-2-rat-in-a-maze/
 ****************************************************************************************************************************************************/

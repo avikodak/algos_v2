@@ -2,7 +2,7 @@
  *  File Name                   : circularsill.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture03\circularsill.h
  *  Created on                  : Oct 20, 2014 :: 2:07:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

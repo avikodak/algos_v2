@@ -2,7 +2,7 @@
  *  File Name                   : insertandsearchtrie.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\insertandsearchtrie.h
  *  Created on                  : Oct 24, 2014 :: 10:32:37 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

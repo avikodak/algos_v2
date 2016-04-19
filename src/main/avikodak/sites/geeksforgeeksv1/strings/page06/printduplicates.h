@@ -2,7 +2,7 @@
  *  File Name                   : printduplicates.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printduplicates.h
  *  Created on                  : Dec 3, 2014 :: 6:45:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

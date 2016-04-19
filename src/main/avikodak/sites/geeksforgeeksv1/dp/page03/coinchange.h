@@ -2,7 +2,7 @@
  *  File Name                   : coinchange.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\coinchange.h
  *  Created on                  : Jan 14, 2015 :: 8:53:41 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
  ****************************************************************************************************************************************************/

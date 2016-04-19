@@ -2,7 +2,7 @@
  *  File Name                   : maxsizesubmatrixones.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\maxsizesubmatrixones.h
  *  Created on                  : Dec 9, 2014 :: 7:39:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : verticalorderhashmap.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\verticalorderhashmap.h
  *  Created on                  : Nov 16, 2014 :: 8:40:06 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
 ****************************************************************************************************************************************************/

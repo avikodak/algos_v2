@@ -2,7 +2,7 @@
  *  File Name                   : longestlengthpalindromev2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\longestlengthpalindromev2.h
  *  Created on                  : Jan 16, 2015 :: 11:36:20 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

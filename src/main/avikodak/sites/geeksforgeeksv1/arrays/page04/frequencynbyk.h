@@ -2,7 +2,7 @@
  *  File Name                   : frequencynbyk.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\frequencynbyk.h
  *  Created on                  : Dec 24, 2014 :: 5:02:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
  ****************************************************************************************************************************************************/

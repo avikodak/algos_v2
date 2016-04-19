@@ -2,7 +2,7 @@
  *  File Name                   : alternatingpositivenegative.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\alternatingpositivenegative.h
  *  Created on                  : Jan 5, 2015 :: 11:24:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
  ****************************************************************************************************************************************************/

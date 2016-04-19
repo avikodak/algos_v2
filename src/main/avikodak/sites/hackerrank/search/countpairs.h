@@ -2,7 +2,7 @@
  *  File Name                   : countpairs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\search\countpairs.h
  *  Created on                  : Jan 30, 2015 :: 9:00:30 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/pairs
 ****************************************************************************************************************************************************/

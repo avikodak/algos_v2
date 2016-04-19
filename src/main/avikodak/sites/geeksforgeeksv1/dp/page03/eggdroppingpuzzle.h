@@ -2,7 +2,7 @@
  *  File Name                   : eggdroppingpuzzle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\eggdroppingpuzzle.h
  *  Created on                  : Dec 15, 2014 :: 11:41:26 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

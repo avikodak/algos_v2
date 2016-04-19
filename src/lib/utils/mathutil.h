@@ -2,7 +2,7 @@
  *  File Name                   : mathutil.h
  *  File Location               : \algos_v2\src\lib\utils\mathutil.h
  *  Created on                  : Oct 9, 2014 :: 12:39:05 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

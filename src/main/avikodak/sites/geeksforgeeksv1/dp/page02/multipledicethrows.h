@@ -2,7 +2,7 @@
  *  File Name                   : multipledicethrows.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\multipledicethrows.h
  *  Created on                  : Jan 12, 2015 :: 7:03:38 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dice-throw-problem/
 ****************************************************************************************************************************************************/

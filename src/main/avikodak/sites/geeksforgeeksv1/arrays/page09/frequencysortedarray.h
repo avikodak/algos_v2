@@ -2,7 +2,7 @@
  *  File Name                   : frequencysortedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\frequencysortedarray.h
  *  Created on                  : Nov 26, 2014 :: 6:29:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-number-of-occurrences-in-a-sorted-array/
 ****************************************************************************************************************************************************/

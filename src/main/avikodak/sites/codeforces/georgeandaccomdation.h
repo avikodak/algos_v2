@@ -2,7 +2,7 @@
  *  File Name                   : georgeandaccomdation.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\georgeandaccomdation.h
  *  Created on                  : Mar 1, 2015 :: 6:49:32 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/467/A
 ****************************************************************************************************************************************************/

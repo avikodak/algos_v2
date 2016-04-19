@@ -2,7 +2,7 @@
  *  File Name                   : closestpairs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\closestpairs.h
  *  Created on                  : Feb 12, 2015 :: 4:41:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : maxsumtwoleaves.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\maxsumtwoleaves.h
  *  Created on                  : Jan 24, 2015 :: 10:30:04 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-maximum-path-sum-two-leaves-binary-tree/
 ****************************************************************************************************************************************************/

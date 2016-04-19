@@ -2,7 +2,7 @@
  *  File Name                   : longestbitonicsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\longestbitonicsubsequence.h
  *  Created on                  : Nov 28, 2014 :: 12:00:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-15-longest-bitonic-subsequence/
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : topologicalsort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\topologicalsort.h
  *  Created on                  : Dec 15, 2014 :: 6:54:52 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

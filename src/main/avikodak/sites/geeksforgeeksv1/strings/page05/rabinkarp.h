@@ -2,7 +2,7 @@
  *  File Name                   : rabinkarp.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\rabinkarp.h
  *  Created on                  : Jan 8, 2015 :: 6:26:44 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

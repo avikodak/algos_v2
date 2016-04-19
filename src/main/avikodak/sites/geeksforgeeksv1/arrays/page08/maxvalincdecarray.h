@@ -2,7 +2,7 @@
  *  File Name                   : maxvalincdecarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maxvalincdecarray.h
  *  Created on                  : Nov 28, 2014 :: 10:21:54 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-the-maximum-element-in-an-array-which-is-first-increasing-and-then-decreasing/
 ****************************************************************************************************************************************************/

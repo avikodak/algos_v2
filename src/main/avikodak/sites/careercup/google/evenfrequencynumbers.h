@@ -2,7 +2,7 @@
  *  File Name                   : evenfrequencynumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\careercup\google\evenfrequencynumbers.h
  *  Created on                  : Nov 26, 2014 :: 12:22:22 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

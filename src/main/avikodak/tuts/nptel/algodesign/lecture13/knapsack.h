@@ -2,7 +2,7 @@
  *  File Name                   : knapsack.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture13\knapsack.h
  *  Created on                  : Dec 17, 2014 :: 9:11:23 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

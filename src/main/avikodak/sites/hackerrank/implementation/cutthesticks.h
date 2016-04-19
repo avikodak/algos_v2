@@ -2,7 +2,7 @@
  *  File Name                   : cutthesticks.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\implementation\cutthesticks.h
  *  Created on                  : Feb 11, 2015 :: 11:50:19 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

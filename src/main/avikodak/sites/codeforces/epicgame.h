@@ -2,7 +2,7 @@
  *  File Name                   : epicgame.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\epicgame.h
  *  Created on                  : Mar 1, 2015 :: 9:50:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/119/A
  ****************************************************************************************************************************************************/

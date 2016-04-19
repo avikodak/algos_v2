@@ -2,7 +2,7 @@
  *  File Name                   : dillutil.h
  *  File Location               : \algos_v2\src\lib\utils\dillutil.h
  *  Created on                  : Oct 9, 2014 :: 12:36:51 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

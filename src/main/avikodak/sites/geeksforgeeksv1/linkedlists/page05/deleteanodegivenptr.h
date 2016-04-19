@@ -2,7 +2,7 @@
  *  File Name                   : deleteanodegivenptr.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\deleteanodegivenptr.h
  *  Created on                  : Oct 11, 2014 :: 10:54:09 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/
 ****************************************************************************************************************************************************/

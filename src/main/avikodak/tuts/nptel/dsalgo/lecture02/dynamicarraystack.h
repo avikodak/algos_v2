@@ -2,7 +2,7 @@
  *  File Name                   : dynamicarraystack.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\dynamicarraystack.h
  *  Created on                  : Oct 19, 2014 :: 8:17:55 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

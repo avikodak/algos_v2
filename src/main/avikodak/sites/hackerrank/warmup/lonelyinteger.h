@@ -2,7 +2,7 @@
  *  File Name                   : lonelyinteger.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\lonelyinteger.h
  *  Created on                  : Jan 30, 2015 :: 8:54:06 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/lonely-integer
 ****************************************************************************************************************************************************/

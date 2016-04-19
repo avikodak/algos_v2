@@ -2,7 +2,7 @@
  *  File Name                   : findsmallestmissingnumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findsmallestmissingnumber.h
  *  Created on                  : Nov 26, 2014 :: 6:27:58 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-first-missing-number/
 ****************************************************************************************************************************************************/

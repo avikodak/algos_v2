@@ -2,7 +2,7 @@
  *  File Name                   : cooling.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\cooling.h
  *  Created on                  : Feb 8, 2015 :: 8:46:05 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/COOLING
 ****************************************************************************************************************************************************/

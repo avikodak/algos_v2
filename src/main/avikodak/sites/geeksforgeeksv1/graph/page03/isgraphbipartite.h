@@ -2,7 +2,7 @@
  *  File Name                   : isgraphbipartite.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\isgraphbipartite.h
  *  Created on                  : Dec 15, 2014 :: 6:55:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

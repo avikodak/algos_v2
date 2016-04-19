@@ -2,7 +2,7 @@
  *  File Name                   : printlistitemsforword.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page05\printlistitemsforword.h
  *  Created on                  : Dec 4, 2014 :: 9:38:25 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

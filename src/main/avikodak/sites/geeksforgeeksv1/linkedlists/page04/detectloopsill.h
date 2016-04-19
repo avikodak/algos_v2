@@ -2,7 +2,7 @@
  *  File Name                   : detectloopsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\detectloopsill.h
  *  Created on                  : Oct 14, 2014 :: 12:13:04 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

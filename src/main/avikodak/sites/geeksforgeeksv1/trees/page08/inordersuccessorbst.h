@@ -2,7 +2,7 @@
  *  File Name                   : inordersuccessorbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inordersuccessorbst.h
  *  Created on                  : Oct 20, 2014 :: 3:24:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

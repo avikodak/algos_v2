@@ -2,7 +2,7 @@
  *  File Name                   : countpathstopleftbottomright.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\countpathstopleftbottomright.h
  *  Created on                  : Jan 12, 2015 :: 11:44:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
 ****************************************************************************************************************************************************/

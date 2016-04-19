@@ -2,7 +2,7 @@
  *  File Name                   : hq9plus.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\hq9plus.h
  *  Created on                  : Feb 28, 2015 :: 8:31:25 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/133/A
 ****************************************************************************************************************************************************/

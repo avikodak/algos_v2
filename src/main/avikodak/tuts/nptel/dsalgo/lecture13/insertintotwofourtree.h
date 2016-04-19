@@ -2,7 +2,7 @@
  *  File Name                   : insertintotwofourtree.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture13\insertintotwofourtree.h
  *  Created on                  : Nov 19, 2014 :: 11:46:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

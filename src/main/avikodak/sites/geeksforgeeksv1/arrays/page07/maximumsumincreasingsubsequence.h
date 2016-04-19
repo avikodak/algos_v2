@@ -2,7 +2,7 @@
  *  File Name                   : maximumsumincreasingsubsequence.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumsumincreasingsubsequence.h
  *  Created on                  : Nov 27, 2014 :: 7:56:46 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : graphcoluring.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\graphcoluring.h
  *  Created on                  : Jan 7, 2015 :: 8:04:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/backttracking-set-5-m-coloring-problem/
 ****************************************************************************************************************************************************/

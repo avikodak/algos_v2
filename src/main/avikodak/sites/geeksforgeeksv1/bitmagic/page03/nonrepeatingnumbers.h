@@ -2,7 +2,7 @@
  *  File Name                   : nonrepeatingnumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\nonrepeatingnumbers.h
  *  Created on                  : Jan 9, 2015 :: 9:43:24 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : comm3.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\comm3.h
  *  Created on                  : Feb 9, 2015 :: 8:24:38 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/COMM3
 ****************************************************************************************************************************************************/

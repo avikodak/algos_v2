@@ -2,7 +2,7 @@
  *  File Name                   : checkiftreeissumtree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\checkiftreeissumtree.h
  *  Created on                  : Oct 21, 2014 :: 10:33:41 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-sumtree/
  ****************************************************************************************************************************************************/

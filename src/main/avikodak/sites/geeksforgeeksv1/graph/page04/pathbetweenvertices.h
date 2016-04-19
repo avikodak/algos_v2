@@ -2,7 +2,7 @@
  *  File Name                   : pathbetweenvertices.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\pathbetweenvertices.h
  *  Created on                  : Dec 15, 2014 :: 6:25:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-if-there-is-a-path-between-two-vertices-in-a-given-graph/
 ****************************************************************************************************************************************************/

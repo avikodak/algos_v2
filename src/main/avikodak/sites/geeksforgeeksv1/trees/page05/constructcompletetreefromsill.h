@@ -2,7 +2,7 @@
  *  File Name                   : constructcompletetreefromsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\constructcompletetreefromsill.h
  *  Created on                  : Nov 13, 2014 :: 1:05:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-linked-list-representation-of-complete-tree-convert-it-to-linked-representation/
 ****************************************************************************************************************************************************/

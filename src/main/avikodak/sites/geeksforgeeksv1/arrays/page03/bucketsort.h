@@ -2,7 +2,7 @@
  *  File Name                   : bucketsort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\bucketsort.h
  *  Created on                  : Dec 22, 2014 :: 3:40:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/bucket-sort-2/
 ****************************************************************************************************************************************************/

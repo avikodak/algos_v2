@@ -2,7 +2,7 @@
  *  File Name                   : isgraphacyclic.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\isgraphacyclic.h
  *  Created on                  : Dec 4, 2014 :: 11:50:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

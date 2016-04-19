@@ -2,7 +2,7 @@
  *  File Name                   : subsetsum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\subsetsum.h
  *  Created on                  : Jan 7, 2015 :: 8:03:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/backttracking-set-4-subset-sum/
  ****************************************************************************************************************************************************/

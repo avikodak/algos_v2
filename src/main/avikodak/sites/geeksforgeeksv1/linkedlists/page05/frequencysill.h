@@ -2,7 +2,7 @@
  *  File Name                   : frequencysill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\frequencysill.h
  *  Created on                  : Oct 12, 2014 :: 6:36:50 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-function-that-counts-the-number-of-times-a-given-int-occurs-in-a-linked-list/
 ****************************************************************************************************************************************************/

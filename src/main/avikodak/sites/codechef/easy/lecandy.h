@@ -2,7 +2,7 @@
  *  File Name                   : lecandy.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\lecandy.h
  *  Created on                  : Feb 9, 2015 :: 12:40:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.codechef.com/problems/LECANDY/
 ****************************************************************************************************************************************************/

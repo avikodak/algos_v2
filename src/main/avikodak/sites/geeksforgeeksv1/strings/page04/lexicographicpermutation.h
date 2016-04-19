@@ -2,7 +2,7 @@
  *  File Name                   : lexicographicpermutation.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\lexicographicpermutation.h
  *  Created on                  : Jan 20, 2015 :: 5:47:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/lexicographic-permutations-of-string/
 ****************************************************************************************************************************************************/

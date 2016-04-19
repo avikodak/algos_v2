@@ -2,7 +2,7 @@
  *  File Name                   : nutsblotsproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\nutsblotsproblem.h
  *  Created on                  : Jan 5, 2015 :: 10:26:12 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/nuts-bolts-problem-lock-key-problem/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : convertredblacktreetotwofourtree.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture14\convertredblacktreetotwofourtree.h
  *  Created on                  : Nov 20, 2014 :: 12:44:01 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

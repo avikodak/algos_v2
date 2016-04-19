@@ -2,7 +2,7 @@
  *  File Name                   : sortbyfrequencyavltree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\sortbyfrequencyavltree.h
  *  Created on                  : Dec 22, 2014 :: 9:06:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sort-elements-by-frequency-set-2/
  ****************************************************************************************************************************************************/

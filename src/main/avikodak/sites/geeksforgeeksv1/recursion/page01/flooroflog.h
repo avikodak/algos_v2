@@ -2,7 +2,7 @@
  *  File Name                   : flooroflog.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\flooroflog.h
  *  Created on                  : Oct 14, 2014 :: 1:01:08 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

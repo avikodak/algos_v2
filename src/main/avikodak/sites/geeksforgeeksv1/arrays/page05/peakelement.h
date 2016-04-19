@@ -2,7 +2,7 @@
  *  File Name                   : peakelement.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\peakelement.h
  *  Created on                  : Jan 18, 2015 :: 6:00:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
 ****************************************************************************************************************************************************/

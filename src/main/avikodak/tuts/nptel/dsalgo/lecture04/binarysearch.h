@@ -2,7 +2,7 @@
  *  File Name                   : binarysearch.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture04\binarysearch.h
  *  Created on                  : Oct 22, 2014 :: 12:40:53 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

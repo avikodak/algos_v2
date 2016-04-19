@@ -2,7 +2,7 @@
  *  File Name                   : deletenodesgreatervalue.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\deletenodesgreatervalue.h
  *  Created on                  : Oct 30, 2014 :: 10:38:46 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

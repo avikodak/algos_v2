@@ -2,7 +2,7 @@
  *  File Name                   : implementtwostacksarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\implementtwostacksarray.h
  *  Created on                  : Nov 27, 2014 :: 7:51:34 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

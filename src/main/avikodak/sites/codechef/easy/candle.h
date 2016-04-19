@@ -2,7 +2,7 @@
  *  File Name                   : candle.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\candle.h
  *  Created on                  : Feb 9, 2015 :: 3:54:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/CANDLE
  ****************************************************************************************************************************************************/

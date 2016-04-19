@@ -2,7 +2,7 @@
  *  File Name                   : bridgesingraph.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\bridgesingraph.h
  *  Created on                  : Dec 26, 2014 :: 5:49:35 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

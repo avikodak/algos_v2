@@ -2,7 +2,7 @@
  *  File Name                   : minimumNumberJumps.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\minimumNumberJumps.h
  *  Created on                  : Nov 28, 2014 :: 2:04:27 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/minimum-number-of-jumps-to-reach-end-of-a-given-array/
  ****************************************************************************************************************************************************/

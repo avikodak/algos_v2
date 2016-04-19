@@ -2,7 +2,7 @@
  *  File Name                   : runlengthencoding.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\runlengthencoding.h
  *  Created on                  : Dec 4, 2014 :: 6:36:08 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

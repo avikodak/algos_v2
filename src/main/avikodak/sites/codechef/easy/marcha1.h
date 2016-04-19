@@ -2,7 +2,7 @@
  *  File Name                   : marcha1.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codechef\easy\marcha1.h
  *  Created on                  : Feb 9, 2015 :: 10:47:42 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.codechef.com/problems/MARCHA1
  ****************************************************************************************************************************************************/

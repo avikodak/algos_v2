@@ -2,7 +2,7 @@
  *  File Name                   : leafclosesttoroot.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture11\leafclosesttoroot.h
  *  Created on                  : Nov 18, 2014 :: 5:28:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

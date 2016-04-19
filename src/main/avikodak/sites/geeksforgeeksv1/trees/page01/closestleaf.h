@@ -2,7 +2,7 @@
  *  File Name                   : closestleaf.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\closestleaf.h
  *  Created on                  : Jan 23, 2015 :: 8:49:43 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-closest-leaf-binary-tree/
 ****************************************************************************************************************************************************/

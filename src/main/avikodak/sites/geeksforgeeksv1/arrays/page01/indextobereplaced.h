@@ -2,7 +2,7 @@
  *  File Name                   : indextobereplaced.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\indextobereplaced.h
  *  Created on                  : Jan 21, 2015 :: 5:28:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-index-0-replaced-1-get-longest-continuous-sequence-1s-binary-array/
  ****************************************************************************************************************************************************/

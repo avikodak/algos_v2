@@ -2,7 +2,7 @@
  *  File Name                   : gbfs.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\gbfs.h
  *  Created on                  : Dec 15, 2014 :: 6:08:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/breadth-first-traversal-for-a-graph/
  ****************************************************************************************************************************************************/

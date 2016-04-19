@@ -2,7 +2,7 @@
  *  File Name                   : inorderwithoutrecursionandstack.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\inorderwithoutrecursionandstack.h
  *  Created on                  : Oct 17, 2014 :: 10:30:22 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
 ****************************************************************************************************************************************************/

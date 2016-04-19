@@ -2,7 +2,7 @@
  *  File Name                   : intersectionofsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page04\intersectionofsill.h
  *  Created on                  : Oct 15, 2014 :: 12:24:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

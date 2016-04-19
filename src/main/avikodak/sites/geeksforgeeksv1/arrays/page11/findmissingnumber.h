@@ -2,7 +2,7 @@
  *  File Name                   : findmissingnumber.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\findmissingnumber.h
  *  Created on                  : Oct 17, 2014 :: 6:26:42 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-missing-number/
  ****************************************************************************************************************************************************/

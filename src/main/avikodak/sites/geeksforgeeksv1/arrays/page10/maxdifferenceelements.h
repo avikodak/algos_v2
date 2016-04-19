@@ -2,7 +2,7 @@
  *  File Name                   : maxdifferenceelements.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxdifferenceelements.h
  *  Created on                  : Dec 30, 2014 :: 7:26:03 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-difference-between-two-elements/
  ****************************************************************************************************************************************************/

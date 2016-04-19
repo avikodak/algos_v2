@@ -2,7 +2,7 @@
  *  File Name                   : postoredertraversaliterative.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\postoredertraversaliterative.h
  *  Created on                  : Nov 2, 2014 :: 5:20:55 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/
 ****************************************************************************************************************************************************/

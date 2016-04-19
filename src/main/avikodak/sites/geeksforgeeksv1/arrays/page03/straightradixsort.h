@@ -2,7 +2,7 @@
  *  File Name                   : straightradixsort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page03\straightradixsort.h
  *  Created on                  : Dec 22, 2014 :: 3:40:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

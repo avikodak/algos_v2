@@ -2,7 +2,7 @@
  *  File Name                   : heightiterative.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\heightiterative.h
  *  Created on                  : Nov 13, 2014 :: 11:38:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/iterative-method-to-find-height-of-binary-tree/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : connectedcomponents.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture26\connectedcomponents.h
  *  Created on                  : Dec 5, 2014 :: 12:13:03 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

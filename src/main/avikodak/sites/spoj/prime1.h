@@ -2,7 +2,7 @@
  *  File Name                   : prime1.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\spoj\prime1.h
  *  Created on                  : Feb 3, 2015 :: 12:38:15 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : fourelementsforsumon2logn.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\fourelementsforsumon2logn.h
  *  Created on                  : Nov 30, 2014 :: 10:11:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/
 ****************************************************************************************************************************************************/

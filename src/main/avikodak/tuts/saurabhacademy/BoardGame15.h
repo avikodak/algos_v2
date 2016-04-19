@@ -2,7 +2,7 @@
  *  File Name                   : BoardGame15.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\BoardGame15.h
  *  Created on                  : Dec 18, 2014 :: 6:35:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

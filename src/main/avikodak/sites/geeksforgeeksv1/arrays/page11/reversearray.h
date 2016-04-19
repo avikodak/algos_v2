@@ -2,7 +2,7 @@
  *  File Name                   : reversearray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\reversearray.h
  *  Created on                  : Nov 25, 2014 :: 6:38:54 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/
 ****************************************************************************************************************************************************/

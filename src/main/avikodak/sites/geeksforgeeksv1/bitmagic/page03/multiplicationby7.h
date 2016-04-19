@@ -2,7 +2,7 @@
  *  File Name                   : multiplicationby7.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\multiplicationby7.h
  *  Created on                  : Jan 8, 2015 :: 7:13:10 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/efficient-way-to-multiply-with-7/
 ****************************************************************************************************************************************************/

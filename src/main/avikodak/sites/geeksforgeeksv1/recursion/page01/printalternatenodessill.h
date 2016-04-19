@@ -2,7 +2,7 @@
  *  File Name                   : printalternatenodessill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\recursion\page01\printalternatenodessill.h
  *  Created on                  : Oct 13, 2014 :: 11:53:56 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

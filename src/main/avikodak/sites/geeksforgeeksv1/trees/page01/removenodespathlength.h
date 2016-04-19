@@ -2,7 +2,7 @@
  *  File Name                   : removenodespathlength.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\removenodespathlength.h
  *  Created on                  : Jan 23, 2015 :: 8:49:57 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/remove-nodes-root-leaf-paths-length-k/
 ****************************************************************************************************************************************************/

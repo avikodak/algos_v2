@@ -2,7 +2,7 @@
  *  File Name                   : quicksort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\algodesign\lecture06\quicksort.h
  *  Created on                  : Dec 12, 2014 :: 2:24:15 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

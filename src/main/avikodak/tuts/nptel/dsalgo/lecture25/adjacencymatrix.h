@@ -2,7 +2,7 @@
  *  File Name                   : adjacencymatrix.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture25\adjacencymatrix.h
  *  Created on                  : Dec 5, 2014 :: 9:26:06 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

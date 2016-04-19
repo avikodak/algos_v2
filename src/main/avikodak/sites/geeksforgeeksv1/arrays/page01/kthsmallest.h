@@ -2,7 +2,7 @@
  *  File Name                   : kthsmallest.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page01\kthsmallest.h
  *  Created on                  : Jan 5, 2015 :: 8:53:08 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/
  ****************************************************************************************************************************************************/

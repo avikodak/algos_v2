@@ -2,7 +2,7 @@
  *  File Name                   : maxproductcutting.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\maxproductcutting.h
  *  Created on                  : Jan 12, 2015 :: 8:25:17 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-36-cut-a-rope-to-maximize-product/
 ****************************************************************************************************************************************************/

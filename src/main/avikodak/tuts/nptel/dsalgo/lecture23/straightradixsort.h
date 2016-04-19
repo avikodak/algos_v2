@@ -2,7 +2,7 @@
  *  File Name                   : straightradixsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture23\straightradixsort.h
  *  Created on                  : Dec 2, 2014 :: 12:24:49 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

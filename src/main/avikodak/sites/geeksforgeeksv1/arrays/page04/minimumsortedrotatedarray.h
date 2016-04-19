@@ -2,7 +2,7 @@
  *  File Name                   : minimumsortedrotatedarray.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page04\minimumsortedrotatedarray.h
  *  Created on                  : Dec 22, 2014 :: 6:05:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
 ****************************************************************************************************************************************************/

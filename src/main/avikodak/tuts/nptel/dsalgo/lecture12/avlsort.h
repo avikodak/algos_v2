@@ -2,7 +2,7 @@
  *  File Name                   : avlsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture12\avlsort.h
  *  Created on                  : Nov 19, 2014 :: 2:11:29 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

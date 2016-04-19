@@ -2,7 +2,7 @@
  *  File Name                   : converttospecialbst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\converttospecialbst.h
  *  Created on                  : Nov 13, 2014 :: 1:43:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/convert-bst-to-a-binary-tree/
  ****************************************************************************************************************************************************/

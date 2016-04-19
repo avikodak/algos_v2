@@ -2,7 +2,7 @@
  *  File Name                   : countinversions.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\countinversions.h
  *  Created on                  : Nov 27, 2014 :: 6:30:16 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/counting-inversions/
 ****************************************************************************************************************************************************/

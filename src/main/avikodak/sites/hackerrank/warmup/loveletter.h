@@ -2,7 +2,7 @@
  *  File Name                   : loveletter.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\loveletter.h
  *  Created on                  : Jan 30, 2015 :: 9:19:14 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/the-love-letter-mystery
 ****************************************************************************************************************************************************/

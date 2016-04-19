@@ -2,7 +2,7 @@
  *  File Name                   : minlenunsortedtosorted.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\minlenunsortedtosorted.h
  *  Created on                  : Nov 27, 2014 :: 5:10:49 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

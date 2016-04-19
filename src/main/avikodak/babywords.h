@@ -2,7 +2,7 @@
  *  File Name                   : babywords.h
  *  File Location               : \algos_v2\src\main\avikodak\babywords.h
  *  Created on                  : Feb 4, 2015 :: 12:56:40 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

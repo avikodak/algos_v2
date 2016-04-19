@@ -2,7 +2,7 @@
  *  File Name                   : iterativepreordertraversal.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page05\iterativepreordertraversal.h
  *  Created on                  : Nov 2, 2014 :: 5:09:08 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/iterative-preorder-traversal/
 ****************************************************************************************************************************************************/

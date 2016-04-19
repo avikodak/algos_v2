@@ -2,7 +2,7 @@
  *  File Name                   : chainmatrixmultipliation.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page03\chainmatrixmultipliation.h
  *  Created on                  : Dec 11, 2014 :: 12:49:52 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/
 ****************************************************************************************************************************************************/

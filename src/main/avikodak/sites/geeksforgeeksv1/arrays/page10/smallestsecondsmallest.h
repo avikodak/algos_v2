@@ -2,7 +2,7 @@
  *  File Name                   : smallestsecondsmallest.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page09\smallestsecondsmallest.h
  *  Created on                  : Nov 25, 2014 :: 11:12:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/to-find-smallest-and-second-smallest-element-in-an-array/
  ****************************************************************************************************************************************************/

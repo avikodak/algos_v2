@@ -2,7 +2,7 @@
  *  File Name                   : numberislands.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\numberislands.h
  *  Created on                  : Jan 11, 2015 :: 10:05:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

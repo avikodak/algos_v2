@@ -2,7 +2,7 @@
  *  File Name                   : inplacedlltobst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page02\inplacedlltobst.h
  *  Created on                  : Oct 31, 2014 :: 6:14:12 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

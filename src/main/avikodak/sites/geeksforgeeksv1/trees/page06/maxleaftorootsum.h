@@ -2,7 +2,7 @@
  *  File Name                   : maxleaftorootsum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\maxleaftorootsum.h
  *  Created on                  : Oct 31, 2014 :: 6:52:05 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-the-maximum-sum-path-in-a-binary-tree/
  ****************************************************************************************************************************************************/

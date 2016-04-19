@@ -2,7 +2,7 @@
  *  File Name                   : twofourtreeutil.h
  *  File Location               : \algos_v2\src\lib\utils\twofourtreeutil.h
  *  Created on                  : Oct 9, 2014 :: 12:37:59 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

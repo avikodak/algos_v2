@@ -2,7 +2,7 @@
  *  File Name                   : findifarrayissubset.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page08\findifarrayissubset.h
  *  Created on                  : Nov 26, 2014 :: 8:48:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-whether-an-array-is-subset-of-another-array-set-1/
  ****************************************************************************************************************************************************/

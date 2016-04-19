@@ -2,7 +2,7 @@
  *  File Name                   : printallnodesatkdistance.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page02\printallnodesatkdistance.h
  *  Created on                  : Nov 16, 2014 :: 9:10:07 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/print-nodes-distance-k-given-node-binary-tree/
 ****************************************************************************************************************************************************/

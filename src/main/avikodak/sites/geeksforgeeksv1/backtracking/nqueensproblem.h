@@ -2,7 +2,7 @@
  *  File Name                   : nqueensproblem.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\backtracking\nqueensproblem.h
  *  Created on                  : Jan 7, 2015 :: 6:59:03 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : mergesort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture22\mergesort.h
  *  Created on                  : Dec 1, 2014 :: 9:36:26 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

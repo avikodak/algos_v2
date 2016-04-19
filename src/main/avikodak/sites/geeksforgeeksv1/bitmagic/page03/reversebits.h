@@ -2,7 +2,7 @@
  *  File Name                   : reversebits.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page03\reversebits.h
  *  Created on                  : Jan 9, 2015 :: 10:13:15 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/
 ****************************************************************************************************************************************************/

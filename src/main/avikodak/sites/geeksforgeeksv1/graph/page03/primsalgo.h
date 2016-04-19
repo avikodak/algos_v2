@@ -2,7 +2,7 @@
  *  File Name                   : primsalgo.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page03\primsalgo.h
  *  Created on                  : Dec 26, 2014 :: 10:32:52 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : istreebst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\istreebst.h
  *  Created on                  : Oct 15, 2014 :: 12:25:15 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
  ****************************************************************************************************************************************************/

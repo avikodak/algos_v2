@@ -2,7 +2,7 @@
  *  File Name                   : quicksortinplace.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\sorting\quicksortinplace.h
  *  Created on                  : Feb 12, 2015 :: 2:47:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : serializedeserializetree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\serializedeserializetree.h
  *  Created on                  : Jan 22, 2015 :: 7:40:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/serialize-deserialize-binary-tree/
 ****************************************************************************************************************************************************/

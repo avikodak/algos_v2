@@ -2,7 +2,7 @@
  *  File Name                   : converttreetodllON2.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page04\converttreetodllON2.h
  *  Created on                  : Nov 13, 2014 :: 9:05:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/convert-a-given-binary-tree-to-doubly-linked-list-set-2/
 ****************************************************************************************************************************************************/

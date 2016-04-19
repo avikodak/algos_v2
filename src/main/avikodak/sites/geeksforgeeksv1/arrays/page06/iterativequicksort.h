@@ -2,7 +2,7 @@
  *  File Name                   : iterativequicksort.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\iterativequicksort.h
  *  Created on                  : Dec 25, 2014 :: 6:09:14 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/iterative-quick-sort/
 ****************************************************************************************************************************************************/

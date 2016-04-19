@@ -2,7 +2,7 @@
  *  File Name                   : fibonaccimodified.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\dp\fibonaccimodified.h
  *  Created on                  : Feb 14, 2015 :: 10:59:03 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : https://www.hackerrank.com/challenges/fibonacci-modified
 ****************************************************************************************************************************************************/

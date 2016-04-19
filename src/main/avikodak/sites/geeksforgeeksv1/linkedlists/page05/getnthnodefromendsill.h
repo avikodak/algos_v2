@@ -2,7 +2,7 @@
  *  File Name                   : getnthnodefromendsill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\getnthnodefromendsill.h
  *  Created on                  : Oct 12, 2014 :: 11:34:01 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : http://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
 ****************************************************************************************************************************************************/

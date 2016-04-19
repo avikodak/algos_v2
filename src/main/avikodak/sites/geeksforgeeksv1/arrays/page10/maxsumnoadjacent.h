@@ -2,7 +2,7 @@
  *  File Name                   : maxsumnoadjacent.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\maxsumnoadjacent.h
  *  Created on                  : Dec 28, 2014 :: 11:23:15 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/
 ****************************************************************************************************************************************************/

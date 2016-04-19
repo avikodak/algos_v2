@@ -2,7 +2,7 @@
  *  File Name                   : sortedarraybst.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\sortedarraybst.h
  *  Created on                  : Oct 23, 2014 :: 10:10:26 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/sorted-array-to-balanced-bst/
 ****************************************************************************************************************************************************/

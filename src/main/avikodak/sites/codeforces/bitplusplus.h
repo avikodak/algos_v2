@@ -2,7 +2,7 @@
  *  File Name                   : bitplusplus.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\codeforces\bitplusplus.h
  *  Created on                  : Feb 28, 2015 :: 7:28:16 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://codeforces.com/problemset/problem/282/A
 ****************************************************************************************************************************************************/

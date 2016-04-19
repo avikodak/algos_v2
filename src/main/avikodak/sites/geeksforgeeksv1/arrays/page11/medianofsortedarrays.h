@@ -2,7 +2,7 @@
  *  File Name                   : medianofsortedarrays.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\medianofsortedarrays.h
  *  Created on                  : Nov 25, 2014 :: 9:01:27 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/median-of-two-sorted-arrays/
  ****************************************************************************************************************************************************/

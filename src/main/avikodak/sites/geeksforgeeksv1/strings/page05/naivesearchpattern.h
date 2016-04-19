@@ -2,7 +2,7 @@
  *  File Name                   : naivesearchpattern.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\strings\page04\naivesearchpattern.h
  *  Created on                  : Dec 4, 2014 :: 7:03:09 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

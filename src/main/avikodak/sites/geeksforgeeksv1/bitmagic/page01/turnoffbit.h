@@ -2,7 +2,7 @@
  *  File Name                   : turnoffbit.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\bitmagic\page01\turnoffbit.h
  *  Created on                  : Jan 9, 2015 :: 1:45:20 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

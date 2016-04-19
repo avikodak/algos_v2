@@ -2,7 +2,7 @@
  *  File Name                   : printmiddlesill.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\linkedlists\page05\printmiddlesill.h
  *  Created on                  : Oct 11, 2014 :: 10:56:38 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
 ****************************************************************************************************************************************************/

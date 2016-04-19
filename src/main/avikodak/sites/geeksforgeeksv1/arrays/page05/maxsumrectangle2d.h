@@ -2,7 +2,7 @@
  *  File Name                   : maxsumrectangle2d.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\maxsumrectangle2d.h
  *  Created on                  : Jan 4, 2015 :: 1:36:57 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

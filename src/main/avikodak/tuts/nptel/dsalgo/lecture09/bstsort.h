@@ -2,7 +2,7 @@
  *  File Name                   : bstsort.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture09\bstsort.h
  *  Created on                  : Nov 18, 2014 :: 2:49:11 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

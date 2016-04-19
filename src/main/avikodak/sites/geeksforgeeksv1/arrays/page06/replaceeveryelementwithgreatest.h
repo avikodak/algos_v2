@@ -2,7 +2,7 @@
  *  File Name                   : replaceeveryelementwithgreatest.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page06\replaceeveryelementwithgreatest.h
  *  Created on                  : Nov 27, 2014 :: 8:00:16 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/replace-every-element-with-the-greatest-on-right-side/
  ****************************************************************************************************************************************************/

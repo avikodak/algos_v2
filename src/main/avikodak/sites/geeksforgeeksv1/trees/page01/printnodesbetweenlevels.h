@@ -2,7 +2,7 @@
  *  File Name                   : printnodesbetweenlevels.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page01\printnodesbetweenlevels.h
  *  Created on                  : Jan 22, 2015 :: 7:41:06 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/given-binary-tree-print-nodes-two-given-level-numbers/
 ****************************************************************************************************************************************************/

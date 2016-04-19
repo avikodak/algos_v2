@@ -2,7 +2,7 @@
  *  File Name                   : arraystack.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\nptel\dsalgo\lecture02\arraystack.h
  *  Created on                  : Oct 18, 2014 :: 1:15:59 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

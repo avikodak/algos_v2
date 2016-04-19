@@ -2,7 +2,7 @@
  *  File Name                   : roottoleafsum.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\roottoleafsum.h
  *  Created on                  : Oct 17, 2014 :: 1:45:45 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/
  ****************************************************************************************************************************************************/

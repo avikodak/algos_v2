@@ -2,7 +2,7 @@
  *  File Name                   : istreeheightbalanced.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page08\istreeheightbalanced.h
  *  Created on                  : Oct 17, 2014 :: 10:29:44 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/how-to-determine-if-a-binary-tree-is-balanced/
  ****************************************************************************************************************************************************/

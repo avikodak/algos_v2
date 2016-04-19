@@ -2,7 +2,7 @@
  *  File Name                   : sherlockandsquares.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\sherlockandsquares.h
  *  Created on                  : Feb 6, 2015 :: 11:02:48 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/sherlock-and-squares
  ****************************************************************************************************************************************************/

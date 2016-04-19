@@ -2,7 +2,7 @@
  *  File Name                   : shortestpathdirectedkedges.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page01\shortestpathdirectedkedges.h
  *  Created on                  : Jan 12, 2015 :: 10:46:37 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : printuniquerows.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\printuniquerows.h
  *  Created on                  : Dec 1, 2014 :: 4:08:29 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : coinchange.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\coinchange.h
  *  Created on                  : Oct 28, 2014 :: 7:27:02 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

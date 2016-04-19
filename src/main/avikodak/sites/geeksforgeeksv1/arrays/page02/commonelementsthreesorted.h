@@ -2,7 +2,7 @@
  *  File Name                   : commonelementsthreesorted.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\commonelementsthreesorted.h
  *  Created on                  : Jan 5, 2015 :: 11:23:46 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/O
 ****************************************************************************************************************************************************/

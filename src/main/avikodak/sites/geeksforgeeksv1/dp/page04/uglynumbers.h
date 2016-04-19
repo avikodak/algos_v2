@@ -2,7 +2,7 @@
  *  File Name                   : uglynumbers.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page04\uglynumbers.h
  *  Created on                  : Dec 5, 2014 :: 12:33:47 AM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/ugly-numbers/
 ****************************************************************************************************************************************************/

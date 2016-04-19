@@ -2,7 +2,7 @@
  *  File Name                   : manasaandstones.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\hackerrank\warmup\manasaandstones.h
  *  Created on                  : Feb 6, 2015 :: 6:46:18 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : https://www.hackerrank.com/challenges/manasa-and-stones
  ****************************************************************************************************************************************************/

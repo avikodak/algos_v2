@@ -2,7 +2,7 @@
  *  File Name                   : fibonnaciseries.h
  *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\fibonnaciseries.h
  *  Created on                  : Oct 18, 2014 :: 12:33:46 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/

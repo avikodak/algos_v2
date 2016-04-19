@@ -2,7 +2,7 @@
  *  File Name                   : twoelementsclosetozero.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page10\twoelementsclosetozero.h
  *  Created on                  : Nov 25, 2014 :: 6:38:30 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/two-elements-whose-sum-is-closest-to-zero/
 ****************************************************************************************************************************************************/

@@ -2,7 +2,7 @@
  *  File Name                   : insertintoavltree.h
  *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page07\insertintoavltree.h
  *  Created on                  : Nov 19, 2014 :: 1:52:21 PM
- *  Author                      : AVINASH
+ *  Author                      : avikodak
  *  Testing Status              : Tested
  *  URL                         : http://www.geeksforgeeks.org/avl-tree-set-1-insertion/
  ****************************************************************************************************************************************************/
