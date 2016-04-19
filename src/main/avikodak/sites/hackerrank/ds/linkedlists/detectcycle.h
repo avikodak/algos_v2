@@ -71,8 +71,8 @@ using namespace __gnu_cxx;
 #define DETECTCYCLE_H_
 
 /*struct Node{
-	int data;
-	struct Node *next;
+    int data;
+    struct Node *next;
 };*/
 
 //Tested

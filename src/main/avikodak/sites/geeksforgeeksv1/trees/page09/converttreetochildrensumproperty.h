@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: converttreetochildrensumproperty.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\converttreetochildrensumproperty.h
- *  Created on			: Oct 16, 2014 :: 1:48:16 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/convert-an-arbitrary-binary-tree-to-a-tree-that-holds-children-sum-property/
+ *  File Name                   : converttreetochildrensumproperty.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\converttreetochildrensumproperty.h
+ *  Created on                  : Oct 16, 2014 :: 1:48:16 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/convert-an-arbitrary-binary-tree-to-a-tree-that-holds-children-sum-property/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -58,18 +58,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef CONVERTTREETOCHILDRENSUMPROPERTY_H_
 #define CONVERTTREETOCHILDRENSUMPROPERTY_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 void incrementValueInSubTree(itNode *ptr,int value) {
@@ -110,5 +110,5 @@ int convertTreeToChildrenSumProperty(itNode *ptr) {
 #endif /* CONVERTTREETOCHILDRENSUMPROPERTY_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

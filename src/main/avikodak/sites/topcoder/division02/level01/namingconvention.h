@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: namingconvention.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\namingconvention.h
- *  Created on			: Mar 28, 2015 :: 11:46:16 PM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13521
+ *  File Name                   : namingconvention.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\namingconvention.h
+ *  Created on                  : Mar 28, 2015 :: 11:46:16 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13521
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

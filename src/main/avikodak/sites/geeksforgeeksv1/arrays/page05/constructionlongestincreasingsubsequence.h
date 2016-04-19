@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructionlongestincreasingsubsequence.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\constructionlongestincreasingsubsequence.h
- *  Created on			: Jan 3, 2015 :: 11:55:12 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: http://www.geeksforgeeks.org/construction-of-longest-monotonically-increasing-subsequence-n-log-n/
+ *  File Name                   : constructionlongestincreasingsubsequence.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page05\constructionlongestincreasingsubsequence.h
+ *  Created on                  : Jan 3, 2015 :: 11:55:12 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : TODO
+ *  URL                         : http://www.geeksforgeeks.org/construction-of-longest-monotonically-increasing-subsequence-n-log-n/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,18 +60,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef CONSTRUCTIONLONGESTINCREASINGSUBSEQUENCE_H_
 #define CONSTRUCTIONLONGESTINCREASINGSUBSEQUENCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
+/*                                                                 O(NLOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 vector<int> constructionOfLongestIncreasingSubsequence(vector<int> userInput) {
     vector<int> incSubSequence;
@@ -97,5 +97,5 @@ vector<int> constructionOfLongestIncreasingSubsequence(vector<int> userInput) {
 #endif /* CONSTRUCTIONLONGESTINCREASINGSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

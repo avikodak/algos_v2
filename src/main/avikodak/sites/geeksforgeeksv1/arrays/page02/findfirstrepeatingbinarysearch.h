@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: findfirstrepeatingbinarysearch.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeatingbinarysearch.h
- *  Created on			: Jan 5, 2015 :: 11:24:23 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
+ *  File Name                   : findfirstrepeatingbinarysearch.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page02\findfirstrepeatingbinarysearch.h
+ *  Created on                  : Jan 5, 2015 :: 11:24:23 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,18 +60,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef FINDFIRSTREPEATINGBINARYSEARCH_H_
 #define FINDFIRSTREPEATINGBINARYSEARCH_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
+/*                                                                 O(NLOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int endIndex) {
@@ -91,7 +91,7 @@ int frvLowerBoundBinarySearch(vector<int> userInput,int key,int startIndex,int e
     } else if(userInput[middleIndex] > key) {
         return frvLowerBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
     } else {
-    }	return frvLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+    }    return frvLowerBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
 //Tested
@@ -112,7 +112,7 @@ int frvHigherBoundBinarySearch(vector<int> userInput,int key,int startIndex,int 
     } else if(userInput[middleIndex] > key) {
         return frvHigherBoundBinarySearch(userInput,key,startIndex,middleIndex-1);
     } else {
-    }	return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
+    }    return frvHigherBoundBinarySearch(userInput,key,middleIndex+1,endIndex);
 }
 
 //Tested
@@ -134,5 +134,5 @@ int findFirstRepeatingValueBinarySearch(vector<int> userInput) {
 #endif /* FINDFIRSTREPEATINGBINARYSEARCH_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

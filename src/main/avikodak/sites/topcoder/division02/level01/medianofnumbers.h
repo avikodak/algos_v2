@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: medianofnumbers.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\medianofnumbers.h
- *  Created on			: Mar 28, 2015 :: 11:41:09 PM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6528
+ *  File Name                   : medianofnumbers.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\medianofnumbers.h
+ *  Created on                  : Mar 28, 2015 :: 11:41:09 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=6528
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

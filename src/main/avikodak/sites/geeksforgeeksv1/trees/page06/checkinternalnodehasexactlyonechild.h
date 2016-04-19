@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: checkinternalnodehasexactlyonechild.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\checkinternalnodehasexactlyonechild.h
- *  Created on			: Nov 1, 2014 :: 6:58:16 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/check-if-each-internal-node-of-a-bst-has-exactly-one-child/
+ *  File Name                   : checkinternalnodehasexactlyonechild.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\checkinternalnodehasexactlyonechild.h
+ *  Created on                  : Nov 1, 2014 :: 6:58:16 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/check-if-each-internal-node-of-a-bst-has-exactly-one-child/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -58,18 +58,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef CHECKINTERNALNODEHASEXACTLYONECHILD_H_
 #define CHECKINTERNALNODEHASEXACTLYONECHILD_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/*                                                                     O(N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 bool checkWhetherEachNodeHasExactlyOneChildON(vector<int> userInput) {
@@ -104,7 +104,7 @@ bool checkWhetherEachNodeHasExactlySuccessor(vector<int> userInput) {
     return true;
 }
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 bool checkWhetherEachNodeHasExactlyOneChild(vector<int> userInput) {
@@ -131,5 +131,5 @@ bool checkWhetherEachNodeHasExactlyOneChild(vector<int> userInput) {
 #endif /* CHECKINTERNALNODEHASEXACTLYONECHILD_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

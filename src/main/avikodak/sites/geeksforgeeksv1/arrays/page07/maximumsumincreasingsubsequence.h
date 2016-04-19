@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: maximumsumincreasingsubsequence.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumsumincreasingsubsequence.h
- *  Created on			: Nov 27, 2014 :: 7:56:46 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
+ *  File Name                   : maximumsumincreasingsubsequence.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page07\maximumsumincreasingsubsequence.h
+ *  Created on                  : Nov 27, 2014 :: 7:56:46 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -58,18 +58,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef MAXIMUMSUMINCREASINGSUBSEQUENCE_H_
 #define MAXIMUMSUMINCREASINGSUBSEQUENCE_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 int maximumSumIncreasingSubsequence(vector<int> userInput) {
@@ -94,5 +94,5 @@ int maximumSumIncreasingSubsequence(vector<int> userInput) {
 #endif /* MAXIMUMSUMINCREASINGSUBSEQUENCE_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

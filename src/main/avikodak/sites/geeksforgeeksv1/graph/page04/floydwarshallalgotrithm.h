@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: floydwarshallalgotrithm.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\floydwarshallalgotrithm.h
- *  Created on			: Dec 26, 2014 :: 9:14:13 AM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/dynamic-programming-set-16-floyd-warshall-algorithm/
+ *  File Name                   : floydwarshallalgotrithm.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page04\floydwarshallalgotrithm.h
+ *  Created on                  : Dec 26, 2014 :: 9:14:13 AM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/dynamic-programming-set-16-floyd-warshall-algorithm/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,20 +60,20 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 #define GRAPH_EDGE_INFINITY 99999
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef FLOYDWARSHALLALGOTRITHM_H_
 #define FLOYDWARSHALLALGOTRITHM_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 int shortestDistanceFloydWarshall(vector<wEdge *> edgeList,unsigned int noOfVertices,int sourceVertex,int destinationVertex) {
@@ -106,5 +106,5 @@ int shortestDistanceFloydWarshall(vector<wEdge *> edgeList,unsigned int noOfVert
 #endif /* FLOYDWARSHALLALGOTRITHM_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

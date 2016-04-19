@@ -1,21 +1,21 @@
 Algebra
 ---------------------------------------------------
 Abstractness
-	
+    
 Rene descrates
-	- Built relationship between algebra and geometry
-	- 2d (updown and leftright)
-	- cartesian co-ordinates
+    - Built relationship between algebra and geometry
+    - 2d (updown and leftright)
+    - cartesian co-ordinates
 
 Order of operations
-	PEMDAS - Parenthesis , Exponents , Multiplication/Division , Addition/Subtraction
-	If at same level then perform operation from left to right
+    PEMDAS - Parenthesis , Exponents , Multiplication/Division , Addition/Subtraction
+    If at same level then perform operation from left to right
 
 pow(0,0) - undefined 
 
 Dimensional Analysis 
-	Units follow algebraic rules
-	
+    Units follow algebraic rules
+    
 Slope intercept form y = mx + c
 Point slope form y-b = m(x-a) slope=m and pass throught point (a,b)
 Standard form ax+by = c // All variables on one side and constants on other sides
@@ -31,17 +31,17 @@ Slope of perpendicular line is -1/m
 Slope of parallel line is m (Parallel lines slopes are equal)
 
 Distance between point and line
-	
+    
 Average rate of change = slope of line in the end points in interval
 
 System of equations and inequalities
 ====================================
 Solve equation by substitution,Graphing,Ellimination
 Consistent systems - atleast one solution
-Inconsistent system - No solution 	
-	Same slope different y-intercept
+Inconsistent system - No solution     
+    Same slope different y-intercept
 Dependent system -
-	same slope and same intercept
+    same slope and same intercept
 
 Multiplying and factoring expressions
 =====================================
@@ -56,29 +56,29 @@ Polynomial
 ===========
 Nonnegative exponents and integer
 Degree :
-	The highest exponent
+    The highest exponent
 Standard form : decreasing powers
 
 Discriment
 ==========
-	b2-4ac > 0 real roots
-	b2-4ac = 0 equal roots /only one root
-	b2-4ac < 0 complex roots 
+    b2-4ac > 0 real roots
+    b2-4ac = 0 equal roots /only one root
+    b2-4ac < 0 complex roots 
 
 Quadratic polynomial
 ====================
-	ax^2+bx+c
-	
+    ax^2+bx+c
+    
 Vertex form
-	y = A(X-B)^2 + C // Complete the full square
-	Vertex it (B,C) because the minimum value of the square is when the (X-B)^2 = 0
-	If the coefficient of the x square is negative then parabola is opening down else opening up
-	Vertex is the mid point of the zeros of the equation
-	Y = X^2 (Passes through origin and opens up)
-	Y = (X-H)^2 (Shifted the vertex in horizontal direction)
-	Y-K = X^2 (shifiting the vertex in vertical direction)
-	Y = -X^2 (Has origin as vertex and opens downwards)
-	
+    y = A(X-B)^2 + C // Complete the full square
+    Vertex it (B,C) because the minimum value of the square is when the (X-B)^2 = 0
+    If the coefficient of the x square is negative then parabola is opening down else opening up
+    Vertex is the mid point of the zeros of the equation
+    Y = X^2 (Passes through origin and opens up)
+    Y = (X-H)^2 (Shifted the vertex in horizontal direction)
+    Y-K = X^2 (shifiting the vertex in vertical direction)
+    Y = -X^2 (Has origin as vertex and opens downwards)
+    
 Exponents expression and equations
 ==================================
 a^-b = 1/(a^b)
@@ -88,41 +88,41 @@ a^-b = 1/(a^b)
 
 Direct Variation
 ================
-	y = kx
-		y varies directly with x then also
-		x varies directly with x
-	y = kx + c is neither a direct nor inverse variation
+    y = kx
+        y varies directly with x then also
+        x varies directly with x
+    y = kx + c is neither a direct nor inverse variation
 Inverse variation
 =================
-	y = k/x
-		y varies inversely with x then
-		x varies inversely with y
+    y = k/x
+        y varies inversely with x then
+        x varies inversely with y
 Joint variation
 ===============
-	Deals with more than two variables
-		A = l * b 
+    Deals with more than two variables
+        A = l * b 
 Exponential function
 ===================
-	y = c^x
+    y = c^x
 Functions
-	It is nothing but a black box which gives some output based on input
-	maps elements in domain to elements in range
-	(f/g)(x) = f(x)/g(x)
-	(f+g)(x) = f(x) + g(x)
-	(f*g)(x) = f(x) * g(x)
-	(f-g)(x) = f(x) - g(x)
+    It is nothing but a black box which gives some output based on input
+    maps elements in domain to elements in range
+    (f/g)(x) = f(x)/g(x)
+    (f+g)(x) = f(x) + g(x)
+    (f*g)(x) = f(x) * g(x)
+    (f-g)(x) = f(x) - g(x)
 Inverse of a function
 =====================
-	Inverse function takes back from value in range to domain
-	maps element from the range to domain
-	function is not invertible
-	It is a reflection on y = x	
+    Inverse function takes back from value in range to domain
+    maps element from the range to domain
+    function is not invertible
+    It is a reflection on y = x    
 Golden ratio
 ============
 x = 1 + 1/x - can be recursive called a/b = (a+b)/a
 x^2 = x + 1
 x^2 - x - 1 = 0
-	(1+sqrt(5))/2
+    (1+sqrt(5))/2
 Product of rational number is a rational numbers
 Sum of rational number is a rational number
 Product of rational and irrational number is a irrational number

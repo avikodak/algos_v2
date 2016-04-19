@@ -1,7 +1,7 @@
 Combinatorial Search
-	Backtrack search
-	Branch and bound
-	Dynamic Programming
+    Backtrack search
+    Branch and bound
+    Dynamic Programming
 
 To minimize the running time we can prune the search tree
 Branch and bound is one possible heuristic for pruning

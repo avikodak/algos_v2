@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: costofdancing.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\costofdancing.h
- *  Created on			: Mar 23, 2015 :: 12:50:06 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13195
+ *  File Name                   : costofdancing.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\costofdancing.h
+ *  Created on                  : Mar 23, 2015 :: 12:50:06 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13195
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

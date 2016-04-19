@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: getpairforgivensum.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\getpairforgivensum.h
- *  Created on			: Oct 10, 2014 :: 4:13:13 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
+ *  File Name                   : getpairforgivensum.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\arrays\page11\getpairforgivensum.h
+ *  Created on                  : Oct 10, 2014 :: 4:13:13 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/write-a-c-program-that-given-a-set-a-of-n-numbers-and-another-number-x-determines-whether-or-not-there-exist-two-elements-in-s-whose-sum-is-exactly-x/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -59,18 +59,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef GETPAIRFORGIVENSUM_H_
 #define GETPAIRFORGIVENSUM_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/*                                                                     O(N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 iPair *getPairForGivenSumON(vector<int> userInput,int sum) {
@@ -90,7 +90,7 @@ iPair *getPairForGivenSumON(vector<int> userInput,int sum) {
     return null;
 }
 /****************************************************************************************************************************************************/
-/* 																O(NLOGN) Algorithm 																    */
+/*                                                                 O(NLOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 iPair *getPairForGivenSum(vector<int> userInput,int sum) {
@@ -379,7 +379,7 @@ iPair *getPairForSumRebBlackTree(vector<int> userInput,int sum) {
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 iPair *getPairForGivenSumON2(vector<int> userInput,int sum) {
@@ -422,5 +422,5 @@ iPair *getPairForGivenSumBST(vector<int> userInput,int sum) {
 #endif /* GETPAIRFORGIVENSUM_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

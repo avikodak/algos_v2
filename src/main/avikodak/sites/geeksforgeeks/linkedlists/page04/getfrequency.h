@@ -84,7 +84,7 @@ unsigned int getFrequency(sillNode *head,int key) {
     if(head == null) {
         return 0;
     }
-    return	head->value == key?1+getFrequency(head->next,key):getFrequency(head->next,key);
+    return    head->value == key?1+getFrequency(head->next,key):getFrequency(head->next,key);
 }
 
 unsigned int itGetFrequency(sillNode *head,int key) {

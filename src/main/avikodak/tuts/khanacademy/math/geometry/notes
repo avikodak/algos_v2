@@ -1,53 +1,53 @@
 Geometry
 ========
 Ray
-	Starts from one points and goes on forever in one direction
+    Starts from one points and goes on forever in one direction
 Plane
-	It is defined by 3 non collinear points
+    It is defined by 3 non collinear points
 Coplanar points
-	If all points lie on same plane
+    If all points lie on same plane
 Circle
-	Set of points which are equidistant from a point in a 2d plane
-	Distance between center to any point on circle is called as radius
-	Tangent
-		A line which has only one common point with a circle
-	Secant
-		A line which has only two points in common with a circle
-	Chord
-		A line segment which connects two points on circle
-	Diameter
-		A chord which passes through center of circle
-	Arc 
-		A part of circle two points
+    Set of points which are equidistant from a point in a 2d plane
+    Distance between center to any point on circle is called as radius
+    Tangent
+        A line which has only one common point with a circle
+    Secant
+        A line which has only two points in common with a circle
+    Chord
+        A line segment which connects two points on circle
+    Diameter
+        A chord which passes through center of circle
+    Arc 
+        A part of circle two points
 Angles
-	How wide the intersection is
-	Measured in degrees and radians 
+    How wide the intersection is
+    Measured in degrees and radians 
 Adjacent angles
-	Angles which have a common arm
+    Angles which have a common arm
 Vertical angles
-	If two lines intersect the angles which are not adjacent to each other are vertical angles
+    If two lines intersect the angles which are not adjacent to each other are vertical angles
 Linear pair
-	Angle which are adjacent 
+    Angle which are adjacent 
 Angles in a polygons
-	(S-2)*180 for a 'S' sided polygon - Sum of the interior angles of a polygon
-	Sum of exterior angles in a polygon is 360
+    (S-2)*180 for a 'S' sided polygon - Sum of the interior angles of a polygon
+    Sum of exterior angles in a polygon is 360
 Supplementary
-	Sum of angles = 180
+    Sum of angles = 180
 Complementary
-	Sum of angles = 90
+    Sum of angles = 90
 Parallel lines
-	Lines which do not intersect
+    Lines which do not intersect
 Traversal
-	Line which intersect two lines
+    Line which intersect two lines
 Congruence
-	Geometrical figures which have same size and shape
-	Obtained by shifting flip rotate
-	Corresponding angles and sides are congruent
+    Geometrical figures which have same size and shape
+    Obtained by shifting flip rotate
+    Corresponding angles and sides are congruent
 Axiom
-	Self evident
-	Assumption
+    Self evident
+    Assumption
 SSS congruence
-	Two triangles and if corresponding sides are equal then the triangles are congruent
+    Two triangles and if corresponding sides are equal then the triangles are congruent
 SAS - congruence
 ASA - congruence
 AAS - congruence
@@ -55,42 +55,42 @@ AAS - congruence
 AAA similarity
 Similarity
 SSA != congruent nor similarity (Only if A is obtuse or right angle then SSA congruent postulate)
-	One figure is obtained from another by rotating shifting fliping dilate
-	All corresponding angles are congruent and sides are scaled up or down by a same scale factor
-	AA
-	SAS - ratio of corresponding sides are proportion and the angle between them is same 
-	SSS - ratio of corresponding sides are in proportion
+    One figure is obtained from another by rotating shifting fliping dilate
+    All corresponding angles are congruent and sides are scaled up or down by a same scale factor
+    AA
+    SAS - ratio of corresponding sides are proportion and the angle between them is same 
+    SSS - ratio of corresponding sides are in proportion
 Trigonometry
 
 Areas and perimeter
-	Diagonals divide the rectangle divide into 4 triangles of equal area
-	Area of equilateral triangle = sqrt(3)/4 * a^2
-	Herons Formulae = sqrt(s(s-a)(s-b)(s-c)) s = (a+b+c)/2
-	
+    Diagonals divide the rectangle divide into 4 triangles of equal area
+    Area of equilateral triangle = sqrt(3)/4 * a^2
+    Herons Formulae = sqrt(s(s-a)(s-b)(s-c)) s = (a+b+c)/2
+    
 Cirle
-	Angle subtended by an arc at center = 2 * angle subtended by same arc at the other side of arc
-	The tangent of the circle will make an angle of 90 with the linesegment joining the point where tangent meets the circle and to the center
+    Angle subtended by an arc at center = 2 * angle subtended by same arc at the other side of arc
+    The tangent of the circle will make an angle of 90 with the linesegment joining the point where tangent meets the circle and to the center
 
 Circumcenter
-	Circle formed by perpendicular bisector of the sides
-	Circumcenter of the right triangle = mid point of the hypotenuse
-	Three non collinear points define a unique triangle
-	Each unique triangle has a unique circumcenter
-	Every point on the perpendicular bisector of the linesegment is equidistant from the end points
-	Area of triangle = (abc)/4R R = circum radius
+    Circle formed by perpendicular bisector of the sides
+    Circumcenter of the right triangle = mid point of the hypotenuse
+    Three non collinear points define a unique triangle
+    Each unique triangle has a unique circumcenter
+    Every point on the perpendicular bisector of the linesegment is equidistant from the end points
+    Area of triangle = (abc)/4R R = circum radius
 
-Angle bisectors	
-	Any point on angular bisectors is equidistant from its arm
-	Area of triangle = 1/2 * inradius * perimeter 
+Angle bisectors    
+    Any point on angular bisectors is equidistant from its arm
+    Area of triangle = 1/2 * inradius * perimeter 
 
 Angle bisector theorem - Important
-	
+    
 Median
-	A line segment that joins the vertex of the triangle to the midpoint on the opposite side
-	All the three medians in a triangle meet at a point is called Centroid
-	Centroid divides the median in the ratio to 2:1
-	Medians divide the triangles into equal areas
-	Medial triangle (triangle formed by midpoints) divide the larger triangle into 4 triangles into equal areas
-	
-	
-	
+    A line segment that joins the vertex of the triangle to the midpoint on the opposite side
+    All the three medians in a triangle meet at a point is called Centroid
+    Centroid divides the median in the ratio to 2:1
+    Medians divide the triangles into equal areas
+    Medial triangle (triangle formed by midpoints) divide the larger triangle into 4 triangles into equal areas
+    
+    
+    

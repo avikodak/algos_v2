@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: thebeauty.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\thebeauty.h
- *  Created on			: Mar 27, 2015 :: 8:48:03 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=10233
+ *  File Name                   : thebeauty.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\thebeauty.h
+ *  Created on                  : Mar 27, 2015 :: 8:48:03 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=10233
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

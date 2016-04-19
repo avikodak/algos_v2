@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: kitayutamart2.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\kitayutamart2.h
- *  Created on			: Mar 28, 2015 :: 10:08:16 PM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13650
+ *  File Name                   : kitayutamart2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\kitayutamart2.h
+ *  Created on                  : Mar 28, 2015 :: 10:08:16 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13650
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

@@ -1,14 +1,14 @@
 Myntra Written Test
 ===================
-	1) Given array and sum count number of triplets where a < b < c and a + b + c <= sum
+    1) Given array and sum count number of triplets where a < b < c and a + b + c <= sum
 
 VMWare Written Test
 ===================
-	1)Check for given value in the binary tree
-	2)Merge two sorted arrays in the second array
-	3)Find first non repeating word in the sentence
-	
+    1)Check for given value in the binary tree
+    2)Merge two sorted arrays in the second array
+    3)Find first non repeating word in the sentence
+    
 Quora
 =====
 Given a list of people with their birth and end years (all between 1900 and 2000), find the year with the most number of people alive.
-	
+    

@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: skiresortseasy.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\skiresortseasy.h
- *  Created on			: Mar 26, 2015 :: 10:39:20 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=12469
+ *  File Name                   : skiresortseasy.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\skiresortseasy.h
+ *  Created on                  : Mar 26, 2015 :: 10:39:20 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12469
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

@@ -1,5 +1,5 @@
 Union - Find Ds
-	Union by rank
-		Lighter tree point to heavier one
-	Union by height
-	Path compression
+    Union by rank
+        Lighter tree point to heavier one
+    Union by height
+    Path compression

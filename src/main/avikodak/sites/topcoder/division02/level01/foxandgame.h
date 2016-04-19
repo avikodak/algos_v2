@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: foxandgame.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\foxandgame.h
- *  Created on			: Mar 25, 2015 :: 10:51:20 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=12438
+ *  File Name                   : foxandgame.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\foxandgame.h
+ *  Created on                  : Mar 25, 2015 :: 10:51:20 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12438
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

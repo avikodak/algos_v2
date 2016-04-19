@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: spirallevelordertraversal.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\spirallevelordertraversal.h
- *  Created on			: Oct 16, 2014 :: 11:05:54 AM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/level-order-traversal-in-spiral-form/
+ *  File Name                   : spirallevelordertraversal.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page09\spirallevelordertraversal.h
+ *  Created on                  : Oct 16, 2014 :: 11:05:54 AM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/level-order-traversal-in-spiral-form/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -58,18 +58,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef SPIRALLEVELORDERTRAVERSAL_H_
 #define SPIRALLEVELORDERTRAVERSAL_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/*                                                                     O(N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 void spiralLevelOrderTraversal(itNode *ptr) {
@@ -114,7 +114,7 @@ void spiralLevelOrderTraversalHashmap(itNode *ptr) {
         return;
     }
     treeutils *utils = new treeutils();
-    hash_map<unsigned int,itNode *>	indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
+    hash_map<unsigned int,itNode *>    indexNodeMap = utils->getTreeAsHashMap(ptr,1)->indexNodeMap;
     hash_map<unsigned int,itNode *>::iterator itToIndexNodeMap;
     unsigned int heightOfTree = utils->getHeightOfTree(ptr);
     for(unsigned int counter = 0; counter < heightOfTree; counter++) {
@@ -138,7 +138,7 @@ void spiralLevelOrderTraversalHashmap(itNode *ptr) {
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 void printLevel(itNode *ptr,unsigned int level,bool inReverse = false) {
@@ -176,5 +176,5 @@ void spiralOrderTraversalON2(itNode *ptr) {
 #endif /* SPIRALLEVELORDERTRAVERSAL_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

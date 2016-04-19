@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: middlecode.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\middlecode.h
- *  Created on			: Mar 28, 2015 :: 11:53:22 PM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  File Name                   : middlecode.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\middlecode.h
+ *  Created on                  : Mar 28, 2015 :: 11:53:22 PM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

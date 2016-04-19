@@ -1,22 +1,22 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructbstfrompreorder.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructbstfrompreorder.h
- *  Created on			: Nov 13, 2014 :: 10:47:11 AM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
- *  					  http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversal-set-2/
+ *  File Name                   : constructbstfrompreorder.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructbstfrompreorder.h
+ *  Created on                  : Nov 13, 2014 :: 10:47:11 AM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
+ *                        http://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversal-set-2/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -59,18 +59,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef CONSTRUCTBSTFROMPREORDER_H_
 #define CONSTRUCTBSTFROMPREORDER_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/*                                                                     O(N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 itNode *constructBSTFromPreOrderON(vector<int> userInput,int minValue = INT_MIN,int maxValue = INT_MAX) {
@@ -116,7 +116,7 @@ itNode *constructBSTFromPreorderIterative(vector<int> userInput) {
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 //Tested
 itNode *constructBSTFromPreOrderON2(vector<int> userInput,int startIndex,int endIndex) {
@@ -136,5 +136,5 @@ itNode *constructBSTFromPreOrderON2(vector<int> userInput,int startIndex,int end
 #endif /* CONSTRUCTBSTFROMPREORDER_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

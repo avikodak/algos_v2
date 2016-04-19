@@ -1,13 +1,13 @@
 RAM (Random access machine) Vs Real Computer
-	Real computers have much more complicated structure
-		Many different kinds of memory
-		Pipelining / Superscalar
-		Memory - Register copy instructions
-		Arithematic / Any computation is only done in registers
-		Compiler intelligence
+    Real computers have much more complicated structure
+        Many different kinds of memory
+        Pipelining / Superscalar
+        Memory - Register copy instructions
+        Arithematic / Any computation is only done in registers
+        Compiler intelligence
 General analysis strategy
-	T(n) : Max amount of time taken by algorithm A for an input sequence of size n
-	Conservative definition - worst case measure
-	Rather than giving the precise number mathematical model gives the functional form for the t(n)
-	T(n) for larger bound
-	Apart from worst case scnerio we might also consider calculating average time taken but often these are pretty hard to compute
+    T(n) : Max amount of time taken by algorithm A for an input sequence of size n
+    Conservative definition - worst case measure
+    Rather than giving the precise number mathematical model gives the functional form for the t(n)
+    T(n) for larger bound
+    Apart from worst case scnerio we might also consider calculating average time taken but often these are pretty hard to compute

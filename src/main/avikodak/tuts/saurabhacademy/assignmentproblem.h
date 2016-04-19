@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: assignmentproblem.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\tuts\saurabhacademy\assignmentproblem.h
- *  Created on			: Dec 18, 2014 :: 8:19:06 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  File Name                   : assignmentproblem.h
+ *  File Location               : \algos_v2\src\main\avikodak\tuts\saurabhacademy\assignmentproblem.h
+ *  Created on                  : Dec 18, 2014 :: 8:19:06 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : TODO
+ *  URL                         : TODO
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,28 +60,28 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef ASSIGNMENTPROBLEM_H_
 #define ASSIGNMENTPROBLEM_H_
 
-int assignmentProblem(vector<vector<int> > payMatrix,int jobCounter,hash_map<unsigned int,unsigned int> personJobMap) {
-    if(jobCounter > payMatrix[0].size()) {
+int assignmentProblem(vector<vector<int> > payMatrix, int jobCounter, hash_map<unsigned int, unsigned int> personJobMap) {
+    if (jobCounter > payMatrix[0].size()) {
         return INT_MAX;
     }
-    if(jobCounter == payMatrix[0].size()) {
+    if (jobCounter == payMatrix[0].size()) {
         return 0;
     }
     int minAmount = INT_MAX;
-    for(unsigned int person = 0; person < payMatrix.size(); person++) {
-        if(personJobMap.find(person) == personJobMap.end()) {
-            personJobMap.insert(pair<unsigned int,unsigned int>(person,jobCounter));
-            minAmount = min(minAmount,payMatrix[person][jobCounter] + assignmentProblem(payMatrix,jobCounter,personJobMap));
+    for (unsigned int person = 0; person < payMatrix.size(); person++) {
+        if (personJobMap.find(person) == personJobMap.end()) {
+            personJobMap.insert(pair<unsigned int, unsigned int>(person, jobCounter));
+            minAmount = min(minAmount, payMatrix[person][jobCounter] + assignmentProblem(payMatrix, jobCounter, personJobMap));
             personJobMap.erase(person);
         }
     }
@@ -91,5 +91,5 @@ int assignmentProblem(vector<vector<int> > payMatrix,int jobCounter,hash_map<uns
 #endif /* ASSIGNMENTPROBLEM_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

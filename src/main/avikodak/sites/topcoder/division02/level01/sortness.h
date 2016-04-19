@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: sortness.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sortness.h
- *  Created on			: Mar 25, 2015 :: 11:41:16 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=7263
+ *  File Name                   : sortness.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\sortness.h
+ *  Created on                  : Mar 25, 2015 :: 11:41:16 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=7263
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

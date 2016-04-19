@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: interleavingstrings.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
- *  Created on			: Jan 12, 2015 :: 4:09:13 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/check-whether-a-given-string-is-an-interleaving-of-two-other-given-strings-set-2/
+ *  File Name                   : interleavingstrings.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\dp\page02\interleavingstrings.h
+ *  Created on                  : Jan 12, 2015 :: 4:09:13 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/check-whether-a-given-string-is-an-interleaving-of-two-other-given-strings-set-2/
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,18 +60,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef INTERLEAVINGSTRINGS_H_
 #define INTERLEAVINGSTRINGS_H_
 
 /****************************************************************************************************************************************************/
-/* 																O(N^2) Algorithm 																    */
+/*                                                                 O(N^2) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 bool isStringInterleavedMemoization(char *firstString,char *secondString,char *thirdString) {
     if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0') {
@@ -105,7 +105,7 @@ bool isStringInterleavedMemoization(char *firstString,char *secondString,char *t
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(2^N) Algorithm 																    */
+/*                                                                 O(2^N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 bool isStringInterleaved(char *firstString,char *secondString,char *thirdString) {
     if(firstString[0] == '\0' && secondString[0] == '\0' && thirdString[0] == '\0') {
@@ -127,5 +127,5 @@ bool isStringInterleaved(char *firstString,char *secondString,char *thirdString)
 #endif /* INTERLEAVINGSTRINGS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

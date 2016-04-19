@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constructtreefromprepostspecial.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructtreefromprepostspecial.h
- *  Created on			: Nov 1, 2014 :: 6:37:18 PM
- *  Author				: AVINASH
- *  Testing Status 		: Tested
- *  URL 				: http://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/
+ *  File Name                   : constructtreefromprepostspecial.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\trees\page06\constructtreefromprepostspecial.h
+ *  Created on                  : Nov 1, 2014 :: 6:37:18 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : Tested
+ *  URL                         : http://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -58,11 +58,11 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef CONSTRUCTTREEFROMPREPOSTSPECIAL_H_
@@ -98,6 +98,6 @@ itNode *getTreeFromPrePostOrder(vector<int> preOrder,vector<int> postOrder,int s
 #endif /* CONSTRUCTTREEFROMPREPOSTSPECIAL_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/
 

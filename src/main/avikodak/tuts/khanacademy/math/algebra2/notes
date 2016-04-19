@@ -1,23 +1,23 @@
 Functions
 =========
-	Even function
-		Symmetry around the y-axis
-		f(-x) = f(x)
-		Ex : f(x) = x^2
-	Odd function	
-		Reflected first around the y-axis and then on x-axis
-		f(-x) = -f(x)
-		Ex : f(x) = x^3
-			 f(x) = x
-		Odd function would go through origin
+    Even function
+        Symmetry around the y-axis
+        f(-x) = f(x)
+        Ex : f(x) = x^2
+    Odd function    
+        Reflected first around the y-axis and then on x-axis
+        f(-x) = -f(x)
+        Ex : f(x) = x^3
+             f(x) = x
+        Odd function would go through origin
 Local minimum
-	Minimum point local interval
+    Minimum point local interval
 Palindrome = even function
 Any non zero divided by zero is undefined
  1/0.1 = 10 , 1/0.01 = 100 so we might tempt to say 1/0 = +infinity
 but when we take negative numbers
-	-1/0.1 = -10 , -1/0.01 = -100 so it can also be - infinity
-	so they declared that division by zero is undefined
+    -1/0.1 = -10 , -1/0.01 = -100 so it can also be - infinity
+    so they declared that division by zero is undefined
 Undefined - leads to contradiction
 Indeterminate - multiple values can be satisfied 
 
@@ -30,58 +30,58 @@ D < 0 No real solutions
 
 Remainder theorem
 Synthetic division
-	- Works only when the denominator is of the form x+/-c
+    - Works only when the denominator is of the form x+/-c
 
 x^3 + y^3 = (x+y)(x^2 - xy + y^2)
 a^3 - b^3 = (a-b)(a^2 + ab + b^2)
 
 End behaviour
-	ax^2 + bx + c 
-	ax^3 + bx^2 + cx + d
-	Even degree polynomial has end behaviour similar to second degree polynomial
-	Odd degree polynomial has end behaviour similar to third degree polynomial
-	
+    ax^2 + bx + c 
+    ax^3 + bx^2 + cx + d
+    Even degree polynomial has end behaviour similar to second degree polynomial
+    Odd degree polynomial has end behaviour similar to third degree polynomial
+    
 Binomial Theorem
 (a+b)^n =  sigma(ncr * x^n-r * y^r)
 
 Asymptotes
-	Lines where graph never touches but gets closer and closer
+    Lines where graph never touches but gets closer and closer
 Partial fraction expansion
-	Rational function (Expression divided by another)
-	Requirements
-		Numerator should have lower degree than denominator
-	Algebratic expression = a / denominator factor + b /denominator factor
-	
+    Rational function (Expression divided by another)
+    Requirements
+        Numerator should have lower degree than denominator
+    Algebratic expression = a / denominator factor + b /denominator factor
+    
 
 Fundamental Theorem of algebra
-	The nth degree of polynomial have exact n roots which may be complex or real roots
-	Odd degree polynomial has atleast one real root
-	
-	
+    The nth degree of polynomial have exact n roots which may be complex or real roots
+    Odd degree polynomial has atleast one real root
+    
+    
 Exponential and logarithmic functions
 =====================================
-	Very fast growth
-	y = pow(c,x) 
-	The general form of exponential function is c * pow(a,x) a and c are constants
+    Very fast growth
+    y = pow(c,x) 
+    The general form of exponential function is c * pow(a,x) a and c are constants
 
 Interest
 ========
-	Rent on money
-	Simple interest = p*t*r/100
+    Rent on money
+    Simple interest = p*t*r/100
 
 Logarithms
 ==========
- 	The logarithm of a number is the exponent to which another fixed value, the base, must be raised to produce that number
+     The logarithm of a number is the exponent to which another fixed value, the base, must be raised to produce that number
  
 Complex Numbers
 ===============
-	i = sqrt(-1) is not usually accepted definition
-	sqrt(a*b) = sqrt(a) * sqrt(b) // Both a and b are negative simultaneously
-	Any complex number times conjugate is real numbers
-	Absolute value of complex numbers (distance away from zero) = sqrt(a^2+b^2)
+    i = sqrt(-1) is not usually accepted definition
+    sqrt(a*b) = sqrt(a) * sqrt(b) // Both a and b are negative simultaneously
+    Any complex number times conjugate is real numbers
+    Absolute value of complex numbers (distance away from zero) = sqrt(a^2+b^2)
 Matrices
 ========
-	Rectangular array of numbers
-	Transpose
-		Rows become columns and column becomes rows
-	Matrix multiplication is not commutative
+    Rectangular array of numbers
+    Transpose
+        Rows become columns and column becomes rows
+    Matrix multiplication is not commutative

@@ -1,21 +1,21 @@
 /****************************************************************************************************************************************************
- *  File Name   		: articulationpoints.h
- *	File Location		: D:\algos\algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\articulationpoints.h
- *  Created on			: Dec 26, 2014 :: 5:46:22 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  File Name                   : articulationpoints.h
+ *  File Location               : \algos_v2\src\main\avikodak\sites\geeksforgeeks\graph\page02\articulationpoints.h
+ *  Created on                  : Dec 26, 2014 :: 5:46:22 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : TODO
+ *  URL                         : TODO
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 														NAMESPACE DECLARATION AND IMPORTS 														    */
+/*                                                         NAMESPACE DECLARATION AND IMPORTS                                                             */
 /****************************************************************************************************************************************************/
 
 using namespace std;
 using namespace __gnu_cxx;
 
 /****************************************************************************************************************************************************/
-/* 																INCLUDES		 																    */
+/*                                                                 INCLUDES                                                                             */
 /****************************************************************************************************************************************************/
 
 #include <string>
@@ -60,18 +60,18 @@ using namespace __gnu_cxx;
 #include <lib/utils/twofourtreeutil.h>
 
 /****************************************************************************************************************************************************/
-/* 															USER DEFINED CONSTANTS 																    */
+/*                                                             USER DEFINED CONSTANTS                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE START 																    */
+/*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
 
 #ifndef ARTICULATIONPOINTS_H_
 #define ARTICULATIONPOINTS_H_
 
 /****************************************************************************************************************************************************/
-/* 																	O(N) Algorithm 																    */
+/*                                                                     O(N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 int setArticulationPointAndDfsTimes(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,vector<int> &predecessor,vector<int> &articulationPoints,int sourceVertex) {
     if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size()) {
@@ -106,7 +106,7 @@ int getArticulationPoints(vector<vector<int> > adjacencyList) {
 }
 
 /****************************************************************************************************************************************************/
-/* 																O(N^N) Algorithm 																    */
+/*                                                                 O(N^N) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 void setDfsLevels(vector<vector<int> > adjacencyList,vector<int> &arrivalTimes,int removedVertex,int sourceVertex) {
     if(adjacencyList.size() == 0 || sourceVertex >= adjacencyList.size() || sourceVertex == removedVertex) {
@@ -142,5 +142,5 @@ bool doesGraphContainsArticulationPoints(vector<vector<int> > adjacencyList) {
 #endif /* ARTICULATIONPOINTS_H_ */
 
 /****************************************************************************************************************************************************/
-/* 																MAIN CODE END 																	    */
+/*                                                                 MAIN CODE END                                                                         */
 /****************************************************************************************************************************************************/

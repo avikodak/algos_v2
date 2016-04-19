@@ -1,9 +1,9 @@
 Applications of dfs
 ===================
-	Time complexity is O(N+M)
-	An edge whose removal disconnects the graph is called as bridge
-	A graph which is two edge connected does not contain bridge network
-	We can check whether graph is two edge connected or not by removing each edge and checking whether graph is still connected or not	 
-	Deepest back edge
-	
-	
+    Time complexity is O(N+M)
+    An edge whose removal disconnects the graph is called as bridge
+    A graph which is two edge connected does not contain bridge network
+    We can check whether graph is two edge connected or not by removing each edge and checking whether graph is still connected or not     
+    Deepest back edge
+    
+    

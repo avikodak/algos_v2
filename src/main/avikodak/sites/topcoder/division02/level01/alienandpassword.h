@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: alienandpassword.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\alienandpassword.h
- *  Created on			: Mar 28, 2015 :: 11:23:18 AM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=12950
+ *  File Name                   : alienandpassword.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\alienandpassword.h
+ *  Created on                  : Mar 28, 2015 :: 11:23:18 AM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=12950
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

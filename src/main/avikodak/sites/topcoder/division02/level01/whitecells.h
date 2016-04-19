@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: whitecells.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\whitecells.h
- *  Created on			: Mar 25, 2015 :: 11:02:56 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=8204
+ *  File Name                   : whitecells.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\whitecells.h
+ *  Created on                  : Mar 25, 2015 :: 11:02:56 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=8204
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

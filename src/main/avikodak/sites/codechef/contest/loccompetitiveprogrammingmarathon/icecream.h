@@ -78,7 +78,7 @@ using namespace __gnu_cxx;
 //Tested
 void solveProblem() {
     unsigned int testCases;
-    double 	r1,h1,r2,h2;
+    double     r1,h1,r2,h2;
     const double PI = 3.141592653589793;
     scanf("%u",&testCases);
     while(testCases--) {

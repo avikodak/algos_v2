@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: constants.h
- *	File Location		: D:\algos\algos_v2\src\lib\constants\constants.h
- *  Created on			: Oct 9, 2014 :: 12:39:50 PM
- *  Author				: AVINASH
- *  Testing Status 		: TODO
- *  URL 				: TODO
+ *  File Name                   : constants.h
+ *  File Location               : \algos_v2\src\lib\constants\constants.h
+ *  Created on                  : Oct 9, 2014 :: 12:39:50 PM
+ *  Author                      : AVINASH
+ *  Testing Status              : TODO
+ *  URL                         : TODO
 ****************************************************************************************************************************************************/
 
 #define null NULL

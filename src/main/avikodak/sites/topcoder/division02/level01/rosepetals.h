@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: rosepetals.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\rosepetals.h
- *  Created on			: Mar 26, 2015 :: 12:24:11 AM
- *  Author				: avikodak
- *  Testing Status 		: TODO
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=6635
+ *  File Name                   : rosepetals.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\rosepetals.h
+ *  Created on                  : Mar 26, 2015 :: 12:24:11 AM
+ *  Author                      : avikodak
+ *  Testing Status              : TODO
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=6635
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

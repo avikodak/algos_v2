@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: leftandrighthandeddiv2.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\leftandrighthandeddiv2.h
- *  Created on			: Mar 27, 2015 :: 8:55:32 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=13043
+ *  File Name                   : leftandrighthandeddiv2.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\leftandrighthandeddiv2.h
+ *  Created on                  : Mar 27, 2015 :: 8:55:32 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=13043
 ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/

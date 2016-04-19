@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name   		: arrayhash.h
- *	File Location		: D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\arrayhash.h
- *  Created on			: Mar 27, 2015 :: 8:34:38 PM
- *  Author				: avikodak
- *  Testing Status 		: Tested
- *  URL 				: http://community.topcoder.com/stat?c=problem_statement&pm=4503
+ *  File Name                   : arrayhash.h
+ *  File Location               : D:\projects\cpp\algos_v2\src\main\avikodak\sites\topcoder\division02\level01\arrayhash.h
+ *  Created on                  : Mar 27, 2015 :: 8:34:38 PM
+ *  Author                      : avikodak
+ *  Testing Status              : Tested
+ *  URL                         : http://community.topcoder.com/stat?c=problem_statement&pm=4503
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
