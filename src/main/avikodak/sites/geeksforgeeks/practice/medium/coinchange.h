@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/medium/coinchange.h
  *  Created on                  : Jul 23, 2016 :: 6:40:08 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=89
  ****************************************************************************************************************************************************/
 
@@ -75,22 +75,24 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_COINCHANGE_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_MEDIUM_COINCHANGE_H_
 
+//Tested
 long long int totalWays(vector<long long int> userInput, long long int amount) {
     long long int memoization[amount + 1][userInput.size()];
     for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-        memoization[counter][0] = 1;
+        memoization[0][counter] = 1;
     }
     long long int waysIncludingN, waysExcludingN;
-    for (unsigned int rowCrawler = 0; rowCrawler < amount + 1; rowCrawler++) {
+    for (unsigned int rowCrawler = 1; rowCrawler < amount + 1; rowCrawler++) {
         for (unsigned int columnCrawler = 0; columnCrawler < userInput.size(); columnCrawler++) {
-            waysIncludingN = (rowCrawler - userInput[columnCrawler]) > 0 ? memoization[rowCrawler - userInput[columnCrawler]][columnCrawler] : 0;
-            waysExcludingN = columnCrawler > 0 ? userInput[rowCrawler][columnCrawler - 1] : 0;
+            waysIncludingN = (rowCrawler - userInput[columnCrawler]) >= 0 ? memoization[rowCrawler - userInput[columnCrawler]][columnCrawler] : 0;
+            waysExcludingN = columnCrawler > 0 ? memoization[rowCrawler][columnCrawler - 1] : 0;
             memoization[rowCrawler][columnCrawler] = waysExcludingN + waysIncludingN;
         }
     }
     return memoization[amount][userInput.size() - 1];
 }
 
+//Tested
 void solveProblem() {
     unsigned int testCases, size;
     long long int input, amount;
