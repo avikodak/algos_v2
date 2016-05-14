@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/codechef/peer/wkimaal.h
  *  Created on                  : May 6, 2016 :: 2:06:42 AM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : https://www.codechef.com/problems/WKIMAAL
  ****************************************************************************************************************************************************/
 
@@ -76,6 +76,7 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_CODECHEF_PEER_WKIMAAL_H_
 #define MAIN_AVIKODAK_SITES_CODECHEF_PEER_WKIMAAL_H_
 
+//Tested
 void solveProblem() {
     unsigned int testCases, size;
     long long int input, result;
