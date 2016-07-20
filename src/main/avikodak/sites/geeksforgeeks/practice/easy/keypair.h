@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : keypair.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/keypair.h
+ *  Created on                  : Jul 7, 2016 :: 12:16:43 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=552
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,34 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_KEYPAIR_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_KEYPAIR_H_
 
 //Tested
 void solveProblem() {
-    unsigned int testCases;
-    string userInput;
+    unsigned int testCases, size;
+    long long int input, sum;
+    vector<long long int> userInput;
+    map<long long int, bool> presenceMap;
     scanf("%u", &testCases);
-    stack<char> auxSpace;
     while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
-        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
+        scanf("%u %lld", &size, &sum);
+        userInput.clear();
+        presenceMap.clear();
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            userInput.push_back(input);
+            presenceMap.insert(pair<long long int, bool>(input, true));
+        }
+        bool isPairFound = false;
+        for (unsigned int counter = 0; counter < size; counter++) {
+            if (presenceMap.find(sum - userInput[counter]) != presenceMap.end()) {
+                isPairFound = true;
+                break;
             }
         }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
-        }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+        printf("%s\n", isPairFound ? "Yes" : "No");
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_KEYPAIR_H_ */

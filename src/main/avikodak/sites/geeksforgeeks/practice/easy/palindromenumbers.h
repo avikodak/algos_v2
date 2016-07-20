@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : palindromenumbers.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/palindromenumbers.h
+ *  Created on                  : Jun 7, 2016 :: 11:59:16 PM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=151
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,48 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PALINDROMENUMBERS_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PALINDROMENUMBERS_H_
+
+//Tested
+string convertToBinary(long long unsigned int userInput) {
+    string userInputInBinary;
+    if (userInput == 0) {
+        userInputInBinary.append("0");
+        return userInputInBinary;
+    }
+    char ch;
+    while (userInput) {
+        ch = '0' + (userInput % 2);
+        userInputInBinary.push_back(ch);
+        userInput /= 2;
+    }
+    return userInputInBinary;
+}
 
 //Tested
 void solveProblem() {
-    unsigned int testCases;
-    string userInput;
+    unsigned int testCases, frontCrawler, rearCrawler;
+    long long unsigned int input;
+    string inputInBinary;
+    bool isPalindrome;
     scanf("%u", &testCases);
-    stack<char> auxSpace;
     while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
-        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
+        scanf("%llu", &input);
+        inputInBinary = convertToBinary(input);
+        isPalindrome = true;
+        frontCrawler = 0;
+        rearCrawler = inputInBinary.size() - 1;
+        while (frontCrawler < rearCrawler) {
+            if (inputInBinary[frontCrawler] != inputInBinary[rearCrawler]) {
+                isPalindrome = false;
+                break;
             }
+            frontCrawler++;
+            rearCrawler--;
         }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
-        }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+        printf("%d\n", isPalindrome ? 1 : 0);
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PALINDROMENUMBERS_H_ */

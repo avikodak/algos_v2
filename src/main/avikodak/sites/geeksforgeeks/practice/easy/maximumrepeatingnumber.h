@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : maximumrepeatingnumber.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/maximumrepeatingnumber.h
+ *  Created on                  : Jul 9, 2016 :: 12:04:33 AM
  *  Author                      : avikodak
  *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=593
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,34 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAXIMUMREPEATINGNUMBER_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAXIMUMREPEATINGNUMBER_H_
 
 //Tested
 void solveProblem() {
-    unsigned int testCases;
-    string userInput;
+    unsigned int testCases, size;
+    long long int input, kValue, maxOccuringVal, maxFrequency;
+    vector<long long int> userInput;
     scanf("%u", &testCases);
-    stack<char> auxSpace;
     while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
-        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
+        scanf("%u %lld", &size, &kValue);
+        userInput.clear();
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            userInput.push_back(input);
+        }
+        for (unsigned int counter = 0; counter < size; counter++) {
+            userInput[userInput[counter] % size] += size;
+        }
+        maxFrequency = 0;
+        for (unsigned int counter = 0; counter < size; counter++) {
+            if (maxFrequency < userInput[counter] / size) {
+                maxFrequency = userInput[counter] / size;
+                maxOccuringVal = counter;
             }
         }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
-        }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+        printf("%lld\n", maxOccuringVal);
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_MAXIMUMREPEATINGNUMBER_H_ */

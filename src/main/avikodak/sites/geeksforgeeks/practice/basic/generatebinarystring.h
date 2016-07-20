@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : generatebinarystring.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/basic/generatebinarystring.h
+ *  Created on                  : Jun 19, 2016 :: 1:22:32 AM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  Testing Status              : TODO
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=884
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GENERATEBINARYSTRING_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GENERATEBINARYSTRING_H_
 
-//Tested
-void solveProblem() {
-    unsigned int testCases;
-    string userInput;
-    scanf("%u", &testCases);
-    stack<char> auxSpace;
-    while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
-        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
-            }
-        }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
-        }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+void generateBinaryString(string userInput, unsigned int counter) {
+    if (counter == userInput.size()) {
+        cout << userInput << " ";
+        return;
+    }
+    if (userInput[counter] == '?') {
+        userInput[counter] = '0';
+        generateBinaryString(userInput, counter + 1);
+        userInput[counter] = '1';
+        generateBinaryString(userInput, counter + 1);
+    } else {
+        generateBinaryString(userInput, counter + 1);
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+void solveProblem() {
+    unsigned int testCases, size;
+    string userInput;
+    scanf("%u", &testCases);
+    while (testCases--) {
+        cin >> userInput;
+        generateBinaryString(userInput, 0);
+        printf("\n");
+    }
+}
+
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_BASIC_GENERATEBINARYSTRING_H_ */

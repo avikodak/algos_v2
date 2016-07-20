@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : segregateevenodd.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/segregateevenodd.h
+ *  Created on                  : Jul 7, 2016 :: 12:33:58 AM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  Testing Status              : TODO
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=488
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,59 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SEGREGATEEVENODD_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SEGREGATEEVENODD_H_
 
-//Tested
+int partitionIntoEvenOdd(vector<long long int> userInput) {
+    int frontCrawler = 0, rearCrawler = userInput.size() - 1;
+    while (frontCrawler < rearCrawler) {
+        while (userInput[frontCrawler] % 2 == 0) {
+            frontCrawler++;
+        }
+        while (frontCrawler < rearCrawler && userInput[rearCrawler] % 2 == 1) {
+            rearCrawler--;
+        }
+        if (frontCrawler < rearCrawler) {
+            swap(userInput[frontCrawler], userInput[rearCrawler]);
+        }
+    }
+    swap(userInput[frontCrawler], userInput[rearCrawler]);
+    return rearCrawler;
+}
+
 void solveProblem() {
-    unsigned int testCases;
-    string userInput;
+    unsigned int testCases, size;
+    long long int input;
+    vector<long long int> userInput;
     scanf("%u", &testCases);
-    stack<char> auxSpace;
     while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
-        for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
-            }
+        scanf("%u", &size);
+        userInput.clear();
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            userInput.push_back(input);
         }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
+        int separatingIndex = partitionIntoEvenOdd(userInput);
+        sort(userInput.begin(), userInput.begin() + separatingIndex);
+        sort(userInput.begin() + separatingIndex + 1, userInput.end());
+        for (unsigned int counter = 0; counter < size; counter++) {
+            printf("%lld ", userInput[counter]);
         }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+        printf("\n");
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_SEGREGATEEVENODD_H_ */
+
+/*
+ 42
+ 449 328 474 150 709 467 329 936 440 700 117 258 811 952 491 993 931 823 431 359 590 899 153 292 370 404 698 699 876 442 705 757 527 868 893 642 273 18 885 675 788 291
+
+ Its Correct output is:
+ 18 150 258 292 328 370 404 440 442 474 590 642 698 700 788 868 876 936 952 117 153 273 291 329 359 431 449 467 491 527 675 699 705 709 757 811 823 885 893 899 931 993
+
+ And Your Output is:
+ 18 150 258 292 328 359 370 404 440 442 474 590 642 698 700 788 868 876 936 952 117 153 273 291 329 431 449 467 491 527 675 699 705 709 757 811 823 885 893 899 931 993
+
+
+ */

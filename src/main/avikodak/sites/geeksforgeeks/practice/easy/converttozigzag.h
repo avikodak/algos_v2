@@ -1,10 +1,10 @@
 /****************************************************************************************************************************************************
- *  File Name                   : parenthesischecker.h
- *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/parenthesischecker.h
- *  Created on                  : Jun 25, 2016 :: 9:51:37 PM
+ *  File Name                   : converttozigzag.h
+ *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/converttozigzag.h
+ *  Created on                  : Jun 11, 2016 :: 11:36:19 AM
  *  Author                      : avikodak
- *  Testing Status              : Tested
- *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=147
+ *  Testing Status              : TODO
+ *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=540
  ****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
@@ -72,50 +72,33 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
-#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_
+#ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_CONVERTTOZIGZAG_H_
+#define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_CONVERTTOZIGZAG_H_
 
-//Tested
 void solveProblem() {
-    unsigned int testCases;
-    string userInput;
+    unsigned int testCases, size;
+    long long int input, maxValue, minValue;
+    vector<long long int> userInput;
     scanf("%u", &testCases);
-    stack<char> auxSpace;
     while (testCases--) {
-        cin >> userInput;
-        bool isBalanced = true;
+        scanf("%u", &size);
+        userInput.clear();
+        for (unsigned int counter = 0; counter < size; counter++) {
+            scanf("%lld", &input);
+            userInput.push_back(input);
+        }
+        for (unsigned int counter = 0; counter < size - 2; counter += 2) {
+            maxValue = max(max(userInput[counter], userInput[counter + 1]), userInput[counter + 2]);
+            minValue = min(min(userInput[counter], userInput[counter + 1]), userInput[counter + 2]);
+            userInput[counter] = minValue;
+            userInput[counter + 1] = maxValue;
+            userInput[counter + 2] = minValue ^ minValue ^ userInput[counter] ^ userInput[counter + 1] ^ userInput[counter + 2];
+        }
         for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-            if (userInput[counter] == '{' || userInput[counter] == '[' || userInput[counter] == '(') {
-                auxSpace.push(userInput[counter]);
-            } else {
-                if(auxSpace.empty()) {
-                    isBalanced = false;
-                    break;
-                }
-                if (userInput[counter] == '}') {
-                    if (auxSpace.top() != '{') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else if (userInput[counter] == ']') {
-                    if (auxSpace.top() != '[') {
-                        isBalanced = false;
-                        break;
-                    }
-                } else {
-                    if (auxSpace.top() != '(') {
-                        isBalanced = false;
-                        break;
-                    }
-                }
-                auxSpace.pop();
-            }
+            printf("%lld ", userInput[counter]);
         }
-        while (!auxSpace.empty()) {
-            auxSpace.pop();
-        }
-        printf("%s\n", isBalanced ? "balanced" : "not balanced");
+        printf("\n");
     }
 }
 
-#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_PARENTHESISCHECKER_H_ */
+#endif /* MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_CONVERTTOZIGZAG_H_ */
