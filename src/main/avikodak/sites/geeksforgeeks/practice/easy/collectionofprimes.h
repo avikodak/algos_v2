@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/collectionofprimes.h
  *  Created on                  : Jul 29, 2016 :: 7:27:36 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=1220
  ****************************************************************************************************************************************************/
 
@@ -75,6 +75,7 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COLLECTIONOFPRIMES_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_COLLECTIONOFPRIMES_H_
 
+//Tested
 void solveProblem() {
     unsigned int testCases;
     int firstPilePens, secondPilePens;
