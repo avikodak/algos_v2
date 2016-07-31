@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/easy/fibonaccisum.h
  *  Created on                  : Jun 11, 2016 :: 2:37:39 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=842
  ****************************************************************************************************************************************************/
 
@@ -75,22 +75,25 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIBONACCISUM_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_EASY_FIBONACCISUM_H_
 
+//Tested
 void solveProblem() {
-    unsigned int testCases, size, counter;
-    long long int input;
-    vector<long long int> userInput;
-    userInput.push_back(0);
-    userInput.push_back(1);
+    unsigned int testCases;
+    long long int input, prevVal, currentVal, nextVal;
+    vector<long long int> auxSpace;
+    auxSpace.push_back(0);
+    auxSpace.push_back(1);
     scanf("%u", &testCases);
     while (testCases--) {
         scanf("%lld", &input);
-        if (input >= userInput.size()) {
-            counter = userInput.size();
-            while (counter <= userInput.size()) {
-                userInput.push_back((userInput[counter - 1] + userInput[counter - 2]) % MODN);
-            }
+        prevVal = auxSpace[auxSpace.size() - 2];
+        currentVal = auxSpace[auxSpace.size() - 1];
+        while (input + 2 >= auxSpace.size()) {
+            nextVal = (prevVal + currentVal) % MODN;
+            auxSpace.push_back(nextVal);
+            prevVal = currentVal;
+            currentVal = nextVal;
         }
-        printf("%lld\n", userInput[input]);
+        printf("%lld\n", (auxSpace[input + 2] % MODN) - 1);
     }
 }
 
