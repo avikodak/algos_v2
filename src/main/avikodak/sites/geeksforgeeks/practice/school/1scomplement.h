@@ -3,7 +3,7 @@
  *  File Location               : /algos_v2/src/main/avikodak/sites/geeksforgeeks/practice/school/1scomplement.h
  *  Created on                  : Sep 5, 2016 :: 7:39:36 PM
  *  Author                      : avikodak
- *  Testing Status              : TODO
+ *  Testing Status              : Tested
  *  URL                         : http://www.practice.geeksforgeeks.org/problem-page.php?pid=1338
  ****************************************************************************************************************************************************/
 
@@ -75,15 +75,16 @@ using namespace __gnu_cxx;
 #ifndef MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_1SCOMPLEMENT_H_
 #define MAIN_AVIKODAK_SITES_GEEKSFORGEEKS_PRACTICE_SCHOOL_1SCOMPLEMENT_H_
 
+//Tested
 void solveProblem() {
     unsigned int testCases, size;
-    long long int input;
+    int input;
     scanf("%u", &testCases);
     while (testCases--) {
         scanf("%u", &size);
         for (unsigned int counter = 0; counter < size; counter++) {
-            scanf("%lld", &input);
-            printf("%lld ", input == 1 ? 0 : 1);
+            scanf("%d", &input);
+            printf("%d ", input == 1 ? 0 : 1);
         }
         printf("\n");
     }
