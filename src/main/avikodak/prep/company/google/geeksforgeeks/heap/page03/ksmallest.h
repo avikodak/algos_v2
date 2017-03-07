@@ -1,11 +1,12 @@
 /****************************************************************************************************************************************************
- *  File Name                   : nextgreaterelement.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/stack/page03/nextgreaterelement.h
- *  Created on                  : Mar 6, 2017 :: 12:08:50 AM
+ *  File Name                   : ksmallest.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/heap/page03/ksmallest.h
+ *  Created on                  : Mar 7, 2017 :: 10:44:53 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/
+
 
 /****************************************************************************************************************************************************/
 /*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
@@ -74,8 +75,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE03_KSMALLEST_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE03_KSMALLEST_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,26 +85,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-vector<int> getNextGreaterValues(vector<int> userInput) {
-    stack<int> auxSpace;
-    vector<int> result;
-    if (userInput.size() == 0) {
-        return auxSpace;
-    }
-    result.assign(userInput.size(), -1);
-    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-        while (!auxSpace.empty() && userInput[counter] > userInput[auxSpace.top()]) {
-            result[auxSpace.top()] = userInput[counter];
-            auxSpace.pop();
-        }
-        auxSpace.push(userInput[counter]);
-    }
-    return result;
-}
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
+int getKthLargest(vector<int> userInput, int kValue) {
+    priority_queue<int, vector<int>, std::less<int> > auxSpace;
+    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if (counter < kValue) {
+            auxSpace.push(userInput[counter]);
+        } else {
+            if (auxSpace.top() < userInput[counter]) {
+                auxSpace.pop();
+                auxSpace.push(userInput[counter]);
+            }
+        }
+    }
+    return auxSpace.top();
+}
 
 /****************************************************************************************************************************************************/
 /*                                                           O(N^2) Algorithm                                                                       */
@@ -113,4 +112,4 @@ vector<int> getNextGreaterValues(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE03_KSMALLEST_H_ */

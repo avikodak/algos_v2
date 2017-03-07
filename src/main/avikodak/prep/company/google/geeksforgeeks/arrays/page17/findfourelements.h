@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : nextgreaterelement.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/stack/page03/nextgreaterelement.h
- *  Created on                  : Mar 6, 2017 :: 12:08:50 AM
+ *  File Name                   : findfourelements.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page17/findfourelements.h
+ *  Created on                  : Mar 6, 2017 :: 11:17:49 AM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,29 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_FINDFOURELEMENTS_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_FINDFOURELEMENTS_H_
+
+struct iQuadruple {
+    int firstValue;
+    int secondValue;
+    int thirdValue;
+    int fourthValue;
+ public:
+    iQuadruple() {
+        this->firstValue = INT_MIN;
+        this->secondValue = INT_MIN;
+        this->thirdValue = INT_MIN;
+        this->fourthValue = INT_MIN;
+    }
+
+    iQuadruple(int firstValue, int secondValue, int thirdValue, int fourthValue) {
+        this->firstValue = firstValue;
+        this->secondValue = secondValue;
+        this->thirdValue = thirdValue;
+        this->fourthValue = fourthValue;
+    }
+};
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,33 +105,62 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-vector<int> getNextGreaterValues(vector<int> userInput) {
-    stack<int> auxSpace;
-    vector<int> result;
-    if (userInput.size() == 0) {
-        return auxSpace;
-    }
-    result.assign(userInput.size(), -1);
-    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-        while (!auxSpace.empty() && userInput[counter] > userInput[auxSpace.top()]) {
-            result[auxSpace.top()] = userInput[counter];
-            auxSpace.pop();
-        }
-        auxSpace.push(userInput[counter]);
-    }
-    return result;
-}
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
 
 /****************************************************************************************************************************************************/
-/*                                                           O(N^2) Algorithm                                                                       */
+/*                                                           O(N^3) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
+//Assuming the values are distinct
+iQuadruple *getQuadrupleForSumON3(vector<int> userInput, int sum) {
+    if (userInput.size() < 4) {
+        return null;
+    }
+    hash_map<int, int> frequencyMap;
+    hash_map<int, int>::iterator itToFrequencyMap;
+    int frequencyForValue;
+    for (unsigned int crawler = 0; crawler < userInput.size(); crawler++) {
+        if ((itToFrequencyMap = frequencyMap.find(userInput[crawler])) == frequencyMap.end()) {
+            frequencyMap.insert(pair<int, int>(userInput[crawler], 1));
+        } else {
+            frequencyForValue = itToFrequencyMap->second;
+            frequencyMap.insert(pair<int, int>(userInput[crawler], frequencyForValue++));
+        }
+    }
+    int currentSum;
+    for (unsigned int firstCrawler = 0; firstCrawler < userInput.size() - 2; firstCrawler++) {
+        for (unsigned int secondCrawler = firstCrawler + 1; secondCrawler < userInput.size() - 1; secondCrawler++) {
+            for (unsigned int thirdCrawler = secondCrawler + 1; thirdCrawler < userInput.size(); thirdCrawler++) {
+                currentSum = userInput[firstCrawler] + userInput[secondCrawler] + userInput[thirdCrawler];
+                if ((itToFrequencyMap = frequencyMap.find(sum - currentSum)) != frequencyMap.end()) {
+                    return new iQuadruple(userInput[firstCrawler], userInput[secondCrawler], userInput[thirdCrawler], sum - currentSum);
+                }
+            }
+        }
+    }
+    return null;
+}
 
 /****************************************************************************************************************************************************/
-/*                                                           O(C^N) Algorithm                                                                       */
+/*                                                           O(N^4) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
-
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_STACK_PAGE03_NEXTGREATERELEMENT_H_ */
+iQuadruple *getQuadrupleForSumON4(vector<int> userInput, int sum) {
+    if (userInput.size() < 4) {
+        return null;
+    }
+    for (unsigned int firstCrawler = 0; firstCrawler < userInput.size() - 3; firstCrawler++) {
+        for (unsigned int secondCrawler = firstCrawler + 1; secondCrawler < userInput.size() - 2; secondCrawler++) {
+            for (unsigned int thirdCrawler = secondCrawler + 1; thirdCrawler < userInput.size() - 1; thirdCrawler++) {
+                for (unsigned int fourthCrawler = thirdCrawler + 1; fourthCrawler < userInput.size(); fourthCrawler++) {
+                    if (userInput[firstCrawler] + userInput[secondCrawler] + userInput[thirdCrawler] + userInput[fourthCrawler] == sum) {
+                        return new iQuadruple(userInput[firstCrawler], userInput[secondCrawler], userInput[thirdCrawler], userInput[fourthCrawler]);
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_FINDFOURELEMENTS_H_ */
