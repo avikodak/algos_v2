@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : maximumcircularsum.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page17/maximumcircularsum.h
- *  Created on                  : Mar 7, 2017 :: 9:10:52 PM
+ *  File Name                   : sortksortedstream.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/heap/page02/sortksortedstream.h
+ *  Created on                  : Mar 8, 2017 :: 12:26:23 AM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_MAXIMUMCIRCULARSUM_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_MAXIMUMCIRCULARSUM_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE02_SORTKSORTEDSTREAM_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE02_SORTKSORTEDSTREAM_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,26 +84,6 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getKandaneOutput(vector<int> userInput) {
-    int maxSum = INT_MIN;
-    int currentSum = 0;
-    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-        currentSum = max(userInput[counter], currentSum + userInput[counter]);
-        maxSum = max(maxSum, currentSum);
-    }
-    return maxSum;
-}
-
-int getMaxCircularSum(vector<int> userInput) {
-    int straightSum = getKandaneOutput(userInput);
-    int sumOfArray = 0;
-    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
-        userInput[counter] *= -1;
-        sumOfArray += userInput[counter];
-    }
-    int wrappedMaxSum = getKandaneOutput(userInput);
-    return max(straightSum, wrappedMaxSum + sumOfArray);
-}
 
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
@@ -117,4 +97,4 @@ int getMaxCircularSum(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE17_MAXIMUMCIRCULARSUM_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_HEAP_PAGE02_SORTKSORTEDSTREAM_H_ */
