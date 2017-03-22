@@ -66,19 +66,19 @@ using namespace std;
 /****************************************************************************************************************************************************/
 /*                                                                 MAIN CODE START                                                                     */
 /****************************************************************************************************************************************************/
-void preOrderTraversal(itNode *ptr) {
-    if (ptr == null) {
-        return;
+int findMaxIJ(vector<int> userInput) {
+    vector<int> smallestTillNow;
+    smallestTillNow.push_back(userInput[0]);
+    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
+        smallestTillNow.push_back(min(smallestTillNow[smallestTillNow.size() - 1], userInput[counter]));
     }
-    printf("%d\t", ptr->value);
-    preOrderTraversal(ptr->left);
-    preOrderTraversal(ptr->right);
-}
+    vector<int> greaterTillNow;
+    greaterTillNow.assign(userInput.size(), 0);
+    greaterTillNow[userInput.size() - 1] = userInput.size() - 1;
+    for (int counter = userInput.size() - 2; counter >= 0; counter--) {
 
-void postOrderTraversal(itNode *ptr) {
-    if (ptr == null) {
-        return;
     }
+
 }
 
 int main() {
