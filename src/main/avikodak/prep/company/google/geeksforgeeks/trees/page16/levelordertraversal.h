@@ -1,11 +1,12 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : levelordertraversal.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/trees/page16/levelordertraversal.h
+ *  Created on                  : Mar 25, 2017 :: 10:19:52 AM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/
+struct itNode;
 
 /****************************************************************************************************************************************************/
 /*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
@@ -74,8 +75,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE16_LEVELORDERTRAVERSAL_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE16_LEVELORDERTRAVERSAL_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,20 +85,25 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
-        } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
+void levelOrderTraversal(itNode *ptr) {
+    if (ptr == null) {
+        return;
+    }
+    queue<itNode *> auxSpace;
+    auxSpace.push(ptr);
+    itNode *currentNode;
+    while (!auxSpace.empty()) {
+        currentNode = auxSpace.front();
+        auxSpace.pop();
+        printf("%d\t", currentNode->value);
+        if (currentNode->left != null) {
+            auxSpace.push(currentNode->left);
+        }
+        if (currentNode->right != null) {
+            auxSpace.push(currentNode->right);
         }
     }
-    return totalCount;
 }
-
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
@@ -110,4 +116,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE16_LEVELORDERTRAVERSAL_H_ */

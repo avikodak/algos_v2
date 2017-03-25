@@ -1,11 +1,13 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : insertintosortedsill.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page13/insertintosortedsill.h
+ *  Created on                  : Mar 25, 2017 :: 6:52:50 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
  ****************************************************************************************************************************************************/
+
+#include <lib/ds/linkedlistds.h>
 
 /****************************************************************************************************************************************************/
 /*                                                         NAMESPACE DECLARATION AND IMPORTS                                                        */
@@ -74,8 +76,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_INSERTINTOSORTEDSILL_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_INSERTINTOSORTEDSILL_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,18 +86,26 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
-        } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
+void insertIntoSortedSill(sillNode **head, int value) {
+    if (*head == null) {
+        *head = new sillNode(value);
+        return;
+    } else if ((*head)->value > value) {
+        sillNode *newNode = new sillNode(value);
+        newNode->next = *head;
+        (*head) = newNode;
+        return;
+    } else {
+        sillNode *crawler = *head;
+        sillNode *prevPtr = null;
+        while (crawler != null && crawler->value < value) {
+            prevPtr = crawler;
+            crawler = crawler->next;
         }
+        sillNode *newNode = new sillNode(value);
+        newNode->next = prevPtr->next;
+        prevPtr->next = newNode;
     }
-    return totalCount;
 }
 
 /****************************************************************************************************************************************************/
@@ -110,4 +120,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_INSERTINTOSORTEDSILL_H_ */

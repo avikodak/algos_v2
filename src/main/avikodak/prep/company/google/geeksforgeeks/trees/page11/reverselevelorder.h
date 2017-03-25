@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : reverselevelorder.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/trees/page11/reverselevelorder.h
+ *  Created on                  : Mar 25, 2017 :: 10:04:34 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE11_REVERSELEVELORDER_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE11_REVERSELEVELORDER_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,18 +84,29 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
-        } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
+void reverseLevelOrder(itNode *ptr) {
+    if (ptr == null) {
+        return;
+    }
+    queue<itNode *> levelAuxSpace;
+    stack<itNode *> reverseLevelAuxSpace;
+    itNode *currentNode;
+    levelAuxSpace.push(ptr);
+    while (!levelAuxSpace.empty()) {
+        currentNode = levelAuxSpace.front();
+        levelAuxSpace.pop();
+        reverseLevelAuxSpace.push(currentNode);
+        if (currentNode->right != null) {
+            levelAuxSpace.push(currentNode->right);
+        }
+        if (currentNode->left != null) {
+            levelAuxSpace.push(currentNode->left);
         }
     }
-    return totalCount;
+    while(!reverseLevelAuxSpace.empty()){
+        printf("%d\t",reverseLevelAuxSpace.top());
+        reverseLevelAuxSpace.pop();
+    }
 }
 
 /****************************************************************************************************************************************************/
@@ -110,4 +121,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE11_REVERSELEVELORDER_H_ */

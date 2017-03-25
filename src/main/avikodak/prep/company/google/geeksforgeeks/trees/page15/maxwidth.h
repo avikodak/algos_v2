@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : maxwidth.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/trees/page15/maxwidth.h
+ *  Created on                  : Mar 25, 2017 :: 11:48:40 AM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE15_MAXWIDTH_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE15_MAXWIDTH_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,20 +84,19 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
-        } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
-        }
+void fillWidthOfLevel(itNode *root, int currentLevel, map<int, int> &widthOfLevels) {
+    if (root == null) {
+        return;
     }
-    return totalCount;
+    map<int, int>::iterator itToWidthMap;
+    if ((itToWidthMap = widthOfLevels.find(currentLevel)) == widthOfLevels.end()) {
+        widthOfLevels[currentLevel] = 0;
+    } else {
+        widthOfLevels[currentLevel]++;
+    }
+    fillWidthOfLevel(root->left, currentLevel + 1, widthOfLevels);
+    fillWidthOfLevel(root->right, currentLevel + 1, widthOfLevels);
 }
-
 /****************************************************************************************************************************************************/
 /*                                                          O(N*LOGN) Algorithm                                                                     */
 /****************************************************************************************************************************************************/
@@ -110,4 +109,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE15_MAXWIDTH_H_ */

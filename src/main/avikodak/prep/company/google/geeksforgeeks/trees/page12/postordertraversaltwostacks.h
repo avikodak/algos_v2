@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : postordertraversaltwostacks.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/trees/page12/postordertraversaltwostacks.h
+ *  Created on                  : Mar 25, 2017 :: 2:37:21 PM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE12_POSTORDERTRAVERSALTWOSTACKS_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE12_POSTORDERTRAVERSALTWOSTACKS_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,18 +84,24 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
-        } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
+void postOrderTraversalTwoStacks(itNode *ptr) {
+    if (ptr == null) {
+        return;
+    }
+    stack<itNode *> fAuxSpace, sAuxSpace;
+    itNode *currentNode;
+    fAuxSpace.push(ptr);
+    while (!fAuxSpace.empty()) {
+        currentNode = fAuxSpace.top();
+        fAuxSpace.pop();
+        sAuxSpace.push(currentNode);
+        if (currentNode->left != null) {
+            fAuxSpace.push(currentNode->left);
+        }
+        if (currentNode->right != null) {
+            fAuxSpace.push(currentNode->right);
         }
     }
-    return totalCount;
 }
 
 /****************************************************************************************************************************************************/
@@ -110,4 +116,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_TREES_PAGE12_POSTORDERTRAVERSALTWOSTACKS_H_ */

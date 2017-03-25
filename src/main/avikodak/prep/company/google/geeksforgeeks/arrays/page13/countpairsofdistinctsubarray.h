@@ -1,7 +1,7 @@
 /****************************************************************************************************************************************************
- *  File Name                   : countstrictlyincarrays.h
- *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page14/countstrictlyincarrays.h
- *  Created on                  : Mar 22, 2017 :: 9:12:10 PM
+ *  File Name                   : countpairsofdistinctsubarray.h
+ *  File Location               : /algos_v2/src/main/avikodak/prep/company/google/geeksforgeeks/arrays/page13/countpairsofdistinctsubarray.h
+ *  Created on                  : Mar 23, 2017 :: 12:30:40 AM
  *  Author                      : avikodak
  *  Testing Status              : TODO
  *  URL                         : TODO
@@ -74,8 +74,8 @@ using namespace __gnu_cxx;
 /*                                                             MAIN CODE START                                                                      */
 /****************************************************************************************************************************************************/
 
-#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
-#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_
+#ifndef MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_COUNTPAIRSOFDISTINCTSUBARRAY_H_
+#define MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_COUNTPAIRSOFDISTINCTSUBARRAY_H_
 
 /****************************************************************************************************************************************************/
 /*                                                           O(LOGN) Algorithm                                                                      */
@@ -84,18 +84,28 @@ using namespace __gnu_cxx;
 /****************************************************************************************************************************************************/
 /*                                                            O(N) Algorithm                                                                        */
 /****************************************************************************************************************************************************/
-int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
-    int cummulativeCount = 1;
-    int totalCount = 0;
-    for (unsigned int counter = 1; counter < userInput.size(); counter++) {
-        if (userInput[counter] > userInput[counter - 1]) {
-            cummulativeCount++;
+int getCountOfPairsOfDistinctSubArrays(vector<int> userInput) {
+    vector<bool> presenceMap;
+    presenceMap.assign(userInput.size(), false);
+    int distinctElementCount = 0;
+    int totalPairs = 0;
+    int startIndex = 0;
+    for (unsigned int counter = 0; counter < userInput.size(); counter++) {
+        if (presenceMap[userInput[counter]]) {
+            totalPairs += distinctElementCount * (distinctElementCount - 1);
+            while (startIndex < counter && userInput[startIndex] != userInput[counter]) {
+                presenceMap[userInput[startIndex]] = false;
+                startIndex++;
+                distinctElementCount--;
+            }
+            startIndex++;
+            distinctElementCount--;
         } else {
-            totalCount += ((cummulativeCount) * (cummulativeCount - 1)) / 2;
-            cummulativeCount = 1;
+            distinctElementCount++;
+            presenceMap[userInput[counter]] = true;
         }
     }
-    return totalCount;
+    return totalPairs;
 }
 
 /****************************************************************************************************************************************************/
@@ -110,4 +120,4 @@ int getCountOfStrictlyIncreasingArrays(vector<int> userInput) {
 /*                                                           O(C^N) Algorithm                                                                       */
 /****************************************************************************************************************************************************/
 
-#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE14_COUNTSTRICTLYINCARRAYS_H_ */
+#endif /* MAIN_AVIKODAK_PREP_COMPANY_GOOGLE_GEEKSFORGEEKS_ARRAYS_PAGE13_COUNTPAIRSOFDISTINCTSUBARRAY_H_ */
